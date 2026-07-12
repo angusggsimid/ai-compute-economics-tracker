@@ -22,6 +22,7 @@ jobs:
         with:
           python-version: "3.12"
           cache: pip
+          cache-dependency-path: requirements-deploy.txt
       - run: pip install -r requirements-deploy.txt
       - name: Refresh source data and build site
         env:
