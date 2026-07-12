@@ -33,7 +33,7 @@ python3 tracker_v2/html_dashboard/build_time_series_dashboard.py
 GitHub Actions 工作流位于 `.github/workflows/refresh-dashboard.yml`，每天 `00:17 UTC`（香港时间 `08:17`）运行。刷新和测试通过后只提交数据 JSON、正式 HTML 和刷新状态；Vercel 监听私有仓库的主分支并自动发布。
 
 - 私有仓库：`https://github.com/angusggsimid/ai-compute-economics-tracker`
-- 正式网站：`https://trackerv2-ashen.vercel.app`
+- 正式网站：`https://trackerv2-angusggsimids-projects.vercel.app`（Vercel 登录保护；始终跟随主分支最新生产部署）
 
 本地执行同一条生产链路：
 
