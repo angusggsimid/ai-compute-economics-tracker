@@ -34,6 +34,9 @@ GitHub Actions 工作流位于 `.github/workflows/refresh-dashboard.yml`，每�
 
 - 私有仓库：`https://github.com/angusggsimid/ai-compute-economics-tracker`
 - 正式网站：`https://trackerv2-git-main-angusggsimids-projects.vercel.app`（Vercel 登录保护；始终跟随主分支最新生产部署）
+- Sites 私密镜像：`https://ai-compute-economics-tracker.angusgu456396.chatgpt.site`
+
+Codex 自动化 `AI Compute Tracker｜Sites 每日同步` 每天香港时间 `09:00` 检查 GitHub 当日刷新。只有四个来源均为 fresh、页面测试通过时才构建并发布 Sites 新版本；失败或 degraded 时保留上一版 Sites，不覆盖线上内容。
 
 本地执行同一条生产链路：
 
