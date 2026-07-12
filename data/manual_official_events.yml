@@ -1,0 +1,82 @@
+events:
+  - event_id: meta_2026_q1_capex_guidance_revision
+    ticker: META
+    company: Meta
+    announcement_date: 2026-04-29
+    fiscal_period: FY2026
+    event_type: capex_guidance_revision
+    metric: fy2026_capex_guidance
+    value:
+      low: 125
+      high: 145
+      previous_low: 115
+      previous_high: 135
+    unit: USD_B
+    source_url: https://www.sec.gov/Archives/edgar/data/1326801/000162828026028364/meta-03312026xexhibit991.htm
+    source_excerpt: "We anticipate 2026 capital expenditures, including principal payments on finance leases, to be in the range of $125-145 billion"
+    collector_name: manual_sourcebacked_yaml
+
+  - event_id: alphabet_2026_q1_cloud_backlog
+    ticker: GOOGL
+    company: Alphabet
+    announcement_date: 2026-04-29
+    fiscal_period: Q1 FY2026
+    event_type: rpo
+    metric: cloud_backlog
+    value: 460
+    unit: USD_B
+    source_url: https://www.sec.gov/Archives/edgar/data/1652044/000165204426000043/googexhibit991q12026.htm
+    source_excerpt: "Google Cloud revenues grew 63% with backlog nearly doubling quarter on quarter to over $460 billion"
+    collector_name: manual_sourcebacked_yaml
+
+  - event_id: oracle_fy2026_q4_rpo
+    ticker: ORCL
+    company: Oracle
+    announcement_date: 2026-06-11
+    fiscal_period: FY2026
+    event_type: rpo
+    metric: remaining_performance_obligations
+    value: 638
+    unit: USD_B
+    source_url: https://www.sec.gov/Archives/edgar/data/1341439/000119312526265848/0001193125-26-265848.txt
+    source_excerpt: "Remaining Performance Obligations, or RPO, ended the quarter at $638 billion"
+    collector_name: manual_sourcebacked_yaml
+
+  - event_id: amazon_2026_q1_ai_capex_investment
+    ticker: AMZN
+    company: Amazon
+    announcement_date: 2026-04-29
+    fiscal_period: Q1 FY2026
+    event_type: capacity_comment
+    metric: ttm_capex_increase_reflects_ai_investment
+    value: 59.3
+    unit: USD_B
+    source_url: https://www.sec.gov/Archives/edgar/data/1018724/000101872426000012/amzn-20260331xex991.htm
+    source_excerpt: "This increase primarily reflects investments in artificial intelligence"
+    collector_name: manual_sourcebacked_yaml
+
+  - event_id: microsoft_fy2026_q2_management_capacity_comment
+    ticker: MSFT
+    company: Microsoft
+    announcement_date: 2026-01-28
+    fiscal_period: Q2 FY2026
+    event_type: management_capacity_comment
+    metric: customer_demand_exceeds_supply
+    value: 1
+    unit: evidence_flag
+    source_url: https://www.microsoft.com/en-us/investor/events/fy-2026/earnings-fy-2026-q2
+    source_excerpt: "Our customer demand continues to exceed our supply."
+    collector_name: manual_sourcebacked_yaml
+
+  - event_id: microsoft_fy2026_q2_capacity_comment
+    ticker: MSFT
+    company: Microsoft
+    announcement_date: 2026-01-28
+    fiscal_period: Q2 FY2026
+    event_type: capacity_comment
+    metric: capex_short_lived_assets_comment
+    value: 1
+    unit: evidence_flag
+    source_url: https://www.microsoft.com/en-us/investor/events/fy-2026/earnings-fy-2026-q2
+    source_excerpt: "roughly two thirds of our capex was on short-lived assets"
+    collector_name: manual_sourcebacked_yaml

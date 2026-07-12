@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.agg.ai-compute-tracker.phase3.daily</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/usr/bin/python3</string>
+    <string>/Users/agg/Documents/New project 2/tracker_v2/scripts/run_phase3_daily.py</string>
+    <string>--db</string>
+    <string>/Users/agg/Documents/New project 2/tracker_v2/ai_compute_tracker_production.db</string>
+  </array>
+  <key>WorkingDirectory</key>
+  <string>/Users/agg/Documents/New project 2/tracker_v2</string>
+  <key>StartCalendarInterval</key>
+  <dict>
+    <key>Hour</key>
+    <integer>8</integer>
+    <key>Minute</key>
+    <integer>30</integer>
+  </dict>
+  <key>StandardOutPath</key>
+  <string>/Users/agg/Documents/New project 2/tracker_v2/tracker_data/phase3_launchd.stdout.log</string>
+  <key>StandardErrorPath</key>
+  <string>/Users/agg/Documents/New project 2/tracker_v2/tracker_data/phase3_launchd.stderr.log</string>
+</dict>
+</plist>
