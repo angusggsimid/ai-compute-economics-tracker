@@ -1,4 +1,5 @@
 import sys
+from datetime import date, timedelta
 from pathlib import Path
 from statistics import median
 
@@ -18,8 +19,9 @@ def test_time_series_dashboard_uses_full_openrouter_history_without_synthetic_pr
     composition = snapshot["datasets"]["openrouterComposition"]
     dates = sorted({row["date"] for row in volume})
 
-    assert len(dates) == 52
-    assert len({row["date"] for row in composition}) == 52
+    assert len(dates) >= 52
+    assert len({row["date"] for row in composition}) >= 52
+    assert date.fromisoformat(dates[-1]) + timedelta(days=6) < date.today()
     for observed_date in {row["date"] for row in composition}:
         rows = [row for row in composition if row["date"] == observed_date]
         assert len(rows) == 10
@@ -69,7 +71,7 @@ def test_active_model_price_tiers_preserve_unknown_and_sum_to_total():
     snapshot = build_snapshot()
     tiers = snapshot["datasets"]["activePriceTiers"]
     dates = sorted({row["date"] for row in tiers})
-    assert len(dates) == 52
+    assert len(dates) >= 52
     for observed_date in dates:
         rows = [row for row in tiers if row["date"] == observed_date]
         assert {row["series"] for row in rows} == {"免费", "<$1", "$1–5", ">$5", "Others / 无法匹配"}
@@ -86,8 +88,8 @@ def test_active_model_basket_is_usage_filtered_and_coverage_is_visible():
     assert 1 <= len(active) <= 12
     assert all("deepseek-r1" not in row["rankId"] for row in active)
     assert all(row["tokens"] > 0 and row["share"] > 0 for row in active)
-    assert len({row["date"] for row in input_rows}) == 52
-    assert len({row["date"] for row in output_rows}) == 52
+    assert len({row["date"] for row in input_rows}) >= 52
+    assert len({row["date"] for row in output_rows}) >= 52
     assert all(0 < row["coverage"] <= 100 for row in input_rows + output_rows)
 
 

@@ -1,7 +1,7 @@
 # Plan: tracker_v2 Real-Data Decision Product Closure
 
 **Generated**: 2026-07-05  
-**Project**: `/Users/agg/Documents/New project 2/tracker_v2`  
+**Project**: `/Users/agg/Documents/AI Compute Economics`
 **Recommended executor**: `$parallel-task`  
 **Do not use by default**: `super-swarm`, because this product has shared database/schema dependencies and real-data quality gates.
 
@@ -73,9 +73,9 @@ T14 ───────────────┬── T3
 
 - **depends_on**: []
 - **location**:
-  - `/Users/agg/Documents/New project 2/tracker_v2/tracker_v2.py`
-  - `/Users/agg/Documents/New project 2/tracker_v2/docs/data_contract.md`
-  - `/Users/agg/Documents/New project 2/tracker_v2/test_suite/test_data_contract.py`
+  - `/Users/agg/Documents/AI Compute Economics/tracker_v2.py`
+  - `/Users/agg/Documents/AI Compute Economics/docs/data_contract.md`
+  - `/Users/agg/Documents/AI Compute Economics/test_suite/test_data_contract.py`
 - **description**:
   - Add a production data contract before adding collectors.
   - Use one explicit schema strategy, not optional alternatives:
@@ -121,20 +121,20 @@ T14 ───────────────┬── T3
   - 2026-07-05: T1 GREEN passed `python3 -m pytest test_suite/test_data_contract.py -q` with 6 passed; compatibility check passed `python3 -m pytest test_suite/test_unit.py test_suite/test_integration.py -q` with 41 passed; `python3 tracker_v2.py status` shows source_type data quality counts.
   - 2026-07-05: reason_not_committed: target files are all untracked in the parent Git repo, including pre-existing copied files such as `tracker_v2.py`; committing would add whole baseline files rather than an isolated T1 diff, so no stage/commit was performed.
 - **files edited/created**:
-  - `/Users/agg/Documents/New project 2/tracker_v2/tracker_v2.py`
-  - `/Users/agg/Documents/New project 2/tracker_v2/docs/data_contract.md`
-  - `/Users/agg/Documents/New project 2/tracker_v2/test_suite/test_data_contract.py`
-  - `/Users/agg/Documents/New project 2/tracker_v2/tracker-v2-real-data-closure-plan.md`
+  - `/Users/agg/Documents/AI Compute Economics/tracker_v2.py`
+  - `/Users/agg/Documents/AI Compute Economics/docs/data_contract.md`
+  - `/Users/agg/Documents/AI Compute Economics/test_suite/test_data_contract.py`
+  - `/Users/agg/Documents/AI Compute Economics/tracker-v2-real-data-closure-plan.md`
 
 ### T1.5: Create Integration Surface For Parallel Workers
 
 - **depends_on**: [T1]
 - **location**:
-  - `/Users/agg/Documents/New project 2/tracker_v2/tracker_v2.py`
-  - `/Users/agg/Documents/New project 2/tracker_v2/data_sources/__init__.py`
-  - `/Users/agg/Documents/New project 2/tracker_v2/company_config.py`
-  - `/Users/agg/Documents/New project 2/tracker_v2/production_store.py`
-  - `/Users/agg/Documents/New project 2/tracker_v2/test_suite/test_integration_surface.py`
+  - `/Users/agg/Documents/AI Compute Economics/tracker_v2.py`
+  - `/Users/agg/Documents/AI Compute Economics/data_sources/__init__.py`
+  - `/Users/agg/Documents/AI Compute Economics/company_config.py`
+  - `/Users/agg/Documents/AI Compute Economics/production_store.py`
+  - `/Users/agg/Documents/AI Compute Economics/test_suite/test_integration_surface.py`
 - **description**:
   - Add the shared interface that all later workers must use, so T2/T3/T4/T5 do not independently edit the same CLI and insert logic.
   - Define dataclasses or typed dictionaries for:
@@ -178,20 +178,20 @@ T14 ───────────────┬── T3
   - 2026-07-05: T1.5 GREEN passed `python3 -m pytest test_suite/test_integration_surface.py -q` with 7 passed; T1 compatibility passed `python3 -m pytest test_suite/test_data_contract.py -q` with 6 passed.
   - 2026-07-05: reason_not_committed: parent Git repo still treats `tracker_v2` baseline and prior T1/T14 files as untracked; committing now would capture unrelated copied baseline and parallel worker changes, so no stage/commit was performed.
 - **files edited/created**:
-  - `/Users/agg/Documents/New project 2/tracker_v2/tracker_v2.py`
-  - `/Users/agg/Documents/New project 2/tracker_v2/data_sources/__init__.py`
-  - `/Users/agg/Documents/New project 2/tracker_v2/company_config.py`
-  - `/Users/agg/Documents/New project 2/tracker_v2/production_store.py`
-  - `/Users/agg/Documents/New project 2/tracker_v2/test_suite/test_integration_surface.py`
-  - `/Users/agg/Documents/New project 2/tracker_v2/tracker-v2-real-data-closure-plan.md`
+  - `/Users/agg/Documents/AI Compute Economics/tracker_v2.py`
+  - `/Users/agg/Documents/AI Compute Economics/data_sources/__init__.py`
+  - `/Users/agg/Documents/AI Compute Economics/company_config.py`
+  - `/Users/agg/Documents/AI Compute Economics/production_store.py`
+  - `/Users/agg/Documents/AI Compute Economics/test_suite/test_integration_surface.py`
+  - `/Users/agg/Documents/AI Compute Economics/tracker-v2-real-data-closure-plan.md`
 
 ### T2: Separate Demo Seed Mode From Production Mode
 
 - **depends_on**: [T1.5]
 - **location**:
-  - `/Users/agg/Documents/New project 2/tracker_v2/tracker_v2.py`
-  - `/Users/agg/Documents/New project 2/tracker_v2/README_v2.md`
-  - `/Users/agg/Documents/New project 2/tracker_v2/test_suite/test_seed_isolation.py`
+  - `/Users/agg/Documents/AI Compute Economics/tracker_v2.py`
+  - `/Users/agg/Documents/AI Compute Economics/README_v2.md`
+  - `/Users/agg/Documents/AI Compute Economics/test_suite/test_seed_isolation.py`
 - **description**:
   - Change `cmd_init()` so default `init` creates schema only and does not load seed data.
   - Move current seed loader behind an explicit command or flag: `python3 tracker_v2.py init --demo-seed`.
@@ -216,19 +216,19 @@ T14 ───────────────┬── T3
   - 2026-07-05: T2 GREEN passed `python3 -m pytest test_suite/test_seed_isolation.py -q` with 5 passed; compatibility passed `python3 -m pytest test_suite/test_integration_surface.py test_suite/test_data_contract.py -q` with 13 passed.
   - 2026-07-05: reason_not_committed: parent Git repo still treats `tracker_v2` and surrounding project files as untracked, with prior T1/T1.5/T14 worker changes already in the worktree; committing now would capture baseline/unrelated worker changes rather than an isolated T2 diff, so no stage/commit was performed.
 - **files edited/created**:
-  - `/Users/agg/Documents/New project 2/tracker_v2/tracker_v2.py`
-  - `/Users/agg/Documents/New project 2/tracker_v2/README_v2.md`
-  - `/Users/agg/Documents/New project 2/tracker_v2/test_suite/test_seed_isolation.py`
-  - `/Users/agg/Documents/New project 2/tracker_v2/tracker-v2-real-data-closure-plan.md`
+  - `/Users/agg/Documents/AI Compute Economics/tracker_v2.py`
+  - `/Users/agg/Documents/AI Compute Economics/README_v2.md`
+  - `/Users/agg/Documents/AI Compute Economics/test_suite/test_seed_isolation.py`
+  - `/Users/agg/Documents/AI Compute Economics/tracker-v2-real-data-closure-plan.md`
 
 ### T3: Build GPU Pricing Source Adapters
 
 - **depends_on**: [T2, T14]
 - **location**:
-  - `/Users/agg/Documents/New project 2/tracker_v2/tracker_v2.py`
-  - `/Users/agg/Documents/New project 2/tracker_v2/data_sources/gpu_pricing.py`
-  - `/Users/agg/Documents/New project 2/tracker_v2/test_suite/test_gpu_pricing_sources.py`
-  - `/Users/agg/Documents/New project 2/tracker_v2/tracker_snapshots/gpu_prices/`
+  - `/Users/agg/Documents/AI Compute Economics/tracker_v2.py`
+  - `/Users/agg/Documents/AI Compute Economics/data_sources/gpu_pricing.py`
+  - `/Users/agg/Documents/AI Compute Economics/test_suite/test_gpu_pricing_sources.py`
+  - `/Users/agg/Documents/AI Compute Economics/tracker_snapshots/gpu_prices/`
 - **description**:
   - Replace `fetch_gpu_price_from_providers()` hardcoded `reference_prices`.
   - Implement adapters:
@@ -280,28 +280,28 @@ T14 ───────────────┬── T3
   - 2026-07-05: T3 GREEN passed `python3 -m pytest test_suite/test_gpu_pricing_sources.py -q` with 8 passed; regression passed `python3 -m pytest test_suite/test_seed_isolation.py test_suite/test_integration_surface.py test_suite/test_data_contract.py -q` with 18 passed.
   - 2026-07-05: reason_not_committed: parent Git repo still treats `tracker_v2` baseline and parallel worker outputs as untracked; T4/T5 also modified shared CLI/test surfaces during this run, so committing now would capture unrelated baseline/worker changes rather than an isolated T3 diff.
 - **files edited/created**:
-  - `/Users/agg/Documents/New project 2/tracker_v2/data_sources/gpu_pricing.py`
-  - `/Users/agg/Documents/New project 2/tracker_v2/test_suite/test_gpu_pricing_sources.py`
-  - `/Users/agg/Documents/New project 2/tracker_v2/test_suite/fixtures/gpu_pricing/runpod_pricing.html`
-  - `/Users/agg/Documents/New project 2/tracker_v2/test_suite/fixtures/gpu_pricing/lambda_pricing.html`
-  - `/Users/agg/Documents/New project 2/tracker_v2/test_suite/fixtures/gpu_pricing/computeprices_h100.html`
-  - `/Users/agg/Documents/New project 2/tracker_v2/test_suite/fixtures/gpu_pricing/computeprices_h200.html`
-  - `/Users/agg/Documents/New project 2/tracker_v2/tracker_v2.py`
-  - `/Users/agg/Documents/New project 2/tracker_v2/test_suite/test_integration_surface.py`
-  - `/Users/agg/Documents/New project 2/tracker_v2/tracker_snapshots/gpu_prices/2026-07-05t073615z-runpod-pricing.html`
-  - `/Users/agg/Documents/New project 2/tracker_v2/tracker_snapshots/gpu_prices/2026-07-05t073615z-lambda-pricing.html`
-  - `/Users/agg/Documents/New project 2/tracker_v2/tracker_snapshots/gpu_prices/2026-07-05t073615z-computeprices-h100.html`
-  - `/Users/agg/Documents/New project 2/tracker_v2/tracker_snapshots/gpu_prices/2026-07-05t073615z-computeprices-h200.html`
-  - `/Users/agg/Documents/New project 2/tracker_v2/tracker-v2-real-data-closure-plan.md`
+  - `/Users/agg/Documents/AI Compute Economics/data_sources/gpu_pricing.py`
+  - `/Users/agg/Documents/AI Compute Economics/test_suite/test_gpu_pricing_sources.py`
+  - `/Users/agg/Documents/AI Compute Economics/test_suite/fixtures/gpu_pricing/runpod_pricing.html`
+  - `/Users/agg/Documents/AI Compute Economics/test_suite/fixtures/gpu_pricing/lambda_pricing.html`
+  - `/Users/agg/Documents/AI Compute Economics/test_suite/fixtures/gpu_pricing/computeprices_h100.html`
+  - `/Users/agg/Documents/AI Compute Economics/test_suite/fixtures/gpu_pricing/computeprices_h200.html`
+  - `/Users/agg/Documents/AI Compute Economics/tracker_v2.py`
+  - `/Users/agg/Documents/AI Compute Economics/test_suite/test_integration_surface.py`
+  - `/Users/agg/Documents/AI Compute Economics/tracker_snapshots/gpu_prices/2026-07-05t073615z-runpod-pricing.html`
+  - `/Users/agg/Documents/AI Compute Economics/tracker_snapshots/gpu_prices/2026-07-05t073615z-lambda-pricing.html`
+  - `/Users/agg/Documents/AI Compute Economics/tracker_snapshots/gpu_prices/2026-07-05t073615z-computeprices-h100.html`
+  - `/Users/agg/Documents/AI Compute Economics/tracker_snapshots/gpu_prices/2026-07-05t073615z-computeprices-h200.html`
+  - `/Users/agg/Documents/AI Compute Economics/tracker-v2-real-data-closure-plan.md`
 
 ### T4: Build Official SEC CAPEX Actuals Collector
 
 - **depends_on**: [T2, T14]
 - **location**:
-  - `/Users/agg/Documents/New project 2/tracker_v2/tracker_v2.py`
-  - `/Users/agg/Documents/New project 2/tracker_v2/data_sources/sec_capex.py`
-  - `/Users/agg/Documents/New project 2/tracker_v2/test_suite/test_sec_capex.py`
-  - `/Users/agg/Documents/New project 2/tracker_v2/docs/sec_capex_mapping.md`
+  - `/Users/agg/Documents/AI Compute Economics/tracker_v2.py`
+  - `/Users/agg/Documents/AI Compute Economics/data_sources/sec_capex.py`
+  - `/Users/agg/Documents/AI Compute Economics/test_suite/test_sec_capex.py`
+  - `/Users/agg/Documents/AI Compute Economics/docs/sec_capex_mapping.md`
 - **description**:
   - Replace production dependence on `yfinance` for CAPEX actuals.
   - Use SEC companyfacts as primary official source for US-listed hyperscalers.
@@ -345,31 +345,31 @@ T14 ───────────────┬── T3
   - 2026-07-05: Live SEC update passed: `python3 tracker_v2.py update --production --only capex-actuals` inserted 5 official CAPEX actuals and 0 quality events for MSFT/AMZN/GOOGL/META/ORCL; snapshots were saved in `tracker_snapshots/sec_capex/`.
   - 2026-07-05: reason_not_committed: parent Git repo still treats `tracker_v2` and broader project files as untracked, with prior parallel worker changes already in the worktree; committing now would capture baseline/unrelated worker changes rather than an isolated T4 diff, so no stage/commit was performed.
 - **files edited/created**:
-  - `/Users/agg/Documents/New project 2/tracker_v2/data_sources/sec_capex.py`
-  - `/Users/agg/Documents/New project 2/tracker_v2/test_suite/test_sec_capex.py`
-  - `/Users/agg/Documents/New project 2/tracker_v2/test_suite/fixtures/sec_companyfacts/MSFT.json`
-  - `/Users/agg/Documents/New project 2/tracker_v2/test_suite/fixtures/sec_companyfacts/AMZN.json`
-  - `/Users/agg/Documents/New project 2/tracker_v2/test_suite/fixtures/sec_companyfacts/GOOGL.json`
-  - `/Users/agg/Documents/New project 2/tracker_v2/test_suite/fixtures/sec_companyfacts/META.json`
-  - `/Users/agg/Documents/New project 2/tracker_v2/test_suite/fixtures/sec_companyfacts/ORCL.json`
-  - `/Users/agg/Documents/New project 2/tracker_v2/docs/sec_capex_mapping.md`
-  - `/Users/agg/Documents/New project 2/tracker_v2/tracker_snapshots/sec_capex/AMZN_0001018724_2026-07-05T07-35-44Z_ab593c88c663.json`
-  - `/Users/agg/Documents/New project 2/tracker_v2/tracker_snapshots/sec_capex/GOOGL_0001652044_2026-07-05T07-35-44Z_c883f5d0fdc9.json`
-  - `/Users/agg/Documents/New project 2/tracker_v2/tracker_snapshots/sec_capex/META_0001326801_2026-07-05T07-35-44Z_8d5e8e7185b8.json`
-  - `/Users/agg/Documents/New project 2/tracker_v2/tracker_snapshots/sec_capex/MSFT_0000789019_2026-07-05T07-35-44Z_7d8f8f997f2e.json`
-  - `/Users/agg/Documents/New project 2/tracker_v2/tracker_snapshots/sec_capex/ORCL_0001341439_2026-07-05T07-35-44Z_cf7cb9e13f6d.json`
-  - `/Users/agg/Documents/New project 2/tracker_v2/tracker_v2.py`
-  - `/Users/agg/Documents/New project 2/tracker_v2/tracker-v2-real-data-closure-plan.md`
-  - `/Users/agg/Documents/New project 2/CONTEXT.md`
+  - `/Users/agg/Documents/AI Compute Economics/data_sources/sec_capex.py`
+  - `/Users/agg/Documents/AI Compute Economics/test_suite/test_sec_capex.py`
+  - `/Users/agg/Documents/AI Compute Economics/test_suite/fixtures/sec_companyfacts/MSFT.json`
+  - `/Users/agg/Documents/AI Compute Economics/test_suite/fixtures/sec_companyfacts/AMZN.json`
+  - `/Users/agg/Documents/AI Compute Economics/test_suite/fixtures/sec_companyfacts/GOOGL.json`
+  - `/Users/agg/Documents/AI Compute Economics/test_suite/fixtures/sec_companyfacts/META.json`
+  - `/Users/agg/Documents/AI Compute Economics/test_suite/fixtures/sec_companyfacts/ORCL.json`
+  - `/Users/agg/Documents/AI Compute Economics/docs/sec_capex_mapping.md`
+  - `/Users/agg/Documents/AI Compute Economics/tracker_snapshots/sec_capex/AMZN_0001018724_2026-07-05T07-35-44Z_ab593c88c663.json`
+  - `/Users/agg/Documents/AI Compute Economics/tracker_snapshots/sec_capex/GOOGL_0001652044_2026-07-05T07-35-44Z_c883f5d0fdc9.json`
+  - `/Users/agg/Documents/AI Compute Economics/tracker_snapshots/sec_capex/META_0001326801_2026-07-05T07-35-44Z_8d5e8e7185b8.json`
+  - `/Users/agg/Documents/AI Compute Economics/tracker_snapshots/sec_capex/MSFT_0000789019_2026-07-05T07-35-44Z_7d8f8f997f2e.json`
+  - `/Users/agg/Documents/AI Compute Economics/tracker_snapshots/sec_capex/ORCL_0001341439_2026-07-05T07-35-44Z_cf7cb9e13f6d.json`
+  - `/Users/agg/Documents/AI Compute Economics/tracker_v2.py`
+  - `/Users/agg/Documents/AI Compute Economics/tracker-v2-real-data-closure-plan.md`
+  - `/Users/agg/Documents/AI Compute Economics/CONTEXT.md`
 
 ### T5: Build Official Guidance And RPO Event Layer
 
 - **depends_on**: [T2, T14]
 - **location**:
-  - `/Users/agg/Documents/New project 2/tracker_v2/data_sources/official_events.py`
-  - `/Users/agg/Documents/New project 2/tracker_v2/data/manual_official_events.yml`
-  - `/Users/agg/Documents/New project 2/tracker_v2/docs/official_events_policy.md`
-  - `/Users/agg/Documents/New project 2/tracker_v2/test_suite/test_official_events.py`
+  - `/Users/agg/Documents/AI Compute Economics/data_sources/official_events.py`
+  - `/Users/agg/Documents/AI Compute Economics/data/manual_official_events.yml`
+  - `/Users/agg/Documents/AI Compute Economics/docs/official_events_policy.md`
+  - `/Users/agg/Documents/AI Compute Economics/test_suite/test_official_events.py`
 - **description**:
   - Create an event ingestion layer for CAPEX guidance, RPO/backlog, and management comments.
   - Use source-backed YAML/JSON as acceptable production input only when every value has:
@@ -421,25 +421,25 @@ T14 ───────────────┬── T3
   - 2026-07-05: Updated parent `CONTEXT.md` with T5 completion status, live verification result, and validation summary.
   - 2026-07-05: reason_not_committed: parent Git repo still treats `tracker_v2` and surrounding project baseline as untracked, and T3/T4 changes are already present in the shared worktree; committing now would capture baseline/unrelated parallel worker files rather than an isolated T5 diff, so no stage/commit was performed.
 - **files edited/created**:
-  - `/Users/agg/Documents/New project 2/tracker_v2/data_sources/official_events.py`
-  - `/Users/agg/Documents/New project 2/tracker_v2/data/manual_official_events.yml`
-  - `/Users/agg/Documents/New project 2/tracker_v2/docs/official_events_policy.md`
-  - `/Users/agg/Documents/New project 2/tracker_v2/test_suite/test_official_events.py`
-  - `/Users/agg/Documents/New project 2/tracker_v2/test_suite/test_integration_surface.py`
-  - `/Users/agg/Documents/New project 2/tracker_v2/tracker_v2.py`
-  - `/Users/agg/Documents/New project 2/tracker_v2/tracker_snapshots/official_events/`
-  - `/Users/agg/Documents/New project 2/tracker_v2/tracker-v2-real-data-closure-plan.md`
-  - `/Users/agg/Documents/New project 2/.gitignore`
-  - `/Users/agg/Documents/New project 2/CONTEXT.md`
+  - `/Users/agg/Documents/AI Compute Economics/data_sources/official_events.py`
+  - `/Users/agg/Documents/AI Compute Economics/data/manual_official_events.yml`
+  - `/Users/agg/Documents/AI Compute Economics/docs/official_events_policy.md`
+  - `/Users/agg/Documents/AI Compute Economics/test_suite/test_official_events.py`
+  - `/Users/agg/Documents/AI Compute Economics/test_suite/test_integration_surface.py`
+  - `/Users/agg/Documents/AI Compute Economics/tracker_v2.py`
+  - `/Users/agg/Documents/AI Compute Economics/tracker_snapshots/official_events/`
+  - `/Users/agg/Documents/AI Compute Economics/tracker-v2-real-data-closure-plan.md`
+  - `/Users/agg/Documents/AI Compute Economics/.gitignore`
+  - `/Users/agg/Documents/AI Compute Economics/CONTEXT.md`
 
 ### T6: Replace OCPI Hardcode With Licensed-Unavailable And Public Proxy Policy
 
 - **depends_on**: [T3, T14]
 - **location**:
-  - `/Users/agg/Documents/New project 2/tracker_v2/tracker_v2.py`
-  - `/Users/agg/Documents/New project 2/tracker_v2/data_sources/ocpi_policy.py`
-  - `/Users/agg/Documents/New project 2/tracker_v2/test_suite/test_ocpi_policy.py`
-  - `/Users/agg/Documents/New project 2/tracker_v2/docs/ocpi_policy.md`
+  - `/Users/agg/Documents/AI Compute Economics/tracker_v2.py`
+  - `/Users/agg/Documents/AI Compute Economics/data_sources/ocpi_policy.py`
+  - `/Users/agg/Documents/AI Compute Economics/test_suite/test_ocpi_policy.py`
+  - `/Users/agg/Documents/AI Compute Economics/docs/ocpi_policy.md`
 - **description**:
   - Remove hardcoded `fetch_ocpi_public()`.
   - Treat ORNN/OCPI as a licensed or externally unavailable source unless a real authorized feed is configured.
@@ -470,22 +470,22 @@ T14 ───────────────┬── T3
   - 2026-07-05: Status verification passed: `python3 tracker_v2.py status --quality` shows `production_public_proxy_prices | aggregator | rows=84 | eligible=84`, `production_data_quality_events | licensed_unavailable | rows=1 | eligible=0`, plus separate `OCPI unavailable` and `public_gpu_price_proxy available` lines.
   - 2026-07-05: reason_not_committed: parent Git repo still treats `tracker_v2` baseline and parallel worker outputs as untracked, and T3/T4/T5/T14 changes are already present in the shared worktree; committing now would capture baseline/unrelated parallel worker files rather than an isolated T6 diff, so no stage/commit was performed.
 - **files edited/created**:
-  - `/Users/agg/Documents/New project 2/tracker_v2/data_sources/ocpi_policy.py`
-  - `/Users/agg/Documents/New project 2/tracker_v2/test_suite/test_ocpi_policy.py`
-  - `/Users/agg/Documents/New project 2/tracker_v2/docs/ocpi_policy.md`
-  - `/Users/agg/Documents/New project 2/tracker_v2/production_store.py`
-  - `/Users/agg/Documents/New project 2/tracker_v2/tracker_v2.py`
-  - `/Users/agg/Documents/New project 2/tracker_v2/test_suite/test_integration_surface.py`
-  - `/Users/agg/Documents/New project 2/tracker_v2/tracker-v2-real-data-closure-plan.md`
+  - `/Users/agg/Documents/AI Compute Economics/data_sources/ocpi_policy.py`
+  - `/Users/agg/Documents/AI Compute Economics/test_suite/test_ocpi_policy.py`
+  - `/Users/agg/Documents/AI Compute Economics/docs/ocpi_policy.md`
+  - `/Users/agg/Documents/AI Compute Economics/production_store.py`
+  - `/Users/agg/Documents/AI Compute Economics/tracker_v2.py`
+  - `/Users/agg/Documents/AI Compute Economics/test_suite/test_integration_surface.py`
+  - `/Users/agg/Documents/AI Compute Economics/tracker-v2-real-data-closure-plan.md`
 
 ### T7: Add Pipeline Run, Snapshot, And Quality Gate System
 
 - **depends_on**: [T3, T4, T5, T6]
 - **location**:
-  - `/Users/agg/Documents/New project 2/tracker_v2/tracker_v2.py`
-  - `/Users/agg/Documents/New project 2/tracker_v2/data_quality.py`
-  - `/Users/agg/Documents/New project 2/tracker_v2/test_suite/test_data_quality.py`
-  - `/Users/agg/Documents/New project 2/tracker_v2/tracker_snapshots/`
+  - `/Users/agg/Documents/AI Compute Economics/tracker_v2.py`
+  - `/Users/agg/Documents/AI Compute Economics/data_quality.py`
+  - `/Users/agg/Documents/AI Compute Economics/test_suite/test_data_quality.py`
+  - `/Users/agg/Documents/AI Compute Economics/tracker_snapshots/`
 - **description**:
   - Add run-level tracking:
     - `pipeline_runs`
@@ -515,20 +515,20 @@ T14 ───────────────┬── T3
   - 2026-07-05: GREEN passed `python3 -m pytest test_suite/test_data_quality.py -q` with 9 passed; source-regression suite passed `python3 -m pytest test_suite/test_ocpi_policy.py test_suite/test_gpu_pricing_sources.py test_suite/test_sec_capex.py test_suite/test_official_events.py -q` with 24 passed.
   - 2026-07-05: reason_not_committed: the worker stream disconnected before final response, but local validation passed; parent Git still treats `tracker_v2` baseline and parallel worker outputs as untracked, so committing now would capture baseline/unrelated files rather than an isolated T7 diff.
 - **files edited/created**:
-  - `/Users/agg/Documents/New project 2/tracker_v2/data_quality.py`
-  - `/Users/agg/Documents/New project 2/tracker_v2/test_suite/test_data_quality.py`
-  - `/Users/agg/Documents/New project 2/tracker_v2/tracker_v2.py`
-  - `/Users/agg/Documents/New project 2/tracker_v2/tracker_snapshots/pipeline_runs/`
-  - `/Users/agg/Documents/New project 2/tracker_v2/tracker-v2-real-data-closure-plan.md`
+  - `/Users/agg/Documents/AI Compute Economics/data_quality.py`
+  - `/Users/agg/Documents/AI Compute Economics/test_suite/test_data_quality.py`
+  - `/Users/agg/Documents/AI Compute Economics/tracker_v2.py`
+  - `/Users/agg/Documents/AI Compute Economics/tracker_snapshots/pipeline_runs/`
+  - `/Users/agg/Documents/AI Compute Economics/tracker-v2-real-data-closure-plan.md`
 
 ### T8: Rebuild L1/L2/L3 Decision Logic Without Mixed-Frequency Weighted CSI
 
 - **depends_on**: [T7]
 - **location**:
-  - `/Users/agg/Documents/New project 2/tracker_v2/tracker_v2.py`
-  - `/Users/agg/Documents/New project 2/tracker_v2/decision_engine.py`
-  - `/Users/agg/Documents/New project 2/tracker_v2/test_suite/test_decision_engine.py`
-  - `/Users/agg/Documents/New project 2/tracker_v2/docs/decision_framework.md`
+  - `/Users/agg/Documents/AI Compute Economics/tracker_v2.py`
+  - `/Users/agg/Documents/AI Compute Economics/decision_engine.py`
+  - `/Users/agg/Documents/AI Compute Economics/test_suite/test_decision_engine.py`
+  - `/Users/agg/Documents/AI Compute Economics/docs/decision_framework.md`
 - **description**:
   - Keep raw frequencies separate:
     - L1 actual/event layer: SEC CAPEX actuals, official guidance/RPO events.
@@ -577,20 +577,20 @@ T14 ───────────────┬── T3
   - 2026-07-05: GREEN passed `python3 -m pytest test_suite/test_decision_engine.py -q` with 7 passed; source-regression suite passed `python3 -m pytest test_suite/test_data_quality.py test_suite/test_ocpi_policy.py test_suite/test_gpu_pricing_sources.py test_suite/test_sec_capex.py test_suite/test_official_events.py -q` with 33 passed; `python3 tracker_v2.py report --production` returned exit code 0 with source-backed decision state and no primary CSI.
   - 2026-07-05: reason_not_committed: parent Git still treats the whole project and `tracker_v2` baseline as untracked, with prior parallel worker changes already present; committing now would capture baseline/unrelated files rather than an isolated T8 diff.
 - **files edited/created**:
-  - `/Users/agg/Documents/New project 2/tracker_v2/decision_engine.py`
-  - `/Users/agg/Documents/New project 2/tracker_v2/test_suite/test_decision_engine.py`
-  - `/Users/agg/Documents/New project 2/tracker_v2/docs/decision_framework.md`
-  - `/Users/agg/Documents/New project 2/tracker_v2/tracker_v2.py`
-  - `/Users/agg/Documents/New project 2/tracker_v2/tracker-v2-real-data-closure-plan.md`
+  - `/Users/agg/Documents/AI Compute Economics/decision_engine.py`
+  - `/Users/agg/Documents/AI Compute Economics/test_suite/test_decision_engine.py`
+  - `/Users/agg/Documents/AI Compute Economics/docs/decision_framework.md`
+  - `/Users/agg/Documents/AI Compute Economics/tracker_v2.py`
+  - `/Users/agg/Documents/AI Compute Economics/tracker-v2-real-data-closure-plan.md`
 
 ### T9: Update Report Generator Into Source-Backed Decision Brief
 
 - **depends_on**: [T8]
 - **location**:
-  - `/Users/agg/Documents/New project 2/tracker_v2/tracker_v2.py`
-  - `/Users/agg/Documents/New project 2/tracker_v2/reports.py`
-  - `/Users/agg/Documents/New project 2/tracker_v2/test_suite/test_report_quality.py`
-  - `/Users/agg/Documents/New project 2/tracker_v2/tracker_data/`
+  - `/Users/agg/Documents/AI Compute Economics/tracker_v2.py`
+  - `/Users/agg/Documents/AI Compute Economics/reports.py`
+  - `/Users/agg/Documents/AI Compute Economics/test_suite/test_report_quality.py`
+  - `/Users/agg/Documents/AI Compute Economics/tracker_data/`
 - **description**:
   - Rewrite report structure:
     1. Data quality verdict.
@@ -621,19 +621,19 @@ T14 ───────────────┬── T3
   - 2026-07-05: GREEN passed `python3 -m pytest test_suite/test_report_quality.py -q` with 4 passed; regression passed `python3 -m pytest test_suite/test_decision_engine.py test_suite/test_data_quality.py -q` with 16 passed; `python3 tracker_v2.py report --production` returned exit code 0 and wrote a production source-backed report file.
   - 2026-07-05: reason_not_committed: parent Git still treats the whole project and `tracker_v2` baseline as untracked, with prior parallel worker changes already present; committing now would capture baseline/unrelated files rather than an isolated T9 diff.
 - **files edited/created**:
-  - `/Users/agg/Documents/New project 2/tracker_v2/reports.py`
-  - `/Users/agg/Documents/New project 2/tracker_v2/test_suite/test_report_quality.py`
-  - `/Users/agg/Documents/New project 2/tracker_v2/tracker_v2.py`
-  - `/Users/agg/Documents/New project 2/tracker_v2/tracker_data/20260705T142101Z-production-source-backed-decision-brief.md`
-  - `/Users/agg/Documents/New project 2/tracker_v2/tracker-v2-real-data-closure-plan.md`
+  - `/Users/agg/Documents/AI Compute Economics/reports.py`
+  - `/Users/agg/Documents/AI Compute Economics/test_suite/test_report_quality.py`
+  - `/Users/agg/Documents/AI Compute Economics/tracker_v2.py`
+  - `/Users/agg/Documents/AI Compute Economics/tracker_data/20260705T142101Z-production-source-backed-decision-brief.md`
+  - `/Users/agg/Documents/AI Compute Economics/tracker-v2-real-data-closure-plan.md`
 
 ### T10: Update Dashboard To Show Data Truth Before Charts
 
 - **depends_on**: [T12]
 - **location**:
-  - `/Users/agg/Documents/New project 2/tracker_v2/dashboard_v2.py`
-  - `/Users/agg/Documents/New project 2/tracker_v2/test_suite/test_dashboard_queries.py`
-  - `/Users/agg/Documents/New project 2/tracker_v2/test_suite/dashboard_checklist.md`
+  - `/Users/agg/Documents/AI Compute Economics/dashboard_v2.py`
+  - `/Users/agg/Documents/AI Compute Economics/test_suite/test_dashboard_queries.py`
+  - `/Users/agg/Documents/AI Compute Economics/test_suite/dashboard_checklist.md`
 - **description**:
   - First viewport must show:
     - data quality state,
@@ -664,30 +664,30 @@ T14 ───────────────┬── T3
   - 2026-07-05: Added explicit database path support for production commands: every CLI subcommand now accepts `--db`, `AI_COMPUTE_TRACKER_DB` is honored, `Database()` resolves the active path at runtime, and `ProductionStore` no longer captures the legacy DB path at import time.
   - 2026-07-05: First T12 live attempt exposed a real path propagation bug: running `tracker_v2.py` as `__main__` let collector modules import a second `tracker_v2` module and write to the legacy default DB while validation read the new production DB. This was fixed by aliasing the running CLI module and propagating `--db` into `AI_COMPUTE_TRACKER_DB`.
   - 2026-07-05: Added regression coverage in `test_suite/test_production_database_path.py` proving explicit `--db` init does not create/touch the legacy DB, env-routed production store writes use the production DB, and late imports see the CLI DB override.
-  - 2026-07-05: Built the independent production database `/Users/agg/Documents/New project 2/tracker_v2/ai_compute_tracker_production.db` and ran `python3 tracker_v2.py update --production --db ai_compute_tracker_production.db` successfully.
+  - 2026-07-05: Built the independent production database `/Users/agg/Documents/AI Compute Economics/ai_compute_tracker_production.db` and ran `python3 tracker_v2.py update --production --db ai_compute_tracker_production.db` successfully.
   - 2026-07-05: Final production DB row counts: `production_gpu_prices=128` (`public_pricing_page=28`, `aggregator=100`), `production_capex_actuals=5`, `production_official_events=2`, `production_public_proxy_prices=84`, `production_data_quality_events=4`, `production_pipeline_runs=4`; legacy/demo tables in the production DB remain empty (`gpu_prices_daily=0`, `capex_quarterly=0`, `ocpi_daily=0`, `csi_history=0`).
   - 2026-07-05: `python3 tracker_v2.py validate-data --production --db ai_compute_tracker_production.db` returned exit code 0 with `quality_gate=WARN`; explicit gaps are AMZN/GOOGL/META/ORCL official event coverage, ORNN/OCPI licensed feed unavailable, and source page 403s for META/GOOGL/ORCL.
   - 2026-07-05: `python3 tracker_v2.py report --production --db ai_compute_tracker_production.db` generated `tracker_data/20260705T143710Z-production-source-backed-decision-brief.md` with `decision_state=No Signal`, `cli_exit_semantics=WARN_CAPEX_CONFIRMATION_MISSING`, and no `Scarcity Premium Cracking` regime call.
   - 2026-07-05: Legacy `ai_compute_tracker.db` was not overwritten or reset. However, the first failed T12 attempt did touch its production tables before the path propagation bug was fixed; from this point production source of truth is the independent `ai_compute_tracker_production.db`, and README commands now require `--db ai_compute_tracker_production.db` or `AI_COMPUTE_TRACKER_DB`.
   - 2026-07-05: GREEN passed `python3 -m pytest test_suite/test_production_database_path.py -q` with 3 passed; `python3 -m pytest test_suite/test_cli_real_data.py test_suite/test_seed_isolation.py test_suite/test_integration_surface.py -q` with 18 passed; `python3 -m pytest test_suite/test_report_quality.py test_suite/test_decision_engine.py test_suite/test_data_quality.py -q` with 20 passed.
 - **files edited/created**:
-  - `/Users/agg/Documents/New project 2/tracker_v2/tracker_v2.py`
-  - `/Users/agg/Documents/New project 2/tracker_v2/production_store.py`
-  - `/Users/agg/Documents/New project 2/tracker_v2/README_v2.md`
-  - `/Users/agg/Documents/New project 2/tracker_v2/test_suite/test_production_database_path.py`
-  - `/Users/agg/Documents/New project 2/tracker_v2/test_suite/test_integration_surface.py`
-  - `/Users/agg/Documents/New project 2/tracker_v2/ai_compute_tracker_production.db`
-  - `/Users/agg/Documents/New project 2/tracker_v2/tracker_data/20260705T143710Z-production-source-backed-decision-brief.md`
-  - `/Users/agg/Documents/New project 2/tracker_v2/tracker_snapshots/`
-  - `/Users/agg/Documents/New project 2/tracker_v2/tracker-v2-real-data-closure-plan.md`
+  - `/Users/agg/Documents/AI Compute Economics/tracker_v2.py`
+  - `/Users/agg/Documents/AI Compute Economics/production_store.py`
+  - `/Users/agg/Documents/AI Compute Economics/README_v2.md`
+  - `/Users/agg/Documents/AI Compute Economics/test_suite/test_production_database_path.py`
+  - `/Users/agg/Documents/AI Compute Economics/test_suite/test_integration_surface.py`
+  - `/Users/agg/Documents/AI Compute Economics/ai_compute_tracker_production.db`
+  - `/Users/agg/Documents/AI Compute Economics/tracker_data/20260705T143710Z-production-source-backed-decision-brief.md`
+  - `/Users/agg/Documents/AI Compute Economics/tracker_snapshots/`
+  - `/Users/agg/Documents/AI Compute Economics/tracker-v2-real-data-closure-plan.md`
 
 ### T11: Update CLI Commands For One-Command Production Closure
 
 - **depends_on**: [T9]
 - **location**:
-  - `/Users/agg/Documents/New project 2/tracker_v2/tracker_v2.py`
-  - `/Users/agg/Documents/New project 2/tracker_v2/README_v2.md`
-  - `/Users/agg/Documents/New project 2/tracker_v2/test_suite/test_cli_real_data.py`
+  - `/Users/agg/Documents/AI Compute Economics/tracker_v2.py`
+  - `/Users/agg/Documents/AI Compute Economics/README_v2.md`
+  - `/Users/agg/Documents/AI Compute Economics/test_suite/test_cli_real_data.py`
 - **description**:
   - Add or refine CLI:
     - `init` schema only.
@@ -730,24 +730,24 @@ T14 ───────────────┬── T3
   - 2026-07-05: Live `python3 tracker_v2.py update --production --only gpu-prices` returned exit code 0, refreshed GPU rows, and did not trigger full validate/report closure.
   - 2026-07-05: reason_not_committed: parent Git still treats the whole `tracker_v2` baseline and prior parallel worker files as untracked, and this task also produced live DB/snapshot/report changes; committing now would capture unrelated baseline/generated files rather than an isolated T11 diff.
 - **files edited/created**:
-  - `/Users/agg/Documents/New project 2/tracker_v2/tracker_v2.py`
-  - `/Users/agg/Documents/New project 2/tracker_v2/README_v2.md`
-  - `/Users/agg/Documents/New project 2/tracker_v2/test_suite/test_cli_real_data.py`
-  - `/Users/agg/Documents/New project 2/tracker_v2/tracker-v2-real-data-closure-plan.md`
-  - `/Users/agg/Documents/New project 2/tracker_v2/tracker_data/20260705T142741Z-production-source-backed-decision-brief.md`
-  - `/Users/agg/Documents/New project 2/tracker_v2/tracker_data/20260705T142748Z-production-source-backed-decision-brief.md`
-  - `/Users/agg/Documents/New project 2/tracker_v2/tracker_snapshots/gpu_prices/`
-  - `/Users/agg/Documents/New project 2/tracker_v2/tracker_snapshots/sec_capex/`
-  - `/Users/agg/Documents/New project 2/tracker_v2/tracker_snapshots/official_events/`
-  - `/Users/agg/Documents/New project 2/tracker_v2/tracker_snapshots/pipeline_runs/`
+  - `/Users/agg/Documents/AI Compute Economics/tracker_v2.py`
+  - `/Users/agg/Documents/AI Compute Economics/README_v2.md`
+  - `/Users/agg/Documents/AI Compute Economics/test_suite/test_cli_real_data.py`
+  - `/Users/agg/Documents/AI Compute Economics/tracker-v2-real-data-closure-plan.md`
+  - `/Users/agg/Documents/AI Compute Economics/tracker_data/20260705T142741Z-production-source-backed-decision-brief.md`
+  - `/Users/agg/Documents/AI Compute Economics/tracker_data/20260705T142748Z-production-source-backed-decision-brief.md`
+  - `/Users/agg/Documents/AI Compute Economics/tracker_snapshots/gpu_prices/`
+  - `/Users/agg/Documents/AI Compute Economics/tracker_snapshots/sec_capex/`
+  - `/Users/agg/Documents/AI Compute Economics/tracker_snapshots/official_events/`
+  - `/Users/agg/Documents/AI Compute Economics/tracker_snapshots/pipeline_runs/`
 
 ### T12: Production Backfill And Database Rebuild
 
 - **depends_on**: [T11]
 - **location**:
-  - `/Users/agg/Documents/New project 2/tracker_v2/ai_compute_tracker_production.db`
-  - `/Users/agg/Documents/New project 2/tracker_v2/tracker_snapshots/`
-  - `/Users/agg/Documents/New project 2/tracker_v2/tracker_data/`
+  - `/Users/agg/Documents/AI Compute Economics/ai_compute_tracker_production.db`
+  - `/Users/agg/Documents/AI Compute Economics/tracker_snapshots/`
+  - `/Users/agg/Documents/AI Compute Economics/tracker_data/`
 - **description**:
   - Rebuild the local production database from real sources.
   - Do not overwrite `ai_compute_tracker.db`.
@@ -781,19 +781,19 @@ T14 ───────────────┬── T3
   - 2026-07-05: GREEN passed `python3 -m pytest test_suite/test_dashboard_queries.py test_suite/test_production_database_path.py -q` with 6 passed; dashboard compile passed `python3 -m py_compile dashboard_v2.py`.
   - 2026-07-05: Live dashboard smoke passed: `AI_COMPUTE_TRACKER_DB=ai_compute_tracker_production.db python3 -m streamlit run dashboard_v2.py --server.port 8503 --server.address 127.0.0.1 --server.headless true` returned HTTP 200. Browser smoke with local Chrome verified first-screen text and saved screenshot `tracker_data/dashboard_v2_production_smoke.png`.
 - **files edited/created**:
-  - `/Users/agg/Documents/New project 2/tracker_v2/dashboard_v2.py`
-  - `/Users/agg/Documents/New project 2/tracker_v2/test_suite/test_dashboard_queries.py`
-  - `/Users/agg/Documents/New project 2/tracker_v2/test_suite/dashboard_checklist.md`
-  - `/Users/agg/Documents/New project 2/tracker_v2/tracker_data/dashboard_v2_production_smoke.png`
-  - `/Users/agg/Documents/New project 2/tracker_v2/tracker-v2-real-data-closure-plan.md`
+  - `/Users/agg/Documents/AI Compute Economics/dashboard_v2.py`
+  - `/Users/agg/Documents/AI Compute Economics/test_suite/test_dashboard_queries.py`
+  - `/Users/agg/Documents/AI Compute Economics/test_suite/dashboard_checklist.md`
+  - `/Users/agg/Documents/AI Compute Economics/tracker_data/dashboard_v2_production_smoke.png`
+  - `/Users/agg/Documents/AI Compute Economics/tracker-v2-real-data-closure-plan.md`
 
 ### T13: End-To-End Test And Product Acceptance
 
 - **depends_on**: [T10]
 - **location**:
-  - `/Users/agg/Documents/New project 2/tracker_v2/test_suite/`
-  - `/Users/agg/Documents/New project 2/tracker_v2/README_v2.md`
-  - `/Users/agg/Documents/New project 2/CONTEXT.md`
+  - `/Users/agg/Documents/AI Compute Economics/test_suite/`
+  - `/Users/agg/Documents/AI Compute Economics/README_v2.md`
+  - `/Users/agg/Documents/AI Compute Economics/CONTEXT.md`
 - **description**:
   - Run complete verification:
     - unit tests,
@@ -822,7 +822,7 @@ T14 ───────────────┬── T3
   - Any failed test or missing source becomes an explicit final blocker, not buried in "next steps".
 - **status**: Completed
 - **log**:
-  - 2026-07-05: End-to-end acceptance completed against `/Users/agg/Documents/New project 2/tracker_v2/ai_compute_tracker_production.db`.
+  - 2026-07-05: End-to-end acceptance completed against `/Users/agg/Documents/AI Compute Economics/ai_compute_tracker_production.db`.
   - 2026-07-05: Old baseline tests passed: `python3 -m pytest test_suite/test_unit.py -q` with 28 passed; `python3 -m pytest test_suite/test_integration.py -q` with 13 passed.
   - 2026-07-05: Real-data closure tests passed: `python3 -m pytest test_suite/test_data_contract.py test_suite/test_integration_surface.py test_suite/test_seed_isolation.py test_suite/test_gpu_pricing_sources.py test_suite/test_sec_capex.py test_suite/test_official_events.py test_suite/test_ocpi_policy.py test_suite/test_data_quality.py test_suite/test_decision_engine.py test_suite/test_report_quality.py test_suite/test_cli_real_data.py test_suite/test_production_database_path.py test_suite/test_dashboard_queries.py -q` with 74 passed.
   - 2026-07-05: Production validation passed under WARN semantics: `python3 tracker_v2.py validate-data --production --db ai_compute_tracker_production.db` exited 0 with `quality_gate=WARN`.
@@ -831,17 +831,17 @@ T14 ───────────────┬── T3
   - 2026-07-05: Acceptance summary written to `tracker_data/20260705T144531Z-production-acceptance-summary.md` with row counts, 3 GPU samples, 5 CAPEX actuals, official events, current judgment, confidence, missing data, and next monitoring variables.
   - 2026-07-05: Current product result is useful but deliberately conservative: `decision_state=No Signal`, `confidence=15%`; the product does not claim `Scarcity Premium Cracking` because official trend history and multi-company guidance/RPO confirmation are missing.
 - **files edited/created**:
-  - `/Users/agg/Documents/New project 2/tracker_v2/tracker_data/20260705T144531Z-production-acceptance-summary.md`
-  - `/Users/agg/Documents/New project 2/tracker_v2/README_v2.md`
-  - `/Users/agg/Documents/New project 2/CONTEXT.md`
-  - `/Users/agg/Documents/New project 2/tracker_v2/tracker-v2-real-data-closure-plan.md`
+  - `/Users/agg/Documents/AI Compute Economics/tracker_data/20260705T144531Z-production-acceptance-summary.md`
+  - `/Users/agg/Documents/AI Compute Economics/README_v2.md`
+  - `/Users/agg/Documents/AI Compute Economics/CONTEXT.md`
+  - `/Users/agg/Documents/AI Compute Economics/tracker-v2-real-data-closure-plan.md`
 
 ### T14: External Documentation And Parser Policy Check
 
 - **depends_on**: []
 - **location**:
-  - `/Users/agg/Documents/New project 2/tracker_v2/docs/external_source_notes.md`
-  - `/Users/agg/Documents/New project 2/tracker_v2/docs/source_terms_checklist.md`
+  - `/Users/agg/Documents/AI Compute Economics/docs/external_source_notes.md`
+  - `/Users/agg/Documents/AI Compute Economics/docs/source_terms_checklist.md`
 - **description**:
   - Document external-source assumptions before implementation finishes:
     - SEC companyfacts API usage and User-Agent.
@@ -866,9 +866,9 @@ T14 ───────────────┬── T3
   - 2026-07-05: Static check passed: both docs exist and contain required source URLs, access methods, allowed-use assumptions, parser risks, fallback behavior, unavailable/manual_verified policy, and sample-table non-hardcode warning.
   - 2026-07-05: reason_not_committed: parent Git repo still treats `tracker_v2` files as untracked and this plan file contains parallel worker T1 updates; committing now would capture baseline/unrelated worker changes rather than an isolated T14 diff, so no stage/commit was performed.
 - **files edited/created**:
-  - `/Users/agg/Documents/New project 2/tracker_v2/docs/external_source_notes.md`
-  - `/Users/agg/Documents/New project 2/tracker_v2/docs/source_terms_checklist.md`
-  - `/Users/agg/Documents/New project 2/tracker_v2/tracker-v2-real-data-closure-plan.md`
+  - `/Users/agg/Documents/AI Compute Economics/docs/external_source_notes.md`
+  - `/Users/agg/Documents/AI Compute Economics/docs/source_terms_checklist.md`
+  - `/Users/agg/Documents/AI Compute Economics/tracker-v2-real-data-closure-plan.md`
 
 ## Parallel Execution Groups
 

@@ -84,7 +84,13 @@ def build(start_date: date, output: Path, *, reuse_commits: bool = False) -> dic
         session.headers.update({"Authorization": f"Bearer {os.environ['GITHUB_TOKEN']}"})
     openrouter_payload, openrouter_raw, openrouter_url = _fetch_json(session, OPENROUTER_CHART)
     chart = openrouter_payload.get("data") or {}
-    points = [point for point in chart.get("data") or [] if date.fromisoformat(point["x"]) >= start_date]
+    today_utc = datetime.now(timezone.utc).date()
+    points = [
+        point
+        for point in chart.get("data") or []
+        if date.fromisoformat(point["x"]) >= start_date
+        and date.fromisoformat(point["x"]) + timedelta(days=6) < today_utc
+    ]
     if not points:
         raise RuntimeError("OpenRouter model rankings chart returned no points in the requested window")
 

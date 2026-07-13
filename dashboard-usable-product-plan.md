@@ -8,8 +8,8 @@ Goal: make the tracker dashboard useful to a real user, not just technically cor
 
 - **depends_on**: []
 - **location**:
-  - `/Users/agg/Documents/New project 2/tracker_v2/dashboard_v2.py`
-  - `/Users/agg/Documents/New project 2/tracker_v2/tracker_data/dashboard_v2_production_smoke.png`
+  - `/Users/agg/Documents/AI Compute Economics/dashboard_v2.py`
+  - `/Users/agg/Documents/AI Compute Economics/tracker_data/dashboard_v2_production_smoke.png`
 - **description**:
   - Use the running dashboard as a skeptical user.
   - Identify why it is not yet decision-useful or visually acceptable.
@@ -27,8 +27,8 @@ Goal: make the tracker dashboard useful to a real user, not just technically cor
 
 - **depends_on**: []
 - **location**:
-  - `/Users/agg/Documents/New project 2/tracker_v2/dashboard_v2.py`
-  - `/Users/agg/Documents/New project 2/tracker_v2/test_suite/test_dashboard_queries.py`
+  - `/Users/agg/Documents/AI Compute Economics/dashboard_v2.py`
+  - `/Users/agg/Documents/AI Compute Economics/test_suite/test_dashboard_queries.py`
 - **description**:
   - Add dashboard query helpers that build a real GPU price trend from `production_gpu_prices`.
   - Trend must group by `date`, `gpu_model`, `source_type`, and expose median/min/max/quote count.
@@ -42,16 +42,16 @@ Goal: make the tracker dashboard useful to a real user, not just technically cor
   - 2026-07-06: Added a dashboard GPU price trend contract sourced only from `production_gpu_prices`; it groups by `date`, `gpu_model`, and `source_type`, exposing median/min/max/quote count.
   - 2026-07-06: Added tests proving empty and seed-only DBs produce no fake trend, and `public_pricing_page` rows remain separate from `aggregator` rows.
 - **files edited/created**:
-  - `/Users/agg/Documents/New project 2/tracker_v2/dashboard_v2.py`
-  - `/Users/agg/Documents/New project 2/tracker_v2/test_suite/test_dashboard_queries.py`
-  - `/Users/agg/Documents/New project 2/tracker_v2/dashboard-usable-product-plan.md`
+  - `/Users/agg/Documents/AI Compute Economics/dashboard_v2.py`
+  - `/Users/agg/Documents/AI Compute Economics/test_suite/test_dashboard_queries.py`
+  - `/Users/agg/Documents/AI Compute Economics/dashboard-usable-product-plan.md`
 
 ### U3: Redesign Dashboard First Screen And Evidence Tabs
 
 - **depends_on**: [U2]
 - **location**:
-  - `/Users/agg/Documents/New project 2/tracker_v2/dashboard_v2.py`
-  - `/Users/agg/Documents/New project 2/tracker_v2/test_suite/dashboard_checklist.md`
+  - `/Users/agg/Documents/AI Compute Economics/dashboard_v2.py`
+  - `/Users/agg/Documents/AI Compute Economics/test_suite/dashboard_checklist.md`
 - **description**:
   - Improve visual hierarchy and product usability.
   - First screen should show:
@@ -76,18 +76,18 @@ Goal: make the tracker dashboard useful to a real user, not just technically cor
   - 2026-07-06: Updated `test_suite/dashboard_checklist.md` to reflect the usable-dashboard criteria and current pass state.
   - 2026-07-06: Validation passed: `python3 -m py_compile dashboard_v2.py`; `python3 -m pytest test_suite/test_dashboard_queries.py -q` with 4 passed.
 - **files edited/created**:
-  - `/Users/agg/Documents/New project 2/tracker_v2/dashboard_v2.py`
-  - `/Users/agg/Documents/New project 2/tracker_v2/test_suite/dashboard_checklist.md`
-  - `/Users/agg/Documents/New project 2/tracker_v2/dashboard-usable-product-plan.md`
+  - `/Users/agg/Documents/AI Compute Economics/dashboard_v2.py`
+  - `/Users/agg/Documents/AI Compute Economics/test_suite/dashboard_checklist.md`
+  - `/Users/agg/Documents/AI Compute Economics/dashboard-usable-product-plan.md`
 
 ### U4: End-To-End Browser Smoke And Documentation
 
 - **depends_on**: [U3]
 - **location**:
-  - `/Users/agg/Documents/New project 2/tracker_v2/tracker_data/`
-  - `/Users/agg/Documents/New project 2/tracker_v2/README_v2.md`
-  - `/Users/agg/Documents/New project 2/CONTEXT.md`
-  - `/Users/agg/Documents/New project 2/tracker_v2/dashboard-usable-product-plan.md`
+  - `/Users/agg/Documents/AI Compute Economics/tracker_data/`
+  - `/Users/agg/Documents/AI Compute Economics/README_v2.md`
+  - `/Users/agg/Documents/AI Compute Economics/CONTEXT.md`
+  - `/Users/agg/Documents/AI Compute Economics/dashboard-usable-product-plan.md`
 - **description**:
   - Run tests, restart/reuse dashboard, simulate user use in browser, save screenshot.
   - Update docs with the usable-dashboard result and remaining data limitations.
@@ -102,5 +102,5 @@ Goal: make the tracker dashboard useful to a real user, not just technically cor
   - 2026-07-06: Browser screenshot saved to `tracker_data/dashboard_v2_usable_trend_smoke.png`.
   - 2026-07-06: Current real-data first screen shows `No Signal`, `WARN`, `15%`, H100/H200 price history, and source-backed missing data rather than a data-coverage table as the main content.
 - **files edited/created**:
-  - `/Users/agg/Documents/New project 2/tracker_v2/tracker_data/dashboard_v2_usable_trend_smoke.png`
-  - `/Users/agg/Documents/New project 2/tracker_v2/dashboard-usable-product-plan.md`
+  - `/Users/agg/Documents/AI Compute Economics/tracker_data/dashboard_v2_usable_trend_smoke.png`
+  - `/Users/agg/Documents/AI Compute Economics/dashboard-usable-product-plan.md`

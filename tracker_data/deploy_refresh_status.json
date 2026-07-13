@@ -1,20 +1,20 @@
 {
-  "generatedAt": "2026-07-12T09:57:21Z",
-  "status": "degraded",
+  "generatedAt": "2026-07-13T07:57:02Z",
+  "status": "fresh",
   "sources": [
     {
       "source": "openrouter_usage",
       "status": "fresh",
       "returnCode": 0,
-      "stdout": "{\"output\": \"/home/runner/work/ai-compute-economics-tracker/ai-compute-economics-tracker/tracker_data/backfills/openrouter_cost_index.json\", \"weeks\": 52, \"start\": \"2025-07-14\", \"end\": \"2026-07-06\"}\n",
-      "stderr": "",
+      "stdout": "{\"output\": \"/Users/agg/Documents/AI Compute Economics/tracker_data/backfills/openrouter_cost_index.json\", \"weeks\": 52, \"start\": \"2025-07-14\", \"end\": \"2026-07-06\"}\n",
+      "stderr": "/Users/agg/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020\n  warnings.warn(\n",
       "output": "tracker_data/backfills/openrouter_cost_index.json"
     },
     {
       "source": "foundry_signals",
       "status": "fresh",
       "returnCode": 0,
-      "stdout": "{\"output\": \"/home/runner/work/ai-compute-economics-tracker/ai-compute-economics-tracker/tracker_data/backfills/foundry_signals_gpu_history.json\", \"availabilityRows\": 49, \"priceRows\": 630}\n",
+      "stdout": "{\"output\": \"/Users/agg/Documents/AI Compute Economics/tracker_data/backfills/foundry_signals_gpu_history.json\", \"availabilityRows\": 49, \"priceRows\": 633}\n",
       "stderr": "",
       "output": "tracker_data/backfills/foundry_signals_gpu_history.json"
     },
@@ -22,16 +22,16 @@
       "source": "openrouter_active_prices",
       "status": "fresh",
       "returnCode": 0,
-      "stdout": "{\"output\": \"/home/runner/work/ai-compute-economics-tracker/ai-compute-economics-tracker/tracker_data/backfills/openrouter_active_price_history.json\", \"aliases\": 515, \"currentModels\": 345, \"historyModels\": 871}\n",
+      "stdout": "{\"output\": \"/Users/agg/Documents/AI Compute Economics/tracker_data/backfills/openrouter_active_price_history.json\", \"aliases\": 515, \"currentModels\": 345, \"historyModels\": 871}\n",
       "stderr": "",
       "output": "tracker_data/backfills/openrouter_active_price_history.json"
     },
     {
       "source": "sec_capex",
-      "status": "failed_using_last_good",
-      "returnCode": 1,
-      "stdout": "",
-      "stderr": "Traceback (most recent call last):\n  File \"/home/runner/work/ai-compute-economics-tracker/ai-compute-economics-tracker/scripts/refresh_capex_history.py\", line 19, in <module>\n    from data_sources.sec_capex import (  # noqa: E402\n  File \"/home/runner/work/ai-compute-economics-tracker/ai-compute-economics-tracker/data_sources/sec_capex.py\", line 15, in <module>\n    from production_store import CapexActualObservation, DataQualityEvent, ProductionStore\n  File \"/home/runner/work/ai-compute-economics-tracker/ai-compute-economics-tracker/production_store.py\", line 4, in <module>\n    from tracker_v2 import Database, get_default_db_path\n  File \"/home/runner/work/ai-compute-economics-tracker/ai-compute-economics-tracker/tracker_v2.py\", line 30, in <module>\n    import pandas as pd\nModuleNotFoundError: No module named 'pandas'\n",
+      "status": "fresh",
+      "returnCode": 0,
+      "stdout": "{\"output\": \"/Users/agg/Documents/AI Compute Economics/tracker_data/backfills/capex_official_history.json\", \"rows\": 24, \"failedSources\": 0}\n",
+      "stderr": "/Users/agg/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020\n  warnings.warn(\n",
       "output": "tracker_data/backfills/capex_official_history.json"
     }
   ],

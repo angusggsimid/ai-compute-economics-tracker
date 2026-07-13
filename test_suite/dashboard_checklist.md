@@ -3,7 +3,7 @@
 ## 验证环境
 
 - 入口：`AI_COMPUTE_TRACKER_DB=ai_compute_tracker_production.db streamlit run dashboard_v2.py`
-- 数据库：`/Users/agg/Documents/New project 2/tracker_v2/ai_compute_tracker_production.db`
+- 数据库：`/Users/agg/Documents/AI Compute Economics/ai_compute_tracker_production.db`
 - 核心原则：第一屏先显示数据质量和判断状态；图表只能作为证据展示，不能替代判断。
 
 ## 1. 第一屏
