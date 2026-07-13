@@ -2,12 +2,14 @@
 
 ## 2026-07-13 修复 GitHub、Vercel 与 Sites 自动发布链路
 
-- 查明当天 GitHub 定时任务先失败、后手动恢复；Vercel 已收到恢复后的提交，但 Sites 仍停在 7 月 12 日第 1 版。
+- 查明当天 GitHub 定时任务先失败、后手动恢复；根因是部署依赖遗漏、时间序列固定长度断言和 CAPEX 抓取失败被误报 fresh。
 - 修复 `sec_capex` 假 fresh：采集脚本现在输出 `fresh / current_for_frequency / blocked`，并逐家公司记录最近官方 CAPEX 日期与年龄；五家公司任一缺失或超过 150 天即阻止发布。
 - `refresh_and_build.py` 新增独立 `publishable` 门，blocked/degraded 时不再覆盖 `public/index.html`，并返回失败状态阻止 GitHub 提交。
 - 新增 `scripts/validate_deploy_refresh.py`，GitHub Actions 与 Codex Sites 自动任务统一使用同一发布规则，避免两条链路口径漂移。
 - 真实四源刷新通过：OpenRouter 52 个完整周、Foundry 633 条价格/49 条 availability、OpenRouterList 871 个历史模型、CAPEX 24 条且本地 SEC 五源抓取成功。
-- 相关回归 19 passed；后续继续完成 GitHub/Vercel 实际重跑和 Sites 新版本发布验收。
+- GitHub Actions run `29235376461` 成功并提交 `071d860`；Vercel 正式响应与 `public/index.html` SHA-256 完全一致，线上数据时间为 `2026-07-13T08:25:56Z`。
+- Codex Sites 任务于香港时间 16:40 由调度器真实自启动，发布门与 12 项测试通过，Sites version 2 部署 succeeded；固定地址最终 HTTP 200，版本来源提交为 `f27126e`。
+- 自动任务已恢复为每天香港时间 09:00；Vercel 校验固定使用 CLI 原始响应字节，Sites 回读携带已有 bypass token 并跟随重定向。
 
 ## 2026-07-13 项目迁移至独立工作区
 
