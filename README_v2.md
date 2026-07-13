@@ -28,7 +28,7 @@ python3 tracker_v2/html_dashboard/build_time_series_dashboard.py
 
 ## GitHub + Vercel 自动更新
 
-正式部署不读取本地 DuckDB。`scripts/refresh_and_build.py` 会分别刷新 OpenRouter、Foundry Signals、活跃模型牌价和 SEC CAPEX，来源失败时保留上一份已验证数据并把状态写入 `tracker_data/deploy_refresh_status.json`。构建结果复制到 `public/index.html`，Vercel 只负责托管该静态目录。
+正式部署不读取本地 DuckDB。`scripts/refresh_and_build.py` 会分别刷新 OpenRouter、Foundry Signals、活跃模型牌价和 SEC CAPEX，来源失败时保留上一份已验证数据并把状态写入 `tracker_data/deploy_refresh_status.json`。日频/周频来源必须当天刷新；季度 CAPEX 若当天 SEC 请求失败，只能在美国五家公司最近官方值均不超过 150 天时标记为 `current_for_frequency`，不能冒充 `fresh`。只有 `status=ready` 且 `publishable=true` 才会更新 `public/index.html`。
 
 GitHub Actions 工作流位于 `.github/workflows/refresh-dashboard.yml`，每天 `00:17 UTC`（香港时间 `08:17`）运行。刷新和测试通过后只提交数据 JSON、正式 HTML 和刷新状态；Vercel 监听私有仓库的主分支并自动发布。
 
@@ -38,7 +38,7 @@ Vercel Hobby 会阻止无法映射到团队成员的 Git 提交。本项目本�
 - 正式网站：`https://trackerv2-git-main-angusggsimids-projects.vercel.app`（Vercel 登录保护；始终跟随主分支最新生产部署）
 - Sites 私密镜像：`https://ai-compute-economics-tracker.angusgu456396.chatgpt.site`
 
-Codex 自动化 `AI Compute Tracker｜Sites 每日同步` 每天香港时间 `09:00` 检查 GitHub 当日刷新。只有四个来源均为 fresh、页面测试通过时才构建并发布 Sites 新版本；失败或 degraded 时保留上一版 Sites，不覆盖线上内容。
+Codex 自动化 `AI Compute Tracker｜Sites 每日同步` 每天香港时间 `09:00` 检查 GitHub 当日刷新。它统一运行 `scripts/validate_deploy_refresh.py`：三个日频/周频来源必须为 `fresh`；季度 CAPEX 可以是 `fresh`，也可以是五家公司缓存均在 150 天有效期内的 `current_for_frequency`。只有发布门和页面测试都通过时才构建并发布 Sites 新版本；失败或 degraded 时保留上一版 Sites，不覆盖线上内容。
 
 本地执行同一条生产链路：
 

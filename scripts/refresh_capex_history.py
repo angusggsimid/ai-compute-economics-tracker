@@ -7,7 +7,7 @@ import argparse
 import hashlib
 import json
 import sys
-from datetime import datetime, timezone
+from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Any, Optional
 
@@ -25,6 +25,7 @@ from data_sources.sec_capex import (  # noqa: E402
 
 
 DEFAULT_OUTPUT = ROOT / "tracker_data" / "backfills" / "capex_official_history.json"
+CAPEX_MAX_AGE_DAYS = 150
 
 
 def _key(row: dict[str, Any]) -> tuple[str, str, str, str]:
@@ -67,14 +68,41 @@ def _seed_rows(db_path: Path) -> list[dict[str, Any]]:
         con.close()
 
 
-def refresh(output: Path, seed_db: Optional[Path] = None) -> dict[str, Any]:
+def _cache_coverage(rows: list[dict[str, Any]], as_of: date) -> dict[str, dict[str, Any]]:
+    coverage: dict[str, dict[str, Any]] = {}
+    for config in decision_universe_configs():
+        candidates = []
+        for row in rows:
+            if row.get("company") != config.company_name or row.get("metric") != "capex actual":
+                continue
+            try:
+                observed_date = date.fromisoformat(str(row.get("date")))
+            except (TypeError, ValueError):
+                continue
+            candidates.append(observed_date)
+        latest = max(candidates) if candidates else None
+        age_days = (as_of - latest).days if latest else None
+        coverage[config.ticker] = {
+            "latestDate": latest.isoformat() if latest else None,
+            "ageDays": age_days,
+            "current": age_days is not None and 0 <= age_days <= CAPEX_MAX_AGE_DAYS,
+        }
+    return coverage
+
+
+def refresh(
+    output: Path,
+    seed_db: Optional[Path] = None,
+    client: Optional[Any] = None,
+    as_of: Optional[date] = None,
+) -> dict[str, Any]:
     previous = json.loads(output.read_text(encoding="utf-8")) if output.exists() else {"rows": []}
     rows = list(previous.get("rows") or [])
     if seed_db is not None:
         rows.extend(_seed_rows(seed_db))
 
     fetched_at = datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
-    client = SecCompanyfactsClient()
+    client = client if client is not None else SecCompanyfactsClient()
     quality = []
     sources = dict(previous.get("sources") or {})
     for config in decision_universe_configs():
@@ -110,9 +138,30 @@ def refresh(output: Path, seed_db: Optional[Path] = None) -> dict[str, Any]:
             }
 
     deduplicated = {_key(row): row for row in rows if all(_key(row))}
+    sorted_rows = sorted(
+        deduplicated.values(),
+        key=lambda row: (row["date"], row["company"]),
+        reverse=True,
+    )
+    coverage = _cache_coverage(sorted_rows, as_of or date.today())
+    cache_is_current = all(item["current"] for item in coverage.values())
+    if not quality:
+        refresh_status = "fresh"
+        publishable = True
+    elif cache_is_current:
+        refresh_status = "current_for_frequency"
+        publishable = True
+    else:
+        refresh_status = "blocked"
+        publishable = False
+
     payload = {
         "fetchedAt": fetched_at,
-        "rows": sorted(deduplicated.values(), key=lambda row: (row["date"], row["company"]), reverse=True),
+        "refreshStatus": refresh_status,
+        "publishable": publishable,
+        "cacheMaxAgeDays": CAPEX_MAX_AGE_DAYS,
+        "cacheCoverage": coverage,
+        "rows": sorted_rows,
         "sources": sources,
         "quality": quality,
     }
@@ -133,8 +182,11 @@ def main() -> int:
         "output": str(args.output),
         "rows": len(payload["rows"]),
         "failedSources": len(payload["quality"]),
+        "refreshStatus": payload["refreshStatus"],
+        "publishable": payload["publishable"],
+        "cacheCoverage": payload["cacheCoverage"],
     }, ensure_ascii=False))
-    return 0
+    return 0 if payload["publishable"] else 1
 
 
 if __name__ == "__main__":

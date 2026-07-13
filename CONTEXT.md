@@ -1,5 +1,14 @@
 # CONTEXT
 
+## 2026-07-13 修复 GitHub、Vercel 与 Sites 自动发布链路
+
+- 查明当天 GitHub 定时任务先失败、后手动恢复；Vercel 已收到恢复后的提交，但 Sites 仍停在 7 月 12 日第 1 版。
+- 修复 `sec_capex` 假 fresh：采集脚本现在输出 `fresh / current_for_frequency / blocked`，并逐家公司记录最近官方 CAPEX 日期与年龄；五家公司任一缺失或超过 150 天即阻止发布。
+- `refresh_and_build.py` 新增独立 `publishable` 门，blocked/degraded 时不再覆盖 `public/index.html`，并返回失败状态阻止 GitHub 提交。
+- 新增 `scripts/validate_deploy_refresh.py`，GitHub Actions 与 Codex Sites 自动任务统一使用同一发布规则，避免两条链路口径漂移。
+- 真实四源刷新通过：OpenRouter 52 个完整周、Foundry 633 条价格/49 条 availability、OpenRouterList 871 个历史模型、CAPEX 24 条且本地 SEC 五源抓取成功。
+- 相关回归 19 passed；后续继续完成 GitHub/Vercel 实际重跑和 Sites 新版本发布验收。
+
 ## 2026-07-13 项目迁移至独立工作区
 
 - AI Compute Economics 的代码、真实数据、快照、研究资料、GitHub/Vercel 配置和独立 Sites 工程已从混合项目目录迁入 `/Users/agg/Documents/AI Compute Economics`。

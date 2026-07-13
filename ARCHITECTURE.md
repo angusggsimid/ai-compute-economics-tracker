@@ -25,6 +25,8 @@ line_ready_observation + canonical_observation + production_market_facts_analysi
 
 线上部署链路已经与本地 DuckDB 解耦：OpenRouter、Foundry、模型价格和 CAPEX 均先落入 `tracker_data/backfills/*.json`，再由正式构建器生成 `public/index.html`。GitHub Actions 负责每日刷新、测试和提交；Vercel 只托管 `public/`，数据更新不依赖用户电脑开机。
 
+发布质量门由 `scripts/validate_deploy_refresh.py` 统一执行。OpenRouter、Foundry 和活跃模型牌价必须为当天 `fresh`；SEC CAPEX 保留季度自然频率，抓取失败时只有五家公司最近官方值均在 150 天内才允许以 `current_for_frequency` 继续发布。任何来源缺失、缓存超期或页面测试失败都会返回非零状态，GitHub 不提交，Vercel 与 Sites 保留上一版。
+
 正式页面只把可比较时间序列作为主体。OpenRouter frontend 未单列的模型不得记为 0；活跃组合的 `Others / 无法匹配` 保留为可见灰色缺口，牌价 tooltip 显示匹配覆盖率。4 次订单薄/云价格快照和内部质量指标不进入主图。CAPEX 保留原生季度/事件频率，不与日频、周频合成总分。
 
 ## 正式链路

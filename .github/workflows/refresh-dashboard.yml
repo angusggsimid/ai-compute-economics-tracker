@@ -29,6 +29,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SEC_USER_AGENT: "AI-Compute-Economics-Tracker/1.0 contact: ${{ github.repository_owner }}@users.noreply.github.com"
         run: python scripts/refresh_and_build.py
+      - name: Validate deploy freshness
+        run: python scripts/validate_deploy_refresh.py
       - name: Validate dashboard
         run: python -m pytest test_suite/test_time_series_dashboard.py -q
       - name: Commit refreshed artifacts
