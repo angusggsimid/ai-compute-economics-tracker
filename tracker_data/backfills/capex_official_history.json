@@ -1,6 +1,6 @@
 {
-  "fetchedAt": "2026-07-15T04:08:35Z",
-  "refreshStatus": "fresh",
+  "fetchedAt": "2026-07-15T04:10:25Z",
+  "refreshStatus": "current_for_frequency",
   "publishable": true,
   "cacheMaxAgeDays": 150,
   "cacheCoverage": {
@@ -251,34 +251,60 @@
   "sources": {
     "MSFT": {
       "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000789019.json",
-      "fetchedAt": "2026-07-15T04:08:35Z",
-      "sha256": "sha256:7d8f8f997f2e83efd5cca4c96f09be2d86c7d889ae6fc0da56ccbab3514fc739",
-      "status": "fresh"
+      "fetchedAt": "2026-07-15T04:10:25Z",
+      "status": "failed",
+      "message": "SEC_SOURCE_UNAVAILABLE: HTTP 403 for MSFT"
     },
     "AMZN": {
       "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001018724.json",
-      "fetchedAt": "2026-07-15T04:08:35Z",
-      "sha256": "sha256:642656a5dc511270bc40909d5bfeb390c56e873e5203813e71b2a0c4cf0786cb",
-      "status": "fresh"
+      "fetchedAt": "2026-07-15T04:10:25Z",
+      "status": "failed",
+      "message": "SEC_SOURCE_UNAVAILABLE: HTTP 403 for AMZN"
     },
     "GOOGL": {
       "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001652044.json",
-      "fetchedAt": "2026-07-15T04:08:35Z",
-      "sha256": "sha256:c883f5d0fdc9db3e02b481fa182c91b397156eec6cabc4f852c69eb4be72dbc5",
-      "status": "fresh"
+      "fetchedAt": "2026-07-15T04:10:25Z",
+      "status": "failed",
+      "message": "SEC_SOURCE_UNAVAILABLE: HTTP 403 for GOOGL"
     },
     "META": {
       "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001326801.json",
-      "fetchedAt": "2026-07-15T04:08:35Z",
-      "sha256": "sha256:8d5e8e7185b86d50268b6901cb5e3f28f92b53cc45592e58184e404950e7c343",
-      "status": "fresh"
+      "fetchedAt": "2026-07-15T04:10:25Z",
+      "status": "failed",
+      "message": "SEC_SOURCE_UNAVAILABLE: HTTP 403 for META"
     },
     "ORCL": {
       "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001341439.json",
-      "fetchedAt": "2026-07-15T04:08:35Z",
-      "sha256": "sha256:cf7cb9e13f6de42c4b3807469064dc164df211d21138c37f9a8ed79967a07924",
-      "status": "fresh"
+      "fetchedAt": "2026-07-15T04:10:25Z",
+      "status": "failed",
+      "message": "SEC_SOURCE_UNAVAILABLE: HTTP 403 for ORCL"
     }
   },
-  "quality": []
+  "quality": [
+    {
+      "source": "MSFT",
+      "status": "failed",
+      "message": "SEC_SOURCE_UNAVAILABLE: HTTP 403 for MSFT"
+    },
+    {
+      "source": "AMZN",
+      "status": "failed",
+      "message": "SEC_SOURCE_UNAVAILABLE: HTTP 403 for AMZN"
+    },
+    {
+      "source": "GOOGL",
+      "status": "failed",
+      "message": "SEC_SOURCE_UNAVAILABLE: HTTP 403 for GOOGL"
+    },
+    {
+      "source": "META",
+      "status": "failed",
+      "message": "SEC_SOURCE_UNAVAILABLE: HTTP 403 for META"
+    },
+    {
+      "source": "ORCL",
+      "status": "failed",
+      "message": "SEC_SOURCE_UNAVAILABLE: HTTP 403 for ORCL"
+    }
+  ]
 }
