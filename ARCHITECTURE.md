@@ -68,8 +68,10 @@ line_ready_observation + canonical_observation + production_market_facts_analysi
 | `html_dashboard/ai_compute_economics_monitor.html` | 唯一正式产品；自包含、离线、只读、可打开来源明细 |
 | `html_dashboard/build_time_series_dashboard.py` | 正式时间序列页面与 reviewed snapshot 构建器 |
 | `scripts/backfill_litellm_key_model_prices.py` | 历史研究回填工具；正式页面已不读取固定代表模型牌价 |
+| `scripts/backfill_openrouter_cost_index.py` | 抓取 OpenRouter 周榜；剔除未完成周；按 start-date 保留窗口与本地完整周去重合并（同日上游优先）；缓存损坏/schema 不符硬失败；至少 52 周真实可追溯序列 |
 | `scripts/backfill_openrouter_active_prices.py` | 保存 OpenRouter 当前模型别名与 OpenRouterList 871 模型调价账本、原始快照和哈希 |
 | `scripts/backfill_foundry_signals.py` | 保存 Foundry 原始历史，并生成供应商中位价、区间、30 日均线与 availability |
+| `test_suite/test_openrouter_cost_index.py` | 滚动窗口挤出、完整周过滤、start-date 边界、缓存损坏/schema、去重合并、不足 52 周硬失败、幂等 |
 | `test_suite/test_time_series_dashboard.py` | 防止截断榜单被记零、稀疏快照冒充趋势、Token 成本覆盖缺口回归 |
 | `html_dashboard/build_html_dashboard.py` | Phase 1 历史审计页面构建器，不再是正式入口 |
 | `test_suite/test_data_contract.py` | schema、去重、资格、质量状态合同 |

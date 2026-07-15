@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-13T08:25:56Z",
+  "generatedAt": "2026-07-15T04:08:39Z",
   "status": "ready",
   "publishable": true,
   "sources": [
@@ -8,8 +8,8 @@
       "status": "fresh",
       "publishable": true,
       "returnCode": 0,
-      "stdout": "{\"output\": \"/home/runner/work/ai-compute-economics-tracker/ai-compute-economics-tracker/tracker_data/backfills/openrouter_cost_index.json\", \"weeks\": 52, \"start\": \"2025-07-14\", \"end\": \"2026-07-06\"}\n",
-      "stderr": "",
+      "stdout": "{\"output\": \"/Users/agg/Documents/AI Compute Economics/tracker_data/backfills/openrouter_cost_index.json\", \"weeks\": 52, \"start\": \"2025-07-14\", \"end\": \"2026-07-06\", \"local_only_weeks\": [\"2025-07-14\"]}\n",
+      "stderr": "/Users/agg/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020\n  warnings.warn(\n",
       "output": "tracker_data/backfills/openrouter_cost_index.json"
     },
     {
@@ -17,7 +17,7 @@
       "status": "fresh",
       "publishable": true,
       "returnCode": 0,
-      "stdout": "{\"output\": \"/home/runner/work/ai-compute-economics-tracker/ai-compute-economics-tracker/tracker_data/backfills/foundry_signals_gpu_history.json\", \"availabilityRows\": 49, \"priceRows\": 633}\n",
+      "stdout": "{\"output\": \"/Users/agg/Documents/AI Compute Economics/tracker_data/backfills/foundry_signals_gpu_history.json\", \"availabilityRows\": 49, \"priceRows\": 639}\n",
       "stderr": "",
       "output": "tracker_data/backfills/foundry_signals_gpu_history.json"
     },
@@ -26,43 +26,43 @@
       "status": "fresh",
       "publishable": true,
       "returnCode": 0,
-      "stdout": "{\"output\": \"/home/runner/work/ai-compute-economics-tracker/ai-compute-economics-tracker/tracker_data/backfills/openrouter_active_price_history.json\", \"aliases\": 515, \"currentModels\": 345, \"historyModels\": 871}\n",
+      "stdout": "{\"output\": \"/Users/agg/Documents/AI Compute Economics/tracker_data/backfills/openrouter_active_price_history.json\", \"aliases\": 513, \"currentModels\": 343, \"historyModels\": 873}\n",
       "stderr": "",
       "output": "tracker_data/backfills/openrouter_active_price_history.json"
     },
     {
       "source": "sec_capex",
-      "status": "current_for_frequency",
+      "status": "fresh",
       "publishable": true,
       "returnCode": 0,
-      "stdout": "{\"output\": \"/home/runner/work/ai-compute-economics-tracker/ai-compute-economics-tracker/tracker_data/backfills/capex_official_history.json\", \"rows\": 24, \"failedSources\": 5, \"refreshStatus\": \"current_for_frequency\", \"publishable\": true, \"cacheCoverage\": {\"MSFT\": {\"latestDate\": \"2026-03-31\", \"ageDays\": 104, \"current\": true}, \"AMZN\": {\"latestDate\": \"2026-03-31\", \"ageDays\": 104, \"current\": true}, \"GOOGL\": {\"latestDate\": \"2026-03-31\", \"ageDays\": 104, \"current\": true}, \"META\": {\"latestDate\": \"2026-03-31\", \"ageDays\": 104, \"current\": true}, \"ORCL\": {\"latestDate\": \"2026-05-31\", \"ageDays\": 43, \"current\": true}}}\n",
-      "stderr": "",
+      "stdout": "{\"output\": \"/Users/agg/Documents/AI Compute Economics/tracker_data/backfills/capex_official_history.json\", \"rows\": 24, \"failedSources\": 0, \"refreshStatus\": \"fresh\", \"publishable\": true, \"cacheCoverage\": {\"MSFT\": {\"latestDate\": \"2026-03-31\", \"ageDays\": 106, \"current\": true}, \"AMZN\": {\"latestDate\": \"2026-03-31\", \"ageDays\": 106, \"current\": true}, \"GOOGL\": {\"latestDate\": \"2026-03-31\", \"ageDays\": 106, \"current\": true}, \"META\": {\"latestDate\": \"2026-03-31\", \"ageDays\": 106, \"current\": true}, \"ORCL\": {\"latestDate\": \"2026-05-31\", \"ageDays\": 45, \"current\": true}}}\n",
+      "stderr": "/Users/agg/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020\n  warnings.warn(\n",
       "output": "tracker_data/backfills/capex_official_history.json",
-      "qualityWarnings": 5,
+      "qualityWarnings": 0,
       "cacheCoverage": {
         "MSFT": {
           "latestDate": "2026-03-31",
-          "ageDays": 104,
+          "ageDays": 106,
           "current": true
         },
         "AMZN": {
           "latestDate": "2026-03-31",
-          "ageDays": 104,
+          "ageDays": 106,
           "current": true
         },
         "GOOGL": {
           "latestDate": "2026-03-31",
-          "ageDays": 104,
+          "ageDays": 106,
           "current": true
         },
         "META": {
           "latestDate": "2026-03-31",
-          "ageDays": 104,
+          "ageDays": 106,
           "current": true
         },
         "ORCL": {
           "latestDate": "2026-05-31",
-          "ageDays": 43,
+          "ageDays": 45,
           "current": true
         }
       }

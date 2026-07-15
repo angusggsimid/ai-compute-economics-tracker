@@ -1,5 +1,13 @@
 # CONTEXT
 
+## 2026-07-14 OpenRouter 滚动窗口历史保留
+
+- GitHub Actions run `29303721784` 失败：上游 OpenRouter 周榜滚动接口返回 52 点，其中 `2026-07-13` 为未完成周；剔除后只剩 51 个完整周，`test_time_series_dashboard.py` 的至少 52 周断言失败。
+- 现场核验（2026-07-14/15 UTC）：upstream raw `2025-07-21`…`2026-07-13`（52）、complete 51、本地 backfill 仍有完整周 `2025-07-14`…`2026-07-06`（52）；merge 后 52，仅本地保留 `2025-07-14`。
+- 修复：`scripts/backfill_openrouter_cost_index.py` 将本地完整周与上游完整周按日期去重合并（同日上游优先，`--start-date` 为保留窗口下界）；永不纳入未完成周；合并后仍不足 52 或上游失败则硬失败；缓存损坏/schema 不符硬失败，禁止静默当空历史成功。`history_provenance` 记录 local-only 周、上一版原始响应哈希与覆盖统计；本地独有周缺 provider composition 或原始来源哈希时同样硬失败。
+- 新增/加固 `test_suite/test_openrouter_cost_index.py`：滚动挤出、去重、start-date 边界、损坏/schema、不足 52、首次无缓存、幂等、合并满 52。
+- 相关测试 33 passed；未降低 52 完整周门槛、未伪造数据。2026-07-15 完整真实刷新状态为 ready/publishable：OpenRouter 合并为 52 个完整周，52 个周日期均有 provider composition，provenance 保留上一版 OpenRouter 原始响应 SHA-256；Foundry、活跃模型牌价与 SEC CAPEX 同时 fresh。本地查验 `http://127.0.0.1:8767/ai_compute_economics_monitor.html`。
+
 ## 2026-07-13 修复 GitHub、Vercel 与 Sites 自动发布链路
 
 - 查明当天 GitHub 定时任务先失败、后手动恢复；根因是部署依赖遗漏、时间序列固定长度断言和 CAPEX 抓取失败被误报 fresh。

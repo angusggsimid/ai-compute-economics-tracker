@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-13T08:25:55Z",
+  "generated_at": "2026-07-15T04:08:31Z",
   "window": {
     "start": "2025-07-14",
     "end": "2026-07-06",
@@ -8,13 +8,33 @@
   "method": {
     "volume": "Sum of source-provided named model rows and Others for each OpenRouter chart week.",
     "provider_share": "Named top-model provider tokens divided by total tokens including Others; providers below the visible leaderboard are not separately identified.",
-    "weighted_cost": "Token-volume-weighted listed input/output price among named models matched to the LiteLLM price map at that week; total_tokens do not split prompt and completion, so the same volume weight is used for both price legs."
+    "weighted_cost": "Token-volume-weighted listed input/output price among named models matched to the LiteLLM price map at that week; total_tokens do not split prompt and completion, so the same volume weight is used for both price legs.",
+    "history_retention": "Upstream OpenRouter chart is a rolling window. Local complete weeks that fall off the window but remain on/after --start-date (retention lower bound) are retained and merged by week date; incomplete current weeks are never promoted into the formal series. Upstream rows overwrite the same date. Corrupt or schema-invalid local cache fails hard."
   },
   "sources": {
     "openrouter": {
       "url": "https://openrouter.ai/api/frontend/v1/rankings/model-rankings-chart",
-      "cached_at": 1783927663652,
-      "raw_sha256": "sha256:494f190a259775d6fb7b6764536f939fe0078a33c4943ec791a010a40bbfd28d"
+      "cached_at": 1784087615554,
+      "raw_sha256": "sha256:2fd7ec46f93050c9c4b12a72731bac6efe3e70626c0bd6e16bd6488afa020cbd",
+      "upstream_complete_weeks": 51,
+      "retained_complete_weeks": 52,
+      "history_provenance": {
+        "retention_start": "2025-07-10",
+        "as_of_utc": "2026-07-15",
+        "min_complete_weeks": 52,
+        "prior_complete_weeks_in_window": 52,
+        "upstream_complete_weeks": 51,
+        "retained_complete_weeks": 52,
+        "local_only_weeks": [
+          "2025-07-14"
+        ],
+        "local_only_week_count": 1,
+        "upstream_overwrite_week_count": 51,
+        "retained_cache_generated_at": "2026-07-13T08:25:55Z",
+        "retained_cache_openrouter_url": "https://openrouter.ai/api/frontend/v1/rankings/model-rankings-chart",
+        "retained_cache_openrouter_raw_sha256": "sha256:494f190a259775d6fb7b6764536f939fe0078a33c4943ec791a010a40bbfd28d",
+        "rule": "Upstream complete weeks overwrite same dates; local complete weeks are kept only when they fall off the upstream rolling window but remain on/after retention_start and are still complete as_of UTC."
+      }
     },
     "litellm": {
       "repository": "https://github.com/BerriAI/litellm",
