@@ -7,6 +7,7 @@
 - 修复：`scripts/backfill_openrouter_cost_index.py` 将本地完整周与上游完整周按日期去重合并（同日上游优先，`--start-date` 为保留窗口下界）；永不纳入未完成周；合并后仍不足 52 或上游失败则硬失败；缓存损坏/schema 不符硬失败，禁止静默当空历史成功。`history_provenance` 记录 local-only 周、上一版原始响应哈希与覆盖统计；本地独有周缺 provider composition 或原始来源哈希时同样硬失败。
 - 新增/加固 `test_suite/test_openrouter_cost_index.py`：滚动挤出、去重、start-date 边界、损坏/schema、不足 52、首次无缓存、幂等、合并满 52。
 - 相关测试 33 passed；未降低 52 完整周门槛、未伪造数据。2026-07-15 完整真实刷新状态为 ready/publishable：OpenRouter 合并为 52 个完整周，52 个周日期均有 provider composition，provenance 保留上一版 OpenRouter 原始响应 SHA-256；Foundry、活跃模型牌价与 SEC CAPEX 同时 fresh。本地查验 `http://127.0.0.1:8767/ai_compute_economics_monitor.html`。
+- GitHub Actions workflow_dispatch run `29388301304` 在 29 秒内成功，发布门与 dashboard 7 项测试通过，并自动提交 `38445e8`；Vercel 随后进入 Ready，正式响应与 `public/index.html` SHA-256 同为 `6e166e0a2d1026c6f313572cd46df303afd8c4816643c7dde153f168a6b6806c`。
 
 ## 2026-07-13 修复 GitHub、Vercel 与 Sites 自动发布链路
 
