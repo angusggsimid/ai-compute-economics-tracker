@@ -27,6 +27,8 @@ line_ready_observation + canonical_observation + production_market_facts_analysi
 
 发布质量门由 `scripts/validate_deploy_refresh.py` 统一执行。OpenRouter、Foundry 和活跃模型牌价必须为当天 `fresh`；SEC CAPEX 保留季度自然频率，抓取失败时只有五家公司最近官方值均在 150 天内才允许以 `current_for_frequency` 继续发布。任何来源缺失、缓存超期或页面测试失败都会返回非零状态，GitHub 不提交，Vercel 与 Sites 保留上一版。
 
+Sites 同步在发布前优先读取 Vercel 正式响应并比较 `public/index.html` 的原始字节哈希。若运行环境只对 `*.vercel.app` 出现 DNS、TLS 或边缘网络错误，允许使用 Vercel 管理 API 作为受限备用证明，但必须同时满足：部署为 `READY`、目标为 `production`、项目 ID 与本地绑定一致、`githubCommitSha` 与本地 HEAD 完全相同。Sites 发布后优先做带私密访问凭证的 HTTP 回读；若回读仅被 Cloudflare 边缘拒绝，则以 Sites connector 的 deployment `succeeded`、固定 live URL 和最新 version `commit_sha` 等于刚推送 HEAD 完成闭环。任何数据、测试、部署状态或提交不一致仍然硬失败。
+
 正式页面只把可比较时间序列作为主体。OpenRouter frontend 未单列的模型不得记为 0；活跃组合的 `Others / 无法匹配` 保留为可见灰色缺口，牌价 tooltip 显示匹配覆盖率。4 次订单薄/云价格快照和内部质量指标不进入主图。CAPEX 保留原生季度/事件频率，不与日频、周频合成总分。
 
 ## 正式链路

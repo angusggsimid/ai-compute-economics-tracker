@@ -1,5 +1,13 @@
 # CONTEXT
 
+## 2026-07-17 修复 Sites 每日同步的网络误阻断
+
+- 今日 GitHub Actions run `29552746276` 成功，提交 `b8b4b20`；发布门通过，目标测试 12 项通过，数据生成时间为 `2026-07-17T03:35:56Z`。
+- Sites 自动任务失败点不是数据或构建，而是本机网络将 `*.vercel.app` 解析到错误地址，`vercel curl` 与直接 curl 均超时；Vercel 管理 API 正常返回生产部署 `READY`、`target=production`，且 `githubCommitSha=b8b4b20...` 与本地主分支完全一致。
+- 自动任务改为两级 Vercel 验证：优先读取正式响应并比较原始字节哈希；若仅因 `vercel.app` DNS、TLS 或边缘网络错误无法读取，则必须通过 Vercel 管理 API 同时验证 `READY`、`production`、正确项目 ID、部署 Git SHA 等于本地 HEAD，其他错误仍停止发布。
+- Sites 回读同样允许在 Cloudflare 直接回读被本机网络拦截时，以 Sites connector 的 deployment `succeeded`、固定 live URL 和最新 version `commit_sha` 等于刚推送 HEAD 作为发布闭环；数据门、测试门和版本一致性门均未降低。
+- 今日 Sites 已补发 version 4，来源提交 `7acbe40`，部署状态 `succeeded`，固定地址保持不变；构建测试 2 项通过。
+
 ## 2026-07-14 OpenRouter 滚动窗口历史保留
 
 - GitHub Actions run `29303721784` 失败：上游 OpenRouter 周榜滚动接口返回 52 点，其中 `2026-07-13` 为未完成周；剔除后只剩 51 个完整周，`test_time_series_dashboard.py` 的至少 52 周断言失败。
