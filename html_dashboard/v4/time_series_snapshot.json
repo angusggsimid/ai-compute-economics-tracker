@@ -1,8 +1,8 @@
 {
   "meta": {
-    "generatedAt": "2026-07-30T03:26:32Z",
+    "generatedAt": "2026-07-31T03:33:46Z",
     "minDate": "2023-09-01",
-    "maxDate": "2026-07-29"
+    "maxDate": "2026-07-30"
   },
   "datasets": {
     "openrouterVolume": [
@@ -7465,7 +7465,7 @@
         "outputPrice": 0.28,
         "historyPoints": 4,
         "firstSeen": "2026-04-23",
-        "lastSeen": "2026-07-30",
+        "lastSeen": "2026-07-31",
         "priceHistory": [
           {
             "date": "2026-04-23",
@@ -7500,7 +7500,7 @@
         "outputPrice": 0.28,
         "historyPoints": 21,
         "firstSeen": "2026-04-24",
-        "lastSeen": "2026-07-30",
+        "lastSeen": "2026-07-31",
         "priceHistory": [
           {
             "date": "2026-04-24",
@@ -7634,7 +7634,7 @@
         "outputPrice": 0.6,
         "historyPoints": 1,
         "firstSeen": "2026-07-29",
-        "lastSeen": "2026-07-30",
+        "lastSeen": "2026-07-31",
         "priceHistory": [
           {
             "date": "2026-07-29",
@@ -7650,11 +7650,11 @@
         "name": "Z.ai: GLM 5.2",
         "tokens": 12.72903850247,
         "share": 5.781856986815791,
-        "inputPrice": 0.6776,
-        "outputPrice": 2.1296,
-        "historyPoints": 53,
+        "inputPrice": 0.966,
+        "outputPrice": 3.036,
+        "historyPoints": 55,
         "firstSeen": "2026-06-17",
-        "lastSeen": "2026-07-30",
+        "lastSeen": "2026-07-31",
         "priceHistory": [
           {
             "date": "2026-06-17",
@@ -7920,6 +7920,16 @@
             "date": "2026-07-30",
             "input": 0.6776,
             "output": 2.1296
+          },
+          {
+            "date": "2026-07-30",
+            "input": 0.6181,
+            "output": 1.9426
+          },
+          {
+            "date": "2026-07-31",
+            "input": 0.966,
+            "output": 3.036
           }
         ],
         "free": false
@@ -7934,7 +7944,7 @@
         "outputPrice": 0.87,
         "historyPoints": 2,
         "firstSeen": "2026-04-24",
-        "lastSeen": "2026-07-30",
+        "lastSeen": "2026-07-31",
         "priceHistory": [
           {
             "date": "2026-04-24",
@@ -17436,6 +17446,56 @@
           "vastai": 3.0637
         },
         "movingAverage30d": 3.232765
+      },
+      {
+        "date": "2026-07-30",
+        "series": "B200",
+        "value": 6.4233,
+        "average": 6.3031,
+        "low": 4.967,
+        "high": 7.15,
+        "providerCount": 5,
+        "providerPrices": {
+          "vastai": 6.4233,
+          "lambda": 6.99,
+          "aws": 4.9807,
+          "nebius": 7.15,
+          "runpod": 5.98
+        },
+        "movingAverage30d": 6.369276666666667
+      },
+      {
+        "date": "2026-07-30",
+        "series": "H100",
+        "value": 2.69,
+        "average": 3.1402,
+        "low": 1.4689,
+        "high": 4.29,
+        "providerCount": 5,
+        "providerPrices": {
+          "runpod": 2.69,
+          "vastai": 2.1839,
+          "lambda": 3.79,
+          "aws": 2.4936,
+          "nebius": 3.85
+        },
+        "movingAverage30d": 2.69
+      },
+      {
+        "date": "2026-07-30",
+        "series": "H200",
+        "value": 3.3610499999999996,
+        "average": 3.5819,
+        "low": 2.8022,
+        "high": 4.5,
+        "providerCount": 4,
+        "providerPrices": {
+          "nebius": 4.5,
+          "runpod": 3.59,
+          "vastai": 3.1054,
+          "aws": 3.1321
+        },
+        "movingAverage30d": 3.2477716666666665
       }
     ],
     "gpuPriceAnnotations": {
@@ -17774,14 +17834,14 @@
       {
         "date": "2026-07-01",
         "series": "B200",
-        "value": 43.31,
-        "movingAverage30d": 43.31
+        "value": 44.1,
+        "movingAverage30d": 44.1
       },
       {
         "date": "2026-07-01",
         "series": "H100",
-        "value": 80.06,
-        "movingAverage30d": 80.06
+        "value": 80.18,
+        "movingAverage30d": 80.18
       },
       {
         "date": "2026-07-01",
@@ -18932,6 +18992,11 @@
         "value": 1.1987732342007433
       },
       {
+        "date": "2026-07-30",
+        "series": "H200 / H100",
+        "value": 1.2113661710037174
+      },
+      {
         "date": "2025-12-14",
         "series": "B200 / H100",
         "value": 1.5454545454545454
@@ -20070,6 +20135,11 @@
         "date": "2026-07-29",
         "series": "B200 / H100",
         "value": 2.3190520446096654
+      },
+      {
+        "date": "2026-07-30",
+        "series": "B200 / H100",
+        "value": 2.3542193308550186
       }
     ],
     "capex": [
