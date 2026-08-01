@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-07-31T03:48:47Z",
+  "fetchedAt": "2026-08-01T01:03:11Z",
   "datasets": {
     "availability": [
       {
@@ -281,14 +281,14 @@
       {
         "date": "2026-07-01",
         "series": "B200",
-        "value": 44.1,
-        "movingAverage30d": 44.1
+        "value": 44.83,
+        "movingAverage30d": 44.83
       },
       {
         "date": "2026-07-01",
         "series": "H100",
-        "value": 80.18,
-        "movingAverage30d": 80.18
+        "value": 80.8,
+        "movingAverage30d": 80.8
       },
       {
         "date": "2026-07-01",
@@ -9812,19 +9812,69 @@
           "aws": 3.1321
         },
         "movingAverage30d": 3.2477716666666665
+      },
+      {
+        "date": "2026-07-31",
+        "series": "B200",
+        "value": 6.6942,
+        "average": 6.3426,
+        "low": 3.9399,
+        "high": 7.6097,
+        "providerCount": 5,
+        "providerPrices": {
+          "runpod": 5.98,
+          "vastai": 6.6942,
+          "lambda": 6.99,
+          "aws": 5.0401,
+          "nebius": 7.15
+        },
+        "movingAverage30d": 6.393083333333334
+      },
+      {
+        "date": "2026-07-31",
+        "series": "H100",
+        "value": 2.69,
+        "average": 3.1624,
+        "low": 1.8111,
+        "high": 4.29,
+        "providerCount": 5,
+        "providerPrices": {
+          "runpod": 2.69,
+          "vastai": 2.2914,
+          "lambda": 3.79,
+          "aws": 2.51,
+          "nebius": 3.85
+        },
+        "movingAverage30d": 2.69
+      },
+      {
+        "date": "2026-07-31",
+        "series": "H200",
+        "value": 3.3610499999999996,
+        "average": 3.5825,
+        "low": 2.6991,
+        "high": 4.5,
+        "providerCount": 4,
+        "providerPrices": {
+          "nebius": 4.5,
+          "runpod": 3.59,
+          "vastai": 3.1029,
+          "aws": 3.1321
+        },
+        "movingAverage30d": 3.2504633333333333
       }
     ]
   },
   "sources": {
     "availability": {
       "url": "https://www.foundrysignals.com/api/history?range=ALL",
-      "sha256": "sha256:21a8a6b0ad7a3c115bb343373c36d63f16df73c5208e6e430c1838b09c91be27",
-      "snapshotPath": "tracker_snapshots/market_facts/20260731t034847z-foundry-signals-availability.json"
+      "sha256": "sha256:e55f0018616cbf8df41f23eea78930588f8c814bc4d876f4c38b2b15057447e8",
+      "snapshotPath": "tracker_snapshots/market_facts/20260801t010311z-foundry-signals-availability.json"
     },
     "price": {
       "url": "https://www.foundrysignals.com/api/price/history?range=ALL",
-      "sha256": "sha256:445d9e6a0568755a5ef60e0dd00ae074628f31f098654bdb61c8302264845f6d",
-      "snapshotPath": "tracker_snapshots/market_facts/20260731t034847z-foundry-signals-price.json"
+      "sha256": "sha256:b7212dead1f37db21d1a868e2b41adb6bc37a99a2c99410e94666287f2633f5b",
+      "snapshotPath": "tracker_snapshots/market_facts/20260801t010311z-foundry-signals-price.json"
     }
   }
 }
