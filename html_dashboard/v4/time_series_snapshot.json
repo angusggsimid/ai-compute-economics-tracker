@@ -1,16 +1,11 @@
 {
   "meta": {
-    "generatedAt": "2026-08-01T01:03:13Z",
+    "generatedAt": "2026-08-04T03:04:02Z",
     "minDate": "2023-09-01",
-    "maxDate": "2026-07-31"
+    "maxDate": "2026-08-03"
   },
   "datasets": {
     "openrouterVolume": [
-      {
-        "date": "2025-07-28",
-        "series": "Weekly tokens",
-        "value": 3.408085282012
-      },
       {
         "date": "2025-08-04",
         "series": "Weekly tokens",
@@ -267,9 +262,9 @@
         "value": 58.04149741598
       },
       {
-        "date": "2025-08-18",
-        "series": "4W average",
-        "value": 3.31259556867625
+        "date": "2026-07-27",
+        "series": "Weekly tokens",
+        "value": 56.788588911921
       },
       {
         "date": "2025-08-25",
@@ -510,89 +505,14 @@
         "date": "2026-07-20",
         "series": "4W average",
         "value": 55.038712179736
+      },
+      {
+        "date": "2026-07-27",
+        "series": "4W average",
+        "value": 57.55592484170675
       }
     ],
     "openrouterComposition": [
-      {
-        "date": "2025-07-28",
-        "rank": 1,
-        "model": "anthropic/claude-4-sonnet-20250522",
-        "vendor": "anthropic",
-        "tokens": 0.602247714253,
-        "share": 17.671145655646754
-      },
-      {
-        "date": "2025-07-28",
-        "rank": 2,
-        "model": "google/gemini-2.5-flash",
-        "vendor": "google",
-        "tokens": 0.29903322949,
-        "share": 8.774229655235109
-      },
-      {
-        "date": "2025-07-28",
-        "rank": 3,
-        "model": "google/gemini-2.0-flash-001",
-        "vendor": "google",
-        "tokens": 0.272916554932,
-        "share": 8.007914484196263
-      },
-      {
-        "date": "2025-07-28",
-        "rank": 4,
-        "model": "deepseek/deepseek-chat-v3-0324:free",
-        "vendor": "deepseek",
-        "tokens": 0.210899764808,
-        "share": 6.188218526136559
-      },
-      {
-        "date": "2025-07-28",
-        "rank": 5,
-        "model": "google/gemini-2.5-pro",
-        "vendor": "google",
-        "tokens": 0.163230780914,
-        "share": 4.789515737048545
-      },
-      {
-        "date": "2025-07-28",
-        "rank": 6,
-        "model": "qwen/qwen3-coder-480b-a35b-07-25:free",
-        "vendor": "qwen",
-        "tokens": 0.155740798002,
-        "share": 4.56974474271538
-      },
-      {
-        "date": "2025-07-28",
-        "rank": 7,
-        "model": "deepseek/deepseek-chat-v3-0324",
-        "vendor": "deepseek",
-        "tokens": 0.152497060588,
-        "share": 4.474567036009489
-      },
-      {
-        "date": "2025-07-28",
-        "rank": 8,
-        "model": "anthropic/claude-3-7-sonnet-20250219",
-        "vendor": "anthropic",
-        "tokens": 0.124922095811,
-        "share": 3.6654627297721523
-      },
-      {
-        "date": "2025-07-28",
-        "rank": 9,
-        "model": "qwen/qwen3-coder-480b-a35b-07-25",
-        "vendor": "qwen",
-        "tokens": 0.114756883123,
-        "share": 3.367195173450942
-      },
-      {
-        "date": "2025-07-28",
-        "rank": 10,
-        "model": "Others",
-        "vendor": "OpenRouter",
-        "tokens": 1.311840400091,
-        "share": 38.49200625978881
-      },
       {
         "date": "2025-08-04",
         "rank": 1,
@@ -4672,14 +4592,89 @@
         "vendor": "OpenRouter",
         "tokens": 22.737287795892,
         "share": 39.17419227304767
+      },
+      {
+        "date": "2026-07-27",
+        "rank": 1,
+        "model": "deepseek/deepseek-v4-flash-20260423",
+        "vendor": "deepseek",
+        "tokens": 7.220350124001,
+        "share": 12.714438344646581
+      },
+      {
+        "date": "2026-07-27",
+        "rank": 2,
+        "model": "xiaomi/mimo-v2.5-20260422",
+        "vendor": "xiaomi",
+        "tokens": 6.304949281665,
+        "share": 11.102493304498136
+      },
+      {
+        "date": "2026-07-27",
+        "rank": 3,
+        "model": "tencent/hy3-20260706",
+        "vendor": "tencent",
+        "tokens": 4.824580734626,
+        "share": 8.4956869453279
+      },
+      {
+        "date": "2026-07-27",
+        "rank": 4,
+        "model": "deepseek/deepseek-v4-pro-20260423",
+        "vendor": "deepseek",
+        "tokens": 3.278258267278,
+        "share": 5.772741196937598
+      },
+      {
+        "date": "2026-07-27",
+        "rank": 5,
+        "model": "z-ai/glm-5.2-20260616",
+        "vendor": "z-ai",
+        "tokens": 2.890093349264,
+        "share": 5.0892149367305635
+      },
+      {
+        "date": "2026-07-27",
+        "rank": 6,
+        "model": "nvidia/nemotron-3-ultra-550b-a55b-20260604:free",
+        "vendor": "nvidia",
+        "tokens": 2.427355339353,
+        "share": 4.274371640256502
+      },
+      {
+        "date": "2026-07-27",
+        "rank": 7,
+        "model": "minimax/minimax-m3-20260531",
+        "vendor": "minimax",
+        "tokens": 1.957494046128,
+        "share": 3.4469848320479834
+      },
+      {
+        "date": "2026-07-27",
+        "rank": 8,
+        "model": "openai/gpt-5.6-luna-20260709",
+        "vendor": "openai",
+        "tokens": 1.94507716007,
+        "share": 3.425119724469314
+      },
+      {
+        "date": "2026-07-27",
+        "rank": 9,
+        "model": "stepfun/step-3.7-flash-20260528",
+        "vendor": "stepfun",
+        "tokens": 1.655820310083,
+        "share": 2.915762377281771
+      },
+      {
+        "date": "2026-07-27",
+        "rank": 10,
+        "model": "Others",
+        "vendor": "OpenRouter",
+        "tokens": 24.284610299453,
+        "share": 42.763186697803654
       }
     ],
     "openrouterDisclosure": [
-      {
-        "date": "2025-07-28",
-        "othersShare": 38.49200625978881,
-        "namedShare": 61.5079937402112
-      },
       {
         "date": "2025-08-04",
         "othersShare": 41.732083906286945,
@@ -4934,34 +4929,14 @@
         "date": "2026-07-20",
         "othersShare": 39.17419227304767,
         "namedShare": 60.82580772695233
+      },
+      {
+        "date": "2026-07-27",
+        "othersShare": 42.763186697803654,
+        "namedShare": 57.23681330219635
       }
     ],
     "activePriceTiers": [
-      {
-        "date": "2025-07-28",
-        "series": "免费",
-        "value": 10.75796326885194
-      },
-      {
-        "date": "2025-07-28",
-        "series": "<$1",
-        "value": 12.482481520205752
-      },
-      {
-        "date": "2025-07-28",
-        "series": "$1–5",
-        "value": 12.14142482868605
-      },
-      {
-        "date": "2025-07-28",
-        "series": ">$5",
-        "value": 22.4606613926953
-      },
-      {
-        "date": "2025-07-28",
-        "series": "Others / 无法匹配",
-        "value": 42.15746898956096
-      },
       {
         "date": "2025-08-04",
         "series": "免费",
@@ -6236,15 +6211,34 @@
         "date": "2026-07-20",
         "series": "Others / 无法匹配",
         "value": 39.17419227304767
+      },
+      {
+        "date": "2026-07-27",
+        "series": "免费",
+        "value": 4.274371640256502
+      },
+      {
+        "date": "2026-07-27",
+        "series": "<$1",
+        "value": 38.08535979141022
+      },
+      {
+        "date": "2026-07-27",
+        "series": "$1–5",
+        "value": 11.451962146060318
+      },
+      {
+        "date": "2026-07-27",
+        "series": ">$5",
+        "value": 3.425119724469314
+      },
+      {
+        "date": "2026-07-27",
+        "series": "Others / 无法匹配",
+        "value": 42.763186697803654
       }
     ],
     "activeInputBasket": [
-      {
-        "date": "2025-07-28",
-        "series": "Weekly weighted rate",
-        "value": 1.1161716329914229,
-        "coverage": 57.842531010439046
-      },
       {
         "date": "2025-08-04",
         "series": "Weekly weighted rate",
@@ -6552,10 +6546,10 @@
         "coverage": 60.82580772695233
       },
       {
-        "date": "2025-08-18",
-        "series": "4W average",
-        "value": 1.0902929709147713,
-        "coverage": 54.59249225394163
+        "date": "2026-07-27",
+        "series": "Weekly weighted rate",
+        "value": 0.28014977193375706,
+        "coverage": 57.23681330219635
       },
       {
         "date": "2025-08-25",
@@ -6844,15 +6838,15 @@
         "series": "4W average",
         "value": 0.6764881527635211,
         "coverage": 63.60336458303772
+      },
+      {
+        "date": "2026-07-27",
+        "series": "4W average",
+        "value": 0.49800226607332027,
+        "coverage": 63.07089679240332
       }
     ],
     "activeOutputBasket": [
-      {
-        "date": "2025-07-28",
-        "series": "Weekly weighted rate",
-        "value": 5.980808451540068,
-        "coverage": 57.842531010439046
-      },
       {
         "date": "2025-08-04",
         "series": "Weekly weighted rate",
@@ -7160,10 +7154,10 @@
         "coverage": 60.82580772695233
       },
       {
-        "date": "2025-08-18",
-        "series": "4W average",
-        "value": 5.850877298968948,
-        "coverage": 54.59249225394163
+        "date": "2026-07-27",
+        "series": "Weekly weighted rate",
+        "value": 0.9935697035024628,
+        "coverage": 57.23681330219635
       },
       {
         "date": "2025-08-25",
@@ -7452,6 +7446,12 @@
         "series": "4W average",
         "value": 2.975623673200966,
         "coverage": 63.60336458303772
+      },
+      {
+        "date": "2026-07-27",
+        "series": "4W average",
+        "value": 2.0844792675349266,
+        "coverage": 63.07089679240332
       }
     ],
     "activeModels": [
@@ -7459,13 +7459,13 @@
         "rankId": "xiaomi/mimo-v2.5-20260422",
         "baseId": "xiaomi/mimo-v2.5",
         "name": "Xiaomi: MiMo-V2.5",
-        "tokens": 30.111255947005,
-        "share": 13.6773076415164,
+        "tokens": 32.035148401575,
+        "share": 13.914791782809374,
         "inputPrice": 0.14,
         "outputPrice": 0.28,
         "historyPoints": 4,
         "firstSeen": "2026-04-23",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "priceHistory": [
           {
             "date": "2026-04-23",
@@ -7493,14 +7493,14 @@
       {
         "rankId": "deepseek/deepseek-v4-flash-20260423",
         "baseId": "deepseek/deepseek-v4-flash",
-        "name": "DeepSeek: DeepSeek V4 Flash",
-        "tokens": 22.318758326773,
-        "share": 10.137754610740265,
+        "name": "DeepSeek: DeepSeek V4 Flash 0423",
+        "tokens": 24.199429705041,
+        "share": 10.511267854523886,
         "inputPrice": 0.14,
         "outputPrice": 0.28,
         "historyPoints": 21,
         "firstSeen": "2026-04-24",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "priceHistory": [
           {
             "date": "2026-04-24",
@@ -7615,7 +7615,7 @@
         "baseId": null,
         "name": "tencent/hy3-20260706:free",
         "tokens": 19.409689313726,
-        "share": 8.816380573341343,
+        "share": 8.430795511977056,
         "inputPrice": 0.0,
         "outputPrice": 0.0,
         "historyPoints": 0,
@@ -7625,36 +7625,16 @@
         "free": true
       },
       {
-        "rankId": "minimax/minimax-m3-20260531",
-        "baseId": "minimax/minimax-m3",
-        "name": "MiniMax: MiniMax M3",
-        "tokens": 14.234301386939,
-        "share": 6.465586140739929,
-        "inputPrice": 0.3,
-        "outputPrice": 1.2,
-        "historyPoints": 1,
-        "firstSeen": "2026-06-01",
-        "lastSeen": "2026-08-01",
-        "priceHistory": [
-          {
-            "date": "2026-06-01",
-            "input": 0.3,
-            "output": 1.2
-          }
-        ],
-        "free": false
-      },
-      {
         "rankId": "z-ai/glm-5.2-20260616",
         "baseId": "z-ai/glm-5.2",
         "name": "Z.ai: GLM 5.2",
-        "tokens": 12.72903850247,
-        "share": 5.781856986815791,
-        "inputPrice": 1.12,
-        "outputPrice": 3.52,
-        "historyPoints": 56,
+        "tokens": 13.040972275308,
+        "share": 5.664478640198185,
+        "inputPrice": 0.76,
+        "outputPrice": 2.42,
+        "historyPoints": 62,
         "firstSeen": "2026-06-17",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "priceHistory": [
           {
             "date": "2026-06-17",
@@ -7935,6 +7915,56 @@
             "date": "2026-07-31",
             "input": 1.12,
             "output": 3.52
+          },
+          {
+            "date": "2026-08-01",
+            "input": 0.76006,
+            "output": 2.38876
+          },
+          {
+            "date": "2026-08-02",
+            "input": 0.7168,
+            "output": 2.2528
+          },
+          {
+            "date": "2026-08-02",
+            "input": 0.2842,
+            "output": 0.8932
+          },
+          {
+            "date": "2026-08-03",
+            "input": 1.19,
+            "output": 3.74
+          },
+          {
+            "date": "2026-08-03",
+            "input": 0.7042,
+            "output": 2.2132
+          },
+          {
+            "date": "2026-08-04",
+            "input": 0.76,
+            "output": 2.42
+          }
+        ],
+        "free": false
+      },
+      {
+        "rankId": "minimax/minimax-m3-20260531",
+        "baseId": "minimax/minimax-m3",
+        "name": "MiniMax: MiniMax M3",
+        "tokens": 12.079455818095,
+        "share": 5.246834210081993,
+        "inputPrice": 0.3,
+        "outputPrice": 1.2,
+        "historyPoints": 1,
+        "firstSeen": "2026-06-01",
+        "lastSeen": "2026-08-04",
+        "priceHistory": [
+          {
+            "date": "2026-06-01",
+            "input": 0.3,
+            "output": 1.2
           }
         ],
         "free": false
@@ -7943,13 +7973,13 @@
         "rankId": "deepseek/deepseek-v4-pro-20260423",
         "baseId": "deepseek/deepseek-v4-pro",
         "name": "DeepSeek: DeepSeek V4 Pro",
-        "tokens": 11.067893110982,
-        "share": 5.027321985132197,
+        "tokens": 11.985804291789,
+        "share": 5.206155719308208,
         "inputPrice": 0.435,
         "outputPrice": 0.87,
         "historyPoints": 2,
         "firstSeen": "2026-04-24",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "priceHistory": [
           {
             "date": "2026-04-24",
@@ -7968,8 +7998,8 @@
         "rankId": "nvidia/nemotron-3-ultra-550b-a55b-20260604:free",
         "baseId": null,
         "name": "nvidia/nemotron-3-ultra-550b-a55b-20260604:free",
-        "tokens": 7.525873124936,
-        "share": 3.4184453209766668,
+        "tokens": 9.953228464289,
+        "share": 4.323285783202546,
         "inputPrice": 0.0,
         "outputPrice": 0.0,
         "historyPoints": 0,
@@ -17551,6 +17581,156 @@
           "aws": 3.1321
         },
         "movingAverage30d": 3.2504633333333333
+      },
+      {
+        "date": "2026-08-01",
+        "series": "B200",
+        "value": 6.6891,
+        "average": 6.3756,
+        "low": 3.9399,
+        "high": 7.15,
+        "providerCount": 5,
+        "providerPrices": {
+          "runpod": 5.98,
+          "vastai": 6.6891,
+          "lambda": 6.99,
+          "aws": 5.0726,
+          "nebius": 7.15
+        },
+        "movingAverage30d": 6.41672
+      },
+      {
+        "date": "2026-08-01",
+        "series": "H100",
+        "value": 2.69,
+        "average": 3.1464,
+        "low": 1.4689,
+        "high": 4.29,
+        "providerCount": 5,
+        "providerPrices": {
+          "runpod": 2.69,
+          "vastai": 2.1149,
+          "lambda": 3.79,
+          "aws": 2.5897,
+          "nebius": 3.85
+        },
+        "movingAverage30d": 2.69
+      },
+      {
+        "date": "2026-08-01",
+        "series": "H200",
+        "value": 3.3832,
+        "average": 3.6016,
+        "low": 2.7338,
+        "high": 4.8129,
+        "providerCount": 4,
+        "providerPrices": {
+          "runpod": 3.59,
+          "vastai": 3.1764,
+          "aws": 3.1311,
+          "nebius": 4.5
+        },
+        "movingAverage30d": 3.254395
+      },
+      {
+        "date": "2026-08-02",
+        "series": "B200",
+        "value": 6.0939,
+        "average": 6.2575,
+        "low": 5.0021,
+        "high": 7.5597,
+        "providerCount": 5,
+        "providerPrices": {
+          "runpod": 5.98,
+          "vastai": 6.0939,
+          "lambda": 6.99,
+          "aws": 5.0707,
+          "nebius": 7.15
+        },
+        "movingAverage30d": 6.420516666666667
+      },
+      {
+        "date": "2026-08-02",
+        "series": "H100",
+        "value": 2.69,
+        "average": 3.1528,
+        "low": 1.4689,
+        "high": 4.29,
+        "providerCount": 5,
+        "providerPrices": {
+          "runpod": 2.69,
+          "lambda": 3.79,
+          "aws": 2.594,
+          "nebius": 3.85,
+          "vastai": 2.1723
+        },
+        "movingAverage30d": 2.69
+      },
+      {
+        "date": "2026-08-02",
+        "series": "H200",
+        "value": 3.38145,
+        "average": 3.5982,
+        "low": 2.7124,
+        "high": 4.5,
+        "providerCount": 4,
+        "providerPrices": {
+          "runpod": 3.59,
+          "vastai": 3.1729,
+          "aws": 3.1298,
+          "nebius": 4.5
+        },
+        "movingAverage30d": 3.258245
+      },
+      {
+        "date": "2026-08-03",
+        "series": "B200",
+        "value": 5.98,
+        "average": 6.0881,
+        "low": 5.0021,
+        "high": 7.15,
+        "providerCount": 5,
+        "providerPrices": {
+          "runpod": 5.98,
+          "vastai": 5.254,
+          "lambda": 6.99,
+          "aws": 5.0868,
+          "nebius": 7.15
+        },
+        "movingAverage30d": 6.420516666666667
+      },
+      {
+        "date": "2026-08-03",
+        "series": "H100",
+        "value": 2.69,
+        "average": 3.1528,
+        "low": 1.4689,
+        "high": 4.29,
+        "providerCount": 5,
+        "providerPrices": {
+          "lambda": 3.79,
+          "aws": 2.5954,
+          "nebius": 3.85,
+          "runpod": 2.69,
+          "vastai": 2.1178
+        },
+        "movingAverage30d": 2.69
+      },
+      {
+        "date": "2026-08-03",
+        "series": "H200",
+        "value": 3.3596500000000002,
+        "average": 3.5836,
+        "low": 2.2831,
+        "high": 4.5,
+        "providerCount": 4,
+        "providerPrices": {
+          "runpod": 3.59,
+          "vastai": 3.0911,
+          "aws": 3.1293,
+          "nebius": 4.5
+        },
+        "movingAverage30d": 3.2666850000000003
       }
     ],
     "gpuPriceAnnotations": {
@@ -17900,6 +18080,24 @@
       },
       {
         "date": "2026-07-01",
+        "series": "H200",
+        "value": 100.0,
+        "movingAverage30d": 100.0
+      },
+      {
+        "date": "2026-08-01",
+        "series": "B200",
+        "value": 67.45,
+        "movingAverage30d": 67.45
+      },
+      {
+        "date": "2026-08-01",
+        "series": "H100",
+        "value": 95.78,
+        "movingAverage30d": 95.78
+      },
+      {
+        "date": "2026-08-01",
         "series": "H200",
         "value": 100.0,
         "movingAverage30d": 100.0
@@ -19057,6 +19255,21 @@
         "value": 1.2113661710037174
       },
       {
+        "date": "2026-08-01",
+        "series": "H200 / H100",
+        "value": 1.211496282527881
+      },
+      {
+        "date": "2026-08-02",
+        "series": "H200 / H100",
+        "value": 1.2177416356877324
+      },
+      {
+        "date": "2026-08-03",
+        "series": "H200 / H100",
+        "value": 1.2377695167286247
+      },
+      {
         "date": "2025-12-14",
         "series": "B200 / H100",
         "value": 1.5454545454545454
@@ -20205,9 +20418,204 @@
         "date": "2026-07-31",
         "series": "B200 / H100",
         "value": 2.3888289962825278
+      },
+      {
+        "date": "2026-08-01",
+        "series": "B200 / H100",
+        "value": 2.390371747211896
+      },
+      {
+        "date": "2026-08-02",
+        "series": "B200 / H100",
+        "value": 2.390371747211896
+      },
+      {
+        "date": "2026-08-03",
+        "series": "B200 / H100",
+        "value": 2.390371747211896
       }
     ],
     "capex": [
+      {
+        "date": "2026-07-29",
+        "company": "Microsoft",
+        "metric": "calendar 2026 capex guidance",
+        "value": 175.0,
+        "unit": "USD_B",
+        "period": "calendar_2026_guidance_after_lease_reclassification",
+        "source_url": "https://www.microsoft.com/en-us/investor/events/fy-2026/earnings-fy-2026-q4"
+      },
+      {
+        "date": "2026-07-29",
+        "company": "Meta",
+        "metric": "PaymentsToAcquirePropertyPlantAndEquipment",
+        "value": 30.116,
+        "unit": "USD_B",
+        "period": "FY2026 Q2",
+        "source_url": "https://investor.atmeta.com/investor-news/press-release-details/2026/Meta-Reports-Second-Quarter-2026-Results/default.aspx"
+      },
+      {
+        "date": "2026-07-29",
+        "company": "Meta",
+        "metric": "capex actual",
+        "value": 30.116,
+        "unit": "USD_B",
+        "period": "FY2026 Q2",
+        "source_url": "https://investor.atmeta.com/investor-news/press-release-details/2026/Meta-Reports-Second-Quarter-2026-Results/default.aspx"
+      },
+      {
+        "date": "2026-07-29",
+        "company": "Meta",
+        "metric": "capex total incl finance leases",
+        "value": 31.08,
+        "unit": "USD_B",
+        "period": "FY2026 Q2",
+        "source_url": "https://investor.atmeta.com/investor-news/press-release-details/2026/Meta-Reports-Second-Quarter-2026-Results/default.aspx"
+      },
+      {
+        "date": "2026-07-29",
+        "company": "Meta",
+        "metric": "fy2026 capex guidance previous low",
+        "value": 125.0,
+        "unit": "USD_B",
+        "period": "capex_guidance_revision",
+        "source_url": "https://investor.atmeta.com/investor-news/press-release-details/2026/Meta-Reports-Second-Quarter-2026-Results/default.aspx"
+      },
+      {
+        "date": "2026-07-29",
+        "company": "Meta",
+        "metric": "fy2026 capex guidance previous high",
+        "value": 145.0,
+        "unit": "USD_B",
+        "period": "capex_guidance_revision",
+        "source_url": "https://investor.atmeta.com/investor-news/press-release-details/2026/Meta-Reports-Second-Quarter-2026-Results/default.aspx"
+      },
+      {
+        "date": "2026-07-29",
+        "company": "Meta",
+        "metric": "fy2026 capex guidance low",
+        "value": 130.0,
+        "unit": "USD_B",
+        "period": "capex_guidance_revision",
+        "source_url": "https://investor.atmeta.com/investor-news/press-release-details/2026/Meta-Reports-Second-Quarter-2026-Results/default.aspx"
+      },
+      {
+        "date": "2026-07-29",
+        "company": "Meta",
+        "metric": "fy2026 capex guidance high",
+        "value": 145.0,
+        "unit": "USD_B",
+        "period": "capex_guidance_revision",
+        "source_url": "https://investor.atmeta.com/investor-news/press-release-details/2026/Meta-Reports-Second-Quarter-2026-Results/default.aspx"
+      },
+      {
+        "date": "2026-07-22",
+        "company": "Alphabet",
+        "metric": "PaymentsToAcquirePropertyPlantAndEquipment",
+        "value": 44.924,
+        "unit": "USD_B",
+        "period": "FY2026 Q2",
+        "source_url": "https://s206.q4cdn.com/479360582/files/doc_financials/2026/q2/2026q2-alphabet-earnings-release.pdf"
+      },
+      {
+        "date": "2026-07-22",
+        "company": "Alphabet",
+        "metric": "capex actual",
+        "value": 44.924,
+        "unit": "USD_B",
+        "period": "FY2026 Q2",
+        "source_url": "https://s206.q4cdn.com/479360582/files/doc_financials/2026/q2/2026q2-alphabet-earnings-release.pdf"
+      },
+      {
+        "date": "2026-07-22",
+        "company": "Alphabet",
+        "metric": "fy2026 capex guidance previous low",
+        "value": 180.0,
+        "unit": "USD_B",
+        "period": "capex_guidance_revision",
+        "source_url": "https://s206.q4cdn.com/479360582/files/doc_events/2026/Jul/22/2026_Q2_Earnings_Transcript.pdf"
+      },
+      {
+        "date": "2026-07-22",
+        "company": "Alphabet",
+        "metric": "fy2026 capex guidance previous high",
+        "value": 190.0,
+        "unit": "USD_B",
+        "period": "capex_guidance_revision",
+        "source_url": "https://s206.q4cdn.com/479360582/files/doc_events/2026/Jul/22/2026_Q2_Earnings_Transcript.pdf"
+      },
+      {
+        "date": "2026-07-22",
+        "company": "Alphabet",
+        "metric": "fy2026 capex guidance low",
+        "value": 195.0,
+        "unit": "USD_B",
+        "period": "capex_guidance_revision",
+        "source_url": "https://s206.q4cdn.com/479360582/files/doc_events/2026/Jul/22/2026_Q2_Earnings_Transcript.pdf"
+      },
+      {
+        "date": "2026-07-22",
+        "company": "Alphabet",
+        "metric": "fy2026 capex guidance high",
+        "value": 205.0,
+        "unit": "USD_B",
+        "period": "capex_guidance_revision",
+        "source_url": "https://s206.q4cdn.com/479360582/files/doc_events/2026/Jul/22/2026_Q2_Earnings_Transcript.pdf"
+      },
+      {
+        "date": "2026-06-30",
+        "company": "Microsoft",
+        "metric": "PaymentsToAcquirePropertyPlantAndEquipment",
+        "value": 35.8,
+        "unit": "USD_B",
+        "period": "FY2026 Q4",
+        "source_url": "https://www.microsoft.com/en-us/investor/events/fy-2026/earnings-fy-2026-q4"
+      },
+      {
+        "date": "2026-06-30",
+        "company": "Microsoft",
+        "metric": "capex actual",
+        "value": 35.8,
+        "unit": "USD_B",
+        "period": "FY2026 Q4",
+        "source_url": "https://www.microsoft.com/en-us/investor/events/fy-2026/earnings-fy-2026-q4"
+      },
+      {
+        "date": "2026-06-30",
+        "company": "Microsoft",
+        "metric": "capex total incl finance leases",
+        "value": 41.0,
+        "unit": "USD_B",
+        "period": "FY2026 Q4",
+        "source_url": "https://www.microsoft.com/en-us/investor/events/fy-2026/earnings-fy-2026-q4"
+      },
+      {
+        "date": "2026-06-30",
+        "company": "Amazon",
+        "metric": "PaymentsToAcquireProductiveAssets",
+        "value": 54.208,
+        "unit": "USD_B",
+        "period": "FY2026 Q2",
+        "source_url": "https://s2.q4cdn.com/299287126/files/doc_earnings/2026/q2/earnings-result/AMZN-Q2-2026-Earnings-Release.pdf"
+      },
+      {
+        "date": "2026-06-30",
+        "company": "Amazon",
+        "metric": "capex actual",
+        "value": 54.208,
+        "unit": "USD_B",
+        "period": "FY2026 Q2",
+        "source_url": "https://s2.q4cdn.com/299287126/files/doc_earnings/2026/q2/earnings-result/AMZN-Q2-2026-Earnings-Release.pdf"
+      },
+      {
+        "date": "2026-06-30",
+        "company": "Amazon",
+        "metric": "ttm capex actual net",
+        "value": 169.007,
+        "unit": "USD_B",
+        "period": "TTM",
+        "source_url": "https://ir.aboutamazon.com/news-release/news-release-details/2026/Amazon-com-Announces-Second-Quarter-Results/default.aspx"
+      },
       {
         "date": "2026-06-11",
         "company": "Oracle",

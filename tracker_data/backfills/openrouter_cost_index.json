@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-08-01T01:03:11Z",
+  "generated_at": "2026-08-04T03:03:58Z",
   "window": {
-    "start": "2025-07-28",
-    "end": "2026-07-20",
+    "start": "2025-08-04",
+    "end": "2026-07-27",
     "frequency": "weekly"
   },
   "method": {
@@ -14,25 +14,25 @@
   "sources": {
     "openrouter": {
       "url": "https://openrouter.ai/api/frontend/v1/rankings/model-rankings-chart",
-      "cached_at": 1785545545225,
-      "raw_sha256": "sha256:ba2a8e32b40e984a1ea7c5e754e4a926aedb3f3873067fc4473a28d47448ceb6",
+      "cached_at": 1785809382458,
+      "raw_sha256": "sha256:dafffb4818c078e566c9c7c23d14a1da5ceb825c1372b5869e6136fd1b05296c",
       "upstream_complete_weeks": 51,
       "retained_complete_weeks": 52,
       "history_provenance": {
-        "retention_start": "2025-07-27",
-        "as_of_utc": "2026-08-01",
+        "retention_start": "2025-07-30",
+        "as_of_utc": "2026-08-04",
         "min_complete_weeks": 52,
-        "prior_complete_weeks_in_window": 52,
+        "prior_complete_weeks_in_window": 51,
         "upstream_complete_weeks": 51,
         "retained_complete_weeks": 52,
         "local_only_weeks": [
-          "2025-07-28"
+          "2025-08-04"
         ],
         "local_only_week_count": 1,
         "upstream_overwrite_week_count": 51,
-        "retained_cache_generated_at": "2026-07-31T03:48:47Z",
+        "retained_cache_generated_at": "2026-08-01T01:03:11Z",
         "retained_cache_openrouter_url": "https://openrouter.ai/api/frontend/v1/rankings/model-rankings-chart",
-        "retained_cache_openrouter_raw_sha256": "sha256:74ed5453035bdc54104145aee44851d15d40164f20346605abc161f325b1c54c",
+        "retained_cache_openrouter_raw_sha256": "sha256:ba2a8e32b40e984a1ea7c5e754e4a926aedb3f3873067fc4473a28d47448ceb6",
         "rule": "Upstream complete weeks overwrite same dates; local complete weeks are kept only when they fall off the upstream rolling window but remain on/after retention_start and are still complete as_of UTC."
       }
     },
@@ -42,105 +42,6 @@
     }
   },
   "weeks": [
-    {
-      "date": "2025-07-28",
-      "total_tokens": 3408085282012.0,
-      "named_tokens": 2096244881921.0,
-      "named_coverage_pct": 61.51,
-      "price_mapped_coverage_pct": 59.84,
-      "weighted_input_usd_per_1m": 0.286342,
-      "weighted_output_usd_per_1m": 2.087732,
-      "model_rows": [
-        {
-          "model": "anthropic/claude-4-sonnet-20250522",
-          "provider": "anthropic",
-          "tokens": 602247714253.0,
-          "share_pct": 17.6711,
-          "input_usd_per_1m": null,
-          "output_usd_per_1m": null,
-          "matched_price_key": null
-        },
-        {
-          "model": "google/gemini-2.5-flash",
-          "provider": "google",
-          "tokens": 299033229490.0,
-          "share_pct": 8.7742,
-          "input_usd_per_1m": 0.3,
-          "output_usd_per_1m": 2.5,
-          "matched_price_key": "openrouter/google/gemini-2.5-flash"
-        },
-        {
-          "model": "google/gemini-2.0-flash-001",
-          "provider": "google",
-          "tokens": 272916554932.0,
-          "share_pct": 8.0079,
-          "input_usd_per_1m": 0.09999999999999999,
-          "output_usd_per_1m": 0.39999999999999997,
-          "matched_price_key": "openrouter/google/gemini-2.0-flash-001"
-        },
-        {
-          "model": "deepseek/deepseek-chat-v3-0324:free",
-          "provider": "deepseek",
-          "tokens": 210899764808.0,
-          "share_pct": 6.1882,
-          "input_usd_per_1m": 0.0,
-          "output_usd_per_1m": 0.0,
-          "matched_price_key": "free_variant"
-        },
-        {
-          "model": "google/gemini-2.5-pro",
-          "provider": "google",
-          "tokens": 163230780914.0,
-          "share_pct": 4.7895,
-          "input_usd_per_1m": 1.25,
-          "output_usd_per_1m": 10.0,
-          "matched_price_key": "openrouter/google/gemini-2.5-pro"
-        },
-        {
-          "model": "qwen/qwen3-coder-480b-a35b-07-25:free",
-          "provider": "qwen",
-          "tokens": 155740798002.0,
-          "share_pct": 4.5697,
-          "input_usd_per_1m": 0.0,
-          "output_usd_per_1m": 0.0,
-          "matched_price_key": "free_variant"
-        },
-        {
-          "model": "deepseek/deepseek-chat-v3-0324",
-          "provider": "deepseek",
-          "tokens": 152497060588.0,
-          "share_pct": 4.4746,
-          "input_usd_per_1m": 0.25,
-          "output_usd_per_1m": 0.85,
-          "matched_price_key": "openrouter/deepseek/deepseek-chat-v3-0324"
-        },
-        {
-          "model": "anthropic/claude-3-7-sonnet-20250219",
-          "provider": "anthropic",
-          "tokens": 124922095811.0,
-          "share_pct": 3.6655,
-          "input_usd_per_1m": null,
-          "output_usd_per_1m": null,
-          "matched_price_key": null
-        },
-        {
-          "model": "qwen/qwen3-coder-480b-a35b-07-25",
-          "provider": "qwen",
-          "tokens": 114756883123.0,
-          "share_pct": 3.3672,
-          "input_usd_per_1m": null,
-          "output_usd_per_1m": null,
-          "matched_price_key": null
-        }
-      ],
-      "price_snapshot": {
-        "sha": "fde381a39662aaf424a8a2d7961200dd9d0067e1",
-        "committed_at": "2025-08-01T01:15:31Z",
-        "commit_url": "https://github.com/BerriAI/litellm/commit/fde381a39662aaf424a8a2d7961200dd9d0067e1",
-        "raw_url": "https://raw.githubusercontent.com/BerriAI/litellm/fde381a39662aaf424a8a2d7961200dd9d0067e1/model_prices_and_context_window.json",
-        "raw_sha256": "sha256:3e92d8d6aca7c09522c9021bbab058b18a84ea06749634242915ddde0aa97273"
-      }
-    },
     {
       "date": "2025-08-04",
       "total_tokens": 3431226249807.0,
@@ -5189,39 +5090,108 @@
         "raw_url": "https://raw.githubusercontent.com/BerriAI/litellm/b439a9a78864f52fba3d18d9bf8b09253e7181d7/model_prices_and_context_window.json",
         "raw_sha256": "sha256:af3e192b7dc79c80e7021d319b7c16a25188dff7275d20b1fe32f6f4a1151c56"
       }
+    },
+    {
+      "date": "2026-07-27",
+      "total_tokens": 56788588911921.0,
+      "named_tokens": 32503978612468.0,
+      "named_coverage_pct": 57.24,
+      "price_mapped_coverage_pct": 65.15,
+      "weighted_input_usd_per_1m": 0.252545,
+      "weighted_output_usd_per_1m": 0.935861,
+      "model_rows": [
+        {
+          "model": "deepseek/deepseek-v4-flash-20260423",
+          "provider": "deepseek",
+          "tokens": 7220350124001.0,
+          "share_pct": 12.7144,
+          "input_usd_per_1m": 0.14,
+          "output_usd_per_1m": 0.28,
+          "matched_price_key": "deepseek/deepseek-v4-flash"
+        },
+        {
+          "model": "xiaomi/mimo-v2.5-20260422",
+          "provider": "xiaomi",
+          "tokens": 6304949281665.0,
+          "share_pct": 11.1025,
+          "input_usd_per_1m": 0.39999999999999997,
+          "output_usd_per_1m": 2.0,
+          "matched_price_key": "openrouter/xiaomi/mimo-v2.5"
+        },
+        {
+          "model": "tencent/hy3-20260706",
+          "provider": "tencent",
+          "tokens": 4824580734626.0,
+          "share_pct": 8.4957,
+          "input_usd_per_1m": null,
+          "output_usd_per_1m": null,
+          "matched_price_key": null
+        },
+        {
+          "model": "deepseek/deepseek-v4-pro-20260423",
+          "provider": "deepseek",
+          "tokens": 3278258267278.0,
+          "share_pct": 5.7727,
+          "input_usd_per_1m": 0.435,
+          "output_usd_per_1m": 0.87,
+          "matched_price_key": "deepseek/deepseek-v4-pro"
+        },
+        {
+          "model": "z-ai/glm-5.2-20260616",
+          "provider": "z-ai",
+          "tokens": 2890093349264.0,
+          "share_pct": 5.0892,
+          "input_usd_per_1m": null,
+          "output_usd_per_1m": null,
+          "matched_price_key": null
+        },
+        {
+          "model": "nvidia/nemotron-3-ultra-550b-a55b-20260604:free",
+          "provider": "nvidia",
+          "tokens": 2427355339353.0,
+          "share_pct": 4.2744,
+          "input_usd_per_1m": 0.0,
+          "output_usd_per_1m": 0.0,
+          "matched_price_key": "free_variant"
+        },
+        {
+          "model": "minimax/minimax-m3-20260531",
+          "provider": "minimax",
+          "tokens": 1957494046128.0,
+          "share_pct": 3.447,
+          "input_usd_per_1m": null,
+          "output_usd_per_1m": null,
+          "matched_price_key": null
+        },
+        {
+          "model": "openai/gpt-5.6-luna-20260709",
+          "provider": "openai",
+          "tokens": 1945077160070.0,
+          "share_pct": 3.4251,
+          "input_usd_per_1m": 0.19999999999999998,
+          "output_usd_per_1m": 1.2,
+          "matched_price_key": "gpt-5.6-luna"
+        },
+        {
+          "model": "stepfun/step-3.7-flash-20260528",
+          "provider": "stepfun",
+          "tokens": 1655820310083.0,
+          "share_pct": 2.9158,
+          "input_usd_per_1m": null,
+          "output_usd_per_1m": null,
+          "matched_price_key": null
+        }
+      ],
+      "price_snapshot": {
+        "sha": "bf1a8fe40329eb018ef420057766ce95a43baaa3",
+        "committed_at": "2026-07-31T04:46:46Z",
+        "commit_url": "https://github.com/BerriAI/litellm/commit/bf1a8fe40329eb018ef420057766ce95a43baaa3",
+        "raw_url": "https://raw.githubusercontent.com/BerriAI/litellm/bf1a8fe40329eb018ef420057766ce95a43baaa3/model_prices_and_context_window.json",
+        "raw_sha256": "sha256:ba37bb46dc4662f4bfed71db90168644ef917713fa073bd397775376d55a6b1c"
+      }
     }
   ],
   "provider_shares": [
-    {
-      "date": "2025-07-28",
-      "provider": "anthropic",
-      "tokens": 727169810064.0,
-      "share_pct": 21.3366
-    },
-    {
-      "date": "2025-07-28",
-      "provider": "google",
-      "tokens": 735180565336.0,
-      "share_pct": 21.5717
-    },
-    {
-      "date": "2025-07-28",
-      "provider": "deepseek",
-      "tokens": 363396825396.0,
-      "share_pct": 10.6628
-    },
-    {
-      "date": "2025-07-28",
-      "provider": "qwen",
-      "tokens": 270497681125.0,
-      "share_pct": 7.9369
-    },
-    {
-      "date": "2025-07-28",
-      "provider": "Others",
-      "tokens": 1311840400091.0,
-      "share_pct": 38.492
-    },
     {
       "date": "2025-08-04",
       "provider": "anthropic",
@@ -7285,6 +7255,60 @@
       "provider": "Others",
       "tokens": 22737287795892.0,
       "share_pct": 39.1742
+    },
+    {
+      "date": "2026-07-27",
+      "provider": "deepseek",
+      "tokens": 10498608391279.0,
+      "share_pct": 18.4872
+    },
+    {
+      "date": "2026-07-27",
+      "provider": "xiaomi",
+      "tokens": 6304949281665.0,
+      "share_pct": 11.1025
+    },
+    {
+      "date": "2026-07-27",
+      "provider": "tencent",
+      "tokens": 4824580734626.0,
+      "share_pct": 8.4957
+    },
+    {
+      "date": "2026-07-27",
+      "provider": "z-ai",
+      "tokens": 2890093349264.0,
+      "share_pct": 5.0892
+    },
+    {
+      "date": "2026-07-27",
+      "provider": "nvidia",
+      "tokens": 2427355339353.0,
+      "share_pct": 4.2744
+    },
+    {
+      "date": "2026-07-27",
+      "provider": "minimax",
+      "tokens": 1957494046128.0,
+      "share_pct": 3.447
+    },
+    {
+      "date": "2026-07-27",
+      "provider": "openai",
+      "tokens": 1945077160070.0,
+      "share_pct": 3.4251
+    },
+    {
+      "date": "2026-07-27",
+      "provider": "stepfun",
+      "tokens": 1655820310083.0,
+      "share_pct": 2.9158
+    },
+    {
+      "date": "2026-07-27",
+      "provider": "Others",
+      "tokens": 24284610299453.0,
+      "share_pct": 42.7632
     }
   ]
 }

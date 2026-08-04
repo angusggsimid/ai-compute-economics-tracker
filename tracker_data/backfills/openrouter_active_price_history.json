@@ -1,8 +1,11 @@
 {
-  "fetchedAt": "2026-08-01T01:03:12Z",
+  "fetchedAt": "2026-08-04T03:04:01Z",
   "data": {
-    "asOf": "2026-08-01",
+    "asOf": "2026-08-04",
     "aliases": {
+      "qwen/qwen3.8-max": "qwen/qwen3.8-max",
+      "qwen/qwen3.8-max-20260803": "qwen/qwen3.8-max",
+      "~deepseek/deepseek-v4-flash-latest": "~deepseek/deepseek-v4-flash-latest",
       "deepseek/deepseek-v4-flash-0731": "deepseek/deepseek-v4-flash-0731",
       "deepseek/deepseek-v4-flash-20260731": "deepseek/deepseek-v4-flash-0731",
       "thinkingmachines/inkling-small": "thinkingmachines/inkling-small",
@@ -517,11 +520,23 @@
       "openai/gpt-4": "openai/gpt-4"
     },
     "currentModels": {
+      "qwen/qwen3.8-max": {
+        "name": "Qwen: Qwen3.8 Max",
+        "canonicalSlug": "qwen/qwen3.8-max-20260803",
+        "inputUsdPer1m": 2.0,
+        "outputUsdPer1m": 6.0
+      },
+      "~deepseek/deepseek-v4-flash-latest": {
+        "name": "DeepSeek V4 Flash Latest",
+        "canonicalSlug": "~deepseek/deepseek-v4-flash-latest",
+        "inputUsdPer1m": 0.09,
+        "outputUsdPer1m": 0.18
+      },
       "deepseek/deepseek-v4-flash-0731": {
         "name": "DeepSeek: DeepSeek V4 Flash 0731",
         "canonicalSlug": "deepseek/deepseek-v4-flash-20260731",
-        "inputUsdPer1m": 0.14,
-        "outputUsdPer1m": 0.28
+        "inputUsdPer1m": 0.09,
+        "outputUsdPer1m": 0.18
       },
       "thinkingmachines/inkling-small": {
         "name": "Thinking Machines: Inkling Small",
@@ -623,24 +638,24 @@
         "name": "OpenAI: GPT-5.6 Luna Pro",
         "canonicalSlug": "openai/gpt-5.6-luna-pro-20260709",
         "inputUsdPer1m": 0.09999999999999999,
-        "outputUsdPer1m": 0.6000000000000001
+        "outputUsdPer1m": 0.6
       },
       "openai/gpt-5.6-luna": {
         "name": "OpenAI: GPT-5.6 Luna",
         "canonicalSlug": "openai/gpt-5.6-luna-20260709",
         "inputUsdPer1m": 0.09999999999999999,
-        "outputUsdPer1m": 0.6000000000000001
+        "outputUsdPer1m": 0.6
       },
       "openai/gpt-5.6-terra-pro": {
         "name": "OpenAI: GPT-5.6 Terra Pro",
         "canonicalSlug": "openai/gpt-5.6-terra-pro-20260709",
-        "inputUsdPer1m": 1.0000000000000002,
+        "inputUsdPer1m": 1.0,
         "outputUsdPer1m": 6.0
       },
       "openai/gpt-5.6-terra": {
         "name": "OpenAI: GPT-5.6 Terra",
         "canonicalSlug": "openai/gpt-5.6-terra-20260709",
-        "inputUsdPer1m": 1.0000000000000002,
+        "inputUsdPer1m": 1.0,
         "outputUsdPer1m": 6.0
       },
       "openai/gpt-5.6-sol-pro": {
@@ -742,8 +757,8 @@
       "z-ai/glm-5.2": {
         "name": "Z.ai: GLM 5.2",
         "canonicalSlug": "z-ai/glm-5.2-20260616",
-        "inputUsdPer1m": 1.12,
-        "outputUsdPer1m": 3.52
+        "inputUsdPer1m": 0.76,
+        "outputUsdPer1m": 2.42
       },
       "openrouter/fusion": {
         "name": "OpenRouter: Fusion",
@@ -964,8 +979,8 @@
       "qwen/qwen3.6-27b": {
         "name": "Qwen: Qwen3.6 27B",
         "canonicalSlug": "qwen/qwen3.6-27b-20260422",
-        "inputUsdPer1m": 0.3,
-        "outputUsdPer1m": 2.0
+        "inputUsdPer1m": 0.28900000000000003,
+        "outputUsdPer1m": 2.4
       },
       "openai/gpt-5.5-pro": {
         "name": "OpenAI: GPT-5.5 Pro",
@@ -986,7 +1001,7 @@
         "outputUsdPer1m": 0.87
       },
       "deepseek/deepseek-v4-flash": {
-        "name": "DeepSeek: DeepSeek V4 Flash",
+        "name": "DeepSeek: DeepSeek V4 Flash 0423",
         "canonicalSlug": "deepseek/deepseek-v4-flash-20260423",
         "inputUsdPer1m": 0.14,
         "outputUsdPer1m": 0.28
@@ -1042,8 +1057,8 @@
       "moonshotai/kimi-k2.6": {
         "name": "MoonshotAI: Kimi K2.6",
         "canonicalSlug": "moonshotai/kimi-k2.6-20260420",
-        "inputUsdPer1m": 0.6,
-        "outputUsdPer1m": 3.41
+        "inputUsdPer1m": 0.589,
+        "outputUsdPer1m": 2.48
       },
       "anthropic/claude-opus-4.7": {
         "name": "Anthropic: Claude Opus 4.7",
@@ -1648,8 +1663,8 @@
       "qwen/qwen3-vl-30b-a3b-instruct": {
         "name": "Qwen: Qwen3 VL 30B A3B Instruct",
         "canonicalSlug": "qwen/qwen3-vl-30b-a3b-instruct",
-        "inputUsdPer1m": 0.13,
-        "outputUsdPer1m": 0.52
+        "inputUsdPer1m": 0.15,
+        "outputUsdPer1m": 0.6
       },
       "openai/gpt-5-pro": {
         "name": "OpenAI: GPT-5 Pro",
@@ -1690,8 +1705,8 @@
       "qwen/qwen3-vl-235b-a22b-thinking": {
         "name": "Qwen: Qwen3 VL 235B A22B Thinking",
         "canonicalSlug": "qwen/qwen3-vl-235b-a22b-thinking",
-        "inputUsdPer1m": 0.39999999999999997,
-        "outputUsdPer1m": 4.0
+        "inputUsdPer1m": 0.98,
+        "outputUsdPer1m": 3.95
       },
       "qwen/qwen3-vl-235b-a22b-instruct": {
         "name": "Qwen: Qwen3 VL 235B A22B Instruct",
@@ -1732,7 +1747,7 @@
       "qwen/qwen3-next-80b-a3b-instruct": {
         "name": "Qwen: Qwen3 Next 80B A3B Instruct",
         "canonicalSlug": "qwen/qwen3-next-80b-a3b-instruct-2509",
-        "inputUsdPer1m": 0.09999999999999999,
+        "inputUsdPer1m": 0.09,
         "outputUsdPer1m": 1.1
       },
       "qwen/qwen-plus-2025-07-28": {
@@ -1829,7 +1844,7 @@
         "name": "OpenAI: gpt-oss-20b",
         "canonicalSlug": "openai/gpt-oss-20b",
         "inputUsdPer1m": 0.03,
-        "outputUsdPer1m": 0.14
+        "outputUsdPer1m": 0.13
       },
       "openai/gpt-oss-20b:free": {
         "name": "OpenAI: gpt-oss-20b (free)",
@@ -1853,7 +1868,7 @@
         "name": "Qwen: Qwen3 Coder 30B A3B Instruct",
         "canonicalSlug": "qwen/qwen3-coder-30b-a3b-instruct",
         "inputUsdPer1m": 0.07,
-        "outputUsdPer1m": 0.28
+        "outputUsdPer1m": 0.27
       },
       "qwen/qwen3-30b-a3b-instruct-2507": {
         "name": "Qwen: Qwen3 30B A3B Instruct 2507",
@@ -1900,8 +1915,8 @@
       "qwen/qwen3-235b-a22b-2507": {
         "name": "Qwen: Qwen3 235B A22B Instruct 2507",
         "canonicalSlug": "qwen/qwen3-235b-a22b-07-25",
-        "inputUsdPer1m": 0.09,
-        "outputUsdPer1m": 0.55
+        "inputUsdPer1m": 0.14950000000000002,
+        "outputUsdPer1m": 0.5980000000000001
       },
       "moonshotai/kimi-k2": {
         "name": "MoonshotAI: Kimi K2 0711",
@@ -2272,8 +2287,8 @@
       "meta-llama/llama-3.3-70b-instruct": {
         "name": "Meta: Llama 3.3 70B Instruct",
         "canonicalSlug": "meta-llama/llama-3.3-70b-instruct",
-        "inputUsdPer1m": 0.13,
-        "outputUsdPer1m": 0.39999999999999997
+        "inputUsdPer1m": 0.09999999999999999,
+        "outputUsdPer1m": 0.32
       },
       "amazon/nova-lite-v1": {
         "name": "Amazon: Nova Lite 1.0",
@@ -2518,8 +2533,8 @@
       "gryphe/mythomax-l2-13b": {
         "name": "MythoMax 13B",
         "canonicalSlug": "gryphe/mythomax-l2-13b",
-        "inputUsdPer1m": 0.06,
-        "outputUsdPer1m": 0.06
+        "inputUsdPer1m": 0.08,
+        "outputUsdPer1m": 0.11
       },
       "openai/gpt-3.5-turbo": {
         "name": "OpenAI: GPT-3.5 Turbo",
@@ -2538,7 +2553,7 @@
       "qwen/qwen-2.5-72b-instruct": {
         "name": "Qwen2.5 72B Instruct",
         "firstSeen": "2024-09-21",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -2832,7 +2847,7 @@
       "cohere/command-r-plus-08-2024": {
         "name": "Cohere: Command R+ (08-2024)",
         "firstSeen": "2024-09-21",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -2855,7 +2870,7 @@
       "cohere/command-r-08-2024": {
         "name": "Cohere: Command R (08-2024)",
         "firstSeen": "2024-09-21",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -2930,7 +2945,7 @@
       "sao10k/l3.1-euryale-70b": {
         "name": "Sao10K: Llama 3.1 Euryale 70B v2.2",
         "firstSeen": "2024-09-21",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -3017,7 +3032,7 @@
       "nousresearch/hermes-3-llama-3.1-70b": {
         "name": "Nous: Hermes 3 70B Instruct",
         "firstSeen": "2024-09-21",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -3073,7 +3088,7 @@
       "nousresearch/hermes-3-llama-3.1-405b": {
         "name": "Nous: Hermes 3 405B Instruct",
         "firstSeen": "2024-09-21",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -3160,7 +3175,7 @@
       "sao10k/l3-lunaris-8b": {
         "name": "Sao10K: Llama 3 8B Lunaris",
         "firstSeen": "2024-09-21",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -3211,7 +3226,7 @@
       "openai/gpt-4o-2024-08-06": {
         "name": "OpenAI: GPT-4o (2024-08-06)",
         "firstSeen": "2024-09-21",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -3325,7 +3340,7 @@
       "meta-llama/llama-3.1-70b-instruct": {
         "name": "Meta: Llama 3.1 70B Instruct",
         "firstSeen": "2024-09-21",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -3396,7 +3411,7 @@
       "meta-llama/llama-3.1-8b-instruct": {
         "name": "Meta: Llama 3.1 8B Instruct",
         "firstSeen": "2024-09-21",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -3570,7 +3585,7 @@
       "mistralai/mistral-nemo": {
         "name": "Mistral: Mistral Nemo",
         "firstSeen": "2024-09-21",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -3768,7 +3783,7 @@
       "openai/gpt-4o-mini-2024-07-18": {
         "name": "OpenAI: GPT-4o-mini (2024-07-18)",
         "firstSeen": "2024-09-21",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -3781,7 +3796,7 @@
       "openai/gpt-4o-mini": {
         "name": "OpenAI: GPT-4o-mini",
         "firstSeen": "2024-09-21",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -3825,7 +3840,7 @@
       "google/gemma-2-27b-it": {
         "name": "Google: Gemma 2 27B",
         "firstSeen": "2024-09-21",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -4369,7 +4384,7 @@
       "deepseek/deepseek-chat": {
         "name": "DeepSeek: DeepSeek V3",
         "firstSeen": "2024-09-21",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -4552,7 +4567,7 @@
       "openai/gpt-4o-2024-05-13": {
         "name": "OpenAI: GPT-4o (2024-05-13)",
         "firstSeen": "2024-09-21",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -4565,7 +4580,7 @@
       "openai/gpt-4o": {
         "name": "OpenAI: GPT-4o",
         "firstSeen": "2024-09-21",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -4834,7 +4849,7 @@
       "mistralai/mixtral-8x22b-instruct": {
         "name": "Mistral: Mixtral 8x22B Instruct",
         "firstSeen": "2024-09-21",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -4890,7 +4905,7 @@
       "microsoft/wizardlm-2-8x22b": {
         "name": "WizardLM-2 8x22B",
         "firstSeen": "2024-09-21",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -4936,7 +4951,7 @@
       "openai/gpt-4-turbo": {
         "name": "OpenAI: GPT-4 Turbo",
         "firstSeen": "2024-09-21",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -5049,7 +5064,7 @@
       "anthropic/claude-3-haiku": {
         "name": "Anthropic: Claude 3 Haiku",
         "firstSeen": "2024-09-21",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -5127,7 +5142,7 @@
       "mistralai/mistral-large": {
         "name": "Mistral Large",
         "firstSeen": "2024-09-21",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -5140,7 +5155,7 @@
       "openai/gpt-4-turbo-preview": {
         "name": "OpenAI: GPT-4 Turbo Preview",
         "firstSeen": "2024-09-21",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -5153,7 +5168,7 @@
       "openai/gpt-3.5-turbo-0613": {
         "name": "OpenAI: GPT-3.5 Turbo (older v0613)",
         "firstSeen": "2024-09-21",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -5845,7 +5860,7 @@
       "openai/gpt-3.5-turbo-instruct": {
         "name": "OpenAI: GPT-3.5 Turbo Instruct",
         "firstSeen": "2024-09-21",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -5927,7 +5942,7 @@
       "openai/gpt-3.5-turbo-16k": {
         "name": "OpenAI: GPT-3.5 Turbo 16k",
         "firstSeen": "2024-09-21",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -5981,7 +5996,7 @@
       "mancer/weaver": {
         "name": "Mancer: Weaver (alpha)",
         "firstSeen": "2024-09-21",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -6125,7 +6140,7 @@
       "undi95/remm-slerp-l2-13b": {
         "name": "ReMM SLERP 13B",
         "firstSeen": "2024-09-21",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -6237,7 +6252,7 @@
       "gryphe/mythomax-l2-13b": {
         "name": "MythoMax 13B",
         "firstSeen": "2024-09-21",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -6289,6 +6304,11 @@
             "2025-10-21",
             0.06,
             0.06
+          ],
+          [
+            "2026-08-04",
+            0.08,
+            0.11
           ]
         ]
       },
@@ -6362,7 +6382,7 @@
       "openai/gpt-4": {
         "name": "OpenAI: GPT-4",
         "firstSeen": "2024-09-21",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -6401,7 +6421,7 @@
       "openai/gpt-3.5-turbo": {
         "name": "OpenAI: GPT-3.5 Turbo",
         "firstSeen": "2024-09-21",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -6544,7 +6564,7 @@
       "meta-llama/llama-3.2-3b-instruct": {
         "name": "Meta: Llama 3.2 3B Instruct",
         "firstSeen": "2024-09-26",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -6632,7 +6652,7 @@
       "meta-llama/llama-3.2-1b-instruct": {
         "name": "Meta: Llama 3.2 1B Instruct",
         "firstSeen": "2024-09-26",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -6683,7 +6703,7 @@
       "thedrummer/rocinante-12b": {
         "name": "TheDrummer: Rocinante 12B",
         "firstSeen": "2024-10-01",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -6931,7 +6951,7 @@
       "qwen/qwen-2.5-7b-instruct": {
         "name": "Qwen: Qwen2.5 7B Instruct",
         "firstSeen": "2024-10-16",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -7110,7 +7130,7 @@
       "anthracite-org/magnum-v4-72b": {
         "name": "Magnum v4 72B",
         "firstSeen": "2024-10-23",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -7280,7 +7300,7 @@
       "qwen/qwen-2.5-coder-32b-instruct": {
         "name": "Qwen2.5 Coder 32B Instruct",
         "firstSeen": "2024-11-12",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -7381,7 +7401,7 @@
       "thedrummer/unslopnemo-12b": {
         "name": "TheDrummer: UnslopNemo 12B",
         "firstSeen": "2024-11-13",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -7463,7 +7483,7 @@
       "mistralai/mistral-large-2407": {
         "name": "Mistral Large 2407",
         "firstSeen": "2024-11-19",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -7515,7 +7535,7 @@
       "openai/gpt-4o-2024-11-20": {
         "name": "OpenAI: GPT-4o (2024-11-20)",
         "firstSeen": "2024-11-21",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -7730,7 +7750,7 @@
       "amazon/nova-lite-v1": {
         "name": "Amazon: Nova Lite 1.0",
         "firstSeen": "2024-12-06",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -7743,7 +7763,7 @@
       "amazon/nova-micro-v1": {
         "name": "Amazon: Nova Micro 1.0",
         "firstSeen": "2024-12-06",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -7756,7 +7776,7 @@
       "amazon/nova-pro-v1": {
         "name": "Amazon: Nova Pro 1.0",
         "firstSeen": "2024-12-06",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -7782,7 +7802,7 @@
       "meta-llama/llama-3.3-70b-instruct": {
         "name": "Meta: Llama 3.3 70B Instruct",
         "firstSeen": "2024-12-07",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -7939,6 +7959,11 @@
             "2026-07-15",
             0.13,
             0.4
+          ],
+          [
+            "2026-08-04",
+            0.1,
+            0.32
           ]
         ]
       },
@@ -7968,7 +7993,7 @@
       "cohere/command-r7b-12-2024": {
         "name": "Cohere: Command R7B (12-2024)",
         "firstSeen": "2024-12-14",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -8020,7 +8045,7 @@
       "openai/o1": {
         "name": "OpenAI: o1",
         "firstSeen": "2024-12-18",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -8033,7 +8058,7 @@
       "sao10k/l3.3-euryale-70b": {
         "name": "Sao10K: Llama 3.3 Euryale 70B",
         "firstSeen": "2024-12-19",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -8121,7 +8146,7 @@
       "microsoft/phi-4": {
         "name": "Microsoft: Phi 4",
         "firstSeen": "2025-01-10",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -8172,7 +8197,7 @@
       "minimax/minimax-01": {
         "name": "MiniMax: MiniMax-01",
         "firstSeen": "2025-01-15",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -8185,7 +8210,7 @@
       "deepseek/deepseek-r1": {
         "name": "DeepSeek: R1",
         "firstSeen": "2025-01-21",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -8327,7 +8352,7 @@
       "deepseek/deepseek-r1-distill-llama-70b": {
         "name": "DeepSeek: R1 Distill Llama 70B",
         "firstSeen": "2025-01-24",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -8576,7 +8601,7 @@
       "perplexity/sonar": {
         "name": "Perplexity: Sonar",
         "firstSeen": "2025-01-30",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -8589,7 +8614,7 @@
       "mistralai/mistral-small-24b-instruct-2501": {
         "name": "Mistral: Mistral Small 3",
         "firstSeen": "2025-01-31",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -8690,7 +8715,7 @@
       "openai/o3-mini": {
         "name": "OpenAI: o3 Mini",
         "firstSeen": "2025-02-01",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -8729,7 +8754,7 @@
       "qwen/qwen-plus": {
         "name": "Qwen: Qwen-Plus",
         "firstSeen": "2025-02-01",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -8946,7 +8971,7 @@
       "aion-labs/aion-rp-llama-3.1-8b": {
         "name": "AionLabs: Aion-RP 1.0 (8B)",
         "firstSeen": "2025-02-06",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -9095,7 +9120,7 @@
       "openai/o3-mini-high": {
         "name": "OpenAI: o3 Mini High",
         "firstSeen": "2025-02-13",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -9134,7 +9159,7 @@
       "mistralai/mistral-saba": {
         "name": "Mistral: Saba",
         "firstSeen": "2025-02-18",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -9225,7 +9250,7 @@
       "qwen/qwen2.5-vl-72b-instruct": {
         "name": "Qwen: Qwen2.5 VL 72B Instruct",
         "firstSeen": "2025-02-28",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -9470,7 +9495,7 @@
       "perplexity/sonar-reasoning-pro": {
         "name": "Perplexity: Sonar Reasoning Pro",
         "firstSeen": "2025-03-07",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -9483,7 +9508,7 @@
       "perplexity/sonar-pro": {
         "name": "Perplexity: Sonar Pro",
         "firstSeen": "2025-03-07",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -9496,7 +9521,7 @@
       "perplexity/sonar-deep-research": {
         "name": "Perplexity: Sonar Deep Research",
         "firstSeen": "2025-03-07",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -9650,7 +9675,7 @@
       "thedrummer/skyfall-36b-v2": {
         "name": "TheDrummer: Skyfall 36B V2",
         "firstSeen": "2025-03-11",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -9830,7 +9855,7 @@
       "google/gemma-3-27b-it": {
         "name": "Google: Gemma 3 27B",
         "firstSeen": "2025-03-13",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -10054,7 +10079,7 @@
       "cohere/command-a": {
         "name": "Cohere: Command A",
         "firstSeen": "2025-03-15",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -10144,7 +10169,7 @@
       "mistralai/mistral-small-3.1-24b-instruct": {
         "name": "Mistral: Mistral Small 3.1 24B",
         "firstSeen": "2025-03-19",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -10245,7 +10270,7 @@
       "openai/o1-pro": {
         "name": "OpenAI: o1-pro",
         "firstSeen": "2025-03-22",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -10284,7 +10309,7 @@
       "deepseek/deepseek-chat-v3-0324": {
         "name": "DeepSeek: DeepSeek V3 0324",
         "firstSeen": "2025-03-25",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -10496,7 +10521,7 @@
       "google/gemma-3-4b-it": {
         "name": "Google: Gemma 3 4B",
         "firstSeen": "2025-03-29",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -10529,7 +10554,7 @@
       "google/gemma-3-12b-it": {
         "name": "Google: Gemma 3 12B",
         "firstSeen": "2025-03-29",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -10683,7 +10708,7 @@
       "meta-llama/llama-4-maverick": {
         "name": "Meta: Llama 4 Maverick",
         "firstSeen": "2025-04-06",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -10774,7 +10799,7 @@
       "meta-llama/llama-4-scout": {
         "name": "Meta: Llama 4 Scout",
         "firstSeen": "2025-04-06",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -11010,7 +11035,7 @@
       "openai/gpt-4.1": {
         "name": "OpenAI: GPT-4.1",
         "firstSeen": "2025-04-15",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -11023,7 +11048,7 @@
       "openai/gpt-4.1-mini": {
         "name": "OpenAI: GPT-4.1 Mini",
         "firstSeen": "2025-04-15",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -11036,7 +11061,7 @@
       "openai/gpt-4.1-nano": {
         "name": "OpenAI: GPT-4.1 Nano",
         "firstSeen": "2025-04-15",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -11126,7 +11151,7 @@
       "openai/o4-mini-high": {
         "name": "OpenAI: o4 Mini High",
         "firstSeen": "2025-04-17",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -11139,7 +11164,7 @@
       "openai/o3": {
         "name": "OpenAI: o3",
         "firstSeen": "2025-04-17",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -11157,7 +11182,7 @@
       "openai/o4-mini": {
         "name": "OpenAI: o4 Mini",
         "firstSeen": "2025-04-17",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -11382,7 +11407,7 @@
       "qwen/qwen3-30b-a3b": {
         "name": "Qwen: Qwen3 30B A3B",
         "firstSeen": "2025-04-29",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -11494,7 +11519,7 @@
       "qwen/qwen3-32b": {
         "name": "Qwen: Qwen3 32B",
         "firstSeen": "2025-04-29",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -11560,7 +11585,7 @@
       "qwen/qwen3-235b-a22b": {
         "name": "Qwen: Qwen3 235B A22B",
         "firstSeen": "2025-04-29",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -11643,7 +11668,7 @@
       "qwen/qwen3-14b": {
         "name": "Qwen: Qwen3 14B",
         "firstSeen": "2025-04-29",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -11767,7 +11792,7 @@
       "meta-llama/llama-guard-4-12b": {
         "name": "Meta: Llama Guard 4 12B",
         "firstSeen": "2025-04-30",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -11863,7 +11888,7 @@
       "qwen/qwen3-8b": {
         "name": "Qwen: Qwen3 8B",
         "firstSeen": "2025-05-01",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -12018,7 +12043,7 @@
       "arcee-ai/virtuoso-large": {
         "name": "Arcee AI: Virtuoso Large",
         "firstSeen": "2025-05-06",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -12070,7 +12095,7 @@
       "google/gemini-2.5-pro-preview": {
         "name": "Google: Gemini 2.5 Pro Preview 06-05",
         "firstSeen": "2025-05-07",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -12083,7 +12108,7 @@
       "mistralai/mistral-medium-3": {
         "name": "Mistral: Mistral Medium 3",
         "firstSeen": "2025-05-08",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -12230,7 +12255,7 @@
       "anthropic/claude-opus-4": {
         "name": "Anthropic: Claude Opus 4",
         "firstSeen": "2025-05-23",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -12243,7 +12268,7 @@
       "anthropic/claude-sonnet-4": {
         "name": "Anthropic: Claude Sonnet 4",
         "firstSeen": "2025-05-23",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -12341,7 +12366,7 @@
       "deepseek/deepseek-r1-0528": {
         "name": "DeepSeek: R1 0528",
         "firstSeen": "2025-05-29",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -12529,7 +12554,7 @@
       "google/gemini-2.5-pro-preview-05-06": {
         "name": "Google: Gemini 2.5 Pro Preview 05-06",
         "firstSeen": "2025-06-06",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -12591,7 +12616,7 @@
       "openai/o3-pro": {
         "name": "OpenAI: o3 Pro",
         "firstSeen": "2025-06-11",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -12617,7 +12642,7 @@
       "minimax/minimax-m1": {
         "name": "MiniMax: MiniMax M1",
         "firstSeen": "2025-06-18",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -12671,7 +12696,7 @@
       "google/gemini-2.5-flash": {
         "name": "Google: Gemini 2.5 Flash",
         "firstSeen": "2025-06-18",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -12684,7 +12709,7 @@
       "google/gemini-2.5-pro": {
         "name": "Google: Gemini 2.5 Pro",
         "firstSeen": "2025-06-18",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -12736,7 +12761,7 @@
       "mistralai/mistral-small-3.2-24b-instruct": {
         "name": "Mistral: Mistral Small 3.2 24B",
         "firstSeen": "2025-06-24",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -12856,7 +12881,7 @@
       "google/gemma-3n-e4b-it": {
         "name": "Google: Gemma 3n 4B",
         "firstSeen": "2025-06-27",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -12976,7 +13001,7 @@
       "morph/morph-v3-large": {
         "name": "Morph: Morph V3 Large",
         "firstSeen": "2025-07-08",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -12994,7 +13019,7 @@
       "morph/morph-v3-fast": {
         "name": "Morph: Morph V3 Fast",
         "firstSeen": "2025-07-08",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -13177,7 +13202,7 @@
       "moonshotai/kimi-k2": {
         "name": "MoonshotAI: Kimi K2 0711",
         "firstSeen": "2025-07-12",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -13281,7 +13306,7 @@
       "tencent/hunyuan-a13b-instruct": {
         "name": "Tencent: Hunyuan A13B Instruct",
         "firstSeen": "2025-07-16",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -13312,7 +13337,7 @@
       "rekaai/reka-flash-3": {
         "name": "Reka Flash 3",
         "firstSeen": "2025-07-16",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -13602,7 +13627,7 @@
       "qwen/qwen3-coder": {
         "name": "Qwen: Qwen3 Coder 480B A35B",
         "firstSeen": "2025-07-23",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -13670,7 +13695,7 @@
       "bytedance/ui-tars-1.5-7b": {
         "name": "ByteDance: UI-TARS 7B ",
         "firstSeen": "2025-07-23",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -13683,7 +13708,7 @@
       "google/gemini-2.5-flash-lite": {
         "name": "Google: Gemini 2.5 Flash Lite",
         "firstSeen": "2025-07-23",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -13709,7 +13734,7 @@
       "qwen/qwen3-235b-a22b-thinking-2507": {
         "name": "Qwen: Qwen3 235B A22B Thinking 2507",
         "firstSeen": "2025-07-26",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -13805,7 +13830,7 @@
       "qwen/qwen3-235b-a22b-2507": {
         "name": "Qwen: Qwen3 235B A22B Instruct 2507",
         "firstSeen": "2025-07-26",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -13872,6 +13897,11 @@
             "2026-07-12",
             0.09,
             0.55
+          ],
+          [
+            "2026-08-03",
+            0.1495,
+            0.598
           ]
         ]
       },
@@ -13909,7 +13939,7 @@
       "z-ai/glm-4.5": {
         "name": "Z.ai: GLM 4.5",
         "firstSeen": "2025-07-29",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -14002,7 +14032,7 @@
       "z-ai/glm-4.5-air": {
         "name": "Z.ai: GLM 4.5 Air",
         "firstSeen": "2025-07-29",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -14106,7 +14136,7 @@
       "qwen/qwen3-30b-a3b-instruct-2507": {
         "name": "Qwen: Qwen3 30B A3B Instruct 2507",
         "firstSeen": "2025-07-31",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -14182,7 +14212,7 @@
       "mistralai/codestral-2508": {
         "name": "Mistral: Codestral 2508",
         "firstSeen": "2025-08-02",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -14261,7 +14291,7 @@
       "openai/gpt-oss-120b": {
         "name": "OpenAI: gpt-oss-120b",
         "firstSeen": "2025-08-06",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -14364,7 +14394,7 @@
       "openai/gpt-oss-20b": {
         "name": "OpenAI: gpt-oss-20b",
         "firstSeen": "2025-08-06",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -14451,13 +14481,18 @@
             "2026-07-31",
             0.03,
             0.14
+          ],
+          [
+            "2026-08-01",
+            0.03,
+            0.13
           ]
         ]
       },
       "anthropic/claude-opus-4.1": {
         "name": "Anthropic: Claude Opus 4.1",
         "firstSeen": "2025-08-06",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -14470,7 +14505,7 @@
       "openai/gpt-oss-20b:free": {
         "name": "OpenAI: gpt-oss-20b (free)",
         "firstSeen": "2025-08-07",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -14496,7 +14531,7 @@
       "openai/gpt-5": {
         "name": "OpenAI: GPT-5",
         "firstSeen": "2025-08-08",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -14519,7 +14554,7 @@
       "openai/gpt-5-mini": {
         "name": "OpenAI: GPT-5 Mini",
         "firstSeen": "2025-08-08",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -14532,7 +14567,7 @@
       "openai/gpt-5-nano": {
         "name": "OpenAI: GPT-5 Nano",
         "firstSeen": "2025-08-08",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -14558,7 +14593,7 @@
       "ai21/jamba-large-1.7": {
         "name": "AI21: Jamba Large 1.7",
         "firstSeen": "2025-08-09",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -14571,7 +14606,7 @@
       "z-ai/glm-4.5v": {
         "name": "Z.ai: GLM 4.5V",
         "firstSeen": "2025-08-12",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -14614,7 +14649,7 @@
       "mistralai/mistral-medium-3.1": {
         "name": "Mistral: Mistral Medium 3.1",
         "firstSeen": "2025-08-14",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -14673,7 +14708,7 @@
       "baidu/ernie-4.5-vl-424b-a47b": {
         "name": "Baidu: ERNIE 4.5 VL 424B A47B ",
         "firstSeen": "2025-08-18",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -14727,7 +14762,7 @@
       "deepseek/deepseek-chat-v3.1": {
         "name": "DeepSeek: DeepSeek V3.1",
         "firstSeen": "2025-08-22",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -14798,7 +14833,7 @@
       "nousresearch/hermes-4-70b": {
         "name": "Nous: Hermes 4 70B",
         "firstSeen": "2025-08-27",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -14831,7 +14866,7 @@
       "nousresearch/hermes-4-405b": {
         "name": "Nous: Hermes 4 405B",
         "firstSeen": "2025-08-27",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -14885,7 +14920,7 @@
       "qwen/qwen3-30b-a3b-thinking-2507": {
         "name": "Qwen: Qwen3 30B A3B Thinking 2507",
         "firstSeen": "2025-08-29",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -14951,7 +14986,7 @@
       "qwen/qwen3-coder-30b-a3b-instruct": {
         "name": "Qwen: Qwen3 Coder 30B A3B Instruct",
         "firstSeen": "2025-08-29",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -14983,6 +15018,11 @@
             "2026-08-01",
             0.07,
             0.28
+          ],
+          [
+            "2026-08-04",
+            0.07,
+            0.27
           ]
         ]
       },
@@ -15041,7 +15081,7 @@
       "moonshotai/kimi-k2-0905": {
         "name": "MoonshotAI: Kimi K2 0905",
         "firstSeen": "2025-09-05",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -15099,7 +15139,7 @@
       "qwen/qwen3-max": {
         "name": "Qwen: Qwen3 Max",
         "firstSeen": "2025-09-06",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -15243,7 +15283,7 @@
       "nvidia/nemotron-nano-9b-v2:free": {
         "name": "NVIDIA: Nemotron Nano 9B V2 (free)",
         "firstSeen": "2025-09-11",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -15256,7 +15296,7 @@
       "qwen/qwen3-next-80b-a3b-thinking": {
         "name": "Qwen: Qwen3 Next 80B A3B Thinking",
         "firstSeen": "2025-09-12",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -15319,7 +15359,7 @@
       "qwen/qwen3-next-80b-a3b-instruct": {
         "name": "Qwen: Qwen3 Next 80B A3B Instruct",
         "firstSeen": "2025-09-12",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -15381,13 +15421,18 @@
             "2026-07-25",
             0.1,
             1.1
+          ],
+          [
+            "2026-08-04",
+            0.09,
+            1.1
           ]
         ]
       },
       "qwen/qwen-plus-2025-07-28": {
         "name": "Qwen: Qwen Plus 0728",
         "firstSeen": "2025-09-12",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -15405,7 +15450,7 @@
       "qwen/qwen-plus-2025-07-28:thinking": {
         "name": "Qwen: Qwen Plus 0728 (thinking)",
         "firstSeen": "2025-09-12",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -15489,7 +15534,7 @@
       "qwen/qwen3-coder-flash": {
         "name": "Qwen: Qwen3 Coder Flash",
         "firstSeen": "2025-09-18",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -15507,7 +15552,7 @@
       "qwen/qwen3-coder-plus": {
         "name": "Qwen: Qwen3 Coder Plus",
         "firstSeen": "2025-09-18",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -15581,7 +15626,7 @@
       "deepseek/deepseek-v3.1-terminus": {
         "name": "DeepSeek: DeepSeek V3.1 Terminus",
         "firstSeen": "2025-09-23",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -15629,7 +15674,7 @@
       "qwen/qwen3-vl-235b-a22b-thinking": {
         "name": "Qwen: Qwen3 VL 235B A22B Thinking",
         "firstSeen": "2025-09-24",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -15686,13 +15731,18 @@
             "2026-07-29",
             0.4,
             4.0
+          ],
+          [
+            "2026-08-03",
+            0.98,
+            3.95
           ]
         ]
       },
       "qwen/qwen3-vl-235b-a22b-instruct": {
         "name": "Qwen: Qwen3 VL 235B A22B Instruct",
         "firstSeen": "2025-09-24",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -15835,7 +15885,7 @@
       "thedrummer/cydonia-24b-v4.1": {
         "name": "TheDrummer: Cydonia 24B V4.1",
         "firstSeen": "2025-09-27",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -15853,7 +15903,7 @@
       "relace/relace-apply-3": {
         "name": "Relace: Relace Apply 3",
         "firstSeen": "2025-09-27",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -15866,7 +15916,7 @@
       "anthropic/claude-sonnet-4.5": {
         "name": "Anthropic: Claude Sonnet 4.5",
         "firstSeen": "2025-09-30",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -15879,7 +15929,7 @@
       "deepseek/deepseek-v3.2-exp": {
         "name": "DeepSeek: DeepSeek V3.2 Exp",
         "firstSeen": "2025-09-30",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -15912,7 +15962,7 @@
       "z-ai/glm-4.6": {
         "name": "Z.ai: GLM 4.6",
         "firstSeen": "2025-10-01",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -16011,7 +16061,7 @@
       "openai/gpt-5-pro": {
         "name": "OpenAI: GPT-5 Pro",
         "firstSeen": "2025-10-07",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -16024,7 +16074,7 @@
       "google/gemini-2.5-flash-image": {
         "name": "Google: Nano Banana (Gemini 2.5 Flash Image)",
         "firstSeen": "2025-10-08",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -16060,7 +16110,7 @@
       "qwen/qwen3-vl-30b-a3b-thinking": {
         "name": "Qwen: Qwen3 VL 30B A3B Thinking",
         "firstSeen": "2025-10-10",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -16108,7 +16158,7 @@
       "qwen/qwen3-vl-30b-a3b-instruct": {
         "name": "Qwen: Qwen3 VL 30B A3B Instruct",
         "firstSeen": "2025-10-10",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -16227,7 +16277,7 @@
       "qwen/qwen3-vl-8b-thinking": {
         "name": "Qwen: Qwen3 VL 8B Thinking",
         "firstSeen": "2025-10-15",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -16250,7 +16300,7 @@
       "qwen/qwen3-vl-8b-instruct": {
         "name": "Qwen: Qwen3 VL 8B Instruct",
         "firstSeen": "2025-10-15",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -16314,7 +16364,7 @@
       "anthropic/claude-haiku-4.5": {
         "name": "Anthropic: Claude Haiku 4.5",
         "firstSeen": "2025-10-16",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -16327,7 +16377,7 @@
       "openai/gpt-5-image": {
         "name": "OpenAI: GPT-5 Image",
         "firstSeen": "2025-10-16",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -16345,7 +16395,7 @@
       "openai/gpt-5-image-mini": {
         "name": "OpenAI: GPT-5 Image Mini",
         "firstSeen": "2025-10-17",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -16410,7 +16460,7 @@
       "ibm-granite/granite-4.0-h-micro": {
         "name": "IBM: Granite 4.0 Micro",
         "firstSeen": "2025-10-20",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -16571,7 +16621,7 @@
       "qwen/qwen3-vl-32b-instruct": {
         "name": "Qwen: Qwen3 VL 32B Instruct",
         "firstSeen": "2025-10-24",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -16643,7 +16693,7 @@
       "nvidia/nemotron-nano-12b-v2-vl:free": {
         "name": "NVIDIA: Nemotron Nano 12B 2 VL (free)",
         "firstSeen": "2025-10-29",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -16656,7 +16706,7 @@
       "openai/gpt-oss-safeguard-20b": {
         "name": "OpenAI: gpt-oss-safeguard-20b",
         "firstSeen": "2025-10-30",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -16692,7 +16742,7 @@
       "minimax/minimax-m2": {
         "name": "MiniMax: MiniMax M2",
         "firstSeen": "2025-10-30",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -16773,7 +16823,7 @@
       "perplexity/sonar-pro-search": {
         "name": "Perplexity: Sonar Pro Search",
         "firstSeen": "2025-10-31",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -16786,7 +16836,7 @@
       "mistralai/voxtral-small-24b-2507": {
         "name": "Mistral: Voxtral Small 24B 2507",
         "firstSeen": "2025-10-31",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -16799,7 +16849,7 @@
       "amazon/nova-premier-v1": {
         "name": "Amazon: Nova Premier 1.0",
         "firstSeen": "2025-11-01",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -16825,7 +16875,7 @@
       "moonshotai/kimi-k2-thinking": {
         "name": "MoonshotAI: Kimi K2 Thinking",
         "firstSeen": "2025-11-07",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -16914,7 +16964,7 @@
       "openai/gpt-5.1": {
         "name": "OpenAI: GPT-5.1",
         "firstSeen": "2025-11-14",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -16940,7 +16990,7 @@
       "openai/gpt-5.1-codex": {
         "name": "OpenAI: GPT-5.1-Codex",
         "firstSeen": "2025-11-14",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -16953,7 +17003,7 @@
       "openai/gpt-5.1-codex-mini": {
         "name": "OpenAI: GPT-5.1-Codex-Mini",
         "firstSeen": "2025-11-14",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -17028,7 +17078,7 @@
       "deepcogito/cogito-v2.1-671b": {
         "name": "Deep Cogito: Cogito v2.1 671B",
         "firstSeen": "2025-11-20",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -17041,7 +17091,7 @@
       "google/gemini-3-pro-image-preview": {
         "name": "Google: Nano Banana Pro (Gemini 3 Pro Image Preview)",
         "firstSeen": "2025-11-21",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -17067,7 +17117,7 @@
       "allenai/olmo-3-32b-think": {
         "name": "AllenAI: Olmo 3 32B Think",
         "firstSeen": "2025-11-22",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -17121,7 +17171,7 @@
       "anthropic/claude-opus-4.5": {
         "name": "Anthropic: Claude Opus 4.5",
         "firstSeen": "2025-11-25",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -17245,7 +17295,7 @@
       "deepseek/deepseek-v3.2": {
         "name": "DeepSeek: DeepSeek V3.2",
         "firstSeen": "2025-12-02",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -17396,7 +17446,7 @@
       "amazon/nova-2-lite-v1": {
         "name": "Amazon: Nova 2 Lite",
         "firstSeen": "2025-12-03",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -17409,7 +17459,7 @@
       "mistralai/mistral-large-2512": {
         "name": "Mistral: Mistral Large 3 2512",
         "firstSeen": "2025-12-03",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -17435,7 +17485,7 @@
       "mistralai/ministral-14b-2512": {
         "name": "Mistral: Ministral 3 14B 2512",
         "firstSeen": "2025-12-05",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -17448,7 +17498,7 @@
       "mistralai/ministral-8b-2512": {
         "name": "Mistral: Ministral 3 8B 2512",
         "firstSeen": "2025-12-05",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -17461,7 +17511,7 @@
       "mistralai/ministral-3b-2512": {
         "name": "Mistral: Ministral 3 3B 2512",
         "firstSeen": "2025-12-05",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -17474,7 +17524,7 @@
       "openrouter/bodybuilder": {
         "name": "Body Builder (beta)",
         "firstSeen": "2025-12-05",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -17487,7 +17537,7 @@
       "openai/gpt-5.1-codex-max": {
         "name": "OpenAI: GPT-5.1-Codex-Max",
         "firstSeen": "2025-12-06",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -17500,7 +17550,7 @@
       "relace/relace-search": {
         "name": "Relace: Relace Search",
         "firstSeen": "2025-12-09",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -17513,7 +17563,7 @@
       "z-ai/glm-4.6v": {
         "name": "Z.ai: GLM 4.6V",
         "firstSeen": "2025-12-09",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -17588,7 +17638,7 @@
       "openai/gpt-5.2-chat": {
         "name": "OpenAI: GPT-5.2 Chat",
         "firstSeen": "2025-12-12",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -17601,7 +17651,7 @@
       "openai/gpt-5.2-pro": {
         "name": "OpenAI: GPT-5.2 Pro",
         "firstSeen": "2025-12-12",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -17614,7 +17664,7 @@
       "openai/gpt-5.2": {
         "name": "OpenAI: GPT-5.2",
         "firstSeen": "2025-12-12",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -17640,7 +17690,7 @@
       "nvidia/nemotron-3-nano-30b-a3b:free": {
         "name": "NVIDIA: Nemotron 3 Nano 30B A3B (free)",
         "firstSeen": "2025-12-16",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -17692,7 +17742,7 @@
       "google/gemini-3-flash-preview": {
         "name": "Google: Gemini 3 Flash Preview",
         "firstSeen": "2025-12-18",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -17705,7 +17755,7 @@
       "nvidia/nemotron-3-nano-30b-a3b": {
         "name": "NVIDIA: Nemotron 3 Nano 30B A3B",
         "firstSeen": "2025-12-19",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -17723,7 +17773,7 @@
       "z-ai/glm-4.7": {
         "name": "Z.ai: GLM 4.7",
         "firstSeen": "2025-12-23",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -17796,7 +17846,7 @@
       "minimax/minimax-m2.1": {
         "name": "MiniMax: MiniMax M2.1",
         "firstSeen": "2025-12-23",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -17854,7 +17904,7 @@
       "bytedance-seed/seed-1.6-flash": {
         "name": "ByteDance Seed: Seed 1.6 Flash",
         "firstSeen": "2025-12-24",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -17867,7 +17917,7 @@
       "bytedance-seed/seed-1.6": {
         "name": "ByteDance Seed: Seed 1.6",
         "firstSeen": "2025-12-24",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -17950,7 +18000,7 @@
       "openai/gpt-5.2-codex": {
         "name": "OpenAI: GPT-5.2-Codex",
         "firstSeen": "2026-01-15",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -17999,7 +18049,7 @@
       "openai/gpt-audio": {
         "name": "OpenAI: GPT Audio",
         "firstSeen": "2026-01-20",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -18012,7 +18062,7 @@
       "openai/gpt-audio-mini": {
         "name": "OpenAI: GPT Audio Mini",
         "firstSeen": "2026-01-20",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -18025,7 +18075,7 @@
       "z-ai/glm-4.7-flash": {
         "name": "Z.ai: GLM 4.7 Flash",
         "firstSeen": "2026-01-20",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -18089,7 +18139,7 @@
       "writer/palmyra-x5": {
         "name": "Writer: Palmyra X5",
         "firstSeen": "2026-01-22",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -18102,7 +18152,7 @@
       "minimax/minimax-m2-her": {
         "name": "MiniMax: MiniMax M2-her",
         "firstSeen": "2026-01-25",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -18115,7 +18165,7 @@
       "moonshotai/kimi-k2.5": {
         "name": "MoonshotAI: Kimi K2.5",
         "firstSeen": "2026-01-27",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -18264,7 +18314,7 @@
       "openrouter/free": {
         "name": "Free Models Router",
         "firstSeen": "2026-02-02",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -18295,7 +18345,7 @@
       "qwen/qwen3-coder-next": {
         "name": "Qwen: Qwen3 Coder Next",
         "firstSeen": "2026-02-04",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -18376,7 +18426,7 @@
       "anthropic/claude-opus-4.6": {
         "name": "Anthropic: Claude Opus 4.6",
         "firstSeen": "2026-02-06",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -18402,7 +18452,7 @@
       "qwen/qwen3-max-thinking": {
         "name": "Qwen: Qwen3 Max Thinking",
         "firstSeen": "2026-02-10",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -18433,7 +18483,7 @@
       "stepfun/step-3.5-flash": {
         "name": "StepFun: Step 3.5 Flash",
         "firstSeen": "2026-02-11",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -18456,7 +18506,7 @@
       "z-ai/glm-5": {
         "name": "Z.ai: GLM 5",
         "firstSeen": "2026-02-12",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -18534,7 +18584,7 @@
       "minimax/minimax-m2.5": {
         "name": "MiniMax: MiniMax M2.5",
         "firstSeen": "2026-02-13",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -18660,7 +18710,7 @@
       "qwen/qwen3.5-plus-02-15": {
         "name": "Qwen: Qwen3.5 Plus 2026-02-15",
         "firstSeen": "2026-02-16",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -18678,7 +18728,7 @@
       "qwen/qwen3.5-397b-a17b": {
         "name": "Qwen: Qwen3.5 397B A17B",
         "firstSeen": "2026-02-16",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -18721,7 +18771,7 @@
       "anthropic/claude-sonnet-4.6": {
         "name": "Anthropic: Claude Sonnet 4.6",
         "firstSeen": "2026-02-18",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -18734,7 +18784,7 @@
       "google/gemini-3.1-pro-preview": {
         "name": "Google: Gemini 3.1 Pro Preview",
         "firstSeen": "2026-02-20",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -18747,7 +18797,7 @@
       "openai/gpt-5.3-codex": {
         "name": "OpenAI: GPT-5.3-Codex",
         "firstSeen": "2026-02-25",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -18760,7 +18810,7 @@
       "aion-labs/aion-2.0": {
         "name": "AionLabs: Aion-2.0",
         "firstSeen": "2026-02-25",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -18773,7 +18823,7 @@
       "qwen/qwen3.5-35b-a3b": {
         "name": "Qwen: Qwen3.5-35B-A3B",
         "firstSeen": "2026-02-26",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -18836,7 +18886,7 @@
       "qwen/qwen3.5-27b": {
         "name": "Qwen: Qwen3.5-27B",
         "firstSeen": "2026-02-26",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -18864,7 +18914,7 @@
       "qwen/qwen3.5-122b-a10b": {
         "name": "Qwen: Qwen3.5-122B-A10B",
         "firstSeen": "2026-02-26",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -18876,13 +18926,18 @@
             "2026-03-04",
             0.26,
             2.08
+          ],
+          [
+            "2026-08-03",
+            0.4,
+            3.2
           ]
         ]
       },
       "qwen/qwen3.5-flash-02-23": {
         "name": "Qwen: Qwen3.5-Flash",
         "firstSeen": "2026-02-26",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -18913,7 +18968,7 @@
       "google/gemini-3.1-pro-preview-customtools": {
         "name": "Google: Gemini 3.1 Pro Preview Custom Tools",
         "firstSeen": "2026-02-26",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -18926,7 +18981,7 @@
       "bytedance-seed/seed-2.0-mini": {
         "name": "ByteDance Seed: Seed-2.0-Mini",
         "firstSeen": "2026-02-27",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -18939,7 +18994,7 @@
       "google/gemini-3.1-flash-image-preview": {
         "name": "Google: Nano Banana 2 (Gemini 3.1 Flash Image Preview)",
         "firstSeen": "2026-02-27",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -18957,7 +19012,7 @@
       "upstage/solar-pro-3": {
         "name": "Upstage: Solar Pro 3",
         "firstSeen": "2026-03-03",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -18970,7 +19025,7 @@
       "openai/gpt-5.3-chat": {
         "name": "OpenAI: GPT-5.3 Chat",
         "firstSeen": "2026-03-04",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -18983,7 +19038,7 @@
       "google/gemini-3.1-flash-lite-preview": {
         "name": "Google: Gemini 3.1 Flash Lite Preview",
         "firstSeen": "2026-03-04",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -18996,7 +19051,7 @@
       "openai/gpt-5.4-pro": {
         "name": "OpenAI: GPT-5.4 Pro",
         "firstSeen": "2026-03-06",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -19009,7 +19064,7 @@
       "openai/gpt-5.4": {
         "name": "OpenAI: GPT-5.4",
         "firstSeen": "2026-03-06",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -19022,7 +19077,7 @@
       "inception/mercury-2": {
         "name": "Inception: Mercury 2",
         "firstSeen": "2026-03-06",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -19035,7 +19090,7 @@
       "bytedance-seed/seed-2.0-lite": {
         "name": "ByteDance Seed: Seed-2.0-Lite",
         "firstSeen": "2026-03-11",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -19048,7 +19103,7 @@
       "qwen/qwen3.5-9b": {
         "name": "Qwen: Qwen3.5-9B",
         "firstSeen": "2026-03-11",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -19107,7 +19162,7 @@
       "nvidia/nemotron-3-super-120b-a12b:free": {
         "name": "NVIDIA: Nemotron 3 Super (free)",
         "firstSeen": "2026-03-12",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -19146,7 +19201,7 @@
       "z-ai/glm-5-turbo": {
         "name": "Z.ai: GLM 5 Turbo",
         "firstSeen": "2026-03-16",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -19177,7 +19232,7 @@
       "mistralai/mistral-small-2603": {
         "name": "Mistral: Mistral Small 4",
         "firstSeen": "2026-03-17",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -19190,7 +19245,7 @@
       "openai/gpt-5.4-nano": {
         "name": "OpenAI: GPT-5.4 Nano",
         "firstSeen": "2026-03-18",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -19203,7 +19258,7 @@
       "openai/gpt-5.4-mini": {
         "name": "OpenAI: GPT-5.4 Mini",
         "firstSeen": "2026-03-18",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -19242,7 +19297,7 @@
       "minimax/minimax-m2.7": {
         "name": "MiniMax: MiniMax M2.7",
         "firstSeen": "2026-03-19",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -19335,7 +19390,7 @@
       "nvidia/nemotron-3-super-120b-a12b": {
         "name": "NVIDIA: Nemotron 3 Super",
         "firstSeen": "2026-03-19",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -19416,7 +19471,7 @@
       "kwaipilot/kat-coder-pro-v2": {
         "name": "Kwaipilot: KAT-Coder-Pro V2",
         "firstSeen": "2026-03-28",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -19429,7 +19484,7 @@
       "google/lyria-3-pro-preview": {
         "name": "Google: Lyria 3 Pro Preview",
         "firstSeen": "2026-03-31",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -19442,7 +19497,7 @@
       "google/lyria-3-clip-preview": {
         "name": "Google: Lyria 3 Clip Preview",
         "firstSeen": "2026-03-31",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -19468,7 +19523,7 @@
       "x-ai/grok-4.20-multi-agent": {
         "name": "xAI: Grok 4.20 Multi-Agent",
         "firstSeen": "2026-04-01",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -19486,7 +19541,7 @@
       "x-ai/grok-4.20": {
         "name": "xAI: Grok 4.20",
         "firstSeen": "2026-04-01",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -19504,7 +19559,7 @@
       "z-ai/glm-5v-turbo": {
         "name": "Z.ai: GLM 5V Turbo",
         "firstSeen": "2026-04-02",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -19517,7 +19572,7 @@
       "arcee-ai/trinity-large-thinking": {
         "name": "Arcee AI: Trinity Large Thinking",
         "firstSeen": "2026-04-02",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -19545,7 +19600,7 @@
       "rekaai/reka-edge": {
         "name": "Reka Edge",
         "firstSeen": "2026-04-02",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -19558,7 +19613,7 @@
       "google/gemma-4-31b-it": {
         "name": "Google: Gemma 4 31B",
         "firstSeen": "2026-04-03",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -19664,7 +19719,7 @@
       "google/gemma-4-26b-a4b-it": {
         "name": "Google: Gemma 4 26B A4B ",
         "firstSeen": "2026-04-04",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -19765,7 +19820,7 @@
       "z-ai/glm-5.1": {
         "name": "Z.ai: GLM 5.1",
         "firstSeen": "2026-04-08",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -19843,7 +19898,7 @@
       "google/gemma-4-26b-a4b-it:free": {
         "name": "Google: Gemma 4 26B A4B  (free)",
         "firstSeen": "2026-04-08",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -19856,7 +19911,7 @@
       "google/gemma-4-31b-it:free": {
         "name": "Google: Gemma 4 31B (free)",
         "firstSeen": "2026-04-08",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -19869,7 +19924,7 @@
       "qwen/qwen3.6-plus": {
         "name": "Qwen: Qwen3.6 Plus",
         "firstSeen": "2026-04-08",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -19905,7 +19960,7 @@
       "anthropic/claude-opus-4.7": {
         "name": "Anthropic: Claude Opus 4.7",
         "firstSeen": "2026-04-17",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -19918,7 +19973,7 @@
       "moonshotai/kimi-k2.6": {
         "name": "MoonshotAI: Kimi K2.6",
         "firstSeen": "2026-04-21",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -20045,13 +20100,18 @@
             "2026-08-01",
             0.6,
             3.41
+          ],
+          [
+            "2026-08-04",
+            0.589,
+            2.48
           ]
         ]
       },
       "openai/gpt-5.4-image-2": {
         "name": "OpenAI: GPT-5.4 Image 2",
         "firstSeen": "2026-04-22",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -20077,7 +20137,7 @@
       "~anthropic/claude-opus-latest": {
         "name": "Anthropic: Claude Opus Latest",
         "firstSeen": "2026-04-22",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -20090,7 +20150,7 @@
       "openrouter/pareto-code": {
         "name": "Pareto Code Router",
         "firstSeen": "2026-04-22",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -20103,7 +20163,7 @@
       "xiaomi/mimo-v2.5-pro": {
         "name": "Xiaomi: MiMo-V2.5-Pro",
         "firstSeen": "2026-04-23",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -20121,7 +20181,7 @@
       "xiaomi/mimo-v2.5": {
         "name": "Xiaomi: MiMo-V2.5",
         "firstSeen": "2026-04-23",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -20201,7 +20261,7 @@
       "deepseek/deepseek-v4-pro": {
         "name": "DeepSeek: DeepSeek V4 Pro",
         "firstSeen": "2026-04-24",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -20217,9 +20277,9 @@
         ]
       },
       "deepseek/deepseek-v4-flash": {
-        "name": "DeepSeek: DeepSeek V4 Flash",
+        "name": "DeepSeek: DeepSeek V4 Flash 0423",
         "firstSeen": "2026-04-24",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -20332,7 +20392,7 @@
       "openai/gpt-5.5-pro": {
         "name": "OpenAI: GPT-5.5 Pro",
         "firstSeen": "2026-04-25",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -20345,7 +20405,7 @@
       "openai/gpt-5.5": {
         "name": "OpenAI: GPT-5.5",
         "firstSeen": "2026-04-25",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -20358,7 +20418,7 @@
       "qwen/qwen3.5-plus-20260420": {
         "name": "Qwen: Qwen3.5 Plus 2026-04-20",
         "firstSeen": "2026-04-27",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -20376,7 +20436,7 @@
       "qwen/qwen3.6-flash": {
         "name": "Qwen: Qwen3.6 Flash",
         "firstSeen": "2026-04-27",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -20404,7 +20464,7 @@
       "qwen/qwen3.6-35b-a3b": {
         "name": "Qwen: Qwen3.6 35B A3B",
         "firstSeen": "2026-04-27",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -20447,7 +20507,7 @@
       "qwen/qwen3.6-max-preview": {
         "name": "Qwen: Qwen3.6 Max Preview",
         "firstSeen": "2026-04-27",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -20470,7 +20530,7 @@
       "qwen/qwen3.6-27b": {
         "name": "Qwen: Qwen3.6 27B",
         "firstSeen": "2026-04-27",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -20572,13 +20632,18 @@
             "2026-07-26",
             0.3,
             2.0
+          ],
+          [
+            "2026-08-03",
+            0.289,
+            2.4
           ]
         ]
       },
       "~anthropic/claude-haiku-latest": {
         "name": "Anthropic Claude Haiku Latest",
         "firstSeen": "2026-04-28",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -20591,7 +20656,7 @@
       "~openai/gpt-mini-latest": {
         "name": "OpenAI GPT Mini Latest",
         "firstSeen": "2026-04-28",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -20604,7 +20669,7 @@
       "~google/gemini-pro-latest": {
         "name": "Google Gemini Pro Latest",
         "firstSeen": "2026-04-28",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -20617,7 +20682,7 @@
       "~moonshotai/kimi-latest": {
         "name": "MoonshotAI Kimi Latest",
         "firstSeen": "2026-04-28",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -20725,7 +20790,7 @@
       "~google/gemini-flash-latest": {
         "name": "Google Gemini Flash Latest",
         "firstSeen": "2026-04-28",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -20748,7 +20813,7 @@
       "~anthropic/claude-sonnet-latest": {
         "name": "Anthropic Claude Sonnet Latest",
         "firstSeen": "2026-04-28",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -20766,7 +20831,7 @@
       "~openai/gpt-latest": {
         "name": "OpenAI GPT Latest",
         "firstSeen": "2026-04-28",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -20779,7 +20844,7 @@
       "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free": {
         "name": "NVIDIA: Nemotron 3 Nano Omni (free)",
         "firstSeen": "2026-04-29",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -20818,7 +20883,7 @@
       "inclusionai/ling-2.6-flash": {
         "name": "inclusionAI: Ling-2.6-flash",
         "firstSeen": "2026-04-29",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -20836,7 +20901,7 @@
       "x-ai/grok-4.3": {
         "name": "xAI: Grok 4.3",
         "firstSeen": "2026-05-01",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -20849,7 +20914,7 @@
       "ibm-granite/granite-4.1-8b": {
         "name": "IBM: Granite 4.1 8B",
         "firstSeen": "2026-05-01",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -20875,7 +20940,7 @@
       "mistralai/mistral-medium-3-5": {
         "name": "Mistral: Mistral Medium 3.5",
         "firstSeen": "2026-05-05",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -20888,7 +20953,7 @@
       "openai/gpt-chat-latest": {
         "name": "OpenAI: GPT Chat Latest",
         "firstSeen": "2026-05-06",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -20927,7 +20992,7 @@
       "google/gemini-3.1-flash-lite": {
         "name": "Google: Gemini 3.1 Flash Lite",
         "firstSeen": "2026-05-08",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -20940,7 +21005,7 @@
       "inclusionai/ling-2.6-1t": {
         "name": "inclusionAI: Ling-2.6-1T",
         "firstSeen": "2026-05-08",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -20971,7 +21036,7 @@
       "tencent/hy3-preview": {
         "name": "Tencent: Hy3 preview",
         "firstSeen": "2026-05-09",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -21022,7 +21087,7 @@
       "anthropic/claude-opus-4.7-fast": {
         "name": "Anthropic: Claude Opus 4.7 (Fast)",
         "firstSeen": "2026-05-13",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -21035,7 +21100,7 @@
       "perceptron/perceptron-mk1": {
         "name": "Perceptron: Perceptron Mk1",
         "firstSeen": "2026-05-13",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -21074,7 +21139,7 @@
       "inclusionai/ring-2.6-1t": {
         "name": "inclusionAI: Ring-2.6-1T",
         "firstSeen": "2026-05-16",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -21097,7 +21162,7 @@
       "google/gemini-3.5-flash": {
         "name": "Google: Gemini 3.5 Flash",
         "firstSeen": "2026-05-20",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -21110,7 +21175,7 @@
       "x-ai/grok-build-0.1": {
         "name": "xAI: Grok Build 0.1",
         "firstSeen": "2026-05-21",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -21123,7 +21188,7 @@
       "qwen/qwen3.7-max": {
         "name": "Qwen: Qwen3.7 Max",
         "firstSeen": "2026-05-22",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -21169,7 +21234,7 @@
       "stepfun/step-3.7-flash": {
         "name": "StepFun: Step 3.7 Flash",
         "firstSeen": "2026-05-29",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -21182,7 +21247,7 @@
       "anthropic/claude-opus-4.8-fast": {
         "name": "Anthropic: Claude Opus 4.8 (Fast)",
         "firstSeen": "2026-05-29",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -21195,7 +21260,7 @@
       "anthropic/claude-opus-4.8": {
         "name": "Anthropic: Claude Opus 4.8",
         "firstSeen": "2026-05-29",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -21208,7 +21273,7 @@
       "minimax/minimax-m3": {
         "name": "MiniMax: MiniMax M3",
         "firstSeen": "2026-06-01",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -21221,7 +21286,7 @@
       "openrouter/fusion": {
         "name": "OpenRouter: Fusion",
         "firstSeen": "2026-06-03",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -21234,7 +21299,7 @@
       "qwen/qwen3.7-plus": {
         "name": "Qwen: Qwen3.7 Plus",
         "firstSeen": "2026-06-03",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -21252,7 +21317,7 @@
       "nvidia/nemotron-3.5-content-safety:free": {
         "name": "NVIDIA: Nemotron 3.5 Content Safety (free)",
         "firstSeen": "2026-06-05",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -21265,7 +21330,7 @@
       "nvidia/nemotron-3-ultra-550b-a55b:free": {
         "name": "NVIDIA: Nemotron 3 Ultra (free)",
         "firstSeen": "2026-06-05",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -21278,7 +21343,7 @@
       "nvidia/nemotron-3-ultra-550b-a55b": {
         "name": "NVIDIA: Nemotron 3 Ultra",
         "firstSeen": "2026-06-05",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -21325,6 +21390,16 @@
             "2026-07-30",
             0.6,
             3.6
+          ],
+          [
+            "2026-08-01",
+            0.5,
+            2.2
+          ],
+          [
+            "2026-08-02",
+            0.6,
+            3.6
           ]
         ]
       },
@@ -21344,7 +21419,7 @@
       "~anthropic/claude-fable-latest": {
         "name": "Anthropic: Claude Fable Latest",
         "firstSeen": "2026-06-10",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -21357,7 +21432,7 @@
       "anthropic/claude-fable-5": {
         "name": "Anthropic: Claude Fable 5",
         "firstSeen": "2026-06-10",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -21370,7 +21445,7 @@
       "moonshotai/kimi-k2.7-code": {
         "name": "MoonshotAI: Kimi K2.7 Code",
         "firstSeen": "2026-06-12",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -21468,7 +21543,7 @@
       "z-ai/glm-5.2": {
         "name": "Z.ai: GLM 5.2",
         "firstSeen": "2026-06-17",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -21750,13 +21825,43 @@
             "2026-07-31",
             1.12,
             3.52
+          ],
+          [
+            "2026-08-01",
+            0.76006,
+            2.38876
+          ],
+          [
+            "2026-08-02",
+            0.7168,
+            2.2528
+          ],
+          [
+            "2026-08-02",
+            0.2842,
+            0.8932
+          ],
+          [
+            "2026-08-03",
+            1.19,
+            3.74
+          ],
+          [
+            "2026-08-03",
+            0.7042,
+            2.2132
+          ],
+          [
+            "2026-08-04",
+            0.76,
+            2.42
           ]
         ]
       },
       "cohere/north-mini-code:free": {
         "name": "Cohere: North Mini Code (free)",
         "firstSeen": "2026-06-18",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -21769,7 +21874,7 @@
       "google/gemini-3.1-flash-image": {
         "name": "Google: Nano Banana 2 (Gemini 3.1 Flash Image)",
         "firstSeen": "2026-06-18",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -21782,7 +21887,7 @@
       "google/gemini-3-pro-image": {
         "name": "Google: Nano Banana Pro (Gemini 3 Pro Image)",
         "firstSeen": "2026-06-18",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -21821,7 +21926,7 @@
       "nex-agi/nex-n2-pro": {
         "name": "Nex AGI: Nex-N2-Pro",
         "firstSeen": "2026-06-22",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -21839,7 +21944,7 @@
       "sakana/fugu-ultra": {
         "name": "Sakana: Fugu Ultra",
         "firstSeen": "2026-06-24",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -21852,7 +21957,7 @@
       "anthropic/claude-sonnet-5": {
         "name": "Anthropic: Claude Sonnet 5",
         "firstSeen": "2026-07-01",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -21865,7 +21970,7 @@
       "google/gemini-3.1-flash-lite-image": {
         "name": "Google: Nano Banana 2 Lite (Gemini 3.1 Flash Lite Image)",
         "firstSeen": "2026-07-01",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -21878,7 +21983,7 @@
       "poolside/laguna-xs-2.1:free": {
         "name": "Poolside: Laguna XS 2.1 (free)",
         "firstSeen": "2026-07-03",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -21891,7 +21996,7 @@
       "poolside/laguna-xs-2.1": {
         "name": "Poolside: Laguna XS 2.1",
         "firstSeen": "2026-07-03",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -21917,7 +22022,7 @@
       "tencent/hy3": {
         "name": "Tencent: Hy3",
         "firstSeen": "2026-07-07",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -21955,7 +22060,7 @@
       "nex-agi/nex-n2-mini": {
         "name": "Nex AGI: Nex-N2-Mini",
         "firstSeen": "2026-07-07",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -21968,7 +22073,7 @@
       "aion-labs/aion-3.0-mini": {
         "name": "AionLabs: Aion-3.0-Mini",
         "firstSeen": "2026-07-08",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -21981,7 +22086,7 @@
       "aion-labs/aion-3.0": {
         "name": "AionLabs: Aion-3.0",
         "firstSeen": "2026-07-08",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -21994,7 +22099,7 @@
       "x-ai/grok-4.5": {
         "name": "xAI: Grok 4.5",
         "firstSeen": "2026-07-09",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -22007,7 +22112,7 @@
       "~x-ai/grok-latest": {
         "name": "xAI: Grok Latest",
         "firstSeen": "2026-07-09",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -22020,7 +22125,7 @@
       "openai/gpt-5.6-luna-pro": {
         "name": "OpenAI: GPT-5.6 Luna Pro",
         "firstSeen": "2026-07-10",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -22043,7 +22148,7 @@
       "openai/gpt-5.6-luna": {
         "name": "OpenAI: GPT-5.6 Luna",
         "firstSeen": "2026-07-10",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -22066,7 +22171,7 @@
       "openai/gpt-5.6-terra-pro": {
         "name": "OpenAI: GPT-5.6 Terra Pro",
         "firstSeen": "2026-07-10",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -22089,7 +22194,7 @@
       "openai/gpt-5.6-terra": {
         "name": "OpenAI: GPT-5.6 Terra",
         "firstSeen": "2026-07-10",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -22112,7 +22217,7 @@
       "openai/gpt-5.6-sol-pro": {
         "name": "OpenAI: GPT-5.6 Sol Pro",
         "firstSeen": "2026-07-10",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -22125,7 +22230,7 @@
       "openai/gpt-5.6-sol": {
         "name": "OpenAI: GPT-5.6 Sol",
         "firstSeen": "2026-07-10",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -22138,7 +22243,7 @@
       "cognitivecomputations/dolphin-mistral-24b-venice-edition": {
         "name": "Venice: Uncensored",
         "firstSeen": "2026-07-10",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -22151,7 +22256,7 @@
       "kwaipilot/kat-coder-air-v2.5": {
         "name": "Kwaipilot: KAT-Coder-Air V2.5",
         "firstSeen": "2026-07-14",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -22164,7 +22269,7 @@
       "kwaipilot/kat-coder-pro-v2.5": {
         "name": "Kwaipilot: KAT-Coder-Pro V2.5",
         "firstSeen": "2026-07-14",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -22177,7 +22282,7 @@
       "moonshotai/kimi-k3": {
         "name": "MoonshotAI: Kimi K3",
         "firstSeen": "2026-07-17",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -22190,7 +22295,7 @@
       "meta/muse-spark-1.1": {
         "name": "Meta: Muse Spark 1.1",
         "firstSeen": "2026-07-17",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -22203,7 +22308,7 @@
       "thinkingmachines/inkling": {
         "name": "Thinking Machines: Inkling",
         "firstSeen": "2026-07-18",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -22216,7 +22321,7 @@
       "openrouter/auto-beta": {
         "name": "Auto Router (Beta)",
         "firstSeen": "2026-07-18",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -22229,7 +22334,7 @@
       "meituan/longcat-2.0": {
         "name": "Meituan: LongCat 2.0",
         "firstSeen": "2026-07-21",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -22242,7 +22347,7 @@
       "poolside/laguna-s-2.1": {
         "name": "Poolside: Laguna S 2.1",
         "firstSeen": "2026-07-22",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -22260,7 +22365,7 @@
       "poolside/laguna-s-2.1:free": {
         "name": "Poolside: Laguna S 2.1 (free)",
         "firstSeen": "2026-07-22",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -22273,7 +22378,7 @@
       "google/gemini-3.6-flash": {
         "name": "Google: Gemini 3.6 Flash",
         "firstSeen": "2026-07-22",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -22286,7 +22391,7 @@
       "google/gemini-3.5-flash-lite": {
         "name": "Google: Gemini 3.5 Flash Lite",
         "firstSeen": "2026-07-22",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -22299,7 +22404,7 @@
       "inclusionai/ling-3.0-flash:free": {
         "name": "Ling-3.0-flash (free)",
         "firstSeen": "2026-07-24",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -22312,7 +22417,7 @@
       "anthropic/claude-opus-5-fast": {
         "name": "Claude Opus 5 (Fast)",
         "firstSeen": "2026-07-25",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -22325,7 +22430,7 @@
       "anthropic/claude-opus-5": {
         "name": "Claude Opus 5",
         "firstSeen": "2026-07-25",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -22338,7 +22443,7 @@
       "qwen/qwen3.7-flash": {
         "name": "Qwen: Qwen3.7 Flash",
         "firstSeen": "2026-07-28",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -22715,20 +22820,25 @@
       "deepseek/deepseek-v4-flash-0731": {
         "name": "DeepSeek: DeepSeek V4 Flash 0731",
         "firstSeen": "2026-07-31",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
             "2026-07-31",
             0.14,
             0.28
+          ],
+          [
+            "2026-08-02",
+            0.09,
+            0.18
           ]
         ]
       },
       "thinkingmachines/inkling-small": {
         "name": "Thinking Machines: Inkling Small",
         "firstSeen": "2026-08-01",
-        "lastSeen": "2026-08-01",
+        "lastSeen": "2026-08-04",
         "presentNow": true,
         "points": [
           [
@@ -22737,19 +22847,45 @@
             1.2
           ]
         ]
+      },
+      "~deepseek/deepseek-v4-flash-latest": {
+        "name": "DeepSeek V4 Flash Latest",
+        "firstSeen": "2026-08-02",
+        "lastSeen": "2026-08-04",
+        "presentNow": true,
+        "points": [
+          [
+            "2026-08-02",
+            0.09,
+            0.18
+          ]
+        ]
+      },
+      "qwen/qwen3.8-max": {
+        "name": "Qwen: Qwen3.8 Max",
+        "firstSeen": "2026-08-04",
+        "lastSeen": "2026-08-04",
+        "presentNow": true,
+        "points": [
+          [
+            "2026-08-04",
+            2.0,
+            6.0
+          ]
+        ]
       }
     }
   },
   "sources": {
     "models": {
       "url": "https://openrouter.ai/api/v1/models",
-      "sha256": "sha256:4029767a4a16336459104a043d4baff317587cbf37936eba31a169660d2bce15",
-      "snapshotPath": "tracker_snapshots/market_facts/20260801t010312z-openrouter-models-active-prices.json"
+      "sha256": "sha256:3e1f56caacb8ca78a29aeb101df049cd1ada11ff09a69a28f774e069114a5627",
+      "snapshotPath": "tracker_snapshots/market_facts/20260804t030401z-openrouter-models-active-prices.json"
     },
     "history": {
       "url": "https://raw.githubusercontent.com/jvrck/openrouterlist/main/data/history/prices.json",
-      "sha256": "sha256:25edabfb00ad32c459bc8f112cd2aa5b4790bb6cd432731ee1204ce726a76096",
-      "snapshotPath": "tracker_snapshots/market_facts/20260801t010312z-openrouterlist-price-history.json",
+      "sha256": "sha256:7e28e7746958ac6b6e1b16b36855a11a875c61962898c4a5d763bc566c9008cc",
+      "snapshotPath": "tracker_snapshots/market_facts/20260804t030401z-openrouterlist-price-history.json",
       "licenseCaveat": "Repository labels MIT, but its LICENSE retains placeholder copyright fields and has no separate data license."
     }
   }
