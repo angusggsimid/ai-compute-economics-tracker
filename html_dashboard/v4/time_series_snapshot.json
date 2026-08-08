@@ -1,8 +1,8 @@
 {
   "meta": {
-    "generatedAt": "2026-08-07T03:14:23Z",
+    "generatedAt": "2026-08-08T02:20:39Z",
     "minDate": "2023-09-01",
-    "maxDate": "2026-08-06"
+    "maxDate": "2026-08-07"
   },
   "datasets": {
     "openrouterVolume": [
@@ -7465,7 +7465,7 @@
         "outputPrice": 0.28,
         "historyPoints": 4,
         "firstSeen": "2026-04-23",
-        "lastSeen": "2026-08-07",
+        "lastSeen": "2026-08-08",
         "priceHistory": [
           {
             "date": "2026-04-23",
@@ -7496,11 +7496,11 @@
         "name": "DeepSeek: DeepSeek V4 Flash 0423",
         "tokens": 24.199429705041,
         "share": 10.511267854523886,
-        "inputPrice": 0.0882,
-        "outputPrice": 0.1764,
-        "historyPoints": 22,
+        "inputPrice": 0.14,
+        "outputPrice": 0.28,
+        "historyPoints": 23,
         "firstSeen": "2026-04-24",
-        "lastSeen": "2026-08-07",
+        "lastSeen": "2026-08-08",
         "priceHistory": [
           {
             "date": "2026-04-24",
@@ -7611,6 +7611,11 @@
             "date": "2026-08-06",
             "input": 0.0882,
             "output": 0.1764
+          },
+          {
+            "date": "2026-08-08",
+            "input": 0.14,
+            "output": 0.28
           }
         ],
         "free": false
@@ -7639,7 +7644,7 @@
         "outputPrice": 2.2,
         "historyPoints": 1,
         "firstSeen": "2026-08-07",
-        "lastSeen": "2026-08-07",
+        "lastSeen": "2026-08-08",
         "priceHistory": [
           {
             "date": "2026-08-07",
@@ -7659,7 +7664,7 @@
         "outputPrice": 0.6,
         "historyPoints": 1,
         "firstSeen": "2026-07-29",
-        "lastSeen": "2026-08-07",
+        "lastSeen": "2026-08-08",
         "priceHistory": [
           {
             "date": "2026-07-29",
@@ -7679,7 +7684,7 @@
         "outputPrice": 0.87,
         "historyPoints": 2,
         "firstSeen": "2026-04-24",
-        "lastSeen": "2026-08-07",
+        "lastSeen": "2026-08-08",
         "priceHistory": [
           {
             "date": "2026-04-24",
@@ -17581,6 +17586,56 @@
           "nebius": 4.5
         },
         "movingAverage30d": 3.2971983333333332
+      },
+      {
+        "date": "2026-08-07",
+        "series": "B200",
+        "value": 5.98,
+        "average": 6.1446,
+        "low": 4.9014,
+        "high": 7.15,
+        "providerCount": 5,
+        "providerPrices": {
+          "runpod": 5.98,
+          "vastai": 5.4679,
+          "lambda": 6.99,
+          "aws": 5.1183,
+          "nebius": 7.15
+        },
+        "movingAverage30d": 6.420516666666667
+      },
+      {
+        "date": "2026-08-07",
+        "series": "H100",
+        "value": 2.69,
+        "average": 3.1801,
+        "low": 1.3363,
+        "high": 4.29,
+        "providerCount": 5,
+        "providerPrices": {
+          "lambda": 3.79,
+          "aws": 2.4924,
+          "nebius": 3.85,
+          "runpod": 2.69,
+          "vastai": 2.3579
+        },
+        "movingAverage30d": 2.69
+      },
+      {
+        "date": "2026-08-07",
+        "series": "H200",
+        "value": 3.3578,
+        "average": 3.5659,
+        "low": 2.4015,
+        "high": 4.5,
+        "providerCount": 4,
+        "providerPrices": {
+          "runpod": 3.59,
+          "vastai": 3.0483,
+          "aws": 3.1256,
+          "nebius": 4.5
+        },
+        "movingAverage30d": 3.3042083333333334
       }
     ],
     "gpuPriceAnnotations": {
@@ -17937,14 +17992,14 @@
       {
         "date": "2026-08-01",
         "series": "B200",
-        "value": 67.06,
-        "movingAverage30d": 67.06
+        "value": 67.0,
+        "movingAverage30d": 67.0
       },
       {
         "date": "2026-08-01",
         "series": "H100",
-        "value": 90.19,
-        "movingAverage30d": 90.19
+        "value": 89.74,
+        "movingAverage30d": 89.74
       },
       {
         "date": "2026-08-01",
@@ -19135,6 +19190,11 @@
         "value": 1.2490148698884758
       },
       {
+        "date": "2026-08-07",
+        "series": "H200 / H100",
+        "value": 1.2490148698884758
+      },
+      {
         "date": "2025-12-14",
         "series": "B200 / H100",
         "value": 1.5454545454545454
@@ -20311,6 +20371,11 @@
       },
       {
         "date": "2026-08-06",
+        "series": "B200 / H100",
+        "value": 2.390371747211896
+      },
+      {
+        "date": "2026-08-07",
         "series": "B200 / H100",
         "value": 2.390371747211896
       }
