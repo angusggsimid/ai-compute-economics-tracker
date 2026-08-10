@@ -1,16 +1,11 @@
 {
   "meta": {
-    "generatedAt": "2026-08-09T02:27:33Z",
+    "generatedAt": "2026-08-10T02:09:09Z",
     "minDate": "2023-09-01",
-    "maxDate": "2026-08-08"
+    "maxDate": "2026-08-09"
   },
   "datasets": {
     "openrouterVolume": [
-      {
-        "date": "2025-08-04",
-        "series": "Weekly tokens",
-        "value": 3.431226249807
-      },
       {
         "date": "2025-08-11",
         "series": "Weekly tokens",
@@ -267,9 +262,9 @@
         "value": 56.788588911921
       },
       {
-        "date": "2025-08-25",
-        "series": "4W average",
-        "value": 3.3918856811485
+        "date": "2026-08-03",
+        "series": "Weekly tokens",
+        "value": 69.046537847932
       },
       {
         "date": "2025-09-01",
@@ -510,89 +505,14 @@
         "date": "2026-07-27",
         "series": "4W average",
         "value": 57.55592484170675
+      },
+      {
+        "date": "2026-08-03",
+        "series": "4W average",
+        "value": 61.66264212886275
       }
     ],
     "openrouterComposition": [
-      {
-        "date": "2025-08-04",
-        "rank": 1,
-        "model": "anthropic/claude-4-sonnet-20250522",
-        "vendor": "anthropic",
-        "tokens": 0.520128485411,
-        "share": 15.158676448114031
-      },
-      {
-        "date": "2025-08-04",
-        "rank": 2,
-        "model": "google/gemini-2.0-flash-001",
-        "vendor": "google",
-        "tokens": 0.27395915632,
-        "share": 7.984292972094442
-      },
-      {
-        "date": "2025-08-04",
-        "rank": 3,
-        "model": "google/gemini-2.5-flash",
-        "vendor": "google",
-        "tokens": 0.26059062085,
-        "share": 7.59467904119286
-      },
-      {
-        "date": "2025-08-04",
-        "rank": 4,
-        "model": "openrouter/horizon-beta",
-        "vendor": "openrouter",
-        "tokens": 0.189540499184,
-        "share": 5.523987209956245
-      },
-      {
-        "date": "2025-08-04",
-        "rank": 5,
-        "model": "deepseek/deepseek-chat-v3-0324:free",
-        "vendor": "deepseek",
-        "tokens": 0.177163922589,
-        "share": 5.163283027429775
-      },
-      {
-        "date": "2025-08-04",
-        "rank": 6,
-        "model": "deepseek/deepseek-chat-v3-0324",
-        "vendor": "deepseek",
-        "tokens": 0.177135063877,
-        "share": 5.16244196624934
-      },
-      {
-        "date": "2025-08-04",
-        "rank": 7,
-        "model": "google/gemini-2.5-pro",
-        "vendor": "google",
-        "tokens": 0.149759348433,
-        "share": 4.364601385333412
-      },
-      {
-        "date": "2025-08-04",
-        "rank": 8,
-        "model": "anthropic/claude-3-7-sonnet-20250219",
-        "vendor": "anthropic",
-        "tokens": 0.126161097202,
-        "share": 3.6768515981450167
-      },
-      {
-        "date": "2025-08-04",
-        "rank": 9,
-        "model": "qwen/qwen3-coder-480b-a35b-07-25",
-        "vendor": "qwen",
-        "tokens": 0.124865838357,
-        "share": 3.6391024451979366
-      },
-      {
-        "date": "2025-08-04",
-        "rank": 10,
-        "model": "Others",
-        "vendor": "OpenRouter",
-        "tokens": 1.431922217584,
-        "share": 41.732083906286945
-      },
       {
         "date": "2025-08-11",
         "rank": 1,
@@ -4672,14 +4592,89 @@
         "vendor": "OpenRouter",
         "tokens": 24.284610299453,
         "share": 42.763186697803654
+      },
+      {
+        "date": "2026-08-03",
+        "rank": 1,
+        "model": "deepseek/deepseek-v4-flash-20260731",
+        "vendor": "deepseek",
+        "tokens": 8.826076422544,
+        "share": 12.782793602168061
+      },
+      {
+        "date": "2026-08-03",
+        "rank": 2,
+        "model": "tencent/hy3-20260706",
+        "vendor": "tencent",
+        "tokens": 8.050128586848,
+        "share": 11.65898948413256
+      },
+      {
+        "date": "2026-08-03",
+        "rank": 3,
+        "model": "deepseek/deepseek-v4-flash-20260423",
+        "vendor": "deepseek",
+        "tokens": 5.880433122513,
+        "share": 8.516622709547086
+      },
+      {
+        "date": "2026-08-03",
+        "rank": 4,
+        "model": "xiaomi/mimo-v2.5-20260422",
+        "vendor": "xiaomi",
+        "tokens": 5.392889601768,
+        "share": 7.810514139963532
+      },
+      {
+        "date": "2026-08-03",
+        "rank": 5,
+        "model": "openai/gpt-5.6-luna-20260709",
+        "vendor": "openai",
+        "tokens": 4.434794606781,
+        "share": 6.422906556948858
+      },
+      {
+        "date": "2026-08-03",
+        "rank": 6,
+        "model": "z-ai/glm-5.2-20260616",
+        "vendor": "z-ai",
+        "tokens": 3.486952924752,
+        "share": 5.050148832127775
+      },
+      {
+        "date": "2026-08-03",
+        "rank": 7,
+        "model": "deepseek/deepseek-v4-pro-20260423",
+        "vendor": "deepseek",
+        "tokens": 2.611842929533,
+        "share": 3.78272830317042
+      },
+      {
+        "date": "2026-08-03",
+        "rank": 8,
+        "model": "nvidia/nemotron-3-ultra-550b-a55b-20260604:free",
+        "vendor": "nvidia",
+        "tokens": 2.406946248889,
+        "share": 3.4859767396159023
+      },
+      {
+        "date": "2026-08-03",
+        "rank": 9,
+        "model": "google/gemini-3.6-flash-20260721",
+        "vendor": "google",
+        "tokens": 2.328788777091,
+        "share": 3.3727813872723367
+      },
+      {
+        "date": "2026-08-03",
+        "rank": 10,
+        "model": "Others",
+        "vendor": "OpenRouter",
+        "tokens": 25.627684627213,
+        "share": 37.11653824505347
       }
     ],
     "openrouterDisclosure": [
-      {
-        "date": "2025-08-04",
-        "othersShare": 41.732083906286945,
-        "namedShare": 58.267916093713055
-      },
       {
         "date": "2025-08-11",
         "othersShare": 40.68806151260224,
@@ -4934,34 +4929,14 @@
         "date": "2026-07-27",
         "othersShare": 42.763186697803654,
         "namedShare": 57.23681330219635
+      },
+      {
+        "date": "2026-08-03",
+        "othersShare": 37.11653824505347,
+        "namedShare": 62.88346175494654
       }
     ],
     "activePriceTiers": [
-      {
-        "date": "2025-08-04",
-        "series": "免费",
-        "value": 10.68727023738602
-      },
-      {
-        "date": "2025-08-04",
-        "series": "<$1",
-        "value": 13.146734938343782
-      },
-      {
-        "date": "2025-08-04",
-        "series": "$1–5",
-        "value": 3.6391024451979366
-      },
-      {
-        "date": "2025-08-04",
-        "series": ">$5",
-        "value": 15.158676448114031
-      },
-      {
-        "date": "2025-08-04",
-        "series": "Others / 无法匹配",
-        "value": 57.368215930958236
-      },
       {
         "date": "2025-08-11",
         "series": "免费",
@@ -6236,15 +6211,34 @@
         "date": "2026-07-27",
         "series": "Others / 无法匹配",
         "value": 54.72450619105152
+      },
+      {
+        "date": "2026-08-03",
+        "series": "免费",
+        "value": 3.4859767396159023
+      },
+      {
+        "date": "2026-08-03",
+        "series": "<$1",
+        "value": 44.551648238981656
+      },
+      {
+        "date": "2026-08-03",
+        "series": "$1–5",
+        "value": 3.3727813872723367
+      },
+      {
+        "date": "2026-08-03",
+        "series": ">$5",
+        "value": 0.0
+      },
+      {
+        "date": "2026-08-03",
+        "series": "Others / 无法匹配",
+        "value": 48.589593634130104
       }
     ],
     "activeInputBasket": [
-      {
-        "date": "2025-08-04",
-        "series": "Weekly weighted rate",
-        "value": 1.141326851061969,
-        "coverage": 42.63178406904177
-      },
       {
         "date": "2025-08-11",
         "series": "Weekly weighted rate",
@@ -6552,10 +6546,10 @@
         "coverage": 45.27549380894848
       },
       {
-        "date": "2025-08-25",
-        "series": "4W average",
-        "value": 1.2630689765031615,
-        "coverage": 39.39907718828745
+        "date": "2026-08-03",
+        "series": "Weekly weighted rate",
+        "value": 0.17798556156599765,
+        "coverage": 51.410406365869896
       },
       {
         "date": "2025-09-01",
@@ -6844,15 +6838,15 @@
         "series": "4W average",
         "value": 0.12720483176386702,
         "coverage": 47.53509845549639
+      },
+      {
+        "date": "2026-08-03",
+        "series": "4W average",
+        "value": 0.14550056727545407,
+        "coverage": 49.85438936574108
       }
     ],
     "activeOutputBasket": [
-      {
-        "date": "2025-08-04",
-        "series": "Weekly weighted rate",
-        "value": 5.613859887461123,
-        "coverage": 42.63178406904177
-      },
       {
         "date": "2025-08-11",
         "series": "Weekly weighted rate",
@@ -7160,10 +7154,10 @@
         "coverage": 45.27549380894848
       },
       {
-        "date": "2025-08-25",
-        "series": "4W average",
-        "value": 6.239894116656419,
-        "coverage": 39.39907718828745
+        "date": "2026-08-03",
+        "series": "Weekly weighted rate",
+        "value": 0.563453072783635,
+        "coverage": 51.410406365869896
       },
       {
         "date": "2025-09-01",
@@ -7452,6 +7446,12 @@
         "series": "4W average",
         "value": 0.3138148454492818,
         "coverage": 47.53509845549639
+      },
+      {
+        "date": "2026-08-03",
+        "series": "4W average",
+        "value": 0.39758233306922264,
+        "coverage": 49.85438936574108
       }
     ],
     "activeModels": [
@@ -7459,13 +7459,13 @@
         "rankId": "xiaomi/mimo-v2.5-20260422",
         "baseId": "xiaomi/mimo-v2.5",
         "name": "Xiaomi: MiMo-V2.5",
-        "tokens": 32.035148401575,
-        "share": 13.914791782809374,
+        "tokens": 31.480714130011,
+        "share": 12.763284641705152,
         "inputPrice": 0.14,
         "outputPrice": 0.28,
         "historyPoints": 4,
         "firstSeen": "2026-04-23",
-        "lastSeen": "2026-08-09",
+        "lastSeen": "2026-08-10",
         "priceHistory": [
           {
             "date": "2026-04-23",
@@ -7494,13 +7494,13 @@
         "rankId": "deepseek/deepseek-v4-flash-20260423",
         "baseId": "deepseek/deepseek-v4-flash",
         "name": "DeepSeek: DeepSeek V4 Flash 0423",
-        "tokens": 24.199429705041,
-        "share": 10.511267854523886,
+        "tokens": 24.856418811262,
+        "share": 10.077584236220769,
         "inputPrice": 0.14,
         "outputPrice": 0.28,
         "historyPoints": 23,
         "firstSeen": "2026-04-24",
-        "lastSeen": "2026-08-09",
+        "lastSeen": "2026-08-10",
         "priceHistory": [
           {
             "date": "2026-04-24",
@@ -7621,30 +7621,61 @@
         "free": false
       },
       {
-        "rankId": "tencent/hy3-20260706:free",
-        "baseId": null,
-        "name": "tencent/hy3-20260706:free",
-        "tokens": 19.409689313726,
-        "share": 8.430795511977056,
-        "inputPrice": 0.0,
-        "outputPrice": 0.0,
-        "historyPoints": 0,
-        "firstSeen": null,
-        "lastSeen": null,
-        "priceHistory": [],
-        "free": true
+        "rankId": "tencent/hy3-20260706",
+        "baseId": "tencent/hy3",
+        "name": "Tencent: Hy3",
+        "tokens": 16.819362834266,
+        "share": 6.819105642244802,
+        "inputPrice": 0.132,
+        "outputPrice": 0.528,
+        "historyPoints": 6,
+        "firstSeen": "2026-07-07",
+        "lastSeen": "2026-08-10",
+        "priceHistory": [
+          {
+            "date": "2026-07-07",
+            "input": 0.14,
+            "output": 0.58
+          },
+          {
+            "date": "2026-07-07",
+            "input": 0.2,
+            "output": 0.8
+          },
+          {
+            "date": "2026-07-09",
+            "input": 0.14,
+            "output": 0.58
+          },
+          {
+            "date": "2026-07-15",
+            "input": 0.2,
+            "output": 0.8
+          },
+          {
+            "date": "2026-07-21",
+            "input": 0.14,
+            "output": 0.58
+          },
+          {
+            "date": "2026-07-24",
+            "input": 0.132,
+            "output": 0.528
+          }
+        ],
+        "free": false
       },
       {
         "rankId": "z-ai/glm-5.2-20260616",
         "baseId": "z-ai/glm-5.2:batch",
         "name": "Z.ai: GLM 5.2 (batch)",
-        "tokens": 13.040972275308,
-        "share": 5.664478640198185,
+        "tokens": 13.336366543141,
+        "share": 5.406987960096904,
         "inputPrice": 0.7,
         "outputPrice": 2.2,
         "historyPoints": 1,
         "firstSeen": "2026-08-07",
-        "lastSeen": "2026-08-09",
+        "lastSeen": "2026-08-10",
         "priceHistory": [
           {
             "date": "2026-08-07",
@@ -7655,36 +7686,30 @@
         "free": false
       },
       {
-        "rankId": "minimax/minimax-m3-20260531",
-        "baseId": "minimax/minimax-m3:batch",
-        "name": "MiniMax: MiniMax M3 (batch)",
-        "tokens": 12.079455818095,
-        "share": 5.246834210081993,
-        "inputPrice": 0.15,
-        "outputPrice": 0.6,
-        "historyPoints": 1,
-        "firstSeen": "2026-07-29",
-        "lastSeen": "2026-08-09",
-        "priceHistory": [
-          {
-            "date": "2026-07-29",
-            "input": 0.15,
-            "output": 0.6
-          }
-        ],
-        "free": false
+        "rankId": "tencent/hy3-20260706:free",
+        "baseId": null,
+        "name": "tencent/hy3-20260706:free",
+        "tokens": 13.276002977763,
+        "share": 5.382514647206802,
+        "inputPrice": 0.0,
+        "outputPrice": 0.0,
+        "historyPoints": 0,
+        "firstSeen": null,
+        "lastSeen": null,
+        "priceHistory": [],
+        "free": true
       },
       {
         "rankId": "deepseek/deepseek-v4-pro-20260423",
         "baseId": "deepseek/deepseek-v4-pro",
         "name": "DeepSeek: DeepSeek V4 Pro",
-        "tokens": 11.985804291789,
-        "share": 5.206155719308208,
+        "tokens": 11.772511198113,
+        "share": 4.7729511709499794,
         "inputPrice": 0.435,
         "outputPrice": 0.87,
         "historyPoints": 2,
         "firstSeen": "2026-04-24",
-        "lastSeen": "2026-08-09",
+        "lastSeen": "2026-08-10",
         "priceHistory": [
           {
             "date": "2026-04-24",
@@ -7703,8 +7728,8 @@
         "rankId": "nvidia/nemotron-3-ultra-550b-a55b-20260604:free",
         "baseId": null,
         "name": "nvidia/nemotron-3-ultra-550b-a55b-20260604:free",
-        "tokens": 9.953228464289,
-        "share": 4.323285783202546,
+        "tokens": 10.319392227861,
+        "share": 4.183810436753386,
         "inputPrice": 0.0,
         "outputPrice": 0.0,
         "historyPoints": 0,
@@ -7712,6 +7737,31 @@
         "lastSeen": null,
         "priceHistory": [],
         "free": true
+      },
+      {
+        "rankId": "deepseek/deepseek-v4-flash-20260731",
+        "baseId": "deepseek/deepseek-v4-flash-0731",
+        "name": "DeepSeek: DeepSeek V4 Flash 0731",
+        "tokens": 8.826076422544,
+        "share": 3.578372624748727,
+        "inputPrice": 0.09,
+        "outputPrice": 0.18,
+        "historyPoints": 2,
+        "firstSeen": "2026-07-31",
+        "lastSeen": "2026-08-10",
+        "priceHistory": [
+          {
+            "date": "2026-07-31",
+            "input": 0.14,
+            "output": 0.28
+          },
+          {
+            "date": "2026-08-02",
+            "input": 0.09,
+            "output": 0.18
+          }
+        ],
+        "free": false
       }
     ],
     "activeTierOrder": [
@@ -17686,6 +17736,56 @@
           "nebius": 4.5
         },
         "movingAverage30d": 3.3108133333333334
+      },
+      {
+        "date": "2026-08-09",
+        "series": "B200",
+        "value": 5.98,
+        "average": 6.0879,
+        "low": 5.0021,
+        "high": 7.15,
+        "providerCount": 5,
+        "providerPrices": {
+          "runpod": 5.98,
+          "vastai": 5.22,
+          "lambda": 6.99,
+          "aws": 5.0965,
+          "nebius": 7.15
+        },
+        "movingAverage30d": 6.365636666666666
+      },
+      {
+        "date": "2026-08-09",
+        "series": "H100",
+        "value": 2.69,
+        "average": 3.1333,
+        "low": 1.3818,
+        "high": 4.29,
+        "providerCount": 5,
+        "providerPrices": {
+          "vastai": 2.1818,
+          "runpod": 2.69,
+          "lambda": 3.79,
+          "aws": 2.4583,
+          "nebius": 3.85
+        },
+        "movingAverage30d": 2.69
+      },
+      {
+        "date": "2026-08-09",
+        "series": "H200",
+        "value": 3.35375,
+        "average": 3.5473,
+        "low": 2.0671,
+        "high": 4.5,
+        "providerCount": 4,
+        "providerPrices": {
+          "runpod": 3.59,
+          "vastai": 2.9818,
+          "aws": 3.1175,
+          "nebius": 4.5
+        },
+        "movingAverage30d": 3.3171616666666663
       }
     ],
     "gpuPriceAnnotations": {
@@ -18042,14 +18142,14 @@
       {
         "date": "2026-08-01",
         "series": "B200",
-        "value": 66.98,
-        "movingAverage30d": 66.98
+        "value": 66.94,
+        "movingAverage30d": 66.94
       },
       {
         "date": "2026-08-01",
         "series": "H100",
-        "value": 90.95,
-        "movingAverage30d": 90.95
+        "value": 91.3,
+        "movingAverage30d": 91.3
       },
       {
         "date": "2026-08-01",
@@ -19250,6 +19350,11 @@
         "value": 1.2490148698884758
       },
       {
+        "date": "2026-08-09",
+        "series": "H200 / H100",
+        "value": 1.2490148698884758
+      },
+      {
         "date": "2025-12-14",
         "series": "B200 / H100",
         "value": 1.5454545454545454
@@ -20438,6 +20543,11 @@
         "date": "2026-08-08",
         "series": "B200 / H100",
         "value": 2.3888289962825278
+      },
+      {
+        "date": "2026-08-09",
+        "series": "B200 / H100",
+        "value": 2.3542193308550186
       }
     ],
     "capex": [
