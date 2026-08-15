@@ -36,7 +36,7 @@ Vercel Hobby 会阻止无法映射到团队成员的 Git 提交。本项目本�
 
 - 私有仓库：`https://github.com/angusggsimid/ai-compute-economics-tracker`
 - 正式网站：`https://trackerv2-git-main-angusggsimids-projects.vercel.app`（Vercel 登录保护；始终跟随主分支最新生产部署）
-- EdgeOne 镜像：`https://ai-compute-tracker-git-7zxuduki.edgeone.cool`（公开访问；项目绑定本仓库 main 分支，push 后与 Vercel 一样自动部署，输出目录 `public/`，无构建步骤）
+- EdgeOne 镜像：`https://ai-compute-economics-tracker-vlhs40vz.edgeone.cool`（公开访问；EdgeOne 项目 `ai-compute-economics-tracker` 绑定本仓库 main 分支，push 后与 Vercel 一样自动部署，输出目录 `public/`，无构建步骤）
 
 本地执行同一条生产链路：
 
