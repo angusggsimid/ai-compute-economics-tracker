@@ -1,10 +1,12 @@
 {
-  "fetchedAt": "2026-08-15T01:48:49Z",
+  "fetchedAt": "2026-08-15T13:25:36Z",
   "data": {
     "asOf": "2026-08-15",
     "aliases": {
       "qwen/qwen3.8-27b": "qwen/qwen3.8-27b",
       "qwen/qwen3.8-27b-20260814": "qwen/qwen3.8-27b",
+      "dots-studio/dots-3-note-preview:free": "dots-studio/dots-3-note-preview:free",
+      "dots-studio/dots-3-note-preview-20260813": "dots-studio/dots-3-note-preview:free",
       "google/gemini-3.7-flash": "google/gemini-3.7-flash",
       "google/gemini-3.7-flash-20260813": "google/gemini-3.7-flash:batch",
       "google/gemini-3.7-flash:batch": "google/gemini-3.7-flash:batch",
@@ -613,6 +615,12 @@
         "inputUsdPer1m": 0.44999999999999996,
         "outputUsdPer1m": 3.1999999999999997
       },
+      "dots-studio/dots-3-note-preview:free": {
+        "name": "Dots Studio: Dots3-Note Preview (free)",
+        "canonicalSlug": "dots-studio/dots-3-note-preview-20260813",
+        "inputUsdPer1m": 0.0,
+        "outputUsdPer1m": 0.0
+      },
       "google/gemini-3.7-flash": {
         "name": "Google: Gemini 3.7 Flash",
         "canonicalSlug": "google/gemini-3.7-flash-20260813",
@@ -706,8 +714,8 @@
       "~deepseek/deepseek-v4-flash-latest": {
         "name": "DeepSeek V4 Flash Latest",
         "canonicalSlug": "~deepseek/deepseek-v4-flash-latest",
-        "inputUsdPer1m": 0.0798,
-        "outputUsdPer1m": 0.1596
+        "inputUsdPer1m": 0.06846000000000001,
+        "outputUsdPer1m": 0.13692000000000001
       },
       "deepseek/deepseek-v4-flash-0731": {
         "name": "DeepSeek: DeepSeek V4 Flash 0731",
@@ -1000,8 +1008,8 @@
       "z-ai/glm-5.2": {
         "name": "Z.ai: GLM 5.2",
         "canonicalSlug": "z-ai/glm-5.2-20260616",
-        "inputUsdPer1m": 0.49,
-        "outputUsdPer1m": 1.54
+        "inputUsdPer1m": 0.46199999999999997,
+        "outputUsdPer1m": 1.452
       },
       "z-ai/glm-5.2:batch": {
         "name": "Z.ai: GLM 5.2 (batch)",
@@ -1306,8 +1314,8 @@
       "deepseek/deepseek-v4-flash": {
         "name": "DeepSeek: DeepSeek V4 Flash 0423",
         "canonicalSlug": "deepseek/deepseek-v4-flash-20260423",
-        "inputUsdPer1m": 0.08106,
-        "outputUsdPer1m": 0.16212
+        "inputUsdPer1m": 0.06426,
+        "outputUsdPer1m": 0.12852
       },
       "inclusionai/ling-2.6-1t": {
         "name": "inclusionAI: Ling-2.6-1T",
@@ -1318,8 +1326,8 @@
       "tencent/hy3-preview": {
         "name": "Tencent: Hy3 preview",
         "canonicalSlug": "tencent/hy3-preview-20260421",
-        "inputUsdPer1m": 0.063,
-        "outputUsdPer1m": 0.21
+        "inputUsdPer1m": 0.18,
+        "outputUsdPer1m": 0.6
       },
       "xiaomi/mimo-v2.5-pro": {
         "name": "Xiaomi: MiMo-V2.5-Pro",
@@ -1360,8 +1368,8 @@
       "moonshotai/kimi-k2.6": {
         "name": "MoonshotAI: Kimi K2.6",
         "canonicalSlug": "moonshotai/kimi-k2.6-20260420",
-        "inputUsdPer1m": 0.65,
-        "outputUsdPer1m": 3.41
+        "inputUsdPer1m": 0.5415,
+        "outputUsdPer1m": 2.2800000000000002
       },
       "anthropic/claude-opus-4.7": {
         "name": "Anthropic: Claude Opus 4.7",
@@ -20891,6 +20899,11 @@
             "2026-08-15",
             0.65,
             3.41
+          ],
+          [
+            "2026-08-15",
+            0.5415,
+            2.28
           ]
         ]
       },
@@ -21202,6 +21215,11 @@
             "2026-08-15",
             0.08246,
             0.16492
+          ],
+          [
+            "2026-08-15",
+            0.06566,
+            0.13132
           ]
         ]
       },
@@ -21909,6 +21927,11 @@
             "2026-06-20",
             0.063,
             0.21
+          ],
+          [
+            "2026-08-15",
+            0.18,
+            0.6
           ]
         ]
       },
@@ -22766,6 +22789,11 @@
             "2026-08-15",
             1.19,
             3.74
+          ],
+          [
+            "2026-08-15",
+            0.49,
+            1.54
           ]
         ]
       },
@@ -23834,6 +23862,11 @@
             "2026-08-15",
             0.0798,
             0.1596
+          ],
+          [
+            "2026-08-15",
+            0.06846,
+            0.13692
           ]
         ]
       },
@@ -24478,19 +24511,45 @@
             0.9375
           ]
         ]
+      },
+      "qwen/qwen3.8-27b": {
+        "name": "Qwen: Qwen3.8 27B",
+        "firstSeen": "2026-08-15",
+        "lastSeen": "2026-08-15",
+        "presentNow": true,
+        "points": [
+          [
+            "2026-08-15",
+            0.45,
+            3.2
+          ]
+        ]
+      },
+      "dots-studio/dots-3-note-preview:free": {
+        "name": "Dots Studio: Dots3-Note Preview (free)",
+        "firstSeen": "2026-08-15",
+        "lastSeen": "2026-08-15",
+        "presentNow": true,
+        "points": [
+          [
+            "2026-08-15",
+            0.0,
+            0.0
+          ]
+        ]
       }
     }
   },
   "sources": {
     "models": {
       "url": "https://openrouter.ai/api/v1/models",
-      "sha256": "sha256:1a252f14ca168bf45b1045add5df5b58ee67e54ad7ecd1ae9c71da1b7f80f552",
-      "snapshotPath": "tracker_snapshots/market_facts/20260815t014849z-openrouter-models-active-prices.json"
+      "sha256": "sha256:f9649dbce72bb45765d18ef7169888cba96e9389542d270097b08aa024da7fc1",
+      "snapshotPath": "tracker_snapshots/market_facts/20260815t132536z-openrouter-models-active-prices.json"
     },
     "history": {
       "url": "https://raw.githubusercontent.com/jvrck/openrouterlist/main/data/history/prices.json",
-      "sha256": "sha256:d4ef465879a3541c19e313490d77157634b7e3af458d1ab285e84b3cdd824e3c",
-      "snapshotPath": "tracker_snapshots/market_facts/20260815t014849z-openrouterlist-price-history.json",
+      "sha256": "sha256:f3dc2191a1e78d15db0b4a4dc3985235372f7a874bd1def00947e915afae56e9",
+      "snapshotPath": "tracker_snapshots/market_facts/20260815t132536z-openrouterlist-price-history.json",
       "licenseCaveat": "Repository labels MIT, but its LICENSE retains placeholder copyright fields and has no separate data license."
     }
   }
