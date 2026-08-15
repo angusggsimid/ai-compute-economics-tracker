@@ -15,6 +15,7 @@
 - EdgeOne 项目 `ai-compute-tracker`（`makers-2skmd9vvyabl`，Upload 直传类型）；本地首测部署 `dp6wwp87f7zg` 成功。
 - EdgeOne 公开地址：`https://ai-compute-tracker-fpypxnc7.edgeone.cool`（无登录保护，与 Vercel 的登录保护不同）；回读 HTTP 200、标题正确、generatedAt 与产物一致。
 - 发布顺序：数据门/测试门 → 提交 push（Vercel 自动部署）→ EdgeOne 上传；EdgeOne 步骤在 push 之后，失败不影响 Vercel，但会让 Actions run 标红。
+- 后续（同日）：按用户要求改为 marathon 同款模式——通过 API 新建 Github 绑定项目 `ai-compute-tracker-git`（`makers-rhz4zld7xqk4`，main 分支、输出目录 `public/`、Static 无构建），首次手动部署 `dp08416c71by` 成功拉取私有仓库；新地址 `https://ai-compute-tracker-git-7zxuduki.edgeone.cool`。验证 push 自动触发后移除 Actions 里的 CLI 上传步骤与 `EDGEONE_PAGES_API_TOKEN` secret；旧 Upload 项目 `makers-2skmd9vvyabl` 待控制台删除。
 
 ## 2026-07-22 AI Compute Tracker Sites 每日同步
 

@@ -9,6 +9,6 @@
 - 本地启动：在项目根目录运行 `python3 -m http.server 8767 --directory html_dashboard`
 - 本地地址：`http://127.0.0.1:8767/ai_compute_economics_monitor.html`
 - Vercel：<https://trackerv2-git-main-angusggsimids-projects.vercel.app>
-- EdgeOne：<https://ai-compute-tracker-fpypxnc7.edgeone.cool>
+- EdgeOne：<https://ai-compute-tracker-git-7zxuduki.edgeone.cool>
 
 项目完整架构、采集方式、刷新机制、测试和数据边界见 `README_v2.md` 与 `ARCHITECTURE.md`。
