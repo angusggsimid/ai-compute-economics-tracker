@@ -1,5 +1,12 @@
 # CONTEXT
 
+## 2026-08-15 自动化维护约定
+
+- 用户要求：此后由助手持续维护本项目的自动化链路，不再新增发布渠道。
+- 当前链路（唯一）：GitHub Actions `refresh-dashboard.yml` 每日 `00:17 UTC` 刷新四源数据 → 发布门/测试门 → push 到 main → Vercel 与 EdgeOne 各自经 GitHub 集成自动部署；本机无任何定时任务。
+- 维护要点：Actions run 失败时先看 `refresh_and_build.py` 数据源状态与测试输出；EdgeOne 项目 `makers-p5qz8uawwwgl` 为控制台 OAuth 绑定，push 即部署，无 token 依赖；不要恢复 Sites、CLI 上传或任何本机定时任务。
+- EdgeOne 地址：`https://ai-compute-economics-tracker-vlhs40vz.edgeone.cool`（公开）；Vercel 地址保持登录保护。
+
 ## 2026-08-15 停止 Sites 发布并彻底清理，仅保留 Vercel
 
 - 用户决定：不再同步发布到 ChatGPT Sites，正式线上渠道只保留 Vercel（`https://trackerv2-git-main-angusggsimids-projects.vercel.app`）。
