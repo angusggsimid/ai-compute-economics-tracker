@@ -1,5 +1,36 @@
 # CONTEXT
 
+## 2026-08-15 停止 Sites 发布并彻底清理，仅保留 Vercel
+
+- 用户决定：不再同步发布到 ChatGPT Sites，正式线上渠道只保留 Vercel（`https://trackerv2-git-main-angusggsimids-projects.vercel.app`）。
+- 已删除 Codex 定时任务 `ai-compute-tracker-sites`（`~/.codex/automations/ai-compute-tracker-sites/` 整个目录）。
+- 已删除本地 `sites_app/` 目录（约 759MB，从未被 git 跟踪，无历史损失）；`.gitignore` 移除 `sites_app/` 条目。
+- 已清理 `README.md`、`README_v2.md`、`ARCHITECTURE.md` 中的 Sites 地址、Sites 同步自动化和 Sites 发布门描述；`docs/FIX_LOG_*` 历史记录保持原样不改写。
+- GitHub Actions `refresh-dashboard.yml` 每日刷新 → push → Vercel 自动发布链路不变，全程云端，本机无定时任务。
+- 已核查：仓库与本机均无腾讯云 EdgeOne 发布配置或 CLI，本项目从未发布到 EdgeOne；EdgeOne 账号下唯一的托管项目是 `marathon`，与本项目无关。
+
+## 2026-08-15 新增 EdgeOne Pages 自动双发布
+
+- GitHub Actions 提交推送后新增 `Deploy to EdgeOne Pages` 步骤：`npx edgeone@1.6.28 pages deploy public -n ai-compute-tracker -e production -a global --json`，API token 存于仓库 secret `EDGEONE_PAGES_API_TOKEN`（来自 `~/.edgeone` 2026-07-19 CLI 登录生成的 token）。
+- EdgeOne 项目 `ai-compute-tracker`（`makers-2skmd9vvyabl`，Upload 直传类型）；本地首测部署 `dp6wwp87f7zg` 成功。
+- EdgeOne 公开地址：`https://ai-compute-tracker-fpypxnc7.edgeone.cool`（无登录保护，与 Vercel 的登录保护不同）；回读 HTTP 200、标题正确、generatedAt 与产物一致。
+- 发布顺序：数据门/测试门 → 提交 push（Vercel 自动部署）→ EdgeOne 上传；EdgeOne 步骤在 push 之后，失败不影响 Vercel，但会让 Actions run 标红。
+
+## 2026-07-22 AI Compute Tracker Sites 每日同步
+
+- GitHub Actions 当日手动触发 run `29883558801` 成功；刷新数据提交 `b2d01a0`，本地 `git pull --ff-only` 完成。
+- 发布门通过：generatedAt=`2026-07-22T01:37:13Z`，status=`ready`、publishable=`true`；OpenRouter usage、Foundry Signals、OpenRouter active prices 均 fresh；SEC CAPEX 满足 `current_for_frequency` 且五家公司 cache current。
+- 指定回归测试 12 passed。
+- Vercel production deployment `READY`，projectId=`prj_QtBKCz4MqPcNU0HjC3XCa3MBC1ri` 与本地一致，`meta.githubCommitSha`=`b2d01a0` 等于本地 HEAD；正式响应原始字节与 `public/index.html` 的 SHA-256 均为 `1f389976b5f903e45e3e73ab02ddb4acab908394182d9709118ac19b77672846`。
+- Sites 同步并构建成功，来源提交 `c5dd082`；version 7 部署状态 `succeeded`。固定地址 `https://ai-compute-economics-tracker.angusgu456396.chatgpt.site/dashboard.html` 回读 HTTP 200，标题正确，generatedAt 为当日。
+
+## 2026-07-20 AI Compute Tracker Sites 每日同步
+
+- GitHub Actions `refresh-dashboard.yml` 当日 run `29715950899` 成功，数据提交 `5dd9420`；`validate_deploy_refresh.py` 通过，generatedAt=`2026-07-20T04:03:07Z`，status=`ready`，publishable=`true`，OpenRouter usage、Foundry Signals、OpenRouter active prices 为 fresh，SEC CAPEX 为 current_for_frequency 且五家公司 cache current。
+- `test_time_series_dashboard.py` 与 `test_deploy_refresh.py` 共 12 项通过。
+- Vercel production deployment `READY`，项目 ID 与本地配置一致，Git SHA=`5dd9420`；正式响应原始字节 SHA-256 与 `public/index.html` 同为 `9649516c705bef43cdee4cb432bea884a708c10ccebe05246ed52c1c8232d319`。
+- Sites `sites_app` 同步并构建成功，HEAD=`d66d745`；版本 6、部署状态 `succeeded`，固定地址 `https://ai-compute-economics-tracker.angusgu456396.chatgpt.site` 回读 HTTP 200，标题正确，generatedAt 为当日。Connector 同时确认 current_live_url 与最新 version commit_sha 一致。
+
 ## 2026-07-17 修复 Sites 每日同步的网络误阻断
 
 - 今日 GitHub Actions run `29552746276` 成功，提交 `b8b4b20`；发布门通过，目标测试 12 项通过，数据生成时间为 `2026-07-17T03:35:56Z`。
@@ -1514,3 +1545,11 @@
 - 浏览器登录 Vercel并读取部署页，确认 Blocked 不是构建问题，而是提交作者 `agg@Macbook-M1-Air.local` 未被识别为 Hobby 团队成员；Vercel通知邮件也给出相同原因。
 - tracker_v2 本地 Git 身份和 GitHub Actions 提交身份均改为 GitHub 账户专属地址 `281128372+angusggsimid@users.noreply.github.com`。
 - 手动提交 `7476fbe` 触发 Vercel Ready；随后真实运行 GitHub Actions，机器人提交 `840f3d6` 同样触发 Vercel Ready，正式地址 13 张 SVG、24 条 CAPEX、0 console error/warn。
+
+## 2026-07-19 Sites 每日同步
+
+- GitHub `refresh-dashboard.yml` 当日 run `29672415958` 成功；`git pull --ff-only` 更新到 `73d6410`。
+- 发布门通过：`generatedAt=2026-07-19T03:52:29Z`、`status=ready`、`publishable=true`，OpenRouter usage / Foundry Signals / OpenRouter active prices 为 fresh，SEC CAPEX 满足季度频率门；指定测试 `12 passed`。
+- Vercel 部署 READY、production、项目 ID 正确，`vercel ls` 的 `meta.githubCommitSha=73d6410d...` 与本地 HEAD 一致；正式响应读取因本机边缘网络 curl 28 超时，采用允许的管理 API 备用证明。
+- Sites 同步 `sites_app/public/dashboard.html`，构建产物和打包校验通过；Sites 提交 `12b0f361`，保存 version 5 并部署 `succeeded`。
+- Sites 固定地址保持 `https://ai-compute-economics-tracker.angusgu456396.chatgpt.site`。带 bypass token 回读遇 Cloudflare 403 challenge，按规则用 connector 确认 deployment succeeded、固定 live URL、最新 version commit_sha 三项一致。
