@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-20T01:50:31Z",
+  "generated_at": "2026-08-21T01:56:31Z",
   "window": {
     "start": "2025-08-18",
     "end": "2026-08-10",
@@ -14,13 +14,13 @@
   "sources": {
     "openrouter": {
       "url": "https://openrouter.ai/api/frontend/v1/rankings/model-rankings-chart",
-      "cached_at": 1787190037567,
-      "raw_sha256": "sha256:4dbdb5a1c0cdcc0c8ccebe47533cf2721e3040a2e8efa0d36dcf08f58f89d380",
+      "cached_at": 1787276962110,
+      "raw_sha256": "sha256:51c9a0e7c596fa8838a756b088af4870851ebc8c7f341f01315824b7d25dda68",
       "upstream_complete_weeks": 51,
       "retained_complete_weeks": 52,
       "history_provenance": {
-        "retention_start": "2025-08-15",
-        "as_of_utc": "2026-08-20",
+        "retention_start": "2025-08-16",
+        "as_of_utc": "2026-08-21",
         "min_complete_weeks": 52,
         "prior_complete_weeks_in_window": 52,
         "upstream_complete_weeks": 51,
@@ -30,9 +30,9 @@
         ],
         "local_only_week_count": 1,
         "upstream_overwrite_week_count": 51,
-        "retained_cache_generated_at": "2026-08-19T01:51:56Z",
+        "retained_cache_generated_at": "2026-08-20T01:50:31Z",
         "retained_cache_openrouter_url": "https://openrouter.ai/api/frontend/v1/rankings/model-rankings-chart",
-        "retained_cache_openrouter_raw_sha256": "sha256:e849fd802aa912d681bfc3344b2b8d8b74514e57de970cdf00cf52680fec0b06",
+        "retained_cache_openrouter_raw_sha256": "sha256:4dbdb5a1c0cdcc0c8ccebe47533cf2721e3040a2e8efa0d36dcf08f58f89d380",
         "rule": "Upstream complete weeks overwrite same dates; local complete weeks are kept only when they fall off the upstream rolling window but remain on/after retention_start and are still complete as_of UTC."
       }
     },
