@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-22T01:48:53Z",
+  "generatedAt": "2026-08-22T16:43:09Z",
   "status": "ready",
   "publishable": true,
   "sources": [
@@ -66,6 +66,17 @@
           "current": true
         }
       }
+    },
+    {
+      "source": "gpu_orderbook",
+      "status": "fresh",
+      "publishable": true,
+      "returnCode": 0,
+      "stdout": "{\"output\": \"/home/runner/work/ai-compute-economics-tracker/ai-compute-economics-tracker/tracker_data/backfills/gpu_orderbook_history.json\", \"refreshStatus\": \"fresh\", \"publishable\": true, \"rowsTotal\": 24, \"todayRows\": 24, \"failedSources\": [], \"blocking\": false}\n",
+      "stderr": "",
+      "output": "tracker_data/backfills/gpu_orderbook_history.json",
+      "qualityWarnings": [],
+      "blocking": false
     }
   ],
   "publicIndex": "public/index.html"

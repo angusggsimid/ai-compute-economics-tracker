@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-08-22T01:48:52Z",
+  "fetchedAt": "2026-08-22T16:42:59Z",
   "data": {
     "asOf": "2026-08-22",
     "aliases": {
@@ -630,8 +630,8 @@
       "deepseek/deepseek-v4-flash-vision-exp": {
         "name": "DeepSeek: DeepSeek V4 Flash Vision Exp",
         "canonicalSlug": "deepseek/deepseek-v4-flash-vision-exp-20260821",
-        "inputUsdPer1m": 0.44,
-        "outputUsdPer1m": 1.32
+        "inputUsdPer1m": 0.22,
+        "outputUsdPer1m": 0.66
       },
       "stealth/ox-alpha": {
         "name": "Ox Alpha",
@@ -750,8 +750,8 @@
       "meta/muse-glimmer-30b": {
         "name": "Meta: Muse Glimmer 30B",
         "canonicalSlug": "meta/muse-glimmer-30b-20260810",
-        "inputUsdPer1m": 0.3,
-        "outputUsdPer1m": 1.1
+        "inputUsdPer1m": 0.35,
+        "outputUsdPer1m": 1.5
       },
       "meta/muse-spark-1.2": {
         "name": "Meta: Muse Spark 1.2",
@@ -1380,14 +1380,14 @@
       "deepseek/deepseek-v4-pro": {
         "name": "DeepSeek: DeepSeek V4 Pro 0423",
         "canonicalSlug": "deepseek/deepseek-v4-pro-20260423",
-        "inputUsdPer1m": 0.532092,
-        "outputUsdPer1m": 1.064184
+        "inputUsdPer1m": 0.413772,
+        "outputUsdPer1m": 0.827544
       },
       "deepseek/deepseek-v4-flash": {
         "name": "DeepSeek: DeepSeek V4 Flash 0423",
         "canonicalSlug": "deepseek/deepseek-v4-flash-20260423",
-        "inputUsdPer1m": 0.07686,
-        "outputUsdPer1m": 0.15372
+        "inputUsdPer1m": 0.060059999999999995,
+        "outputUsdPer1m": 0.12011999999999999
       },
       "inclusionai/ling-2.6-1t": {
         "name": "inclusionAI: Ling-2.6-1T",
@@ -1440,8 +1440,8 @@
       "moonshotai/kimi-k2.6": {
         "name": "MoonshotAI: Kimi K2.6",
         "canonicalSlug": "moonshotai/kimi-k2.6-20260420",
-        "inputUsdPer1m": 0.5605,
-        "outputUsdPer1m": 2.36
+        "inputUsdPer1m": 0.5415,
+        "outputUsdPer1m": 2.2800000000000002
       },
       "anthropic/claude-opus-4.7": {
         "name": "Anthropic: Claude Opus 4.7",
@@ -2220,7 +2220,7 @@
       "qwen/qwen3-next-80b-a3b-instruct": {
         "name": "Qwen: Qwen3 Next 80B A3B Instruct",
         "canonicalSlug": "qwen/qwen3-next-80b-a3b-instruct-2509",
-        "inputUsdPer1m": 0.09,
+        "inputUsdPer1m": 0.09999999999999999,
         "outputUsdPer1m": 1.1
       },
       "qwen/qwen-plus-2025-07-28": {
@@ -16110,6 +16110,11 @@
             "2026-08-19",
             0.09,
             1.1
+          ],
+          [
+            "2026-08-22",
+            0.1,
+            1.1
           ]
         ]
       },
@@ -21089,6 +21094,11 @@
             "2026-08-22",
             0.5605,
             2.36
+          ],
+          [
+            "2026-08-22",
+            0.5415,
+            2.28
           ]
         ]
       },
@@ -21292,6 +21302,11 @@
             "2026-08-22",
             0.54897,
             1.09794
+          ],
+          [
+            "2026-08-22",
+            0.413772,
+            0.827544
           ]
         ]
       },
@@ -21460,6 +21475,11 @@
             "2026-08-22",
             0.07826,
             0.15652
+          ],
+          [
+            "2026-08-22",
+            0.06426,
+            0.12852
           ]
         ]
       },
@@ -25178,13 +25198,13 @@
   "sources": {
     "models": {
       "url": "https://openrouter.ai/api/v1/models",
-      "sha256": "sha256:8463677178608d03143c39045d5e4e5326b7be7b8a677b216899bda3a0e6e9d3",
-      "snapshotPath": "tracker_snapshots/market_facts/20260822t014852z-openrouter-models-active-prices.json"
+      "sha256": "sha256:9ecf826844dedaca83d3487adc51ea3b724c0ea13780f7cec361bdc7eb6b2cfd",
+      "snapshotPath": "tracker_snapshots/market_facts/20260822t164259z-openrouter-models-active-prices.json"
     },
     "history": {
       "url": "https://raw.githubusercontent.com/jvrck/openrouterlist/main/data/history/prices.json",
-      "sha256": "sha256:9e4019cc24e42ea0dbf4f9f2c148b21f5a218f0942e9bebc57565098873c5a8c",
-      "snapshotPath": "tracker_snapshots/market_facts/20260822t014852z-openrouterlist-price-history.json",
+      "sha256": "sha256:5114685de85d548c0981455ab072f0372b29ad7498f65b2afb161c26f45cc6cf",
+      "snapshotPath": "tracker_snapshots/market_facts/20260822t164259z-openrouterlist-price-history.json",
       "licenseCaveat": "Repository labels MIT, but its LICENSE retains placeholder copyright fields and has no separate data license."
     }
   }
