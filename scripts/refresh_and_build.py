@@ -76,8 +76,19 @@ def main() -> int:
             [python, "scripts/refresh_capex_history.py"],
             ROOT / "tracker_data" / "backfills" / "capex_official_history.json",
         ),
+        (
+            "gpu_orderbook",
+            [python, "scripts/backfill_gpu_orderbook.py"],
+            ROOT / "tracker_data" / "backfills" / "gpu_orderbook_history.json",
+        ),
     ]
     results = [_run(*job) for job in jobs]
+    for row in results:
+        if row["source"] == "gpu_orderbook":
+            # 订单簿是时点观测的积累型信息源，当前不进入正式页面：
+            # 失败必须暴露在状态里，但不阻塞主链路发布。
+            row["blocking"] = False
+            row["publishable"] = True
     publishable = all(row["publishable"] for row in results)
     if publishable:
         build = subprocess.run(

@@ -30,6 +30,8 @@ python3 tracker_v2/html_dashboard/build_time_series_dashboard.py
 
 正式部署不读取本地 DuckDB。`scripts/refresh_and_build.py` 会分别刷新 OpenRouter、Foundry Signals、活跃模型牌价和 SEC CAPEX，来源失败时保留上一份已验证数据并把状态写入 `tracker_data/deploy_refresh_status.json`。OpenRouter 周榜是滚动窗口：刷新时剔除未完成周，并以 `--start-date`（生产为 today−370）为保留窗口下界，与 `tracker_data/backfills/openrouter_cost_index.json` 中已有完整周按日期去重合并（同日上游优先），避免最旧完整周被上游窗口挤掉；合并后不足 52 个完整周、接口失败、或本地缓存损坏/schema 不符则整源失败。日频/周频来源必须当天刷新；季度 CAPEX 若当天 SEC 请求失败，只能在美国五家公司最近官方值均不超过 150 天时标记为 `current_for_frequency`，不能冒充 `fresh`。只有 `status=ready` 且 `publishable=true` 才会更新 `public/index.html`。
 
+订单簿深度由 `scripts/backfill_gpu_orderbook.py` 单独按日累积：GPUPerHour 逐条报价（unit=offers）、Vast verified on-demand bundle（unit=offers）、RunPod 完整卡型号挂牌（unit=types，取最低可用按需档），汇总成 (date, source, series) 粒度的 offer 数、GPU 总数和 P25/P50/P75，写入 `tracker_data/backfills/gpu_orderbook_history.json`。订单簿是时点观测，当天抓不到即永久缺口；该层当前不进入正式页面，作为非阻塞信息源运行——单源失败记入 quality，三源全失败标 `failed` 并在发布门输出告警，但不阻塞主链路。MIG、$0 价、不可用档位价与未验证 offer 一律剔除，口径延续 Phase 1 数据质量规则。
+
 GitHub Actions 工作流位于 `.github/workflows/refresh-dashboard.yml`，每天 `00:17 UTC`（香港时间 `08:17`）运行。刷新和测试通过后只提交数据 JSON、正式 HTML 和刷新状态；Vercel 监听私有仓库的主分支并自动发布。
 
 Vercel Hobby 会阻止无法映射到团队成员的 Git 提交。本项目本地 Git 与 Actions 必须使用 GitHub 账户专属提交地址 `281128372+angusggsimid@users.noreply.github.com`；禁止改回本机 `.local` 地址或 bot 作者邮箱。

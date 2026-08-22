@@ -101,7 +101,8 @@ def test_deploy_validator_accepts_current_quarterly_capex():
                 "status": "current_for_frequency",
                 "publishable": True,
                 "cacheCoverage": {"MSFT": {"current": True}},
-            }
+            },
+            {"source": "gpu_orderbook", "status": "fresh", "publishable": True},
         ],
     }
 
@@ -123,7 +124,8 @@ def test_deploy_validator_rejects_false_freshness():
                 "status": "current_for_frequency",
                 "publishable": True,
                 "cacheCoverage": {"MSFT": {"current": False}},
-            }
+            },
+            {"source": "gpu_orderbook", "status": "fresh", "publishable": True},
         ],
     }
 

@@ -1,5 +1,13 @@
 # CONTEXT
 
+## 2026-08-23 重新接入 GPU 订单簿每日快照
+
+- 用户决定：订单簿深度数据必须重新积累（Supply Price 拐点条件需要"offer 数/深度随价格下降而扩大"的证据；时点观测缺口无法回填）。
+- 新增 `scripts/backfill_gpu_orderbook.py`：GPUPerHour/Vast/RunPod 三源独立采集，按 (date, source, series) 累积 offer 数、GPU 总数、P25/P50/P75 到 `tracker_data/backfills/gpu_orderbook_history.json`；unit 语义 gpuperhour/vast=offers、runpod=types（型号挂牌取最低可用按需档）。口径延续 Phase 1：MIG、$0 价、不可用档位价、未验证 offer 全部剔除。
+- 接入定位：非阻塞信息源——失败暴露在 `deploy_refresh_status.json`（fresh/partial/failed）但不阻塞主链路发布；页面当前不展示该层，未来接入 Supply Price 深度证据或 UI 时升级为硬门槛。
+- 验证：本地五源链路全绿；新增 10 项解析/合并测试，相关 21 项测试通过；GPUPerHour limit=100 实测对全部 9 个家族全覆盖（returned==total）。首日 24 行，H100 订单簿中位 $3.29（7 月中旬 DuckDB 读数 $2.90 同口径可比）。
+- 教训沉淀：旧 DuckDB 轨道 2026-07-12 停更一个月才被发现——非阻塞源必须有状态可见性，这是本次把 orderbook 写进每日 status 文件的原因。
+
 ## 2026-08-15 自动化维护约定
 
 - 用户要求：此后由助手持续维护本项目的自动化链路，不再新增发布渠道。
