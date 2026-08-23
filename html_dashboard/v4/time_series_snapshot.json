@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-08-23T08:14:01Z",
+    "generatedAt": "2026-08-23T08:26:53Z",
     "minDate": "2023-09-01",
     "maxDate": "2026-08-22",
     "orderbookValidDays": 2,
@@ -34782,7 +34782,7 @@
       {
         "date": "2026-08-23",
         "series": "gpuperhour",
-        "value": 72
+        "value": 73
       },
       {
         "date": "2026-08-23",
@@ -34792,17 +34792,17 @@
       {
         "date": "2026-08-23",
         "series": "gpuperhour",
-        "value": 2
+        "value": 4
       },
       {
         "date": "2026-08-23",
         "series": "gpuperhour",
-        "value": 55
+        "value": 57
       },
       {
         "date": "2026-08-23",
         "series": "gpuperhour",
-        "value": 37
+        "value": 36
       },
       {
         "date": "2026-08-23",
@@ -34817,12 +34817,12 @@
       {
         "date": "2026-08-23",
         "series": "gpuperhour",
-        "value": 12
+        "value": 13
       },
       {
         "date": "2026-08-23",
         "series": "gpuperhour",
-        "value": 14
+        "value": 13
       },
       {
         "date": "2026-08-23",
@@ -34873,21 +34873,6 @@
         "date": "2026-08-23",
         "series": "vast",
         "value": 2
-      },
-      {
-        "date": "2026-08-23",
-        "series": "vast",
-        "value": 2
-      },
-      {
-        "date": "2026-08-23",
-        "series": "vast",
-        "value": 2
-      },
-      {
-        "date": "2026-08-23",
-        "series": "vast",
-        "value": 9
       },
       {
         "date": "2026-08-23",
@@ -34897,7 +34882,17 @@
       {
         "date": "2026-08-23",
         "series": "vast",
-        "value": 6
+        "value": 8
+      },
+      {
+        "date": "2026-08-23",
+        "series": "vast",
+        "value": 4
+      },
+      {
+        "date": "2026-08-23",
+        "series": "vast",
+        "value": 4
       }
     ]
   },
@@ -34935,6 +34930,36 @@
     "capex": {
       "label": "SEC companyfacts and official company disclosures",
       "definition": "Quarterly and event-frequency observations preserve source units and are not interpolated."
+    },
+    "basisH100": {
+      "url": "https://gpu-index.semianalysis.com/ | https://index.ornn.com | https://signals.foundry.ai",
+      "label": "H100 三源价格对照",
+      "definition": "同一 GPU 家族下三种口径并列：供应商报价中位、综合现货-合约指数、成交加权指数。口径不同，仅作交叉对照，不构成同质序列。"
+    },
+    "basisH200": {
+      "url": "https://gpu-index.semianalysis.com/ | https://index.ornn.com | https://signals.foundry.ai",
+      "label": "H200 三源价格对照",
+      "definition": "口径同上。Foundry 与 Ornn 可能方向分歧，分歧本身是证据而非噪声。"
+    },
+    "basisB200": {
+      "url": "https://gpu-index.semianalysis.com/ | https://index.ornn.com | https://signals.foundry.ai",
+      "label": "B200 三源价格对照",
+      "definition": "口径同上。"
+    },
+    "contractBand": {
+      "url": "https://gpu-index.semianalysis.com/api/public-data",
+      "label": "SemiAnalysis H100 1Y 合约调查区间",
+      "definition": "月度调查的25-75分位合约价区间，半年期阶梯展示。许可：公开页引用需署名。"
+    },
+    "orderbookDepth": {
+      "url": "https://api.gpuindexes.com/api/offers | https://console.vast.ai/api/v0/bundles/ | https://api.runpod.io/graphql",
+      "label": "GPU 订单簿逐源观测",
+      "definition": "gpuperhour/vast 为逐条报价 offers、runpod 为型号挂牌 types，单位语义不同故分序列展示不合并。时点观测，<10 有效日只画点不连线。"
+    },
+    "otpi": {
+      "url": "https://index.ornn.com/api/otpi",
+      "label": "Ornn OTPI 已实现 token 价",
+      "definition": "按 lab 的成交加权 token 实现价（USD/Mtok），免费层滚动窗口每日快照累积。许可：Ornn 免费层署名引用。"
     }
   }
 }
