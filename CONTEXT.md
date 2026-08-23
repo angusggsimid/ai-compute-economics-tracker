@@ -1,5 +1,12 @@
 # CONTEXT
 
+## 2026-08-23 路线校准：双向拐点 + 外部锚 + 分层数据组合（用户已采纳）
+
+- 五原则体检 + 外部调研结论沉淀在 `docs/ROADMAP_ADJUSTMENT_2026-08-23.md`。C1-C3/E1-E3 全部纳入路线。
+- 核心判断：五原则不变；要修的是第 3 条的落地——判定规则单向变双向（加 Intensification Watch）、状态机从孤儿变日常（E1 移植到 JSON 管线，当前停在 2026-07-11）、现货层补合约层（SemiAnalysis H100 1Y 公开月度价）。
+- 数据输入分层：T1=Ornn OCPI/OTPI 免费层（成交型指数，升级 Supply Price 基准并突破 Demand proxy 天花板）+ adriannutiu/gpu-rental-prices（CC BY 4.0 22 供应商面板）；T2=SemiAnalysis 合约价、Epoch AI Chip Sales/Data Centers；T3=Vercel AI Gateway、npm/PyPI。Ornn 免费层为滚动窗口，须每日快照累积。
+- 与商业产品定位切割：不做更好的 OCPI；做跨层交叉验证、反证条件、双向拐点状态机。
+
 ## 2026-08-23 重新接入 GPU 订单簿每日快照
 
 - 用户决定：订单簿深度数据必须重新积累（Supply Price 拐点条件需要"offer 数/深度随价格下降而扩大"的证据；时点观测缺口无法回填）。
