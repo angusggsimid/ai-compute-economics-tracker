@@ -1,5 +1,13 @@
 # CONTEXT
 
+## 2026-08-23 T1/T2 外部参考层已接入
+
+- 新增两个非阻塞采集脚本并入每日管线（共九源）：
+  - `backfill_reference_indices.py`：Ornn OCPI（成交型 GPU 指数，3mo 滚动窗口每日快照累积）、Ornn OTPI（4 lab 已实现 token 价）、SemiAnalysis 综合指数全历史（2023 起，含 H100 1Y 合约价区间）→ `reference_index_history.json`
+  - `backfill_neocloud_prices.py`：adriannutiu/gpu-rental-prices CC BY 4.0 数据集（34 家供应商逐 offer 带来源 URL）→ `neocloud_provider_price_history.json`，作为 matched-panel 面板成员池
+- 定位：成交型/调查型外部基准，交叉验证自采报价层；当前不进主图。信息源失败暴露但不阻塞发布。
+- 待办（后续批次）：E1 状态机移植到 JSON 管线、C1 双向拐点规则、Epoch AI Chip Sales/Data Centers 接入（CSV 端点已验证 `epoch.ai/data/ai_chip_sales_*.csv`）、Demand 时钟 OPENROUTER_API_KEY 决策。
+
 ## 2026-08-23 路线校准：双向拐点 + 外部锚 + 分层数据组合（用户已采纳）
 
 - 五原则体检 + 外部调研结论沉淀在 `docs/ROADMAP_ADJUSTMENT_2026-08-23.md`。C1-C3/E1-E3 全部纳入路线。

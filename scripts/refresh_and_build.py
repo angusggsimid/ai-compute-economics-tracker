@@ -81,12 +81,23 @@ def main() -> int:
             [python, "scripts/backfill_gpu_orderbook.py"],
             ROOT / "tracker_data" / "backfills" / "gpu_orderbook_history.json",
         ),
+        (
+            "reference_indices",
+            [python, "scripts/backfill_reference_indices.py"],
+            ROOT / "tracker_data" / "backfills" / "reference_index_history.json",
+        ),
+        (
+            "neocloud_provider_prices",
+            [python, "scripts/backfill_neocloud_prices.py"],
+            ROOT / "tracker_data" / "backfills" / "neocloud_provider_price_history.json",
+        ),
     ]
     results = [_run(*job) for job in jobs]
+    INFORMATIONAL_SOURCES = {"gpu_orderbook", "reference_indices", "neocloud_provider_prices"}
     for row in results:
-        if row["source"] == "gpu_orderbook":
-            # 订单簿是时点观测的积累型信息源，当前不进入正式页面：
-            # 失败必须暴露在状态里，但不阻塞主链路发布。
+        if row["source"] in INFORMATIONAL_SOURCES:
+            # 积累型信息源（时点观测/外部滚动窗口）：失败必须暴露在状态里，
+            # 但当前不阻塞主链路发布；未来接入页面展示或时钟门槛时再升级。
             row["blocking"] = False
             row["publishable"] = True
     publishable = all(row["publishable"] for row in results)

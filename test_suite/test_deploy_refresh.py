@@ -103,6 +103,8 @@ def test_deploy_validator_accepts_current_quarterly_capex():
                 "cacheCoverage": {"MSFT": {"current": True}},
             },
             {"source": "gpu_orderbook", "status": "fresh", "publishable": True},
+            {"source": "reference_indices", "status": "fresh", "publishable": True},
+            {"source": "neocloud_provider_prices", "status": "fresh", "publishable": True},
         ],
     }
 
@@ -126,6 +128,8 @@ def test_deploy_validator_rejects_false_freshness():
                 "cacheCoverage": {"MSFT": {"current": False}},
             },
             {"source": "gpu_orderbook", "status": "fresh", "publishable": True},
+            {"source": "reference_indices", "status": "fresh", "publishable": True},
+            {"source": "neocloud_provider_prices", "status": "fresh", "publishable": True},
         ],
     }
 

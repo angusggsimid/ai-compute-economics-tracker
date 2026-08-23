@@ -17,9 +17,12 @@ EXPECTED_SOURCES = {
     "openrouter_active_prices",
     "sec_capex",
     "gpu_orderbook",
+    "reference_indices",
+    "neocloud_provider_prices",
 }
 CAPEX_READY_STATUSES = {"fresh", "current_for_frequency"}
-ORDERBOOK_INFORMATIONAL_STATUSES = {"fresh", "partial", "failed"}
+INFORMATIONAL_SOURCES = {"gpu_orderbook", "reference_indices", "neocloud_provider_prices"}
+INFORMATIONAL_STATUSES = {"fresh", "partial", "failed"}
 
 
 def validate(payload: dict, expected_date: date) -> list[str]:
@@ -40,21 +43,22 @@ def validate(payload: dict, expected_date: date) -> list[str]:
         errors.append("来源集合不完整")
         return errors
 
-    for name in EXPECTED_SOURCES - {"sec_capex", "gpu_orderbook"}:
+    for name in EXPECTED_SOURCES - {"sec_capex"} - INFORMATIONAL_SOURCES:
         row = sources[name]
         if row.get("status") != "fresh" or row.get("publishable") is not True:
             errors.append(f"{name} 不是 fresh")
 
-    orderbook = sources["gpu_orderbook"]
-    if orderbook.get("status") not in ORDERBOOK_INFORMATIONAL_STATUSES:
-        errors.append("gpu_orderbook 状态未知（应为 fresh/partial/failed 之一）")
-    if orderbook.get("status") == "failed":
-        print(
-            json.dumps(
-                {"warning": "gpu_orderbook 三源全部失败，今日订单簿为缺口（不阻塞发布）"},
-                ensure_ascii=False,
+    for name in sorted(INFORMATIONAL_SOURCES):
+        status = sources[name].get("status")
+        if status not in INFORMATIONAL_STATUSES:
+            errors.append(f"{name} 状态未知（应为 fresh/partial/failed 之一）")
+        elif status == "failed":
+            print(
+                json.dumps(
+                    {"warning": f"{name} 全部来源失败，今日为缺口（不阻塞发布）"},
+                    ensure_ascii=False,
+                )
             )
-        )
 
     capex = sources["sec_capex"]
     if capex.get("status") not in CAPEX_READY_STATUSES or capex.get("publishable") is not True:
