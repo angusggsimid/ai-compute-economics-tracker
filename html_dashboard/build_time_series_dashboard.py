@@ -445,6 +445,20 @@ def build_snapshot() -> dict[str, Any]:
     }
     snapshot["datasets"].update(ref_datasets)
     snapshot["meta"].update(ref_meta)
+    # 全局时间轴纪律：任何序列不早于 OpenRouter 用量窗口起点（52 周滚动）
+    _or_rows = snapshot["datasets"].get("openrouterVolume") or []
+    if _or_rows:
+        _or_min = min(str(r.get("date", "")) for r in _or_rows)
+        for _key, _rows in list(snapshot["datasets"].items()):
+            if (
+                isinstance(_rows, list)
+                and _rows
+                and all(isinstance(r, dict) and "date" in r for r in _rows)
+            ):
+                _kept = [r for r in _rows if str(r.get("date", "")) >= _or_min]
+                if _kept:
+                    snapshot["datasets"][_key] = _kept
+        snapshot["meta"]["minDate"] = _or_min
     snapshot["datasets"]["orderbookDepth"] = sorted(
         (
             {
@@ -591,7 +605,7 @@ function renderChart(c){
   names.forEach((name,idx)=>{
     const pts=visible.filter(r=>r.series===name).sort((a,b)=>dateNum(a.date)-dateNum(b.date));let segments=[],segment=[];
     const gapDays=c.opt.gapDays||11;pts.forEach((p,i)=>{if(i&&dateNum(p.date)-dateNum(pts[i-1].date)>gapDays*86400000){if(segment.length)segments.push(segment);segment=[]}segment.push(p)});if(segment.length)segments.push(segment);
-    if(c.opt.band){const names=[...(states[id]||[])];if(names.length===2){const pick=n=>rows.filter(r=>r.series===n).sort((a,b)=>dateNum(a.date)-dateNum(b.date));const top=pick(names[0]),bot=pick(names[1]).reverse();if(top.length>1&&top.length===bot.length){let d=`M${x(dateNum(top[0].date)).toFixed(1)},${y(+top[0].value).toFixed(1)}`;for(let i=1;i<top.length;i++)d+=` H${x(dateNum(top[i].date)).toFixed(1)} V${y(+top[i].value).toFixed(1)}`;for(const p of bot)d+=` H${x(dateNum(p.date)).toFixed(1)} V${y(+p.value).toFixed(1)}`;svg+=`<path d="${d} Z" fill="${COLORS[0]}" opacity=".13"/>`}}}
+    if(c.opt.band){const names=[...(states[c.id]||[])];if(names.length===2){const pick=n=>visible.filter(r=>r.series===n).sort((a,b)=>dateNum(a.date)-dateNum(b.date));const top=pick(names[0]),bot=pick(names[1]).reverse();if(top.length>1&&top.length===bot.length){let d=`M${x(dateNum(top[0].date)).toFixed(1)},${y(+top[0].value).toFixed(1)}`;for(let i=1;i<top.length;i++)d+=` H${x(dateNum(top[i].date)).toFixed(1)} V${y(+top[i].value).toFixed(1)}`;for(const p of bot)d+=` H${x(dateNum(p.date)).toFixed(1)} V${y(+p.value).toFixed(1)}`;svg+=`<path d="${d} Z" fill="${COLORS[0]}" opacity=".13"/>`}}}
     if(!c.opt.pointOnly)segments.forEach(seg=>{let d=`M${x(dateNum(seg[0].date)).toFixed(1)},${y(+seg[0].value).toFixed(1)}`;for(let i=1;i<seg.length;i++){const xx=x(dateNum(seg[i].date)).toFixed(1),yy=y(+seg[i].value).toFixed(1);d+=c.opt.step?` H${xx} V${yy}`:` L${xx},${yy}`}svg+=`<path d="${d}" fill="none" stroke="${COLORS[idx%COLORS.length]}" stroke-width="${name.includes('average')?3:2}" opacity="${name==='Weekly tokens'?0.42:1}"/>`});
     pts.forEach((p,i)=>{if(!c.opt.step||i===0||i===pts.length-1||+p.value!==+pts[i-1].value)svg+=`<circle cx="${x(dateNum(p.date))}" cy="${y(+p.value)}" r="3" fill="${COLORS[idx%COLORS.length]}" data-date="${p.date}" data-series="${esc(name)}" data-value="${p.value}"/>`})
   });
