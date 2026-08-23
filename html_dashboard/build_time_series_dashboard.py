@@ -17,6 +17,8 @@ COST_INDEX_PATH = ROOT / "tracker_data" / "backfills" / "openrouter_cost_index.j
 FOUNDRY_HISTORY_PATH = ROOT / "tracker_data" / "backfills" / "foundry_signals_gpu_history.json"
 OPENROUTER_ACTIVE_PRICE_PATH = ROOT / "tracker_data" / "backfills" / "openrouter_active_price_history.json"
 CAPEX_HISTORY_PATH = ROOT / "tracker_data" / "backfills" / "capex_official_history.json"
+REFERENCE_PATH = ROOT / "tracker_data" / "backfills" / "reference_index_history.json"
+ORDERBOOK_PATH = ROOT / "tracker_data" / "backfills" / "gpu_orderbook_history.json"
 OUTPUT_PATH = Path(__file__).resolve().parent / "ai_compute_economics_monitor.html"
 SNAPSHOT_PATH = Path(__file__).resolve().parent / "v4" / "time_series_snapshot.json"
 
@@ -296,6 +298,66 @@ def _gpu_extract(payload: dict[str, Any]) -> dict[str, Any]:
     return {"prices": prices, "availability": availability, "annotations": annotations, "premium": premium}
 
 
+def _reference_extract(reference_raw: dict[str, Any], orderbook_raw: dict[str, Any]) -> tuple[dict[str, Any], dict[str, Any]]:
+    """三源价格对照（按前沿 GPU 分面）+ 合约带 + OTPI 序列与各自的有效日数。"""
+    datasets_ref = reference_raw.get("datasets") or {}
+    basis_rows: dict[str, list[dict[str, Any]]] = {"H100": [], "H200": [], "B200": []}
+    family_map = {"semiComposite": "SemiAnalysis 综合指数", "ornnOcpi": "Ornn 成交指数"}
+    for dataset_name, label in family_map.items():
+        for row in datasets_ref.get(dataset_name) or []:
+            family = str(row.get("series", "")).split()[0]
+            if family in basis_rows and isinstance(row.get("indexValue"), (int, float)):
+                basis_rows[family].append({
+                    "date": row["date"],
+                    "series": label,
+                    "value": round(float(row["indexValue"]), 4),
+                })
+    foundry_prices = []
+    try:
+        import json as _json
+        foundry_prices = _json.loads(FOUNDRY_HISTORY_PATH.read_text(encoding="utf-8"))["datasets"]["prices"]
+    except Exception:
+        foundry_prices = []
+    for row in foundry_prices:
+        family = str(row.get("series", ""))
+        if family in basis_rows and isinstance(row.get("value"), (int, float)):
+            basis_rows[family].append({
+                "date": row["date"],
+                "series": "Foundry 报价中位",
+                "value": round(float(row["value"]), 4),
+            })
+    contract = [
+        {"date": row["date"], "series": name, "value": round(float(row[field]), 3)}
+        for row in datasets_ref.get("semiContract1y") or []
+        if row.get("series") == "H100-1y"
+        for name, field in (("H100 1Y 合约下限", "lowValue"), ("H100 1Y 合约上限", "highValue"))
+        if isinstance(row.get(field), (int, float))
+    ]
+    otpi = [
+        {"date": row["date"], "series": f"{row['series']} OTPI", "value": round(float(row["indexValue"]), 4)}
+        for row in datasets_ref.get("ornnOtpi") or []
+        if isinstance(row.get("indexValue"), (int, float))
+    ]
+
+    def _valid_days(rows: list[dict[str, Any]]) -> int:
+        return len({row["date"] for row in rows})
+
+    return (
+        {
+            "basisH100": sorted(basis_rows["H100"], key=lambda r: (r["date"], r["series"])),
+            "basisH200": sorted(basis_rows["H200"], key=lambda r: (r["date"], r["series"])),
+            "basisB200": sorted(basis_rows["B200"], key=lambda r: (r["date"], r["series"])),
+            "contractBand": sorted(contract, key=lambda r: r["date"]),
+            "otpi": sorted(otpi, key=lambda r: (r["date"], r["series"])),
+        },
+        {
+            "orderbookValidDays": _valid_days(orderbook_raw.get("rows") or []),
+            "otpiValidDays": _valid_days(otpi),
+            "contractPeriods": len({row["date"] for row in contract}),
+        },
+    )
+
+
 def build_snapshot() -> dict[str, Any]:
     if not COST_INDEX_PATH.exists():
         raise FileNotFoundError(COST_INDEX_PATH)
@@ -308,6 +370,8 @@ def build_snapshot() -> dict[str, Any]:
     openrouter_raw = json.loads(COST_INDEX_PATH.read_text(encoding="utf-8"))
     foundry_raw = json.loads(FOUNDRY_HISTORY_PATH.read_text(encoding="utf-8"))
     active_price_raw = json.loads(OPENROUTER_ACTIVE_PRICE_PATH.read_text(encoding="utf-8"))
+    reference_raw = json.loads(REFERENCE_PATH.read_text(encoding="utf-8")) if REFERENCE_PATH.exists() else {}
+    orderbook_raw = json.loads(ORDERBOOK_PATH.read_text(encoding="utf-8")) if ORDERBOOK_PATH.exists() else {}
     capex_raw = json.loads(CAPEX_HISTORY_PATH.read_text(encoding="utf-8"))
     openrouter = _openrouter_extract(_openrouter_rows(openrouter_raw))
     active_prices = _active_model_price_extract(openrouter["raw"], active_price_raw)
@@ -320,6 +384,7 @@ def build_snapshot() -> dict[str, Any]:
         openrouter["volume"] + openrouter["composition"]
         + gpu["prices"] + gpu["availability"] + active_prices["tiers"]
     )
+    ref_datasets, ref_meta = _reference_extract(reference_raw, orderbook_raw)
     snapshot = {
         "meta": {
             "generatedAt": generated_at,
@@ -378,6 +443,20 @@ def build_snapshot() -> dict[str, Any]:
             },
         },
     }
+    snapshot["datasets"].update(ref_datasets)
+    snapshot["meta"].update(ref_meta)
+    snapshot["datasets"]["orderbookDepth"] = sorted(
+        (
+            {
+                "date": row.get("date"),
+                "series": str(row.get("source", "unknown")),
+                "value": int(row["offerCount"]),
+            }
+            for row in (orderbook_raw.get("rows") or [])
+            if isinstance(row.get("offerCount"), int)
+        ),
+        key=lambda r: (r["date"], r["series"]),
+    )
     return snapshot
 
 
@@ -478,7 +557,7 @@ __CLOCKS__<section class="section" id="demand"><div class="section-head"><h2>需
 
 <section class="section" id="compute"><div class="section-head"><h2>GPU市场</h2><span class="section-kicker">Foundry Signals · 公开历史</span></div><div class="grid three"><article class="panel" data-source="gpuPrice"><h3>H100 租赁价格</h3><p class="panel-note">供应商中位价、最低–最高区间与30日均线</p><div id="gpu-price-h100" class="chart compact"></div><div class="legend"><span class="legend-item"><i class="swatch" style="background:#0071e3"></i>中位价</span><span class="legend-item"><i class="swatch" style="background:#1d1d1f"></i>30日均线</span><span class="legend-item"><i class="swatch band" style="background:#0071e3"></i>最低–最高</span></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel" data-source="gpuPrice"><h3>H200 租赁价格</h3><p class="panel-note">供应商中位价、最低–最高区间与30日均线</p><div id="gpu-price-h200" class="chart compact"></div><div class="legend"><span class="legend-item"><i class="swatch" style="background:#0071e3"></i>中位价</span><span class="legend-item"><i class="swatch" style="background:#1d1d1f"></i>30日均线</span><span class="legend-item"><i class="swatch band" style="background:#0071e3"></i>最低–最高</span></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel" data-source="gpuPrice"><h3>B200 租赁价格</h3><p class="panel-note">供应商中位价、最低–最高区间与30日均线</p><div id="gpu-price-b200" class="chart compact"></div><div class="legend"><span class="legend-item"><i class="swatch" style="background:#0071e3"></i>中位价</span><span class="legend-item"><i class="swatch" style="background:#1d1d1f"></i>30日均线</span><span class="legend-item"><i class="swatch band" style="background:#0071e3"></i>最低–最高</span></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel full" data-source="gpuPremium"><h3>GPU 代际租赁溢价</h3><p class="panel-note">相对H100的30日中位价格倍数 · 1.0x表示无溢价</p><div id="gpu-premium" class="chart"></div><div id="gpu-premium-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><h3 class="subsection-title">可用率 · 保持来源原始月度频率</h3><article class="panel" data-source="gpuAvailability"><h3>H100 可用率</h3><p class="panel-note">35个月 · 有至少一家供应商可租用的检查占比</p><div id="gpu-availability-h100" class="chart compact"></div><div id="gpu-availability-h100-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel" data-source="gpuAvailability"><h3>B200 可用率</h3><p class="panel-note">11个月 · B200不适用来源的$4价格上限</p><div id="gpu-availability-b200" class="chart compact"></div><div id="gpu-availability-b200-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel" data-source="gpuAvailability"><h3>H200 可用率</h3><p class="panel-note">仅3个月 · 只显示观测点，不连接为趋势</p><div id="gpu-availability-h200" class="chart compact"></div><div id="gpu-availability-h200-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article></div></section>
 
-<section class="section" id="capex"><div class="section-head"><h2>CAPEX与官方承诺</h2><span class="section-kicker">Quarterly & event</span></div><article class="panel full" data-source="capex"><div class="table-wrap"><table><thead><tr><th>日期</th><th>公司</th><th>指标</th><th>期间</th><th>单位</th><th>数值</th></tr></thead><tbody id="capex-body"></tbody></table></div><details class="source"><summary>来源与口径</summary><p></p></details></article></section>
+<section class="section" id="reference"><div class="section-head"><h2>外部基准与积累层</h2><span class="section-kicker">报价 × 成交 × 合约 · 跨来源交叉验证</span></div><div class="grid three"><article class="panel" data-source="basisH100"><h3>H100：报价 vs 成交指数</h3><p class="panel-note">Foundry 报价中位 × SemiAnalysis 综合指数 × Ornn 成交指数 · 口径不同不可混同，仅作交叉对照</p><div id="basis-h100" class="chart compact"></div><div id="basis-h100-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel" data-source="basisH200"><h3>H200：报价 vs 成交指数</h3><p class="panel-note">同上三源对照 · 注意 Foundry 与 Ornn 可能方向分歧</p><div id="basis-h200" class="chart compact"></div><div id="basis-h200-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel" data-source="basisB200"><h3>B200：报价 vs 成交指数</h3><p class="panel-note">同上三源对照</p><div id="basis-b200" class="chart compact"></div><div id="basis-b200-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel" data-source="contractBand"><h3>H100 一年期合约价区间</h3><p class="panel-note">SemiAnalysis 公开调查区间 · 半年频率阶梯图，不与日线混轴</p><div id="contract-band" class="chart compact"></div><div id="contract-band-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel" data-source="orderbookDepth"><h3>订单簿深度（积累中）</h3><p class="panel-note" id="orderbook-note">三源 offer 总数 · 少于10个有效日只画观测点不连线</p><div id="orderbook-depth" class="chart compact"></div><div id="orderbook-depth-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel" data-source="otpi"><h3>OTPI 已实现 Token 价（积累中）</h3><p class="panel-note" id="otpi-note">按 lab 的成交加权 token 实现价 · 免费层滚动窗口每日快照累积</p><div id="otpi-price" class="chart compact"></div><div id="otpi-price-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article></div></section><section class="section" id="capex"><div class="section-head"><h2>CAPEX与官方承诺</h2><span class="section-kicker">Quarterly & event</span></div><article class="panel full" data-source="capex"><div class="table-wrap"><table><thead><tr><th>日期</th><th>公司</th><th>指标</th><th>期间</th><th>单位</th><th>数值</th></tr></thead><tbody id="capex-body"></tbody></table></div><details class="source"><summary>来源与口径</summary><p></p></details></article></section>
 <footer class="footer" id="freshness"></footer></main><script>
 const DATA=__PAYLOAD__; const COLORS=['#0071e3','#d76b00','#248a3d','#d70015','#8944ab','#00a6a6','#6e6e73','#af52de','#8e8e93','#5e5ce6'];
 const charts=[]; const states={}; const $=s=>document.querySelector(s); const dateNum=s=>new Date(s+'T00:00:00Z').getTime();
@@ -563,6 +642,18 @@ lineChart('gpu-premium','gpu-premium-legend',DATA.datasets.gpuPremium,{title:'GP
 lineChart('gpu-availability-h100','gpu-availability-h100-legend',DATA.datasets.gpuAvailability.filter(r=>r.series==='H100'),{title:'H100 availability',kind:'pct',yTitle:'Availability',zero:true,gapDays:45});
 lineChart('gpu-availability-b200','gpu-availability-b200-legend',DATA.datasets.gpuAvailability.filter(r=>r.series==='B200'),{title:'B200 availability',kind:'pct',yTitle:'Availability',zero:true,gapDays:45});
 lineChart('gpu-availability-h200','gpu-availability-h200-legend',DATA.datasets.gpuAvailability.filter(r=>r.series==='H200'),{title:'H200 availability observations',kind:'pct',yTitle:'Availability',zero:true,gapDays:45,pointOnly:true});
+
+const orderbookRows=(()=>{const rows=DATA.datasets.orderbookDepth||[];const byDate={};rows.forEach(r=>{byDate[r.date]=(byDate[r.date]||0)+r.value});return Object.entries(byDate).map(([date,value])=>({date,series:'订单簿 offer 总数',value})).sort((a,b)=>a.date<b.date?-1:1);})();
+const obDays=DATA.meta&&DATA.meta.orderbookValidDays?DATA.meta.orderbookValidDays:0;
+document.getElementById('orderbook-note').textContent=`三源 offer 总数 · 已积累 ${obDays}/10 个有效日${obDays>=10?'，已可连线':'，少于10个有效日只画观测点不连线'}`;
+lineChart('orderbook-depth','orderbook-depth-legend',orderbookRows,{title:'Orderbook total offers',kind:'usd',yTitle:'Offers',zero:true,pointOnly:obDays<10});
+const otpiDays=DATA.meta&&DATA.meta.otpiValidDays?DATA.meta.otpiValidDays:0;
+document.getElementById('otpi-note').textContent=`按 lab 成交加权实现价 · 已积累 ${otpiDays}/10 个有效日${otpiDays>=10?'，已可连线':'，少于10个有效日只画观测点不连线'}`;
+lineChart('otpi-price','otpi-price-legend',DATA.datasets.otpi||[],{title:'Ornn OTPI realized token price',kind:'usd',yTitle:'USD/Mtok',zero:true,pointOnly:otpiDays<10});
+lineChart('basis-h100','basis-h100-legend',DATA.datasets.basisH100||[],{title:'H100 price basis compare',kind:'usd',yTitle:'USD/GPU-hr',zero:true,gapDays:20});
+lineChart('basis-h200','basis-h200-legend',DATA.datasets.basisH200||[],{title:'H200 price basis compare',kind:'usd',yTitle:'USD/GPU-hr',zero:true,gapDays:20});
+lineChart('basis-b200','basis-b200-legend',DATA.datasets.basisB200||[],{title:'B200 price basis compare',kind:'usd',yTitle:'USD/GPU-hr',zero:true,gapDays:20});
+lineChart('contract-band','contract-band-legend',DATA.datasets.contractBand||[],{title:'H100 1Y contract range',kind:'usd',yTitle:'USD/GPU-hr',zero:true,step:true});
 activeModelDetail();sourceDetails();renderTable();$('#freshness').textContent='Updated '+DATA.meta.generatedAt+' · Public source history only · No composite score';
 </script></body></html>'''
 
