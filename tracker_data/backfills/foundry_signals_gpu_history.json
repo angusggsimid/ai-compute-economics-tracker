@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-08-22T16:42:59Z",
+  "fetchedAt": "2026-08-23T01:58:51Z",
   "datasets": {
     "availability": [
       {
@@ -299,14 +299,14 @@
       {
         "date": "2026-08-01",
         "series": "B200",
-        "value": 66.87,
-        "movingAverage30d": 66.87
+        "value": 66.86,
+        "movingAverage30d": 66.86
       },
       {
         "date": "2026-08-01",
         "series": "H100",
-        "value": 91.46,
-        "movingAverage30d": 91.46
+        "value": 91.74,
+        "movingAverage30d": 91.74
       },
       {
         "date": "2026-08-01",
@@ -10930,19 +10930,69 @@
           "nebius": 4.5
         },
         "movingAverage30d": 3.3811016666666664
+      },
+      {
+        "date": "2026-08-22",
+        "series": "B200",
+        "value": 5.98,
+        "average": 6.1177,
+        "low": 5.1471,
+        "high": 7.15,
+        "providerCount": 5,
+        "providerPrices": {
+          "runpod": 5.98,
+          "vastai": 5.3146,
+          "lambda": 6.99,
+          "aws": 5.152,
+          "nebius": 7.15
+        },
+        "movingAverage30d": 6.08545
+      },
+      {
+        "date": "2026-08-22",
+        "series": "H100",
+        "value": 2.69,
+        "average": 3.0321,
+        "low": 0.2542,
+        "high": 4.29,
+        "providerCount": 5,
+        "providerPrices": {
+          "nebius": 3.85,
+          "runpod": 2.69,
+          "vastai": 1.5084,
+          "lambda": 3.79,
+          "aws": 2.5481
+        },
+        "movingAverage30d": 2.69
+      },
+      {
+        "date": "2026-08-22",
+        "series": "H200",
+        "value": 3.50115,
+        "average": 3.6424,
+        "low": 2.9664,
+        "high": 4.5,
+        "providerCount": 4,
+        "providerPrices": {
+          "runpod": 3.59,
+          "vastai": 3.4123,
+          "aws": 3.0674,
+          "nebius": 4.5
+        },
+        "movingAverage30d": 3.3857966666666663
       }
     ]
   },
   "sources": {
     "availability": {
       "url": "https://www.foundrysignals.com/api/history?range=ALL",
-      "sha256": "sha256:ddf6f9f8604867934c52069134e239323b6dae234e9e32365fd70394801378fd",
-      "snapshotPath": "tracker_snapshots/market_facts/20260822t164259z-foundry-signals-availability.json"
+      "sha256": "sha256:d0ad67d461b1ed3dd9b0878fa4909d8de7e140dac3e989cb54eece89102ec03e",
+      "snapshotPath": "tracker_snapshots/market_facts/20260823t015851z-foundry-signals-availability.json"
     },
     "price": {
       "url": "https://www.foundrysignals.com/api/price/history?range=ALL",
-      "sha256": "sha256:702337ffc6c8da65dbb4af0a33559752d10df4f870e093a85e03bc9fe46b58e4",
-      "snapshotPath": "tracker_snapshots/market_facts/20260822t164259z-foundry-signals-price.json"
+      "sha256": "sha256:76809b00571e0e7caaa7a4f60e439debc6e541e04fa7d4ebef9550781e3e5e01",
+      "snapshotPath": "tracker_snapshots/market_facts/20260823t015851z-foundry-signals-price.json"
     }
   }
 }
