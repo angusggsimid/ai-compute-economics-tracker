@@ -1,5 +1,12 @@
 # CONTEXT
 
+## 2026-08-23 E1 判断层上线：四时钟每日自动评估（双向化）
+
+- `thesis_engine.py` 接入每日管线（阻塞步骤）：JSON 底表 → 四时钟状态 → `tracker_data/thesis_states/latest-*` 入库 + 页面顶部时钟卡片。
+- C1 已落地：loosening/intensifying 双向 Watch；Confirmed 要求方向+持续性+家族去重。
+- 首个自动结论：Supply Price **Confirmed·intensifying**（B200/H200 90D +16~24%，SemiAnalysis 与 Ornn 双来源交叉确认）；Demand Trend（proxy 封顶）；Capacity/Commitment Observing（积累中）。
+- 教训：排序键含价格会破坏同日多点的时序——时序点只能按时间稳定排序。
+
 ## 2026-08-23 T1/T2 外部参考层已接入
 
 - 新增两个非阻塞采集脚本并入每日管线（共九源）：

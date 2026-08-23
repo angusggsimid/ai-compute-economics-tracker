@@ -1,0 +1,616 @@
+{
+  "generated_at": "2026-07-11T09:54:06Z",
+  "db_path": "tracker_v2/ai_compute_tracker_production.db",
+  "clocks": [
+    {
+      "clock_id": "supply_price",
+      "title": "Supply Price",
+      "natural_frequency": "daily",
+      "state": "Observing",
+      "basis": "Exact-configuration GPU rental panels; published changing-composition aggregates are excluded.",
+      "confirms": [
+        "At least two frontier GPU panels decline >=10% over 30D.",
+        "Offer depth rises >=10% with at least 20 valid daily observations."
+      ],
+      "disconfirms": [
+        "Price decline is isolated to one GPU family.",
+        "Offer depth is flat/down or panel composition changes."
+      ],
+      "next_proof_point": "Accumulate 10 daily observations for charting and 20 for 30D inflection eligibility.",
+      "source_coverage": {
+        "policies": [
+          {
+            "policy_id": "aws_spot_daily",
+            "status": "fresh",
+            "criticality": "secondary",
+            "age_hours": 0,
+            "reason_code": null
+          },
+          {
+            "policy_id": "azure_daily",
+            "status": "fresh",
+            "criticality": "secondary",
+            "age_hours": 0,
+            "reason_code": null
+          },
+          {
+            "policy_id": "computeprices_gpu_daily",
+            "status": "stale",
+            "criticality": "secondary",
+            "age_hours": 66,
+            "reason_code": "source_stale"
+          },
+          {
+            "policy_id": "computeprices_trend_daily",
+            "status": "stale",
+            "criticality": "secondary",
+            "age_hours": 66,
+            "reason_code": "source_stale"
+          },
+          {
+            "policy_id": "gpuperhour_daily",
+            "status": "fresh",
+            "criticality": "core",
+            "age_hours": 0,
+            "reason_code": null
+          },
+          {
+            "policy_id": "runpod_daily",
+            "status": "fresh",
+            "criticality": "core",
+            "age_hours": 0,
+            "reason_code": null
+          },
+          {
+            "policy_id": "vast_daily",
+            "status": "fresh",
+            "criticality": "core",
+            "age_hours": 0,
+            "reason_code": null
+          }
+        ],
+        "fresh": 5,
+        "stale": 2,
+        "missing": 0
+      },
+      "metrics": {
+        "exact_series": 237,
+        "panel_count": 0,
+        "chart_ready_panels": 0,
+        "inflection_ready_panels": 0,
+        "decline_30d_breadth": 0,
+        "confirmed_90d_breadth": 0,
+        "depth_valid_dates": 3,
+        "depth_first_date": "2026-07-06",
+        "depth_last_date": "2026-07-11",
+        "depth_first_offers": 192.0,
+        "depth_last_offers": 232.0,
+        "depth_growth_30d_pct": null,
+        "expanding_gpu_breadth": 0,
+        "candidate_rejections": [
+          {
+            "reason_code": "insufficient_daily_history",
+            "series": 237
+          },
+          {
+            "reason_code": "missing_exact_configuration",
+            "series": 224
+          },
+          {
+            "reason_code": "aggregate_composition_not_fixed",
+            "series": 3
+          }
+        ]
+      },
+      "blockers": [
+        "no_fixed_matched_panel"
+      ],
+      "evidence": [
+        {
+          "series_id": "ser_12ba08cc16bbfa7afb5c",
+          "entity": "A100",
+          "vendor": "Cirrascale",
+          "valid_dates": 3,
+          "first_date": "2026-07-06T00:00:00",
+          "last_date": "2026-07-11T00:00:00",
+          "chart_reason_code": "insufficient_daily_history"
+        },
+        {
+          "series_id": "ser_5517035e5f594d9e967c",
+          "entity": "A100",
+          "vendor": "CoreWeave",
+          "valid_dates": 3,
+          "first_date": "2026-07-06T00:00:00",
+          "last_date": "2026-07-11T00:00:00",
+          "chart_reason_code": "insufficient_daily_history"
+        },
+        {
+          "series_id": "ser_0c37bcc157473524540e",
+          "entity": "A100",
+          "vendor": "Crusoe",
+          "valid_dates": 3,
+          "first_date": "2026-07-06T00:00:00",
+          "last_date": "2026-07-11T00:00:00",
+          "chart_reason_code": "insufficient_daily_history"
+        },
+        {
+          "series_id": "ser_6314960ace1d72e7dbe3",
+          "entity": "A100",
+          "vendor": "Crusoe",
+          "valid_dates": 3,
+          "first_date": "2026-07-06T00:00:00",
+          "last_date": "2026-07-11T00:00:00",
+          "chart_reason_code": "insufficient_daily_history"
+        },
+        {
+          "series_id": "ser_07a8fa246d51a6cf3fbf",
+          "entity": "A100",
+          "vendor": "Denvr",
+          "valid_dates": 3,
+          "first_date": "2026-07-06T00:00:00",
+          "last_date": "2026-07-11T00:00:00",
+          "chart_reason_code": "insufficient_daily_history"
+        },
+        {
+          "series_id": "ser_779c9c71c3b1c5a3c661",
+          "entity": "A100",
+          "vendor": "Denvr",
+          "valid_dates": 3,
+          "first_date": "2026-07-06T00:00:00",
+          "last_date": "2026-07-11T00:00:00",
+          "chart_reason_code": "insufficient_daily_history"
+        },
+        {
+          "series_id": "ser_118a249cc5bfc4711fef",
+          "entity": "A100",
+          "vendor": "Hyperstack",
+          "valid_dates": 3,
+          "first_date": "2026-07-06T00:00:00",
+          "last_date": "2026-07-11T00:00:00",
+          "chart_reason_code": "insufficient_daily_history"
+        },
+        {
+          "series_id": "ser_8c5f1b35b18f56086087",
+          "entity": "A100",
+          "vendor": "Hyperstack",
+          "valid_dates": 3,
+          "first_date": "2026-07-06T00:00:00",
+          "last_date": "2026-07-11T00:00:00",
+          "chart_reason_code": "insufficient_daily_history"
+        }
+      ]
+    },
+    {
+      "clock_id": "capacity_utilization",
+      "title": "Capacity & Utilization",
+      "natural_frequency": "daily / weekly",
+      "state": "Observing",
+      "basis": "Available offer counts and capacity proxies remain separate from price.",
+      "confirms": [
+        "Offer/capacity breadth expands across at least two frontier GPU families.",
+        "Expansion persists for 20+ valid days."
+      ],
+      "disconfirms": [
+        "Only low-quality or non-rentable inventory increases.",
+        "Depth falls while apparent prices decline."
+      ],
+      "next_proof_point": "Reach 10 valid daily orderbook observations, then test 30D breadth.",
+      "source_coverage": {
+        "policies": [
+          {
+            "policy_id": "gpuperhour_daily",
+            "status": "fresh",
+            "criticality": "core",
+            "age_hours": 0,
+            "reason_code": null
+          },
+          {
+            "policy_id": "runpod_daily",
+            "status": "fresh",
+            "criticality": "core",
+            "age_hours": 0,
+            "reason_code": null
+          },
+          {
+            "policy_id": "vast_daily",
+            "status": "fresh",
+            "criticality": "core",
+            "age_hours": 0,
+            "reason_code": null
+          }
+        ],
+        "fresh": 3,
+        "stale": 0,
+        "missing": 0
+      },
+      "metrics": {
+        "depth_valid_dates": 3,
+        "depth_first_date": "2026-07-06",
+        "depth_last_date": "2026-07-11",
+        "depth_first_offers": 192.0,
+        "depth_last_offers": 232.0,
+        "depth_growth_30d_pct": null,
+        "expanding_gpu_breadth": 0
+      },
+      "blockers": [
+        "insufficient_capacity_history"
+      ],
+      "evidence": [
+        {
+          "observation_id": "obs_99e2d72d3784da5af0f613d8",
+          "date": "2026-07-11T00:00:00",
+          "entity": "A100",
+          "value": 69.0,
+          "unit": "offers",
+          "source_id": "gpuperhour-offers-a100"
+        },
+        {
+          "observation_id": "obs_cde1922d5bdc76f88bcb5b2a",
+          "date": "2026-07-11T00:00:00",
+          "entity": "B200",
+          "value": 13.0,
+          "unit": "offers",
+          "source_id": "gpuperhour-offers-b200"
+        },
+        {
+          "observation_id": "obs_37ba5aa6280abf39fbeea7b8",
+          "date": "2026-07-11T00:00:00",
+          "entity": "B300",
+          "value": 2.0,
+          "unit": "offers",
+          "source_id": "gpuperhour-offers-b300"
+        },
+        {
+          "observation_id": "obs_a142b8b957eea61548fa1212",
+          "date": "2026-07-11T00:00:00",
+          "entity": "H100",
+          "value": 56.0,
+          "unit": "offers",
+          "source_id": "gpuperhour-offers-h100"
+        },
+        {
+          "observation_id": "obs_81597e08e0f3995deef07e86",
+          "date": "2026-07-11T00:00:00",
+          "entity": "H200",
+          "value": 30.0,
+          "unit": "offers",
+          "source_id": "gpuperhour-offers-h200"
+        },
+        {
+          "observation_id": "obs_b1d46c5de4c4d29b50fab7a5",
+          "date": "2026-07-11T00:00:00",
+          "entity": "L40S",
+          "value": 22.0,
+          "unit": "offers",
+          "source_id": "gpuperhour-offers-l40s"
+        },
+        {
+          "observation_id": "obs_5ebffef55c249b924b8b8d12",
+          "date": "2026-07-11T00:00:00",
+          "entity": "MI300X",
+          "value": 7.0,
+          "unit": "offers",
+          "source_id": "gpuperhour-offers-mi300x"
+        },
+        {
+          "observation_id": "obs_ed66d8fdaf359cffc66634ea",
+          "date": "2026-07-11T00:00:00",
+          "entity": "RTX 4090",
+          "value": 13.0,
+          "unit": "offers",
+          "source_id": "gpuperhour-offers-rtx-4090"
+        }
+      ]
+    },
+    {
+      "clock_id": "demand_unit_economics",
+      "title": "Demand & Unit Economics",
+      "natural_frequency": "weekly / event",
+      "state": "Trend",
+      "basis": "Usage trends and token price changes are tracked separately; public activity proxy cannot confirm an inflection.",
+      "confirms": [
+        "Official/comparable usage accelerates after real token price cuts.",
+        "Usage-price relationship persists across multiple models."
+      ],
+      "disconfirms": [
+        "Usage growth is only a frontend proxy or one-off model mix shift.",
+        "Price cuts occur without volume response."
+      ],
+      "next_proof_point": "Obtain official usage series or another independent demand source; preserve complete-week filtering.",
+      "source_coverage": {
+        "policies": [
+          {
+            "policy_id": "litellm_catalog_daily",
+            "status": "fresh",
+            "criticality": "secondary",
+            "age_hours": 0,
+            "reason_code": null
+          },
+          {
+            "policy_id": "models_dev_daily",
+            "status": "fresh",
+            "criticality": "secondary",
+            "age_hours": 0,
+            "reason_code": null
+          },
+          {
+            "policy_id": "openrouter_frontend_weekly",
+            "status": "fresh",
+            "criticality": "secondary",
+            "age_hours": 0,
+            "reason_code": null
+          },
+          {
+            "policy_id": "openrouter_models_daily",
+            "status": "fresh",
+            "criticality": "secondary",
+            "age_hours": 0,
+            "reason_code": null
+          }
+        ],
+        "fresh": 4,
+        "stale": 0,
+        "missing": 0,
+        "proxy_series": 10
+      },
+      "metrics": {
+        "usage_series": 59,
+        "chart_ready_usage_series": 10,
+        "proxy_series": 10,
+        "official_inflection_series": 0,
+        "negative_token_price_changes": 66,
+        "positive_commercialization_changes": 0,
+        "tool_call_4w_change_pct": 27.3083,
+        "image_processing_4w_change_pct": 11.691
+      },
+      "blockers": [
+        "proxy_not_inflection_eligible"
+      ],
+      "evidence": [
+        {
+          "series_id": "ser_33c5d5301fcd90230280",
+          "entity": "google/gemini-3-flash-preview-20251217",
+          "metric": "tool_call_count",
+          "vendor": "google",
+          "last_date": "2026-06-29T00:00:00",
+          "valid_points": 12
+        },
+        {
+          "series_id": "ser_373bf96b9e701df85d0f",
+          "entity": "google/gemini-2.5-flash",
+          "metric": "image_processing_count",
+          "vendor": "google",
+          "last_date": "2026-06-29T00:00:00",
+          "valid_points": 12
+        },
+        {
+          "series_id": "ser_42ad9583618feedf8e0f",
+          "entity": "google/gemini-3-flash-preview-20251217",
+          "metric": "image_processing_count",
+          "vendor": "google",
+          "last_date": "2026-06-29T00:00:00",
+          "valid_points": 12
+        },
+        {
+          "series_id": "ser_c5695967a280e10783a9",
+          "entity": "Others",
+          "metric": "tool_call_count",
+          "vendor": "OpenRouter",
+          "last_date": "2026-06-29T00:00:00",
+          "valid_points": 12
+        },
+        {
+          "series_id": "ser_d4e029edc0e953a47a19",
+          "entity": "anthropic/claude-4.6-sonnet-20260217",
+          "metric": "image_processing_count",
+          "vendor": "anthropic",
+          "last_date": "2026-06-29T00:00:00",
+          "valid_points": 12
+        },
+        {
+          "series_id": "ser_e21f321fc0f089fe7ed9",
+          "entity": "google/gemini-2.5-flash-lite",
+          "metric": "image_processing_count",
+          "vendor": "google",
+          "last_date": "2026-06-29T00:00:00",
+          "valid_points": 12
+        },
+        {
+          "series_id": "ser_e4aaa5ee8d7f1f91aaec",
+          "entity": "Others",
+          "metric": "image_processing_count",
+          "vendor": "OpenRouter",
+          "last_date": "2026-06-29T00:00:00",
+          "valid_points": 12
+        },
+        {
+          "series_id": "ser_ef70a36aa9728b713563",
+          "entity": "anthropic/claude-4.6-sonnet-20260217",
+          "metric": "tool_call_count",
+          "vendor": "anthropic",
+          "last_date": "2026-06-29T00:00:00",
+          "valid_points": 10
+        }
+      ]
+    },
+    {
+      "clock_id": "commitment_monetization",
+      "title": "Commitment & Monetization",
+      "natural_frequency": "quarterly / event",
+      "state": "Observing",
+      "basis": "CAPEX actuals, guidance, RPO and commercialization events are never interpolated to daily frequency.",
+      "confirms": [
+        "Negative guidance revisions broaden across companies.",
+        "Subsequent CAPEX/RPO actuals confirm the direction."
+      ],
+      "disconfirms": [
+        "CAPEX guidance and RPO continue to rise.",
+        "Commercialization events are repeated snapshots rather than new information."
+      ],
+      "next_proof_point": "Add sequential quarterly actuals for at least three hyperscalers and classify guidance direction.",
+      "source_coverage": {
+        "capex_actual_events": 5,
+        "official_events": 9,
+        "china_events": 5,
+        "commercialization_events": 26
+      },
+      "metrics": {
+        "official_and_commercial_events": 45,
+        "sequential_capex_companies": 0,
+        "three_period_capex_companies": 0,
+        "negative_guidance_companies": 0,
+        "positive_guidance_companies": 1,
+        "negative_actual_capex_companies": 0
+      },
+      "blockers": [
+        "insufficient_sequential_quarters"
+      ],
+      "evidence": [
+        {
+          "event_id": "evt_6914284ced5d43d8d9e9f910",
+          "date": "2026-07-11T00:00:00",
+          "track": "app_commercialization",
+          "entity": "Cato",
+          "metric": "arr",
+          "value": 0.001,
+          "unit": "USD_B_ARR",
+          "event_type": "initial_observation",
+          "source_id": "arr-club-home"
+        },
+        {
+          "event_id": "evt_f23c5adbf238eb74e6ff93a9",
+          "date": "2026-07-11T00:00:00",
+          "track": "app_commercialization",
+          "entity": "Litium",
+          "metric": "arr",
+          "value": 0.01,
+          "unit": "USD_B_ARR",
+          "event_type": "initial_observation",
+          "source_id": "arr-club-home"
+        },
+        {
+          "event_id": "evt_737a5096b29125112b50a963",
+          "date": "2026-07-11T00:00:00",
+          "track": "app_commercialization",
+          "entity": "Litmus",
+          "metric": "arr",
+          "value": 6e-05,
+          "unit": "USD_B_ARR",
+          "event_type": "initial_observation",
+          "source_id": "arr-club-home"
+        },
+        {
+          "event_id": "evt_7bebe4936745c35958b6657d",
+          "date": "2026-07-11T00:00:00",
+          "track": "app_commercialization",
+          "entity": "Manus",
+          "metric": "arr",
+          "value": 0.5,
+          "unit": "USD_B_ARR",
+          "event_type": "initial_observation",
+          "source_id": "arr-club-home"
+        },
+        {
+          "event_id": "evt_fe7a98af9aec8750488a0209",
+          "date": "2026-07-11T00:00:00",
+          "track": "app_commercialization",
+          "entity": "Oxylabs",
+          "metric": "arr",
+          "value": 0.35,
+          "unit": "USD_B_ARR",
+          "event_type": "initial_observation",
+          "source_id": "arr-club-home"
+        },
+        {
+          "event_id": "evt_d942228aec609aa35177dd04",
+          "date": "2026-07-08T00:00:00",
+          "track": "app_commercialization",
+          "entity": "Command Code",
+          "metric": "arr",
+          "value": 0.002,
+          "unit": "USD_B_ARR",
+          "event_type": "initial_observation",
+          "source_id": "arr-club-home"
+        },
+        {
+          "event_id": "evt_21caa5939739d98e47d5c53b",
+          "date": "2026-07-08T00:00:00",
+          "track": "app_commercialization",
+          "entity": "Hume Bookkeeping",
+          "metric": "arr",
+          "value": 0.0001,
+          "unit": "USD_B_ARR",
+          "event_type": "initial_observation",
+          "source_id": "arr-club-home"
+        },
+        {
+          "event_id": "evt_7ab3bbf92b9043823970df10",
+          "date": "2026-07-08T00:00:00",
+          "track": "app_commercialization",
+          "entity": "Klar",
+          "metric": "arr",
+          "value": 0.000138,
+          "unit": "USD_B_ARR",
+          "event_type": "initial_observation",
+          "source_id": "arr-club-home"
+        },
+        {
+          "event_id": "evt_a37af28a61818b22f63c5d97",
+          "date": "2026-07-08T00:00:00",
+          "track": "app_commercialization",
+          "entity": "MicroHalos",
+          "metric": "arr",
+          "value": 0.0005,
+          "unit": "USD_B_ARR",
+          "event_type": "initial_observation",
+          "source_id": "arr-club-home"
+        },
+        {
+          "event_id": "evt_ce5957a24b5b3a961472a87c",
+          "date": "2026-07-08T00:00:00",
+          "track": "app_commercialization",
+          "entity": "Omnidocs",
+          "metric": "arr",
+          "value": 0.03,
+          "unit": "USD_B_ARR",
+          "event_type": "initial_observation",
+          "source_id": "arr-club-home"
+        },
+        {
+          "event_id": "evt_9348a91aa63c6698d107fcca",
+          "date": "2026-07-08T00:00:00",
+          "track": "app_commercialization",
+          "entity": "Payhawk",
+          "metric": "arr",
+          "value": 0.1,
+          "unit": "USD_B_ARR",
+          "event_type": "initial_observation",
+          "source_id": "arr-club-home"
+        },
+        {
+          "event_id": "evt_25033b6ac82afb3946b62e2b",
+          "date": "2026-07-06T00:00:00",
+          "track": "app_commercialization",
+          "entity": "Anthropic",
+          "metric": "arr",
+          "value": 47.0,
+          "unit": "USD_B_ARR",
+          "event_type": "initial_observation",
+          "source_id": "arr-club-home"
+        }
+      ]
+    }
+  ],
+  "methodology": {
+    "mixed_frequency_weighting": false,
+    "state_order": [
+      "Unobservable",
+      "Observing",
+      "Trend",
+      "Inflection Watch",
+      "Confirmed"
+    ],
+    "rule": "Each clock advances only on its own natural-frequency evidence and explicit confirmation conditions."
+  },
+  "transitions": []
+}

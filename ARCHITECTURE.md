@@ -79,7 +79,8 @@ line_ready_observation + canonical_observation + production_market_facts_analysi
 | `test_suite/test_series_layer.py` | series 稳定性、周期完整性、资格门、事件和 matched-panel 合同 |
 | `scripts/run_phase3_daily.py` | 每日采集、并发锁、运行日志和核心来源 SLA 闭环 |
 | `scripts/backfill_gpuperhour_snapshots.py` | 从本地结构化 JSON 快照回填 exact-config 历史 |
-| `thesis_state.py` | Supply/Capacity/Demand/Commitment 独立状态机、报告和变化记录 |
+| `thesis_engine.py` | JSON 原生四时钟状态机（E1）：双向 Watch、家族去重宽度、每日产出 latest-thesis-state 并渲染页面时钟卡片 |
+| `thesis_state.py` | 旧 DuckDB 状态机，仅供历史对照 |
 | `test_suite/test_thesis_state.py` | 幅度/持续/广度/深度、proxy 限制、季度门槛和 guidance 方向测试 |
 
 ## Phase 2 派生视图

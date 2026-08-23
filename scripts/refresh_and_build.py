@@ -102,6 +102,15 @@ def main() -> int:
             row["publishable"] = True
     publishable = all(row["publishable"] for row in results)
     if publishable:
+        # 四时钟判断层：读取已通过数据门的 JSON 底表，产出状态报告（阻塞步骤）。
+        thesis = subprocess.run(
+            [python, "thesis_engine.py"],
+            cwd=ROOT,
+            text=True,
+            capture_output=True,
+        )
+        if thesis.returncode:
+            raise RuntimeError(f"thesis_engine failed: {thesis.stderr or thesis.stdout}")
         build = subprocess.run(
             [python, "html_dashboard/build_time_series_dashboard.py"],
             cwd=ROOT,
