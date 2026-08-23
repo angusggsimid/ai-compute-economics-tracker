@@ -35,7 +35,8 @@ def test_sparse_snapshot_charts_are_not_exposed_as_time_series():
     assert "gpuOffers" not in snapshot["datasets"]
     assert "cloudPrice" not in snapshot["datasets"]
     assert len({row["date"] for row in snapshot["datasets"]["gpuPrice"]}) >= 200
-    assert len({row["date"] for row in snapshot["datasets"]["gpuAvailability"]}) >= 35
+    # 全局时间轴纪律：一切序列不早于 OpenRouter 用量窗口起点（月度观测约12个）
+    assert len({row["date"] for row in snapshot["datasets"]["gpuAvailability"]}) >= 10
     assert {row["series"] for row in snapshot["datasets"]["gpuPrice"]} == {"H100", "H200", "B200"}
     assert all(row.get("low") is not None and row.get("high") is not None for row in snapshot["datasets"]["gpuPrice"])
 
@@ -61,7 +62,7 @@ def test_availability_is_faceted_and_h200_is_explicitly_point_only():
     availability = snapshot["datasets"]["gpuAvailability"]
     # The public Foundry history can gain new observations between refreshes;
     # keep the regression floor while allowing verified additions.
-    assert len([row for row in availability if row["series"] == "H100"]) >= 35
+    assert len([row for row in availability if row["series"] == "H100"]) >= 10
     # The public Foundry history can gain new observations between refreshes;
     # keep the regression floor while allowing verified additions.
     assert len([row for row in availability if row["series"] == "B200"]) >= 11
