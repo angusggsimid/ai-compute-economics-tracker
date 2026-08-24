@@ -49,5 +49,5 @@
 ## 2026-07-12 Vercel Hobby 的提交身份门槛
 
 - 问题：GitHub 自动部署被 Vercel 标记为 Blocked，页面构建本身没有失败。
-- 原因：提交作者使用 `agg@Macbook-M1-Air.local` 或 GitHub Actions bot 邮箱，Vercel 无法把作者映射到已授权的 Hobby 团队成员。
+- 原因：提交作者使用 `(local-device)` 或 GitHub Actions bot 邮箱，Vercel 无法把作者映射到已授权的 Hobby 团队成员。
 - 调整：本项目本地 Git 和 GitHub Actions 统一使用 GitHub 账户专属地址 `281128372+angusggsimid@users.noreply.github.com`；部署验收必须检查 Vercel 显示 Ready，不能只看 Git push 成功。
