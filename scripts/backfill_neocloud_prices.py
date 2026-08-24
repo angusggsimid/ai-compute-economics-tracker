@@ -21,9 +21,19 @@ SOURCE_URL = "https://raw.githubusercontent.com/adriannutiu/gpu-rental-prices/ma
 ATTRIBUTION = "Data © gpu-rentalprices.com (adriannutiu/gpu-rental-prices), CC BY 4.0"
 USER_AGENT = "AIComputeEconomicsTracker/1.0"
 
+VENUE_GRADES = {
+    "aws": "hyperscaler", "microsoft azure": "hyperscaler", "azure": "hyperscaler",
+    "google cloud": "hyperscaler", "oracle": "hyperscaler", "ovhcloud": "hyperscaler",
+    "vastai": "marketplace", "runpod": "marketplace", "modal": "marketplace",
+    "fal": "marketplace", "replicate": "marketplace", "together ai": "marketplace",
+    "saladcloud": "marketplace", "salad": "marketplace", "tensordock": "marketplace",
+    "prime intellect": "marketplace", "koyeb": "marketplace", "cerebrium": "marketplace",
+    "baseten": "marketplace", "spheron": "marketplace", "fireworks ai": "marketplace",
+}
 ROW_FIELDS = (
     "date",
     "provider",
+    "venueGrade",
     "series",
     "vramGb",
     "kind",
@@ -84,6 +94,7 @@ def normalize(payload: dict[str, Any]) -> list[dict[str, Any]]:
             "usdPerGpuHour": round(price, 6),
             "sourceUrl": str(offer.get("source_url") or SOURCE_URL),
         }
+        row["venueGrade"] = VENUE_GRADES.get(row["provider"], "neocloud")
         key = (row["date"], row["provider"], row["series"], row["vramGb"], row["kind"], row["usdPerGpuHour"])
         if key in seen:
             continue

@@ -9,7 +9,7 @@
 
 ## Capacity & Utilization — Observing
 - 下一个证明点：积累订单簿至 10/20 有效日（当前 3）。
-- 关键指标：`{"depthValidDates": 3, "latestTotalOffers": 282, "latestGpuCapacity": 990, "providerSnapshotRows": 586, "providersCovered": 34}`
+- 关键指标：`{"depthValidDates": 3, "latestTotalOffers": 280, "latestGpuCapacity": 972, "providerSnapshotRows": 586, "providersCovered": 34}`
 - 阻塞项：['insufficient_orderbook_history_3_of_10']
 
 ## Demand & Unit Economics — Trend
