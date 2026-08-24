@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-23T09:09:56Z",
+  "generatedAt": "2026-08-24T01:56:43Z",
   "inputs": [
     "capex_official_history.json",
     "foundry_signals_gpu_history.json",
@@ -27,7 +27,7 @@
         "面板构成变更",
         "价格与深度方向矛盾"
       ],
-      "next_proof_point": "订单簿深度已积累 2/20 有效日；面板 30D 变化每日更新。",
+      "next_proof_point": "订单簿深度已积累 3/20 有效日；面板 30D 变化每日更新。",
       "watch": {
         "loosening": {
           "triggered": false,
@@ -79,14 +79,14 @@
         ],
         "frontierPanels": {
           "semi:B200": {
-            "days": 440,
-            "change30dPct": 1.29,
-            "change90dPct": 16.77
+            "days": 441,
+            "change30dPct": 0.18,
+            "change90dPct": 15.68
           },
           "semi:H100": {
-            "days": 1047,
+            "days": 1048,
             "change30dPct": 0.63,
-            "change90dPct": 7.36
+            "change90dPct": 6.64
           },
           "ornn:B200": {
             "days": 92,
@@ -104,24 +104,24 @@
             "change90dPct": 24.04
           },
           "foundry:B200": {
-            "days": 252,
-            "change30dPct": -1.87,
-            "change90dPct": -4.57
+            "days": 253,
+            "change30dPct": 0.0,
+            "change90dPct": 0.0
           },
           "foundry:H100": {
-            "days": 252,
+            "days": 253,
             "change30dPct": 0.0,
-            "change90dPct": 0.75
+            "change90dPct": 0.0
           },
           "foundry:H200": {
-            "days": 252,
-            "change30dPct": 3.54,
-            "change90dPct": -11.36
+            "days": 253,
+            "change30dPct": 5.8,
+            "change90dPct": -2.24
           }
         },
         "depth": {
-          "depthValidDates": 2,
-          "depthLatestTotalOffers": 268,
+          "depthValidDates": 3,
+          "depthLatestTotalOffers": 284,
           "depthGrowthPct": null
         },
         "h100Contract1yBands": [
@@ -174,7 +174,7 @@
         "单一来源驱动",
         "GPU 构成漂移"
       ],
-      "next_proof_point": "积累订单簿至 10/20 有效日（当前 2）。",
+      "next_proof_point": "积累订单簿至 10/20 有效日（当前 3）。",
       "watch": {
         "loosening": {
           "triggered": false,
@@ -196,15 +196,15 @@
         }
       },
       "metrics": {
-        "depthValidDates": 2,
-        "latestTotalOffers": 268,
+        "depthValidDates": 3,
+        "latestTotalOffers": 284,
         "depthGrowthPct": null,
-        "latestGpuCapacity": 953,
+        "latestGpuCapacity": 975,
         "providerSnapshotRows": 586,
         "providersCovered": 34
       },
       "blockers": [
-        "insufficient_orderbook_history_2_of_10"
+        "insufficient_orderbook_history_3_of_10"
       ],
       "sources": [
         "gpu_orderbook",
@@ -249,11 +249,11 @@
       },
       "metrics": {
         "completeWeeks": 52,
-        "latestWeeklyTokens": 75340581084831.0,
-        "weightedOutputPriceChange8wPct": 196.08,
-        "recentPriceCutModels": 75,
+        "latestWeeklyTokens": 93376459135552.0,
+        "weightedOutputPriceChange8wPct": 41.75,
+        "recentPriceCutModels": 74,
         "otpiLabsCovered": 4,
-        "otpiLatestDate": "2026-08-21"
+        "otpiLatestDate": "2026-08-22"
       },
       "blockers": [
         "proxy_ceiling_requires_official_usage_for_inflection"
