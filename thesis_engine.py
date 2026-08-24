@@ -402,11 +402,11 @@ def evaluate_commitment(data: Dict[str, Any]) -> Dict[str, Any]:
             qualified += 1
 
     if not by_company:
-        state, blockers = "Unobservable", ["no_capex_actuals"]
+        state, blockers, direction = "Unobservable", ["no_capex_actuals"], None
     elif qualified >= 3:
-        state, blockers = "Trend", []
+        state, blockers, direction = "Trend", [], None
     else:
-        state, blockers = "Observing", [f"companies_with_3_consecutive_quarters_{qualified}_of_3"]
+        state, blockers, direction = "Observing", [f"companies_with_3_consecutive_quarters_{qualified}_of_3"], None
 
     bands = []
     for row in (data.get("reference", {}).get("datasets", {}).get("semiContract1y")) or []:
@@ -418,12 +418,38 @@ def evaluate_commitment(data: Dict[str, Any]) -> Dict[str, Any]:
         delta = bands[-1][1] - bands[0][1]
         contract_direction = "rising" if delta > 0 else ("falling" if delta < 0 else "flat")
 
+    # C2/双向化：guidance 修订事件结构化为方向信号（previous low/high vs 新 low/high）
+    guidance_rows = [r for r in rows if "guidance" in str(r.get("metric", "")).lower()]
+    revisions: Dict[str, Dict[str, Dict[str, float]]] = {}
+    for r in guidance_rows:
+        company = str(r.get("company"))
+        metric = str(r.get("metric"))
+        value = r.get("value")
+        if not isinstance(value, (int, float)):
+            continue
+        kind = "prev_low" if "previous low" in metric else "prev_high" if "previous high" in metric else "low" if metric.endswith("guidance low") else "high" if metric.endswith("guidance high") else None
+        if kind:
+            revisions.setdefault(company, {}).setdefault(kind, float(value))
+    up_companies, down_companies = [], []
+    for company, kv in revisions.items():
+        if {"prev_low", "low"} <= kv.keys():
+            if kv["low"] > kv["prev_low"]:
+                up_companies.append(company)
+            elif kv["low"] < kv["prev_low"]:
+                down_companies.append(company)
+    loosening_watch = len(down_companies) >= 2
+    intensifying_watch = len(up_companies) >= 2
+
+    if loosening_watch or intensifying_watch:
+        state = "Inflection Watch"
+        direction = "loosening" if loosening_watch else "intensifying"
+
     return {
         "clock_id": "commitment_monetization",
         "title": "Commitment & Monetization",
         "natural_frequency": "quarterly/event",
         "state": state,
-        "direction": None,
+        "direction": direction,
         "basis": "SEC/官方季度 CAPEX actual（原生季度频率，不插值）+ SemiAnalysis H100 1Y 合约区间方向。",
         "confirms": [
             "Inflection：两家公司 guidance 下修（松动）",
@@ -432,12 +458,20 @@ def evaluate_commitment(data: Dict[str, Any]) -> Dict[str, Any]:
         "disconfirms": ["单季度数据冒充趋势", "混入非 AI 支出口径"],
         "next_proof_point": "下一财报季追加季度行；合约区间每半年更新。",
         "watch": {
-            "loosening": {"triggered": False, "conditions": [{"condition": "需要 guidance 下修事件接入", "met": False}]},
-            "intensifying": {"triggered": False, "conditions": [{"condition": "需要 guidance 上修事件接入", "met": False}]},
+            "loosening": {"triggered": loosening_watch, "conditions": [
+                {"condition": ">=2 家公司 guidance 下修", "met": loosening_watch, "evidence": down_companies},
+                {"condition": "后续 actual 同向验证（Inflection→Confirmed）", "met": False},
+            ]},
+            "intensifying": {"triggered": intensifying_watch, "conditions": [
+                {"condition": ">=2 家公司 guidance 上修", "met": intensifying_watch, "evidence": up_companies},
+                {"condition": "合约区间同向（旁证）", "met": contract_direction == "rising"},
+            ]},
         },
         "metrics": {
             "companiesCovered": len(by_company),
             "companiesWith3ConsecutiveQuarters": qualified,
+            "guidanceRevisedUp": sorted(up_companies),
+            "guidanceRevisedDown": sorted(down_companies),
             "h100ContractDirectionSinceStart": contract_direction,
             "h100ContractFirstMidpoint": round(bands[0][1], 3) if bands else None,
             "h100ContractLatestMidpoint": round(bands[-1][1], 3) if bands else None,
@@ -516,6 +550,23 @@ def main() -> int:
 
     report = evaluate_report(args.data_dir)
     args.out_dir.mkdir(parents=True, exist_ok=True)
+    history_dir = args.out_dir / "history"
+    history_dir.mkdir(parents=True, exist_ok=True)
+    today_iso = report["generatedAt"][:10]
+    (history_dir / f"{today_iso}.json").write_text(
+        json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8"
+    )
+    month = today_iso[:7]
+    lines = [f"# 时钟月度审计 | {month}", "",
+             f"> 每次刷新覆盖更新当月文件；历史轨迹见 history/ 目录。", ""]
+    for c in report["clocks"]:
+        m_ = c.get("metrics", {})
+        key = {k: v for k, v in m_.items() if isinstance(v, (int, str, float)) or (isinstance(v, list) and len(str(v)) < 120)}
+        lines += [f"## {c['title']} — {c['state']}" + (f"（{c['direction']}）" if c.get('direction') else ""),
+                  f"- 下一个证明点：{c['next_proof_point']}",
+                  f"- 关键指标：`{json.dumps(key, ensure_ascii=False)[:300]}`",
+                  f"- 阻塞项：{c['blockers'] or '无'}", ""]
+    (args.out_dir / f"clock_audit_{month}.md").write_text("\n".join(lines), encoding="utf-8")
     (args.out_dir / "latest-thesis-state.json").write_text(
         json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8"
     )

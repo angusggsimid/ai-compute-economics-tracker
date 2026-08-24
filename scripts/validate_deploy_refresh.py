@@ -19,9 +19,10 @@ EXPECTED_SOURCES = {
     "gpu_orderbook",
     "reference_indices",
     "neocloud_provider_prices",
+    "epoch_supply",
 }
 CAPEX_READY_STATUSES = {"fresh", "current_for_frequency"}
-INFORMATIONAL_SOURCES = {"gpu_orderbook", "reference_indices", "neocloud_provider_prices"}
+INFORMATIONAL_SOURCES = {"gpu_orderbook", "reference_indices", "neocloud_provider_prices", "epoch_supply"}
 INFORMATIONAL_STATUSES = {"fresh", "partial", "failed"}
 
 

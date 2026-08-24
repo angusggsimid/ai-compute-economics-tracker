@@ -91,9 +91,14 @@ def main() -> int:
             [python, "scripts/backfill_neocloud_prices.py"],
             ROOT / "tracker_data" / "backfills" / "neocloud_provider_price_history.json",
         ),
+        (
+            "epoch_supply",
+            [python, "scripts/backfill_epoch_supply.py"],
+            ROOT / "tracker_data" / "backfills" / "epoch_chip_sales.json",
+        ),
     ]
     results = [_run(*job) for job in jobs]
-    INFORMATIONAL_SOURCES = {"gpu_orderbook", "reference_indices", "neocloud_provider_prices"}
+    INFORMATIONAL_SOURCES = {"gpu_orderbook", "reference_indices", "neocloud_provider_prices", "epoch_supply"}
     for row in results:
         if row["source"] in INFORMATIONAL_SOURCES:
             # 积累型信息源（时点观测/外部滚动窗口）：失败必须暴露在状态里，

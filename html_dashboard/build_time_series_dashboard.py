@@ -10,6 +10,7 @@ from datetime import date, datetime, timezone
 from html import escape
 from pathlib import Path
 from statistics import median
+import statistics
 from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -342,9 +343,63 @@ def _reference_extract(reference_raw: dict[str, Any], orderbook_raw: dict[str, A
     def _valid_days(rows: list[dict[str, Any]]) -> int:
         return len({row["date"] for row in rows})
 
+    # E2 固定供应商面板指数：Foundry providerPrices，固定成员、起点=100
+    import statistics as _statistics
+    panel_rows: list[dict[str, Any]] = []
+    panel_meta: dict[str, Any] = {"members": {}}
+    for family in ("H100", "B200"):
+        per_day: dict[str, dict[str, float]] = {}
+        for row in foundry_prices:
+            if row.get("series") != family:
+                continue
+            pp = row.get("providerPrices")
+            if isinstance(pp, dict):
+                day_prices = {str(k): float(v) for k, v in pp.items() if isinstance(v, (int, float)) and v > 0}
+                if day_prices:
+                    per_day[str(row["date"])] = day_prices
+        if len(per_day) < 10:
+            continue
+        # 从最近端向回搜索最大的连续后缀窗口，使 >=3 家供应商在该窗口内全程报价
+        dates_all = sorted(per_day)
+        chosen = None
+        for start_idx in range(len(dates_all)):
+            window = dates_all[start_idx:]
+            if len(window) < 10:
+                break
+            cov_w: dict[str, int] = {}
+            for _d in window:
+                for prov in per_day[_d]:
+                    cov_w[prov] = cov_w.get(prov, 0) + 1
+            members_w = sorted(p_ for p_, cnt in cov_w.items() if cnt >= 0.9 * len(window))
+            if len(members_w) >= 3:
+                chosen = (window, members_w)
+                break
+        if not chosen:
+            continue
+        window, members = chosen
+        # 窗口起点推进到全体成员均有报价的首日（否则固定面板无法取基期）
+        while window and not all(m in per_day[window[0]] for m in members):
+            window = window[1:]
+        if len(window) < 10:
+            continue
+        base_date = window[0]
+        base_mean = sum(per_day[base_date][m] for m in members) / len(members)
+        panel_meta["members"][family] = {"members": members, "windowStart": base_date, "windowDays": len(window)}
+        for d in window:
+            vals = [per_day[d][m] for m in members if m in per_day[d]]
+            if len(vals) != len(members):
+                continue
+            panel_rows.append({
+                "date": d,
+                "series": f"{family} 固定面板",
+                "value": round(100 * (sum(vals) / len(vals)) / base_mean, 2),
+            })
+
     return (
         {
+            "panelIndex": sorted(panel_rows, key=lambda r: (r["date"], r["series"])),
             "basisH100": sorted(basis_rows["H100"], key=lambda r: (r["date"], r["series"])),
+            "basisH200": sorted(basis_rows["H200"], key=lambda r: (r["date"], r["series"])),
             "basisH200": sorted(basis_rows["H200"], key=lambda r: (r["date"], r["series"])),
             "basisB200": sorted(basis_rows["B200"], key=lambda r: (r["date"], r["series"])),
             "contractBand": sorted(contract, key=lambda r: r["date"]),
@@ -354,6 +409,7 @@ def _reference_extract(reference_raw: dict[str, Any], orderbook_raw: dict[str, A
             "orderbookValidDays": _valid_days(orderbook_raw.get("rows") or []),
             "otpiValidDays": _valid_days(otpi),
             "contractPeriods": len({row["date"] for row in contract}),
+            "panelMembers": panel_meta["members"],
         },
     )
 
@@ -478,6 +534,7 @@ def build_snapshot() -> dict[str, Any]:
         "contractBand": {"url": "https://gpu-index.semianalysis.com/api/public-data", "label": "SemiAnalysis H100 1Y 合约调查区间", "definition": "月度调查的25-75分位合约价区间，半年期阶梯展示。许可：公开页引用需署名。"},
         "orderbookDepth": {"url": "https://api.gpuindexes.com/api/offers | https://console.vast.ai/api/v0/bundles/ | https://api.runpod.io/graphql", "label": "GPU 订单簿逐源观测", "definition": "gpuperhour/vast 为逐条报价 offers、runpod 为型号挂牌 types，单位语义不同故分序列展示不合并。时点观测，<10 有效日只画点不连线。"},
         "otpi": {"url": "https://index.ornn.com/api/otpi", "label": "Ornn OTPI 已实现 token 价", "definition": "按 lab 的成交加权 token 实现价（USD/Mtok），免费层滚动窗口每日快照累积。许可：Ornn 免费层署名引用。"},
+        "panelIndex": {"url": "https://signals.foundry.ai", "label": "固定供应商面板指数（E2）", "definition": "在窗口内报价覆盖率>=80% 的 Foundry 供应商构成固定面板；起点=100；任一成员当日缺价则该日无观测点。消除供应商构成漂移，是 Supply Price 时钟的首选趋势证据。"},
     })
     return snapshot
 
@@ -528,12 +585,38 @@ def _clocks_section() -> str:
         state = clock.get("state", "Unobservable")
         direction = clock.get("direction")
         badge = state if not direction else f"{state} · {direction}"
+        watch = clock.get("watch", {})
+        watch_lines = []
+        for wname in ("loosening", "intensifying"):
+            w = watch.get(wname) or {}
+            label = "松动" if wname == "loosening" else "紧缩"
+            mark = "✔" if w.get("triggered") else "✘"
+            watch_lines.append(f"<b>{label} Watch {mark}</b>")
+            for cond in w.get("conditions") or []:
+                cond_mark = "✔" if cond.get("met") else "✘"
+                evidence = f"（{'、'.join(cond['evidence'])}）" if cond.get("evidence") else ""
+                watch_lines.append(f"<span>{cond_mark} {cond.get('condition','')}{evidence}</span>")
+        blockers = clock.get("blockers") or []
+        detail_items = [
+            "<b>确认条件</b>",
+            *[f"<span>· {c}</span>" for c in clock.get("confirms", [])],
+            "<b>反证条件</b>",
+            *[f"<span>· {c}</span>" for c in clock.get("disconfirms", [])],
+            *watch_lines,
+            "<b>当前阻塞</b>",
+            f"<span>{'、'.join(blockers) if blockers else '无'}</span>",
+            "<b>数据源</b>",
+            f"<span>{'、'.join(clock.get('sources', []))}</span>",
+        ]
         cards.append(
             f'<article class="clock-card {CLOCK_STATE_CLASS.get(state, "")}">'
             f'<h4>{CLOCK_LABELS.get(clock.get("clock_id"), clock.get("title", ""))}</h4>'
             f'<div class="clock-state">{badge}</div>'
             f'<p class="clock-metric">{_clock_key_metric(clock)}</p>'
             f'<p class="clock-next">{clock.get("next_proof_point", "")}</p>'
+            f'<details class="clock-detail"><summary>证据与反证条件</summary>'
+            f'<div class="clock-evidence">{"".join(f"<p>{x}</p>" for x in detail_items)}</div>'
+            f"</details>"
             f"</article>"
         )
     generated = report.get("generatedAt", "")
@@ -567,7 +650,7 @@ HTML = r'''<!doctype html>
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI","Noto Sans SC",sans-serif;letter-spacing:0}.shell{max-width:1440px;margin:auto;padding:0 28px 64px}.topbar{margin:0 -28px;padding:0 28px;border-bottom:1px solid rgba(0,0,0,.08);background:var(--bg)}.topbar-inner{height:52px;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{font-size:15px;font-weight:650;white-space:nowrap}.nav{display:flex;gap:4px;overflow:auto}.nav a{padding:7px 10px;color:var(--muted);font-size:13px;text-decoration:none;border-radius:6px}.nav a:hover{background:#fff;color:var(--ink)}.hero{padding:42px 0 30px;border-bottom:1px solid var(--line)}h1{margin:0;font-size:42px;line-height:1.12;font-weight:700}.sub{margin:10px 0 0;color:var(--muted);font-size:16px}.controls{display:flex;align-items:end;flex-wrap:wrap;gap:10px;margin-top:24px}.control label{display:block;margin:0 0 5px;color:var(--muted);font-size:11px;font-weight:650;text-transform:uppercase}.control input{height:36px;padding:0 10px;border:1px solid var(--line);border-radius:6px;background:#fff;color:var(--ink);font:inherit}.segments{display:flex;padding:3px;border:1px solid var(--line);border-radius:7px;background:#fff}.segments button{height:28px;padding:0 11px;border:0;border-radius:5px;background:transparent;color:var(--muted);font:inherit;font-size:12px;cursor:pointer}.segments button.active{background:var(--ink);color:#fff}.section{padding:34px 0 8px;border-bottom:1px solid var(--line)}.section-head{display:flex;align-items:baseline;justify-content:space-between;gap:20px;margin-bottom:20px}.section h2{margin:0;font-size:25px;line-height:1.2}.section-kicker{color:var(--muted);font-size:12px;text-transform:uppercase}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.panel{min-width:0;padding:20px;border:1px solid rgba(0,0,0,.09);border-radius:var(--radius);background:var(--paper)}.panel.full{grid-column:1/-1}.panel-head{display:flex;align-items:flex-start;justify-content:space-between;gap:18px}.panel h3{margin:0;font-size:17px;line-height:1.35}.panel-note{margin:5px 0 0;color:var(--muted);font-size:12px}.chart{position:relative;min-height:330px;margin-top:12px}.chart svg{display:block;width:100%;height:330px;overflow:visible}.legend{display:flex;flex-wrap:wrap;gap:7px 12px;margin-top:10px}.legend button{display:inline-flex;align-items:center;gap:6px;padding:3px 6px;border:0;border-radius:4px;background:transparent;color:var(--muted);font:inherit;font-size:11px;cursor:pointer}.legend button.off{opacity:.32}.swatch{width:16px;height:3px;border-radius:2px}.key-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;margin-top:12px;border:1px solid #e5e5ea;border-radius:6px;overflow:hidden;background:#e5e5ea}.key-stat{min-width:0;padding:10px 12px;background:#fafafa}.key-stat b{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:12px}.key-stat span{display:block;margin-top:4px;color:var(--muted);font-size:11px;font-variant-numeric:tabular-nums}.source{margin-top:12px;padding-top:10px;border-top:1px solid #ececf0;color:var(--muted);font-size:11px}.source summary{cursor:pointer;list-style:none}.source summary::-webkit-details-marker{display:none}.source a{color:var(--blue)}.tooltip{position:absolute;z-index:5;display:none;max-width:300px;padding:9px 11px;border-radius:6px;background:rgba(29,29,31,.95);color:#fff;font-size:11px;line-height:1.5;pointer-events:none;box-shadow:0 8px 24px rgba(0,0,0,.16)}.empty{display:grid;place-items:center;height:300px;color:var(--muted);font-size:13px}.table-wrap{overflow:auto;border-top:1px solid var(--line)}table{width:100%;border-collapse:collapse;font-size:12px}th,td{padding:10px 12px;border-bottom:1px solid #e8e8ed;text-align:left;white-space:nowrap}th{position:sticky;top:0;background:#fafafa;color:var(--muted);font-weight:650}td.num{text-align:right;font-variant-numeric:tabular-nums}.axis{fill:var(--muted);font-size:10px}.axis-title{fill:var(--muted);font-size:10px;font-weight:650}.gridline{stroke:#e5e5ea;stroke-width:1}.footer{padding:24px 0;color:var(--muted);font-size:11px}
 .chart.compact{min-height:240px}.chart.compact svg{height:240px}
 @media(max-width:820px){.shell{padding:0 16px 48px}.topbar{position:static;margin:0 -16px;padding:0 16px}.nav{display:none}.hero{padding-top:28px}h1{font-size:32px}.grid{grid-template-columns:1fr}.panel.full{grid-column:1}.panel{padding:16px}.chart{min-height:190px}.chart svg{height:190px}.chart.compact svg{height:170px}.axis,.axis-title{font-size:24px}.key-stats{grid-template-columns:repeat(2,minmax(0,1fr))}.section-head{display:block}.section-kicker{display:block;margin-top:5px}}
-.grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}.grid.four{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.clock-card{padding:16px;border:1px solid rgba(0,0,0,.09);border-radius:var(--radius);background:var(--paper)}.clock-card h4{margin:0;font-size:13px;color:var(--muted);font-weight:650}.clock-state{margin-top:8px;font-size:20px;font-weight:700}.st-observing .clock-state{color:#8e8e93}.st-trend .clock-state{color:#0071e3}.st-watch .clock-state{color:#b25000}.st-confirmed .clock-state{color:#1d7a3d}.clock-metric{margin:8px 0 0;font-size:12px;font-variant-numeric:tabular-nums}.clock-next{margin:6px 0 0;color:var(--muted);font-size:11px}.key-stats{grid-template-columns:repeat(5,minmax(0,1fr))}.subsection-title{grid-column:1/-1;margin:12px 0 0;padding-top:18px;border-top:1px solid var(--line);font-size:15px}.legend-item{display:inline-flex;align-items:center;gap:6px;padding:3px 6px;color:var(--muted);font-size:11px}.swatch.band{height:8px;opacity:.22}.model-detail{grid-column:1/-1;padding:16px 0 0;border-top:1px solid var(--line)}.model-detail>summary{cursor:pointer;list-style:none;font-size:13px;font-weight:650}.model-detail>summary::-webkit-details-marker{display:none}.detail-controls{display:flex;align-items:center;gap:12px;margin:16px 0 0}.detail-select{height:36px;max-width:620px;padding:0 10px;border:1px solid var(--line);border-radius:6px;background:#fff;color:var(--ink);font:inherit}.detail-meta{color:var(--muted);font-size:12px}
+.grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}.grid.four{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}@media(max-width:820px){.grid.four{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:560px){.grid.four{grid-template-columns:1fr}}.clock-card{padding:16px;border:1px solid rgba(0,0,0,.09);border-radius:var(--radius);background:var(--paper)}.clock-card h4{margin:0;font-size:13px;color:var(--muted);font-weight:650}.clock-state{margin-top:8px;font-size:20px;font-weight:700}.st-observing .clock-state{color:#8e8e93}.st-trend .clock-state{color:#0071e3}.st-watch .clock-state{color:#b25000}.st-confirmed .clock-state{color:#1d7a3d}.clock-metric{margin:8px 0 0;font-size:12px;font-variant-numeric:tabular-nums}.clock-next{margin:6px 0 0;color:var(--muted);font-size:11px}.clock-detail{margin-top:10px;border-top:1px solid #ececf0;padding-top:8px}.clock-detail>summary{cursor:pointer;list-style:none;color:var(--muted);font-size:11px}.clock-detail>summary::-webkit-details-marker{display:none}.clock-detail[open]>summary{color:var(--ink)}.clock-evidence p{margin:4px 0;font-size:11px;line-height:1.5}.clock-evidence p b{display:block;margin-top:6px;color:var(--ink)}.key-stats{grid-template-columns:repeat(5,minmax(0,1fr))}.subsection-title{grid-column:1/-1;margin:12px 0 0;padding-top:18px;border-top:1px solid var(--line);font-size:15px}.legend-item{display:inline-flex;align-items:center;gap:6px;padding:3px 6px;color:var(--muted);font-size:11px}.swatch.band{height:8px;opacity:.22}.model-detail{grid-column:1/-1;padding:16px 0 0;border-top:1px solid var(--line)}.model-detail>summary{cursor:pointer;list-style:none;font-size:13px;font-weight:650}.model-detail>summary::-webkit-details-marker{display:none}.detail-controls{display:flex;align-items:center;gap:12px;margin:16px 0 0}.detail-select{height:36px;max-width:620px;padding:0 10px;border:1px solid var(--line);border-radius:6px;background:#fff;color:var(--ink);font:inherit}.detail-meta{color:var(--muted);font-size:12px}
 @media(max-width:980px){.grid.three{grid-template-columns:1fr}}
 @media(max-width:820px){.grid.three{grid-template-columns:1fr}.chart.compact{min-height:190px}.chart.compact svg{height:190px}.detail-controls{align-items:flex-start;flex-direction:column}.detail-select{width:100%;max-width:none}}
 @media(max-width:820px){.key-stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
@@ -577,7 +660,7 @@ HTML = r'''<!doctype html>
 
 __CLOCKS__<section class="section" id="demand"><div class="section-head"><h2>需求与活跃模型结构</h2><span class="section-kicker">OpenRouter · 52周</span></div><div class="grid"><article class="panel full" data-source="openrouter"><h3>OpenRouter 模型 Token 总量</h3><p class="panel-note">周度总量与4周均线 · 含公开来源汇总的长尾</p><div id="or-volume" class="chart"></div><div id="or-volume-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel full" data-source="openrouterComposition"><h3>OpenRouter 活跃模型组合更替</h3><p class="panel-note">每周独立展示公开模型与Others的Token占比 · 悬停查看具体模型</p><div id="or-composition" class="chart"></div><div id="composition-legend" class="legend"></div><div id="composition-latest" class="key-stats"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel full" data-source="activePrice"><h3>活跃模型 Output 价格层级迁移</h3><p class="panel-note">占OpenRouter公开周度总Token量 · Others和无法映射模型保留为灰色缺口</p><div id="active-price-tier" class="chart"></div><div id="active-price-tier-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel" data-source="activePrice"><h3>活跃模型组合 Input 牌价</h3><p class="panel-note">按公开Token量加权 · 美元 / 100万 input tokens</p><div id="active-input-basket" class="chart compact"></div><div id="active-input-basket-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel" data-source="activePrice"><h3>活跃模型组合 Output 牌价</h3><p class="panel-note">按公开Token量加权 · 美元 / 100万 output tokens</p><div id="active-output-basket" class="chart compact"></div><div id="active-output-basket-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel" data-source="otpi"><h3>OTPI 已实现 Token 价（积累中）</h3><p class="panel-note" id="otpi-note">按 lab 的成交加权 token 实现价 · 免费层滚动窗口每日快照累积</p><div id="otpi-price" class="chart compact"></div><div id="otpi-price-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><details class="model-detail"><summary>查看近期活跃模型与单模型价格历史</summary><div class="detail-controls"><select id="active-model-select" class="detail-select" aria-label="活跃模型"></select><span id="active-model-meta" class="detail-meta"></span></div><div id="active-model-history" class="chart compact"></div><div id="active-model-history-legend" class="legend"></div><div class="table-wrap"><table><thead><tr><th>近期活跃模型</th><th>4周Token</th><th>总量占比</th><th>Input</th><th>Output</th><th>调价点</th></tr></thead><tbody id="active-model-body"></tbody></table></div></details></div></section>
 
-<section class="section" id="compute"><div class="section-head"><h2>GPU市场</h2><span class="section-kicker">Foundry Signals · 公开历史</span></div><div class="grid three"><article class="panel" data-source="gpuPrice"><h3>H100 租赁价格</h3><p class="panel-note">供应商中位价、最低–最高区间与30日均线</p><div id="gpu-price-h100" class="chart compact"></div><div class="legend"><span class="legend-item"><i class="swatch" style="background:#0071e3"></i>中位价</span><span class="legend-item"><i class="swatch" style="background:#1d1d1f"></i>30日均线</span><span class="legend-item"><i class="swatch band" style="background:#0071e3"></i>最低–最高</span></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel" data-source="gpuPrice"><h3>H200 租赁价格</h3><p class="panel-note">供应商中位价、最低–最高区间与30日均线</p><div id="gpu-price-h200" class="chart compact"></div><div class="legend"><span class="legend-item"><i class="swatch" style="background:#0071e3"></i>中位价</span><span class="legend-item"><i class="swatch" style="background:#1d1d1f"></i>30日均线</span><span class="legend-item"><i class="swatch band" style="background:#0071e3"></i>最低–最高</span></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel" data-source="gpuPrice"><h3>B200 租赁价格</h3><p class="panel-note">供应商中位价、最低–最高区间与30日均线</p><div id="gpu-price-b200" class="chart compact"></div><div class="legend"><span class="legend-item"><i class="swatch" style="background:#0071e3"></i>中位价</span><span class="legend-item"><i class="swatch" style="background:#1d1d1f"></i>30日均线</span><span class="legend-item"><i class="swatch band" style="background:#0071e3"></i>最低–最高</span></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel full" data-source="gpuPremium"><h3>GPU 代际租赁溢价</h3><p class="panel-note">相对H100的30日中位价格倍数 · 1.0x表示无溢价</p><div id="gpu-premium" class="chart"></div><div id="gpu-premium-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><h3 class="subsection-title">跨来源交叉验证 · 报价 × 成交 × 合约</h3><article class="panel" data-source="basisH100"><h3>H100：报价 vs 成交指数</h3><p class="panel-note">Foundry 报价中位 × SemiAnalysis 综合指数 × Ornn 成交指数 · 口径不同不可混同，仅作交叉对照</p><div id="basis-h100" class="chart compact"></div><div id="basis-h100-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel" data-source="basisH200"><h3>H200：报价 vs 成交指数</h3><p class="panel-note">同上三源对照 · 注意 Foundry 与 Ornn 可能方向分歧</p><div id="basis-h200" class="chart compact"></div><div id="basis-h200-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel" data-source="basisB200"><h3>B200：报价 vs 成交指数</h3><p class="panel-note">同上三源对照</p><div id="basis-b200" class="chart compact"></div><div id="basis-b200-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel" data-source="contractBand"><h3>H100 一年期合约价区间</h3><p class="panel-note">SemiAnalysis 公开调查区间 · 半年频率阶梯图，不与日线混轴</p><div id="contract-band" class="chart compact"></div><div id="contract-band-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><h3 class="subsection-title">可用率 · 保持来源原始月度频率</h3><article class="panel" data-source="gpuAvailability"><h3>H100 可用率</h3><p class="panel-note">35个月 · 有至少一家供应商可租用的检查占比</p><div id="gpu-availability-h100" class="chart compact"></div><div id="gpu-availability-h100-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel" data-source="gpuAvailability"><h3>B200 可用率</h3><p class="panel-note">11个月 · B200不适用来源的$4价格上限</p><div id="gpu-availability-b200" class="chart compact"></div><div id="gpu-availability-b200-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel" data-source="gpuAvailability"><h3>H200 可用率</h3><p class="panel-note">仅3个月 · 只显示观测点，不连接为趋势</p><div id="gpu-availability-h200" class="chart compact"></div><div id="gpu-availability-h200-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel" data-source="orderbookDepth"><h3>供给深度：订单簿观测（积累中）</h3><p class="panel-note" id="orderbook-note">gpuperhour / vast / runpod 分序列 offer 数 · 少于10个有效日只画观测点不连线</p><div id="orderbook-depth" class="chart compact"></div><div id="orderbook-depth-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article></div></section>
+<section class="section" id="compute"><div class="section-head"><h2>GPU市场</h2><span class="section-kicker">Foundry Signals · 公开历史</span></div><div class="grid three"><article class="panel" data-source="gpuPrice"><h3>H100 租赁价格</h3><p class="panel-note">供应商中位价、最低–最高区间与30日均线</p><div id="gpu-price-h100" class="chart compact"></div><div class="legend"><span class="legend-item"><i class="swatch" style="background:#0071e3"></i>中位价</span><span class="legend-item"><i class="swatch" style="background:#1d1d1f"></i>30日均线</span><span class="legend-item"><i class="swatch band" style="background:#0071e3"></i>最低–最高</span></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel" data-source="gpuPrice"><h3>H200 租赁价格</h3><p class="panel-note">供应商中位价、最低–最高区间与30日均线</p><div id="gpu-price-h200" class="chart compact"></div><div class="legend"><span class="legend-item"><i class="swatch" style="background:#0071e3"></i>中位价</span><span class="legend-item"><i class="swatch" style="background:#1d1d1f"></i>30日均线</span><span class="legend-item"><i class="swatch band" style="background:#0071e3"></i>最低–最高</span></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel" data-source="gpuPrice"><h3>B200 租赁价格</h3><p class="panel-note">供应商中位价、最低–最高区间与30日均线</p><div id="gpu-price-b200" class="chart compact"></div><div class="legend"><span class="legend-item"><i class="swatch" style="background:#0071e3"></i>中位价</span><span class="legend-item"><i class="swatch" style="background:#1d1d1f"></i>30日均线</span><span class="legend-item"><i class="swatch band" style="background:#0071e3"></i>最低–最高</span></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel full" data-source="gpuPremium"><h3>GPU 代际租赁溢价</h3><p class="panel-note">相对H100的30日中位价格倍数 · 1.0x表示无溢价</p><div id="gpu-premium" class="chart"></div><div id="gpu-premium-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><h3 class="subsection-title">跨来源交叉验证 · 报价 × 成交 × 合约</h3><article class="panel" data-source="basisH100"><h3>H100：报价 vs 成交指数</h3><p class="panel-note">Foundry 报价中位 × SemiAnalysis 综合指数 × Ornn 成交指数 · 口径不同不可混同，仅作交叉对照</p><div id="basis-h100" class="chart compact"></div><div id="basis-h100-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel" data-source="basisH200"><h3>H200：报价 vs 成交指数</h3><p class="panel-note">同上三源对照 · 注意 Foundry 与 Ornn 可能方向分歧</p><div id="basis-h200" class="chart compact"></div><div id="basis-h200-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel" data-source="basisB200"><h3>B200：报价 vs 成交指数</h3><p class="panel-note">同上三源对照</p><div id="basis-b200" class="chart compact"></div><div id="basis-b200-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel full" data-source="panelIndex"><h3>固定供应商面板指数</h3><p class="panel-note" id="panel-index-note">Foundry 固定成员报价均值 · 起点=100 · 成员当日缺价即断点，杜绝构成漂移</p><div id="panel-index-chart" class="chart"></div><div id="panel-index-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel" data-source="contractBand"><h3>H100 一年期合约价区间</h3><p class="panel-note">SemiAnalysis 公开调查区间 · 半年频率阶梯图，不与日线混轴</p><div id="contract-band" class="chart compact"></div><div id="contract-band-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><h3 class="subsection-title">可用率 · 保持来源原始月度频率</h3><article class="panel" data-source="gpuAvailability"><h3>H100 可用率</h3><p class="panel-note">35个月 · 有至少一家供应商可租用的检查占比</p><div id="gpu-availability-h100" class="chart compact"></div><div id="gpu-availability-h100-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel" data-source="gpuAvailability"><h3>B200 可用率</h3><p class="panel-note">11个月 · B200不适用来源的$4价格上限</p><div id="gpu-availability-b200" class="chart compact"></div><div id="gpu-availability-b200-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel" data-source="gpuAvailability"><h3>H200 可用率</h3><p class="panel-note">仅3个月 · 只显示观测点，不连接为趋势</p><div id="gpu-availability-h200" class="chart compact"></div><div id="gpu-availability-h200-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel" data-source="orderbookDepth"><h3>供给深度：订单簿观测（积累中）</h3><p class="panel-note" id="orderbook-note">gpuperhour / vast / runpod 分序列 offer 数 · 少于10个有效日只画观测点不连线</p><div id="orderbook-depth" class="chart compact"></div><div id="orderbook-depth-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article></div></section>
 
 <section class="section" id="capex"><div class="section-head"><h2>CAPEX与官方承诺</h2><span class="section-kicker">Quarterly & event</span></div><article class="panel full" data-source="capex"><div class="table-wrap"><table><thead><tr><th>日期</th><th>公司</th><th>指标</th><th>期间</th><th>单位</th><th>数值</th></tr></thead><tbody id="capex-body"></tbody></table></div><details class="source"><summary>来源与口径</summary><p></p></details></article></section>
 <footer class="footer" id="freshness"></footer></main><script>
@@ -677,6 +760,10 @@ lineChart('basis-h100','basis-h100-legend',DATA.datasets.basisH100||[],{title:'H
 lineChart('basis-h200','basis-h200-legend',DATA.datasets.basisH200||[],{title:'H200 price basis compare',kind:'usd',yTitle:'USD/GPU-hr',zero:true,gapDays:20});
 lineChart('basis-b200','basis-b200-legend',DATA.datasets.basisB200||[],{title:'B200 price basis compare',kind:'usd',yTitle:'USD/GPU-hr',zero:true,gapDays:20});
 lineChart('contract-band','contract-band-legend',DATA.datasets.contractBand||[],{title:'H100 1Y contract range',kind:'usd',yTitle:'USD/GPU-hr',zero:true,step:true,band:true});
+
+const panelRows=DATA.datasets.panelIndex||[];
+document.getElementById('panel-index-note').textContent='固定成员：'+Object.entries(DATA.meta.panelMembers||{}).map(([f,m])=>{const arr=Array.isArray(m)?m:(m&&m.members)||[];return f+'['+arr.join('/')+']'}).join(' · ')+' · 起点=100';
+lineChart('panel-index-chart','panel-index-legend',panelRows,{title:'Fixed-provider panel index',kind:'usd',yTitle:'Index (base=100)',zero:false,gapDays:11});
 activeModelDetail();sourceDetails();renderTable();$('#freshness').textContent='Updated '+DATA.meta.generatedAt+' · Public source history only · No composite score';
 </script></body></html>'''
 

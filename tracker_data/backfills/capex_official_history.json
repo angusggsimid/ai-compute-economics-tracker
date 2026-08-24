@@ -1,6 +1,6 @@
 {
-  "fetchedAt": "2026-08-24T01:56:33Z",
-  "refreshStatus": "current_for_frequency",
+  "fetchedAt": "2026-08-24T06:01:48Z",
+  "refreshStatus": "fresh",
   "publishable": true,
   "cacheMaxAgeDays": 150,
   "cacheCoverage": {
@@ -186,6 +186,24 @@
     },
     {
       "date": "2026-06-30",
+      "company": "Microsoft",
+      "metric": "capex actual",
+      "value": 115.948,
+      "unit": "USD_B",
+      "period": "FY2026",
+      "source_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000789019.json"
+    },
+    {
+      "date": "2026-06-30",
+      "company": "Meta",
+      "metric": "capex actual",
+      "value": 49.113,
+      "unit": "USD_B",
+      "period": "FY2026 Q2",
+      "source_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001326801.json"
+    },
+    {
+      "date": "2026-06-30",
       "company": "Amazon",
       "metric": "PaymentsToAcquireProductiveAssets",
       "value": 54.208,
@@ -200,7 +218,7 @@
       "value": 54.208,
       "unit": "USD_B",
       "period": "FY2026 Q2",
-      "source_url": "https://s2.q4cdn.com/299287126/files/doc_earnings/2026/q2/earnings-result/AMZN-Q2-2026-Earnings-Release.pdf"
+      "source_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001018724.json"
     },
     {
       "date": "2026-06-30",
@@ -210,6 +228,15 @@
       "unit": "USD_B",
       "period": "TTM",
       "source_url": "https://ir.aboutamazon.com/news-release/news-release-details/2026/Amazon-com-Announces-Second-Quarter-Results/default.aspx"
+    },
+    {
+      "date": "2026-06-30",
+      "company": "Alphabet",
+      "metric": "capex actual",
+      "value": 80.598,
+      "unit": "USD_B",
+      "period": "FY2026 Q2",
+      "source_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001652044.json"
     },
     {
       "date": "2026-06-11",
@@ -431,60 +458,34 @@
   "sources": {
     "MSFT": {
       "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000789019.json",
-      "fetchedAt": "2026-08-24T01:56:33Z",
-      "status": "failed",
-      "message": "SEC_SOURCE_UNAVAILABLE: HTTP 403 for MSFT"
+      "fetchedAt": "2026-08-24T06:01:48Z",
+      "sha256": "sha256:75bebe2eebf09fd5c1383646a761563922c8eb0f2cdb107a13e526572a5140c3",
+      "status": "fresh"
     },
     "AMZN": {
       "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001018724.json",
-      "fetchedAt": "2026-08-24T01:56:33Z",
-      "status": "failed",
-      "message": "SEC_SOURCE_UNAVAILABLE: HTTP 403 for AMZN"
+      "fetchedAt": "2026-08-24T06:01:48Z",
+      "sha256": "sha256:76786a69103fd0437520bd789ecdf2633d7e6679a578989133dec7466e27a361",
+      "status": "fresh"
     },
     "GOOGL": {
       "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001652044.json",
-      "fetchedAt": "2026-08-24T01:56:33Z",
-      "status": "failed",
-      "message": "SEC_SOURCE_UNAVAILABLE: HTTP 403 for GOOGL"
+      "fetchedAt": "2026-08-24T06:01:48Z",
+      "sha256": "sha256:67e9eb51a09725a55b786cc0a569efcfb9906ad170e445e4775bc2126e22ae7d",
+      "status": "fresh"
     },
     "META": {
       "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001326801.json",
-      "fetchedAt": "2026-08-24T01:56:33Z",
-      "status": "failed",
-      "message": "SEC_SOURCE_UNAVAILABLE: HTTP 403 for META"
+      "fetchedAt": "2026-08-24T06:01:48Z",
+      "sha256": "sha256:0317fc3e86d06ba1660234ad40ec4c1408d9828fd2c4c45e25e2394bfd676699",
+      "status": "fresh"
     },
     "ORCL": {
       "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001341439.json",
-      "fetchedAt": "2026-08-24T01:56:33Z",
-      "status": "failed",
-      "message": "SEC_SOURCE_UNAVAILABLE: HTTP 403 for ORCL"
+      "fetchedAt": "2026-08-24T06:01:48Z",
+      "sha256": "sha256:cf7cb9e13f6de42c4b3807469064dc164df211d21138c37f9a8ed79967a07924",
+      "status": "fresh"
     }
   },
-  "quality": [
-    {
-      "source": "MSFT",
-      "status": "failed",
-      "message": "SEC_SOURCE_UNAVAILABLE: HTTP 403 for MSFT"
-    },
-    {
-      "source": "AMZN",
-      "status": "failed",
-      "message": "SEC_SOURCE_UNAVAILABLE: HTTP 403 for AMZN"
-    },
-    {
-      "source": "GOOGL",
-      "status": "failed",
-      "message": "SEC_SOURCE_UNAVAILABLE: HTTP 403 for GOOGL"
-    },
-    {
-      "source": "META",
-      "status": "failed",
-      "message": "SEC_SOURCE_UNAVAILABLE: HTTP 403 for META"
-    },
-    {
-      "source": "ORCL",
-      "status": "failed",
-      "message": "SEC_SOURCE_UNAVAILABLE: HTTP 403 for ORCL"
-    }
-  ]
+  "quality": []
 }

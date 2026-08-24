@@ -105,6 +105,7 @@ def test_deploy_validator_accepts_current_quarterly_capex():
             {"source": "gpu_orderbook", "status": "fresh", "publishable": True},
             {"source": "reference_indices", "status": "fresh", "publishable": True},
             {"source": "neocloud_provider_prices", "status": "fresh", "publishable": True},
+            {"source": "epoch_supply", "status": "fresh", "publishable": True},
         ],
     }
 
@@ -130,6 +131,7 @@ def test_deploy_validator_rejects_false_freshness():
             {"source": "gpu_orderbook", "status": "fresh", "publishable": True},
             {"source": "reference_indices", "status": "fresh", "publishable": True},
             {"source": "neocloud_provider_prices", "status": "fresh", "publishable": True},
+            {"source": "epoch_supply", "status": "fresh", "publishable": True},
         ],
     }
 
