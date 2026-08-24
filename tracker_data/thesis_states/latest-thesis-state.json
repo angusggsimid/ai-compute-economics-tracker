@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-24T07:20:50Z",
+  "generatedAt": "2026-08-24T15:12:56Z",
   "inputs": [
     "capex_official_history.json",
     "epoch_chip_sales.json",
@@ -11,7 +11,8 @@
     "neocloud_provider_price_history.json",
     "openrouter_active_price_history.json",
     "openrouter_cost_index.json",
-    "reference_index_history.json"
+    "reference_index_history.json",
+    "throughput_benchmarks.json"
   ],
   "clocks": [
     {
@@ -123,7 +124,7 @@
         },
         "depth": {
           "depthValidDates": 3,
-          "depthLatestTotalOffers": 278,
+          "depthLatestTotalOffers": 239,
           "depthGrowthPct": null
         },
         "h100Contract1yBands": [
@@ -199,10 +200,10 @@
       },
       "metrics": {
         "depthValidDates": 3,
-        "latestTotalOffers": 278,
+        "latestTotalOffers": 239,
         "depthGrowthPct": null,
-        "latestGpuCapacity": 977,
-        "providerSnapshotRows": 586,
+        "latestGpuCapacity": 838,
+        "providerSnapshotRows": 3067,
         "providersCovered": 34
       },
       "blockers": [
@@ -255,7 +256,7 @@
         "weightedOutputPriceChange8wPct": 41.75,
         "recentPriceCutModels": 74,
         "otpiLabsCovered": 4,
-        "otpiLatestDate": "2026-08-22"
+        "otpiLatestDate": "2026-08-23"
       },
       "blockers": [
         "proxy_ceiling_requires_official_usage_for_inflection"
