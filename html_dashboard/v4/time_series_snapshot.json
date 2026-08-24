@@ -1,11 +1,31 @@
 {
   "meta": {
-    "generatedAt": "2026-08-24T01:56:43Z",
+    "generatedAt": "2026-08-24T06:06:35Z",
     "minDate": "2025-08-25",
     "maxDate": "2026-08-23",
     "orderbookValidDays": 3,
     "otpiValidDays": 2,
-    "contractPeriods": 20
+    "contractPeriods": 20,
+    "panelMembers": {
+      "H100": {
+        "members": [
+          "lambda",
+          "runpod",
+          "vastai"
+        ],
+        "windowStart": "2026-05-13",
+        "windowDays": 103
+      },
+      "B200": {
+        "members": [
+          "lambda",
+          "runpod",
+          "vastai"
+        ],
+        "windowStart": "2026-05-13",
+        "windowDays": 103
+      }
+    }
   },
   "datasets": {
     "openrouterVolume": [
@@ -267,7 +287,7 @@
       {
         "date": "2026-08-17",
         "series": "Weekly tokens",
-        "value": 93.376459135552
+        "value": 93.377039257092
       },
       {
         "date": "2025-09-15",
@@ -512,7 +532,7 @@
       {
         "date": "2026-08-17",
         "series": "4W average",
-        "value": 73.638041745059
+        "value": 73.638186775444
       }
     ],
     "openrouterComposition": [
@@ -4601,8 +4621,8 @@
         "rank": 1,
         "model": "deepseek/deepseek-v4-flash-20260731",
         "vendor": "deepseek",
-        "tokens": 11.575873755262,
-        "share": 12.396993698869677
+        "tokens": 11.575873823591,
+        "share": 12.396916753506735
       },
       {
         "date": "2026-08-17",
@@ -4610,7 +4630,7 @@
         "model": "stealth/ox-alpha",
         "vendor": "stealth",
         "tokens": 11.568098525594,
-        "share": 12.388666943132758
+        "share": 12.3885899763259
       },
       {
         "date": "2026-08-17",
@@ -4618,7 +4638,7 @@
         "model": "xiaomi/mimo-v2.5-20260422",
         "vendor": "xiaomi",
         "tokens": 9.939124658541,
-        "share": 10.64414387796891
+        "share": 10.644077749323287
       },
       {
         "date": "2026-08-17",
@@ -4626,7 +4646,7 @@
         "model": "tencent/hy3-20260706",
         "vendor": "tencent",
         "tokens": 8.206161989013,
-        "share": 8.78825569633171
+        "share": 8.788201097723004
       },
       {
         "date": "2026-08-17",
@@ -4634,7 +4654,7 @@
         "model": "deepseek/deepseek-v4-flash-20260423",
         "vendor": "deepseek",
         "tokens": 5.458783968921,
-        "share": 5.845995896028393
+        "share": 5.84595957673439
       },
       {
         "date": "2026-08-17",
@@ -4642,7 +4662,7 @@
         "model": "openai/gpt-5.6-luna-20260709",
         "vendor": "openai",
         "tokens": 4.909342988814,
-        "share": 5.257581015882433
+        "share": 5.257548352221003
       },
       {
         "date": "2026-08-17",
@@ -4650,7 +4670,7 @@
         "model": "nvidia/nemotron-3-ultra-550b-a55b-20260604:free",
         "vendor": "nvidia",
         "tokens": 4.746993620505,
-        "share": 5.083715600753207
+        "share": 5.083684017261733
       },
       {
         "date": "2026-08-17",
@@ -4658,7 +4678,7 @@
         "model": "z-ai/glm-5.2-20260616",
         "vendor": "z-ai",
         "tokens": 3.417047494462,
-        "share": 3.6594314306795113
+        "share": 3.6594086958079206
       },
       {
         "date": "2026-08-17",
@@ -4666,15 +4686,15 @@
         "model": "deepseek/deepseek-v4-pro-20260423",
         "vendor": "deepseek",
         "tokens": 1.850665836405,
-        "share": 1.9819404735817194
+        "share": 1.981928160422415
       },
       {
         "date": "2026-08-17",
         "rank": 10,
         "model": "Others",
         "vendor": "OpenRouter",
-        "tokens": 31.704366298035,
-        "share": 33.95327536677168
+        "tokens": 31.704946351246,
+        "share": 33.95368562067361
       }
     ],
     "openrouterDisclosure": [
@@ -4935,8 +4955,8 @@
       },
       {
         "date": "2026-08-17",
-        "othersShare": 33.95327536677168,
-        "namedShare": 66.04672463322832
+        "othersShare": 33.95368562067361,
+        "namedShare": 66.04631437932639
       }
     ],
     "activePriceTiers": [
@@ -6218,17 +6238,17 @@
       {
         "date": "2026-08-17",
         "series": "免费",
-        "value": 8.743147031432718
+        "value": 8.743092713069652
       },
       {
         "date": "2026-08-17",
         "series": "<$1",
-        "value": 42.932970185081125
+        "value": 42.93270352950842
       },
       {
         "date": "2026-08-17",
         "series": "$1–5",
-        "value": 1.9819404735817194
+        "value": 1.981928160422415
       },
       {
         "date": "2026-08-17",
@@ -6238,7 +6258,7 @@
       {
         "date": "2026-08-17",
         "series": "Others / 无法匹配",
-        "value": 46.34194230990444
+        "value": 46.342275596999514
       }
     ],
     "activeInputBasket": [
@@ -6551,8 +6571,8 @@
       {
         "date": "2026-08-17",
         "series": "Weekly weighted rate",
-        "value": 0.12491184691305912,
-        "coverage": 53.65805769009556
+        "value": 0.12491184693363551,
+        "coverage": 53.657724403000486
       },
       {
         "date": "2025-09-15",
@@ -6845,8 +6865,8 @@
       {
         "date": "2026-08-17",
         "series": "4W average",
-        "value": 0.19644445822099488,
-        "coverage": 51.77234748003458
+        "value": 0.19644445822613898,
+        "coverage": 51.77226415826081
       }
     ],
     "activeOutputBasket": [
@@ -7159,8 +7179,8 @@
       {
         "date": "2026-08-17",
         "series": "Weekly weighted rate",
-        "value": 0.3566336096052049,
-        "coverage": 53.65805769009556
+        "value": 0.35663360950069634,
+        "coverage": 53.657724403000486
       },
       {
         "date": "2025-09-15",
@@ -7453,8 +7473,8 @@
       {
         "date": "2026-08-17",
         "series": "4W average",
-        "value": 0.6720028442566469,
-        "coverage": 51.77234748003458
+        "value": 0.6720028442305198,
+        "coverage": 51.77226415826081
       }
     ],
     "activeModels": [
@@ -7462,8 +7482,8 @@
         "rankId": "deepseek/deepseek-v4-flash-20260731",
         "baseId": "deepseek/deepseek-v4-flash-0731",
         "name": "DeepSeek: DeepSeek V4 Flash 0731",
-        "tokens": 31.582247239576,
-        "share": 10.722123542107608,
+        "tokens": 31.582247307905,
+        "share": 10.722102448086309,
         "inputPrice": 0.14,
         "outputPrice": 0.28,
         "historyPoints": 6,
@@ -7508,7 +7528,7 @@
         "baseId": "tencent/hy3",
         "name": "Tencent: Hy3",
         "tokens": 31.034183366775,
-        "share": 10.536056714482548,
+        "share": 10.536035963722261,
         "inputPrice": 0.132,
         "outputPrice": 0.528,
         "historyPoints": 6,
@@ -7553,7 +7573,7 @@
         "baseId": "xiaomi/mimo-v2.5",
         "name": "Xiaomi: MiMo-V2.5",
         "tokens": 25.428536578212,
-        "share": 8.632948397191122,
+        "share": 8.63293139460205,
         "inputPrice": 0.14,
         "outputPrice": 0.28,
         "historyPoints": 4,
@@ -7588,7 +7608,7 @@
         "baseId": "deepseek/deepseek-v4-flash",
         "name": "DeepSeek: DeepSeek V4 Flash 0423",
         "tokens": 23.389777656479,
-        "share": 7.940792931952329,
+        "share": 7.940777292563221,
         "inputPrice": 0.05866,
         "outputPrice": 0.11732,
         "historyPoints": 36,
@@ -7783,7 +7803,7 @@
         "baseId": "openai/gpt-5.6-luna:batch",
         "name": "OpenAI: GPT-5.6 Luna (batch)",
         "tokens": 16.600513530445,
-        "share": 5.635848379808005,
+        "share": 5.635837280006446,
         "inputPrice": 0.1,
         "outputPrice": 0.6,
         "historyPoints": 1,
@@ -7803,7 +7823,7 @@
         "baseId": "z-ai/glm-5.2:free",
         "name": "Z.ai: GLM 5.2 (free)",
         "tokens": 14.122954757809,
-        "share": 4.794721051485807,
+        "share": 4.794711608284249,
         "inputPrice": 0.0,
         "outputPrice": 0.0,
         "historyPoints": 1,
@@ -7823,7 +7843,7 @@
         "baseId": "stealth/ox-alpha",
         "name": "Ox Alpha",
         "tokens": 11.568098525594,
-        "share": 3.9273513565324416,
+        "share": 3.9273436216152167,
         "inputPrice": 0.0,
         "outputPrice": 0.0,
         "historyPoints": 1,
@@ -21477,6 +21497,24 @@
       },
       {
         "date": "2026-06-30",
+        "company": "Microsoft",
+        "metric": "capex actual",
+        "value": 115.948,
+        "unit": "USD_B",
+        "period": "FY2026",
+        "source_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000789019.json"
+      },
+      {
+        "date": "2026-06-30",
+        "company": "Meta",
+        "metric": "capex actual",
+        "value": 49.113,
+        "unit": "USD_B",
+        "period": "FY2026 Q2",
+        "source_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001326801.json"
+      },
+      {
+        "date": "2026-06-30",
         "company": "Amazon",
         "metric": "PaymentsToAcquireProductiveAssets",
         "value": 54.208,
@@ -21491,7 +21529,7 @@
         "value": 54.208,
         "unit": "USD_B",
         "period": "FY2026 Q2",
-        "source_url": "https://s2.q4cdn.com/299287126/files/doc_earnings/2026/q2/earnings-result/AMZN-Q2-2026-Earnings-Release.pdf"
+        "source_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001018724.json"
       },
       {
         "date": "2026-06-30",
@@ -21501,6 +21539,15 @@
         "unit": "USD_B",
         "period": "TTM",
         "source_url": "https://ir.aboutamazon.com/news-release/news-release-details/2026/Amazon-com-Announces-Second-Quarter-Results/default.aspx"
+      },
+      {
+        "date": "2026-06-30",
+        "company": "Alphabet",
+        "metric": "capex actual",
+        "value": 80.598,
+        "unit": "USD_B",
+        "period": "FY2026 Q2",
+        "source_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001652044.json"
       },
       {
         "date": "2026-06-11",
@@ -21717,6 +21764,948 @@
         "unit": "CNY_B",
         "period": "ttm_ai_cloud_infrastructure",
         "source_url": "https://www.alibabagroup.com/en-US/document-1930116148192346112"
+      }
+    ],
+    "panelIndex": [
+      {
+        "date": "2026-05-13",
+        "series": "B200 固定面板",
+        "value": 100.0
+      },
+      {
+        "date": "2026-05-13",
+        "series": "H100 固定面板",
+        "value": 100.0
+      },
+      {
+        "date": "2026-05-14",
+        "series": "B200 固定面板",
+        "value": 98.13
+      },
+      {
+        "date": "2026-05-14",
+        "series": "H100 固定面板",
+        "value": 100.05
+      },
+      {
+        "date": "2026-05-15",
+        "series": "B200 固定面板",
+        "value": 98.02
+      },
+      {
+        "date": "2026-05-15",
+        "series": "H100 固定面板",
+        "value": 100.0
+      },
+      {
+        "date": "2026-05-16",
+        "series": "B200 固定面板",
+        "value": 98.95
+      },
+      {
+        "date": "2026-05-16",
+        "series": "H100 固定面板",
+        "value": 99.95
+      },
+      {
+        "date": "2026-05-17",
+        "series": "B200 固定面板",
+        "value": 96.79
+      },
+      {
+        "date": "2026-05-17",
+        "series": "H100 固定面板",
+        "value": 99.99
+      },
+      {
+        "date": "2026-05-18",
+        "series": "B200 固定面板",
+        "value": 96.88
+      },
+      {
+        "date": "2026-05-18",
+        "series": "H100 固定面板",
+        "value": 100.57
+      },
+      {
+        "date": "2026-05-19",
+        "series": "B200 固定面板",
+        "value": 97.24
+      },
+      {
+        "date": "2026-05-19",
+        "series": "H100 固定面板",
+        "value": 101.28
+      },
+      {
+        "date": "2026-05-20",
+        "series": "B200 固定面板",
+        "value": 97.97
+      },
+      {
+        "date": "2026-05-20",
+        "series": "H100 固定面板",
+        "value": 100.91
+      },
+      {
+        "date": "2026-05-21",
+        "series": "B200 固定面板",
+        "value": 98.2
+      },
+      {
+        "date": "2026-05-21",
+        "series": "H100 固定面板",
+        "value": 102.11
+      },
+      {
+        "date": "2026-05-22",
+        "series": "B200 固定面板",
+        "value": 97.91
+      },
+      {
+        "date": "2026-05-22",
+        "series": "H100 固定面板",
+        "value": 103.65
+      },
+      {
+        "date": "2026-05-23",
+        "series": "B200 固定面板",
+        "value": 97.88
+      },
+      {
+        "date": "2026-05-23",
+        "series": "H100 固定面板",
+        "value": 103.19
+      },
+      {
+        "date": "2026-05-24",
+        "series": "B200 固定面板",
+        "value": 98.04
+      },
+      {
+        "date": "2026-05-24",
+        "series": "H100 固定面板",
+        "value": 105.72
+      },
+      {
+        "date": "2026-05-25",
+        "series": "B200 固定面板",
+        "value": 98.23
+      },
+      {
+        "date": "2026-05-25",
+        "series": "H100 固定面板",
+        "value": 108.21
+      },
+      {
+        "date": "2026-06-04",
+        "series": "B200 固定面板",
+        "value": 103.61
+      },
+      {
+        "date": "2026-06-04",
+        "series": "H100 固定面板",
+        "value": 114.22
+      },
+      {
+        "date": "2026-06-05",
+        "series": "B200 固定面板",
+        "value": 105.0
+      },
+      {
+        "date": "2026-06-05",
+        "series": "H100 固定面板",
+        "value": 111.53
+      },
+      {
+        "date": "2026-06-06",
+        "series": "B200 固定面板",
+        "value": 101.07
+      },
+      {
+        "date": "2026-06-06",
+        "series": "H100 固定面板",
+        "value": 105.55
+      },
+      {
+        "date": "2026-06-07",
+        "series": "B200 固定面板",
+        "value": 101.37
+      },
+      {
+        "date": "2026-06-07",
+        "series": "H100 固定面板",
+        "value": 105.3
+      },
+      {
+        "date": "2026-06-08",
+        "series": "B200 固定面板",
+        "value": 99.58
+      },
+      {
+        "date": "2026-06-08",
+        "series": "H100 固定面板",
+        "value": 104.59
+      },
+      {
+        "date": "2026-06-09",
+        "series": "B200 固定面板",
+        "value": 100.35
+      },
+      {
+        "date": "2026-06-09",
+        "series": "H100 固定面板",
+        "value": 106.53
+      },
+      {
+        "date": "2026-06-10",
+        "series": "B200 固定面板",
+        "value": 101.51
+      },
+      {
+        "date": "2026-06-10",
+        "series": "H100 固定面板",
+        "value": 107.4
+      },
+      {
+        "date": "2026-06-11",
+        "series": "B200 固定面板",
+        "value": 94.08
+      },
+      {
+        "date": "2026-06-11",
+        "series": "H100 固定面板",
+        "value": 108.16
+      },
+      {
+        "date": "2026-06-12",
+        "series": "B200 固定面板",
+        "value": 94.08
+      },
+      {
+        "date": "2026-06-12",
+        "series": "H100 固定面板",
+        "value": 108.27
+      },
+      {
+        "date": "2026-06-13",
+        "series": "B200 固定面板",
+        "value": 94.08
+      },
+      {
+        "date": "2026-06-13",
+        "series": "H100 固定面板",
+        "value": 109.63
+      },
+      {
+        "date": "2026-06-14",
+        "series": "B200 固定面板",
+        "value": 94.08
+      },
+      {
+        "date": "2026-06-14",
+        "series": "H100 固定面板",
+        "value": 110.4
+      },
+      {
+        "date": "2026-06-15",
+        "series": "B200 固定面板",
+        "value": 94.08
+      },
+      {
+        "date": "2026-06-15",
+        "series": "H100 固定面板",
+        "value": 108.72
+      },
+      {
+        "date": "2026-06-16",
+        "series": "B200 固定面板",
+        "value": 94.01
+      },
+      {
+        "date": "2026-06-16",
+        "series": "H100 固定面板",
+        "value": 108.87
+      },
+      {
+        "date": "2026-06-17",
+        "series": "B200 固定面板",
+        "value": 93.4
+      },
+      {
+        "date": "2026-06-17",
+        "series": "H100 固定面板",
+        "value": 106.11
+      },
+      {
+        "date": "2026-06-18",
+        "series": "B200 固定面板",
+        "value": 93.81
+      },
+      {
+        "date": "2026-06-18",
+        "series": "H100 固定面板",
+        "value": 107.77
+      },
+      {
+        "date": "2026-06-19",
+        "series": "B200 固定面板",
+        "value": 94.08
+      },
+      {
+        "date": "2026-06-19",
+        "series": "H100 固定面板",
+        "value": 108.26
+      },
+      {
+        "date": "2026-06-20",
+        "series": "B200 固定面板",
+        "value": 94.01
+      },
+      {
+        "date": "2026-06-20",
+        "series": "H100 固定面板",
+        "value": 108.22
+      },
+      {
+        "date": "2026-06-21",
+        "series": "B200 固定面板",
+        "value": 94.02
+      },
+      {
+        "date": "2026-06-21",
+        "series": "H100 固定面板",
+        "value": 108.97
+      },
+      {
+        "date": "2026-06-22",
+        "series": "B200 固定面板",
+        "value": 94.08
+      },
+      {
+        "date": "2026-06-22",
+        "series": "H100 固定面板",
+        "value": 108.4
+      },
+      {
+        "date": "2026-06-23",
+        "series": "B200 固定面板",
+        "value": 94.17
+      },
+      {
+        "date": "2026-06-23",
+        "series": "H100 固定面板",
+        "value": 105.33
+      },
+      {
+        "date": "2026-06-24",
+        "series": "B200 固定面板",
+        "value": 95.11
+      },
+      {
+        "date": "2026-06-24",
+        "series": "H100 固定面板",
+        "value": 104.46
+      },
+      {
+        "date": "2026-06-25",
+        "series": "B200 固定面板",
+        "value": 94.48
+      },
+      {
+        "date": "2026-06-25",
+        "series": "H100 固定面板",
+        "value": 104.21
+      },
+      {
+        "date": "2026-06-26",
+        "series": "B200 固定面板",
+        "value": 94.1
+      },
+      {
+        "date": "2026-06-26",
+        "series": "H100 固定面板",
+        "value": 105.12
+      },
+      {
+        "date": "2026-06-27",
+        "series": "B200 固定面板",
+        "value": 94.36
+      },
+      {
+        "date": "2026-06-27",
+        "series": "H100 固定面板",
+        "value": 104.11
+      },
+      {
+        "date": "2026-06-28",
+        "series": "B200 固定面板",
+        "value": 94.08
+      },
+      {
+        "date": "2026-06-28",
+        "series": "H100 固定面板",
+        "value": 104.08
+      },
+      {
+        "date": "2026-06-29",
+        "series": "B200 固定面板",
+        "value": 94.1
+      },
+      {
+        "date": "2026-06-29",
+        "series": "H100 固定面板",
+        "value": 102.83
+      },
+      {
+        "date": "2026-06-30",
+        "series": "B200 固定面板",
+        "value": 96.68
+      },
+      {
+        "date": "2026-06-30",
+        "series": "H100 固定面板",
+        "value": 102.83
+      },
+      {
+        "date": "2026-07-01",
+        "series": "B200 固定面板",
+        "value": 102.6
+      },
+      {
+        "date": "2026-07-01",
+        "series": "H100 固定面板",
+        "value": 102.76
+      },
+      {
+        "date": "2026-07-02",
+        "series": "B200 固定面板",
+        "value": 102.69
+      },
+      {
+        "date": "2026-07-02",
+        "series": "H100 固定面板",
+        "value": 102.3
+      },
+      {
+        "date": "2026-07-03",
+        "series": "B200 固定面板",
+        "value": 103.36
+      },
+      {
+        "date": "2026-07-03",
+        "series": "H100 固定面板",
+        "value": 108.22
+      },
+      {
+        "date": "2026-07-04",
+        "series": "B200 固定面板",
+        "value": 103.03
+      },
+      {
+        "date": "2026-07-04",
+        "series": "H100 固定面板",
+        "value": 109.17
+      },
+      {
+        "date": "2026-07-05",
+        "series": "B200 固定面板",
+        "value": 103.23
+      },
+      {
+        "date": "2026-07-05",
+        "series": "H100 固定面板",
+        "value": 109.98
+      },
+      {
+        "date": "2026-07-06",
+        "series": "B200 固定面板",
+        "value": 104.04
+      },
+      {
+        "date": "2026-07-06",
+        "series": "H100 固定面板",
+        "value": 108.82
+      },
+      {
+        "date": "2026-07-07",
+        "series": "B200 固定面板",
+        "value": 104.95
+      },
+      {
+        "date": "2026-07-07",
+        "series": "H100 固定面板",
+        "value": 108.37
+      },
+      {
+        "date": "2026-07-08",
+        "series": "B200 固定面板",
+        "value": 107.28
+      },
+      {
+        "date": "2026-07-08",
+        "series": "H100 固定面板",
+        "value": 107.59
+      },
+      {
+        "date": "2026-07-09",
+        "series": "B200 固定面板",
+        "value": 112.26
+      },
+      {
+        "date": "2026-07-09",
+        "series": "H100 固定面板",
+        "value": 105.37
+      },
+      {
+        "date": "2026-07-10",
+        "series": "B200 固定面板",
+        "value": 116.33
+      },
+      {
+        "date": "2026-07-10",
+        "series": "H100 固定面板",
+        "value": 104.51
+      },
+      {
+        "date": "2026-07-11",
+        "series": "B200 固定面板",
+        "value": 113.26
+      },
+      {
+        "date": "2026-07-11",
+        "series": "H100 固定面板",
+        "value": 104.2
+      },
+      {
+        "date": "2026-07-12",
+        "series": "B200 固定面板",
+        "value": 110.12
+      },
+      {
+        "date": "2026-07-12",
+        "series": "H100 固定面板",
+        "value": 99.7
+      },
+      {
+        "date": "2026-07-13",
+        "series": "B200 固定面板",
+        "value": 117.74
+      },
+      {
+        "date": "2026-07-13",
+        "series": "H100 固定面板",
+        "value": 98.57
+      },
+      {
+        "date": "2026-07-14",
+        "series": "B200 固定面板",
+        "value": 118.64
+      },
+      {
+        "date": "2026-07-14",
+        "series": "H100 固定面板",
+        "value": 98.05
+      },
+      {
+        "date": "2026-07-15",
+        "series": "B200 固定面板",
+        "value": 117.88
+      },
+      {
+        "date": "2026-07-15",
+        "series": "H100 固定面板",
+        "value": 103.59
+      },
+      {
+        "date": "2026-07-16",
+        "series": "B200 固定面板",
+        "value": 112.67
+      },
+      {
+        "date": "2026-07-16",
+        "series": "H100 固定面板",
+        "value": 104.15
+      },
+      {
+        "date": "2026-07-17",
+        "series": "B200 固定面板",
+        "value": 111.49
+      },
+      {
+        "date": "2026-07-17",
+        "series": "H100 固定面板",
+        "value": 104.05
+      },
+      {
+        "date": "2026-07-18",
+        "series": "B200 固定面板",
+        "value": 113.14
+      },
+      {
+        "date": "2026-07-18",
+        "series": "H100 固定面板",
+        "value": 105.47
+      },
+      {
+        "date": "2026-07-19",
+        "series": "B200 固定面板",
+        "value": 111.85
+      },
+      {
+        "date": "2026-07-19",
+        "series": "H100 固定面板",
+        "value": 105.25
+      },
+      {
+        "date": "2026-07-20",
+        "series": "B200 固定面板",
+        "value": 112.06
+      },
+      {
+        "date": "2026-07-20",
+        "series": "H100 固定面板",
+        "value": 106.3
+      },
+      {
+        "date": "2026-07-21",
+        "series": "B200 固定面板",
+        "value": 111.18
+      },
+      {
+        "date": "2026-07-21",
+        "series": "H100 固定面板",
+        "value": 107.55
+      },
+      {
+        "date": "2026-07-22",
+        "series": "B200 固定面板",
+        "value": 111.2
+      },
+      {
+        "date": "2026-07-22",
+        "series": "H100 固定面板",
+        "value": 107.06
+      },
+      {
+        "date": "2026-07-23",
+        "series": "B200 固定面板",
+        "value": 109.98
+      },
+      {
+        "date": "2026-07-23",
+        "series": "H100 固定面板",
+        "value": 108.45
+      },
+      {
+        "date": "2026-07-24",
+        "series": "B200 固定面板",
+        "value": 107.0
+      },
+      {
+        "date": "2026-07-24",
+        "series": "H100 固定面板",
+        "value": 106.64
+      },
+      {
+        "date": "2026-07-25",
+        "series": "B200 固定面板",
+        "value": 111.24
+      },
+      {
+        "date": "2026-07-25",
+        "series": "H100 固定面板",
+        "value": 105.71
+      },
+      {
+        "date": "2026-07-26",
+        "series": "B200 固定面板",
+        "value": 110.06
+      },
+      {
+        "date": "2026-07-26",
+        "series": "H100 固定面板",
+        "value": 104.63
+      },
+      {
+        "date": "2026-07-27",
+        "series": "B200 固定面板",
+        "value": 110.07
+      },
+      {
+        "date": "2026-07-27",
+        "series": "H100 固定面板",
+        "value": 107.68
+      },
+      {
+        "date": "2026-07-28",
+        "series": "B200 固定面板",
+        "value": 109.0
+      },
+      {
+        "date": "2026-07-28",
+        "series": "H100 固定面板",
+        "value": 105.89
+      },
+      {
+        "date": "2026-07-29",
+        "series": "B200 固定面板",
+        "value": 109.47
+      },
+      {
+        "date": "2026-07-29",
+        "series": "H100 固定面板",
+        "value": 105.77
+      },
+      {
+        "date": "2026-07-30",
+        "series": "B200 固定面板",
+        "value": 111.15
+      },
+      {
+        "date": "2026-07-30",
+        "series": "H100 固定面板",
+        "value": 108.94
+      },
+      {
+        "date": "2026-07-31",
+        "series": "B200 固定面板",
+        "value": 112.71
+      },
+      {
+        "date": "2026-07-31",
+        "series": "H100 固定面板",
+        "value": 110.3
+      },
+      {
+        "date": "2026-08-01",
+        "series": "B200 固定面板",
+        "value": 112.68
+      },
+      {
+        "date": "2026-08-01",
+        "series": "H100 固定面板",
+        "value": 108.08
+      },
+      {
+        "date": "2026-08-02",
+        "series": "B200 固定面板",
+        "value": 109.27
+      },
+      {
+        "date": "2026-08-02",
+        "series": "H100 固定面板",
+        "value": 108.8
+      },
+      {
+        "date": "2026-08-03",
+        "series": "B200 固定面板",
+        "value": 104.45
+      },
+      {
+        "date": "2026-08-03",
+        "series": "H100 固定面板",
+        "value": 108.11
+      },
+      {
+        "date": "2026-08-04",
+        "series": "B200 固定面板",
+        "value": 105.95
+      },
+      {
+        "date": "2026-08-04",
+        "series": "H100 固定面板",
+        "value": 109.6
+      },
+      {
+        "date": "2026-08-05",
+        "series": "B200 固定面板",
+        "value": 104.87
+      },
+      {
+        "date": "2026-08-05",
+        "series": "H100 固定面板",
+        "value": 110.39
+      },
+      {
+        "date": "2026-08-06",
+        "series": "B200 固定面板",
+        "value": 105.82
+      },
+      {
+        "date": "2026-08-06",
+        "series": "H100 固定面板",
+        "value": 111.69
+      },
+      {
+        "date": "2026-08-07",
+        "series": "B200 固定面板",
+        "value": 105.68
+      },
+      {
+        "date": "2026-08-07",
+        "series": "H100 固定面板",
+        "value": 111.13
+      },
+      {
+        "date": "2026-08-08",
+        "series": "B200 固定面板",
+        "value": 105.41
+      },
+      {
+        "date": "2026-08-08",
+        "series": "H100 固定面板",
+        "value": 110.58
+      },
+      {
+        "date": "2026-08-09",
+        "series": "B200 固定面板",
+        "value": 104.26
+      },
+      {
+        "date": "2026-08-09",
+        "series": "H100 固定面板",
+        "value": 108.92
+      },
+      {
+        "date": "2026-08-10",
+        "series": "B200 固定面板",
+        "value": 105.0
+      },
+      {
+        "date": "2026-08-10",
+        "series": "H100 固定面板",
+        "value": 109.75
+      },
+      {
+        "date": "2026-08-11",
+        "series": "B200 固定面板",
+        "value": 108.6
+      },
+      {
+        "date": "2026-08-11",
+        "series": "H100 固定面板",
+        "value": 111.15
+      },
+      {
+        "date": "2026-08-12",
+        "series": "B200 固定面板",
+        "value": 107.94
+      },
+      {
+        "date": "2026-08-12",
+        "series": "H100 固定面板",
+        "value": 98.96
+      },
+      {
+        "date": "2026-08-13",
+        "series": "B200 固定面板",
+        "value": 105.32
+      },
+      {
+        "date": "2026-08-13",
+        "series": "H100 固定面板",
+        "value": 103.06
+      },
+      {
+        "date": "2026-08-14",
+        "series": "B200 固定面板",
+        "value": 105.72
+      },
+      {
+        "date": "2026-08-14",
+        "series": "H100 固定面板",
+        "value": 109.99
+      },
+      {
+        "date": "2026-08-15",
+        "series": "B200 固定面板",
+        "value": 103.06
+      },
+      {
+        "date": "2026-08-15",
+        "series": "H100 固定面板",
+        "value": 110.86
+      },
+      {
+        "date": "2026-08-16",
+        "series": "B200 固定面板",
+        "value": 104.01
+      },
+      {
+        "date": "2026-08-16",
+        "series": "H100 固定面板",
+        "value": 109.73
+      },
+      {
+        "date": "2026-08-17",
+        "series": "B200 固定面板",
+        "value": 101.01
+      },
+      {
+        "date": "2026-08-17",
+        "series": "H100 固定面板",
+        "value": 107.04
+      },
+      {
+        "date": "2026-08-18",
+        "series": "B200 固定面板",
+        "value": 104.44
+      },
+      {
+        "date": "2026-08-18",
+        "series": "H100 固定面板",
+        "value": 109.15
+      },
+      {
+        "date": "2026-08-19",
+        "series": "B200 固定面板",
+        "value": 104.0
+      },
+      {
+        "date": "2026-08-19",
+        "series": "H100 固定面板",
+        "value": 100.12
+      },
+      {
+        "date": "2026-08-20",
+        "series": "B200 固定面板",
+        "value": 105.15
+      },
+      {
+        "date": "2026-08-20",
+        "series": "H100 固定面板",
+        "value": 112.14
+      },
+      {
+        "date": "2026-08-21",
+        "series": "B200 固定面板",
+        "value": 105.4
+      },
+      {
+        "date": "2026-08-21",
+        "series": "H100 固定面板",
+        "value": 97.04
+      },
+      {
+        "date": "2026-08-22",
+        "series": "B200 固定面板",
+        "value": 104.8
+      },
+      {
+        "date": "2026-08-22",
+        "series": "H100 固定面板",
+        "value": 100.45
+      },
+      {
+        "date": "2026-08-23",
+        "series": "B200 固定面板",
+        "value": 104.74
+      },
+      {
+        "date": "2026-08-23",
+        "series": "H100 固定面板",
+        "value": 106.37
       }
     ],
     "basisH100": [
@@ -25252,6 +26241,11 @@
       },
       {
         "date": "2026-08-23",
+        "series": "Ornn 成交指数",
+        "value": 2.87
+      },
+      {
+        "date": "2026-08-23",
         "series": "SemiAnalysis 综合指数",
         "value": 3.21
       },
@@ -26986,6 +27980,11 @@
         "date": "2026-08-23",
         "series": "Foundry 报价中位",
         "value": 3.5545
+      },
+      {
+        "date": "2026-08-23",
+        "series": "Ornn 成交指数",
+        "value": 4.42
       }
     ],
     "basisB200": [
@@ -30521,13 +31520,18 @@
       },
       {
         "date": "2026-08-23",
+        "series": "Ornn 成交指数",
+        "value": 6.64
+      },
+      {
+        "date": "2026-08-23",
         "series": "SemiAnalysis 综合指数",
         "value": 5.5
       },
       {
         "date": "2026-08-24",
         "series": "SemiAnalysis 综合指数",
-        "value": 5.46
+        "value": 5.5
       }
     ],
     "contractBand": [
@@ -30918,7 +31922,7 @@
       {
         "date": "2026-08-24",
         "series": "gpuperhour",
-        "value": 71
+        "value": 77
       },
       {
         "date": "2026-08-24",
@@ -30933,17 +31937,17 @@
       {
         "date": "2026-08-24",
         "series": "gpuperhour",
-        "value": 65
+        "value": 60
       },
       {
         "date": "2026-08-24",
         "series": "gpuperhour",
-        "value": 33
+        "value": 28
       },
       {
         "date": "2026-08-24",
         "series": "gpuperhour",
-        "value": 18
+        "value": 17
       },
       {
         "date": "2026-08-24",
@@ -30953,12 +31957,12 @@
       {
         "date": "2026-08-24",
         "series": "gpuperhour",
-        "value": 19
+        "value": 17
       },
       {
         "date": "2026-08-24",
         "series": "gpuperhour",
-        "value": 8
+        "value": 14
       },
       {
         "date": "2026-08-24",
@@ -31008,17 +32012,17 @@
       {
         "date": "2026-08-24",
         "series": "vast",
-        "value": 4
+        "value": 6
       },
       {
         "date": "2026-08-24",
         "series": "vast",
-        "value": 5
+        "value": 1
       },
       {
         "date": "2026-08-24",
         "series": "vast",
-        "value": 8
+        "value": 9
       },
       {
         "date": "2026-08-24",
@@ -31096,6 +32100,11 @@
       "url": "https://index.ornn.com/api/otpi",
       "label": "Ornn OTPI 已实现 token 价",
       "definition": "按 lab 的成交加权 token 实现价（USD/Mtok），免费层滚动窗口每日快照累积。许可：Ornn 免费层署名引用。"
+    },
+    "panelIndex": {
+      "url": "https://signals.foundry.ai",
+      "label": "固定供应商面板指数（E2）",
+      "definition": "在窗口内报价覆盖率>=80% 的 Foundry 供应商构成固定面板；起点=100；任一成员当日缺价则该日无观测点。消除供应商构成漂移，是 Supply Price 时钟的首选趋势证据。"
     }
   }
 }
