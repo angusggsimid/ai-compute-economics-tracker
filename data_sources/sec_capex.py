@@ -12,7 +12,49 @@ from typing import Any, Dict, Iterable, List, Optional
 import requests
 
 from company_config import CompanyConfig, decision_universe_configs
-from production_store import CapexActualObservation, DataQualityEvent, ProductionStore
+@dataclass
+class ProductionProvenance:
+    run_id: str
+    source_id: str
+    source_url: str
+    snapshot_path: str
+    source_type: str
+    collection_method: str
+    observed_at: str
+    fetched_at: str
+    raw_payload_hash: str
+    is_production_eligible: bool
+    confidence: float
+    error_code: Optional[str]
+
+
+@dataclass
+class CapexActualObservation(ProductionProvenance):
+    ticker: str
+    company: str
+    period_start: str
+    period_end: str
+    fiscal_period: str
+    fiscal_year: int
+    xbrl_tag: str
+    accession_no: str
+    capex_value: float
+    unit: str
+    filed_at: str
+    form_type: str
+
+
+@dataclass
+class DataQualityEvent(ProductionProvenance):
+    event_id: str
+    table_name: str
+    severity: str
+    message: str
+    affected_key: str
+    is_blocking: bool
+
+
+
 
 
 SEC_TAG_NOT_FOUND = "SEC_TAG_NOT_FOUND"
@@ -473,26 +515,6 @@ def build_quality_event(
         error_code=error_code,
     )
 
-
-def update_sec_capex_actuals(
-    store: Optional[ProductionStore] = None,
-    configs: Optional[Iterable[CompanyConfig]] = None,
-    client: Optional[Any] = None,
-    snapshot_dir: Path = SEC_CAPEX_SNAPSHOT_DIR,
-    run_id: Optional[str] = None,
-    fetched_at: Optional[str] = None,
-) -> SecCapexCollectionResult:
-    store = store if store is not None else ProductionStore()
-    result = collect_sec_capex_actuals(
-        configs=configs,
-        client=client,
-        snapshot_dir=snapshot_dir,
-        run_id=run_id,
-        fetched_at=fetched_at,
-    )
-    store.insert_capex_actuals(result.actuals)
-    store.insert_quality_events(result.quality_events)
-    return result
 
 
 def write_sec_capex_snapshot(
