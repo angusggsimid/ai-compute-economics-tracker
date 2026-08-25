@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-25T15:53:22Z",
+  "generatedAt": "2026-08-25T15:55:11Z",
   "inputs": [
     "capex_official_history.json",
     "epoch_chip_sales.json",
@@ -65,7 +65,7 @@
             },
             {
               "condition": "订单簿深度收缩 >=10%",
-              "met": false,
+              "met": true,
               "evidence": []
             },
             {
@@ -126,8 +126,8 @@
         },
         "depth": {
           "depthValidDates": 4,
-          "depthLatestTotalOffers": 244,
-          "depthGrowthPct": -9.94
+          "depthLatestTotalOffers": 243,
+          "depthGrowthPct": -10.13
         },
         "h100Contract1yBands": [
           {
@@ -202,9 +202,9 @@
       },
       "metrics": {
         "depthValidDates": 4,
-        "latestTotalOffers": 244,
-        "depthGrowthPct": -9.94,
-        "latestGpuCapacity": 878,
+        "latestTotalOffers": 243,
+        "depthGrowthPct": -10.13,
+        "latestGpuCapacity": 846,
         "providerSnapshotRows": 3361,
         "providersCovered": 34
       },
