@@ -1,9 +1,9 @@
 {
   "meta": {
-    "generatedAt": "2026-08-25T15:55:11Z",
+    "generatedAt": "2026-08-26T01:57:40Z",
     "minDate": "2025-08-25",
-    "maxDate": "2026-08-24",
-    "orderbookValidDays": 4,
+    "maxDate": "2026-08-25",
+    "orderbookValidDays": 5,
     "otpiValidDays": 4,
     "contractPeriods": 20,
     "panelMembers": {
@@ -14,7 +14,7 @@
           "vastai"
         ],
         "windowStart": "2026-05-13",
-        "windowDays": 104
+        "windowDays": 105
       },
       "B200": {
         "members": [
@@ -23,7 +23,7 @@
           "vastai"
         ],
         "windowStart": "2026-05-13",
-        "windowDays": 104
+        "windowDays": 105
       }
     }
   },
@@ -7484,11 +7484,11 @@
         "name": "DeepSeek: DeepSeek V4 Flash 0731",
         "tokens": 31.582247307905,
         "share": 10.722101024635855,
-        "inputPrice": 0.14,
-        "outputPrice": 0.28,
-        "historyPoints": 6,
+        "inputPrice": 0.04,
+        "outputPrice": 0.08,
+        "historyPoints": 7,
         "firstSeen": "2026-07-31",
-        "lastSeen": "2026-08-25",
+        "lastSeen": "2026-08-26",
         "priceHistory": [
           {
             "date": "2026-07-31",
@@ -7519,6 +7519,11 @@
             "date": "2026-08-24",
             "input": 0.14,
             "output": 0.28
+          },
+          {
+            "date": "2026-08-26",
+            "input": 0.04,
+            "output": 0.08
           }
         ],
         "free": false
@@ -7533,7 +7538,7 @@
         "outputPrice": 0.528,
         "historyPoints": 6,
         "firstSeen": "2026-07-07",
-        "lastSeen": "2026-08-25",
+        "lastSeen": "2026-08-26",
         "priceHistory": [
           {
             "date": "2026-07-07",
@@ -7578,7 +7583,7 @@
         "outputPrice": 0.28,
         "historyPoints": 4,
         "firstSeen": "2026-04-23",
-        "lastSeen": "2026-08-25",
+        "lastSeen": "2026-08-26",
         "priceHistory": [
           {
             "date": "2026-04-23",
@@ -7609,11 +7614,11 @@
         "name": "DeepSeek: DeepSeek V4 Flash 0423",
         "tokens": 23.389777656479,
         "share": 7.940776238357379,
-        "inputPrice": 0.0854,
-        "outputPrice": 0.1708,
-        "historyPoints": 39,
+        "inputPrice": 0.088606,
+        "outputPrice": 0.177212,
+        "historyPoints": 40,
         "firstSeen": "2026-04-24",
-        "lastSeen": "2026-08-25",
+        "lastSeen": "2026-08-26",
         "priceHistory": [
           {
             "date": "2026-04-24",
@@ -7809,6 +7814,11 @@
             "date": "2026-08-25",
             "input": 0.0854,
             "output": 0.1708
+          },
+          {
+            "date": "2026-08-26",
+            "input": 0.088606,
+            "output": 0.177212
           }
         ],
         "free": false
@@ -7823,7 +7833,7 @@
         "outputPrice": 0.6,
         "historyPoints": 1,
         "firstSeen": "2026-08-07",
-        "lastSeen": "2026-08-25",
+        "lastSeen": "2026-08-26",
         "priceHistory": [
           {
             "date": "2026-08-07",
@@ -7843,7 +7853,7 @@
         "outputPrice": 0.0,
         "historyPoints": 1,
         "firstSeen": "2026-08-17",
-        "lastSeen": "2026-08-25",
+        "lastSeen": "2026-08-26",
         "priceHistory": [
           {
             "date": "2026-08-17",
@@ -7863,7 +7873,7 @@
         "outputPrice": 0.0,
         "historyPoints": 1,
         "firstSeen": "2026-08-21",
-        "lastSeen": "2026-08-25",
+        "lastSeen": "2026-08-26",
         "priceHistory": [
           {
             "date": "2026-08-21",
@@ -18646,6 +18656,56 @@
           "vastai": 3.5698
         },
         "movingAverage30d": 3.39916
+      },
+      {
+        "date": "2026-08-25",
+        "series": "B200",
+        "value": 5.98,
+        "average": 6.1032,
+        "low": 4.6271,
+        "high": 8.7604,
+        "providerCount": 5,
+        "providerPrices": {
+          "runpod": 5.98,
+          "vastai": 5.2047,
+          "lambda": 6.99,
+          "aws": 5.1905,
+          "nebius": 7.15
+        },
+        "movingAverage30d": 6.061756666666667
+      },
+      {
+        "date": "2026-08-25",
+        "series": "H100",
+        "value": 2.69,
+        "average": 3.1649,
+        "low": 1.3348,
+        "high": 4.29,
+        "providerCount": 5,
+        "providerPrices": {
+          "runpod": 2.69,
+          "vastai": 2.3259,
+          "lambda": 3.7909,
+          "aws": 2.5091,
+          "nebius": 3.85
+        },
+        "movingAverage30d": 2.69
+      },
+      {
+        "date": "2026-08-25",
+        "series": "H200",
+        "value": 3.5125,
+        "average": 3.6492,
+        "low": 2.9613,
+        "high": 4.5,
+        "providerCount": 4,
+        "providerPrices": {
+          "runpod": 3.59,
+          "vastai": 3.435,
+          "aws": 3.0719,
+          "nebius": 4.5
+        },
+        "movingAverage30d": 3.4039016666666666
       }
     ],
     "gpuPriceAnnotations": {
@@ -18864,8 +18924,8 @@
       {
         "date": "2026-08-01",
         "series": "H100",
-        "value": 90.91,
-        "movingAverage30d": 90.91
+        "value": 90.3,
+        "movingAverage30d": 90.3
       },
       {
         "date": "2026-08-01",
@@ -20146,6 +20206,11 @@
         "value": 1.2493866171003716
       },
       {
+        "date": "2026-08-25",
+        "series": "H200 / H100",
+        "value": 1.2493866171003716
+      },
+      {
         "date": "2025-12-14",
         "series": "B200 / H100",
         "value": 1.5454545454545454
@@ -21412,6 +21477,11 @@
       },
       {
         "date": "2026-08-24",
+        "series": "B200 / H100",
+        "value": 2.2230483271375467
+      },
+      {
+        "date": "2026-08-25",
         "series": "B200 / H100",
         "value": 2.2230483271375467
       }
@@ -22791,6 +22861,16 @@
         "date": "2026-08-24",
         "series": "H100 固定面板",
         "value": 107.15
+      },
+      {
+        "date": "2026-08-25",
+        "series": "B200 固定面板",
+        "value": 104.17
+      },
+      {
+        "date": "2026-08-25",
+        "series": "H100 固定面板",
+        "value": 110.74
       }
     ],
     "basisH100": [
@@ -26351,6 +26431,16 @@
       },
       {
         "date": "2026-08-25",
+        "series": "Foundry 报价中位",
+        "value": 2.69
+      },
+      {
+        "date": "2026-08-25",
+        "series": "SemiAnalysis 综合指数",
+        "value": 3.21
+      },
+      {
+        "date": "2026-08-26",
         "series": "SemiAnalysis 综合指数",
         "value": 3.21
       }
@@ -28095,6 +28185,11 @@
         "date": "2026-08-24",
         "series": "Ornn 成交指数",
         "value": 4.33
+      },
+      {
+        "date": "2026-08-25",
+        "series": "Foundry 报价中位",
+        "value": 3.5125
       }
     ],
     "basisB200": [
@@ -31655,8 +31750,18 @@
       },
       {
         "date": "2026-08-25",
+        "series": "Foundry 报价中位",
+        "value": 5.98
+      },
+      {
+        "date": "2026-08-25",
         "series": "SemiAnalysis 综合指数",
         "value": 5.54
+      },
+      {
+        "date": "2026-08-26",
+        "series": "SemiAnalysis 综合指数",
+        "value": 5.51
       }
     ],
     "contractBand": [
@@ -32323,6 +32428,131 @@
         "date": "2026-08-25",
         "series": "vast",
         "value": 3
+      },
+      {
+        "date": "2026-08-26",
+        "series": "gpuperhour",
+        "value": 58
+      },
+      {
+        "date": "2026-08-26",
+        "series": "gpuperhour",
+        "value": 16
+      },
+      {
+        "date": "2026-08-26",
+        "series": "gpuperhour",
+        "value": 2
+      },
+      {
+        "date": "2026-08-26",
+        "series": "gpuperhour",
+        "value": 65
+      },
+      {
+        "date": "2026-08-26",
+        "series": "gpuperhour",
+        "value": 30
+      },
+      {
+        "date": "2026-08-26",
+        "series": "gpuperhour",
+        "value": 22
+      },
+      {
+        "date": "2026-08-26",
+        "series": "gpuperhour",
+        "value": 9
+      },
+      {
+        "date": "2026-08-26",
+        "series": "gpuperhour",
+        "value": 13
+      },
+      {
+        "date": "2026-08-26",
+        "series": "gpuperhour",
+        "value": 7
+      },
+      {
+        "date": "2026-08-26",
+        "series": "runpod",
+        "value": 3
+      },
+      {
+        "date": "2026-08-26",
+        "series": "runpod",
+        "value": 1
+      },
+      {
+        "date": "2026-08-26",
+        "series": "runpod",
+        "value": 1
+      },
+      {
+        "date": "2026-08-26",
+        "series": "runpod",
+        "value": 3
+      },
+      {
+        "date": "2026-08-26",
+        "series": "runpod",
+        "value": 2
+      },
+      {
+        "date": "2026-08-26",
+        "series": "runpod",
+        "value": 1
+      },
+      {
+        "date": "2026-08-26",
+        "series": "runpod",
+        "value": 1
+      },
+      {
+        "date": "2026-08-26",
+        "series": "runpod",
+        "value": 1
+      },
+      {
+        "date": "2026-08-26",
+        "series": "runpod",
+        "value": 1
+      },
+      {
+        "date": "2026-08-26",
+        "series": "vast",
+        "value": 1
+      },
+      {
+        "date": "2026-08-26",
+        "series": "vast",
+        "value": 6
+      },
+      {
+        "date": "2026-08-26",
+        "series": "vast",
+        "value": 2
+      },
+      {
+        "date": "2026-08-26",
+        "series": "vast",
+        "value": 3
+      },
+      {
+        "date": "2026-08-26",
+        "series": "vast",
+        "value": 6
+      },
+      {
+        "date": "2026-08-26",
+        "series": "vast",
+        "value": 3
+      },
+      {
+        "date": "2026-08-26",
+        "series": "vast",
+        "value": 4
       }
     ]
   },
