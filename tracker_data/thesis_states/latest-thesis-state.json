@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-26T01:57:40Z",
+  "generatedAt": "2026-08-27T09:45:03Z",
   "inputs": [
     "capex_official_history.json",
     "epoch_chip_sales.json",
@@ -31,7 +31,7 @@
         "面板构成变更",
         "价格与深度方向矛盾"
       ],
-      "next_proof_point": "订单簿深度已积累 5/20 有效日；面板 30D 变化每日更新。",
+      "next_proof_point": "订单簿深度已积累 6/20 有效日；面板 30D 变化每日更新。",
       "watch": {
         "loosening": {
           "triggered": false,
@@ -39,7 +39,9 @@
             {
               "condition": ">=2 个前沿 GPU 家族 30D 跌幅 >=10%（跨来源去重）",
               "met": false,
-              "evidence": []
+              "evidence": [
+                "H200"
+              ]
             },
             {
               "condition": "订单簿深度增长 >=10%",
@@ -58,8 +60,9 @@
           "conditions": [
             {
               "condition": ">=2 个前沿 GPU 家族 30D 涨幅 >=10%（跨来源去重）",
-              "met": false,
+              "met": true,
               "evidence": [
+                "B200",
                 "H100"
               ]
             },
@@ -85,50 +88,50 @@
         ],
         "frontierPanels": {
           "semi:B200": {
-            "days": 443,
-            "change30dPct": 1.1,
-            "change90dPct": 19.26
+            "days": 444,
+            "change30dPct": 1.29,
+            "change90dPct": 20.83
           },
           "semi:H100": {
-            "days": 1050,
+            "days": 1051,
             "change30dPct": 0.94,
-            "change90dPct": 5.59
+            "change90dPct": 4.9
           },
           "ornn:B200": {
-            "days": 94,
-            "change30dPct": 9.9,
-            "change90dPct": 23.35
+            "days": 95,
+            "change30dPct": 10.45,
+            "change90dPct": 25.24
           },
           "ornn:H100 SXM": {
-            "days": 94,
-            "change30dPct": 11.94,
-            "change90dPct": 3.09
+            "days": 95,
+            "change30dPct": 10.0,
+            "change90dPct": -6.31
           },
           "ornn:H200": {
-            "days": 94,
-            "change30dPct": -4.63,
-            "change90dPct": -0.92
+            "days": 95,
+            "change30dPct": -11.43,
+            "change90dPct": -9.55
           },
           "foundry:B200": {
-            "days": 255,
+            "days": 256,
             "change30dPct": 0.0,
             "change90dPct": 0.0
           },
           "foundry:H100": {
-            "days": 255,
+            "days": 256,
             "change30dPct": 0.0,
             "change90dPct": 0.0
           },
           "foundry:H200": {
-            "days": 255,
-            "change30dPct": 4.58,
-            "change90dPct": 24.46
+            "days": 256,
+            "change30dPct": 2.98,
+            "change90dPct": 21.88
           }
         },
         "depth": {
-          "depthValidDates": 5,
-          "depthLatestTotalOffers": 261,
-          "depthGrowthPct": -7.44
+          "depthValidDates": 6,
+          "depthLatestTotalOffers": 236,
+          "depthGrowthPct": -3.77
         },
         "h100Contract1yBands": [
           {
@@ -180,7 +183,7 @@
         "单一来源驱动",
         "GPU 构成漂移"
       ],
-      "next_proof_point": "积累订单簿至 10/20 有效日（当前 5）。",
+      "next_proof_point": "积累订单簿至 10/20 有效日（当前 6）。",
       "watch": {
         "loosening": {
           "triggered": false,
@@ -202,15 +205,15 @@
         }
       },
       "metrics": {
-        "depthValidDates": 5,
-        "latestTotalOffers": 261,
-        "depthGrowthPct": -7.44,
-        "latestGpuCapacity": 911,
-        "providerSnapshotRows": 3361,
+        "depthValidDates": 6,
+        "latestTotalOffers": 236,
+        "depthGrowthPct": -3.77,
+        "latestGpuCapacity": 809,
+        "providerSnapshotRows": 3654,
         "providersCovered": 34
       },
       "blockers": [
-        "insufficient_orderbook_history_5_of_10"
+        "insufficient_orderbook_history_6_of_10"
       ],
       "sources": [
         "gpu_orderbook",
@@ -255,11 +258,11 @@
       },
       "metrics": {
         "completeWeeks": 52,
-        "latestWeeklyTokens": 93377078361484.0,
+        "latestWeeklyTokens": 93377413189366.0,
         "weightedOutputPriceChange8wPct": 41.75,
         "recentPriceCutModels": 74,
         "otpiLabsCovered": 4,
-        "otpiLatestDate": "2026-08-24"
+        "otpiLatestDate": "2026-08-25"
       },
       "blockers": [
         "proxy_ceiling_requires_official_usage_for_inflection"
