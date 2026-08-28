@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-27T09:44:50Z",
+  "generated_at": "2026-08-28T11:21:32Z",
   "window": {
     "start": "2025-08-25",
     "end": "2026-08-17",
@@ -14,13 +14,13 @@
   "sources": {
     "openrouter": {
       "url": "https://openrouter.ai/api/frontend/v1/rankings/model-rankings-chart",
-      "cached_at": 1787823375006,
-      "raw_sha256": "sha256:1b52fed129651d35311943d6c346afbca461b39822581c46dc892569875c8cf3",
+      "cached_at": 1787915054943,
+      "raw_sha256": "sha256:e73b0e7b425a25b46df4a2a127736ae483dbfbcfc3d356b7095dbc896ee87f77",
       "upstream_complete_weeks": 51,
       "retained_complete_weeks": 52,
       "history_provenance": {
-        "retention_start": "2025-08-22",
-        "as_of_utc": "2026-08-27",
+        "retention_start": "2025-08-23",
+        "as_of_utc": "2026-08-28",
         "min_complete_weeks": 52,
         "prior_complete_weeks_in_window": 52,
         "upstream_complete_weeks": 51,
@@ -30,9 +30,9 @@
         ],
         "local_only_week_count": 1,
         "upstream_overwrite_week_count": 51,
-        "retained_cache_generated_at": "2026-08-26T01:57:22Z",
+        "retained_cache_generated_at": "2026-08-27T09:44:50Z",
         "retained_cache_openrouter_url": "https://openrouter.ai/api/frontend/v1/rankings/model-rankings-chart",
-        "retained_cache_openrouter_raw_sha256": "sha256:e37b471356a6bb92931ecb5a6022207c1cac62e84d03846b2654c20681c41be6",
+        "retained_cache_openrouter_raw_sha256": "sha256:1b52fed129651d35311943d6c346afbca461b39822581c46dc892569875c8cf3",
         "rule": "Upstream complete weeks overwrite same dates; local complete weeks are kept only when they fall off the upstream rolling window but remain on/after retention_start and are still complete as_of UTC."
       }
     },
@@ -5093,8 +5093,8 @@
     },
     {
       "date": "2026-08-17",
-      "total_tokens": 93377413189366.0,
-      "named_tokens": 61672371197145.0,
+      "total_tokens": 93377524278867.0,
+      "named_tokens": 61672464939097.0,
       "named_coverage_pct": 66.05,
       "price_mapped_coverage_pct": 62.4,
       "weighted_input_usd_per_1m": 0.387093,
@@ -5103,7 +5103,7 @@
         {
           "model": "deepseek/deepseek-v4-flash-20260731",
           "provider": "deepseek",
-          "tokens": 11575901301089.0,
+          "tokens": 11575903419310.0,
           "share_pct": 12.3969,
           "input_usd_per_1m": 0.44,
           "output_usd_per_1m": 1.32,
@@ -5112,7 +5112,7 @@
         {
           "model": "stealth/ox-alpha",
           "provider": "stealth",
-          "tokens": 11568308729020.0,
+          "tokens": 11568381011704.0,
           "share_pct": 12.3888,
           "input_usd_per_1m": null,
           "output_usd_per_1m": null,
@@ -5121,7 +5121,7 @@
         {
           "model": "xiaomi/mimo-v2.5-20260422",
           "provider": "xiaomi",
-          "tokens": 9939125423809.0,
+          "tokens": 9939125656206.0,
           "share_pct": 10.644,
           "input_usd_per_1m": 0.39999999999999997,
           "output_usd_per_1m": 2.0,
@@ -5130,7 +5130,7 @@
         {
           "model": "tencent/hy3-20260706",
           "provider": "tencent",
-          "tokens": 8206164181174.0,
+          "tokens": 8206166005262.0,
           "share_pct": 8.7882,
           "input_usd_per_1m": null,
           "output_usd_per_1m": null,
@@ -5139,7 +5139,7 @@
         {
           "model": "deepseek/deepseek-v4-flash-20260423",
           "provider": "deepseek",
-          "tokens": 5458790687629.0,
+          "tokens": 5458793250920.0,
           "share_pct": 5.8459,
           "input_usd_per_1m": 0.44,
           "output_usd_per_1m": 1.32,
@@ -5148,7 +5148,7 @@
         {
           "model": "openai/gpt-5.6-luna-20260709",
           "provider": "openai",
-          "tokens": 4909361495253.0,
+          "tokens": 4909362392538.0,
           "share_pct": 5.2575,
           "input_usd_per_1m": 0.19999999999999998,
           "output_usd_per_1m": 1.2,
@@ -5157,7 +5157,7 @@
         {
           "model": "nvidia/nemotron-3-ultra-550b-a55b-20260604:free",
           "provider": "nvidia",
-          "tokens": 4747003133906.0,
+          "tokens": 4747004837950.0,
           "share_pct": 5.0837,
           "input_usd_per_1m": 0.0,
           "output_usd_per_1m": 0.0,
@@ -5166,7 +5166,7 @@
         {
           "model": "z-ai/glm-5.2-20260616",
           "provider": "z-ai",
-          "tokens": 3417049007041.0,
+          "tokens": 3417049669494.0,
           "share_pct": 3.6594,
           "input_usd_per_1m": null,
           "output_usd_per_1m": null,
@@ -5175,7 +5175,7 @@
         {
           "model": "deepseek/deepseek-v4-pro-20260423",
           "provider": "deepseek",
-          "tokens": 1850667238224.0,
+          "tokens": 1850678695713.0,
           "share_pct": 1.9819,
           "input_usd_per_1m": 1.32,
           "output_usd_per_1m": 3.9600000000000004,
@@ -7313,50 +7313,50 @@
     {
       "date": "2026-08-17",
       "provider": "deepseek",
-      "tokens": 18885359226942.0,
+      "tokens": 18885375365943.0,
       "share_pct": 20.2248
     },
     {
       "date": "2026-08-17",
       "provider": "stealth",
-      "tokens": 11568308729020.0,
+      "tokens": 11568381011704.0,
       "share_pct": 12.3888
     },
     {
       "date": "2026-08-17",
       "provider": "xiaomi",
-      "tokens": 9939125423809.0,
+      "tokens": 9939125656206.0,
       "share_pct": 10.644
     },
     {
       "date": "2026-08-17",
       "provider": "tencent",
-      "tokens": 8206164181174.0,
+      "tokens": 8206166005262.0,
       "share_pct": 8.7882
     },
     {
       "date": "2026-08-17",
       "provider": "openai",
-      "tokens": 4909361495253.0,
+      "tokens": 4909362392538.0,
       "share_pct": 5.2575
     },
     {
       "date": "2026-08-17",
       "provider": "nvidia",
-      "tokens": 4747003133906.0,
+      "tokens": 4747004837950.0,
       "share_pct": 5.0837
     },
     {
       "date": "2026-08-17",
       "provider": "z-ai",
-      "tokens": 3417049007041.0,
+      "tokens": 3417049669494.0,
       "share_pct": 3.6594
     },
     {
       "date": "2026-08-17",
       "provider": "Others",
-      "tokens": 31705041992221.0,
-      "share_pct": 33.9537
+      "tokens": 31705059339770.0,
+      "share_pct": 33.9536
     }
   ]
 }
