@@ -20,14 +20,26 @@ PRICE_URL = "https://www.foundrysignals.com/api/price/history?range=ALL"
 GPU_NAMES = {"H100 80GB": "H100", "H200 141GB": "H200", "B200": "B200"}
 
 
-def _fetch(url: str) -> tuple[dict[str, Any], bytes]:
-    request = Request(url, headers={"User-Agent": "AIComputeEconomicsTracker/1.0"})
-    with urlopen(request, timeout=30) as response:
-        raw = response.read()
-    payload = json.loads(raw)
-    if not isinstance(payload.get("data"), dict):
-        raise ValueError(f"Foundry Signals schema changed for {url}: missing data object")
-    return payload, raw
+def _fetch(url: str, attempts: int = 3) -> tuple[dict[str, Any], bytes]:
+    """瞬时 5xx/网络抖动重试：3 次指数退避（2s/4s/8s）。上游持续故障仍按失败处理。"""
+    import time
+    from urllib.error import HTTPError, URLError
+    last_error: Exception | None = None
+    for attempt in range(attempts):
+        if attempt:
+            time.sleep(2 ** attempt)
+        try:
+            request = Request(url, headers={"User-Agent": "AIComputeEconomicsTracker/1.0"})
+            with urlopen(request, timeout=30) as response:
+                raw = response.read()
+            payload = json.loads(raw)
+            if not isinstance(payload.get("data"), dict):
+                raise ValueError(f"Foundry Signals schema changed for {url}: missing data object")
+            return payload, raw
+        except (HTTPError, URLError, TimeoutError) as exc:
+            last_error = exc
+            continue
+    raise last_error if last_error else RuntimeError("fetch failed")
 
 
 def normalize(availability: dict[str, Any], prices: dict[str, Any]) -> dict[str, Any]:
