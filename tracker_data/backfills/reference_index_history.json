@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-09-05T04:24:40Z",
+  "fetchedAt": "2026-09-06T04:36:20Z",
   "refreshStatus": "fresh",
   "publishable": true,
   "datasets": {
@@ -3650,6 +3650,41 @@
         "indexValue": 1.06,
         "unit": "USD/GPU-hr",
         "basis": "transaction_index"
+      },
+      {
+        "date": "2026-09-04",
+        "series": "B200",
+        "indexValue": 6.4,
+        "unit": "USD/GPU-hr",
+        "basis": "transaction_index"
+      },
+      {
+        "date": "2026-09-04",
+        "series": "H100 SXM",
+        "indexValue": 2.89,
+        "unit": "USD/GPU-hr",
+        "basis": "transaction_index"
+      },
+      {
+        "date": "2026-09-04",
+        "series": "H200",
+        "indexValue": 4.63,
+        "unit": "USD/GPU-hr",
+        "basis": "transaction_index"
+      },
+      {
+        "date": "2026-09-04",
+        "series": "RTX 5090",
+        "indexValue": 0.63,
+        "unit": "USD/GPU-hr",
+        "basis": "transaction_index"
+      },
+      {
+        "date": "2026-09-05",
+        "series": "A100 SXM4",
+        "indexValue": 1.09,
+        "unit": "USD/GPU-hr",
+        "basis": "transaction_index"
       }
     ],
     "ornnOtpi": [
@@ -4014,6 +4049,34 @@
         "date": "2026-09-03",
         "series": "openai",
         "indexValue": 0.300974,
+        "unit": "USD/Mtok",
+        "basis": "realized_token_price"
+      },
+      {
+        "date": "2026-09-04",
+        "series": "anthropic",
+        "indexValue": 1.388282,
+        "unit": "USD/Mtok",
+        "basis": "realized_token_price"
+      },
+      {
+        "date": "2026-09-04",
+        "series": "deepseek",
+        "indexValue": 0.07983,
+        "unit": "USD/Mtok",
+        "basis": "realized_token_price"
+      },
+      {
+        "date": "2026-09-04",
+        "series": "google",
+        "indexValue": 0.464084,
+        "unit": "USD/Mtok",
+        "basis": "realized_token_price"
+      },
+      {
+        "date": "2026-09-04",
+        "series": "openai",
+        "indexValue": 0.294996,
         "unit": "USD/Mtok",
         "basis": "realized_token_price"
       }
@@ -22859,7 +22922,7 @@
       {
         "date": "2026-09-05",
         "series": "A100",
-        "indexValue": 1.8,
+        "indexValue": 1.81,
         "unit": "USD/GPU-hr",
         "basis": "composite_spot_contract_index"
       },
@@ -22872,6 +22935,27 @@
       },
       {
         "date": "2026-09-05",
+        "series": "H100",
+        "indexValue": 3.24,
+        "unit": "USD/GPU-hr",
+        "basis": "composite_spot_contract_index"
+      },
+      {
+        "date": "2026-09-06",
+        "series": "A100",
+        "indexValue": 1.81,
+        "unit": "USD/GPU-hr",
+        "basis": "composite_spot_contract_index"
+      },
+      {
+        "date": "2026-09-06",
+        "series": "B200",
+        "indexValue": 5.5,
+        "unit": "USD/GPU-hr",
+        "basis": "composite_spot_contract_index"
+      },
+      {
+        "date": "2026-09-06",
         "series": "H100",
         "indexValue": 3.24,
         "unit": "USD/GPU-hr",
@@ -23181,25 +23265,25 @@
   "sources": {
     "ornn_ocpi": {
       "url": "https://index.ornn.com/api/gpu/*/index-history",
-      "fetchedAt": "2026-09-05T04:24:40Z",
-      "sha256": "sha256:fdfe53538998465241166c5aac9d405cffa7c0f2a2a3a5f01bda66955285c68f",
-      "snapshotPath": "tracker_snapshots/market_facts/20260905t042440z-refidx-ornn_ocpi.json",
+      "fetchedAt": "2026-09-06T04:36:20Z",
+      "sha256": "sha256:8c29ef3ab20cf20e67ddaa424106a814f77dec60951a835a54866cd37b2506e7",
+      "snapshotPath": "tracker_snapshots/market_facts/20260906t043620z-refidx-ornn_ocpi.json",
       "license": "Ornn free reference tier (public-3mo/public-1mo); attribution required",
       "status": "fresh"
     },
     "ornn_otpi": {
       "url": "https://index.ornn.com/api/otpi",
-      "fetchedAt": "2026-09-05T04:24:40Z",
-      "sha256": "sha256:a9b2093bce11ea68e3fde34474d78cb3a71708b657ab0c7826ac1fbcf60639c4",
-      "snapshotPath": "tracker_snapshots/market_facts/20260905t042440z-refidx-ornn_otpi.json",
+      "fetchedAt": "2026-09-06T04:36:20Z",
+      "sha256": "sha256:144143ff10c00a0af208fbe54d62dc7b1a73b35796ad988268efa55246d6b6d2",
+      "snapshotPath": "tracker_snapshots/market_facts/20260906t043620z-refidx-ornn_otpi.json",
       "license": "Ornn free reference tier (public-3mo/public-1mo); attribution required",
       "status": "fresh"
     },
     "semianalysis_public": {
       "url": "https://gpu-index.semianalysis.com/api/public-data",
-      "fetchedAt": "2026-09-05T04:24:40Z",
-      "sha256": "sha256:ba0f3b6dc7b5afa7a88642791a44d5466d8fb29ed5f3bee6c97ebdf5ba0b6768",
-      "snapshotPath": "tracker_snapshots/market_facts/20260905t042440z-refidx-semianalysis_public.json",
+      "fetchedAt": "2026-09-06T04:36:20Z",
+      "sha256": "sha256:5534a871208761c9d77666be2030f3fa1dc7e4bc4c7c8ae35c40da9c72bcd439",
+      "snapshotPath": "tracker_snapshots/market_facts/20260906t043620z-refidx-semianalysis_public.json",
       "license": "SemiAnalysis public GPU pricing index page; attribution required",
       "status": "fresh"
     }
