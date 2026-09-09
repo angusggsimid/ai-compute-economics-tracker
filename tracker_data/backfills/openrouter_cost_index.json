@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-08T04:32:40Z",
+  "generated_at": "2026-09-09T04:39:31Z",
   "window": {
     "start": "2025-09-08",
     "end": "2026-08-31",
@@ -14,13 +14,13 @@
   "sources": {
     "openrouter": {
       "url": "https://openrouter.ai/api/frontend/v1/rankings/model-rankings-chart",
-      "cached_at": 1788839337289,
-      "raw_sha256": "sha256:207ad67a1820bf3e444336cf80ef2a1077b19e5f0185855d81d43b2c989b5274",
+      "cached_at": 1788927396307,
+      "raw_sha256": "sha256:4bff51e778ca7cda9723dd7f848d3c37840fcdb957488bb9529cfc8ebffc79b6",
       "upstream_complete_weeks": 51,
       "retained_complete_weeks": 52,
       "history_provenance": {
-        "retention_start": "2025-09-03",
-        "as_of_utc": "2026-09-08",
+        "retention_start": "2025-09-04",
+        "as_of_utc": "2026-09-09",
         "min_complete_weeks": 52,
         "prior_complete_weeks_in_window": 52,
         "upstream_complete_weeks": 51,
@@ -30,9 +30,9 @@
         ],
         "local_only_week_count": 1,
         "upstream_overwrite_week_count": 51,
-        "retained_cache_generated_at": "2026-09-07T04:37:15Z",
+        "retained_cache_generated_at": "2026-09-08T04:32:40Z",
         "retained_cache_openrouter_url": "https://openrouter.ai/api/frontend/v1/rankings/model-rankings-chart",
-        "retained_cache_openrouter_raw_sha256": "sha256:f84a4e3e3f78ef17d73e6d5288d65adb5857dcd0cf032bae73c5c074cb22d80f",
+        "retained_cache_openrouter_raw_sha256": "sha256:207ad67a1820bf3e444336cf80ef2a1077b19e5f0185855d81d43b2c989b5274",
         "rule": "Upstream complete weeks overwrite same dates; local complete weeks are kept only when they fall off the upstream rolling window but remain on/after retention_start and are still complete as_of UTC."
       }
     },
@@ -5093,7 +5093,7 @@
     },
     {
       "date": "2026-08-31",
-      "total_tokens": 115463244437358.0,
+      "total_tokens": 115463264143493.0,
       "named_tokens": 73220084792800.0,
       "named_coverage_pct": 63.41,
       "price_mapped_coverage_pct": 74.51,
@@ -7373,7 +7373,7 @@
     {
       "date": "2026-08-31",
       "provider": "Others",
-      "tokens": 42243159644558.0,
+      "tokens": 42243179350693.0,
       "share_pct": 36.5858
     }
   ]
