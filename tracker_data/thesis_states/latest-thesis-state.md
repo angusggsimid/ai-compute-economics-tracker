@@ -1,8 +1,8 @@
-# Thesis State | 2026-09-09T04:39:45Z
+# Thesis State | 2026-09-10T04:40:16Z
 
 | 时钟 | 状态 | 方向 | 关键读数 | 下一个证明点 |
 |---|---|---|---|---|
-| Supply Price | **Confirmed** | intensifying | foundry:B200 30D 15.75%; foundry:H100 30D 0.0%; foundry:H200 30D -1.17%; ornn:B200 30D 2.27%; ornn:H100 SXM 30D 4.28%; ornn:H200 30D -10.76%; semi:B200 30D 0.36%; semi:H100 30D 1.88% | 订单簿深度已积累 19/20 有效日；面板 30D 变化每日更新。 |
-| Capacity & Utilization | **Trend** | - | 订单簿 19 日 · 最新 offers 321 | 积累订单簿至 10/20 有效日（当前 19）。 |
-| Demand & Unit Economics | **Trend** | - | 52 完整周 · 近90日降价模型 86 | 获取官方 usage 授权或接入新的非 proxy 用量源；OTPI 继续按日累积。 |
+| Supply Price | **Confirmed** | intensifying | foundry:B200 30D 0.22%; foundry:H100 30D 0.0%; foundry:H200 30D -1.09%; ornn:B200 30D -0.73%; ornn:H100 SXM 30D 5.12%; ornn:H200 30D -7.18%; semi:B200 30D 2.37%; semi:H100 30D 1.56% | 订单簿深度已积累 20/20 有效日；面板 30D 变化每日更新。 |
+| Capacity & Utilization | **Trend** | - | 订单簿 20 日 · 最新 offers 325 | 积累订单簿至 10/20 有效日（当前 20）。 |
+| Demand & Unit Economics | **Trend** | - | 52 完整周 · 近90日降价模型 92 | 获取官方 usage 授权或接入新的非 proxy 用量源；OTPI 继续按日累积。 |
 | Commitment & Monetization | **Inflection Watch** | intensifying | 2/5 家公司达3连续季度 | 下一财报季追加季度行；合约区间每半年更新。 |
