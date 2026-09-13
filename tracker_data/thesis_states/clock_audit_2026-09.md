@@ -3,18 +3,18 @@
 > 每次刷新覆盖更新当月文件；历史轨迹见 history/ 目录。
 
 ## Supply Price — Confirmed（intensifying）
-- 下一个证明点：订单簿深度已积累 22/20 有效日；面板 30D 变化每日更新。
+- 下一个证明点：订单簿深度已积累 23/20 有效日；面板 30D 变化每日更新。
 - 关键指标：`{"chartReadyPanels": 8, "looseningConfirmedFamilies": [], "intensifyingConfirmedFamilies": ["B200", "H100", "H200"]}`
 - 阻塞项：无
 
 ## Capacity & Utilization — Trend
-- 下一个证明点：积累订单簿至 10/20 有效日（当前 22）。
-- 关键指标：`{"depthValidDates": 22, "latestTotalOffers": 340, "depthGrowthPct": 18.18, "latestGpuCapacity": 1845, "providerSnapshotRows": 7751, "providersCovered": 34}`
+- 下一个证明点：积累订单簿至 10/20 有效日（当前 23）。
+- 关键指标：`{"depthValidDates": 23, "latestTotalOffers": 348, "depthGrowthPct": 19.19, "latestGpuCapacity": 1953, "providerSnapshotRows": 8046, "providersCovered": 34}`
 - 阻塞项：无
 
 ## Demand & Unit Economics — Trend
 - 下一个证明点：获取官方 usage 授权或接入新的非 proxy 用量源；OTPI 继续按日累积。
-- 关键指标：`{"completeWeeks": 52, "latestWeeklyTokens": 115463264143493.0, "weightedOutputPriceChange8wPct": -8.54, "recentPriceCutModels": 95, "otpiLabsCovered": 4, "otpiLatestDate": "2026-09-10"}`
+- 关键指标：`{"completeWeeks": 52, "latestWeeklyTokens": 115463283929266.0, "weightedOutputPriceChange8wPct": -8.54, "recentPriceCutModels": 96, "otpiLabsCovered": 4, "otpiLatestDate": "2026-09-11"}`
 - 阻塞项：['proxy_ceiling_requires_official_usage_for_inflection']
 
 ## Commitment & Monetization — Inflection Watch（intensifying）
