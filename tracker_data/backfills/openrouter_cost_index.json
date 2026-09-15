@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-14T04:52:55Z",
+  "generated_at": "2026-09-15T04:51:49Z",
   "window": {
     "start": "2025-09-15",
     "end": "2026-09-07",
@@ -14,23 +14,25 @@
   "sources": {
     "openrouter": {
       "url": "https://openrouter.ai/api/frontend/v1/rankings/model-rankings-chart",
-      "cached_at": 1789360709984,
-      "raw_sha256": "sha256:6d8ac3fcdc2c19c328f629ddf4a54863fb5dfe7ade27fd2f9a72088eba7f8dfe",
-      "upstream_complete_weeks": 52,
+      "cached_at": 1789445108170,
+      "raw_sha256": "sha256:05a0176eadb2f99f1c43059ec7c789b6c99c3651acaa1ae6999ee334d088aa53",
+      "upstream_complete_weeks": 51,
       "retained_complete_weeks": 52,
       "history_provenance": {
-        "retention_start": "2025-09-09",
-        "as_of_utc": "2026-09-14",
+        "retention_start": "2025-09-10",
+        "as_of_utc": "2026-09-15",
         "min_complete_weeks": 52,
-        "prior_complete_weeks_in_window": 51,
-        "upstream_complete_weeks": 52,
+        "prior_complete_weeks_in_window": 52,
+        "upstream_complete_weeks": 51,
         "retained_complete_weeks": 52,
-        "local_only_weeks": [],
-        "local_only_week_count": 0,
-        "upstream_overwrite_week_count": 52,
-        "retained_cache_generated_at": null,
-        "retained_cache_openrouter_url": null,
-        "retained_cache_openrouter_raw_sha256": null,
+        "local_only_weeks": [
+          "2025-09-15"
+        ],
+        "local_only_week_count": 1,
+        "upstream_overwrite_week_count": 51,
+        "retained_cache_generated_at": "2026-09-14T04:52:55Z",
+        "retained_cache_openrouter_url": "https://openrouter.ai/api/frontend/v1/rankings/model-rankings-chart",
+        "retained_cache_openrouter_raw_sha256": "sha256:6d8ac3fcdc2c19c328f629ddf4a54863fb5dfe7ade27fd2f9a72088eba7f8dfe",
         "rule": "Upstream complete weeks overwrite same dates; local complete weeks are kept only when they fall off the upstream rolling window but remain on/after retention_start and are still complete as_of UTC."
       }
     },
@@ -5091,8 +5093,8 @@
     },
     {
       "date": "2026-09-07",
-      "total_tokens": 126762966452664.0,
-      "named_tokens": 82873959530576.0,
+      "total_tokens": 126762987382441.0,
+      "named_tokens": 82873959919081.0,
       "named_coverage_pct": 65.38,
       "price_mapped_coverage_pct": 75.13,
       "weighted_input_usd_per_1m": 0.138255,
@@ -5110,8 +5112,8 @@
         {
           "model": "tencent/hy4-preview-20260827",
           "provider": "tencent",
-          "tokens": 16816058822717.0,
-          "share_pct": 13.2658,
+          "tokens": 16816059139299.0,
+          "share_pct": 13.2657,
           "input_usd_per_1m": null,
           "output_usd_per_1m": null,
           "matched_price_key": null
@@ -5119,7 +5121,7 @@
         {
           "model": "z-ai/glm-5.3-flash-20260826",
           "provider": "z-ai",
-          "tokens": 11889774186727.0,
+          "tokens": 11889774258650.0,
           "share_pct": 9.3795,
           "input_usd_per_1m": 0.15,
           "output_usd_per_1m": 0.5,
@@ -7341,13 +7343,13 @@
     {
       "date": "2026-09-07",
       "provider": "tencent",
-      "tokens": 20613537374539.0,
+      "tokens": 20613537691121.0,
       "share_pct": 16.2615
     },
     {
       "date": "2026-09-07",
       "provider": "z-ai",
-      "tokens": 11889774186727.0,
+      "tokens": 11889774258650.0,
       "share_pct": 9.3795
     },
     {
@@ -7371,7 +7373,7 @@
     {
       "date": "2026-09-07",
       "provider": "Others",
-      "tokens": 43889006922088.0,
+      "tokens": 43889027463360.0,
       "share_pct": 34.6229
     }
   ]
