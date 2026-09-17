@@ -1,10 +1,10 @@
 {
   "meta": {
-    "generatedAt": "2026-09-16T04:47:18Z",
+    "generatedAt": "2026-09-17T04:50:18Z",
     "minDate": "2025-09-15",
-    "maxDate": "2026-09-15",
-    "orderbookValidDays": 26,
-    "otpiValidDays": 24,
+    "maxDate": "2026-09-16",
+    "orderbookValidDays": 27,
+    "otpiValidDays": 25,
     "contractPeriods": 21,
     "panelMembers": {
       "H100": {
@@ -14,7 +14,7 @@
           "vastai"
         ],
         "windowStart": "2026-05-13",
-        "windowDays": 126
+        "windowDays": 127
       },
       "B200": {
         "members": [
@@ -23,7 +23,7 @@
           "vastai"
         ],
         "windowStart": "2026-05-13",
-        "windowDays": 126
+        "windowDays": 127
       }
     }
   },
@@ -7488,7 +7488,7 @@
         "outputPrice": 0.33,
         "historyPoints": 2,
         "firstSeen": "2026-08-29",
-        "lastSeen": "2026-09-16",
+        "lastSeen": "2026-09-17",
         "priceHistory": [
           {
             "date": "2026-08-29",
@@ -7513,7 +7513,7 @@
         "outputPrice": 0.6,
         "historyPoints": 1,
         "firstSeen": "2026-08-07",
-        "lastSeen": "2026-09-16",
+        "lastSeen": "2026-09-17",
         "priceHistory": [
           {
             "date": "2026-08-07",
@@ -7533,7 +7533,7 @@
         "outputPrice": 2.501,
         "historyPoints": 1,
         "firstSeen": "2026-08-28",
-        "lastSeen": "2026-09-16",
+        "lastSeen": "2026-09-17",
         "priceHistory": [
           {
             "date": "2026-08-28",
@@ -7553,7 +7553,7 @@
         "outputPrice": 0.25,
         "historyPoints": 2,
         "firstSeen": "2026-08-29",
-        "lastSeen": "2026-09-16",
+        "lastSeen": "2026-09-17",
         "priceHistory": [
           {
             "date": "2026-08-29",
@@ -7598,7 +7598,7 @@
         "outputPrice": 0.28,
         "historyPoints": 4,
         "firstSeen": "2026-04-23",
-        "lastSeen": "2026-09-16",
+        "lastSeen": "2026-09-17",
         "priceHistory": [
           {
             "date": "2026-04-23",
@@ -7631,9 +7631,9 @@
         "share": 5.049545459296693,
         "inputPrice": 0.132,
         "outputPrice": 0.528,
-        "historyPoints": 26,
+        "historyPoints": 28,
         "firstSeen": "2026-07-07",
-        "lastSeen": "2026-09-16",
+        "lastSeen": "2026-09-17",
         "priceHistory": [
           {
             "date": "2026-07-07",
@@ -7764,6 +7764,16 @@
             "date": "2026-09-16",
             "input": 0.132,
             "output": 0.528
+          },
+          {
+            "date": "2026-09-16",
+            "input": 0.0825,
+            "output": 0.33
+          },
+          {
+            "date": "2026-09-17",
+            "input": 0.132,
+            "output": 0.528
           }
         ],
         "free": false
@@ -7776,9 +7786,9 @@
         "share": 4.504656204917774,
         "inputPrice": 0.088606,
         "outputPrice": 0.177212,
-        "historyPoints": 79,
+        "historyPoints": 81,
         "firstSeen": "2026-04-24",
-        "lastSeen": "2026-09-16",
+        "lastSeen": "2026-09-17",
         "priceHistory": [
           {
             "date": "2026-04-24",
@@ -8172,6 +8182,16 @@
           },
           {
             "date": "2026-09-16",
+            "input": 0.088606,
+            "output": 0.177212
+          },
+          {
+            "date": "2026-09-16",
+            "input": 0.08708,
+            "output": 0.17416
+          },
+          {
+            "date": "2026-09-17",
             "input": 0.088606,
             "output": 0.177212
           }
@@ -20051,6 +20071,56 @@
           "nebius": 4.5
         },
         "movingAverage30d": 3.473815
+      },
+      {
+        "date": "2026-09-16",
+        "series": "B200",
+        "value": 5.98,
+        "average": 6.2341,
+        "low": 5.096,
+        "high": 7.15,
+        "providerCount": 5,
+        "providerPrices": {
+          "vastai": 5.6273,
+          "nebius": 7.15,
+          "runpod": 5.98,
+          "lambda": 6.99,
+          "aws": 5.104
+        },
+        "movingAverage30d": 6.074070000000001
+      },
+      {
+        "date": "2026-09-16",
+        "series": "H100",
+        "value": 2.69,
+        "average": 3.2025,
+        "low": 1.7356,
+        "high": 4.29,
+        "providerCount": 5,
+        "providerPrices": {
+          "runpod": 2.69,
+          "vastai": 2.457,
+          "lambda": 3.79,
+          "aws": 2.5498,
+          "nebius": 3.85
+        },
+        "movingAverage30d": 2.69
+      },
+      {
+        "date": "2026-09-16",
+        "series": "H200",
+        "value": 3.3695,
+        "average": 3.3554,
+        "low": 1.9751,
+        "high": 4.7398,
+        "providerCount": 4,
+        "providerPrices": {
+          "runpod": 3.59,
+          "vastai": 2.1946,
+          "aws": 3.149,
+          "nebius": 4.5
+        },
+        "movingAverage30d": 3.4747966666666668
       }
     ],
     "gpuPriceAnnotations": {
@@ -20269,14 +20339,14 @@
       {
         "date": "2026-09-01",
         "series": "B200",
-        "value": 66.71,
-        "movingAverage30d": 66.71
+        "value": 66.7,
+        "movingAverage30d": 66.7
       },
       {
         "date": "2026-09-01",
         "series": "H100",
-        "value": 84.7,
-        "movingAverage30d": 84.7
+        "value": 84.2,
+        "movingAverage30d": 84.2
       },
       {
         "date": "2026-09-01",
@@ -21667,6 +21737,11 @@
         "value": 1.2923048327137547
       },
       {
+        "date": "2026-09-16",
+        "series": "H200 / H100",
+        "value": 1.2923048327137547
+      },
+      {
         "date": "2025-12-14",
         "series": "B200 / H100",
         "value": 1.5454545454545454
@@ -23043,6 +23118,11 @@
       },
       {
         "date": "2026-09-15",
+        "series": "B200 / H100",
+        "value": 2.2230483271375467
+      },
+      {
+        "date": "2026-09-16",
         "series": "B200 / H100",
         "value": 2.2230483271375467
       }
@@ -24642,6 +24722,16 @@
         "date": "2026-09-15",
         "series": "H100 固定面板",
         "value": 106.91
+      },
+      {
+        "date": "2026-09-16",
+        "series": "B200 固定面板",
+        "value": 106.59
+      },
+      {
+        "date": "2026-09-16",
+        "series": "H100 固定面板",
+        "value": 112.38
       }
     ],
     "basisH100": [
@@ -28417,11 +28507,26 @@
       },
       {
         "date": "2026-09-15",
+        "series": "Ornn 成交指数",
+        "value": 2.53
+      },
+      {
+        "date": "2026-09-15",
         "series": "SemiAnalysis 综合指数",
         "value": 3.26
       },
       {
         "date": "2026-09-16",
+        "series": "Foundry 报价中位",
+        "value": 2.69
+      },
+      {
+        "date": "2026-09-16",
+        "series": "SemiAnalysis 综合指数",
+        "value": 3.26
+      },
+      {
+        "date": "2026-09-17",
         "series": "SemiAnalysis 综合指数",
         "value": 3.26
       }
@@ -30379,6 +30484,16 @@
       },
       {
         "date": "2026-09-15",
+        "series": "Foundry 报价中位",
+        "value": 3.3695
+      },
+      {
+        "date": "2026-09-15",
+        "series": "Ornn 成交指数",
+        "value": 4.68
+      },
+      {
+        "date": "2026-09-16",
         "series": "Foundry 报价中位",
         "value": 3.3695
       }
@@ -34156,13 +34271,33 @@
       },
       {
         "date": "2026-09-15",
+        "series": "Ornn 成交指数",
+        "value": 7.21
+      },
+      {
+        "date": "2026-09-15",
         "series": "SemiAnalysis 综合指数",
         "value": 5.67
       },
       {
         "date": "2026-09-16",
+        "series": "Foundry 报价中位",
+        "value": 5.98
+      },
+      {
+        "date": "2026-09-16",
+        "series": "Ornn 成交指数",
+        "value": 7.03
+      },
+      {
+        "date": "2026-09-16",
         "series": "SemiAnalysis 综合指数",
         "value": 5.66
+      },
+      {
+        "date": "2026-09-17",
+        "series": "SemiAnalysis 综合指数",
+        "value": 5.65
       }
     ],
     "contractBand": [
@@ -34747,6 +34882,26 @@
         "date": "2026-09-14",
         "series": "openai OTPI",
         "value": 0.2797
+      },
+      {
+        "date": "2026-09-15",
+        "series": "anthropic OTPI",
+        "value": 1.5414
+      },
+      {
+        "date": "2026-09-15",
+        "series": "deepseek OTPI",
+        "value": 0.0835
+      },
+      {
+        "date": "2026-09-15",
+        "series": "google OTPI",
+        "value": 0.5074
+      },
+      {
+        "date": "2026-09-15",
+        "series": "openai OTPI",
+        "value": 0.4442
       }
     ],
     "orderbookDepth": [
@@ -37904,6 +38059,126 @@
         "date": "2026-09-16",
         "series": "vast",
         "value": 5
+      },
+      {
+        "date": "2026-09-17",
+        "series": "gpuperhour",
+        "value": 77
+      },
+      {
+        "date": "2026-09-17",
+        "series": "gpuperhour",
+        "value": 35
+      },
+      {
+        "date": "2026-09-17",
+        "series": "gpuperhour",
+        "value": 3
+      },
+      {
+        "date": "2026-09-17",
+        "series": "gpuperhour",
+        "value": 81
+      },
+      {
+        "date": "2026-09-17",
+        "series": "gpuperhour",
+        "value": 25
+      },
+      {
+        "date": "2026-09-17",
+        "series": "gpuperhour",
+        "value": 29
+      },
+      {
+        "date": "2026-09-17",
+        "series": "gpuperhour",
+        "value": 8
+      },
+      {
+        "date": "2026-09-17",
+        "series": "gpuperhour",
+        "value": 8
+      },
+      {
+        "date": "2026-09-17",
+        "series": "gpuperhour",
+        "value": 14
+      },
+      {
+        "date": "2026-09-17",
+        "series": "runpod",
+        "value": 3
+      },
+      {
+        "date": "2026-09-17",
+        "series": "runpod",
+        "value": 1
+      },
+      {
+        "date": "2026-09-17",
+        "series": "runpod",
+        "value": 1
+      },
+      {
+        "date": "2026-09-17",
+        "series": "runpod",
+        "value": 3
+      },
+      {
+        "date": "2026-09-17",
+        "series": "runpod",
+        "value": 2
+      },
+      {
+        "date": "2026-09-17",
+        "series": "runpod",
+        "value": 1
+      },
+      {
+        "date": "2026-09-17",
+        "series": "runpod",
+        "value": 1
+      },
+      {
+        "date": "2026-09-17",
+        "series": "runpod",
+        "value": 1
+      },
+      {
+        "date": "2026-09-17",
+        "series": "runpod",
+        "value": 1
+      },
+      {
+        "date": "2026-09-17",
+        "series": "vast",
+        "value": 2
+      },
+      {
+        "date": "2026-09-17",
+        "series": "vast",
+        "value": 5
+      },
+      {
+        "date": "2026-09-17",
+        "series": "vast",
+        "value": 8
+      },
+      {
+        "date": "2026-09-17",
+        "series": "vast",
+        "value": 7
+      },
+      {
+        "date": "2026-09-17",
+        "series": "vast",
+        "value": 4
+      },
+      {
+        "date": "2026-09-17",
+        "series": "vast",
+        "value": 4
       }
     ]
   },
