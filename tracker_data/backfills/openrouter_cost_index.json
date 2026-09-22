@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-21T04:53:23Z",
+  "generated_at": "2026-09-22T04:52:41Z",
   "window": {
     "start": "2025-09-22",
     "end": "2026-09-14",
@@ -14,23 +14,25 @@
   "sources": {
     "openrouter": {
       "url": "https://openrouter.ai/api/frontend/v1/rankings/model-rankings-chart",
-      "cached_at": 1789963304775,
-      "raw_sha256": "sha256:1dafe6181d184a1979c4bb52ff4172a2b0fce881a97898ec3b264930bea54fb5",
-      "upstream_complete_weeks": 52,
+      "cached_at": 1790049542367,
+      "raw_sha256": "sha256:bf53d1c4d2479e42b5441c68d77376d686e53375956e13f9345109294876d8d8",
+      "upstream_complete_weeks": 51,
       "retained_complete_weeks": 52,
       "history_provenance": {
-        "retention_start": "2025-09-16",
-        "as_of_utc": "2026-09-21",
+        "retention_start": "2025-09-17",
+        "as_of_utc": "2026-09-22",
         "min_complete_weeks": 52,
-        "prior_complete_weeks_in_window": 51,
-        "upstream_complete_weeks": 52,
+        "prior_complete_weeks_in_window": 52,
+        "upstream_complete_weeks": 51,
         "retained_complete_weeks": 52,
-        "local_only_weeks": [],
-        "local_only_week_count": 0,
-        "upstream_overwrite_week_count": 52,
-        "retained_cache_generated_at": null,
-        "retained_cache_openrouter_url": null,
-        "retained_cache_openrouter_raw_sha256": null,
+        "local_only_weeks": [
+          "2025-09-22"
+        ],
+        "local_only_week_count": 1,
+        "upstream_overwrite_week_count": 51,
+        "retained_cache_generated_at": "2026-09-21T04:53:23Z",
+        "retained_cache_openrouter_url": "https://openrouter.ai/api/frontend/v1/rankings/model-rankings-chart",
+        "retained_cache_openrouter_raw_sha256": "sha256:1dafe6181d184a1979c4bb52ff4172a2b0fce881a97898ec3b264930bea54fb5",
         "rule": "Upstream complete weeks overwrite same dates; local complete weeks are kept only when they fall off the upstream rolling window but remain on/after retention_start and are still complete as_of UTC."
       }
     },
@@ -5091,8 +5093,8 @@
     },
     {
       "date": "2026-09-14",
-      "total_tokens": 128895259745501.0,
-      "named_tokens": 81630826412238.0,
+      "total_tokens": 128895269979077.0,
+      "named_tokens": 81630836065318.0,
       "named_coverage_pct": 63.33,
       "price_mapped_coverage_pct": 100.0,
       "weighted_input_usd_per_1m": 0.250768,
@@ -5101,7 +5103,7 @@
         {
           "model": "deepseek/deepseek-v4.1-flash-20260910",
           "provider": "deepseek",
-          "tokens": 15768631603581.0,
+          "tokens": 15768633499918.0,
           "share_pct": 12.2337,
           "input_usd_per_1m": 0.3,
           "output_usd_per_1m": 1.2,
@@ -5137,7 +5139,7 @@
         {
           "model": "deepseek/deepseek-v4-flash-20260731",
           "provider": "deepseek",
-          "tokens": 9440505922574.0,
+          "tokens": 9440513550264.0,
           "share_pct": 7.3242,
           "input_usd_per_1m": 0.03556,
           "output_usd_per_1m": 0.07112,
@@ -5146,7 +5148,7 @@
         {
           "model": "xiaomi/mimo-v2.5-20260422",
           "provider": "xiaomi",
-          "tokens": 7066449142701.0,
+          "tokens": 7066449271754.0,
           "share_pct": 5.4823,
           "input_usd_per_1m": 0.14,
           "output_usd_per_1m": 0.28,
@@ -7335,7 +7337,7 @@
     {
       "date": "2026-09-14",
       "provider": "deepseek",
-      "tokens": 28981935175328.0,
+      "tokens": 28981944699355.0,
       "share_pct": 22.4849
     },
     {
@@ -7359,7 +7361,7 @@
     {
       "date": "2026-09-14",
       "provider": "xiaomi",
-      "tokens": 7066449142701.0,
+      "tokens": 7066449271754.0,
       "share_pct": 5.4823
     },
     {
@@ -7371,7 +7373,7 @@
     {
       "date": "2026-09-14",
       "provider": "Others",
-      "tokens": 47264433333263.0,
+      "tokens": 47264433913759.0,
       "share_pct": 36.6689
     }
   ]
