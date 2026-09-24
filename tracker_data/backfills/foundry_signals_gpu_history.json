@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-09-23T04:42:44Z",
+  "fetchedAt": "2026-09-24T04:47:09Z",
   "datasets": {
     "availability": [
       {
@@ -323,8 +323,8 @@
       {
         "date": "2026-09-01",
         "series": "H100",
-        "value": 78.7,
-        "movingAverage30d": 78.7
+        "value": 78.11,
+        "movingAverage30d": 78.11
       },
       {
         "date": "2026-09-01",
@@ -12548,19 +12548,69 @@
           "nebius": 4.5
         },
         "movingAverage30d": 3.4685816666666667
+      },
+      {
+        "date": "2026-09-23",
+        "series": "B200",
+        "value": 6.99,
+        "average": 6.4906,
+        "low": 5.0472,
+        "high": 9.3854,
+        "providerCount": 5,
+        "providerPrices": {
+          "vastai": 7.0771,
+          "lambda": 6.99,
+          "aws": 5.0478,
+          "nebius": 7.15,
+          "runpod": 5.98
+        },
+        "movingAverage30d": 6.22206
+      },
+      {
+        "date": "2026-09-23",
+        "series": "H100",
+        "value": 2.69,
+        "average": 3.1447,
+        "low": 1.7356,
+        "high": 4.29,
+        "providerCount": 5,
+        "providerPrices": {
+          "runpod": 2.69,
+          "vastai": 2.1178,
+          "lambda": 3.79,
+          "aws": 2.5382,
+          "nebius": 3.85
+        },
+        "movingAverage30d": 2.69
+      },
+      {
+        "date": "2026-09-23",
+        "series": "H200",
+        "value": 3.3695,
+        "average": 3.4771,
+        "low": 2.6102,
+        "high": 4.8056,
+        "providerCount": 4,
+        "providerPrices": {
+          "runpod": 3.59,
+          "vastai": 2.6705,
+          "aws": 3.149,
+          "nebius": 4.5
+        },
+        "movingAverage30d": 3.461568333333333
       }
     ]
   },
   "sources": {
     "availability": {
       "url": "https://www.foundrysignals.com/api/history?range=ALL",
-      "sha256": "sha256:58c579438ee4ceba054b9afe24a96a78d14d24f52b41d926b5769c5d8198817f",
-      "snapshotPath": "tracker_snapshots/market_facts/20260923t044244z-foundry-signals-availability.json"
+      "sha256": "sha256:7dbf0a657e9a266aa7a468e4d3d2f0ed45b2e4ae26aca4cbf55204137008616f",
+      "snapshotPath": "tracker_snapshots/market_facts/20260924t044709z-foundry-signals-availability.json"
     },
     "price": {
       "url": "https://www.foundrysignals.com/api/price/history?range=ALL",
-      "sha256": "sha256:4548a5db484e82f6ee1948e28b33bbade5c98c14040edc831dc68afdfa270ccd",
-      "snapshotPath": "tracker_snapshots/market_facts/20260923t044244z-foundry-signals-price.json"
+      "sha256": "sha256:b5c9e61eaeac3d0d23ae03fe00e1d21ac5b0a0b451a299bbd20d84d0034469f5",
+      "snapshotPath": "tracker_snapshots/market_facts/20260924t044709z-foundry-signals-price.json"
     }
   }
 }

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-23T04:42:43Z",
+  "generated_at": "2026-09-24T04:47:08Z",
   "window": {
     "start": "2025-09-22",
     "end": "2026-09-14",
@@ -14,25 +14,23 @@
   "sources": {
     "openrouter": {
       "url": "https://openrouter.ai/api/frontend/v1/rankings/model-rankings-chart",
-      "cached_at": 1790136718852,
-      "raw_sha256": "sha256:11f3a9f0460391dd55b1eaae92593a60dc5c82e19b4c89a473a7fcf3f7639596",
-      "upstream_complete_weeks": 51,
+      "cached_at": 1790222834681,
+      "raw_sha256": "sha256:8d6e8032293d9904d9813ac702bf3b6856e694b18285031d8a5a8b3652561dbe",
+      "upstream_complete_weeks": 52,
       "retained_complete_weeks": 52,
       "history_provenance": {
-        "retention_start": "2025-09-18",
-        "as_of_utc": "2026-09-23",
+        "retention_start": "2025-09-19",
+        "as_of_utc": "2026-09-24",
         "min_complete_weeks": 52,
         "prior_complete_weeks_in_window": 52,
-        "upstream_complete_weeks": 51,
+        "upstream_complete_weeks": 52,
         "retained_complete_weeks": 52,
-        "local_only_weeks": [
-          "2025-09-22"
-        ],
-        "local_only_week_count": 1,
-        "upstream_overwrite_week_count": 51,
-        "retained_cache_generated_at": "2026-09-22T04:52:41Z",
-        "retained_cache_openrouter_url": "https://openrouter.ai/api/frontend/v1/rankings/model-rankings-chart",
-        "retained_cache_openrouter_raw_sha256": "sha256:bf53d1c4d2479e42b5441c68d77376d686e53375956e13f9345109294876d8d8",
+        "local_only_weeks": [],
+        "local_only_week_count": 0,
+        "upstream_overwrite_week_count": 52,
+        "retained_cache_generated_at": null,
+        "retained_cache_openrouter_url": null,
+        "retained_cache_openrouter_raw_sha256": null,
         "rule": "Upstream complete weeks overwrite same dates; local complete weeks are kept only when they fall off the upstream rolling window but remain on/after retention_start and are still complete as_of UTC."
       }
     },
@@ -44,18 +42,18 @@
   "weeks": [
     {
       "date": "2025-09-22",
-      "total_tokens": 5257980070812.0,
-      "named_tokens": 3691264280884.0,
-      "named_coverage_pct": 70.2,
-      "price_mapped_coverage_pct": 55.41,
-      "weighted_input_usd_per_1m": 0.235955,
-      "weighted_output_usd_per_1m": 1.815016,
+      "total_tokens": 3031292952739.0,
+      "named_tokens": 2146642437787.0,
+      "named_coverage_pct": 70.82,
+      "price_mapped_coverage_pct": 56.01,
+      "weighted_input_usd_per_1m": 0.148756,
+      "weighted_output_usd_per_1m": 1.088897,
       "model_rows": [
         {
           "model": "x-ai/grok-code-fast-1",
           "provider": "x-ai",
-          "tokens": 1067241937351.0,
-          "share_pct": 20.2976,
+          "tokens": 632188656335.0,
+          "share_pct": 20.8554,
           "input_usd_per_1m": null,
           "output_usd_per_1m": null,
           "matched_price_key": null
@@ -63,8 +61,8 @@
         {
           "model": "x-ai/grok-4-fast:free",
           "provider": "x-ai",
-          "tokens": 913435460684.0,
-          "share_pct": 17.3724,
+          "tokens": 592190280546.0,
+          "share_pct": 19.5359,
           "input_usd_per_1m": 0.0,
           "output_usd_per_1m": 0.0,
           "matched_price_key": "free_variant"
@@ -72,8 +70,8 @@
         {
           "model": "anthropic/claude-4-sonnet-20250522",
           "provider": "anthropic",
-          "tokens": 578811648885.0,
-          "share_pct": 11.0083,
+          "tokens": 312064721356.0,
+          "share_pct": 10.2948,
           "input_usd_per_1m": null,
           "output_usd_per_1m": null,
           "matched_price_key": null
@@ -81,8 +79,8 @@
         {
           "model": "google/gemini-2.5-flash",
           "provider": "google",
-          "tokens": 345752869087.0,
-          "share_pct": 6.5758,
+          "tokens": 180211147174.0,
+          "share_pct": 5.945,
           "input_usd_per_1m": 0.3,
           "output_usd_per_1m": 2.5,
           "matched_price_key": "openrouter/google/gemini-2.5-flash"
@@ -90,8 +88,8 @@
         {
           "model": "deepseek/deepseek-chat-v3.1:free",
           "provider": "deepseek",
-          "tokens": 209106532150.0,
-          "share_pct": 3.9769,
+          "tokens": 130323965754.0,
+          "share_pct": 4.2993,
           "input_usd_per_1m": 0.0,
           "output_usd_per_1m": 0.0,
           "matched_price_key": "free_variant"
@@ -99,8 +97,8 @@
         {
           "model": "google/gemini-2.0-flash-001",
           "provider": "google",
-          "tokens": 161448192197.0,
-          "share_pct": 3.0705,
+          "tokens": 80936550661.0,
+          "share_pct": 2.67,
           "input_usd_per_1m": 0.09999999999999999,
           "output_usd_per_1m": 0.39999999999999997,
           "matched_price_key": "openrouter/google/gemini-2.0-flash-001"
@@ -108,29 +106,29 @@
         {
           "model": "deepseek/deepseek-chat-v3-0324",
           "provider": "deepseek",
-          "tokens": 141105692691.0,
-          "share_pct": 2.6836,
+          "tokens": 76901478792.0,
+          "share_pct": 2.5369,
           "input_usd_per_1m": 0.14,
           "output_usd_per_1m": 0.28,
           "matched_price_key": "openrouter/deepseek/deepseek-chat-v3-0324"
         },
         {
-          "model": "openai/gpt-5-2025-08-07",
-          "provider": "openai",
-          "tokens": 138592013043.0,
-          "share_pct": 2.6358,
-          "input_usd_per_1m": 1.25,
-          "output_usd_per_1m": 10.0,
-          "matched_price_key": "gpt-5-2025-08-07"
-        },
-        {
           "model": "google/gemini-2.5-pro",
           "provider": "google",
-          "tokens": 135769934796.0,
-          "share_pct": 2.5822,
+          "tokens": 75150203614.0,
+          "share_pct": 2.4791,
           "input_usd_per_1m": 1.25,
           "output_usd_per_1m": 10.0,
           "matched_price_key": "openrouter/google/gemini-2.5-pro"
+        },
+        {
+          "model": "openai/gpt-oss-20b",
+          "provider": "openai",
+          "tokens": 66675433555.0,
+          "share_pct": 2.1996,
+          "input_usd_per_1m": 0.18,
+          "output_usd_per_1m": 0.7999999999999999,
+          "matched_price_key": "openrouter/openai/gpt-oss-20b"
         }
       ],
       "price_snapshot": {
@@ -5195,38 +5193,38 @@
     {
       "date": "2025-09-22",
       "provider": "x-ai",
-      "tokens": 1980677398035.0,
-      "share_pct": 37.6699
+      "tokens": 1224378936881.0,
+      "share_pct": 40.3913
     },
     {
       "date": "2025-09-22",
       "provider": "anthropic",
-      "tokens": 578811648885.0,
-      "share_pct": 11.0083
+      "tokens": 312064721356.0,
+      "share_pct": 10.2948
     },
     {
       "date": "2025-09-22",
       "provider": "google",
-      "tokens": 642970996080.0,
-      "share_pct": 12.2285
+      "tokens": 336297901449.0,
+      "share_pct": 11.0942
     },
     {
       "date": "2025-09-22",
       "provider": "deepseek",
-      "tokens": 350212224841.0,
-      "share_pct": 6.6606
+      "tokens": 207225444546.0,
+      "share_pct": 6.8362
     },
     {
       "date": "2025-09-22",
       "provider": "openai",
-      "tokens": 138592013043.0,
-      "share_pct": 2.6358
+      "tokens": 66675433555.0,
+      "share_pct": 2.1996
     },
     {
       "date": "2025-09-22",
       "provider": "Others",
-      "tokens": 1566715789928.0,
-      "share_pct": 29.7969
+      "tokens": 884650514952.0,
+      "share_pct": 29.1839
     },
     {
       "date": "2025-09-29",
