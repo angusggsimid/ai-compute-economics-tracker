@@ -9,7 +9,7 @@
 from __future__ import annotations
 
 import json
-from datetime import datetime, timezone
+from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Any
 from urllib.request import Request, urlopen
@@ -133,10 +133,38 @@ def _merge(previous_rows: list[dict[str, Any]], new_rows: list[dict[str, Any]], 
     return sorted(kept + new_rows, key=lambda row: (row["date"], row["provider"], row["series"], row["kind"]))
 
 
+GRACE_DAYS = 7
+
+
+def _grace_or_fail(exc: Exception) -> int:
+    """上游故障容错：last-good ≤GRACE_DAYS 天 → 标记 stale 但允许发布；超期则失败（阻塞发布并触发邮件）。"""
+    if OUTPUT_PATH.exists():
+        try:
+            stored = json.loads(OUTPUT_PATH.read_text(encoding="utf-8"))
+            last_date = max(r["date"] for r in stored["rows"])
+            stale_days = (datetime.now(timezone.utc).date() - date.fromisoformat(last_date)).days
+            if stale_days <= GRACE_DAYS:
+                print(json.dumps({
+                    "output": str(OUTPUT_PATH),
+                    "refreshStatus": "stale_last_good",
+                    "staleDays": stale_days,
+                    "lastDataDate": last_date,
+                    "publishable": True,
+                    "error": str(exc)[:200],
+                }, ensure_ascii=False))
+                return 0
+        except Exception:
+            pass
+    raise exc
+
+
 def main() -> int:
     fetched_at = datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
-    payload, raw = _fetch_offers()
-    fresh_rows = normalize(payload)
+    try:
+        payload, raw = _fetch_offers()
+        fresh_rows = normalize(payload)
+    except Exception as exc:
+        return _grace_or_fail(exc)
     date_iso = fresh_rows[0]["date"]
 
     previous_rows = _load_previous(OUTPUT_PATH)

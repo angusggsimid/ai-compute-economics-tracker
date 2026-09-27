@@ -121,7 +121,7 @@ def main() -> int:
         ),
     ]
     results = [_run(*job) for job in jobs]
-    INFORMATIONAL_SOURCES = {"gpu_orderbook", "reference_indices", "neocloud_provider_prices", "epoch_supply", "fred_cost_anchors", "gpu_markets_fixings", "throughput_benchmarks", "gpufinder_market", "foundry_signals"}
+    INFORMATIONAL_SOURCES = {"gpu_orderbook", "reference_indices", "epoch_supply", "fred_cost_anchors", "gpu_markets_fixings", "throughput_benchmarks", "gpufinder_market", "foundry_signals"}
     for row in results:
         if row["source"] in INFORMATIONAL_SOURCES:
             # 积累型信息源（时点观测/外部滚动窗口）：失败必须暴露在状态里，

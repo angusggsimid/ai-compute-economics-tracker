@@ -175,3 +175,33 @@ def test_foundry_stale_last_good_within_grace_passes():
     }
 
     assert validate(payload, date(2026, 9, 27)) == []
+
+
+def test_neocloud_stale_last_good_within_grace_passes():
+    payload = {
+        "generatedAt": "2026-09-27T08:00:00Z",
+        "status": "ready",
+        "publishable": True,
+        "sources": [
+            {"source": name, "status": "fresh", "publishable": True}
+            for name in ("openrouter_usage", "openrouter_active_prices", "foundry_signals")
+        ]
+        + [
+            {
+                "source": "sec_capex",
+                "status": "current_for_frequency",
+                "publishable": True,
+                "cacheCoverage": {"MSFT": {"current": True}},
+            },
+            {"source": "neocloud_provider_prices", "status": "stale_last_good", "publishable": True, "staleDays": 3},
+            {"source": "gpu_orderbook", "status": "fresh", "publishable": True},
+            {"source": "reference_indices", "status": "fresh", "publishable": True},
+            {"source": "epoch_supply", "status": "fresh", "publishable": True},
+            {"source": "fred_cost_anchors", "status": "fresh", "publishable": True},
+            {"source": "gpu_markets_fixings", "status": "fresh", "publishable": True},
+            {"source": "throughput_benchmarks", "status": "fresh", "publishable": True},
+            {"source": "gpufinder_market", "status": "fresh", "publishable": True},
+        ],
+    }
+
+    assert validate(payload, date(2026, 9, 27)) == []

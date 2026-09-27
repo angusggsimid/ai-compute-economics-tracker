@@ -26,7 +26,7 @@ EXPECTED_SOURCES = {
     "gpufinder_market",
 }
 CAPEX_READY_STATUSES = {"fresh", "current_for_frequency"}
-INFORMATIONAL_SOURCES = {"gpu_orderbook", "reference_indices", "neocloud_provider_prices", "epoch_supply", "fred_cost_anchors", "gpu_markets_fixings", "throughput_benchmarks", "gpufinder_market", "foundry_signals"}
+INFORMATIONAL_SOURCES = {"gpu_orderbook", "reference_indices", "epoch_supply", "fred_cost_anchors", "gpu_markets_fixings", "throughput_benchmarks", "gpufinder_market", "foundry_signals"}
 INFORMATIONAL_STATUSES = {"fresh", "partial", "failed", "stale_last_good", "failed_using_last_good"}
 
 
@@ -48,7 +48,10 @@ def validate(payload: dict, expected_date: date) -> list[str]:
         errors.append("来源集合不完整")
         return errors
 
-    STALE_TOLERANT = {"foundry_signals": {"fresh", "stale_last_good"}}
+    STALE_TOLERANT = {
+        "foundry_signals": {"fresh", "stale_last_good"},
+        "neocloud_provider_prices": {"fresh", "stale_last_good"},
+    }
     for name in EXPECTED_SOURCES - {"sec_capex"} - INFORMATIONAL_SOURCES:
         row = sources[name]
         allowed = STALE_TOLERANT.get(name, {"fresh"})
