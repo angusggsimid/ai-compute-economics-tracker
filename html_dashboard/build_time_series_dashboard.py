@@ -15,6 +15,15 @@ from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
 COST_INDEX_PATH = ROOT / "tracker_data" / "backfills" / "openrouter_cost_index.json"
+PROVIDER_DISPLAY = {
+    "aws": "AWS", "azure": "Azure", "coreweave": "CoreWeave", "crusoe": "Crusoe",
+    "datacrunch": "DataCrunch", "fal": "Fal", "hyperstack": "HyperStack",
+    "jarvislabs": "JarvisLabs", "lambda": "Lambda", "massedcompute": "Massed Compute",
+    "nebius": "Nebius", "ovh": "OVH", "runpod": "RunPod", "spheron": "Spheron",
+    "together": "Together AI", "voltagepark": "Voltage Park", "vultr": "Vultr",
+    "modal": "Modal", "vastai": "Vast.ai",
+}
+
 FOUNDRY_HISTORY_PATH = ROOT / "tracker_data" / "backfills" / "foundry_signals_gpu_history.json"
 NEOCLOUD_PATH = ROOT / "tracker_data" / "backfills" / "neocloud_provider_price_history.json"
 GPUFINDER_PATH = ROOT / "tracker_data" / "backfills" / "gpufinder_market.json"
@@ -638,14 +647,21 @@ def build_snapshot() -> dict[str, Any]:
         key=lambda r: (r["date"], r["series"]),
     )
     snapshot["sources"].update({
-        "basisH100": {"url": "https://gpu-index.semianalysis.com/ | https://index.ornn.com | https://signals.foundry.ai", "label": "H100 三源价格对照", "definition": "同一 GPU 家族下三种口径并列：供应商报价中位、综合现货-合约指数、成交加权指数。口径不同，仅作交叉对照，不构成同质序列。"},
-        "basisH200": {"url": "https://gpu-index.semianalysis.com/ | https://index.ornn.com | https://signals.foundry.ai", "label": "H200 三源价格对照", "definition": "口径同上。Foundry 与 Ornn 可能方向分歧，分歧本身是证据而非噪声。"},
-        "basisB200": {"url": "https://gpu-index.semianalysis.com/ | https://index.ornn.com | https://signals.foundry.ai", "label": "B200 三源价格对照", "definition": "口径同上。"},
+        "basisH100": {"url": "https://gpu-index.semianalysis.com/ | https://index.ornn.com | https://gpurentalprices.com/data", "label": "H100 三源价格对照", "definition": "同一 GPU 家族下三种口径并列：供应商报价中位、综合现货-合约指数、成交加权指数。口径不同，仅作交叉对照，不构成同质序列。"},
+        "basisH200": {"url": "https://gpu-index.semianalysis.com/ | https://index.ornn.com | https://gpurentalprices.com/data", "label": "H200 三源价格对照", "definition": "口径同上（H200 无 SemiAnalysis 公开指数，为两源对照）。Neocloud 与 Ornn 可能方向分歧，分歧本身是证据而非噪声。"},
+        "basisB200": {"url": "https://gpu-index.semianalysis.com/ | https://index.ornn.com | https://gpurentalprices.com/data", "label": "B200 三源价格对照", "definition": "口径同上。"},
         "contractBand": {"url": "https://gpu-index.semianalysis.com/api/public-data", "label": "SemiAnalysis H100 1Y 合约调查区间", "definition": "月度调查的25-75分位合约价区间，半年期阶梯展示。许可：公开页引用需署名。"},
         "orderbookDepth": {"url": "https://api.gpuindexes.com/api/offers | https://console.vast.ai/api/v0/bundles/ | https://api.runpod.io/graphql", "label": "GPU 订单簿逐源观测", "definition": "gpuperhour/vast 为逐条报价 offers、runpod 为型号挂牌 types，单位语义不同故分序列展示不合并。时点观测，<10 有效日只画点不连线。"},
         "otpi": {"url": "https://index.ornn.com/api/otpi", "label": "Ornn OTPI 已实现 token 价", "definition": "按 lab 的成交加权 token 实现价（USD/Mtok），免费层滚动窗口每日快照累积。许可：Ornn 免费层署名引用。"},
-        "panelIndex": {"url": "https://signals.foundry.ai", "label": "固定供应商面板指数（E2）", "definition": "在窗口内报价覆盖率>=80% 的 Foundry 供应商构成固定面板；起点=100；任一成员当日缺价则该日无观测点。消除供应商构成漂移，是 Supply Price 时钟的首选趋势证据。"},
+        "panelIndex": {"url": "https://gpurentalprices.com/data", "label": "固定供应商面板指数", "definition": "从 34 家供应商数据集取窗口内持续在架成员（覆盖率≥90%），按非中断性租赁价计算成员均值，起点=100；成员当日缺价即断点。消除供应商构成漂移，是供给价格的首选趋势证据。"},
     })
+    _pm = snapshot["meta"].get("panelMembers") or {}
+    if _pm:
+        _member_txt = "；".join(
+            f"{gpu}（{len(info.get('members') or [])} 家）：" + "、".join(PROVIDER_DISPLAY.get(m, m) for m in (info.get("members") or []))
+            for gpu, info in _pm.items()
+        )
+        snapshot["sources"]["panelIndex"]["definition"] += " 当前成员：" + _member_txt
     return snapshot
 
 
@@ -937,7 +953,7 @@ lineChart('basis-b200','basis-b200-legend',DATA.datasets.basisB200||[],{title:'B
 lineChart('contract-band','contract-band-legend',DATA.datasets.contractBand||[],{title:'H100 1Y contract range',kind:'usd',yTitle:'USD/GPU-hr',zero:true,step:true,band:true});
 
 const panelRows=DATA.datasets.panelIndex||[];
-document.getElementById('panel-index-note').textContent='固定成员：'+Object.entries(DATA.meta.panelMembers||{}).map(([f,m])=>{const arr=Array.isArray(m)?m:(m&&m.members)||[];return f+'['+arr.join('/')+']'}).join(' · ')+' · 起点=100';
+(()=>{const pm=DATA.meta.panelMembers||{};const counts=Object.entries(pm).map(([g,m])=>{const arr=Array.isArray(m)?m:(m&&m.members)||[];return g+' '+arr.length+'家'}).join(' / ');document.getElementById('panel-index-note').textContent='非中断性租赁价 · 固定成员均值（'+counts+'）· 起点=100 · 成员明细见来源与口径'})();
 lineChart('panel-index-chart','panel-index-legend',panelRows,{title:'Fixed-provider panel index',kind:'usd',yTitle:'Index (base=100)',zero:false,gapDays:11});
 activeModelDetail();sourceDetails();renderTable();$('#freshness').textContent='Updated '+DATA.meta.generatedAt+' · Public source history only · No composite score';
 </script></body></html>'''
