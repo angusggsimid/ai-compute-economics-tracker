@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-09-27T10:30:35Z",
+    "generatedAt": "2026-09-27T10:38:22Z",
     "minDate": "2025-09-22",
     "maxDate": "2026-09-27",
     "orderbookValidDays": 36,
@@ -26,7 +26,7 @@
           "voltagepark"
         ],
         "windowStart": "2026-07-07",
-        "windowDays": 82
+        "windowDays": 83
       },
       "B200": {
         "members": [
@@ -39,7 +39,7 @@
           "together"
         ],
         "windowStart": "2026-07-07",
-        "windowDays": 82
+        "windowDays": 83
       }
     },
     "scarcityValidDays": 1,
@@ -15478,6 +15478,92 @@
           "together": 2.99
         },
         "movingAverage30d": 4.2715
+      },
+      {
+        "date": "2026-09-27",
+        "series": "B200",
+        "value": 6.69,
+        "low": 3.49,
+        "high": 16.11,
+        "average": 7.2428,
+        "providerCount": 11,
+        "providerPrices": {
+          "coreweave": 8.6,
+          "datacrunch": 6.816,
+          "gcp": 16.11,
+          "gmicloud": 6.0,
+          "hyperstack": 6.0,
+          "lambda": 6.69,
+          "nebius": 7.15,
+          "primeintellect": 3.49,
+          "runpod": 6.385,
+          "spheron": 8.34,
+          "together": 4.09
+        },
+        "movingAverage30d": 6.467
+      },
+      {
+        "date": "2026-09-27",
+        "series": "H100",
+        "value": 3.2,
+        "low": 1.99,
+        "high": 12.29,
+        "average": 4.092,
+        "providerCount": 23,
+        "providerPrices": {
+          "aws": 12.29,
+          "azure": 9.0205,
+          "coreweave": 6.155,
+          "crusoe": 3.9,
+          "datacrunch": 3.52,
+          "digitalocean": 4.41,
+          "gcp": 9.7966,
+          "gmicloud": 2.0,
+          "hyperstack": 2.85,
+          "jarvislabs": 2.69,
+          "lambda": 3.64,
+          "latitude": 3.37,
+          "massedcompute": 2.89,
+          "nebius": 3.85,
+          "ovh": 2.99,
+          "primeintellect": 2.43,
+          "runpod": 2.79,
+          "scaleway": 3.4547,
+          "spheron": 2.64,
+          "tensordock": 2.25,
+          "thundercompute": 3.2,
+          "together": 1.99,
+          "voltagepark": 1.99
+        },
+        "movingAverage30d": 3.2083
+      },
+      {
+        "date": "2026-09-27",
+        "series": "H200",
+        "value": 4.38,
+        "low": 2.6,
+        "high": 10.6,
+        "average": 4.949,
+        "providerCount": 16,
+        "providerPrices": {
+          "aws": 10.6,
+          "coreweave": 6.305,
+          "crusoe": 4.29,
+          "datacrunch": 4.593,
+          "digitalocean": 4.47,
+          "gcp": 9.3117,
+          "gmicloud": 2.6,
+          "hyperstack": 3.99,
+          "jarvislabs": 3.99,
+          "massedcompute": 3.62,
+          "nebius": 4.5,
+          "ovh": 6.195,
+          "primeintellect": 3.14,
+          "runpod": 3.79,
+          "spheron": 4.8,
+          "together": 2.99
+        },
+        "movingAverage30d": 4.2715
       }
     ],
     "gpuPriceAnnotations": {
@@ -16046,6 +16132,11 @@
         "value": 1.34640625
       },
       {
+        "date": "2026-09-27",
+        "series": "H200 / H100",
+        "value": 1.34640625
+      },
+      {
         "date": "2026-07-05",
         "series": "B200 / H100",
         "value": 1.963452566096423
@@ -16464,6 +16555,11 @@
         "date": "2026-09-26",
         "series": "B200 / H100",
         "value": 2.0037499999999997
+      },
+      {
+        "date": "2026-09-27",
+        "series": "B200 / H100",
+        "value": 2.0037499999999997
       }
     ],
     "scarcity": [
@@ -16475,12 +16571,12 @@
       {
         "date": "2026-09-27",
         "series": "H100",
-        "value": 22.16
+        "value": 22.22
       },
       {
         "date": "2026-09-27",
         "series": "H200",
-        "value": 27.74
+        "value": 27.76
       }
     ],
     "listedGap": [
@@ -16525,7 +16621,11 @@
         "value": 28.499,
         "unit": "USD_B",
         "period": "FY2026 Q1",
-        "source_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001341439.json"
+        "source_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001341439.json",
+        "metricLabel": "资本开支（实际）",
+        "periodLabel": "FY2026 Q1",
+        "unitLabel": "十亿美元",
+        "valueDisplay": "28.499"
       },
       {
         "date": "2026-07-29",
@@ -16534,7 +16634,11 @@
         "value": 175.0,
         "unit": "USD_B",
         "period": "calendar_2026_guidance_after_lease_reclassification",
-        "source_url": "https://www.microsoft.com/en-us/investor/events/fy-2026/earnings-fy-2026-q4"
+        "source_url": "https://www.microsoft.com/en-us/investor/events/fy-2026/earnings-fy-2026-q4",
+        "metricLabel": "2026 自然年指引",
+        "periodLabel": "2026 指引（租赁重分类后）",
+        "unitLabel": "十亿美元",
+        "valueDisplay": "175"
       },
       {
         "date": "2026-07-29",
@@ -16543,7 +16647,11 @@
         "value": 30.116,
         "unit": "USD_B",
         "period": "FY2026 Q2",
-        "source_url": "https://investor.atmeta.com/investor-news/press-release-details/2026/Meta-Reports-Second-Quarter-2026-Results/default.aspx"
+        "source_url": "https://investor.atmeta.com/investor-news/press-release-details/2026/Meta-Reports-Second-Quarter-2026-Results/default.aspx",
+        "metricLabel": "购置固定资产（现金流）",
+        "periodLabel": "FY2026 Q2",
+        "unitLabel": "十亿美元",
+        "valueDisplay": "30.116"
       },
       {
         "date": "2026-07-29",
@@ -16552,7 +16660,11 @@
         "value": 30.116,
         "unit": "USD_B",
         "period": "FY2026 Q2",
-        "source_url": "https://investor.atmeta.com/investor-news/press-release-details/2026/Meta-Reports-Second-Quarter-2026-Results/default.aspx"
+        "source_url": "https://investor.atmeta.com/investor-news/press-release-details/2026/Meta-Reports-Second-Quarter-2026-Results/default.aspx",
+        "metricLabel": "资本开支（实际）",
+        "periodLabel": "FY2026 Q2",
+        "unitLabel": "十亿美元",
+        "valueDisplay": "30.116"
       },
       {
         "date": "2026-07-29",
@@ -16561,7 +16673,11 @@
         "value": 31.08,
         "unit": "USD_B",
         "period": "FY2026 Q2",
-        "source_url": "https://investor.atmeta.com/investor-news/press-release-details/2026/Meta-Reports-Second-Quarter-2026-Results/default.aspx"
+        "source_url": "https://investor.atmeta.com/investor-news/press-release-details/2026/Meta-Reports-Second-Quarter-2026-Results/default.aspx",
+        "metricLabel": "资本开支（含融资租赁）",
+        "periodLabel": "FY2026 Q2",
+        "unitLabel": "十亿美元",
+        "valueDisplay": "31.08"
       },
       {
         "date": "2026-07-29",
@@ -16570,7 +16686,11 @@
         "value": 125.0,
         "unit": "USD_B",
         "period": "capex_guidance_revision",
-        "source_url": "https://investor.atmeta.com/investor-news/press-release-details/2026/Meta-Reports-Second-Quarter-2026-Results/default.aspx"
+        "source_url": "https://investor.atmeta.com/investor-news/press-release-details/2026/Meta-Reports-Second-Quarter-2026-Results/default.aspx",
+        "metricLabel": "FY2026 指引下限（上调前）",
+        "periodLabel": "指引修订",
+        "unitLabel": "十亿美元",
+        "valueDisplay": "125"
       },
       {
         "date": "2026-07-29",
@@ -16579,7 +16699,11 @@
         "value": 145.0,
         "unit": "USD_B",
         "period": "capex_guidance_revision",
-        "source_url": "https://investor.atmeta.com/investor-news/press-release-details/2026/Meta-Reports-Second-Quarter-2026-Results/default.aspx"
+        "source_url": "https://investor.atmeta.com/investor-news/press-release-details/2026/Meta-Reports-Second-Quarter-2026-Results/default.aspx",
+        "metricLabel": "FY2026 指引上限（上调前）",
+        "periodLabel": "指引修订",
+        "unitLabel": "十亿美元",
+        "valueDisplay": "145"
       },
       {
         "date": "2026-07-29",
@@ -16588,7 +16712,11 @@
         "value": 130.0,
         "unit": "USD_B",
         "period": "capex_guidance_revision",
-        "source_url": "https://investor.atmeta.com/investor-news/press-release-details/2026/Meta-Reports-Second-Quarter-2026-Results/default.aspx"
+        "source_url": "https://investor.atmeta.com/investor-news/press-release-details/2026/Meta-Reports-Second-Quarter-2026-Results/default.aspx",
+        "metricLabel": "FY2026 指引下限",
+        "periodLabel": "指引修订",
+        "unitLabel": "十亿美元",
+        "valueDisplay": "130"
       },
       {
         "date": "2026-07-29",
@@ -16597,7 +16725,11 @@
         "value": 145.0,
         "unit": "USD_B",
         "period": "capex_guidance_revision",
-        "source_url": "https://investor.atmeta.com/investor-news/press-release-details/2026/Meta-Reports-Second-Quarter-2026-Results/default.aspx"
+        "source_url": "https://investor.atmeta.com/investor-news/press-release-details/2026/Meta-Reports-Second-Quarter-2026-Results/default.aspx",
+        "metricLabel": "FY2026 指引上限",
+        "periodLabel": "指引修订",
+        "unitLabel": "十亿美元",
+        "valueDisplay": "145"
       },
       {
         "date": "2026-07-22",
@@ -16606,7 +16738,11 @@
         "value": 44.924,
         "unit": "USD_B",
         "period": "FY2026 Q2",
-        "source_url": "https://s206.q4cdn.com/479360582/files/doc_financials/2026/q2/2026q2-alphabet-earnings-release.pdf"
+        "source_url": "https://s206.q4cdn.com/479360582/files/doc_financials/2026/q2/2026q2-alphabet-earnings-release.pdf",
+        "metricLabel": "购置固定资产（现金流）",
+        "periodLabel": "FY2026 Q2",
+        "unitLabel": "十亿美元",
+        "valueDisplay": "44.924"
       },
       {
         "date": "2026-07-22",
@@ -16615,7 +16751,11 @@
         "value": 44.924,
         "unit": "USD_B",
         "period": "FY2026 Q2",
-        "source_url": "https://s206.q4cdn.com/479360582/files/doc_financials/2026/q2/2026q2-alphabet-earnings-release.pdf"
+        "source_url": "https://s206.q4cdn.com/479360582/files/doc_financials/2026/q2/2026q2-alphabet-earnings-release.pdf",
+        "metricLabel": "资本开支（实际）",
+        "periodLabel": "FY2026 Q2",
+        "unitLabel": "十亿美元",
+        "valueDisplay": "44.924"
       },
       {
         "date": "2026-07-22",
@@ -16624,7 +16764,11 @@
         "value": 180.0,
         "unit": "USD_B",
         "period": "capex_guidance_revision",
-        "source_url": "https://s206.q4cdn.com/479360582/files/doc_events/2026/Jul/22/2026_Q2_Earnings_Transcript.pdf"
+        "source_url": "https://s206.q4cdn.com/479360582/files/doc_events/2026/Jul/22/2026_Q2_Earnings_Transcript.pdf",
+        "metricLabel": "FY2026 指引下限（上调前）",
+        "periodLabel": "指引修订",
+        "unitLabel": "十亿美元",
+        "valueDisplay": "180"
       },
       {
         "date": "2026-07-22",
@@ -16633,7 +16777,11 @@
         "value": 190.0,
         "unit": "USD_B",
         "period": "capex_guidance_revision",
-        "source_url": "https://s206.q4cdn.com/479360582/files/doc_events/2026/Jul/22/2026_Q2_Earnings_Transcript.pdf"
+        "source_url": "https://s206.q4cdn.com/479360582/files/doc_events/2026/Jul/22/2026_Q2_Earnings_Transcript.pdf",
+        "metricLabel": "FY2026 指引上限（上调前）",
+        "periodLabel": "指引修订",
+        "unitLabel": "十亿美元",
+        "valueDisplay": "190"
       },
       {
         "date": "2026-07-22",
@@ -16642,7 +16790,11 @@
         "value": 195.0,
         "unit": "USD_B",
         "period": "capex_guidance_revision",
-        "source_url": "https://s206.q4cdn.com/479360582/files/doc_events/2026/Jul/22/2026_Q2_Earnings_Transcript.pdf"
+        "source_url": "https://s206.q4cdn.com/479360582/files/doc_events/2026/Jul/22/2026_Q2_Earnings_Transcript.pdf",
+        "metricLabel": "FY2026 指引下限",
+        "periodLabel": "指引修订",
+        "unitLabel": "十亿美元",
+        "valueDisplay": "195"
       },
       {
         "date": "2026-07-22",
@@ -16651,7 +16803,11 @@
         "value": 205.0,
         "unit": "USD_B",
         "period": "capex_guidance_revision",
-        "source_url": "https://s206.q4cdn.com/479360582/files/doc_events/2026/Jul/22/2026_Q2_Earnings_Transcript.pdf"
+        "source_url": "https://s206.q4cdn.com/479360582/files/doc_events/2026/Jul/22/2026_Q2_Earnings_Transcript.pdf",
+        "metricLabel": "FY2026 指引上限",
+        "periodLabel": "指引修订",
+        "unitLabel": "十亿美元",
+        "valueDisplay": "205"
       },
       {
         "date": "2026-06-30",
@@ -16660,7 +16816,11 @@
         "value": 35.8,
         "unit": "USD_B",
         "period": "FY2026 Q4",
-        "source_url": "https://www.microsoft.com/en-us/investor/events/fy-2026/earnings-fy-2026-q4"
+        "source_url": "https://www.microsoft.com/en-us/investor/events/fy-2026/earnings-fy-2026-q4",
+        "metricLabel": "购置固定资产（现金流）",
+        "periodLabel": "FY2026 Q4",
+        "unitLabel": "十亿美元",
+        "valueDisplay": "35.8"
       },
       {
         "date": "2026-06-30",
@@ -16669,7 +16829,11 @@
         "value": 35.8,
         "unit": "USD_B",
         "period": "FY2026 Q4",
-        "source_url": "https://www.microsoft.com/en-us/investor/events/fy-2026/earnings-fy-2026-q4"
+        "source_url": "https://www.microsoft.com/en-us/investor/events/fy-2026/earnings-fy-2026-q4",
+        "metricLabel": "资本开支（实际）",
+        "periodLabel": "FY2026 Q4",
+        "unitLabel": "十亿美元",
+        "valueDisplay": "35.8"
       },
       {
         "date": "2026-06-30",
@@ -16678,7 +16842,11 @@
         "value": 41.0,
         "unit": "USD_B",
         "period": "FY2026 Q4",
-        "source_url": "https://www.microsoft.com/en-us/investor/events/fy-2026/earnings-fy-2026-q4"
+        "source_url": "https://www.microsoft.com/en-us/investor/events/fy-2026/earnings-fy-2026-q4",
+        "metricLabel": "资本开支（含融资租赁）",
+        "periodLabel": "FY2026 Q4",
+        "unitLabel": "十亿美元",
+        "valueDisplay": "41"
       },
       {
         "date": "2026-06-30",
@@ -16687,7 +16855,11 @@
         "value": 115.948,
         "unit": "USD_B",
         "period": "FY2026",
-        "source_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000789019.json"
+        "source_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000789019.json",
+        "metricLabel": "资本开支（实际）",
+        "periodLabel": "FY2026",
+        "unitLabel": "十亿美元",
+        "valueDisplay": "115.948"
       },
       {
         "date": "2026-06-30",
@@ -16696,7 +16868,11 @@
         "value": 49.113,
         "unit": "USD_B",
         "period": "FY2026 Q2",
-        "source_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001326801.json"
+        "source_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001326801.json",
+        "metricLabel": "资本开支（实际）",
+        "periodLabel": "FY2026 Q2",
+        "unitLabel": "十亿美元",
+        "valueDisplay": "49.113"
       },
       {
         "date": "2026-06-30",
@@ -16705,7 +16881,11 @@
         "value": 54.208,
         "unit": "USD_B",
         "period": "FY2026 Q2",
-        "source_url": "https://s2.q4cdn.com/299287126/files/doc_earnings/2026/q2/earnings-result/AMZN-Q2-2026-Earnings-Release.pdf"
+        "source_url": "https://s2.q4cdn.com/299287126/files/doc_earnings/2026/q2/earnings-result/AMZN-Q2-2026-Earnings-Release.pdf",
+        "metricLabel": "购置生产性资产（现金流）",
+        "periodLabel": "FY2026 Q2",
+        "unitLabel": "十亿美元",
+        "valueDisplay": "54.208"
       },
       {
         "date": "2026-06-30",
@@ -16714,7 +16894,11 @@
         "value": 54.208,
         "unit": "USD_B",
         "period": "FY2026 Q2",
-        "source_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001018724.json"
+        "source_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001018724.json",
+        "metricLabel": "资本开支（实际）",
+        "periodLabel": "FY2026 Q2",
+        "unitLabel": "十亿美元",
+        "valueDisplay": "54.208"
       },
       {
         "date": "2026-06-30",
@@ -16723,7 +16907,11 @@
         "value": 169.007,
         "unit": "USD_B",
         "period": "TTM",
-        "source_url": "https://ir.aboutamazon.com/news-release/news-release-details/2026/Amazon-com-Announces-Second-Quarter-Results/default.aspx"
+        "source_url": "https://ir.aboutamazon.com/news-release/news-release-details/2026/Amazon-com-Announces-Second-Quarter-Results/default.aspx",
+        "metricLabel": "资本开支 TTM（净额）",
+        "periodLabel": "TTM",
+        "unitLabel": "十亿美元",
+        "valueDisplay": "169.007"
       },
       {
         "date": "2026-06-30",
@@ -16732,7 +16920,11 @@
         "value": 80.598,
         "unit": "USD_B",
         "period": "FY2026 Q2",
-        "source_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001652044.json"
+        "source_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001652044.json",
+        "metricLabel": "资本开支（实际）",
+        "periodLabel": "FY2026 Q2",
+        "unitLabel": "十亿美元",
+        "valueDisplay": "80.598"
       },
       {
         "date": "2026-06-11",
@@ -16741,7 +16933,11 @@
         "value": 638.0,
         "unit": "USD_B",
         "period": "rpo",
-        "source_url": "https://www.sec.gov/Archives/edgar/data/1341439/000119312526265848/0001193125-26-265848.txt"
+        "source_url": "https://www.sec.gov/Archives/edgar/data/1341439/000119312526265848/0001193125-26-265848.txt",
+        "metricLabel": "剩余履约义务（RPO）",
+        "periodLabel": "订单储备",
+        "unitLabel": "十亿美元",
+        "valueDisplay": "638"
       },
       {
         "date": "2026-05-31",
@@ -16750,7 +16946,11 @@
         "value": 55.663,
         "unit": "USD_B",
         "period": "FY2026",
-        "source_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001341439.json"
+        "source_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001341439.json",
+        "metricLabel": "购置固定资产（现金流）",
+        "periodLabel": "FY2026",
+        "unitLabel": "十亿美元",
+        "valueDisplay": "55.663"
       },
       {
         "date": "2026-05-31",
@@ -16759,7 +16959,11 @@
         "value": 55.663,
         "unit": "USD_B",
         "period": "FY2026",
-        "source_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001341439.json"
+        "source_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001341439.json",
+        "metricLabel": "资本开支（实际）",
+        "periodLabel": "FY2026",
+        "unitLabel": "十亿美元",
+        "valueDisplay": "55.663"
       },
       {
         "date": "2026-04-29",
@@ -16768,7 +16972,11 @@
         "value": 135.0,
         "unit": "USD_B",
         "period": "capex_guidance_revision",
-        "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026028364/meta-03312026xexhibit991.htm"
+        "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026028364/meta-03312026xexhibit991.htm",
+        "metricLabel": "FY2026 指引上限（上调前）",
+        "periodLabel": "指引修订",
+        "unitLabel": "十亿美元",
+        "valueDisplay": "135"
       },
       {
         "date": "2026-04-29",
@@ -16777,7 +16985,11 @@
         "value": 125.0,
         "unit": "USD_B",
         "period": "capex_guidance_revision",
-        "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026028364/meta-03312026xexhibit991.htm"
+        "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026028364/meta-03312026xexhibit991.htm",
+        "metricLabel": "FY2026 指引下限",
+        "periodLabel": "指引修订",
+        "unitLabel": "十亿美元",
+        "valueDisplay": "125"
       },
       {
         "date": "2026-04-29",
@@ -16786,7 +16998,11 @@
         "value": 145.0,
         "unit": "USD_B",
         "period": "capex_guidance_revision",
-        "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026028364/meta-03312026xexhibit991.htm"
+        "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026028364/meta-03312026xexhibit991.htm",
+        "metricLabel": "FY2026 指引上限",
+        "periodLabel": "指引修订",
+        "unitLabel": "十亿美元",
+        "valueDisplay": "145"
       },
       {
         "date": "2026-04-29",
@@ -16795,7 +17011,11 @@
         "value": 115.0,
         "unit": "USD_B",
         "period": "capex_guidance_revision",
-        "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026028364/meta-03312026xexhibit991.htm"
+        "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026028364/meta-03312026xexhibit991.htm",
+        "metricLabel": "FY2026 指引下限（上调前）",
+        "periodLabel": "指引修订",
+        "unitLabel": "十亿美元",
+        "valueDisplay": "115"
       },
       {
         "date": "2026-04-29",
@@ -16804,7 +17024,11 @@
         "value": 59.3,
         "unit": "USD_B",
         "period": "capacity_comment",
-        "source_url": "https://www.sec.gov/Archives/edgar/data/1018724/000101872426000012/amzn-20260331xex991.htm"
+        "source_url": "https://www.sec.gov/Archives/edgar/data/1018724/000101872426000012/amzn-20260331xex991.htm",
+        "metricLabel": "管理层：资本开支增长反映 AI 投入",
+        "periodLabel": "管理层口径",
+        "unitLabel": "十亿美元",
+        "valueDisplay": "59.3"
       },
       {
         "date": "2026-04-29",
@@ -16813,7 +17037,11 @@
         "value": 460.0,
         "unit": "USD_B",
         "period": "rpo",
-        "source_url": "https://www.sec.gov/Archives/edgar/data/1652044/000165204426000043/googexhibit991q12026.htm"
+        "source_url": "https://www.sec.gov/Archives/edgar/data/1652044/000165204426000043/googexhibit991q12026.htm",
+        "metricLabel": "云订单积压",
+        "periodLabel": "订单储备",
+        "unitLabel": "十亿美元",
+        "valueDisplay": "460"
       },
       {
         "date": "2026-03-31",
@@ -16822,7 +17050,11 @@
         "value": 31.9,
         "unit": "CNY_B",
         "period": "q1_2026_total_capex",
-        "source_url": "https://www.prnewswire.com/apac/news-releases/tencent-announces-2026-first-quarter-results-302770779.html"
+        "source_url": "https://www.prnewswire.com/apac/news-releases/tencent-announces-2026-first-quarter-results-302770779.html",
+        "metricLabel": "资本开支（季度）",
+        "periodLabel": "2026 Q1（总计）",
+        "unitLabel": "十亿人民币",
+        "valueDisplay": "31.9"
       },
       {
         "date": "2026-03-31",
@@ -16831,7 +17063,11 @@
         "value": 30.876,
         "unit": "USD_B",
         "period": "FY2026 Q3",
-        "source_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000789019.json"
+        "source_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000789019.json",
+        "metricLabel": "购置固定资产（现金流）",
+        "periodLabel": "FY2026 Q3",
+        "unitLabel": "十亿美元",
+        "valueDisplay": "30.876"
       },
       {
         "date": "2026-03-31",
@@ -16840,7 +17076,11 @@
         "value": 30.876,
         "unit": "USD_B",
         "period": "FY2026 Q3",
-        "source_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000789019.json"
+        "source_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000789019.json",
+        "metricLabel": "资本开支（实际）",
+        "periodLabel": "FY2026 Q3",
+        "unitLabel": "十亿美元",
+        "valueDisplay": "30.876"
       },
       {
         "date": "2026-03-31",
@@ -16849,7 +17089,11 @@
         "value": 18.997,
         "unit": "USD_B",
         "period": "FY2026 Q1",
-        "source_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001326801.json"
+        "source_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001326801.json",
+        "metricLabel": "购置固定资产（现金流）",
+        "periodLabel": "FY2026 Q1",
+        "unitLabel": "十亿美元",
+        "valueDisplay": "18.997"
       },
       {
         "date": "2026-03-31",
@@ -16858,7 +17102,11 @@
         "value": 18.997,
         "unit": "USD_B",
         "period": "FY2026 Q1",
-        "source_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001326801.json"
+        "source_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001326801.json",
+        "metricLabel": "资本开支（实际）",
+        "periodLabel": "FY2026 Q1",
+        "unitLabel": "十亿美元",
+        "valueDisplay": "18.997"
       },
       {
         "date": "2026-03-31",
@@ -16867,7 +17115,11 @@
         "value": 5.916,
         "unit": "CNY_B",
         "period": "q1_2026_consolidated_capex",
-        "source_url": "https://ir.baidu.com/news-releases/news-release-details/baidu-announces-first-quarter-2026-results/"
+        "source_url": "https://ir.baidu.com/news-releases/news-release-details/baidu-announces-first-quarter-2026-results/",
+        "metricLabel": "资本开支（季度）",
+        "periodLabel": "2026 Q1（合并）",
+        "unitLabel": "十亿人民币",
+        "valueDisplay": "5.916"
       },
       {
         "date": "2026-03-31",
@@ -16876,7 +17128,11 @@
         "value": 44.203,
         "unit": "USD_B",
         "period": "FY2026 Q1",
-        "source_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001018724.json"
+        "source_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001018724.json",
+        "metricLabel": "购置生产性资产（现金流）",
+        "periodLabel": "FY2026 Q1",
+        "unitLabel": "十亿美元",
+        "valueDisplay": "44.203"
       },
       {
         "date": "2026-03-31",
@@ -16885,7 +17141,11 @@
         "value": 44.203,
         "unit": "USD_B",
         "period": "FY2026 Q1",
-        "source_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001018724.json"
+        "source_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001018724.json",
+        "metricLabel": "资本开支（实际）",
+        "periodLabel": "FY2026 Q1",
+        "unitLabel": "十亿美元",
+        "valueDisplay": "44.203"
       },
       {
         "date": "2026-03-31",
@@ -16894,7 +17154,11 @@
         "value": 35.674,
         "unit": "USD_B",
         "period": "FY2026 Q1",
-        "source_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001652044.json"
+        "source_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001652044.json",
+        "metricLabel": "购置固定资产（现金流）",
+        "periodLabel": "FY2026 Q1",
+        "unitLabel": "十亿美元",
+        "valueDisplay": "35.674"
       },
       {
         "date": "2026-03-31",
@@ -16903,7 +17167,11 @@
         "value": 35.674,
         "unit": "USD_B",
         "period": "FY2026 Q1",
-        "source_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001652044.json"
+        "source_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001652044.json",
+        "metricLabel": "资本开支（实际）",
+        "periodLabel": "FY2026 Q1",
+        "unitLabel": "十亿美元",
+        "valueDisplay": "35.674"
       },
       {
         "date": "2026-01-28",
@@ -16912,7 +17180,11 @@
         "value": 1.0,
         "unit": "evidence_flag",
         "period": "management_capacity_comment",
-        "source_url": "https://www.microsoft.com/en-us/investor/events/fy-2026/earnings-fy-2026-q2"
+        "source_url": "https://www.microsoft.com/en-us/investor/events/fy-2026/earnings-fy-2026-q2",
+        "metricLabel": "管理层：需求超过供给",
+        "periodLabel": "管理层口径（供给）",
+        "unitLabel": "定性",
+        "valueDisplay": "—"
       },
       {
         "date": "2026-01-28",
@@ -16921,7 +17193,11 @@
         "value": 1.0,
         "unit": "evidence_flag",
         "period": "capacity_comment",
-        "source_url": "https://www.microsoft.com/en-us/investor/events/fy-2026/earnings-fy-2026-q2"
+        "source_url": "https://www.microsoft.com/en-us/investor/events/fy-2026/earnings-fy-2026-q2",
+        "metricLabel": "管理层：短周期资产说明",
+        "periodLabel": "管理层口径",
+        "unitLabel": "定性",
+        "valueDisplay": "—"
       },
       {
         "date": "2025-12-31",
@@ -16930,7 +17206,11 @@
         "value": 72.075,
         "unit": "CNY_B",
         "period": "cloud_context_not_capex",
-        "source_url": "https://www.huawei.com/en/annual-report/2025"
+        "source_url": "https://www.huawei.com/en/annual-report/2025",
+        "metricLabel": "云收入（含其他分部）",
+        "periodLabel": "背景信息（非资本开支）",
+        "unitLabel": "十亿人民币",
+        "valueDisplay": "72.075"
       },
       {
         "date": "2025-12-31",
@@ -16939,7 +17219,11 @@
         "value": 192.3,
         "unit": "CNY_B",
         "period": "annual_rd_context_not_capex",
-        "source_url": "https://www.huawei.com/en/annual-report/2025"
+        "source_url": "https://www.huawei.com/en/annual-report/2025",
+        "metricLabel": "研发支出",
+        "periodLabel": "背景信息（非资本开支）",
+        "unitLabel": "十亿人民币",
+        "valueDisplay": "192.3"
       },
       {
         "date": "2025-11-25",
@@ -16948,7 +17232,11 @@
         "value": 120.0,
         "unit": "CNY_B",
         "period": "ttm_ai_cloud_infrastructure",
-        "source_url": "https://www.alibabagroup.com/en-US/document-1930116148192346112"
+        "source_url": "https://www.alibabagroup.com/en-US/document-1930116148192346112",
+        "metricLabel": "AI 云基建支出（TTM）",
+        "periodLabel": "AI 云基建 TTM",
+        "unitLabel": "十亿人民币",
+        "valueDisplay": "120"
       }
     ],
     "panelIndex": [
@@ -17771,6 +18059,16 @@
         "date": "2026-09-26",
         "series": "H100 固定面板",
         "value": 95.32
+      },
+      {
+        "date": "2026-09-27",
+        "series": "B200 固定面板",
+        "value": 93.95
+      },
+      {
+        "date": "2026-09-27",
+        "series": "H100 固定面板",
+        "value": 95.37
       }
     ],
     "basisH100": [
@@ -20671,6 +20969,11 @@
       },
       {
         "date": "2026-09-27",
+        "series": "Neocloud 报价中位",
+        "value": 3.2
+      },
+      {
+        "date": "2026-09-27",
         "series": "SemiAnalysis 综合指数",
         "value": 3.27
       }
@@ -21730,6 +22033,11 @@
         "date": "2026-09-26",
         "series": "Ornn 成交指数",
         "value": 4.78
+      },
+      {
+        "date": "2026-09-27",
+        "series": "Neocloud 报价中位",
+        "value": 4.38
       }
     ],
     "basisB200": [
@@ -24630,6 +24938,11 @@
       },
       {
         "date": "2026-09-27",
+        "series": "Neocloud 报价中位",
+        "value": 6.69
+      },
+      {
+        "date": "2026-09-27",
         "series": "SemiAnalysis 综合指数",
         "value": 5.8
       }
@@ -25947,7 +26260,7 @@
       {
         "date": "2026-09-27",
         "series": "gpuperhour",
-        "value": 311
+        "value": 306
       },
       {
         "date": "2026-09-27",
@@ -25957,13 +26270,13 @@
       {
         "date": "2026-09-27",
         "series": "vast",
-        "value": 29
+        "value": 32
       }
     ]
   },
   "sources": {
     "openrouter": {
-      "label": "OpenRouter public model rankings chart",
+      "label": "OpenRouter 公开模型排行榜",
       "url": "https://openrouter.ai/api/frontend/v1/rankings/model-rankings-chart",
       "definition": "Sum of source-provided named model rows and Others for each OpenRouter chart week."
     },
@@ -25978,27 +26291,27 @@
       "definition": "Weekly named-model token volume is mapped through OpenRouter canonical slugs to OpenRouterList change-point prices. Free models are zero only when explicitly marked :free; Others and unmapped models remain Unknown. Weighted rates describe visible listed-price exposure, not realized spend, because public token volume is not split into input and output."
     },
     "gpuPrice": {
-      "label": "gpurentalprices.com 34-provider daily verified dataset (CC BY 4.0)",
+      "label": "gpurentalprices.com 34 家供应商逐日验证数据集（CC BY 4.0）",
       "url": "https://gpurentalprices.com/data",
-      "definition": "34 家供应商逐日验证的**非中断性租赁价**（on-demand/secure/community，剔除 spot/serverless）× 跨供应商中位，含 min–max 区间与 30 日均线；竖线标注供应商数量变化。2026-09-27 起替代 Foundry Signals（口径断点）。"
+      "definition": "34 家供应商逐日验证的整租价格（on-demand/secure/community，剔除 spot/serverless）× 跨供应商中位，含 min–max 区间与 30 日均线；竖线标注供应商数量变化。2026-09-27 起替代 Foundry Signals（口径断点）。"
     },
     "gpuPremium": {
-      "label": "Derived from 34-provider medians",
+      "label": "由 34 家供应商中位数推导",
       "url": "https://gpurentalprices.com/data",
       "definition": "Rolling 30-day median of H200/H100 and B200/H100 daily rental-price ratios. A value above 1 means a premium to H100."
     },
     "scarcity": {
-      "label": "GPU Finder market availability (gpufinder.dev)",
+      "label": "GPU Finder 市场可用性（gpufinder.dev）",
       "url": "https://gpufinder.dev/api/v1/availability",
       "definition": "Σavailable/Σtotal 全市场可租卡占比（7 天滚动窗口，每日快照向前积累）。连续稀缺度指标，替代 Foundry 的二元可用率。"
     },
     "listedGap": {
-      "label": "GPU Finder listed vs in-stock gap",
+      "label": "GPU Finder 报价 vs 在库价差",
       "url": "https://gpufinder.dev/api/v1/snapshot",
       "definition": "最低在库价 ÷ 最低报价 − 1。衡量‘报价虚低程度’：市场越紧，最低报价越可能是没有库存的虚价，该差值越大。"
     },
     "breadth": {
-      "label": "GPU Finder provider breadth",
+      "label": "GPU Finder 供应商广度",
       "url": "https://gpufinder.dev/api/v1/gpus",
       "definition": "在架供应商数量随时间变化：价格上行+家数增加=供给在响应；价格上行+家数减少=实质性紧缩。"
     },
