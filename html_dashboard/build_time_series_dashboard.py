@@ -948,7 +948,7 @@ lineChart('breadth-chart','breadth-legend',DATA.datasets.breadth||[],{title:'Pro
 const orderbookRows=DATA.datasets.orderbookDepth||[];
 const obDays=DATA.meta&&DATA.meta.orderbookValidDays?DATA.meta.orderbookValidDays:0;
 document.getElementById('orderbook-note').textContent=`各平台在架 offer 数（平台内全家族求和、不跨平台合并）· 已积累 ${obDays}/10 个有效日${obDays>=10?'，已可连线':'，少于10个有效日只画观测点'}`;
-lineChart('orderbook-depth','orderbook-depth-legend',orderbookRows,{title:'Orderbook total offers',kind:'usd',yTitle:'Offers',zero:true,pointOnly:obDays<10});
+lineChart('orderbook-depth','orderbook-depth-legend',orderbookRows,{title:'Orderbook offers by venue',kind:'count',yTitle:'Offers',zero:true,pointOnly:obDays<10});
 const otpiDays=DATA.meta&&DATA.meta.otpiValidDays?DATA.meta.otpiValidDays:0;
 document.getElementById('otpi-note').textContent=`按 lab 成交加权实现价 · 已积累 ${otpiDays}/10 个有效日${otpiDays>=10?'，已可连线':'，少于10个有效日只画观测点不连线'}`;
 lineChart('otpi-price','otpi-price-legend',DATA.datasets.otpi||[],{title:'Ornn OTPI realized token price',kind:'usd',yTitle:'USD/Mtok',zero:true,pointOnly:otpiDays<10});
@@ -959,7 +959,7 @@ lineChart('contract-band','contract-band-legend',DATA.datasets.contractBand||[],
 
 const panelRows=DATA.datasets.panelIndex||[];
 (()=>{const pm=DATA.meta.panelMembers||{};const counts=Object.entries(pm).map(([g,m])=>{const arr=Array.isArray(m)?m:(m&&m.members)||[];return g+' '+arr.length+'家'}).join(' / ');document.getElementById('panel-index-note').textContent='非中断性租赁价 · 固定成员均值（'+counts+'）· 起点=100 · 成员明细见来源与口径'})();
-lineChart('panel-index-chart','panel-index-legend',panelRows,{title:'Fixed-provider panel index',kind:'usd',yTitle:'Index (base=100)',zero:false,gapDays:11});
+lineChart('panel-index-chart','panel-index-legend',panelRows,{title:'Fixed-provider panel index',kind:'index',yTitle:'Index (base=100)',zero:false,gapDays:11});
 activeModelDetail();sourceDetails();renderTable();$('#freshness').textContent='Updated '+DATA.meta.generatedAt+' · Public source history only · No composite score';
 </script></body></html>'''
 
