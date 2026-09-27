@@ -23,9 +23,10 @@ EXPECTED_SOURCES = {
     "fred_cost_anchors",
     "gpu_markets_fixings",
     "throughput_benchmarks",
+    "gpufinder_market",
 }
 CAPEX_READY_STATUSES = {"fresh", "current_for_frequency"}
-INFORMATIONAL_SOURCES = {"gpu_orderbook", "reference_indices", "neocloud_provider_prices", "epoch_supply", "fred_cost_anchors", "gpu_markets_fixings", "throughput_benchmarks"}
+INFORMATIONAL_SOURCES = {"gpu_orderbook", "reference_indices", "neocloud_provider_prices", "epoch_supply", "fred_cost_anchors", "gpu_markets_fixings", "throughput_benchmarks", "gpufinder_market"}
 INFORMATIONAL_STATUSES = {"fresh", "partial", "failed"}
 
 
