@@ -513,7 +513,11 @@ def build_snapshot() -> dict[str, Any]:
     active_prices = _active_model_price_extract(openrouter["raw"], active_price_raw)
 
     neocloud_rows = neocloud_raw.get("rows") or []
-    gpu = _gpu_from_neocloud(neocloud_rows) if neocloud_rows else _gpu_extract(foundry_raw)
+    if not neocloud_rows:
+        # 价格层已 2026-09-27 起全面切换到 neocloud（非中断性租赁口径）；
+        # 缺失时硬失败而非静默回退到 Foundry 旧口径，避免两种口径混用。
+        raise FileNotFoundError(f"neocloud 价格数据缺失：{NEOCLOUD_PATH}")
+    gpu = _gpu_from_neocloud(neocloud_rows)
     scarcity, listed_gap, breadth = [], [], []
     for row in gpufinder_raw.get("rows") or []:
         day, gpu_name = str(row.get("date") or ""), str(row.get("gpu") or "")
