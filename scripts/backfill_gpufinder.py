@@ -11,6 +11,7 @@
 
 from __future__ import annotations
 
+import hashlib
 import json
 from datetime import datetime, timezone
 from pathlib import Path
@@ -26,12 +27,20 @@ ATTRIBUTION = "Data by GPU Finder (gpufinder.dev), public read-only API; attribu
 FRONTIER = ("H100", "H200", "B200")
 
 
+_FETCH_LOG: dict[str, dict[str, Any]] = {}
+
+
 def _get(path: str) -> dict[str, Any]:
     request = Request(f"{BASE}{path}", headers={"User-Agent": USER_AGENT})
     with urlopen(request, timeout=30) as response:
-        payload = json.loads(response.read())
+        body = response.read()
+    payload = json.loads(body)
     if "data" not in payload:
         raise ValueError(f"gpufinder {path}: missing data")
+    # 记录真实抓取 URL 与内容哈希，供展示层透传（可追溯性）
+    entry = path.split("?")[0]
+    slot = _FETCH_LOG.setdefault(entry, {"url": f"{BASE}{path}", "sha256": ""})
+    slot["sha256"] = "sha256:" + hashlib.sha256(body).hexdigest()
     return payload["data"]
 
 
@@ -162,6 +171,7 @@ def main() -> int:
         "refreshStatus": status,
         "publishable": True,
         "attribution": ATTRIBUTION,
+        "sources": dict(sorted(_FETCH_LOG.items())),
         "rows": sorted(daily, key=lambda r: (r["date"], r["gpu"])),
         "monthlyHistory": monthly,
         "quality": quality,

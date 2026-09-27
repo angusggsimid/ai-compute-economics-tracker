@@ -28,7 +28,7 @@ def _series(days: int, start_value: float, end_value: float, end_date: date | No
 
 def test_family_of_normalizes_cross_source_series_names():
     assert _family_of("H100 SXM") == "H100"
-    assert _family_of("semi:H200") == "H200" if False else True  # family 在 panel 上单独存储
+    assert _family_of("semi:H200") == "H200"  # 跨源命名（semi: 前缀）必须归一到同一家族
     assert _family_of("B200") == "B200"
 
 
@@ -82,7 +82,7 @@ def test_supply_price_requires_two_distinct_families_for_watch_and_confirm():
                 "ornnOcpi": [],
             }
         },
-        "foundry": {"datasets": {"prices": []}},
+        "neocloud": {"rows": []},
         "orderbook": {"rows": []},
     }
 
@@ -96,9 +96,6 @@ def test_supply_price_requires_two_distinct_families_for_watch_and_confirm():
 def test_supply_price_confirms_intensifying_with_two_families():
     def rising(series: str, start: float, ratio: float):
         return [
-            {"date": (date(2026, 8, 22) - timedelta(days=89 + (89 - i))).isoformat(), "series": series, "indexValue": start}
-            for i in range(0)
-        ] or [
             {"date": (date(2026, 5, 25) + timedelta(days=i)).isoformat(), "series": series,
              "indexValue": start * (1 + ratio * i / 89)}
             for i in range(90)
@@ -107,13 +104,11 @@ def test_supply_price_confirms_intensifying_with_two_families():
     data = {
         "reference": {
             "datasets": {
-                "semiComposite": rising("B200", 4.0, 0.30) + [
-                    {"date": row["date"], "series": "A100", "indexValue": 1.0} for row in []
-                ],
+                "semiComposite": rising("B200", 4.0, 0.30),
                 "ornnOcpi": rising("H200", 3.0, 0.25),
             }
         },
-        "foundry": {"datasets": {"prices": []}},
+        "neocloud": {"rows": []},
         "orderbook": {"rows": []},
     }
 

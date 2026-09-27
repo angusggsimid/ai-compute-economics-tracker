@@ -291,3 +291,25 @@
 - Vercel 部署 READY、production、项目 ID 正确，`vercel ls` 的 `meta.githubCommitSha=73d6410d...` 与本地 HEAD 一致；正式响应读取因本机边缘网络 curl 28 超时，采用允许的管理 API 备用证明。
 - Sites 同步 `sites_app/public/dashboard.html`，构建产物和打包校验通过；Sites 提交 `12b0f361`，保存 version 5 并部署 `succeeded`。
 - Sites 固定地址保持 `https://ai-compute-economics-tracker.angusgu456396.chatgpt.site`。带 bypass token 回读遇 Cloudflare 403 challenge，按规则用 connector 确认 deployment succeeded、固定 live URL、最新 version commit_sha 三项一致。
+
+## 2026-09-27 审计后的口径纪律（P0–P6）
+
+**铁律：图注里的每个数字必须由当次数据算出，不允许手写结论。**
+手写结论会随数据变化而说反话——曾出现"自 12 月起加权价走平"而序列实为 8.9 倍波动、
+"溢价收敛"而实际是 12 周平线。`_notes()` 负责生成全部结论句。
+
+**三条容易被违反的纪律：**
+1. **"完整周"只有一处定义**：`week_quality.py`。抓取窗口起点的残周（约次周 1/7）
+   必须同时从图和"52 周达标"判定里剔除，否则角标 ×24 而曲线从残周起步。
+2. **申报日 ≠ 会计期间**。季度序列一律按 `period` 标签解析，排除「累计」行与无季度数的
+   年度行；同一财季被多次披露只算一次（Meta/Alphabet 的 Q2 曾被 6/30 累计 + 7/29 单季
+   拆成两个季度，虚增"3 连续季度"）。
+3. **上游失败必须显于页面**。`qualityWarnings` 非空即降级徽章并披露缓存滞后天数；
+   缓存回放时 `fetchedAt` 不得推进（另有 `runAt` 与逐行 `fromCache`）。
+
+**披露层现状**：18 个来源全部带可点击的真实抓取 URL（不是站点首页），抓取成功即带 sha256；
+`capex` 源含 48 个一手披露链接。展示层任何 URL 都从底表取，不得硬编码。
+
+**中位价口径**：先按供应商取中位（每家一票），再对各家取中位。家数为偶数时中位是两家均值
+（市场上不存在的价格），页面上标 `偶数家·为两家中位报价均值`。P25–P75 在供应商 <4 家时
+置空，不拿全距冒充四分位距。

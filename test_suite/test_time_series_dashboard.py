@@ -1,3 +1,4 @@
+import json
 import sys
 from datetime import date, timedelta
 from pathlib import Path
@@ -8,8 +9,10 @@ import pytest
 
 TRACKER_V2 = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(TRACKER_V2 / "html_dashboard"))
+sys.path.insert(0, str(TRACKER_V2))
 
-from build_time_series_dashboard import build_html, build_snapshot  # noqa: E402
+from build_time_series_dashboard import COST_INDEX_PATH, build_html, build_snapshot  # noqa: E402
+from week_quality import complete_week_count  # noqa: E402
 
 
 def test_time_series_dashboard_uses_full_openrouter_history_without_synthetic_provider_zeroes():
@@ -19,8 +22,14 @@ def test_time_series_dashboard_uses_full_openrouter_history_without_synthetic_pr
     composition = snapshot["datasets"]["openrouterComposition"]
     dates = sorted({row["date"] for row in volume})
 
-    assert len(dates) >= 52
-    assert len({row["date"] for row in composition}) >= 52
+    # 窗口起点周是残周，图中与倍数口径都必须剔除：断言"等于完整周数"而不是硬编码 52，
+    # 这样数据每周增长时测试依然成立，且能锁死"残周不得回到图上"。
+    raw_weeks = json.loads(COST_INDEX_PATH.read_text(encoding="utf-8"))["weeks"]
+    expected = complete_week_count(raw_weeks)
+    assert len(dates) == expected
+    assert len({row["date"] for row in composition}) == expected
+    assert str(raw_weeks[0]["date"]) == snapshot["meta"]["volumePartialWeekDropped"]
+    assert dates[0] != snapshot["meta"]["volumePartialWeekDropped"]
     assert date.fromisoformat(dates[-1]) + timedelta(days=6) < date.today()
     for observed_date in {row["date"] for row in composition}:
         rows = [row for row in composition if row["date"] == observed_date]
@@ -74,7 +83,7 @@ def test_active_model_price_tiers_preserve_unknown_and_sum_to_total():
     snapshot = build_snapshot()
     tiers = snapshot["datasets"]["activePriceTiers"]
     dates = sorted({row["date"] for row in tiers})
-    assert len(dates) >= 52
+    assert len(dates) >= 51
     for observed_date in dates:
         rows = [row for row in tiers if row["date"] == observed_date]
         assert {row["series"] for row in rows} == {"免费", "<$1", "$1–5", ">$5", "Others / 无法匹配"}
@@ -91,8 +100,8 @@ def test_active_model_basket_is_usage_filtered_and_coverage_is_visible():
     assert 1 <= len(active) <= 12
     assert all("deepseek-r1" not in row["rankId"] for row in active)
     assert all(row["tokens"] > 0 and row["share"] > 0 for row in active)
-    assert len({row["date"] for row in input_rows}) >= 52
-    assert len({row["date"] for row in output_rows}) >= 52
+    assert len({row["date"] for row in input_rows}) >= 51
+    assert len({row["date"] for row in output_rows}) >= 51
     assert all(0 < row["coverage"] <= 100 for row in input_rows + output_rows)
 
 

@@ -12,12 +12,12 @@
 - 关键指标：`{"depthValidDates": 36, "latestTotalOffers": 341, "depthGrowthPct": 16.16, "latestGpuCapacity": 10249, "providerSnapshotRows": 23068, "providersCovered": 34}`
 - 阻塞项：无
 
-## Demand & Unit Economics — Trend
+## Demand & Unit Economics — Observing
 - 下一个证明点：获取官方 usage 授权或接入新的非 proxy 用量源；OTPI 继续按日累积。
-- 关键指标：`{"completeWeeks": 52, "latestWeeklyTokens": 128895269979077.0, "weightedOutputPriceChange8wPct": -6.34, "recentPriceCutModels": 105, "otpiLabsCovered": 4, "otpiLatestDate": "2026-09-26"}`
-- 阻塞项：['proxy_ceiling_requires_official_usage_for_inflection']
+- 关键指标：`{"completeWeeks": 51, "latestWeeklyTokens": 128895269979077.0, "weightedOutputPriceChange8wPct": -6.34, "recentPriceCutModels": 105, "otpiLabsCovered": 4, "otpiLatestDate": "2026-09-26"}`
+- 阻塞项：['incomplete_weeks_51_of_52', 'proxy_ceiling_requires_official_usage_for_inflection']
 
 ## Commitment & Monetization — Inflection Watch（intensifying）
 - 下一个证明点：下一财报季追加季度行；合约区间每半年更新。
-- 关键指标：`{"companiesCovered": 5, "companiesWith3ConsecutiveQuarters": 2, "guidanceRevisedUp": ["Alphabet", "Meta"], "guidanceRevisedDown": [], "h100ContractDirectionSinceStart": "falling", "h100ContractFirstMidpoint": 3.05, "h100ContractLatestMidpoint": 2.8}`
-- 阻塞项：['companies_with_3_consecutive_quarters_2_of_3']
+- 关键指标：`{"companiesCovered": 5, "companiesWith3ConsecutiveQuarters": 0, "maxConsecutiveQuarters": 2, "guidanceRevisedUp": ["Alphabet", "Meta"], "guidanceRevisedDown": [], "h100ContractDirectionSinceStart": "falling", "h100ContractFirstMidpoint": 3.05, "h100ContractLatestMidpoint": 2.8}`
+- 阻塞项：['companies_with_3_consecutive_quarters_0_of_3', 'longest_true_quarter_run_2_(Alphabet)_needs_3']

@@ -16,7 +16,9 @@ import json
 import statistics
 from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List, Optional, Tuple
+
+from week_quality import complete_week_count
 
 
 STATES = ("Unobservable", "Observing", "Trend", "Inflection Watch", "Confirmed")
@@ -333,7 +335,8 @@ def evaluate_demand(data: Dict[str, Any]) -> Dict[str, Any]:
     """Demand：OpenRouter 完整周用量 proxy + 牌价账本调价事件 + OTPI。"""
     cost_index = _load_cost_index(data)
     weeks = cost_index.get("weeks") or []
-    complete_weeks = len(weeks)
+    # 残周不计入"完整周"：图上已剔除，时钟口径必须一致
+    complete_weeks = complete_week_count(weeks)
     latest = weeks[-1] if weeks else {}
     first_of_last8 = weeks[-8] if len(weeks) >= 8 else {}
     output_change = None
@@ -357,7 +360,7 @@ def evaluate_demand(data: Dict[str, Any]) -> Dict[str, Any]:
 
     return {
         "clock_id": "demand_unit_economics",
-        "stateBasis": f"OpenRouter 用量 {complete_weeks} 个完整周达标（≥52）；但用量为公开 proxy——契约规定 proxy 不得升级 Inflection，封顶 Trend 属纪律而非保守",
+        "stateBasis": f"OpenRouter 用量 {complete_weeks} 个完整周（已剔除抓取窗口起点的残周）达标（≥52）；但用量为公开 proxy——契约规定 proxy 不得升级 Inflection，封顶 Trend 属纪律而非保守",
         "title": "Demand & Unit Economics",
         "natural_frequency": "weekly/event",
         "state": state,
@@ -417,21 +420,39 @@ def _count_recent_price_cuts(active_price_data: Dict[str, Any], window_days: int
     return len(cut_models)
 
 
+def _fiscal_quarters(rows: List[Dict[str, Any]]) -> Dict[str, List[Tuple[int, int]]]:
+    """按 period 标签解析每家公司的真实单季序列（申报日会造假季度，必须以标签为准）。
+
+    必须排除的两类行：
+    - 累计行（"FY2026 Q2 累计（约6个月）"）——是半年/全年累计，不是单季；
+    - 无季度数的年度行（"FY2026"）——整年数字，不能当一个季度。
+    同一财季被多次披露时（6/30 累计 + 7/29 单季）按财季去重，只算一次。
+    """
+    import re as _re
+
+    seen: Dict[str, set] = {}
+    for row in rows:
+        if row.get("metric") != "capex actual":
+            continue
+        company = str(row.get("company") or "")
+        period = str(row.get("period") or "")
+        if not company or "累计" in period:
+            continue
+        m = _re.search(r"FY(\d{4})\s+Q(\d)", period)
+        if not m:
+            continue  # 年度行等无季度数的标签一律不算季度
+        seen.setdefault(company, set()).add((int(m.group(1)), int(m.group(2))))
+    return {company: sorted(v) for company, v in seen.items()}
+
+
 def evaluate_commitment(data: Dict[str, Any]) -> Dict[str, Any]:
     """Commitment：季度 CAPEX 轨迹 + H100 1Y 合约区间方向。"""
     rows = data.get("capex", {}).get("rows") or []
-    by_company: Dict[str, List[date]] = {}
-    for row in rows:
-        company = row.get("company")
-        metric = row.get("metric")
-        day = _parse_day(row.get("date") or "")
-        if not company or metric != "capex actual" or day is None:
-            continue
-        by_company.setdefault(company, []).append(day)
+    by_company = _fiscal_quarters(rows)
 
     qualified = 0
-    for company, days in by_company.items():
-        quarters = sorted({(d.year, (d.month - 1) // 3 + 1) for d in days})
+    quarter_counts: Dict[str, int] = {}
+    for company, quarters in by_company.items():
         consecutive = 1
         best = 1
         for prev, cur in zip(quarters, quarters[1:]):
@@ -441,6 +462,7 @@ def evaluate_commitment(data: Dict[str, Any]) -> Dict[str, Any]:
                 best = max(best, consecutive)
             else:
                 consecutive = 1
+        quarter_counts[company] = best
         if best >= 3:
             qualified += 1
 
@@ -449,7 +471,12 @@ def evaluate_commitment(data: Dict[str, Any]) -> Dict[str, Any]:
     elif qualified >= 3:
         state, blockers, direction = "Trend", [], None
     else:
-        state, blockers, direction = "Observing", [f"companies_with_3_consecutive_quarters_{qualified}_of_3"], None
+        state = "Observing"
+        blockers = [f"companies_with_3_consecutive_quarters_{qualified}_of_3"]
+        if quarter_counts:
+            top = sorted(quarter_counts.items(), key=lambda kv: (-kv[1], kv[0]))[0]
+            blockers.append(f"longest_true_quarter_run_{top[1]}_({top[0]})_needs_3")
+        direction = None
 
     bands = []
     for row in (data.get("reference", {}).get("datasets", {}).get("semiContract1y")) or []:
@@ -514,6 +541,8 @@ def evaluate_commitment(data: Dict[str, Any]) -> Dict[str, Any]:
         "metrics": {
             "companiesCovered": len(by_company),
             "companiesWith3ConsecutiveQuarters": qualified,
+            "maxConsecutiveQuarters": max(quarter_counts.values()) if quarter_counts else 0,
+            "consecutiveQuartersByCompany": dict(sorted(quarter_counts.items())),
             "guidanceRevisedUp": sorted(up_companies),
             "guidanceRevisedDown": sorted(down_companies),
             "h100ContractDirectionSinceStart": contract_direction,

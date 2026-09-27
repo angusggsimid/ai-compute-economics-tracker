@@ -13,6 +13,10 @@ from statistics import median
 import statistics
 from typing import Any
 
+import sys as _sys
+_sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from week_quality import drop_partial_first_week
+
 ROOT = Path(__file__).resolve().parents[1]
 COST_INDEX_PATH = ROOT / "tracker_data" / "backfills" / "openrouter_cost_index.json"
 PROVIDER_DISPLAY = {
@@ -273,46 +277,13 @@ def _active_model_price_extract(
     }
 
 
-def _gpu_extract(payload: dict[str, Any]) -> dict[str, Any]:
-    prices = payload["datasets"]["prices"]
-    availability = payload["datasets"]["availability"]
-    by_gpu: dict[str, list[dict[str, Any]]] = defaultdict(list)
-    for row in prices:
-        by_gpu[row["series"]].append(row)
-    annotations = {}
-    for gpu, rows in by_gpu.items():
-        previous = None
-        changes = []
-        for row in sorted(rows, key=lambda item: item["date"]):
-            count = int(row["providerCount"])
-            if previous is not None and count != previous:
-                changes.append({"date": row["date"], "label": f"{previous}→{count}"})
-            previous = count
-        annotations[gpu] = changes
-
-    lookup = {(row["date"], row["series"]): row for row in prices}
-    dates = sorted({row["date"] for row in prices})
-    premium = []
-    for gpu in ("H200", "B200"):
-        ratios = []
-        for observed_date in dates:
-            base = lookup.get((observed_date, "H100"))
-            target = lookup.get((observed_date, gpu))
-            if base and target and base["value"]:
-                ratios.append({"date": observed_date, "value": target["value"] / base["value"]})
-        for index, row in enumerate(ratios):
-            window = ratios[max(0, index - 29):index + 1]
-            premium.append({
-                "date": row["date"],
-                "series": f"{gpu} / H100",
-                "value": median(item["value"] for item in window),
-            })
-    return {"prices": prices, "availability": availability, "annotations": annotations, "premium": premium}
-
-
 def _gpu_from_neocloud(neocloud_rows: list[dict[str, Any]]) -> dict[str, Any]:
-    """从 neocloud 34 家供应商逐条报价聚合出与 Foundry 同构的日度序列。
-    同一 (日期, GPU) 下：value=中位价、low/high=区间、providerPrices=逐供应商中位、providerCount=家数。"""
+    """从 neocloud 供应商逐条报价聚合出日度序列。
+
+    聚合顺序：先对每家供应商当日多条报价取中位（每家一票），再对各家取中位。
+    同一 (日期, GPU) 下：value=中位价、low/high=区间、providerPrices=逐供应商中位、
+    providerCount=去重家数、medianSynthetic=家数为偶数时中位是两家均值（市场上不存在的价格）。
+    """
     # 只取非中断性租赁档位（on-demand/secure/community），剔除 spot 与 serverless：
     # spot 可被抢占、serverless 按调用计费，都是不同产品；混入会让"租赁价格"随时间漂移。
     RENTAL_KINDS = {"on-demand", "secure", "community"}
@@ -336,11 +307,13 @@ def _gpu_from_neocloud(neocloud_rows: list[dict[str, Any]]) -> dict[str, Any]:
             per_prov[prov].append(v)
         provider_medians = {prov: round(median(vs), 4) for prov, vs in per_prov.items()}
         prov_values = sorted(provider_medians.values())
+        # 供应商 <4 家时四分位不可估：置空而不是拿全距冒充 P25–P75，
+        # 否则窄样本日会把"市场分化度"系统性夸大。
         if len(prov_values) >= 4:
             quartiles = statistics.quantiles(prov_values, n=4)
             p25, p75 = round(quartiles[0], 4), round(quartiles[2], 4)
         else:
-            p25, p75 = prov_values[0], prov_values[-1]
+            p25, p75 = None, None
         prices.append({
             "date": day,
             "series": gpu,
@@ -351,6 +324,8 @@ def _gpu_from_neocloud(neocloud_rows: list[dict[str, Any]]) -> dict[str, Any]:
             "high": round(max(prov_values), 4),
             "average": round(sum(prov_values) / len(prov_values), 4),
             "providerCount": len(provider_medians),
+            # 偶数家时 statistics.median 返回中间两家的均值 —— 那不是任何一家的报价，必须显式标记
+            "medianSynthetic": len(prov_values) % 2 == 0,
             "providerPrices": provider_medians,
         })
 
@@ -569,7 +544,6 @@ def _reference_extract(reference_raw: dict[str, Any], orderbook_raw: dict[str, A
             "panelIndex": sorted(panel_rows, key=lambda r: (r["date"], r["series"])),
             "basisH100": sorted(basis_rows["H100"], key=lambda r: (r["date"], r["series"])),
             "basisH200": sorted(basis_rows["H200"], key=lambda r: (r["date"], r["series"])),
-            "basisH200": sorted(basis_rows["H200"], key=lambda r: (r["date"], r["series"])),
             "basisB200": sorted(basis_rows["B200"], key=lambda r: (r["date"], r["series"])),
             "contractBand": sorted(contract, key=lambda r: r["date"]),
             "otpi": sorted(otpi, key=lambda r: (r["date"], r["series"])),
@@ -635,6 +609,35 @@ def _capex_display(row: dict[str, Any]) -> dict[str, Any]:
     return out
 
 
+def _src_entry(raw: dict[str, Any], *keys: str) -> tuple[str, str]:
+    """从底表 sources 里取真实抓取 URL 与 sha256（展示层不得写死 URL）。"""
+    sources = raw.get("sources") or {}
+    url = str(raw.get("sourceUrl") or "")
+    sha = ""
+    for key in keys:
+        node = sources.get(key)
+        if not isinstance(node, dict):
+            continue
+        url = url or str(node.get("url") or "")
+        sha = sha or str(node.get("sha256") or node.get("raw_sha256") or "")
+    return url, sha
+
+
+def _links(urls: list[str], sha: str = "") -> dict[str, Any]:
+    """多来源渲染成 urls 数组；单来源额外保留 url 兼容旧字段。"""
+    seen: list[str] = []
+    for u in urls:
+        u = str(u or "").strip()
+        if u and u not in seen:
+            seen.append(u)
+    out: dict[str, Any] = {"urls": seen}
+    if seen:
+        out["url"] = seen[0]
+    if sha:
+        out["sha256"] = sha
+    return out
+
+
 def build_snapshot() -> dict[str, Any]:
     if not COST_INDEX_PATH.exists():
         raise FileNotFoundError(COST_INDEX_PATH)
@@ -675,6 +678,62 @@ def build_snapshot() -> dict[str, Any]:
     capex = [_capex_display(row) for row in sorted(capex_raw.get("rows") or [], key=lambda r: (r["date"], r["company"]), reverse=True)]
 
     generated_at = datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
+
+    # ---- 真实抓取 URL 与 sha256 一律从底表取，展示层不得写死 ----
+    neocloud_url, neocloud_sha = _src_entry(neocloud_raw, "dataset")
+    if not neocloud_sha:
+        neocloud_sha = str(neocloud_raw.get("sourceSha256") or "")
+    ref_sources = reference_raw.get("sources") or {}
+    ob_sources = orderbook_raw.get("sources") or {}
+
+    def _ref_url(*keys: str) -> str:
+        for k in keys:
+            node = ref_sources.get(k)
+            if isinstance(node, dict) and node.get("url"):
+                return str(node["url"])
+        return ""
+
+    def _ref_sha(*keys: str) -> str:
+        for k in keys:
+            node = ref_sources.get(k)
+            if isinstance(node, dict) and (node.get("sha256") or node.get("raw_sha256")):
+                return str(node.get("sha256") or node.get("raw_sha256"))
+        return ""
+
+    BASIS_URLS = [u for u in [_ref_url("semianalysis_public"), _ref_url("ornn_ocpi"), neocloud_url] if u]
+    BASIS_SHA = " ".join(x for x in [_ref_sha("semianalysis_public"), _ref_sha("ornn_ocpi"), neocloud_sha] if x)
+    CONTRACT_URL = _ref_url("semianalysis_public")
+    OTPI_URL = _ref_url("ornn_otpi")
+    ORDERBOOK_URLS = [u for u in [(ob_sources.get(k) or {}).get("url", "") for k in ob_sources] if u]
+    _gf = gpufinder_raw.get("sources") or {}
+    GFINDER_URLS = [str(v.get("url")) for v in _gf.values() if isinstance(v, dict) and v.get("url")]
+    GFINDER_SHA = " ".join(str(v.get("sha256")) for v in _gf.values() if isinstance(v, dict) and v.get("sha256"))
+
+    # CAPEX：每行自带一手披露链接，来源区必须能点开
+    capex_urls = [r["source_url"] for r in (capex_raw.get("rows") or []) if r.get("source_url")]
+    capex_sha = " ".join(
+        str(v.get("sha256")) for v in (capex_raw.get("sources") or {}).values()
+        if isinstance(v, dict) and v.get("sha256")
+    )
+    _cov = capex_raw.get("cacheCoverage") or {}
+    capex_cache_txt = "、".join(
+        f"{k} 最新 {v.get('latestDate')}（滞后 {v.get('ageDays')} 天）" for k, v in sorted(_cov.items())
+    ) or "无缓存记录"
+    capex_quality = capex_raw.get("quality") or []
+    if capex_quality:
+        capex_cache_txt += f"；本期 {len(capex_quality)} 家上游失败，全部来自缓存"
+
+    # 家数一律从数据推导：全域家数 vs 最新日实际参与家数
+    n_providers_all = len({str(r.get("provider")) for r in (neocloud_rows or []) if r.get("provider")})
+    _gpu_latest: dict[str, dict[str, Any]] = {}
+    for r in gpu["prices"]:
+        cur = _gpu_latest.get(r["series"])
+        if cur is None or r["date"] > cur["date"]:
+            _gpu_latest[r["series"]] = r
+    latest_prov_counts = "、".join(
+        f"{k} {v.get('providerCount')} 家" + ("（偶数家，中位为两家均值）" if v.get("medianSynthetic") else "")
+        for k, v in sorted(_gpu_latest.items())
+    )
     dated_rows = (
         openrouter["volume"] + openrouter["composition"]
         + gpu["prices"] + scarcity + active_prices["tiers"]
@@ -708,47 +767,59 @@ def build_snapshot() -> dict[str, Any]:
         "sources": {
             "openrouter": {
                 "label": "OpenRouter 公开模型排行榜",
-                "url": openrouter_raw["sources"]["openrouter"]["url"],
+                **_links([*_src_entry(openrouter_raw, "openrouter")], _src_entry(openrouter_raw, "openrouter")[1]),
                 "definition": openrouter_raw["method"]["volume"],
             },
             "openrouterComposition": {
                 "label": "OpenRouter public weekly named-model composition",
-                "url": openrouter_raw["sources"]["openrouter"]["url"],
+                **_links([_src_entry(openrouter_raw, "openrouter")[0]], _src_entry(openrouter_raw, "openrouter")[1]),
                 "definition": "Each weekly column independently stacks every model disclosed by the public chart plus Others. Segment height is share of that week's total token volume. Columns are not connected, so a model missing from another week is never treated as zero usage.",
             },
             "activePrice": {
-                "label": "OpenRouter public weekly rankings + OpenRouter models + OpenRouterList price history",
-                "url": active_price_raw["sources"]["history"]["url"],
+                "label": "OpenRouter 公开周榜 + 模型列表 + OpenRouterList 价格史",
+                **_links(
+                    [
+                        (active_price_raw.get("sources") or {}).get("models", {}).get("url", ""),
+                        (active_price_raw.get("sources") or {}).get("history", {}).get("url", ""),
+                    ],
+                    " ".join(
+                        x for x in [
+                            (active_price_raw.get("sources") or {}).get("models", {}).get("sha256", ""),
+                            (active_price_raw.get("sources") or {}).get("history", {}).get("sha256", ""),
+                        ] if x
+                    ),
+                ),
                 "definition": "Weekly named-model token volume is mapped through OpenRouter canonical slugs to OpenRouterList change-point prices. Free models are zero only when explicitly marked :free; Others and unmapped models remain Unknown. Weighted rates describe visible listed-price exposure, not realized spend, because public token volume is not split into input and output.",
             },
             "gpuPrice": {
-                "label": "gpurentalprices.com 34 家供应商逐日验证数据集（CC BY 4.0）",
-                "url": "https://gpurentalprices.com/data",
-                "definition": "34 家供应商逐日验证的整租价格（on-demand/secure/community，剔除 spot/serverless）× 跨供应商中位，含 min–max 区间与 30 日均线；竖线标注供应商数量变化。2026-09-27 起替代 Foundry Signals（口径断点）。",
+                "label": f"gpurentalprices 供应商逐日验证数据集（CC BY 4.0）· 数据集全域 {n_providers_all} 家",
+                **_links([neocloud_url], neocloud_sha),
+                "definition": f"整租挂牌价（on-demand/secure/community，剔除 spot/serverless）。聚合顺序：先对每家供应商当日多条报价取中位（每家一票），再对各家取中位，因此中位数恒等于一家真实供应商的报价；家数为偶数时中位是两家均值（页面上标 ⚠）。最新参与家数：{latest_prov_counts}。含 min–max 区间与 30 日均线。2026-09-27 起替代 Foundry Signals（口径断点）。",
             },
             "gpuPremium": {
-                "label": "由 34 家供应商中位数推导",
-                "url": "https://gpurentalprices.com/data",
+                "label": "由上述供应商中位价推导",
+                **_links([neocloud_url], neocloud_sha),
                 "definition": "Rolling 30-day median of H200/H100 and B200/H100 daily rental-price ratios. A value above 1 means a premium to H100.",
             },
             "scarcity": {
                 "label": "GPU Finder 市场可用性（gpufinder.dev）",
-                "url": "https://gpufinder.dev/api/v1/availability",
+                **_links(GFINDER_URLS, GFINDER_SHA),
                 "definition": "Σavailable/Σtotal 全市场可租卡占比（7 天滚动窗口，每日快照向前积累）。连续稀缺度指标，替代 Foundry 的二元可用率。",
             },
             "listedGap": {
                 "label": "GPU Finder 报价 vs 在库价差",
-                "url": "https://gpufinder.dev/api/v1/snapshot",
+                **_links(GFINDER_URLS, GFINDER_SHA),
                 "definition": "最低在库价 ÷ 最低报价 − 1。衡量‘报价虚低程度’：市场越紧，最低报价越可能是没有库存的虚价，该差值越大。",
             },
             "breadth": {
                 "label": "GPU Finder 供应商广度",
-                "url": "https://gpufinder.dev/api/v1/gpus",
+                **_links(GFINDER_URLS, GFINDER_SHA),
                 "definition": "在架供应商数量随时间变化：价格上行+家数增加=供给在响应；价格上行+家数减少=实质性紧缩。",
             },
             "capex": {
-                "label": "SEC companyfacts and official company disclosures",
-                "definition": "Quarterly and event-frequency observations preserve source units and are not interpolated.",
+                "label": "SEC companyfacts + 各公司官方业绩披露（原始单位，不插值）",
+                **_links(capex_urls, capex_sha),
+                "definition": f"季度与事件频率观测保留来源单位、不插值。共 {len(capex_urls)} 个一手披露链接（SEC EDGAR / 投资者关系页），表中每行均可回溯。缓存覆盖：{capex_cache_txt}。",
             },
         },
     }
@@ -757,12 +828,21 @@ def build_snapshot() -> dict[str, Any]:
     snapshot["meta"]["panelAnnotations"] = ref_meta.get("panelAnnotations") or {}
     _cq, _cg = _capex_quarterly(snapshot["datasets"].get("capex") or [])
     snapshot["meta"]["capexGuidance"] = _cg
+    snapshot["meta"]["providerUniverse"] = n_providers_all
     _vol = [r for r in snapshot["datasets"].get("openrouterVolume", []) if r.get("series") == "Weekly tokens"]
     if len(_vol) >= 3 and _vol[0]["value"] > 0:
-        # 首周是抓取窗口起点的残周（值远低于次周）——剔除后再算倍数，避免虚标
-        _base = _vol[0] if _vol[0]["value"] >= 0.5 * _vol[1]["value"] else _vol[1]
-        _ratio = _vol[-1]["value"] / _base["value"]
+        # 残周在图上与倍数口径里都必须剔除（尺子见 week_quality，与时钟共用），
+        # 否则角标说 ×24 而曲线从 0.75T 起步，自相矛盾。
+        _vol_sorted = sorted(_vol, key=lambda r: r["date"])
+        _kept, _dropped = drop_partial_first_week(_vol_sorted, "value")
+        if _dropped:
+            snapshot["datasets"]["openrouterVolume"] = [
+                r for r in snapshot["datasets"]["openrouterVolume"] if r.get("date") != _dropped
+            ]
+        _base = _kept[0]
+        _ratio = _kept[-1]["value"] / _base["value"]
         snapshot["meta"]["volumeYoYLabel"] = f"自首个完整周（{_base['date']}起）×{_ratio:.0f}"
+        snapshot["meta"]["volumePartialWeekDropped"] = _dropped
     snapshot["meta"]["scarcityValidDays"] = len({r["date"] for r in scarcity})
     snapshot["meta"]["gapValidDays"] = len({r["date"] for r in listed_gap})
     # 全局时间轴纪律：任何序列不早于 OpenRouter 用量窗口起点（52 周滚动）
@@ -797,15 +877,15 @@ def build_snapshot() -> dict[str, Any]:
         key=lambda r: (r["date"], r["series"]),
     )
     snapshot["sources"].update({
-        "basisH100": {"url": "https://gpu-index.semianalysis.com/ | https://index.ornn.com | https://gpurentalprices.com/data", "label": "H100 三源价格对照", "definition": "同一 GPU 家族下三种口径并列：供应商报价中位、综合现货-合约指数、成交加权指数。口径不同，仅作交叉对照，不构成同质序列。"},
-        "basisH200": {"url": "https://gpu-index.semianalysis.com/ | https://index.ornn.com | https://gpurentalprices.com/data", "label": "H200 三源价格对照", "definition": "口径同上（H200 无 SemiAnalysis 公开指数，为两源对照）。Neocloud 与 Ornn 可能方向分歧，分歧本身是证据而非噪声。"},
-        "basisB200": {"url": "https://gpu-index.semianalysis.com/ | https://index.ornn.com | https://gpurentalprices.com/data", "label": "B200 三源价格对照", "definition": "口径同上。"},
-        "contractBand": {"url": "https://gpu-index.semianalysis.com/api/public-data", "label": "SemiAnalysis H100 1Y 合约调查区间", "definition": "月度调查的25-75分位合约价区间，半年期阶梯展示。许可：公开页引用需署名。"},
-        "orderbookDepth": {"url": "https://api.gpuindexes.com/api/offers | https://console.vast.ai/api/v0/bundles/ | https://api.runpod.io/graphql", "label": "GPU 订单簿逐源观测", "definition": "gpuperhour/vast 为逐条报价 offers、runpod 为型号挂牌 types，单位语义不同故分序列展示不合并。时点观测，<10 有效日只画点不连线。"},
-        "otpi": {"url": "https://index.ornn.com/api/otpi", "label": "Ornn OTPI 已实现 token 价", "definition": "按 lab 的成交加权 token 实现价（USD/Mtok），免费层滚动窗口每日快照累积。许可：Ornn 免费层署名引用。"},
-        "top5Share": {"url": "https://openrouter.ai/api/frontend/v1/rankings/model-rankings-chart", "label": "OpenRouter 公开周榜（Top-5 派生）", "definition": "每周公开榜单里最新 Top-5 模型各自的用量占比走势。看的是排名与份额的稳定性：曲线频繁交叉=头部不稳。"},
-        "priceChanges": {"url": "https://openrouter.ai/models", "label": "OpenRouter 模型牌价调价点（change-point 账本）", "definition": "头部模型牌价近 4 周被修改的次数（来自我们记录的调价点账本）。高频调价=定价试探/竞争响应，是'价格战'的直接痕迹。"},
-        "panelIndex": {"url": "https://gpurentalprices.com/data", "label": "固定供应商面板指数", "definition": "从 34 家供应商数据集取窗口内持续在架成员（覆盖率≥90%），按非中断性租赁价计算成员均值，起点=100；成员当日缺价即断点。消除供应商构成漂移，是供给价格的首选趋势证据。橙色虚线标注 = 单成员挂牌价跳变（如 9/3 Together AI −50%：同规格 180GB 单家从 $8.19 调至 $4.09，属单供应商调价，非市场整体事件）；台阶来自成员个体动作，看趋势请看均线。"},
+        "basisH100": {**_links(BASIS_URLS, BASIS_SHA), "label": "H100 三源价格对照", "definition": "同一 GPU 家族下三种口径并列：供应商报价中位、综合现货-合约指数、成交加权指数。口径不同，仅作交叉对照，不构成同质序列。"},
+        "basisH200": {**_links(BASIS_URLS, BASIS_SHA), "label": "H200 三源价格对照", "definition": "口径同上（H200 无 SemiAnalysis 公开指数，为两源对照）。Neocloud 与 Ornn 可能方向分歧，分歧本身是证据而非噪声。"},
+        "basisB200": {**_links(BASIS_URLS, BASIS_SHA), "label": "B200 三源价格对照", "definition": "口径同上。"},
+        "contractBand": {**_links([CONTRACT_URL], _ref_sha("semianalysis_public")), "label": "SemiAnalysis H100 1Y 合约调查区间", "definition": "月度调查的25-75分位合约价区间，半年期阶梯展示。许可：公开页引用需署名。"},
+        "orderbookDepth": {**_links(ORDERBOOK_URLS, " ".join(str(v.get("sha256")) for v in ob_sources.values() if isinstance(v, dict) and v.get("sha256"))), "label": "GPU 订单簿逐源观测", "definition": "gpuperhour/vast 为逐条报价 offers、runpod 为型号挂牌 types，单位语义不同故分序列展示不合并。时点观测，<10 有效日只画点不连线。"},
+        "otpi": {**_links([OTPI_URL], _ref_sha("ornn_otpi")), "label": "Ornn OTPI 已实现 token 价", "definition": "按 lab 的成交加权 token 实现价（USD/Mtok），免费层滚动窗口每日快照累积。许可：Ornn 免费层署名引用。"},
+        "top5Share": {**_links([_src_entry(openrouter_raw, "openrouter")[0]], _src_entry(openrouter_raw, "openrouter")[1]), "label": "OpenRouter 公开周榜（Top-5 派生）", "definition": "每周公开榜单里最新 Top-5 模型各自的用量占比走势。看的是排名与份额的稳定性：曲线频繁交叉=头部不稳。"},
+        "priceChanges": {**_links([(active_price_raw.get("sources") or {}).get("models", {}).get("url", "")], (active_price_raw.get("sources") or {}).get("models", {}).get("sha256", "")), "label": "OpenRouter 模型牌价调价点（change-point 账本）", "definition": "头部模型牌价近 4 周被修改的次数（来自我们记录的调价点账本）。高频调价=定价试探/竞争响应，是'价格战'的直接痕迹。"},
+        "panelIndex": {**_links([neocloud_url], neocloud_sha), "label": "固定供应商面板指数", "definition": "从 34 家供应商数据集取窗口内持续在架成员（覆盖率≥90%），按非中断性租赁价计算成员均值，起点=100；成员当日缺价即断点。消除供应商构成漂移，是供给价格的首选趋势证据。橙色虚线标注 = 固定成员里当日环比跳变最大的那一家（如「Together AI −50%」，同规格单家调价，非市场整体事件）；台阶来自成员个体动作，判断趋势请看均线。"},
     })
     _pm = snapshot["meta"].get("panelMembers") or {}
     if _pm:
@@ -847,7 +927,7 @@ def _clock_key_metric(clock: dict[str, Any]) -> str:
         return f"订单簿 {metrics.get('depthValidDates', 0)} 有效日 · 最新 offers {metrics.get('latestTotalOffers')}"
     if cid == "demand_unit_economics":
         return f"{metrics.get('completeWeeks', 0)} 完整周 · 近90日降价模型 {metrics.get('recentPriceCutModels', 0)}"
-    return f"{metrics.get('companiesWith3ConsecutiveQuarters', 0)}/{metrics.get('companiesCovered', 0)} 家公司达3连续季度"
+    return f"{metrics.get('companiesWith3ConsecutiveQuarters', 0)}/{metrics.get('companiesCovered', 0)} 家公司达3连续季度（单季口径·最长 {metrics.get('maxConsecutiveQuarters', 0)} 个）"
 
 
 FISCAL_TO_CAL = {
@@ -1140,7 +1220,7 @@ HTML = r'''<!doctype html>
 <style>
 :root{--bg:#f5f5f7;--paper:#fff;--ink:#1d1d1f;--muted:#6e6e73;--line:#d2d2d7;--blue:#0071e3;--cyan:#00a6a6;--green:#248a3d;--orange:#d76b00;--red:#d70015;--purple:#8944ab;--radius:8px}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI","Noto Sans SC",sans-serif;letter-spacing:0}.shell{max-width:1440px;margin:auto;padding:0 28px 64px}.topbar{margin:0 -28px;padding:0 28px;border-bottom:1px solid rgba(0,0,0,.08);background:var(--bg)}.topbar-inner{height:52px;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{font-size:15px;font-weight:650;white-space:nowrap}.nav{display:flex;gap:4px;overflow:auto}.nav a{padding:7px 10px;color:var(--muted);font-size:13px;text-decoration:none;border-radius:6px}.nav a:hover{background:#fff;color:var(--ink)}.hero{padding:42px 0 30px;border-bottom:1px solid var(--line)}h1{margin:0;font-size:42px;line-height:1.12;font-weight:700}.sub{margin:10px 0 0;color:var(--muted);font-size:16px}.controls{display:flex;align-items:end;flex-wrap:wrap;gap:10px;margin-top:24px}.control label{display:block;margin:0 0 5px;color:var(--muted);font-size:11px;font-weight:650;text-transform:uppercase}.control input{height:36px;padding:0 10px;border:1px solid var(--line);border-radius:6px;background:#fff;color:var(--ink);font:inherit}.segments{display:flex;padding:3px;border:1px solid var(--line);border-radius:7px;background:#fff}.segments button{height:28px;padding:0 11px;border:0;border-radius:5px;background:transparent;color:var(--muted);font:inherit;font-size:12px;cursor:pointer}.segments button.active{background:var(--ink);color:#fff}.section{padding:34px 0 8px;border-bottom:1px solid var(--line)}.section-head{display:flex;align-items:baseline;justify-content:space-between;gap:20px;margin-bottom:20px}.section h2{margin:0;font-size:25px;line-height:1.2}.section-kicker{color:var(--muted);font-size:12px;text-transform:uppercase}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.panel{min-width:0;padding:20px;border:1px solid rgba(0,0,0,.09);border-radius:var(--radius);background:var(--paper)}.panel.full{grid-column:1/-1}.panel-head{display:flex;align-items:flex-start;justify-content:space-between;gap:18px}.panel h3{margin:0;font-size:17px;line-height:1.35}.panel-note{margin:5px 0 0;color:var(--muted);font-size:12px}.chart{position:relative;min-height:330px;margin-top:12px}.chart svg{display:block;width:100%;height:330px;overflow:visible}.legend{display:flex;flex-wrap:wrap;gap:7px 12px;margin-top:10px}.legend button{display:inline-flex;align-items:center;gap:6px;padding:3px 6px;border:0;border-radius:4px;background:transparent;color:var(--muted);font:inherit;font-size:11px;cursor:pointer}.legend button.off{opacity:.32}.swatch{width:16px;height:3px;border-radius:2px}.key-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;margin-top:12px;border:1px solid #e5e5ea;border-radius:6px;overflow:hidden;background:#e5e5ea}.key-stat{min-width:0;padding:10px 12px;background:#fafafa}.key-stat b{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:12px}.key-stat span{display:block;margin-top:4px;color:var(--muted);font-size:11px;font-variant-numeric:tabular-nums}.source{margin-top:12px;padding-top:10px;border-top:1px solid #ececf0;color:var(--muted);font-size:11px}.source summary{cursor:pointer;list-style:none}.source summary::-webkit-details-marker{display:none}.source a{color:var(--blue)}.tooltip{position:absolute;z-index:5;display:none;max-width:300px;padding:9px 11px;border-radius:6px;background:rgba(29,29,31,.95);color:#fff;font-size:11px;line-height:1.5;pointer-events:none;box-shadow:0 8px 24px rgba(0,0,0,.16)}.empty{display:grid;place-items:center;height:300px;color:var(--muted);font-size:13px}.table-wrap{overflow:auto;border-top:1px solid var(--line)}table{width:100%;border-collapse:collapse;font-size:12px}th,td{padding:10px 12px;border-bottom:1px solid #e8e8ed;text-align:left;white-space:nowrap}th{position:sticky;top:0;background:#fafafa;color:var(--muted);font-weight:650}td.num{text-align:right;font-variant-numeric:tabular-nums}.axis{fill:var(--muted);font-size:10px}.axis-title{fill:var(--muted);font-size:10px;font-weight:650}.gridline{stroke:#e5e5ea;stroke-width:1}.footer{padding:24px 0;color:var(--muted);font-size:11px}
-.chart.compact{min-height:240px}.chart.compact svg{height:240px}
+.chart.compact{min-height:240px}.chart.compact svg{height:240px}#gpu-price-h100,#gpu-price-h200,#gpu-price-b200{min-height:420px}#gpu-price-h100 svg,#gpu-price-h200 svg,#gpu-price-b200 svg{height:420px}
 @media(max-width:820px){.shell{padding:0 16px 48px}.topbar{position:static;margin:0 -16px;padding:0 16px}.nav{display:none}.hero{padding-top:28px}h1{font-size:32px}.grid{grid-template-columns:1fr}.panel.full{grid-column:1}.panel{padding:16px}.chart{min-height:190px}.chart svg{height:190px}.chart.compact svg{height:170px}.axis,.axis-title{font-size:24px}.key-stats{grid-template-columns:repeat(2,minmax(0,1fr))}.section-head{display:block}.section-kicker{display:block;margin-top:5px}}
 .grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}.grid.four{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}@media(max-width:820px){.grid.four{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:560px){.grid.four{grid-template-columns:1fr}}.clock-card{padding:16px;border:1px solid rgba(0,0,0,.09);border-radius:var(--radius);background:var(--paper)}.clock-card h4{margin:0;font-size:13px;color:var(--muted);font-weight:650}.clock-state{margin-top:8px;font-size:20px;font-weight:700}.st-observing .clock-state{color:#8e8e93}.st-trend .clock-state{color:#0071e3}.st-watch .clock-state{color:#b25000}.st-confirmed .clock-state{color:#1d7a3d}.clock-metric{margin:8px 0 0;font-size:12px;font-variant-numeric:tabular-nums}.clock-next{margin:6px 0 0;color:var(--muted);font-size:11px}.clock-detail{margin-top:10px;border-top:1px solid #ececf0;padding-top:8px}.clock-detail>summary{cursor:pointer;list-style:none;color:var(--muted);font-size:11px}.clock-detail>summary::-webkit-details-marker{display:none}.clock-detail[open]>summary{color:var(--ink)}.clock-evidence p{margin:4px 0;font-size:11px;line-height:1.5}.clock-evidence p b{display:block;margin-top:6px;color:var(--ink)}
 .clock-basis{margin:8px 0 0;padding:6px 10px;background:rgba(0,113,227,.07);border-left:2px solid #0071e3;font-size:11px;line-height:1.6;color:var(--ink)}
@@ -1151,7 +1231,7 @@ HTML = r'''<!doctype html>
 .fresh-details{position:relative;display:inline-block}.fresh-details>summary{cursor:pointer;list-style:none}.fresh-details>summary::-webkit-details-marker{display:none}
 .fresh-list{position:absolute;top:110%;left:0;z-index:50;min-width:340px;max-width:480px;padding:10px 12px;background:var(--paper);border:1px solid var(--line);border-radius:10px;box-shadow:0 12px 32px rgba(0,0,0,.12)}
 .fresh-row{padding:5px 0;border-bottom:1px solid #ececf0;font-size:11px;line-height:1.5}.fresh-row:last-child{border-bottom:none}
-.fresh-dot{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:6px}.fresh-dot.ok{background:#248a3d}.fresh-dot.warn{background:#d76b00}.fresh-dot.stale{background:#d76b00}.fresh-dot.bad{background:#d70015}
+.sha-line{display:inline-block;margin-top:3px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10px;color:#8e8e93;word-break:break-all}.fresh-dot{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:6px}.fresh-dot.ok{background:#248a3d}.fresh-dot.warn{background:#d76b00}.fresh-dot.stale{background:#d76b00}.fresh-dot.bad{background:#d70015}
 .fresh-impact{display:block;color:var(--muted);margin-left:13px;font-size:10px}
 .kpi-row{display:flex;gap:12px;justify-content:space-around;padding:22px 6px 10px}.kpi{text-align:center}.kpi-value{font-size:30px;font-weight:700;line-height:1.1}.kpi-label{font-size:11px;color:var(--muted);margin-top:4px}
 .pc-row{display:flex;align-items:center;gap:8px;margin:6px 0}.pc-name{width:118px;font-size:10px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--muted)}.pc-barwrap{flex:1;background:#ececf0;height:10px;border-radius:5px}.pc-bar{background:#0071e3;height:10px;border-radius:5px}.pc-count{font-size:10px;width:34px;text-align:right;font-variant-numeric:tabular-nums}
@@ -1171,9 +1251,9 @@ HTML = r'''<!doctype html>
 <header class="topbar"><div class="topbar-inner"><div class="brand">AI Compute Economics</div><nav class="nav"><a href="#demand">需求与模型</a><a href="#compute">GPU</a><a href="#capex">CAPEX</a></nav></div></header>
 <section class="hero"><h1>AI Compute Economics</h1><p class="sub">价格、用量与模型结构的时间序列</p><div class="hero-meta">__FRESH__</div><div class="controls"><div class="control"><label>开始日期</label><input id="start" type="date"></div><div class="control"><label>结束日期</label><input id="end" type="date"></div><div class="segments" id="presets"><button data-days="90">3M</button><button data-days="180">6M</button><button data-days="365">1Y</button><button data-days="0" class="active">全部</button></div></div></section>
 
-__CLOCKS__<section class="section" id="demand"><div class="section-head"><h2>需求与活跃模型结构</h2><span class="section-kicker">OpenRouter · 52周</span></div><div class="grid"><article class="panel full" data-source="openrouter"><h3>OpenRouter 模型 Token 总量</h3><p class="panel-note">每周 token 总量与 4 周均线 · 含未具名模型的汇总</p><div id="or-volume" class="chart"></div><div id="or-volume-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel full" data-source="openrouterComposition"><h3>OpenRouter 活跃模型组合更替</h3><p class="panel-note">每周 Top-9 模型的用量占比 · 灰色为未具名模型 · 悬停查看明细</p><div id="or-composition" class="chart"></div><div id="composition-legend" class="legend"></div><div id="composition-badge" class="badge-line"></div><div id="composition-latest" class="key-stats"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel full" data-source="top5Share"><h3>Top-5 模型份额走势</h3><p class="panel-note">最新周 Top-5 模型各自的用量占比 · 末端标模型名 · 与堆叠图配合看"头部换得勤、没人坐稳"</p><div id="top5-share" class="chart"></div><div id="top5-share-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel full" data-source="activePrice"><h3>活跃模型 Output 价格层级迁移</h3><p class="panel-note">按用量加权的输出价格分档 · 灰色=未匹配到价格的用量（近月约占一半，压低了可见迁移幅度）· >$5 档的清零本身是一条结论</p><div id="active-price-tier" class="chart"></div><div id="active-price-tier-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel" data-source="activePrice"><h3>活跃模型组合 Input 牌价</h3><p class="panel-note">按公开Token量加权 · 美元 / 100万 input tokens · 自 12 月起加权价走平——"降价"主要来自模型组合迁移，不是同款持续降价</p><div id="active-input-basket" class="chart compact"></div><div id="active-input-basket-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel" data-source="activePrice"><h3>活跃模型组合 Output 牌价</h3><p class="panel-note">按公开Token量加权 · 美元 / 100万 output tokens · 自 12 月起加权价走平——"降价"主要来自模型组合迁移，不是同款持续降价</p><div id="active-output-basket" class="chart compact"></div><div id="active-output-basket-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel" data-source="otpi"><h3>OTPI 已实现 Token 价（积累中）</h3><p class="panel-note" id="otpi-note">各实验室按实际成交加权的 token 价格 · 免费层 1 个月滚动窗口，每日快照累积</p><div id="otpi-price" class="chart compact"></div><div id="otpi-price-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel" data-source="priceChanges"><h3>近期活跃模型 · 调价点</h3><p class="panel-note" id="price-change-note">头部模型牌价近 4 周被改了几次——高频调价 = 定价试探与竞争响应</p><div id="price-change-bars"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><details class="model-detail"><summary>查看近期活跃模型与单模型价格历史</summary><div class="detail-controls"><select id="active-model-select" class="detail-select" aria-label="活跃模型"></select><span id="active-model-meta" class="detail-meta"></span></div><div id="active-model-history" class="chart compact"></div><div id="active-model-history-legend" class="legend"></div><div class="table-wrap"><table><thead><tr><th>近期活跃模型</th><th>4周Token</th><th>总量占比</th><th>Input（$/百万）</th><th>Output（$/百万）</th><th>调价点</th></tr></thead><tbody id="active-model-body"></tbody></table></div></details></div></section>
+__CLOCKS__<section class="section" id="demand"><div class="section-head"><h2>需求与活跃模型结构</h2><span class="section-kicker">OpenRouter · 52周</span></div><div class="grid"><article class="panel full" data-source="openrouter"><h3>OpenRouter 模型 Token 总量</h3><p class="panel-note">每周 token 总量与 4 周均线 · 含未具名模型的汇总</p><div id="or-volume" class="chart"></div><div id="or-volume-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel full" data-source="openrouterComposition"><h3>OpenRouter 活跃模型组合更替</h3><p class="panel-note">每周 Top-9 模型的用量占比 · 灰色为未具名模型 · 悬停查看明细</p><div id="or-composition" class="chart"></div><div id="composition-legend" class="legend"></div><div id="composition-badge" class="badge-line"></div><div id="composition-latest" class="key-stats"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel full" data-source="top5Share"><h3>Top-5 模型份额走势</h3><p class="panel-note">最新周 Top-5 模型各自的用量占比 · 末端标模型名 · 与堆叠图配合看"头部换得勤、没人坐稳"</p><div id="top5-share" class="chart"></div><div id="top5-share-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel full" data-source="activePrice"><h3>活跃模型 Output 价格层级迁移</h3><p class="panel-note">按用量加权的输出价格分档 · 灰色=未匹配到价格的用量</p><div id="active-price-tier" class="chart"></div><div id="active-price-tier-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel" data-source="activePrice"><h3>活跃模型组合 Input 牌价</h3><p class="panel-note">按公开Token量加权 · 美元 / 100万 input tokens</p><div id="active-input-basket" class="chart compact"></div><div id="active-input-basket-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel" data-source="activePrice"><h3>活跃模型组合 Output 牌价</h3><p class="panel-note">按公开Token量加权 · 美元 / 100万 output tokens</p><div id="active-output-basket" class="chart compact"></div><div id="active-output-basket-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel" data-source="otpi"><h3>OTPI 已实现 Token 价（积累中）</h3><p class="panel-note" id="otpi-note">各实验室按实际成交加权的 token 价格 · 免费层 1 个月滚动窗口，每日快照累积</p><div id="otpi-price" class="chart compact"></div><div id="otpi-price-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel" data-source="priceChanges"><h3>近期活跃模型 · 调价点</h3><p class="panel-note" id="price-change-note">头部模型牌价近 4 周被改了几次——高频调价 = 定价试探与竞争响应</p><div id="price-change-bars"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><details class="model-detail"><summary>查看近期活跃模型与单模型价格历史</summary><div class="detail-controls"><select id="active-model-select" class="detail-select" aria-label="活跃模型"></select><span id="active-model-meta" class="detail-meta"></span></div><div id="active-model-history" class="chart compact"></div><div id="active-model-history-legend" class="legend"></div><div class="table-wrap"><table><thead><tr><th>近期活跃模型</th><th>4周Token</th><th>总量占比</th><th>Input（$/百万）</th><th>Output（$/百万）</th><th>调价点</th></tr></thead><tbody id="active-model-body"></tbody></table></div></details></div></section>
 
-<section class="section" id="compute"><div class="section-head"><h2>GPU市场</h2><span class="section-kicker">多源聚合 · 34 家供应商 · 窗口 ~12 周（2026-09-27 起价格源切换为 gpurentalprices，与更早口径不连续）</span></div>__STALENOTE__<div class="grid three"><article class="panel full" data-source="gpuPrice"><h3>H100 租赁价格</h3><p class="panel-note">上半：中位价走势（y 轴聚焦中位范围）· 下半窄条：P25–P75 价差（市场分化度，越厚越分散）· 均为整租挂牌价，剔除 spot/serverless</p><div id="gpu-price-h100" class="chart compact"></div><div class="legend"><span class="legend-item"><i class="swatch" style="background:#0071e3"></i>中位价</span><span class="legend-item"><i class="swatch" style="background:#1d1d1f"></i>30日均线</span><span class="legend-item"><i class="swatch band" style="background:#0071e3"></i>P25–P75 价差（见下方窄条）</span></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel full" data-source="gpuPrice"><h3>H200 租赁价格</h3><p class="panel-note">上半：中位价走势（y 轴聚焦中位范围）· 下半窄条：P25–P75 价差（市场分化度，越厚越分散）· 均为整租挂牌价，剔除 spot/serverless</p><div id="gpu-price-h200" class="chart compact"></div><div class="legend"><span class="legend-item"><i class="swatch" style="background:#0071e3"></i>中位价</span><span class="legend-item"><i class="swatch" style="background:#1d1d1f"></i>30日均线</span><span class="legend-item"><i class="swatch band" style="background:#0071e3"></i>P25–P75 价差（见下方窄条）</span></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel full" data-source="gpuPrice"><h3>B200 租赁价格</h3><p class="panel-note">上半：中位价走势（y 轴聚焦中位范围）· 下半窄条：P25–P75 价差（市场分化度，越厚越分散）· 均为整租挂牌价，剔除 spot/serverless</p><div id="gpu-price-b200" class="chart compact"></div><div class="legend"><span class="legend-item"><i class="swatch" style="background:#0071e3"></i>中位价</span><span class="legend-item"><i class="swatch" style="background:#1d1d1f"></i>30日均线</span><span class="legend-item"><i class="swatch band" style="background:#0071e3"></i>P25–P75 价差（见下方窄条）</span></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel full" data-source="gpuPremium"><h3>GPU 代际租赁溢价</h3><p class="panel-note">相对H100的30日中位价格倍数 · 1.0x表示无溢价 · B200 溢价收敛 = H100 同步被重定价，不是 B200 自己走弱</p><div id="gpu-premium" class="chart"></div><div id="gpu-premium-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><h3 class="subsection-title">跨来源交叉验证 · 报价 × 成交 × 合约</h3><article class="panel" data-source="basisH100"><h3>H100：报价 vs 成交指数</h3><p class="panel-note">Neocloud 挂牌 × SemiAnalysis 综合 × Ornn 成交 · 已截到三源共存窗口、统一起点=100，只看相对变化是否同步</p><div id="basis-h100" class="chart compact"></div><div id="basis-h100-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel" data-source="basisH200"><h3>H200：报价 vs 成交指数</h3><p class="panel-note">Neocloud 挂牌 × Ornn 成交（SemiAnalysis 无 H200 公开指数）· 起点=100，扇形开口=分歧扩大</p><div id="basis-h200" class="chart compact"></div><div id="basis-h200-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel" data-source="basisB200"><h3>B200：报价 vs 成交指数</h3><p class="panel-note">Neocloud 挂牌 × SemiAnalysis 综合 × Ornn 成交 · 起点=100，扇形开口=分歧扩大</p><div id="basis-b200" class="chart compact"></div><div id="basis-b200-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel full" data-source="panelIndex"><h3>固定供应商面板指数</h3><p class="panel-note" id="panel-index-note">固定同一批供应商的整租价均值 · 起点=100（灰虚线）· 橙色虚线=成员个体调价造成的台阶 · 有人缺报价当天断开</p><div id="panel-index-chart" class="chart"></div><div id="panel-index-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel wide" data-source="contractBand"><h3>H100 一年期合约价区间</h3><p class="panel-note">SemiAnalysis 公开调查区间 · 混合频率（2023 半年→2024 季度→2025-07 起月度）· 阶梯图不与日线混轴</p><div id="contract-band" class="chart compact"></div><div id="contract-band-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><h3 class="subsection-title">市场紧张度 · 供给端（GPU Finder 每日积累）</h3><article class="panel" data-source="scarcity"><h3>市场稀缺度：可租卡占比</h3><p class="panel-note" id="scarcity-note">能租到的卡数 ÷ 在架总卡数 · 越低越紧张 · 每日快照（7 天滚动窗口）</p><div id="scarcity-chart" class="chart compact"></div><div id="scarcity-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel" data-source="listedGap"><h3>报价虚低度：在库 ÷ 报价</h3><p class="panel-note" id="gap-note">最低在库价 ÷ 最低报价 − 1 · 越紧的型号，挂出来的低价越可能是空头支票</p><div id="gap-chart" class="chart compact"></div><div id="gap-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel" data-source="breadth"><h3>供应商广度</h3><p class="panel-note" id="breadth-note">在架供应商数 · 涨价时家数还在增，说明供给在跟上</p><div id="breadth-chart" class="chart compact"></div><div id="breadth-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel full" data-source="orderbookDepth"><h3>供给深度：订单簿观测（积累中）</h3><p class="panel-note" id="orderbook-note">三个平台各自的在架报价条数（分开计，不混算）· 少于 10 个有效日只画点</p><div class="grid three"><div><div id="ob-gpuperhour" class="chart compact"></div><div id="ob-gpuperhour-legend" class="legend"></div></div><div><div id="ob-vast" class="chart compact"></div><div id="ob-vast-legend" class="legend"></div></div><div><div id="ob-runpod" class="chart compact"></div><div id="ob-runpod-legend" class="legend"></div></div></div><details class="source"><summary>来源与口径</summary><p></p></details></article></div></section>
+<section class="section" id="compute"><div class="section-head"><h2>GPU市场</h2><span class="section-kicker">多源聚合 · 供应商数据集 · 窗口 ~12 周（2026-09-27 起价格源切换为 gpurentalprices，与更早口径不连续）</span></div>__STALENOTE__<div class="grid three"><article class="panel full" data-source="gpuPrice"><h3>H100 租赁价格</h3><p class="panel-note">上半：中位价走势（y 轴聚焦中位范围）· 下半窄条：P25–P75 价差（市场分化度，越厚越分散）· 均为整租挂牌价，剔除 spot/serverless</p><div id="gpu-price-h100" class="chart compact"></div><div class="legend"><span class="legend-item"><i class="swatch" style="background:#0071e3"></i>中位价</span><span class="legend-item"><i class="swatch" style="background:#1d1d1f"></i>30日均线</span><span class="legend-item"><i class="swatch band" style="background:#0071e3"></i>P25–P75 价差（见下方窄条）</span></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel full" data-source="gpuPrice"><h3>H200 租赁价格</h3><p class="panel-note">上半：中位价走势（y 轴聚焦中位范围）· 下半窄条：P25–P75 价差（市场分化度，越厚越分散）· 均为整租挂牌价，剔除 spot/serverless</p><div id="gpu-price-h200" class="chart compact"></div><div class="legend"><span class="legend-item"><i class="swatch" style="background:#0071e3"></i>中位价</span><span class="legend-item"><i class="swatch" style="background:#1d1d1f"></i>30日均线</span><span class="legend-item"><i class="swatch band" style="background:#0071e3"></i>P25–P75 价差（见下方窄条）</span></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel full" data-source="gpuPrice"><h3>B200 租赁价格</h3><p class="panel-note">上半：中位价走势（y 轴聚焦中位范围）· 下半窄条：P25–P75 价差（市场分化度，越厚越分散）· 均为整租挂牌价，剔除 spot/serverless</p><div id="gpu-price-b200" class="chart compact"></div><div class="legend"><span class="legend-item"><i class="swatch" style="background:#0071e3"></i>中位价</span><span class="legend-item"><i class="swatch" style="background:#1d1d1f"></i>30日均线</span><span class="legend-item"><i class="swatch band" style="background:#0071e3"></i>P25–P75 价差（见下方窄条）</span></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel full" data-source="gpuPremium"><h3>GPU 代际租赁溢价</h3><p class="panel-note">相对H100的30日中位价格倍数 · 1.0x表示无溢价</p><div id="gpu-premium" class="chart"></div><div id="gpu-premium-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><h3 class="subsection-title">跨来源交叉验证 · 报价 × 成交 × 合约</h3><article class="panel" data-source="basisH100"><h3>H100：报价 vs 成交指数</h3><p class="panel-note">Neocloud 挂牌 × SemiAnalysis 综合 × Ornn 成交 · 统一起点=100，只看相对变化是否同步</p><div id="basis-h100" class="chart compact"></div><div id="basis-h100-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel" data-source="basisH200"><h3>H200：报价 vs 成交指数</h3><p class="panel-note">Neocloud 挂牌 × Ornn 成交（SemiAnalysis 无 H200 公开指数）· 起点=100，扇形开口=分歧扩大</p><div id="basis-h200" class="chart compact"></div><div id="basis-h200-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel" data-source="basisB200"><h3>B200：报价 vs 成交指数</h3><p class="panel-note">Neocloud 挂牌 × SemiAnalysis 综合 × Ornn 成交 · 起点=100，扇形开口=分歧扩大</p><div id="basis-b200" class="chart compact"></div><div id="basis-b200-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel full" data-source="panelIndex"><h3>固定供应商面板指数</h3><p class="panel-note" id="panel-index-note">固定同一批供应商的整租价均值 · 起点=100（灰虚线）· 橙色虚线=成员个体调价造成的台阶 · 有人缺报价当天断开</p><div id="panel-index-chart" class="chart"></div><div id="panel-index-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel wide" data-source="contractBand"><h3>H100 一年期合约价区间</h3><p class="panel-note">SemiAnalysis 公开调查区间（P25–P75）· 阶梯图不与日线混轴</p><div id="contract-band" class="chart compact"></div><div id="contract-band-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><h3 class="subsection-title">市场紧张度 · 供给端（GPU Finder 每日积累）</h3><article class="panel" data-source="scarcity"><h3>市场稀缺度：可租卡占比</h3><p class="panel-note" id="scarcity-note">能租到的卡数 ÷ 在架总卡数 · 越低越紧张 · 每日快照（7 天滚动窗口）</p><div id="scarcity-chart" class="chart compact"></div><div id="scarcity-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel" data-source="listedGap"><h3>报价虚低度：在库 ÷ 报价</h3><p class="panel-note" id="gap-note">最低在库价 ÷ 最低报价 − 1 · 越紧的型号，挂出来的低价越可能是空头支票</p><div id="gap-chart" class="chart compact"></div><div id="gap-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel" data-source="breadth"><h3>供应商广度</h3><p class="panel-note" id="breadth-note">在架供应商数 · 涨价时家数还在增，说明供给在跟上</p><div id="breadth-chart" class="chart compact"></div><div id="breadth-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel full" data-source="orderbookDepth"><h3>供给深度：订单簿观测（积累中）</h3><p class="panel-note" id="orderbook-note">三个平台各自的在架报价条数（分开计，不混算）· 少于 10 个有效日只画点</p><div class="grid three"><div><div id="ob-gpuperhour" class="chart compact"></div><div id="ob-gpuperhour-legend" class="legend"></div></div><div><div id="ob-vast" class="chart compact"></div><div id="ob-vast-legend" class="legend"></div></div><div><div id="ob-runpod" class="chart compact"></div><div id="ob-runpod-legend" class="legend"></div></div></div><details class="source"><summary>来源与口径</summary><p></p></details></article></div></section>
 
 <section class="section" id="capex"><div class="section-head"><h2>CAPEX与官方承诺</h2><span class="section-kicker">季度与事件 · 原始频率不插值</span></div><article class="panel full" data-source="capexQuarterly"><h3>五大厂季度 CapEx 轨迹</h3><p class="panel-note">各公司单季资本开支（十亿美元，按日历季对齐各公司财政季）· 悬停看数值 · 26Q3 仅 Oracle（其财年 Q1=6–8 月对齐至日历 Q3）· 中国厂商人民币口径见下表</p><div id="capex-quarterly" class="chart"></div><div id="capex-quarterly-legend" class="legend"></div><div id="guidance-strip" class="badge-line"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel full" data-source="capex"><div class="table-wrap"><table><thead><tr><th>日期</th><th>公司</th><th>指标</th><th>期间</th><th>单位</th><th>数值</th></tr></thead><tbody id="capex-body"></tbody></table></div><details class="source"><summary>来源与口径</summary><p></p></details></article></section>
 <footer class="footer" id="freshness"></footer></main><script>
@@ -1196,7 +1276,7 @@ function renderChart(c){
   for(let i=0;i<=4;i++){let val=ymin+(ymax-ymin)*i/4,yy=y(val);svg+=`<line class="gridline" x1="${m.l}" y1="${yy}" x2="${W-m.r}" y2="${yy}"/><text class="axis" x="${m.l-9}" y="${yy+3}" text-anchor="end">${esc(fmt(val,c.opt.kind))}</text>`}
   for(let i=0;i<=4;i++){let val=xmin+(xmax-xmin)*i/4,xx=x(val),d=new Date(val);svg+=`<text class="axis" x="${xx}" y="${H-20}" text-anchor="middle">${d.toLocaleDateString('zh-CN',{month:'short',day:'numeric'})}</text>`}
   svg+=`<text class="axis-title" transform="translate(15 ${H/2}) rotate(-90)" text-anchor="middle">${esc(c.opt.yTitle)}</text>`;
-  if(c.opt.cornerNote)svg+=`<text class="axis" x="${W-m.r}" y="${m.t+14}" text-anchor="end" fill="#0071e3" style="font-weight:700">${esc(c.opt.cornerNote)}</text>`;
+  if(c.opt.cornerNote)svg+=`<text class="axis" x="${m.l+4}" y="${m.t+12}" text-anchor="start" fill="#0071e3" style="font-weight:700">${esc(c.opt.cornerNote)}</text>`;
   if(Number.isFinite(c.opt.reference)){const yy=y(c.opt.reference);svg+=`<line x1="${m.l}" y1="${yy}" x2="${W-m.r}" y2="${yy}" stroke="#6e6e73" stroke-width="1.5" stroke-dasharray="6 5"/><text class="axis" x="${W-m.r}" y="${yy-6}" text-anchor="end">${fmt(c.opt.reference,c.opt.kind)}</text>`}
   if(c.opt.annotations){const _flat=Array.isArray(c.opt.annotations)?c.opt.annotations:Object.entries(c.opt.annotations).flatMap(([fam,ls])=>(states[c.id]&&states[c.id].has(fam+' 固定面板'))?ls:[]);const _seen=new Set();_flat.filter(a=>{const k=a.date+'|'+a.label;if(_seen.has(k))return false;_seen.add(k);return true}).forEach((a,ai)=>{const tv=dateNum(a.date);if(tv<start||tv>end)return;const xx=x(tv);svg+=`<line x1="${xx}" y1="${m.t}" x2="${xx}" y2="${H-m.b}" stroke="#d76b00" stroke-width="1.4" stroke-dasharray="4 4"/><text class="axis annot" x="${Math.min(xx+4,W-m.r-120)}" y="${m.t+14+((ai%2)*12)}" fill="#d76b00">${esc(a.label)}</text>`})}
   const names=[...new Set(c.rows.map(r=>r.series))];
@@ -1204,10 +1284,10 @@ function renderChart(c){
     const pts=visible.filter(r=>r.series===name).sort((a,b)=>dateNum(a.date)-dateNum(b.date));let segments=[],segment=[];
     const gapDays=c.opt.gapDays||11;pts.forEach((p,i)=>{if(i&&dateNum(p.date)-dateNum(pts[i-1].date)>gapDays*86400000){if(segment.length)segments.push(segment);segment=[]}segment.push(p)});if(segment.length)segments.push(segment);
     if(c.opt.band){const names=[...(states[c.id]||[])];if(names.length===2){const pick=n=>visible.filter(r=>r.series===n).sort((a,b)=>dateNum(a.date)-dateNum(b.date));const top=pick(names[0]),bot=pick(names[1]).reverse();if(top.length>1&&top.length===bot.length){let d=`M${x(dateNum(top[0].date)).toFixed(1)},${y(+top[0].value).toFixed(1)}`;for(let i=1;i<top.length;i++)d+=` H${x(dateNum(top[i].date)).toFixed(1)} V${y(+top[i].value).toFixed(1)}`;for(const p of bot)d+=` H${x(dateNum(p.date)).toFixed(1)} V${y(+p.value).toFixed(1)}`;svg+=`<path d="${d} Z" fill="${COLORS[0]}" opacity=".13"/>`}}}
-  if(c.opt.endLabels){[...states[c.id]].forEach(name=>{const series=visible.filter(r=>r.series===name).sort((a,b)=>dateNum(a.date)-dateNum(b.date));if(!series.length)return;const last=series[series.length-1],lv=+last.value;if(!Number.isFinite(lv))return;const idx=[...states[c.id]].indexOf(name),col=COLORS[idx%COLORS.length];svg+=`<text class="axis" x="${W-m.r-2}" y="${y(lv)-7}" text-anchor="end" fill="${col}" style="font-weight:700">${fmt(lv,c.opt.kind)}</text>`})}
     if(!c.opt.pointOnly)segments.forEach(seg=>{let d=`M${x(dateNum(seg[0].date)).toFixed(1)},${y(+seg[0].value).toFixed(1)}`;for(let i=1;i<seg.length;i++){const xx=x(dateNum(seg[i].date)).toFixed(1),yy=y(+seg[i].value).toFixed(1);d+=c.opt.step?` H${xx} V${yy}`:` L${xx},${yy}`}svg+=`<path d="${d}" fill="none" stroke="${COLORS[idx%COLORS.length]}" stroke-width="${name.includes('average')?3:2}" opacity="${name==='Weekly tokens'?0.42:1}"/>`});
     pts.forEach((p,i)=>{if(!c.opt.step||i===0||i===pts.length-1||+p.value!==+pts[i-1].value)svg+=`<circle cx="${x(dateNum(p.date))}" cy="${y(+p.value)}" r="3" fill="${COLORS[idx%COLORS.length]}" data-date="${p.date}" data-series="${esc(name)}" data-value="${p.value}"/>`})
   });
+  if(c.opt.endLabels){const _lab=[...states[c.id]].map(name=>{const series=visible.filter(r=>r.series===name).sort((a,b)=>dateNum(a.date)-dateNum(b.date));if(!series.length)return null;const last=series[series.length-1],lv=+last.value;if(!Number.isFinite(lv))return null;const idx=[...states[c.id]].indexOf(name);return{y:y(lv),col:COLORS[idx%COLORS.length],txt:fmt(lv,c.opt.kind)}}).filter(Boolean);_lab.sort((a,b)=>a.y-b.y);for(let i=1;i<_lab.length;i++){if(_lab[i].y-_lab[i-1].y<13)_lab[i].y=_lab[i-1].y+13}_lab.forEach(l=>{svg+=`<text class="axis" x="${W-m.r-2}" y="${l.y-7}" text-anchor="end" fill="${l.col}" style="font-weight:700">${l.txt}</text>`})}
   svg+=`<rect class="hit" x="${m.l}" y="${m.t}" width="${W-m.l-m.r}" height="${H-m.t-m.b}" fill="transparent"/></svg><div class="tooltip"></div>`;host.innerHTML=svg;
   const tip=host.querySelector('.tooltip'),svgEl=host.querySelector('svg');
   svgEl.onpointermove=e=>{const rect=svgEl.getBoundingClientRect(),px=(e.clientX-rect.left)/rect.width*W,target=xmin+(px-m.l)/(W-m.l-m.r)*(xmax-xmin),dates=[...new Set(visible.map(r=>r.date))],nearest=dates.reduce((a,b)=>Math.abs(dateNum(b)-target)<Math.abs(dateNum(a)-target)?b:a),rows=visible.filter(r=>r.date===nearest).sort((a,b)=>b.value-a.value);tip.innerHTML=`<strong>${nearest}</strong><br>`+rows.map(r=>`${esc(r.series)}: ${fmt(+r.value,c.opt.kind)}${Number.isFinite(+r.low)&&Number.isFinite(+r.high)?` · range ${fmt(+r.low,c.opt.kind)}–${fmt(+r.high,c.opt.kind)}`:''}${Number.isFinite(+r.coverage)?` · coverage ${(+r.coverage).toFixed(1)}%`:''}`).join('<br>');tip.style.display='block';tip.style.left=Math.min(e.offsetX+14,host.clientWidth-300)+'px';tip.style.top=Math.max(8,e.offsetY-20)+'px'};
@@ -1245,15 +1325,16 @@ function renderBarGroups(c){const host=$('#'+c.id);const rows=c.rows.filter(r=>s
 function stackedAreaChart(id,legendId,rows,opt){const cfg={id,legendId,rows,opt,renderer:renderStackedArea};charts.push(cfg);states[id]=new Set(rows.map(r=>r.series));renderLegend(cfg);cfg.renderer(cfg)}
 function renderStackedArea(c){const host=$('#'+c.id),start=dateNum($('#start').value),end=dateNum($('#end').value);const dates=[...new Set(c.rows.map(r=>r.date).filter(d=>dateNum(d)>=start&&dateNum(d)<=end))].sort();if(!dates.length){host.innerHTML='<div class="empty">所选时间内没有可比数据</div>';return}const names=[...new Set(c.rows.map(r=>r.series))],lookup=new Map(c.rows.map(r=>[r.date+'|'+r.series,+r.value]));const W=1000,H=330,m={l:58,r:18,t:16,b:46},xmin=dateNum(dates[0]),xmax=dateNum(dates[dates.length-1]),x=v=>m.l+(v-xmin)/(xmax-xmin||1)*(W-m.l-m.r),y=v=>H-m.b-v/100*(H-m.t-m.b);let svg=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(c.opt.title)}">`;[0,25,50,75,100].forEach(v=>{svg+=`<line class="gridline" x1="${m.l}" y1="${y(v)}" x2="${W-m.r}" y2="${y(v)}"/><text class="axis" x="${m.l-8}" y="${y(v)+3}" text-anchor="end">${v}%</text>`});for(let i=0;i<=4;i++){const idx=Math.round((dates.length-1)*i/4),d=dates[idx],xx=x(dateNum(d));svg+=`<text class="axis" x="${xx}" y="${H-20}" text-anchor="middle">${new Date(dateNum(d)).toLocaleDateString('zh-CN',{month:'short',day:'numeric'})}</text>`}let cumulative=Object.fromEntries(dates.map(d=>[d,0]));names.forEach((name,idx)=>{const lower=dates.map(d=>cumulative[d]),upper=dates.map((d,i)=>{const v=lookup.get(d+'|'+name)||0;cumulative[d]+=v;return lower[i]+v});const top=dates.map((d,i)=>`${i?'L':'M'}${x(dateNum(d)).toFixed(1)},${y(upper[i]).toFixed(1)}`).join(' '),bottom=dates.slice().reverse().map((d,j)=>`L${x(dateNum(d)).toFixed(1)},${y(lower[dates.length-1-j]).toFixed(1)}`).join(' '),color=(c.opt.colors&&c.opt.colors[name])||COLORS[idx%COLORS.length];svg+=`<path d="${top} ${bottom} Z" fill="${color}" fill-opacity="${states[c.id].has(name)?0.82:0.04}" stroke="white" stroke-width="0.7"/>`});if(c.opt.matchedShare){const ms=dates.map((d,i)=>{const v=lookup.get(d+'|'+c.opt.matchedShare)||0;return `${i?'L':'M'}${x(dateNum(d)).toFixed(1)},${y(100-v).toFixed(1)}`}).join(' ');svg+=`<path d="${ms}" fill="none" stroke="#1d1d1f" stroke-width="2.4"/>`}
 svg+=`<rect class="hit" x="${m.l}" y="${m.t}" width="${W-m.l-m.r}" height="${H-m.t-m.b}" fill="transparent"/></svg><div class="tooltip"></div>`;host.innerHTML=svg;const tip=host.querySelector('.tooltip'),svgEl=host.querySelector('svg');svgEl.onpointermove=e=>{const rect=svgEl.getBoundingClientRect(),px=(e.clientX-rect.left)/rect.width*W,target=xmin+(px-m.l)/(W-m.l-m.r)*(xmax-xmin),nearest=dates.reduce((a,b)=>Math.abs(dateNum(b)-target)<Math.abs(dateNum(a)-target)?b:a),items=names.filter(n=>states[c.id].has(n)).map(n=>({name:n,value:lookup.get(nearest+'|'+n)||0})).sort((a,b)=>b.value-a.value);tip.innerHTML=`<strong>${nearest}</strong><br>`+items.map(r=>`${esc(r.name)}: ${r.value.toFixed(1)}%`).join('<br>');tip.style.display='block';tip.style.left=Math.min(e.offsetX+14,host.clientWidth-260)+'px';tip.style.top=Math.max(8,e.offsetY-20)+'px'};svgEl.onmouseleave=()=>tip.style.display='none'}
-function barTimeChart(id,rows,opt){const cfg={id,rows,opt,renderer:renderBarTime};charts.push(cfg);cfg.renderer(cfg)}
-function renderBarTime(c){const host=$('#'+c.id),start=dateNum($('#start').value),end=dateNum($('#end').value),rows=c.rows.filter(r=>dateNum(r.date)>=start&&dateNum(r.date)<=end).sort((a,b)=>dateNum(a.date)-dateNum(b.date));if(!rows.length){host.innerHTML='<div class="empty">所选时间内没有数据</div>';return}const W=1000,H=240,m={l:58,r:18,t:16,b:42},xmin=dateNum(rows[0].date),xmax=dateNum(rows[rows.length-1].date),step=(W-m.l-m.r)/rows.length,bw=Math.max(5,step*.62),y=v=>H-m.b-v/100*(H-m.t-m.b);let svg=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(c.opt.title)}">`;[0,25,50,75,100].forEach(v=>svg+=`<line class="gridline" x1="${m.l}" y1="${y(v)}" x2="${W-m.r}" y2="${y(v)}"/><text class="axis" x="${m.l-8}" y="${y(v)+3}" text-anchor="end">${v}%</text>`);rows.forEach((r,i)=>{const xx=m.l+step*(i+.5);svg+=`<rect x="${xx-bw/2}" y="${y(+r.value)}" width="${bw}" height="${y(0)-y(+r.value)}" rx="2" fill="${+r.value>=35?'#0071e3':'#c7c7cc'}" data-date="${r.date}" data-value="${r.value}"/>`});svg+=`<line x1="${m.l}" y1="${y(35)}" x2="${W-m.r}" y2="${y(35)}" stroke="#d76b00" stroke-width="2" stroke-dasharray="6 5"/><text class="axis" x="${W-m.r}" y="${y(35)-6}" text-anchor="end">35% display threshold</text>`;for(let i=0;i<=4;i++){const idx=Math.round((rows.length-1)*i/4),r=rows[idx],xx=m.l+step*(idx+.5);svg+=`<text class="axis" x="${xx}" y="${H-17}" text-anchor="middle">${new Date(dateNum(r.date)).toLocaleDateString('zh-CN',{month:'short',day:'numeric'})}</text>`}svg+='</svg><div class="tooltip"></div>';host.innerHTML=svg;const tip=host.querySelector('.tooltip');host.querySelectorAll('rect[data-date]').forEach(el=>{el.onmouseenter=e=>{tip.innerHTML=`<strong>${el.dataset.date}</strong><br>Price coverage: ${(+el.dataset.value).toFixed(1)}%`;tip.style.display='block';tip.style.left=Math.min(e.offsetX+12,host.clientWidth-220)+'px';tip.style.top='18px'};el.onmouseleave=()=>tip.style.display='none'})}
 function rangeChart(id,rows,annotations){const cfg={id,rows,annotations,renderer:renderRangeChart};charts.push(cfg);cfg.renderer(cfg)}
 function renderRangeChart(c){
   // 两层设计：上层=中位价趋势（y轴只按中位/均线范围缩放，趋势可见）；
   // 下层=窄条显示 P25-P75 价差随时间（市场分化度）。全距与供应商数进悬停提示。
   const host=$('#'+c.id),start=dateNum($('#start').value),end=dateNum($('#end').value),rows=c.rows.filter(r=>dateNum(r.date)>=start&&dateNum(r.date)<=end).sort((a,b)=>dateNum(a.date)-dateNum(b.date));
   if(!rows.length){host.innerHTML='<div class="empty">所选时间内没有价格数据</div>';return}
-  const W=1000,H=420,m={l:76,r:18,t:26,b:30},mainH=280,stripTop=330,stripH=56;
+  // viewBox 必须与容器像素比一致：否则 preserveAspectRatio 会把整图等比缩小并在两侧留白
+  // （曾导致本图只用到 43% 宽度，文字也随之变小）。高度按设计值，宽度按容器比例推算。
+  const pw=host.clientWidth||1000,ph=host.clientHeight||420;
+  const H=420,W=Math.max(1000,Math.round(H*pw/ph)),m={l:76,r:18,t:26,b:30},mainH=280,stripTop=330,stripH=56;
   const xmin=dateNum(rows[0].date),xmax=dateNum(rows[rows.length-1].date);
   const mainVals=rows.flatMap(r=>[+r.value,+r.movingAverage30d]).filter(Number.isFinite);
   const rawMin=Math.min(...mainVals),rawMax=Math.max(...mainVals),pad=(rawMax-rawMin||1)*0.25;
@@ -1293,7 +1374,7 @@ select.value=String(models.reduce((bi,m,i)=>((m.historyPoints||0)>(models[bi].hi
   const cfg={id:'active-model-history',legendId:'active-model-history-legend',rows:[],opt:{title:'Active model price history',kind:'usd',yTitle:'USD / 1M tokens',zero:true,step:true},renderer:renderChart};charts.push(cfg);
   function choose(){const model=models[+select.value],rows=[];(model.priceHistory||[]).forEach(p=>{if(p.input!=null)rows.push({date:p.date,series:'Input',value:p.input});if(p.output!=null)rows.push({date:p.date,series:'Output',value:p.output})});cfg.rows=rows;states[cfg.id]=new Set(rows.map(r=>r.series));renderLegend(cfg);$('#active-model-meta').textContent=`4周 ${model.tokens.toFixed(2)}T · 占总量 ${model.share.toFixed(1)}% · ${model.historyPoints} 个调价点`;cfg.renderer(cfg)}select.onchange=choose;choose()
 }
-function sourceDetails(){document.querySelectorAll('[data-source]').forEach(el=>{const s=DATA.sources[el.dataset.source],p=el.querySelector('.source p');if(!s||!p)return;p.innerHTML=`<strong>${esc(s.label)}</strong><br>${esc(s.definition)}${s.url?`<br><a href="${esc(s.url)}">打开原始来源</a>`:''}`})}
+function sourceDetails(){document.querySelectorAll('[data-source]').forEach(el=>{const s=DATA.sources[el.dataset.source],p=el.querySelector('.source p');if(!s||!p)return;const urls=(s.urls&&s.urls.length)?s.urls:(s.url?[s.url]:[]);const linkTxt=urls.length===1?'打开原始来源':`打开原始来源（${urls.length} 个一手链接）`;const link=urls.length?`<br>${urls.map((u,i)=>`<a href="${esc(u)}" target="_blank" rel="noopener">${urls.length>1?esc(u.slice(0,58))+'…':linkTxt}</a>`).join('<br>')}`:'';const sha=s.sha256?`<br><span class="sha-line" title="${esc(s.sha256)}">sha256: ${esc(String(s.sha256).split(/\s+/).map(x=>x.replace('sha256:','').slice(0,10)).join(' / '))}${String(s.sha256).includes(' ')?'…':''}</span>`:'';p.innerHTML=`<strong>${esc(s.label)}</strong><br>${esc(s.definition)}${link}${sha}`})}
 function renderTable(){const body=$('#capex-body');body.innerHTML=DATA.datasets.capex.map(r=>`<tr><td>${esc(r.date)}</td><td>${esc(r.company)}</td><td>${esc(r.metricLabel||r.metric)}</td><td>${esc(r.periodLabel||r.period||'')}</td><td>${esc(r.unitLabel||r.unit)}</td><td class="num">${esc(r.valueDisplay!=null?r.valueDisplay:r.value)}</td></tr>`).join('')}
 function redraw(){charts.forEach(c=>c.renderer(c))}function preset(days,btn){document.querySelectorAll('#presets button').forEach(b=>b.classList.remove('active'));btn.classList.add('active');const max=dateNum(DATA.meta.maxDate),min=days?Math.max(dateNum(DATA.meta.minDate),max-days*86400000):dateNum(DATA.meta.minDate);$('#start').value=new Date(min).toISOString().slice(0,10);$('#end').value=DATA.meta.maxDate;redraw()}
 function syncUrl(){const p=new URLSearchParams();p.set('start',$('#start').value);p.set('end',$('#end').value);history.replaceState(null,'',location.pathname+'?'+p.toString())}
@@ -1328,20 +1409,131 @@ document.getElementById('orderbook-note').textContent=`三个平台各自的在�
 [['ob-gpuperhour','gpuperhour'],['ob-vast','vast'],['ob-runpod','runpod']].forEach(([cid,src])=>{if(document.getElementById(cid))lineChart(cid,cid+'-legend',orderbookRows.filter(r=>r.series===src),{title:src+' offers',kind:'count',yTitle:'报价条数',zero:true,gapDays:3,pointOnly:obDays<10})});
 const otpiDays=DATA.meta&&DATA.meta.otpiValidDays?DATA.meta.otpiValidDays:0;
 document.getElementById('otpi-note').textContent=`各实验室按实际成交加权的 token 价格 · 已积累 ${otpiDays} 天${otpiDays>=10?'，已画趋势线':'，先画点'}`;
-lineChart('otpi-price','otpi-price-legend',DATA.datasets.otpi||[],{title:'Ornn OTPI realized token price',kind:'usd',yTitle:'USD/Mtok',zero:true,pointOnly:otpiDays<10,annotations:[{date:'2026-09-17',label:'openai 单日尖峰 · 大单/口径变化待查'}],endLabels:true});
-lineChart('basis-h100','basis-h100-legend',DATA.datasets.basisH100||[],{title:'H100 price basis compare',kind:'index',yTitle:'相对变化（起点=100）',zero:false,gapDays:20,endLabels:true});
-lineChart('basis-h200','basis-h200-legend',DATA.datasets.basisH200||[],{title:'H200 price basis compare',kind:'index',yTitle:'相对变化（起点=100）',zero:false,gapDays:20,endLabels:true});
-lineChart('basis-b200','basis-b200-legend',DATA.datasets.basisB200||[],{title:'B200 price basis compare',kind:'index',yTitle:'相对变化（起点=100）',zero:false,gapDays:20,endLabels:true});
+lineChart('otpi-price','otpi-price-legend',DATA.datasets.otpi||[],{title:'Ornn OTPI realized token price',kind:'usd',yTitle:'USD/Mtok',zero:true,pointOnly:otpiDays<10,endLabels:true});
+lineChart('basis-h100','basis-h100-legend',DATA.datasets.basisH100||[],{title:'H100 price basis compare',kind:'index',yTitle:'相对变化（起点=100）',zero:false,gapDays:20,reference:100,endLabels:true});
+lineChart('basis-h200','basis-h200-legend',DATA.datasets.basisH200||[],{title:'H200 price basis compare',kind:'index',yTitle:'相对变化（起点=100）',zero:false,gapDays:20,reference:100,endLabels:true});
+lineChart('basis-b200','basis-b200-legend',DATA.datasets.basisB200||[],{title:'B200 price basis compare',kind:'index',yTitle:'相对变化（起点=100）',zero:false,gapDays:20,reference:100,endLabels:true});
 lineChart('contract-band','contract-band-legend',DATA.datasets.contractBand||[],{title:'H100 1Y contract range',kind:'usd',yTitle:'USD/GPU-hr',zero:true,step:true,band:true,endLabels:true});
 
 const panelRows=DATA.datasets.panelIndex||[];
 (()=>{const pm=DATA.meta.panelMembers||{};const counts=Object.entries(pm).map(([g,m])=>{const arr=Array.isArray(m)?m:(m&&m.members)||[];return g+' '+arr.length+'家'}).join(' / ');document.getElementById('panel-index-note').textContent='非中断性租赁价 · 固定成员均值（'+counts+'）· 起点=100 · 成员明细见来源与口径'})();
-lineChart('panel-index-chart','panel-index-legend',panelRows,{title:'Fixed-provider panel index',kind:'index',yTitle:'Index (base=100)',zero:false,gapDays:11,reference:100,annotations:DATA.meta.panelAnnotations});
-(()=>{['basisH100','basisH200','basisB200'].forEach(k=>{const rows=DATA.datasets[k]||[];const names=[...new Set(rows.map(r=>r.series))];const lasts={};names.forEach(n=>{const rs=rows.filter(r=>r.series===n).sort((a,b)=>a.date<b.date?-1:1);if(rs.length)lasts[n]=rs[rs.length-1].value});const vals=Object.values(lasts);if(vals.length>=2){const div=Math.max(...vals)-Math.min(...vals);const label=Object.entries(lasts).map(([n,v])=>n.replace(' 报价中位','').replace(' 成交指数','').replace(' 综合指数','')+' '+v.toFixed(0)).join(' / ');const art=document.querySelector(`article[data-source="${k}"] .panel-note`);if(art)art.textContent+=' · 终值 '+label+'，分歧 '+div.toFixed(0)+' pct'}})})();
+lineChart('panel-index-chart','panel-index-legend',panelRows,{title:'Fixed-provider panel index',kind:'index',yTitle:'Index (base=100)',zero:false,gapDays:11,step:true,reference:100,annotations:DATA.meta.panelAnnotations});
+
 (()=>{const pc=DATA.datasets.priceChangeCounts||[];const maxRecent=Math.max(1,...pc.map(r=>r.recent4w));document.getElementById('price-change-bars').innerHTML=pc.slice(0,8).map(r=>`<div class="pc-row"><span class="pc-name">${esc(r.name)}</span><div class="pc-barwrap"><div class="pc-bar" style="width:${Math.max(2,100*r.recent4w/maxRecent)}%"></div></div><span class="pc-count">${r.recent4w}次</span></div>`).join('')||'<div class="empty">暂无</div>';const top3=pc.slice(0,3).map(r=>r.total).join('/');const sum=document.querySelector('.model-detail>summary');if(sum&&top3)sum.textContent=`头部模型近 4 周调价 ${pc.slice(0,3).map(r=>r.recent4w).join('/')} 次（全历史 ${top3} 次）——点开看单模型价格史`})();
 (()=>{const cq=DATA.datasets.capexQuarterly||[];if(document.getElementById("capex-quarterly")&&cq.length)barGroupsChart("capex-quarterly","capex-quarterly-legend",cq,{title:"Quarterly CapEx",kind:"count",yTitle:"十亿美元"});const gs=DATA.meta.capexGuidance||[];const rev=d=>{const m=/^\d{4}-(\d{1,2})-(\d{1,2})$/.exec(d||"");return m?`${+m[1]}/${+m[2]} 修订`:""};const chips=gs.map(g=>{if(g.low==null&&g.high==null)return"";const stamp=rev(g.revisionDate);if(g.low===g.high)return `<span class="chip">${esc(g.company)} $${g.low}B${esc(g.note||"")}${stamp?" · "+stamp:""}</span>`;const loUp=g.prevLow!=null&&g.low>g.prevLow,loDn=g.prevLow!=null&&g.low<g.prevLow,hiUp=g.prevHigh!=null&&g.high>g.prevHigh,hiDn=g.prevHigh!=null&&g.high<g.prevHigh;let cmp="";if(loUp&&hiUp)cmp=`（↑自 $${g.prevLow}–$${g.prevHigh}B）`;else if(loDn&&hiDn)cmp=`（↓自 $${g.prevLow}–$${g.prevHigh}B）`;else if(loUp||loDn)cmp=`（下限 ${loUp?"↑":"↓"} $${g.prevLow}B→$${g.low}B）`;else if(hiUp||hiDn)cmp=`（上限 ${hiUp?"↑":"↓"} $${g.prevHigh}B→$${g.high}B）`;else if(g.prevLow!=null&&g.prevHigh!=null)cmp=`（持平于 $${g.prevLow}–$${g.prevHigh}B）`;return `<span class="chip">${esc(g.company)} $${g.low}–$${g.high}B${cmp}${stamp?" · "+stamp:""}</span>`}).filter(Boolean).join("");const strip=document.getElementById("guidance-strip");if(strip)strip.innerHTML=`<b>2026 资本开支指引（已披露出 ${gs.length} 家）：</b>`+chips})();
-(()=>{{const comp=DATA.datasets.openrouterComposition||[];const weeks=[...new Set(comp.map(r=>r.date))].sort();let changes=0,lastTop="";weeks.forEach((w,i)=>{const rows=comp.filter(r=>r.date===w&&r.model!=="Others").sort((a,b)=>b.share-a.share);const top=rows[0];if(top&&lastTop&&top.model!==lastTop)changes++;if(top)lastTop=top.model;if(i===weeks.length-1){const hhi=rows.reduce((sum,r)=>sum+Math.pow(r.share/100,2),0)*10000;const el=document.getElementById("composition-badge");if(el)el.textContent=`${weeks.length} 周里 Top1 已更换 ${changes} 次 · 最新周 HHI 集中度 ${hhi.toFixed(0)}`}});const latestWeek=weeks[weeks.length-1];const top5=comp.filter(r=>r.date===latestWeek&&r.model!=="Others").sort((a,b)=>b.share-a.share).slice(0,5).map(r=>r.model);const rows5=comp.filter(r=>top5.includes(r.model)).map(r=>({date:r.date,series:(r.model.split("/")[1]||r.model).slice(0,18),value:r.share}));if(document.getElementById("top5-share")&&rows5.length)lineChart("top5-share","top5-share-legend",rows5,{title:"Top-5 share",kind:"pct",yTitle:"用量占比 %",zero:true,gapDays:21,endLabels:true})};})();
-activeModelDetail();sourceDetails();renderTable();$('#freshness').textContent='更新于 '+DATA.meta.generatedAt.slice(0,16).replace('T',' ')+' UTC · 仅公开来源数据 · 不含综合评分';
+(()=>{{const comp=DATA.datasets.openrouterComposition||[];const weeks=[...new Set(comp.map(r=>r.date))].sort();let changes=0,lastTop="";weeks.forEach((w,i)=>{const rows=comp.filter(r=>r.date===w&&r.model!=="Others").sort((a,b)=>b.share-a.share);const top=rows[0];if(top&&lastTop!==top.model)changes++;if(top)lastTop=top.model;if(i===weeks.length-1){const allRows=comp.filter(r=>r.date===i&&r.share>0);const hhi=allRows.reduce((sum,r)=>sum+Math.pow(r.share/100,2),0)*10000;const el=document.getElementById("composition-badge");if(el)el.textContent=`${weeks.length} 周里 Top1 已更换 ${changes} 次 · 最新周 HHI 集中度 ${hhi.toFixed(0)}（含 Others）`}});const latestWeek=weeks[weeks.length-1];const top5=comp.filter(r=>r.date===latestWeek&&r.model!=="Others").sort((a,b)=>b.share-a.share).slice(0,5).map(r=>r.model);const rows5=comp.filter(r=>top5.includes(r.model)).map(r=>({date:r.date,series:r.model,label:(r.model.split("/")[1]||r.model),value:r.share}));if(document.getElementById("top5-share")&&rows5.length)lineChart("top5-share","top5-share-legend",rows5,{title:"Top-5 share",kind:"pct",yTitle:"用量占比 %",zero:true,gapDays:21,endLabels:true})};})();
+activeModelDetail();// ===== 数据驱动的面板注 =====
+// 铁律：图注里的每个数字都必须由当次数据算出来，不允许手写结论——
+// 手写结论会随数据变化而说反话（曾出现"自 12 月起走平"而序列实为 8.9 倍波动）。
+function setNote(sel,parts){const el=document.querySelector(sel);if(!el)return;const t=parts.filter(Boolean).join(' · ');if(t)el.textContent=t}
+function rng(rows,key){const v=rows.map(r=>+r[key]).filter(Number.isFinite);if(!v.length)return null;return{lo:Math.min(...v),hi:Math.max(...v),n:v.length,last:v[v.length-1]}}
+function chg(rows,weeks){const v=rows.map(r=>+r.value).filter(Number.isFinite);if(v.length<2)return null;const k=Math.max(1,Math.round(weeks*7));if(v.length<=k)return null;const a=v[v.length-1-k],b=v[v.length-1];return a>0?{pct:(b/a-1)*100,from:v.length-1-k}:null}
+function _notes(){
+  // GPU 价格三张：家数、中位价、真实全距倍数、偶数家警告、近期变化
+  for(const g of ['h100','h200','b200']){
+    const rows=(DATA.datasets.gpuPrice||[]).filter(r=>r.series===g.toUpperCase());
+    if(!rows.length)continue;
+    const last=rows[rows.length-1],r=rng(rows,'value'),c=chg(rows,4);
+    const spread=(last.low>0)?(last.high/last.low):null;
+    setNote(`article[data-source="gpuPrice"]:has(#gpu-price-${g}) .panel-note`,[
+      '整租挂牌价（on-demand/secure/community，剔除 spot/serverless）· y 轴聚焦中位范围',
+      `${last.date} 中位 $${(+last.value).toFixed(2)}（${last.providerCount} 家参与${last.medianSynthetic?'，偶数家·为两家中位报价均值':'，等于一家真实报价'}）`,
+      spread?`全距 $${(+last.low).toFixed(2)}–$${(+last.high).toFixed(2)}（${spread.toFixed(1)} 倍，y 轴已放大故肉眼不可见）`:null,
+      c?`近4周中位价 ${c.pct>=0?'+':''}${c.pct.toFixed(1)}%`:null,
+      r?`窗口内区间 $${r.lo.toFixed(2)}–$${r.hi.toFixed(2)}`:null,
+      last.p25!=null?'下方窄条=P25–P75 价差':'下方窄条：供应商<4 家，四分位不可估'
+    ]);
+  }
+  // 代际溢价：只报数与方向，不下"收敛"这类需要更多样本的判断
+  const prem=DATA.datasets.gpuPremium||[];
+  if(prem.length){
+    const parts=['相对H100的30日中位价格倍数 · 1.0x表示无溢价'];
+    for(const s of [...new Set(prem.map(r=>r.series))]){
+      const rs=prem.filter(r=>r.series===s).sort((a,b)=>a.date<b.date?-1:1);
+      if(rs.length<2)continue;
+      const c=(rs[rs.length-1].value/rs[0].value-1)*100;
+      parts.push(`${s.replace('/H100','')} ${rs[rs.length-1].value.toFixed(2)}x（窗口内 ${c>=0?'+':''}${c.toFixed(1)}%）`);
+    }
+    parts.push('溢价倍数下降既可能是新代际走弱，也可能是 H100 被重定价——本图不区分两者，需对照上方 H100 绝对价');
+    setNote('article[data-source="gpuPremium"] .panel-note',parts);
+  }
+  // 组合加权牌价：区间 + 覆盖率（覆盖率决定序列可比性，必须上屏）
+  for(const [k,lab] of [['activeInputBasket','input'],['activeOutputBasket','output']]){
+    const rows=DATA.datasets[k]||[];
+    if(!rows.length)continue;
+    const r=rng(rows,'value'),c=chg(rows,4);
+    const cov=rows.map(x=>+x.coverage).filter(Number.isFinite);
+    const id=k==='activeInputBasket'?'active-input-basket':'active-output-basket';
+    setNote(`#${id}`?`article:has(#${id}) .panel-note`:'',[
+      `按公开Token量加权 · 美元 / 100万 ${lab} tokens`,
+      r?`区间 $${r.lo.toFixed(4)}–$${r.hi.toFixed(4)}（${(r.hi/r.lo).toFixed(1)} 倍）`:null,
+      c?`近4周 ${c.pct>=0?'+':''}${c.pct.toFixed(0)}%`:null,
+      cov.length?`⚠ 匹配覆盖率 ${Math.min(...cov).toFixed(0)}–${Math.max(...cov).toFixed(0)}%：水平主要由"当周恰好匹配到价格的模型集合"决定，跨周不可直接比较`:null
+    ]);
+  }
+  // 价格层级：灰色占比必须写清，否则读者会把"算不出来"当成价格结论
+  const tiers=DATA.datasets.activePriceTiers||[];
+  if(tiers.length){
+    const lastDate=tiers.map(r=>r.date).sort().reverse()[0];
+    const day=tiers.filter(r=>r.date===lastDate);
+    const tot=day.reduce((s,r)=>s+(+r.value||0),0);
+    const un=day.filter(r=>/Others|无法匹配/.test(r.tier||r.series||'')).reduce((s,r)=>s+(+r.value||0),0);
+    const parts=['按用量加权的输出价格分档'];
+    if(tot>0)parts.push(`${lastDate} 未匹配到价格的用量占 ${(un/tot*100).toFixed(0)}%（灰色）`);
+    parts.push('灰色占比较高时，可见档位迁移幅度被系统性压低——读趋势须结合灰色占比变化');
+    setNote('article[data-source="activePrice"]:has(#active-price-tier) .panel-note',parts);
+  }
+  // 合约带：图注只描述看得见的数据
+  const cb=DATA.datasets.contractBand||[];
+  if(cb.length){
+    const dates=[...new Set(cb.map(r=>r.date))].sort();
+    const last=cb.filter(r=>r.date===dates[dates.length-1]);
+    const lo=last.map(r=>+r.lowValue).filter(Number.isFinite),hi=last.map(r=>+r.highValue).filter(Number.isFinite);
+    setNote('article[data-source="contractBand"] .panel-note',[
+      'SemiAnalysis 公开调查区间（P25–P75）· 阶梯图不与日线混轴',
+      `窗口内可见 ${dates.length} 期（${dates[0]} → ${dates[dates.length-1]}）`,
+      (lo.length&&hi.length)?`最新区间 $${Math.min(...lo).toFixed(2)}–$${Math.max(...hi).toFixed(2)}`:null,
+      dates.length<12?'样本期数少，跨期比较需谨慎':null
+    ]);
+  }
+  // 三源对照：把窗口起点与长度写出来（读者无法从图上判断样本多长）
+  for(const k of ['basisH100','basisH200','basisB200']){
+    const rows=DATA.datasets[k]||[];if(!rows.length)continue;
+    const dates=[...new Set(rows.map(r=>r.date))].sort();
+    const lasts={};
+    for(const n of [...new Set(rows.map(r=>r.series))]){
+      const rs=rows.filter(r=>r.series===n).sort((a,b)=>a.date<b.date?-1:1);
+      if(rs.length)lasts[n]=+rs[rs.length-1].value;
+    }
+    const vals=Object.values(lasts);
+    const div=vals.length>=2?Math.max(...vals)-Math.min(...vals):null;
+    setNote(`article[data-source="${k}"] .panel-note`,[
+      (DATA.sources[k]&&DATA.sources[k].label)||'',
+      `共存窗口 ${dates[0]} → ${dates[dates.length-1]}（${dates.length} 天，起点统一=100）`,
+      div!=null?`终值 ${Object.entries(lasts).map(([n,v])=>n.replace(' 报价中位','').replace(' 成交指数','').replace(' 综合指数','')+' '+v.toFixed(0)).join(' / ')}，分歧 ${div.toFixed(0)} pct`:null,
+      '扇形开口=源间分歧扩大；分歧本身是证据，不是噪声'
+    ]);
+  }
+  // 具名/未具名占比（底表一直有，页面此前从不展示——这正是最该披露的口径）
+  const disc=DATA.datasets.openrouterDisclosure||[];
+  if(disc.length){
+    const lastD=disc[disc.length-1],firstD=disc[0];
+    const parts=['每周 token 总量与 4 周均线'];
+    parts.push(`具名模型占比 ${firstD.namedShare.toFixed(0)}%（${firstD.date}）→ ${lastD.namedShare.toFixed(0)}%（${lastD.date}）`);
+    parts.push(`未具名（Others）占最新周 ${lastD.othersShare.toFixed(0)}%：总量口径完整，但无法归因到具体模型`);
+    setNote('article[data-source="openrouter"] .panel-note',parts);
+  }
+  // 家数标签：全部由数据推导
+  const gp=DATA.datasets.gpuPrice||[];
+  if(gp.length){
+    const lastDate=gp.map(r=>r.date).sort().reverse()[0];
+    const counts={};for(const r of gp.filter(r=>r.date===lastDate))counts[r.series]=r.providerCount;
+    const all=DATA.meta.providerUniverse||0;
+    const kicker=document.querySelector('#compute .section-kicker');
+    if(kicker&&counts.H100)kicker.textContent=`多源聚合 · 数据集全域 ${all} 家（${lastDate} 参与中位计算：${Object.entries(counts).map(([k,v])=>k+' '+v+' 家').join('、')}） · 窗口 ~12 周（2026-09-27 起价格源切换为 gpurentalprices，与更早口径不连续）`;
+  }
+}
+_notes();sourceDetails();renderTable();$('#freshness').textContent='更新于 '+DATA.meta.generatedAt.slice(0,16).replace('T',' ')+' UTC · 仅公开来源数据 · 不含综合评分';
 </script></body></html>'''
 
 
