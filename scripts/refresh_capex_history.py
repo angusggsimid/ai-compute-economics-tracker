@@ -103,10 +103,11 @@ def refresh(
     if seed_db is not None:
         rows.extend(_seed_rows(seed_db))
 
-    fetched_at = datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
+    run_at = datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
     client = client if client is not None else SecCompanyfactsClient()
     quality = []
     sources = dict(previous.get("sources") or {})
+    refreshed_keys: set = set()
     for config in decision_universe_configs():
         url = companyfacts_url(config.cik)
         try:
@@ -124,22 +125,29 @@ def refresh(
                 "period": selected.fiscal_period,
                 "source_url": url,
             })
+            refreshed_keys.add((config.company_name, selected.period_end, "capex actual"))
             sources[config.ticker] = {
                 "url": url,
-                "fetchedAt": fetched_at,
+                "fetchedAt": run_at,
+                "lastAttemptAt": run_at,
                 "sha256": "sha256:" + hashlib.sha256(raw).hexdigest(),
                 "status": "fresh",
             }
         except Exception as exc:  # Keep the last verified row and expose the failure.
             quality.append({"source": config.ticker, "status": "failed", "message": str(exc)})
+            # 失败时不能写本次运行时间：那会把陈旧数据伪装成刚抓的。
             sources[config.ticker] = {
                 "url": url,
-                "fetchedAt": fetched_at,
+                "fetchedAt": (sources.get(config.ticker) or {}).get("fetchedAt"),
+                "lastAttemptAt": run_at,
                 "status": "failed",
                 "message": str(exc),
             }
 
     deduplicated = {_key(row): row for row in rows if all(_key(row))}
+    # 逐行标注是否本期实抓：缓存回放必须可区分，否则底表谎报新鲜度。
+    for _row in deduplicated.values():
+        _row["fromCache"] = (_row.get("company"), _row.get("date"), _row.get("metric")) not in refreshed_keys
     sorted_rows = sorted(
         deduplicated.values(),
         key=lambda row: (row["date"], row["company"]),
@@ -158,7 +166,10 @@ def refresh(
         publishable = False
 
     payload = {
-        "fetchedAt": fetched_at,
+        "runAt": run_at,
+        # 本次真正抓到数据的时间；全部失败时沿用上一次，避免谎报新鲜度
+        "fetchedAt": run_at if refreshed_keys else previous.get("fetchedAt"),
+        "fetchedCount": len(refreshed_keys),
         "refreshStatus": refresh_status,
         "publishable": publishable,
         "cacheMaxAgeDays": CAPEX_MAX_AGE_DAYS,
@@ -184,6 +195,9 @@ def main() -> int:
         "output": str(args.output),
         "rows": len(payload["rows"]),
         "failedSources": len(payload["quality"]),
+        "fetchedCount": payload["fetchedCount"],
+        "fetchedAt": payload["fetchedAt"],
+        "runAt": payload["runAt"],
         "refreshStatus": payload["refreshStatus"],
         "publishable": payload["publishable"],
         "cacheCoverage": payload["cacheCoverage"],

@@ -891,18 +891,30 @@ def _capex_quarterly(rows: list[dict[str, Any]]) -> tuple[list[dict[str, Any]], 
             seen.add(key)
             quarterly.append({"group": group, "series": company, "value": round(float(value), 2)})
         elif "guidance" in metric:
-            slot = guidance.setdefault(company, {"low": None, "high": None, "prevLow": None, "prevHigh": None})
+            slot = guidance.setdefault(company, {"low": None, "high": None, "prevLow": None, "prevHigh": None, "revisionDate": None})
             if metric.endswith("guidance low") or metric.endswith("guidance previous low"):
                 field = "prevLow" if "previous" in metric else "low"
-                slot[field] = float(value)
             elif metric.endswith("guidance high") or metric.endswith("guidance previous high"):
                 field = "prevHigh" if "previous" in metric else "high"
-                slot[field] = float(value)
             elif metric == "calendar 2026 capex guidance":
-                slot["low"] = slot["high"] = float(value)
-                slot["note"] = "（租赁重分类后 CY2026）"
+                field = "calendar"
+            else:
+                continue
+            # rows arrive newest-first（调用方按 (date, company) 倒序）；首写优先，
+            # 否则旧修订会覆盖新修订，chip 显示被作废的上一版。
+            if field == "calendar":
+                if slot["low"] is None:
+                    slot["low"] = slot["high"] = float(value)
+                    slot["note"] = "（租赁重分类后 CY2026）"
+                    slot["revisionDate"] = str(row.get("date") or "")
+            elif slot.get(field) is None:
+                slot[field] = float(value)
+                if field == "low":
+                    slot["revisionDate"] = str(row.get("date") or "")
     quarterly.sort(key=lambda r: (r["group"], r["series"]))
-    return quarterly, [{"company": k, **v} for k, v in sorted(guidance.items())]
+    # 丢弃既无下限也无上限的空壳（否则 chip 会渲染成 $null–$nullB）
+    guidance_out = [{"company": k, **v} for k, v in sorted(guidance.items()) if v.get("low") is not None or v.get("high") is not None]
+    return quarterly, guidance_out
 
 
 def _price_change_counts(active_price_raw: dict[str, Any], active_models: list[dict[str, Any]]) -> list[dict[str, Any]]:
@@ -1023,8 +1035,8 @@ def _stale_note() -> str:
 SOURCE_IMPACT = {
     "openrouter_usage": "需求区：Token 总量 / 组合更替 / 价格层级",
     "openrouter_active_prices": "需求区：Input·Output 组合牌价、单模型调价史",
-    "foundry_signals": "交叉验证源（当前上游故障中，暂不影响图表）",
-    "sec_capex": "CAPEX 表（季度缓存）",
+    "foundry_signals": "信息源：2026-09-27 起价格源已切换为 gpurentalprices，本源不再喂任何图表",
+    "sec_capex": "CAPEX 季度柱图 / 指引条 / CAPEX 溯源表",
     "gpu_orderbook": "供给深度图（积累中）",
     "reference_indices": "三源对照图 / 合约带 / OTPI",
     "neocloud_provider_prices": "GPU 价格图 / 代际溢价 / 固定面板指数",
@@ -1043,19 +1055,26 @@ def _fresh_badge(snapshot: dict[str, Any]) -> str:
         total = len(sources)
         healthy = sum(1 for x in sources if x.get("status") in ("fresh", "current_for_frequency"))
         generated = str(status.get("generatedAt", ""))[:16].replace("T", " ")
-        tone = "ok" if healthy == total and status.get("publishable") else "warn"
     except Exception:
         return ""
 
     rows_html = []
-    for src in sorted(sources, key=lambda x: (x.get("status") in ("fresh", "current_for_frequency"), str(x.get("source")))):
+    for src in sorted(sources, key=lambda x: (x.get("status") in ("fresh", "current_for_frequency") and not x.get("qualityWarnings"), str(x.get("source")))):
         name = str(src.get("source"))
         st = str(src.get("status"))
-        ready = st in ("fresh", "current_for_frequency")
-        dot_cls = "ok" if ready else ("stale" if st == "stale_last_good" else "bad")
+        degraded_n = int(src.get("qualityWarnings") or 0)
+        # 上游部分失败时不得显示绿点：frequency 达标 ≠ 数据是本期抓的
+        ready = st in ("fresh", "current_for_frequency") and not degraded_n
+        dot_cls = "ok" if ready else ("warn" if degraded_n else ("stale" if st == "stale_last_good" else "bad"))
         impact = SOURCE_IMPACT.get(name, "")
         note = ""
-        if not ready:
+        if degraded_n:
+            # 披露缓存覆盖：最旧一条滞后多少天
+            cov = src.get("cacheCoverage") or {}
+            ages = [int(v.get("ageDays") or 0) for v in cov.values() if isinstance(v, dict)]
+            age_txt = f"，最旧一条滞后 {max(ages)} 天" if ages else ""
+            note = f"（{degraded_n} 家上游失败，本次全部来自缓存{age_txt}）"
+        elif not ready:
             if st == "stale_last_good":
                 note = f"（滞后 {src.get('staleDays', '?')} 天，宽限内）"
             elif st == "failed_using_last_good":
@@ -1068,9 +1087,12 @@ def _fresh_badge(snapshot: dict[str, Any]) -> str:
             f'<div class="fresh-row"><span class="fresh-dot {dot_cls}"></span>'
             f'<b>{name}</b> {st}{note}<span class="fresh-impact">{impact}</span></div>'
         )
+    degraded_total = sum(1 for x in sources if int(x.get("qualityWarnings") or 0))
+    tone = "ok" if (healthy == total and status.get("publishable") and not degraded_total) else "warn"
+    ready_label = f"{healthy - degraded_total}/{total} 源就绪"
     return (
         f'<details class="fresh-details"><summary class="fresh-badge {tone}">'
-        f'● 数据更新于 {generated} UTC · {healthy}/{total} 源就绪 ▾</summary>'
+        f'● 数据更新于 {generated} UTC · {ready_label} ▾</summary>'
         f'<div class="fresh-list">{"".join(rows_html)}</div></details>'
     )
 
@@ -1129,7 +1151,7 @@ HTML = r'''<!doctype html>
 .fresh-details{position:relative;display:inline-block}.fresh-details>summary{cursor:pointer;list-style:none}.fresh-details>summary::-webkit-details-marker{display:none}
 .fresh-list{position:absolute;top:110%;left:0;z-index:50;min-width:340px;max-width:480px;padding:10px 12px;background:var(--paper);border:1px solid var(--line);border-radius:10px;box-shadow:0 12px 32px rgba(0,0,0,.12)}
 .fresh-row{padding:5px 0;border-bottom:1px solid #ececf0;font-size:11px;line-height:1.5}.fresh-row:last-child{border-bottom:none}
-.fresh-dot{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:6px}.fresh-dot.ok{background:#248a3d}.fresh-dot.stale{background:#d76b00}.fresh-dot.bad{background:#d70015}
+.fresh-dot{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:6px}.fresh-dot.ok{background:#248a3d}.fresh-dot.warn{background:#d76b00}.fresh-dot.stale{background:#d76b00}.fresh-dot.bad{background:#d70015}
 .fresh-impact{display:block;color:var(--muted);margin-left:13px;font-size:10px}
 .kpi-row{display:flex;gap:12px;justify-content:space-around;padding:22px 6px 10px}.kpi{text-align:center}.kpi-value{font-size:30px;font-weight:700;line-height:1.1}.kpi-label{font-size:11px;color:var(--muted);margin-top:4px}
 .pc-row{display:flex;align-items:center;gap:8px;margin:6px 0}.pc-name{width:118px;font-size:10px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--muted)}.pc-barwrap{flex:1;background:#ececf0;height:10px;border-radius:5px}.pc-bar{background:#0071e3;height:10px;border-radius:5px}.pc-count{font-size:10px;width:34px;text-align:right;font-variant-numeric:tabular-nums}
@@ -1176,7 +1198,7 @@ function renderChart(c){
   svg+=`<text class="axis-title" transform="translate(15 ${H/2}) rotate(-90)" text-anchor="middle">${esc(c.opt.yTitle)}</text>`;
   if(c.opt.cornerNote)svg+=`<text class="axis" x="${W-m.r}" y="${m.t+14}" text-anchor="end" fill="#0071e3" style="font-weight:700">${esc(c.opt.cornerNote)}</text>`;
   if(Number.isFinite(c.opt.reference)){const yy=y(c.opt.reference);svg+=`<line x1="${m.l}" y1="${yy}" x2="${W-m.r}" y2="${yy}" stroke="#6e6e73" stroke-width="1.5" stroke-dasharray="6 5"/><text class="axis" x="${W-m.r}" y="${yy-6}" text-anchor="end">${fmt(c.opt.reference,c.opt.kind)}</text>`}
-  if(c.opt.annotations){const _flat=Array.isArray(c.opt.annotations)?c.opt.annotations:Object.entries(c.opt.annotations).flatMap(([fam,ls])=>(states[c.id]&&states[c.id].has(fam+' 固定面板'))?ls:[]);_flat.forEach((a,ai)=>{const tv=dateNum(a.date);if(tv<start||tv>end)return;const xx=x(tv);svg+=`<line x1="${xx}" y1="${m.t}" x2="${xx}" y2="${H-m.b}" stroke="#d76b00" stroke-width="1.4" stroke-dasharray="4 4"/><text class="axis" x="${Math.min(xx+4,W-m.r-120)}" y="${m.t+14+((ai%2)*12)}" fill="#d76b00">${esc(a.label)}</text>`})}
+  if(c.opt.annotations){const _flat=Array.isArray(c.opt.annotations)?c.opt.annotations:Object.entries(c.opt.annotations).flatMap(([fam,ls])=>(states[c.id]&&states[c.id].has(fam+' 固定面板'))?ls:[]);const _seen=new Set();_flat.filter(a=>{const k=a.date+'|'+a.label;if(_seen.has(k))return false;_seen.add(k);return true}).forEach((a,ai)=>{const tv=dateNum(a.date);if(tv<start||tv>end)return;const xx=x(tv);svg+=`<line x1="${xx}" y1="${m.t}" x2="${xx}" y2="${H-m.b}" stroke="#d76b00" stroke-width="1.4" stroke-dasharray="4 4"/><text class="axis annot" x="${Math.min(xx+4,W-m.r-120)}" y="${m.t+14+((ai%2)*12)}" fill="#d76b00">${esc(a.label)}</text>`})}
   const names=[...new Set(c.rows.map(r=>r.series))];
   names.forEach((name,idx)=>{
     const pts=visible.filter(r=>r.series===name).sort((a,b)=>dateNum(a.date)-dateNum(b.date));let segments=[],segment=[];
@@ -1317,7 +1339,7 @@ const panelRows=DATA.datasets.panelIndex||[];
 lineChart('panel-index-chart','panel-index-legend',panelRows,{title:'Fixed-provider panel index',kind:'index',yTitle:'Index (base=100)',zero:false,gapDays:11,reference:100,annotations:DATA.meta.panelAnnotations});
 (()=>{['basisH100','basisH200','basisB200'].forEach(k=>{const rows=DATA.datasets[k]||[];const names=[...new Set(rows.map(r=>r.series))];const lasts={};names.forEach(n=>{const rs=rows.filter(r=>r.series===n).sort((a,b)=>a.date<b.date?-1:1);if(rs.length)lasts[n]=rs[rs.length-1].value});const vals=Object.values(lasts);if(vals.length>=2){const div=Math.max(...vals)-Math.min(...vals);const label=Object.entries(lasts).map(([n,v])=>n.replace(' 报价中位','').replace(' 成交指数','').replace(' 综合指数','')+' '+v.toFixed(0)).join(' / ');const art=document.querySelector(`article[data-source="${k}"] .panel-note`);if(art)art.textContent+=' · 终值 '+label+'，分歧 '+div.toFixed(0)+' pct'}})})();
 (()=>{const pc=DATA.datasets.priceChangeCounts||[];const maxRecent=Math.max(1,...pc.map(r=>r.recent4w));document.getElementById('price-change-bars').innerHTML=pc.slice(0,8).map(r=>`<div class="pc-row"><span class="pc-name">${esc(r.name)}</span><div class="pc-barwrap"><div class="pc-bar" style="width:${Math.max(2,100*r.recent4w/maxRecent)}%"></div></div><span class="pc-count">${r.recent4w}次</span></div>`).join('')||'<div class="empty">暂无</div>';const top3=pc.slice(0,3).map(r=>r.total).join('/');const sum=document.querySelector('.model-detail>summary');if(sum&&top3)sum.textContent=`头部模型近 4 周调价 ${pc.slice(0,3).map(r=>r.recent4w).join('/')} 次（全历史 ${top3} 次）——点开看单模型价格史`})();
-(()=>{const cq=DATA.datasets.capexQuarterly||[];if(document.getElementById("capex-quarterly")&&cq.length)barGroupsChart("capex-quarterly","capex-quarterly-legend",cq,{title:"Quarterly CapEx",kind:"count",yTitle:"十亿美元"});const gs=DATA.meta.capexGuidance||[];const chips=gs.map(g=>{const up=g.prevLow!=null&&g.low>g.prevLow,down=g.prevHigh!=null&&g.high<g.prevHigh;const arrow=up?"↑":(down?"↓":"→");if(g.low===g.high)return `<span class="chip">${esc(g.company)} $${g.low}B${esc(g.note||"")}</span>`;const prev=(g.prevLow!=null)?"（"+arrow+"自 $"+g.prevLow+"–$"+g.prevHigh+"B）":"";return `<span class="chip">${esc(g.company)} $${g.low}–$${g.high}B${prev}</span>`}).join("");const strip=document.getElementById("guidance-strip");if(strip)strip.innerHTML="<b>2026 全年资本开支指引：</b>"+chips})();
+(()=>{const cq=DATA.datasets.capexQuarterly||[];if(document.getElementById("capex-quarterly")&&cq.length)barGroupsChart("capex-quarterly","capex-quarterly-legend",cq,{title:"Quarterly CapEx",kind:"count",yTitle:"十亿美元"});const gs=DATA.meta.capexGuidance||[];const rev=d=>{const m=/^\d{4}-(\d{1,2})-(\d{1,2})$/.exec(d||"");return m?`${+m[1]}/${+m[2]} 修订`:""};const chips=gs.map(g=>{if(g.low==null&&g.high==null)return"";const stamp=rev(g.revisionDate);if(g.low===g.high)return `<span class="chip">${esc(g.company)} $${g.low}B${esc(g.note||"")}${stamp?" · "+stamp:""}</span>`;const loUp=g.prevLow!=null&&g.low>g.prevLow,loDn=g.prevLow!=null&&g.low<g.prevLow,hiUp=g.prevHigh!=null&&g.high>g.prevHigh,hiDn=g.prevHigh!=null&&g.high<g.prevHigh;let cmp="";if(loUp&&hiUp)cmp=`（↑自 $${g.prevLow}–$${g.prevHigh}B）`;else if(loDn&&hiDn)cmp=`（↓自 $${g.prevLow}–$${g.prevHigh}B）`;else if(loUp||loDn)cmp=`（下限 ${loUp?"↑":"↓"} $${g.prevLow}B→$${g.low}B）`;else if(hiUp||hiDn)cmp=`（上限 ${hiUp?"↑":"↓"} $${g.prevHigh}B→$${g.high}B）`;else if(g.prevLow!=null&&g.prevHigh!=null)cmp=`（持平于 $${g.prevLow}–$${g.prevHigh}B）`;return `<span class="chip">${esc(g.company)} $${g.low}–$${g.high}B${cmp}${stamp?" · "+stamp:""}</span>`}).filter(Boolean).join("");const strip=document.getElementById("guidance-strip");if(strip)strip.innerHTML=`<b>2026 资本开支指引（已披露出 ${gs.length} 家）：</b>`+chips})();
 (()=>{{const comp=DATA.datasets.openrouterComposition||[];const weeks=[...new Set(comp.map(r=>r.date))].sort();let changes=0,lastTop="";weeks.forEach((w,i)=>{const rows=comp.filter(r=>r.date===w&&r.model!=="Others").sort((a,b)=>b.share-a.share);const top=rows[0];if(top&&lastTop&&top.model!==lastTop)changes++;if(top)lastTop=top.model;if(i===weeks.length-1){const hhi=rows.reduce((sum,r)=>sum+Math.pow(r.share/100,2),0)*10000;const el=document.getElementById("composition-badge");if(el)el.textContent=`${weeks.length} 周里 Top1 已更换 ${changes} 次 · 最新周 HHI 集中度 ${hhi.toFixed(0)}`}});const latestWeek=weeks[weeks.length-1];const top5=comp.filter(r=>r.date===latestWeek&&r.model!=="Others").sort((a,b)=>b.share-a.share).slice(0,5).map(r=>r.model);const rows5=comp.filter(r=>top5.includes(r.model)).map(r=>({date:r.date,series:(r.model.split("/")[1]||r.model).slice(0,18),value:r.share}));if(document.getElementById("top5-share")&&rows5.length)lineChart("top5-share","top5-share-legend",rows5,{title:"Top-5 share",kind:"pct",yTitle:"用量占比 %",zero:true,gapDays:21,endLabels:true})};})();
 activeModelDetail();sourceDetails();renderTable();$('#freshness').textContent='更新于 '+DATA.meta.generatedAt.slice(0,16).replace('T',' ')+' UTC · 仅公开来源数据 · 不含综合评分';
 </script></body></html>'''

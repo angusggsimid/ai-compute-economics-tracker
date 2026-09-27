@@ -34,6 +34,7 @@ def main() -> int:
 
         errors: list[str] = []
         checks: dict[str, bool] = {}
+        diagnostics: dict = {"errors": [], "guidanceMismatches": [], "duplicateLabels": []}
         with sync_playwright() as p:
             browser = p.chromium.launch()
             page = browser.new_page()
@@ -41,15 +42,74 @@ def main() -> int:
             page.on("pageerror", lambda exc: errors.append(f"pageerror: {exc}"))
             page.goto(f"http://127.0.0.1:{PORT}/index.html", wait_until="networkidle")
             page.wait_for_timeout(500)
+
+            # 指引条与 CAPEX 溯源表必须指向同一版修订：
+            # chip 数字取自 payload，表格数字取自同一批底表行，二者不一致即页面自相矛盾。
+            consistency = page.evaluate(
+                """() => {
+                    const gs = (typeof DATA !== 'undefined' && DATA.meta && DATA.meta.capexGuidance) || [];
+                    const rows = [...document.querySelectorAll('#capex-body tr')].map(tr =>
+                        [...tr.querySelectorAll('td')].map(td => td.textContent.trim()));
+                    const mismatches = [];
+                    for (const g of gs) {
+                        const mine = rows.filter(r => r[1] === g.company);
+                        if (!mine.length) { mismatches.push(`${g.company}: 表中无任何行`); continue; }
+                        if (g.low === g.high) {
+                            // 单值指引：表中应有一条"自然年指引"行且数值相同
+                            const single = mine.filter(r => /自然年指引/.test(r[2] || ''));
+                            if (!single.length) { mismatches.push(`${g.company}: 表中无自然年指引行`); continue; }
+                            const v = parseFloat(single[0][5]);
+                            if (Math.abs(v - g.low) > 1e-6)
+                                mismatches.push(`${g.company} 单值 chip=${g.low} 表=${v}`);
+                            continue;
+                        }
+                        // 区间指引：取该公司的"指引下限/上限"（排除"上调前"）最新日期
+                        const bounds = mine.filter(r => /指引(下限|上限)/.test(r[2] || '') && !/上调前/.test(r[2] || ''));
+                        if (!bounds.length) { mismatches.push(`${g.company}: 表中无指引区间行`); continue; }
+                        const latest = bounds.map(r => r[0]).sort().reverse()[0];
+                        const sameDay = bounds.filter(r => r[0] === latest);
+                        const lowRow = sameDay.find(r => /指引下限/.test(r[2]));
+                        const highRow = sameDay.find(r => /指引上限/.test(r[2]));
+                        if (!lowRow || !highRow) { mismatches.push(`${g.company}: ${latest} 区间不成对`); continue; }
+                        const lv = parseFloat(lowRow[5]), hv = parseFloat(highRow[5]);
+                        if (Math.abs(lv - g.low) > 1e-6) mismatches.push(`${g.company} 下限 chip=${g.low} 表=${lv}(${latest})`);
+                        if (Math.abs(hv - g.high) > 1e-6) mismatches.push(`${g.company} 上限 chip=${g.high} 表=${hv}(${latest})`);
+                    }
+                    return { mismatches, chipCount: gs.length };
+                }"""
+            )
+            # 同一张图内标注不得重复渲染（叠字）。只查橙色标注（fill=#d76b00），
+            # 坐标轴刻度与末端标签数值相同属正常，不算缺陷。
+            duplicate_labels = page.evaluate(
+                """() => {
+                    const dupes = [];
+                    for (const svg of document.querySelectorAll('.chart svg')) {
+                        const seen = new Set();
+                        for (const t of svg.querySelectorAll('text.annot')) {
+                            const key = (t.textContent || '').trim();
+                            if (!key) continue;
+                            if (seen.has(key)) dupes.push(key); else seen.add(key);
+                        }
+                    }
+                    return [...new Set(dupes)];
+                }"""
+            )
             checks = {
                 "console_zero_errors": len(errors) == 0,
                 "capex_table_filled": page.locator("#capex-body tr").count() > 0,
                 "four_clock_cards": page.locator(".clock-card").count() >= 4,
                 "charts_have_svg": page.locator(".chart svg").count() >= 10,
+                "guidance_matches_source_table": not consistency["mismatches"],
+                "no_duplicate_svg_labels": not duplicate_labels,
+            }
+            diagnostics = {
+                "errors": errors[:5],
+                "guidanceMismatches": consistency["mismatches"],
+                "duplicateLabels": duplicate_labels,
             }
             browser.close()
 
-    result = {"ok": all(checks.values()), "checks": checks, "errors": errors[:5]}
+    result = {"ok": all(checks.values()), "checks": checks, "diagnostics": diagnostics}
     print(json.dumps(result, ensure_ascii=False))
     return 0 if result["ok"] else 1
 
