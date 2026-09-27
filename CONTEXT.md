@@ -1,5 +1,10 @@
 # CONTEXT
 
+## 2026-09-27 回填 neocloud 37 天缺口（Git 历史考古）
+
+- 上游仓库的旧快照在滚动窗口外仍留存于 git 历史 → 新增 `scripts/backfill_neocloud_gap.py`（按需、幂等）→ 覆盖 47→84 天，图表缺口消除。
+- 若未来再出现缺日，先跑该脚本；Zenodo 季度存档更新后也可追加补史。
+
 ## 2026-09-27 完整替换 Foundry 引用（价格层换源完成）
 
 - 价格图/溢价/面板指数 → neocloud 34 家；可用率 → GPU Finder 稀缺度（+价差+广度三面板）；对照图 Foundry 线 → Neocloud 线；Foundry 降级为信息源。
