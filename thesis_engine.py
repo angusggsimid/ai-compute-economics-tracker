@@ -78,6 +78,35 @@ def _change_pct_window(
     return round((latest_value / base[1] - 1) * 100, 2)
 
 
+RENTAL_KINDS = {"on-demand", "secure", "community"}
+
+
+def _neocloud_series(rows: List[Dict[str, Any]]) -> Dict[str, List[tuple]]:
+    """neocloud 逐报价 → 只取非中断性租赁档 → 每 (日期, 家族) 跨供应商中位序列。"""
+    from collections import defaultdict as _dd
+    by_day: Dict[str, Dict[str, List[float]]] = _dd(lambda: _dd(list))
+    for row in rows or []:
+        gpu = str(row.get("series"))
+        if gpu not in ("H100", "H200", "B200"):
+            continue
+        if str(row.get("kind") or "").lower() not in RENTAL_KINDS:
+            continue
+        price = row.get("usdPerGpuHour")
+        day = str(row.get("date"))
+        if not isinstance(price, (int, float)) or price <= 0 or len(day) != 10:
+            continue
+        by_day[gpu][day].append(float(price))
+    out: Dict[str, List[tuple]] = {}
+    for gpu, days in by_day.items():
+        points = []
+        for day in sorted(days):
+            parsed = _parse_day(day)
+            if parsed is not None:
+                points.append((parsed, statistics.median(days[day])))
+        out[gpu] = points
+    return out
+
+
 def _panel_summary(
     series_map: Dict[str, List[tuple[date, float]]],
     source_prefix: str = "",
@@ -134,17 +163,15 @@ def evaluate_supply(data: Dict[str, Any]) -> Dict[str, Any]:
     composite = _series_by_key(
         (data.get("reference", {}).get("datasets", {}).get("semiComposite")) or [], "indexValue"
     )
-    foundry = _series_by_key(
-        (data.get("foundry", {}).get("datasets", {}).get("prices")) or [], "value"
-    )
+    neocloud = _neocloud_series((data.get("neocloud", {}) or {}).get("rows") or [])
     ornn = _series_by_key(
         (data.get("reference", {}).get("datasets", {}).get("ornnOcpi")) or [], "indexValue"
     )
 
     composite_panels = _panel_summary(composite, "semi")
     ornn_panels = _panel_summary(ornn, "ornn")
-    foundry_panels = _panel_summary(foundry, "foundry")
-    all_panels = composite_panels + ornn_panels + foundry_panels
+    neocloud_panels = _panel_summary(neocloud, "neocloud")
+    all_panels = composite_panels + ornn_panels + neocloud_panels
 
     depth = _depth_metrics(data.get("orderbook", {}).get("rows") or [])
 
@@ -201,7 +228,7 @@ def evaluate_supply(data: Dict[str, Any]) -> Dict[str, Any]:
         "natural_frequency": "daily",
         "state": state,
         "direction": direction,
-        "basis": "固定来源价格面板（SemiAnalysis 综合指数/Ornn 成交指数/Foundry 中位价），横截面不连线。",
+        "basis": "固定来源价格面板（SemiAnalysis 综合指数/Ornn 成交指数/Neocloud 34 家非中断性租赁中位），横截面不连线。",
         "confirms": [
             "松动：≥2 前沿面板 30D 跌幅≥10% 且订单簿深度增长≥10%（≥20 有效日）",
             "紧缩：≥2 前沿面板 30D 涨幅≥10% 且订单簿深度收缩≥10%（≥20 有效日）",
@@ -224,7 +251,7 @@ def evaluate_supply(data: Dict[str, Any]) -> Dict[str, Any]:
             "h100Contract1yBands": bands[-6:],
         },
         "blockers": blockers,
-        "sources": ["semianalysis_public", "ornn_ocpi", "foundry_signals", "gpu_orderbook"],
+        "sources": ["semianalysis_public", "ornn_ocpi", "neocloud_provider_prices", "gpu_orderbook"],
     }
 
 
@@ -488,7 +515,6 @@ def evaluate_report(data_dir: Path) -> Dict[str, Any]:
 
     data = {
         "cost_index": opt("openrouter_cost_index.json"),
-        "foundry": opt("foundry_signals_gpu_history.json"),
         "active_prices": opt("openrouter_active_price_history.json"),
         "capex": opt("capex_official_history.json"),
         "orderbook": opt("gpu_orderbook_history.json"),
