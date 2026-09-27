@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-27T15:41:11Z",
+  "generatedAt": "2026-09-27T16:13:26Z",
   "inputs": [
     "capex_official_history.json",
     "epoch_chip_sales.json",
@@ -131,8 +131,8 @@
         },
         "depth": {
           "depthValidDates": 36,
-          "depthLatestTotalOffers": 341,
-          "depthGrowthPct": 16.16
+          "depthLatestTotalOffers": 332,
+          "depthGrowthPct": 15.99
         },
         "h100Contract1yBands": [
           {
@@ -171,7 +171,7 @@
     },
     {
       "clock_id": "capacity",
-      "stateBasis": "订单簿已积累 36 个有效日（≥10 达标，趋势可判）；最新 offers 341",
+      "stateBasis": "订单簿已积累 36 个有效日（≥10 达标，趋势可判）；最新 offers 332",
       "title": "Capacity & Utilization",
       "natural_frequency": "daily",
       "state": "Trend",
@@ -208,9 +208,9 @@
       },
       "metrics": {
         "depthValidDates": 36,
-        "latestTotalOffers": 341,
-        "depthGrowthPct": 16.16,
-        "latestGpuCapacity": 10249,
+        "latestTotalOffers": 332,
+        "depthGrowthPct": 15.99,
+        "latestGpuCapacity": 10220,
         "providerSnapshotRows": 23068,
         "providersCovered": 34
       },
@@ -222,10 +222,10 @@
     },
     {
       "clock_id": "demand_unit_economics",
-      "stateBasis": "OpenRouter 用量 52 个完整周达标（≥52）；但用量为公开 proxy——契约规定 proxy 不得升级 Inflection，封顶 Trend 属纪律而非保守",
+      "stateBasis": "OpenRouter 用量 51 个完整周（已剔除抓取窗口起点的残周）达标（≥52）；但用量为公开 proxy——契约规定 proxy 不得升级 Inflection，封顶 Trend 属纪律而非保守",
       "title": "Demand & Unit Economics",
       "natural_frequency": "weekly/event",
-      "state": "Trend",
+      "state": "Observing",
       "direction": null,
       "basis": "OpenRouter 完整周公开 proxy（封顶 Trend）+ 活跃模型牌价账本真实调价点 + Ornn OTPI 已实现 token 价。",
       "confirms": [
@@ -258,7 +258,7 @@
         }
       },
       "metrics": {
-        "completeWeeks": 52,
+        "completeWeeks": 51,
         "latestWeeklyTokens": 128895269979077.0,
         "weightedOutputPriceChange8wPct": -6.34,
         "recentPriceCutModels": 105,
@@ -266,6 +266,7 @@
         "otpiLatestDate": "2026-09-26"
       },
       "blockers": [
+        "incomplete_weeks_51_of_52",
         "proxy_ceiling_requires_official_usage_for_inflection"
       ],
       "sources": [
@@ -326,7 +327,15 @@
       },
       "metrics": {
         "companiesCovered": 5,
-        "companiesWith3ConsecutiveQuarters": 2,
+        "companiesWith3ConsecutiveQuarters": 0,
+        "maxConsecutiveQuarters": 2,
+        "consecutiveQuartersByCompany": {
+          "Alphabet": 2,
+          "Amazon": 2,
+          "Meta": 2,
+          "Microsoft": 2,
+          "Oracle": 1
+        },
         "guidanceRevisedUp": [
           "Alphabet",
           "Meta"
@@ -337,7 +346,8 @@
         "h100ContractLatestMidpoint": 2.8
       },
       "blockers": [
-        "companies_with_3_consecutive_quarters_2_of_3"
+        "companies_with_3_consecutive_quarters_0_of_3",
+        "longest_true_quarter_run_2_(Alphabet)_needs_3"
       ],
       "sources": [
         "sec_capex",

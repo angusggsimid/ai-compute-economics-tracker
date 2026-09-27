@@ -1,7 +1,7 @@
 {
   "meta": {
-    "generatedAt": "2026-09-27T15:41:11Z",
-    "minDate": "2025-09-22",
+    "generatedAt": "2026-09-27T16:13:26Z",
+    "minDate": "2025-09-29",
     "maxDate": "2026-09-27",
     "basisCommonStart": {
       "H100": "2026-07-05",
@@ -88,17 +88,14 @@
         "note": "（租赁重分类后 CY2026）"
       }
     ],
+    "providerUniverse": 34,
     "volumeYoYLabel": "自首个完整周（2025-09-29起）×24",
+    "volumePartialWeekDropped": "2025-09-22",
     "scarcityValidDays": 1,
     "gapValidDays": 1
   },
   "datasets": {
     "openrouterVolume": [
-      {
-        "date": "2025-09-22",
-        "series": "Weekly tokens",
-        "value": 0.750147399913
-      },
       {
         "date": "2025-09-29",
         "series": "Weekly tokens",
@@ -601,86 +598,6 @@
       }
     ],
     "openrouterComposition": [
-      {
-        "date": "2025-09-22",
-        "rank": 1,
-        "model": "x-ai/grok-4-fast:free",
-        "vendor": "x-ai",
-        "tokens": 0.156334772736,
-        "share": 20.840540506323325
-      },
-      {
-        "date": "2025-09-22",
-        "rank": 2,
-        "model": "x-ai/grok-code-fast-1",
-        "vendor": "x-ai",
-        "tokens": 0.140204527252,
-        "share": 18.69026370927374
-      },
-      {
-        "date": "2025-09-22",
-        "rank": 3,
-        "model": "anthropic/claude-4-sonnet-20250522",
-        "vendor": "anthropic",
-        "tokens": 0.078048466014,
-        "share": 10.40441732158931
-      },
-      {
-        "date": "2025-09-22",
-        "rank": 4,
-        "model": "google/gemini-2.5-flash",
-        "vendor": "google",
-        "tokens": 0.038678012884,
-        "share": 5.156055048445914
-      },
-      {
-        "date": "2025-09-22",
-        "rank": 5,
-        "model": "deepseek/deepseek-chat-v3.1:free",
-        "vendor": "deepseek",
-        "tokens": 0.034891734753,
-        "share": 4.6513171620733
-      },
-      {
-        "date": "2025-09-22",
-        "rank": 6,
-        "model": "openai/gpt-oss-20b",
-        "vendor": "openai",
-        "tokens": 0.033558989668,
-        "share": 4.4736527343682155
-      },
-      {
-        "date": "2025-09-22",
-        "rank": 7,
-        "model": "deepseek/deepseek-chat-v3-0324",
-        "vendor": "deepseek",
-        "tokens": 0.020071738594,
-        "share": 2.675705947434846
-      },
-      {
-        "date": "2025-09-22",
-        "rank": 8,
-        "model": "google/gemini-2.5-pro",
-        "vendor": "google",
-        "tokens": 0.01748950913,
-        "share": 2.3314763381207992
-      },
-      {
-        "date": "2025-09-22",
-        "rank": 9,
-        "model": "google/gemini-2.0-flash-001",
-        "vendor": "google",
-        "tokens": 0.01675534632,
-        "share": 2.23360719799112
-      },
-      {
-        "date": "2025-09-22",
-        "rank": 10,
-        "model": "Others",
-        "vendor": "OpenRouter",
-        "tokens": 0.214114302562,
-        "share": 28.542964034379427
-      },
       {
         "date": "2025-09-29",
         "rank": 1,
@@ -4764,11 +4681,6 @@
     ],
     "openrouterDisclosure": [
       {
-        "date": "2025-09-22",
-        "othersShare": 28.542964034379427,
-        "namedShare": 71.45703596562058
-      },
-      {
         "date": "2025-09-29",
         "othersShare": 37.663071942170255,
         "namedShare": 62.336928057829745
@@ -5025,31 +4937,6 @@
       }
     ],
     "activePriceTiers": [
-      {
-        "date": "2025-09-22",
-        "series": "免费",
-        "value": 25.491857668396626
-      },
-      {
-        "date": "2025-09-22",
-        "series": "<$1",
-        "value": 2.23360719799112
-      },
-      {
-        "date": "2025-09-22",
-        "series": "$1–5",
-        "value": 21.365969656708586
-      },
-      {
-        "date": "2025-09-22",
-        "series": ">$5",
-        "value": 10.40441732158931
-      },
-      {
-        "date": "2025-09-22",
-        "series": "Others / 无法匹配",
-        "value": 40.504148155314354
-      },
       {
         "date": "2025-09-29",
         "series": "免费",
@@ -6328,12 +6215,6 @@
     ],
     "activeInputBasket": [
       {
-        "date": "2025-09-22",
-        "series": "Weekly weighted rate",
-        "value": 0.6024553107811694,
-        "coverage": 59.495851844685646
-      },
-      {
         "date": "2025-09-29",
         "series": "Weekly weighted rate",
         "value": 0.4926779542063618,
@@ -6935,12 +6816,6 @@
       }
     ],
     "activeOutputBasket": [
-      {
-        "date": "2025-09-22",
-        "series": "Weekly weighted rate",
-        "value": 3.1543510748328734,
-        "coverage": 59.495851844685646
-      },
       {
         "date": "2025-09-29",
         "series": "Weekly weighted rate",
@@ -8566,12 +8441,13 @@
         "date": "2026-07-05",
         "series": "B200",
         "value": 6.3125,
-        "p25": 5.935,
-        "p75": 6.69,
+        "p25": null,
+        "p75": null,
         "low": 5.935,
         "high": 6.69,
         "average": 6.3125,
         "providerCount": 2,
+        "medianSynthetic": true,
         "providerPrices": {
           "lambda": 6.69,
           "runpod": 5.935
@@ -8582,12 +8458,13 @@
         "date": "2026-07-05",
         "series": "H100",
         "value": 3.215,
-        "p25": 2.79,
-        "p75": 3.64,
+        "p25": null,
+        "p75": null,
         "low": 2.79,
         "high": 3.64,
         "average": 3.215,
         "providerCount": 2,
+        "medianSynthetic": true,
         "providerPrices": {
           "lambda": 3.64,
           "runpod": 2.79
@@ -8598,12 +8475,13 @@
         "date": "2026-07-05",
         "series": "H200",
         "value": 3.79,
-        "p25": 3.79,
-        "p75": 3.79,
+        "p25": null,
+        "p75": null,
         "low": 3.79,
         "high": 3.79,
         "average": 3.79,
         "providerCount": 1,
+        "medianSynthetic": false,
         "providerPrices": {
           "runpod": 3.79
         },
@@ -8619,6 +8497,7 @@
         "high": 9.36,
         "average": 7.1207,
         "providerCount": 7,
+        "medianSynthetic": false,
         "providerPrices": {
           "coreweave": 8.6,
           "datacrunch": 6.11,
@@ -8640,6 +8519,7 @@
         "high": 6.155,
         "average": 3.2605,
         "providerCount": 11,
+        "medianSynthetic": false,
         "providerPrices": {
           "coreweave": 6.155,
           "crusoe": 3.9,
@@ -8665,6 +8545,7 @@
         "high": 6.305,
         "average": 4.5078,
         "providerCount": 9,
+        "medianSynthetic": false,
         "providerPrices": {
           "coreweave": 6.305,
           "crusoe": 4.29,
@@ -8688,6 +8569,7 @@
         "high": 9.3,
         "average": 6.8306,
         "providerCount": 9,
+        "medianSynthetic": false,
         "providerPrices": {
           "coreweave": 8.6,
           "datacrunch": 6.11,
@@ -8711,6 +8593,7 @@
         "high": 12.29,
         "average": 4.286,
         "providerCount": 16,
+        "medianSynthetic": true,
         "providerPrices": {
           "aws": 12.29,
           "azure": 9.0205,
@@ -8741,6 +8624,7 @@
         "high": 10.6,
         "average": 5.17,
         "providerCount": 12,
+        "medianSynthetic": true,
         "providerPrices": {
           "aws": 10.6,
           "coreweave": 6.305,
@@ -8767,6 +8651,7 @@
         "high": 9.36,
         "average": 6.8372,
         "providerCount": 9,
+        "medianSynthetic": false,
         "providerPrices": {
           "coreweave": 8.6,
           "datacrunch": 6.11,
@@ -8790,6 +8675,7 @@
         "high": 12.29,
         "average": 4.1491,
         "providerCount": 16,
+        "medianSynthetic": true,
         "providerPrices": {
           "aws": 12.29,
           "azure": 9.0205,
@@ -8820,6 +8706,7 @@
         "high": 10.6,
         "average": 5.065,
         "providerCount": 12,
+        "medianSynthetic": true,
         "providerPrices": {
           "aws": 10.6,
           "coreweave": 6.305,
@@ -8846,6 +8733,7 @@
         "high": 9.3,
         "average": 6.8306,
         "providerCount": 9,
+        "medianSynthetic": false,
         "providerPrices": {
           "coreweave": 8.6,
           "datacrunch": 6.11,
@@ -8869,6 +8757,7 @@
         "high": 12.29,
         "average": 4.1491,
         "providerCount": 16,
+        "medianSynthetic": true,
         "providerPrices": {
           "aws": 12.29,
           "azure": 9.0205,
@@ -8899,6 +8788,7 @@
         "high": 10.6,
         "average": 5.25,
         "providerCount": 12,
+        "medianSynthetic": true,
         "providerPrices": {
           "aws": 10.6,
           "coreweave": 6.305,
@@ -8925,6 +8815,7 @@
         "high": 9.36,
         "average": 6.8372,
         "providerCount": 9,
+        "medianSynthetic": false,
         "providerPrices": {
           "coreweave": 8.6,
           "datacrunch": 6.11,
@@ -8948,6 +8839,7 @@
         "high": 12.29,
         "average": 4.2991,
         "providerCount": 16,
+        "medianSynthetic": true,
         "providerPrices": {
           "aws": 12.29,
           "azure": 9.0205,
@@ -8978,6 +8870,7 @@
         "high": 10.6,
         "average": 5.135,
         "providerCount": 12,
+        "medianSynthetic": true,
         "providerPrices": {
           "aws": 10.6,
           "coreweave": 6.305,
@@ -9004,6 +8897,7 @@
         "high": 9.36,
         "average": 6.8372,
         "providerCount": 9,
+        "medianSynthetic": false,
         "providerPrices": {
           "coreweave": 8.6,
           "datacrunch": 6.11,
@@ -9027,6 +8921,7 @@
         "high": 12.29,
         "average": 4.1491,
         "providerCount": 16,
+        "medianSynthetic": true,
         "providerPrices": {
           "aws": 12.29,
           "azure": 9.0205,
@@ -9057,6 +8952,7 @@
         "high": 10.6,
         "average": 5.25,
         "providerCount": 12,
+        "medianSynthetic": true,
         "providerPrices": {
           "aws": 10.6,
           "coreweave": 6.305,
@@ -9083,6 +8979,7 @@
         "high": 9.36,
         "average": 6.8372,
         "providerCount": 9,
+        "medianSynthetic": false,
         "providerPrices": {
           "coreweave": 8.6,
           "datacrunch": 6.11,
@@ -9106,6 +9003,7 @@
         "high": 12.29,
         "average": 4.1491,
         "providerCount": 16,
+        "medianSynthetic": true,
         "providerPrices": {
           "aws": 12.29,
           "azure": 9.0205,
@@ -9136,6 +9034,7 @@
         "high": 10.6,
         "average": 5.135,
         "providerCount": 12,
+        "medianSynthetic": true,
         "providerPrices": {
           "aws": 10.6,
           "coreweave": 6.305,
@@ -9162,6 +9061,7 @@
         "high": 9.36,
         "average": 6.8372,
         "providerCount": 9,
+        "medianSynthetic": false,
         "providerPrices": {
           "coreweave": 8.6,
           "datacrunch": 6.11,
@@ -9185,6 +9085,7 @@
         "high": 12.29,
         "average": 4.1491,
         "providerCount": 16,
+        "medianSynthetic": true,
         "providerPrices": {
           "aws": 12.29,
           "azure": 9.0205,
@@ -9215,6 +9116,7 @@
         "high": 10.6,
         "average": 5.1792,
         "providerCount": 12,
+        "medianSynthetic": true,
         "providerPrices": {
           "aws": 10.6,
           "coreweave": 6.305,
@@ -9241,6 +9143,7 @@
         "high": 8.6,
         "average": 6.6161,
         "providerCount": 9,
+        "medianSynthetic": false,
         "providerPrices": {
           "coreweave": 8.6,
           "datacrunch": 6.11,
@@ -9264,6 +9167,7 @@
         "high": 12.29,
         "average": 4.2485,
         "providerCount": 16,
+        "medianSynthetic": true,
         "providerPrices": {
           "aws": 12.29,
           "azure": 9.0205,
@@ -9294,6 +9198,7 @@
         "high": 10.6,
         "average": 5.2658,
         "providerCount": 12,
+        "medianSynthetic": true,
         "providerPrices": {
           "aws": 10.6,
           "coreweave": 6.305,
@@ -9320,6 +9225,7 @@
         "high": 9.36,
         "average": 6.8372,
         "providerCount": 9,
+        "medianSynthetic": false,
         "providerPrices": {
           "coreweave": 8.6,
           "datacrunch": 6.11,
@@ -9343,6 +9249,7 @@
         "high": 12.29,
         "average": 4.1491,
         "providerCount": 16,
+        "medianSynthetic": true,
         "providerPrices": {
           "aws": 12.29,
           "azure": 9.0205,
@@ -9373,6 +9280,7 @@
         "high": 10.6,
         "average": 5.1508,
         "providerCount": 12,
+        "medianSynthetic": true,
         "providerPrices": {
           "aws": 10.6,
           "coreweave": 6.305,
@@ -9399,6 +9307,7 @@
         "high": 9.36,
         "average": 6.8372,
         "providerCount": 9,
+        "medianSynthetic": false,
         "providerPrices": {
           "coreweave": 8.6,
           "datacrunch": 6.11,
@@ -9422,6 +9331,7 @@
         "high": 12.29,
         "average": 4.1491,
         "providerCount": 16,
+        "medianSynthetic": true,
         "providerPrices": {
           "aws": 12.29,
           "azure": 9.0205,
@@ -9452,6 +9362,7 @@
         "high": 10.6,
         "average": 5.0808,
         "providerCount": 12,
+        "medianSynthetic": true,
         "providerPrices": {
           "aws": 10.6,
           "coreweave": 6.305,
@@ -9478,6 +9389,7 @@
         "high": 9.36,
         "average": 6.8372,
         "providerCount": 9,
+        "medianSynthetic": false,
         "providerPrices": {
           "coreweave": 8.6,
           "datacrunch": 6.11,
@@ -9501,6 +9413,7 @@
         "high": 12.29,
         "average": 4.1491,
         "providerCount": 16,
+        "medianSynthetic": true,
         "providerPrices": {
           "aws": 12.29,
           "azure": 9.0205,
@@ -9531,6 +9444,7 @@
         "high": 10.6,
         "average": 5.2658,
         "providerCount": 12,
+        "medianSynthetic": true,
         "providerPrices": {
           "aws": 10.6,
           "coreweave": 6.305,
@@ -9557,6 +9471,7 @@
         "high": 9.36,
         "average": 6.8372,
         "providerCount": 9,
+        "medianSynthetic": false,
         "providerPrices": {
           "coreweave": 8.6,
           "datacrunch": 6.11,
@@ -9580,6 +9495,7 @@
         "high": 12.29,
         "average": 4.1491,
         "providerCount": 16,
+        "medianSynthetic": true,
         "providerPrices": {
           "aws": 12.29,
           "azure": 9.0205,
@@ -9610,6 +9526,7 @@
         "high": 10.6,
         "average": 5.1508,
         "providerCount": 12,
+        "medianSynthetic": true,
         "providerPrices": {
           "aws": 10.6,
           "coreweave": 6.305,
@@ -9636,6 +9553,7 @@
         "high": 9.36,
         "average": 7.2544,
         "providerCount": 8,
+        "medianSynthetic": true,
         "providerPrices": {
           "coreweave": 8.6,
           "datacrunch": 6.11,
@@ -9658,6 +9576,7 @@
         "high": 12.29,
         "average": 4.146,
         "providerCount": 16,
+        "medianSynthetic": true,
         "providerPrices": {
           "aws": 12.29,
           "azure": 9.0205,
@@ -9688,6 +9607,7 @@
         "high": 10.6,
         "average": 5.0808,
         "providerCount": 12,
+        "medianSynthetic": true,
         "providerPrices": {
           "aws": 10.6,
           "coreweave": 6.305,
@@ -9714,6 +9634,7 @@
         "high": 16.11,
         "average": 7.535,
         "providerCount": 11,
+        "medianSynthetic": false,
         "providerPrices": {
           "coreweave": 8.6,
           "datacrunch": 6.11,
@@ -9739,6 +9660,7 @@
         "high": 12.29,
         "average": 4.0244,
         "providerCount": 23,
+        "medianSynthetic": false,
         "providerPrices": {
           "aws": 12.29,
           "azure": 9.0205,
@@ -9776,6 +9698,7 @@
         "high": 10.6,
         "average": 5.0189,
         "providerCount": 16,
+        "medianSynthetic": true,
         "providerPrices": {
           "aws": 10.6,
           "coreweave": 6.305,
@@ -9806,6 +9729,7 @@
         "high": 16.11,
         "average": 7.6032,
         "providerCount": 11,
+        "medianSynthetic": false,
         "providerPrices": {
           "coreweave": 8.6,
           "datacrunch": 6.11,
@@ -9831,6 +9755,7 @@
         "high": 12.29,
         "average": 4.0243,
         "providerCount": 23,
+        "medianSynthetic": false,
         "providerPrices": {
           "aws": 12.29,
           "azure": 9.0205,
@@ -9868,6 +9793,7 @@
         "high": 10.6,
         "average": 5.0189,
         "providerCount": 16,
+        "medianSynthetic": true,
         "providerPrices": {
           "aws": 10.6,
           "coreweave": 6.305,
@@ -9898,6 +9824,7 @@
         "high": 16.11,
         "average": 7.4341,
         "providerCount": 11,
+        "medianSynthetic": false,
         "providerPrices": {
           "coreweave": 8.6,
           "datacrunch": 6.11,
@@ -9923,6 +9850,7 @@
         "high": 12.29,
         "average": 4.0242,
         "providerCount": 23,
+        "medianSynthetic": false,
         "providerPrices": {
           "aws": 12.29,
           "azure": 9.0205,
@@ -9960,6 +9888,7 @@
         "high": 10.6,
         "average": 5.0189,
         "providerCount": 16,
+        "medianSynthetic": true,
         "providerPrices": {
           "aws": 10.6,
           "coreweave": 6.305,
@@ -9990,6 +9919,7 @@
         "high": 16.11,
         "average": 7.6032,
         "providerCount": 11,
+        "medianSynthetic": false,
         "providerPrices": {
           "coreweave": 8.6,
           "datacrunch": 6.11,
@@ -10015,6 +9945,7 @@
         "high": 12.29,
         "average": 4.0241,
         "providerCount": 23,
+        "medianSynthetic": false,
         "providerPrices": {
           "aws": 12.29,
           "azure": 9.0205,
@@ -10052,6 +9983,7 @@
         "high": 10.6,
         "average": 5.0189,
         "providerCount": 16,
+        "medianSynthetic": true,
         "providerPrices": {
           "aws": 10.6,
           "coreweave": 6.305,
@@ -10082,6 +10014,7 @@
         "high": 16.11,
         "average": 7.4275,
         "providerCount": 10,
+        "medianSynthetic": true,
         "providerPrices": {
           "coreweave": 8.6,
           "datacrunch": 6.11,
@@ -10106,6 +10039,7 @@
         "high": 12.29,
         "average": 4.0696,
         "providerCount": 23,
+        "medianSynthetic": false,
         "providerPrices": {
           "aws": 12.29,
           "azure": 9.0205,
@@ -10143,6 +10077,7 @@
         "high": 10.6,
         "average": 5.1051,
         "providerCount": 16,
+        "medianSynthetic": true,
         "providerPrices": {
           "aws": 10.6,
           "coreweave": 6.305,
@@ -10173,6 +10108,7 @@
         "high": 16.11,
         "average": 7.4341,
         "providerCount": 11,
+        "medianSynthetic": false,
         "providerPrices": {
           "coreweave": 8.6,
           "datacrunch": 6.11,
@@ -10198,6 +10134,7 @@
         "high": 12.29,
         "average": 4.0694,
         "providerCount": 23,
+        "medianSynthetic": false,
         "providerPrices": {
           "aws": 12.29,
           "azure": 9.0205,
@@ -10235,6 +10172,7 @@
         "high": 10.6,
         "average": 5.0189,
         "providerCount": 16,
+        "medianSynthetic": true,
         "providerPrices": {
           "aws": 10.6,
           "coreweave": 6.305,
@@ -10265,6 +10203,7 @@
         "high": 16.11,
         "average": 7.4341,
         "providerCount": 11,
+        "medianSynthetic": false,
         "providerPrices": {
           "coreweave": 8.6,
           "datacrunch": 6.11,
@@ -10290,6 +10229,7 @@
         "high": 12.29,
         "average": 4.0611,
         "providerCount": 23,
+        "medianSynthetic": false,
         "providerPrices": {
           "aws": 12.29,
           "azure": 9.0205,
@@ -10327,6 +10267,7 @@
         "high": 10.6,
         "average": 5.0401,
         "providerCount": 16,
+        "medianSynthetic": true,
         "providerPrices": {
           "aws": 10.6,
           "coreweave": 6.305,
@@ -10357,6 +10298,7 @@
         "high": 16.11,
         "average": 7.6032,
         "providerCount": 11,
+        "medianSynthetic": false,
         "providerPrices": {
           "coreweave": 8.6,
           "datacrunch": 6.11,
@@ -10382,6 +10324,7 @@
         "high": 12.29,
         "average": 4.0381,
         "providerCount": 23,
+        "medianSynthetic": false,
         "providerPrices": {
           "aws": 12.29,
           "azure": 9.0205,
@@ -10419,6 +10362,7 @@
         "high": 10.6,
         "average": 5.1051,
         "providerCount": 16,
+        "medianSynthetic": true,
         "providerPrices": {
           "aws": 10.6,
           "coreweave": 6.305,
@@ -10449,6 +10393,7 @@
         "high": 16.11,
         "average": 7.6032,
         "providerCount": 11,
+        "medianSynthetic": false,
         "providerPrices": {
           "coreweave": 8.6,
           "datacrunch": 6.11,
@@ -10474,6 +10419,7 @@
         "high": 12.29,
         "average": 4.0382,
         "providerCount": 23,
+        "medianSynthetic": false,
         "providerPrices": {
           "aws": 12.29,
           "azure": 9.0205,
@@ -10511,6 +10457,7 @@
         "high": 10.6,
         "average": 5.1051,
         "providerCount": 16,
+        "medianSynthetic": true,
         "providerPrices": {
           "aws": 10.6,
           "coreweave": 6.305,
@@ -10541,6 +10488,7 @@
         "high": 16.11,
         "average": 7.4275,
         "providerCount": 10,
+        "medianSynthetic": true,
         "providerPrices": {
           "coreweave": 8.6,
           "datacrunch": 6.11,
@@ -10565,6 +10513,7 @@
         "high": 12.29,
         "average": 4.0401,
         "providerCount": 23,
+        "medianSynthetic": false,
         "providerPrices": {
           "aws": 12.29,
           "azure": 9.0205,
@@ -10602,6 +10551,7 @@
         "high": 10.6,
         "average": 4.9989,
         "providerCount": 16,
+        "medianSynthetic": true,
         "providerPrices": {
           "aws": 10.6,
           "coreweave": 6.305,
@@ -10632,6 +10582,7 @@
         "high": 16.11,
         "average": 7.4275,
         "providerCount": 10,
+        "medianSynthetic": true,
         "providerPrices": {
           "coreweave": 8.6,
           "datacrunch": 6.11,
@@ -10656,6 +10607,7 @@
         "high": 12.29,
         "average": 4.0381,
         "providerCount": 23,
+        "medianSynthetic": false,
         "providerPrices": {
           "aws": 12.29,
           "azure": 9.0205,
@@ -10693,6 +10645,7 @@
         "high": 10.6,
         "average": 5.0376,
         "providerCount": 16,
+        "medianSynthetic": true,
         "providerPrices": {
           "aws": 10.6,
           "coreweave": 6.305,
@@ -10723,6 +10676,7 @@
         "high": 16.11,
         "average": 7.535,
         "providerCount": 11,
+        "medianSynthetic": false,
         "providerPrices": {
           "coreweave": 8.6,
           "datacrunch": 6.11,
@@ -10748,6 +10702,7 @@
         "high": 12.29,
         "average": 4.0394,
         "providerCount": 23,
+        "medianSynthetic": false,
         "providerPrices": {
           "aws": 12.29,
           "azure": 9.0205,
@@ -10785,6 +10740,7 @@
         "high": 10.6,
         "average": 5.0451,
         "providerCount": 16,
+        "medianSynthetic": true,
         "providerPrices": {
           "aws": 10.6,
           "coreweave": 6.305,
@@ -10815,6 +10771,7 @@
         "high": 16.11,
         "average": 7.4341,
         "providerCount": 11,
+        "medianSynthetic": false,
         "providerPrices": {
           "coreweave": 8.6,
           "datacrunch": 6.11,
@@ -10840,6 +10797,7 @@
         "high": 12.29,
         "average": 4.0395,
         "providerCount": 23,
+        "medianSynthetic": false,
         "providerPrices": {
           "aws": 12.29,
           "azure": 9.0205,
@@ -10877,6 +10835,7 @@
         "high": 10.6,
         "average": 5.0401,
         "providerCount": 16,
+        "medianSynthetic": true,
         "providerPrices": {
           "aws": 10.6,
           "coreweave": 6.305,
@@ -10907,6 +10866,7 @@
         "high": 16.11,
         "average": 7.4341,
         "providerCount": 11,
+        "medianSynthetic": false,
         "providerPrices": {
           "coreweave": 8.6,
           "datacrunch": 6.11,
@@ -10932,6 +10892,7 @@
         "high": 12.29,
         "average": 4.1291,
         "providerCount": 23,
+        "medianSynthetic": false,
         "providerPrices": {
           "aws": 12.29,
           "azure": 9.0205,
@@ -10969,6 +10930,7 @@
         "high": 10.6,
         "average": 5.0989,
         "providerCount": 16,
+        "medianSynthetic": true,
         "providerPrices": {
           "aws": 10.6,
           "coreweave": 6.305,
@@ -10999,6 +10961,7 @@
         "high": 16.11,
         "average": 7.4275,
         "providerCount": 10,
+        "medianSynthetic": true,
         "providerPrices": {
           "coreweave": 8.6,
           "datacrunch": 6.11,
@@ -11023,6 +10986,7 @@
         "high": 12.29,
         "average": 4.1573,
         "providerCount": 23,
+        "medianSynthetic": false,
         "providerPrices": {
           "aws": 12.29,
           "azure": 9.0205,
@@ -11060,6 +11024,7 @@
         "high": 10.6,
         "average": 5.1007,
         "providerCount": 16,
+        "medianSynthetic": true,
         "providerPrices": {
           "aws": 10.6,
           "coreweave": 6.305,
@@ -11090,6 +11055,7 @@
         "high": 16.11,
         "average": 7.4275,
         "providerCount": 10,
+        "medianSynthetic": true,
         "providerPrices": {
           "coreweave": 8.6,
           "datacrunch": 6.11,
@@ -11114,6 +11080,7 @@
         "high": 12.29,
         "average": 4.1293,
         "providerCount": 23,
+        "medianSynthetic": false,
         "providerPrices": {
           "aws": 12.29,
           "azure": 9.0205,
@@ -11151,6 +11118,7 @@
         "high": 10.6,
         "average": 5.1682,
         "providerCount": 16,
+        "medianSynthetic": true,
         "providerPrices": {
           "aws": 10.6,
           "coreweave": 6.305,
@@ -11181,6 +11149,7 @@
         "high": 16.11,
         "average": 7.4668,
         "providerCount": 11,
+        "medianSynthetic": false,
         "providerPrices": {
           "coreweave": 8.6,
           "datacrunch": 6.11,
@@ -11206,6 +11175,7 @@
         "high": 12.29,
         "average": 4.129,
         "providerCount": 23,
+        "medianSynthetic": false,
         "providerPrices": {
           "aws": 12.29,
           "azure": 9.0205,
@@ -11243,6 +11213,7 @@
         "high": 10.6,
         "average": 5.0632,
         "providerCount": 16,
+        "medianSynthetic": true,
         "providerPrices": {
           "aws": 10.6,
           "coreweave": 6.305,
@@ -11273,6 +11244,7 @@
         "high": 16.11,
         "average": 7.6441,
         "providerCount": 11,
+        "medianSynthetic": false,
         "providerPrices": {
           "coreweave": 8.6,
           "datacrunch": 6.11,
@@ -11298,6 +11270,7 @@
         "high": 12.29,
         "average": 4.1444,
         "providerCount": 23,
+        "medianSynthetic": false,
         "providerPrices": {
           "aws": 12.29,
           "azure": 9.0205,
@@ -11335,6 +11308,7 @@
         "high": 10.6,
         "average": 5.1095,
         "providerCount": 16,
+        "medianSynthetic": true,
         "providerPrices": {
           "aws": 10.6,
           "coreweave": 6.305,
@@ -11365,6 +11339,7 @@
         "high": 16.11,
         "average": 7.6441,
         "providerCount": 11,
+        "medianSynthetic": false,
         "providerPrices": {
           "coreweave": 8.6,
           "datacrunch": 6.11,
@@ -11390,6 +11365,7 @@
         "high": 12.29,
         "average": 4.1442,
         "providerCount": 23,
+        "medianSynthetic": false,
         "providerPrices": {
           "aws": 12.29,
           "azure": 9.0205,
@@ -11427,6 +11403,7 @@
         "high": 10.6,
         "average": 5.0632,
         "providerCount": 16,
+        "medianSynthetic": true,
         "providerPrices": {
           "aws": 10.6,
           "coreweave": 6.305,
@@ -11457,6 +11434,7 @@
         "high": 16.11,
         "average": 7.475,
         "providerCount": 11,
+        "medianSynthetic": false,
         "providerPrices": {
           "coreweave": 8.6,
           "datacrunch": 6.11,
@@ -11482,6 +11460,7 @@
         "high": 12.29,
         "average": 4.1441,
         "providerCount": 23,
+        "medianSynthetic": false,
         "providerPrices": {
           "aws": 12.29,
           "azure": 9.0205,
@@ -11519,6 +11498,7 @@
         "high": 10.6,
         "average": 5.0632,
         "providerCount": 16,
+        "medianSynthetic": true,
         "providerPrices": {
           "aws": 10.6,
           "coreweave": 6.305,
@@ -11549,6 +11529,7 @@
         "high": 16.11,
         "average": 7.5759,
         "providerCount": 11,
+        "medianSynthetic": false,
         "providerPrices": {
           "coreweave": 8.6,
           "datacrunch": 6.11,
@@ -11574,6 +11555,7 @@
         "high": 12.29,
         "average": 4.1615,
         "providerCount": 23,
+        "medianSynthetic": false,
         "providerPrices": {
           "aws": 12.29,
           "azure": 9.0205,
@@ -11611,6 +11593,7 @@
         "high": 10.6,
         "average": 5.0632,
         "providerCount": 16,
+        "medianSynthetic": true,
         "providerPrices": {
           "aws": 10.6,
           "coreweave": 6.305,
@@ -11641,6 +11624,7 @@
         "high": 16.11,
         "average": 7.6441,
         "providerCount": 11,
+        "medianSynthetic": false,
         "providerPrices": {
           "coreweave": 8.6,
           "datacrunch": 6.11,
@@ -11666,6 +11650,7 @@
         "high": 12.29,
         "average": 4.1293,
         "providerCount": 23,
+        "medianSynthetic": false,
         "providerPrices": {
           "aws": 12.29,
           "azure": 9.0205,
@@ -11703,6 +11688,7 @@
         "high": 10.6,
         "average": 5.0632,
         "providerCount": 16,
+        "medianSynthetic": true,
         "providerPrices": {
           "aws": 10.6,
           "coreweave": 6.305,
@@ -11733,6 +11719,7 @@
         "high": 16.11,
         "average": 7.6441,
         "providerCount": 11,
+        "medianSynthetic": false,
         "providerPrices": {
           "coreweave": 8.6,
           "datacrunch": 6.11,
@@ -11758,6 +11745,7 @@
         "high": 12.29,
         "average": 4.13,
         "providerCount": 23,
+        "medianSynthetic": false,
         "providerPrices": {
           "aws": 12.29,
           "azure": 9.0205,
@@ -11795,6 +11783,7 @@
         "high": 10.6,
         "average": 5.0989,
         "providerCount": 16,
+        "medianSynthetic": true,
         "providerPrices": {
           "aws": 10.6,
           "coreweave": 6.305,
@@ -11825,6 +11814,7 @@
         "high": 16.11,
         "average": 7.6386,
         "providerCount": 11,
+        "medianSynthetic": false,
         "providerPrices": {
           "coreweave": 8.6,
           "datacrunch": 6.11,
@@ -11850,6 +11840,7 @@
         "high": 12.29,
         "average": 4.1298,
         "providerCount": 23,
+        "medianSynthetic": false,
         "providerPrices": {
           "aws": 12.29,
           "azure": 9.0205,
@@ -11887,6 +11878,7 @@
         "high": 10.6,
         "average": 5.0989,
         "providerCount": 16,
+        "medianSynthetic": true,
         "providerPrices": {
           "aws": 10.6,
           "coreweave": 6.305,
@@ -11917,6 +11909,7 @@
         "high": 16.11,
         "average": 7.6386,
         "providerCount": 11,
+        "medianSynthetic": false,
         "providerPrices": {
           "coreweave": 8.6,
           "datacrunch": 6.11,
@@ -11942,6 +11935,7 @@
         "high": 12.29,
         "average": 4.1299,
         "providerCount": 23,
+        "medianSynthetic": false,
         "providerPrices": {
           "aws": 12.29,
           "azure": 9.0205,
@@ -11979,6 +11973,7 @@
         "high": 10.6,
         "average": 5.1657,
         "providerCount": 16,
+        "medianSynthetic": true,
         "providerPrices": {
           "aws": 10.6,
           "coreweave": 6.305,
@@ -12009,6 +12004,7 @@
         "high": 16.11,
         "average": 7.4725,
         "providerCount": 10,
+        "medianSynthetic": true,
         "providerPrices": {
           "coreweave": 8.6,
           "datacrunch": 6.11,
@@ -12033,6 +12029,7 @@
         "high": 12.29,
         "average": 4.185,
         "providerCount": 23,
+        "medianSynthetic": false,
         "providerPrices": {
           "aws": 12.29,
           "azure": 9.0205,
@@ -12070,6 +12067,7 @@
         "high": 10.6,
         "average": 5.1682,
         "providerCount": 16,
+        "medianSynthetic": true,
         "providerPrices": {
           "aws": 10.6,
           "coreweave": 6.305,
@@ -12100,6 +12098,7 @@
         "high": 16.11,
         "average": 7.6441,
         "providerCount": 11,
+        "medianSynthetic": false,
         "providerPrices": {
           "coreweave": 8.6,
           "datacrunch": 6.11,
@@ -12125,6 +12124,7 @@
         "high": 12.29,
         "average": 4.1445,
         "providerCount": 23,
+        "medianSynthetic": false,
         "providerPrices": {
           "aws": 12.29,
           "azure": 9.0205,
@@ -12162,6 +12162,7 @@
         "high": 10.6,
         "average": 5.0989,
         "providerCount": 16,
+        "medianSynthetic": true,
         "providerPrices": {
           "aws": 10.6,
           "coreweave": 6.305,
@@ -12192,6 +12193,7 @@
         "high": 16.11,
         "average": 7.4725,
         "providerCount": 10,
+        "medianSynthetic": true,
         "providerPrices": {
           "coreweave": 8.6,
           "datacrunch": 6.11,
@@ -12216,6 +12218,7 @@
         "high": 12.29,
         "average": 4.1297,
         "providerCount": 23,
+        "medianSynthetic": false,
         "providerPrices": {
           "aws": 12.29,
           "azure": 9.0205,
@@ -12253,6 +12256,7 @@
         "high": 10.6,
         "average": 5.0989,
         "providerCount": 16,
+        "medianSynthetic": true,
         "providerPrices": {
           "aws": 10.6,
           "coreweave": 6.305,
@@ -12283,6 +12287,7 @@
         "high": 16.11,
         "average": 7.4725,
         "providerCount": 10,
+        "medianSynthetic": true,
         "providerPrices": {
           "coreweave": 8.6,
           "datacrunch": 6.11,
@@ -12307,6 +12312,7 @@
         "high": 12.29,
         "average": 4.1449,
         "providerCount": 23,
+        "medianSynthetic": false,
         "providerPrices": {
           "aws": 12.29,
           "azure": 9.0205,
@@ -12344,6 +12350,7 @@
         "high": 10.6,
         "average": 5.0989,
         "providerCount": 16,
+        "medianSynthetic": true,
         "providerPrices": {
           "aws": 10.6,
           "coreweave": 6.305,
@@ -12374,6 +12381,7 @@
         "high": 16.11,
         "average": 7.6441,
         "providerCount": 11,
+        "medianSynthetic": false,
         "providerPrices": {
           "coreweave": 8.6,
           "datacrunch": 6.11,
@@ -12399,6 +12407,7 @@
         "high": 12.29,
         "average": 4.1301,
         "providerCount": 23,
+        "medianSynthetic": false,
         "providerPrices": {
           "aws": 12.29,
           "azure": 9.0205,
@@ -12436,6 +12445,7 @@
         "high": 10.6,
         "average": 5.0989,
         "providerCount": 16,
+        "medianSynthetic": true,
         "providerPrices": {
           "aws": 10.6,
           "coreweave": 6.305,
@@ -12466,6 +12476,7 @@
         "high": 16.11,
         "average": 7.6441,
         "providerCount": 11,
+        "medianSynthetic": false,
         "providerPrices": {
           "coreweave": 8.6,
           "datacrunch": 6.11,
@@ -12491,6 +12502,7 @@
         "high": 12.29,
         "average": 4.1303,
         "providerCount": 23,
+        "medianSynthetic": false,
         "providerPrices": {
           "aws": 12.29,
           "azure": 9.0205,
@@ -12528,6 +12540,7 @@
         "high": 10.6,
         "average": 5.0632,
         "providerCount": 16,
+        "medianSynthetic": true,
         "providerPrices": {
           "aws": 10.6,
           "coreweave": 6.305,
@@ -12558,6 +12571,7 @@
         "high": 16.11,
         "average": 7.4725,
         "providerCount": 10,
+        "medianSynthetic": true,
         "providerPrices": {
           "coreweave": 8.6,
           "datacrunch": 6.11,
@@ -12582,6 +12596,7 @@
         "high": 12.29,
         "average": 4.145,
         "providerCount": 23,
+        "medianSynthetic": false,
         "providerPrices": {
           "aws": 12.29,
           "azure": 9.0205,
@@ -12619,6 +12634,7 @@
         "high": 10.6,
         "average": 5.0632,
         "providerCount": 16,
+        "medianSynthetic": true,
         "providerPrices": {
           "aws": 10.6,
           "coreweave": 6.305,
@@ -12649,6 +12665,7 @@
         "high": 16.11,
         "average": 7.6441,
         "providerCount": 11,
+        "medianSynthetic": false,
         "providerPrices": {
           "coreweave": 8.6,
           "datacrunch": 6.11,
@@ -12674,6 +12691,7 @@
         "high": 12.29,
         "average": 4.1635,
         "providerCount": 23,
+        "medianSynthetic": false,
         "providerPrices": {
           "aws": 12.29,
           "azure": 9.0205,
@@ -12711,6 +12729,7 @@
         "high": 10.6,
         "average": 5.0632,
         "providerCount": 16,
+        "medianSynthetic": true,
         "providerPrices": {
           "aws": 10.6,
           "coreweave": 6.305,
@@ -12741,6 +12760,7 @@
         "high": 16.11,
         "average": 7.4725,
         "providerCount": 10,
+        "medianSynthetic": true,
         "providerPrices": {
           "coreweave": 8.6,
           "datacrunch": 6.11,
@@ -12765,6 +12785,7 @@
         "high": 12.29,
         "average": 4.175,
         "providerCount": 23,
+        "medianSynthetic": false,
         "providerPrices": {
           "aws": 12.29,
           "azure": 9.0205,
@@ -12802,6 +12823,7 @@
         "high": 10.6,
         "average": 5.0989,
         "providerCount": 16,
+        "medianSynthetic": true,
         "providerPrices": {
           "aws": 10.6,
           "coreweave": 6.305,
@@ -12832,6 +12854,7 @@
         "high": 16.11,
         "average": 7.6441,
         "providerCount": 11,
+        "medianSynthetic": false,
         "providerPrices": {
           "coreweave": 8.6,
           "datacrunch": 6.11,
@@ -12857,6 +12880,7 @@
         "high": 12.29,
         "average": 4.1898,
         "providerCount": 23,
+        "medianSynthetic": false,
         "providerPrices": {
           "aws": 12.29,
           "azure": 9.0205,
@@ -12894,6 +12918,7 @@
         "high": 10.6,
         "average": 5.0632,
         "providerCount": 16,
+        "medianSynthetic": true,
         "providerPrices": {
           "aws": 10.6,
           "coreweave": 6.305,
@@ -12924,6 +12949,7 @@
         "high": 16.11,
         "average": 7.6441,
         "providerCount": 11,
+        "medianSynthetic": false,
         "providerPrices": {
           "coreweave": 8.6,
           "datacrunch": 6.11,
@@ -12949,6 +12975,7 @@
         "high": 12.29,
         "average": 4.1902,
         "providerCount": 23,
+        "medianSynthetic": false,
         "providerPrices": {
           "aws": 12.29,
           "azure": 9.0205,
@@ -12986,6 +13013,7 @@
         "high": 10.6,
         "average": 5.1682,
         "providerCount": 16,
+        "medianSynthetic": true,
         "providerPrices": {
           "aws": 10.6,
           "coreweave": 6.305,
@@ -13016,6 +13044,7 @@
         "high": 16.11,
         "average": 7.6441,
         "providerCount": 11,
+        "medianSynthetic": false,
         "providerPrices": {
           "coreweave": 8.6,
           "datacrunch": 6.11,
@@ -13041,6 +13070,7 @@
         "high": 12.29,
         "average": 4.175,
         "providerCount": 23,
+        "medianSynthetic": false,
         "providerPrices": {
           "aws": 12.29,
           "azure": 9.0205,
@@ -13078,6 +13108,7 @@
         "high": 10.6,
         "average": 5.0632,
         "providerCount": 16,
+        "medianSynthetic": true,
         "providerPrices": {
           "aws": 10.6,
           "coreweave": 6.305,
@@ -13108,6 +13139,7 @@
         "high": 16.11,
         "average": 7.6441,
         "providerCount": 11,
+        "medianSynthetic": false,
         "providerPrices": {
           "coreweave": 8.6,
           "datacrunch": 6.11,
@@ -13133,6 +13165,7 @@
         "high": 12.29,
         "average": 4.1754,
         "providerCount": 23,
+        "medianSynthetic": false,
         "providerPrices": {
           "aws": 12.29,
           "azure": 9.0205,
@@ -13170,6 +13203,7 @@
         "high": 10.6,
         "average": 5.0632,
         "providerCount": 16,
+        "medianSynthetic": true,
         "providerPrices": {
           "aws": 10.6,
           "coreweave": 6.305,
@@ -13200,6 +13234,7 @@
         "high": 16.11,
         "average": 7.4725,
         "providerCount": 10,
+        "medianSynthetic": true,
         "providerPrices": {
           "coreweave": 8.6,
           "datacrunch": 6.11,
@@ -13224,6 +13259,7 @@
         "high": 12.29,
         "average": 4.1895,
         "providerCount": 23,
+        "medianSynthetic": false,
         "providerPrices": {
           "aws": 12.29,
           "azure": 9.0205,
@@ -13261,6 +13297,7 @@
         "high": 10.6,
         "average": 5.1695,
         "providerCount": 16,
+        "medianSynthetic": true,
         "providerPrices": {
           "aws": 10.6,
           "coreweave": 6.305,
@@ -13291,6 +13328,7 @@
         "high": 16.11,
         "average": 7.4477,
         "providerCount": 11,
+        "medianSynthetic": false,
         "providerPrices": {
           "coreweave": 8.6,
           "datacrunch": 6.11,
@@ -13316,6 +13354,7 @@
         "high": 12.29,
         "average": 4.1734,
         "providerCount": 23,
+        "medianSynthetic": false,
         "providerPrices": {
           "aws": 12.29,
           "azure": 9.0205,
@@ -13353,6 +13392,7 @@
         "high": 10.6,
         "average": 5.0989,
         "providerCount": 16,
+        "medianSynthetic": true,
         "providerPrices": {
           "aws": 10.6,
           "coreweave": 6.305,
@@ -13383,6 +13423,7 @@
         "high": 16.11,
         "average": 7.4477,
         "providerCount": 11,
+        "medianSynthetic": false,
         "providerPrices": {
           "coreweave": 8.6,
           "datacrunch": 6.11,
@@ -13408,6 +13449,7 @@
         "high": 12.29,
         "average": 4.1734,
         "providerCount": 23,
+        "medianSynthetic": false,
         "providerPrices": {
           "aws": 12.29,
           "azure": 9.0205,
@@ -13445,6 +13487,7 @@
         "high": 10.6,
         "average": 5.0989,
         "providerCount": 16,
+        "medianSynthetic": true,
         "providerPrices": {
           "aws": 10.6,
           "coreweave": 6.305,
@@ -13475,6 +13518,7 @@
         "high": 16.11,
         "average": 7.4477,
         "providerCount": 11,
+        "medianSynthetic": false,
         "providerPrices": {
           "coreweave": 8.6,
           "datacrunch": 6.11,
@@ -13500,6 +13544,7 @@
         "high": 12.29,
         "average": 4.1882,
         "providerCount": 23,
+        "medianSynthetic": false,
         "providerPrices": {
           "aws": 12.29,
           "azure": 9.0205,
@@ -13537,6 +13582,7 @@
         "high": 10.6,
         "average": 5.0989,
         "providerCount": 16,
+        "medianSynthetic": true,
         "providerPrices": {
           "aws": 10.6,
           "coreweave": 6.305,
@@ -13567,6 +13613,7 @@
         "high": 16.11,
         "average": 7.4477,
         "providerCount": 11,
+        "medianSynthetic": false,
         "providerPrices": {
           "coreweave": 8.6,
           "datacrunch": 6.11,
@@ -13592,6 +13639,7 @@
         "high": 12.29,
         "average": 4.1738,
         "providerCount": 23,
+        "medianSynthetic": false,
         "providerPrices": {
           "aws": 12.29,
           "azure": 9.0205,
@@ -13629,6 +13677,7 @@
         "high": 10.6,
         "average": 5.1695,
         "providerCount": 16,
+        "medianSynthetic": true,
         "providerPrices": {
           "aws": 10.6,
           "coreweave": 6.305,
@@ -13659,6 +13708,7 @@
         "high": 16.11,
         "average": 7.4725,
         "providerCount": 10,
+        "medianSynthetic": true,
         "providerPrices": {
           "coreweave": 8.6,
           "datacrunch": 6.11,
@@ -13683,6 +13733,7 @@
         "high": 12.29,
         "average": 4.162,
         "providerCount": 23,
+        "medianSynthetic": false,
         "providerPrices": {
           "aws": 12.29,
           "azure": 9.0205,
@@ -13720,6 +13771,7 @@
         "high": 10.6,
         "average": 5.1007,
         "providerCount": 16,
+        "medianSynthetic": true,
         "providerPrices": {
           "aws": 10.6,
           "coreweave": 6.305,
@@ -13750,6 +13802,7 @@
         "high": 16.11,
         "average": 7.6441,
         "providerCount": 11,
+        "medianSynthetic": false,
         "providerPrices": {
           "coreweave": 8.6,
           "datacrunch": 6.11,
@@ -13775,6 +13828,7 @@
         "high": 12.29,
         "average": 4.1619,
         "providerCount": 23,
+        "medianSynthetic": false,
         "providerPrices": {
           "aws": 12.29,
           "azure": 9.0205,
@@ -13812,6 +13866,7 @@
         "high": 10.6,
         "average": 5.1695,
         "providerCount": 16,
+        "medianSynthetic": true,
         "providerPrices": {
           "aws": 10.6,
           "coreweave": 6.305,
@@ -13842,6 +13897,7 @@
         "high": 16.11,
         "average": 7.2714,
         "providerCount": 11,
+        "medianSynthetic": false,
         "providerPrices": {
           "coreweave": 8.6,
           "datacrunch": 6.11,
@@ -13867,6 +13923,7 @@
         "high": 12.29,
         "average": 4.0748,
         "providerCount": 23,
+        "medianSynthetic": false,
         "providerPrices": {
           "aws": 12.29,
           "azure": 9.0205,
@@ -13904,6 +13961,7 @@
         "high": 10.6,
         "average": 4.942,
         "providerCount": 16,
+        "medianSynthetic": true,
         "providerPrices": {
           "aws": 10.6,
           "coreweave": 6.305,
@@ -13934,6 +13992,7 @@
         "high": 16.11,
         "average": 7.0625,
         "providerCount": 10,
+        "medianSynthetic": true,
         "providerPrices": {
           "coreweave": 8.6,
           "datacrunch": 6.11,
@@ -13958,6 +14017,7 @@
         "high": 12.29,
         "average": 4.0748,
         "providerCount": 23,
+        "medianSynthetic": false,
         "providerPrices": {
           "aws": 12.29,
           "azure": 9.0205,
@@ -13995,6 +14055,7 @@
         "high": 10.6,
         "average": 4.942,
         "providerCount": 16,
+        "medianSynthetic": true,
         "providerPrices": {
           "aws": 10.6,
           "coreweave": 6.305,
@@ -14025,6 +14086,7 @@
         "high": 16.11,
         "average": 7.0625,
         "providerCount": 10,
+        "medianSynthetic": true,
         "providerPrices": {
           "coreweave": 8.6,
           "datacrunch": 6.11,
@@ -14049,6 +14111,7 @@
         "high": 12.29,
         "average": 4.0749,
         "providerCount": 23,
+        "medianSynthetic": false,
         "providerPrices": {
           "aws": 12.29,
           "azure": 9.0205,
@@ -14086,6 +14149,7 @@
         "high": 10.6,
         "average": 4.917,
         "providerCount": 16,
+        "medianSynthetic": true,
         "providerPrices": {
           "aws": 10.6,
           "coreweave": 6.305,
@@ -14116,6 +14180,7 @@
         "high": 16.11,
         "average": 7.0625,
         "providerCount": 10,
+        "medianSynthetic": true,
         "providerPrices": {
           "coreweave": 8.6,
           "datacrunch": 6.11,
@@ -14140,6 +14205,7 @@
         "high": 12.29,
         "average": 4.0749,
         "providerCount": 23,
+        "medianSynthetic": false,
         "providerPrices": {
           "aws": 12.29,
           "azure": 9.0205,
@@ -14177,6 +14243,7 @@
         "high": 10.6,
         "average": 4.942,
         "providerCount": 16,
+        "medianSynthetic": true,
         "providerPrices": {
           "aws": 10.6,
           "coreweave": 6.305,
@@ -14207,6 +14274,7 @@
         "high": 16.11,
         "average": 7.0625,
         "providerCount": 10,
+        "medianSynthetic": true,
         "providerPrices": {
           "coreweave": 8.6,
           "datacrunch": 6.11,
@@ -14231,6 +14299,7 @@
         "high": 12.29,
         "average": 4.0749,
         "providerCount": 23,
+        "medianSynthetic": false,
         "providerPrices": {
           "aws": 12.29,
           "azure": 9.0205,
@@ -14268,6 +14337,7 @@
         "high": 10.6,
         "average": 4.9114,
         "providerCount": 16,
+        "medianSynthetic": true,
         "providerPrices": {
           "aws": 10.6,
           "coreweave": 6.305,
@@ -14298,6 +14368,7 @@
         "high": 16.11,
         "average": 7.0625,
         "providerCount": 10,
+        "medianSynthetic": true,
         "providerPrices": {
           "coreweave": 8.6,
           "datacrunch": 6.11,
@@ -14322,6 +14393,7 @@
         "high": 12.29,
         "average": 4.0749,
         "providerCount": 23,
+        "medianSynthetic": false,
         "providerPrices": {
           "aws": 12.29,
           "azure": 9.0205,
@@ -14359,6 +14431,7 @@
         "high": 10.6,
         "average": 4.912,
         "providerCount": 16,
+        "medianSynthetic": true,
         "providerPrices": {
           "aws": 10.6,
           "coreweave": 6.305,
@@ -14389,6 +14462,7 @@
         "high": 16.11,
         "average": 7.2659,
         "providerCount": 11,
+        "medianSynthetic": false,
         "providerPrices": {
           "coreweave": 8.6,
           "datacrunch": 6.11,
@@ -14414,6 +14488,7 @@
         "high": 12.29,
         "average": 4.0831,
         "providerCount": 23,
+        "medianSynthetic": false,
         "providerPrices": {
           "aws": 12.29,
           "azure": 9.0205,
@@ -14451,6 +14526,7 @@
         "high": 10.6,
         "average": 4.922,
         "providerCount": 16,
+        "medianSynthetic": true,
         "providerPrices": {
           "aws": 10.6,
           "coreweave": 6.305,
@@ -14481,6 +14557,7 @@
         "high": 16.11,
         "average": 7.075,
         "providerCount": 11,
+        "medianSynthetic": false,
         "providerPrices": {
           "coreweave": 8.6,
           "datacrunch": 6.11,
@@ -14506,6 +14583,7 @@
         "high": 12.29,
         "average": 4.0836,
         "providerCount": 23,
+        "medianSynthetic": false,
         "providerPrices": {
           "aws": 12.29,
           "azure": 9.0205,
@@ -14543,6 +14621,7 @@
         "high": 10.6,
         "average": 4.912,
         "providerCount": 16,
+        "medianSynthetic": true,
         "providerPrices": {
           "aws": 10.6,
           "coreweave": 6.305,
@@ -14573,6 +14652,7 @@
         "high": 16.11,
         "average": 7.075,
         "providerCount": 11,
+        "medianSynthetic": false,
         "providerPrices": {
           "coreweave": 8.6,
           "datacrunch": 6.11,
@@ -14598,6 +14678,7 @@
         "high": 12.29,
         "average": 4.0879,
         "providerCount": 23,
+        "medianSynthetic": false,
         "providerPrices": {
           "aws": 12.29,
           "azure": 9.0205,
@@ -14635,6 +14716,7 @@
         "high": 10.6,
         "average": 4.912,
         "providerCount": 16,
+        "medianSynthetic": true,
         "providerPrices": {
           "aws": 10.6,
           "coreweave": 6.305,
@@ -14665,6 +14747,7 @@
         "high": 16.11,
         "average": 7.075,
         "providerCount": 11,
+        "medianSynthetic": false,
         "providerPrices": {
           "coreweave": 8.6,
           "datacrunch": 6.11,
@@ -14690,6 +14773,7 @@
         "high": 12.29,
         "average": 4.0828,
         "providerCount": 23,
+        "medianSynthetic": false,
         "providerPrices": {
           "aws": 12.29,
           "azure": 9.0205,
@@ -14727,6 +14811,7 @@
         "high": 10.6,
         "average": 4.912,
         "providerCount": 16,
+        "medianSynthetic": true,
         "providerPrices": {
           "aws": 10.6,
           "coreweave": 6.305,
@@ -14757,6 +14842,7 @@
         "high": 16.11,
         "average": 7.075,
         "providerCount": 11,
+        "medianSynthetic": false,
         "providerPrices": {
           "coreweave": 8.6,
           "datacrunch": 6.11,
@@ -14782,6 +14868,7 @@
         "high": 12.29,
         "average": 4.0719,
         "providerCount": 23,
+        "medianSynthetic": false,
         "providerPrices": {
           "aws": 12.29,
           "azure": 9.0205,
@@ -14819,6 +14906,7 @@
         "high": 10.6,
         "average": 4.912,
         "providerCount": 16,
+        "medianSynthetic": true,
         "providerPrices": {
           "aws": 10.6,
           "coreweave": 6.305,
@@ -14849,6 +14937,7 @@
         "high": 16.11,
         "average": 7.0747,
         "providerCount": 10,
+        "medianSynthetic": true,
         "providerPrices": {
           "coreweave": 8.6,
           "datacrunch": 6.232,
@@ -14873,6 +14962,7 @@
         "high": 12.29,
         "average": 4.0828,
         "providerCount": 23,
+        "medianSynthetic": false,
         "providerPrices": {
           "aws": 12.29,
           "azure": 9.0205,
@@ -14910,6 +15000,7 @@
         "high": 10.6,
         "average": 4.9245,
         "providerCount": 16,
+        "medianSynthetic": true,
         "providerPrices": {
           "aws": 10.6,
           "coreweave": 6.305,
@@ -14940,6 +15031,7 @@
         "high": 16.11,
         "average": 7.0809,
         "providerCount": 10,
+        "medianSynthetic": true,
         "providerPrices": {
           "coreweave": 8.6,
           "datacrunch": 6.294,
@@ -14964,6 +15056,7 @@
         "high": 12.29,
         "average": 4.0829,
         "providerCount": 23,
+        "medianSynthetic": false,
         "providerPrices": {
           "aws": 12.29,
           "azure": 9.0205,
@@ -15001,6 +15094,7 @@
         "high": 10.6,
         "average": 4.9271,
         "providerCount": 16,
+        "medianSynthetic": true,
         "providerPrices": {
           "aws": 10.6,
           "coreweave": 6.305,
@@ -15031,6 +15125,7 @@
         "high": 16.11,
         "average": 7.0872,
         "providerCount": 10,
+        "medianSynthetic": true,
         "providerPrices": {
           "coreweave": 8.6,
           "datacrunch": 6.357,
@@ -15055,6 +15150,7 @@
         "high": 12.29,
         "average": 4.0983,
         "providerCount": 23,
+        "medianSynthetic": false,
         "providerPrices": {
           "aws": 12.29,
           "azure": 9.0205,
@@ -15092,6 +15188,7 @@
         "high": 10.6,
         "average": 4.9997,
         "providerCount": 16,
+        "medianSynthetic": true,
         "providerPrices": {
           "aws": 10.6,
           "coreweave": 6.305,
@@ -15122,6 +15219,7 @@
         "high": 16.11,
         "average": 7.0936,
         "providerCount": 10,
+        "medianSynthetic": true,
         "providerPrices": {
           "coreweave": 8.6,
           "datacrunch": 6.421,
@@ -15146,6 +15244,7 @@
         "high": 12.29,
         "average": 4.0846,
         "providerCount": 23,
+        "medianSynthetic": false,
         "providerPrices": {
           "aws": 12.29,
           "azure": 9.0205,
@@ -15183,6 +15282,7 @@
         "high": 10.6,
         "average": 5.0024,
         "providerCount": 16,
+        "medianSynthetic": true,
         "providerPrices": {
           "aws": 10.6,
           "coreweave": 6.305,
@@ -15213,6 +15313,7 @@
         "high": 16.11,
         "average": 7.2996,
         "providerCount": 11,
+        "medianSynthetic": false,
         "providerPrices": {
           "coreweave": 8.6,
           "datacrunch": 6.421,
@@ -15238,6 +15339,7 @@
         "high": 12.29,
         "average": 4.0882,
         "providerCount": 23,
+        "medianSynthetic": false,
         "providerPrices": {
           "aws": 12.29,
           "azure": 9.0205,
@@ -15275,6 +15377,7 @@
         "high": 10.6,
         "average": 4.9674,
         "providerCount": 16,
+        "medianSynthetic": true,
         "providerPrices": {
           "aws": 10.6,
           "coreweave": 6.305,
@@ -15305,6 +15408,7 @@
         "high": 16.11,
         "average": 7.1,
         "providerCount": 10,
+        "medianSynthetic": true,
         "providerPrices": {
           "coreweave": 8.6,
           "datacrunch": 6.485,
@@ -15329,6 +15433,7 @@
         "high": 12.29,
         "average": 4.0853,
         "providerCount": 23,
+        "medianSynthetic": false,
         "providerPrices": {
           "aws": 12.29,
           "azure": 9.0205,
@@ -15366,6 +15471,7 @@
         "high": 10.6,
         "average": 4.9351,
         "providerCount": 16,
+        "medianSynthetic": true,
         "providerPrices": {
           "aws": 10.6,
           "coreweave": 6.305,
@@ -15396,6 +15502,7 @@
         "high": 16.11,
         "average": 7.3055,
         "providerCount": 11,
+        "medianSynthetic": false,
         "providerPrices": {
           "coreweave": 8.6,
           "datacrunch": 6.485,
@@ -15421,6 +15528,7 @@
         "high": 12.29,
         "average": 4.1001,
         "providerCount": 23,
+        "medianSynthetic": false,
         "providerPrices": {
           "aws": 12.29,
           "azure": 9.0205,
@@ -15458,6 +15566,7 @@
         "high": 10.6,
         "average": 4.9657,
         "providerCount": 16,
+        "medianSynthetic": true,
         "providerPrices": {
           "aws": 10.6,
           "coreweave": 6.305,
@@ -15488,6 +15597,7 @@
         "high": 16.11,
         "average": 7.3,
         "providerCount": 11,
+        "medianSynthetic": false,
         "providerPrices": {
           "coreweave": 8.6,
           "datacrunch": 6.485,
@@ -15513,6 +15623,7 @@
         "high": 12.29,
         "average": 4.0857,
         "providerCount": 23,
+        "medianSynthetic": false,
         "providerPrices": {
           "aws": 12.29,
           "azure": 9.0205,
@@ -15550,6 +15661,7 @@
         "high": 10.6,
         "average": 4.9639,
         "providerCount": 16,
+        "medianSynthetic": true,
         "providerPrices": {
           "aws": 10.6,
           "coreweave": 6.305,
@@ -15580,6 +15692,7 @@
         "high": 16.11,
         "average": 7.3059,
         "providerCount": 11,
+        "medianSynthetic": false,
         "providerPrices": {
           "coreweave": 8.6,
           "datacrunch": 6.55,
@@ -15605,6 +15718,7 @@
         "high": 12.29,
         "average": 4.1012,
         "providerCount": 23,
+        "medianSynthetic": false,
         "providerPrices": {
           "aws": 12.29,
           "azure": 9.0205,
@@ -15642,6 +15756,7 @@
         "high": 10.6,
         "average": 4.9379,
         "providerCount": 16,
+        "medianSynthetic": true,
         "providerPrices": {
           "aws": 10.6,
           "coreweave": 6.305,
@@ -15672,6 +15787,7 @@
         "high": 16.11,
         "average": 7.3174,
         "providerCount": 11,
+        "medianSynthetic": false,
         "providerPrices": {
           "coreweave": 8.6,
           "datacrunch": 6.616,
@@ -15697,6 +15813,7 @@
         "high": 12.29,
         "average": 4.1016,
         "providerCount": 23,
+        "medianSynthetic": false,
         "providerPrices": {
           "aws": 12.29,
           "azure": 9.0205,
@@ -15734,6 +15851,7 @@
         "high": 10.6,
         "average": 4.98,
         "providerCount": 16,
+        "medianSynthetic": true,
         "providerPrices": {
           "aws": 10.6,
           "coreweave": 6.305,
@@ -15764,6 +15882,7 @@
         "high": 16.11,
         "average": 7.3234,
         "providerCount": 11,
+        "medianSynthetic": false,
         "providerPrices": {
           "coreweave": 8.6,
           "datacrunch": 6.682,
@@ -15789,6 +15908,7 @@
         "high": 12.29,
         "average": 4.0881,
         "providerCount": 23,
+        "medianSynthetic": false,
         "providerPrices": {
           "aws": 12.29,
           "azure": 9.0205,
@@ -15826,6 +15946,7 @@
         "high": 10.6,
         "average": 5.0134,
         "providerCount": 16,
+        "medianSynthetic": true,
         "providerPrices": {
           "aws": 10.6,
           "coreweave": 6.305,
@@ -15856,6 +15977,7 @@
         "high": 16.11,
         "average": 7.2367,
         "providerCount": 11,
+        "medianSynthetic": false,
         "providerPrices": {
           "coreweave": 8.6,
           "datacrunch": 6.749,
@@ -15881,6 +16003,7 @@
         "high": 12.29,
         "average": 4.089,
         "providerCount": 23,
+        "medianSynthetic": false,
         "providerPrices": {
           "aws": 12.29,
           "azure": 9.0205,
@@ -15918,6 +16041,7 @@
         "high": 10.6,
         "average": 4.99,
         "providerCount": 16,
+        "medianSynthetic": true,
         "providerPrices": {
           "aws": 10.6,
           "coreweave": 6.305,
@@ -15948,6 +16072,7 @@
         "high": 16.11,
         "average": 7.2428,
         "providerCount": 11,
+        "medianSynthetic": false,
         "providerPrices": {
           "coreweave": 8.6,
           "datacrunch": 6.816,
@@ -15973,6 +16098,7 @@
         "high": 12.29,
         "average": 4.0905,
         "providerCount": 23,
+        "medianSynthetic": false,
         "providerPrices": {
           "aws": 12.29,
           "azure": 9.0205,
@@ -16010,6 +16136,7 @@
         "high": 10.6,
         "average": 4.949,
         "providerCount": 16,
+        "medianSynthetic": true,
         "providerPrices": {
           "aws": 10.6,
           "coreweave": 6.305,
@@ -16040,6 +16167,7 @@
         "high": 16.11,
         "average": 7.2428,
         "providerCount": 11,
+        "medianSynthetic": false,
         "providerPrices": {
           "coreweave": 8.6,
           "datacrunch": 6.816,
@@ -16065,6 +16193,7 @@
         "high": 12.29,
         "average": 4.092,
         "providerCount": 23,
+        "medianSynthetic": false,
         "providerPrices": {
           "aws": 12.29,
           "azure": 9.0205,
@@ -16102,6 +16231,7 @@
         "high": 10.6,
         "average": 4.949,
         "providerCount": 16,
+        "medianSynthetic": true,
         "providerPrices": {
           "aws": 10.6,
           "coreweave": 6.305,
@@ -17123,17 +17253,17 @@
       {
         "date": "2026-09-27",
         "series": "B200",
-        "value": 13.47
+        "value": 13.38
       },
       {
         "date": "2026-09-27",
         "series": "H100",
-        "value": 22.99
+        "value": 22.94
       },
       {
         "date": "2026-09-27",
         "series": "H200",
-        "value": 28.09
+        "value": 27.94
       }
     ],
     "listedGap": [
@@ -23489,7 +23619,7 @@
       {
         "date": "2026-09-27",
         "series": "gpuperhour",
-        "value": 296
+        "value": 287
       },
       {
         "date": "2026-09-27",
@@ -23506,92 +23636,202 @@
   "sources": {
     "openrouter": {
       "label": "OpenRouter 公开模型排行榜",
+      "urls": [
+        "https://openrouter.ai/api/frontend/v1/rankings/model-rankings-chart",
+        "sha256:f9c4e4a3da436377a0fa82ed7fcd994257532e815cb4d0bc24f800f8d518cf2c"
+      ],
       "url": "https://openrouter.ai/api/frontend/v1/rankings/model-rankings-chart",
+      "sha256": "sha256:f9c4e4a3da436377a0fa82ed7fcd994257532e815cb4d0bc24f800f8d518cf2c",
       "definition": "Sum of source-provided named model rows and Others for each OpenRouter chart week."
     },
     "openrouterComposition": {
       "label": "OpenRouter public weekly named-model composition",
+      "urls": [
+        "https://openrouter.ai/api/frontend/v1/rankings/model-rankings-chart"
+      ],
       "url": "https://openrouter.ai/api/frontend/v1/rankings/model-rankings-chart",
+      "sha256": "sha256:f9c4e4a3da436377a0fa82ed7fcd994257532e815cb4d0bc24f800f8d518cf2c",
       "definition": "Each weekly column independently stacks every model disclosed by the public chart plus Others. Segment height is share of that week's total token volume. Columns are not connected, so a model missing from another week is never treated as zero usage."
     },
     "activePrice": {
-      "label": "OpenRouter public weekly rankings + OpenRouter models + OpenRouterList price history",
-      "url": "https://raw.githubusercontent.com/jvrck/openrouterlist/main/data/history/prices.json",
+      "label": "OpenRouter 公开周榜 + 模型列表 + OpenRouterList 价格史",
+      "urls": [
+        "https://openrouter.ai/api/v1/models",
+        "https://raw.githubusercontent.com/jvrck/openrouterlist/main/data/history/prices.json"
+      ],
+      "url": "https://openrouter.ai/api/v1/models",
+      "sha256": "sha256:b4691ccd4ac3c172013e531702d69b5fe83e4fdfd3cac384faf160aaf52671e4 sha256:65fde7f28cda5e3b576e3542dd1c6ecff4a652e2b0e01679dbd26973861ade5c",
       "definition": "Weekly named-model token volume is mapped through OpenRouter canonical slugs to OpenRouterList change-point prices. Free models are zero only when explicitly marked :free; Others and unmapped models remain Unknown. Weighted rates describe visible listed-price exposure, not realized spend, because public token volume is not split into input and output."
     },
     "gpuPrice": {
-      "label": "gpurentalprices.com 34 家供应商逐日验证数据集（CC BY 4.0）",
-      "url": "https://gpurentalprices.com/data",
-      "definition": "34 家供应商逐日验证的整租价格（on-demand/secure/community，剔除 spot/serverless）× 跨供应商中位，含 min–max 区间与 30 日均线；竖线标注供应商数量变化。2026-09-27 起替代 Foundry Signals（口径断点）。"
+      "label": "gpurentalprices 供应商逐日验证数据集（CC BY 4.0）· 数据集全域 34 家",
+      "urls": [
+        "https://raw.githubusercontent.com/adriannutiu/gpu-rental-prices/main/data/latest.json"
+      ],
+      "url": "https://raw.githubusercontent.com/adriannutiu/gpu-rental-prices/main/data/latest.json",
+      "sha256": "sha256:3a693bce3492100308ee4e70e948eaa8fc2da80f52adeeaac37f01f609e75e66",
+      "definition": "整租挂牌价（on-demand/secure/community，剔除 spot/serverless）。聚合顺序：先对每家供应商当日多条报价取中位（每家一票），再对各家取中位，因此中位数恒等于一家真实供应商的报价；家数为偶数时中位是两家均值（页面上标 ⚠）。最新参与家数：B200 11 家、H100 23 家、H200 16 家（偶数家，中位为两家均值）。含 min–max 区间与 30 日均线。2026-09-27 起替代 Foundry Signals（口径断点）。"
     },
     "gpuPremium": {
-      "label": "由 34 家供应商中位数推导",
-      "url": "https://gpurentalprices.com/data",
+      "label": "由上述供应商中位价推导",
+      "urls": [
+        "https://raw.githubusercontent.com/adriannutiu/gpu-rental-prices/main/data/latest.json"
+      ],
+      "url": "https://raw.githubusercontent.com/adriannutiu/gpu-rental-prices/main/data/latest.json",
+      "sha256": "sha256:3a693bce3492100308ee4e70e948eaa8fc2da80f52adeeaac37f01f609e75e66",
       "definition": "Rolling 30-day median of H200/H100 and B200/H100 daily rental-price ratios. A value above 1 means a premium to H100."
     },
     "scarcity": {
       "label": "GPU Finder 市场可用性（gpufinder.dev）",
-      "url": "https://gpufinder.dev/api/v1/availability",
+      "urls": [
+        "https://gpufinder.dev/api/v1/availability?gpu=h100",
+        "https://gpufinder.dev/api/v1/gpus",
+        "https://gpufinder.dev/api/v1/history?gpu=h100",
+        "https://gpufinder.dev/api/v1/snapshot?gpu=h100"
+      ],
+      "url": "https://gpufinder.dev/api/v1/availability?gpu=h100",
+      "sha256": "sha256:e8a7cf7ef9f4d69088329c9ffe9e40a00aa355a64fa92619e21dc66239024681 sha256:e3cc00c7b7c88277e88a05e63a87adbbafc40a9913c8b0de58ddb970c60425e2 sha256:2c58367389dc4d1810b389dd301b0d1f80052ca87a8def807a3e2bcd42f3d76e sha256:0de883c46ab36f66d843206d472733fd45605c93677084e802abafe2bd68917f",
       "definition": "Σavailable/Σtotal 全市场可租卡占比（7 天滚动窗口，每日快照向前积累）。连续稀缺度指标，替代 Foundry 的二元可用率。"
     },
     "listedGap": {
       "label": "GPU Finder 报价 vs 在库价差",
-      "url": "https://gpufinder.dev/api/v1/snapshot",
+      "urls": [
+        "https://gpufinder.dev/api/v1/availability?gpu=h100",
+        "https://gpufinder.dev/api/v1/gpus",
+        "https://gpufinder.dev/api/v1/history?gpu=h100",
+        "https://gpufinder.dev/api/v1/snapshot?gpu=h100"
+      ],
+      "url": "https://gpufinder.dev/api/v1/availability?gpu=h100",
+      "sha256": "sha256:e8a7cf7ef9f4d69088329c9ffe9e40a00aa355a64fa92619e21dc66239024681 sha256:e3cc00c7b7c88277e88a05e63a87adbbafc40a9913c8b0de58ddb970c60425e2 sha256:2c58367389dc4d1810b389dd301b0d1f80052ca87a8def807a3e2bcd42f3d76e sha256:0de883c46ab36f66d843206d472733fd45605c93677084e802abafe2bd68917f",
       "definition": "最低在库价 ÷ 最低报价 − 1。衡量‘报价虚低程度’：市场越紧，最低报价越可能是没有库存的虚价，该差值越大。"
     },
     "breadth": {
       "label": "GPU Finder 供应商广度",
-      "url": "https://gpufinder.dev/api/v1/gpus",
+      "urls": [
+        "https://gpufinder.dev/api/v1/availability?gpu=h100",
+        "https://gpufinder.dev/api/v1/gpus",
+        "https://gpufinder.dev/api/v1/history?gpu=h100",
+        "https://gpufinder.dev/api/v1/snapshot?gpu=h100"
+      ],
+      "url": "https://gpufinder.dev/api/v1/availability?gpu=h100",
+      "sha256": "sha256:e8a7cf7ef9f4d69088329c9ffe9e40a00aa355a64fa92619e21dc66239024681 sha256:e3cc00c7b7c88277e88a05e63a87adbbafc40a9913c8b0de58ddb970c60425e2 sha256:2c58367389dc4d1810b389dd301b0d1f80052ca87a8def807a3e2bcd42f3d76e sha256:0de883c46ab36f66d843206d472733fd45605c93677084e802abafe2bd68917f",
       "definition": "在架供应商数量随时间变化：价格上行+家数增加=供给在响应；价格上行+家数减少=实质性紧缩。"
     },
     "capex": {
-      "label": "SEC companyfacts and official company disclosures",
-      "definition": "Quarterly and event-frequency observations preserve source units and are not interpolated."
+      "label": "SEC companyfacts + 各公司官方业绩披露（原始单位，不插值）",
+      "urls": [
+        "https://data.sec.gov/api/xbrl/companyfacts/CIK0001341439.json",
+        "https://www.microsoft.com/en-us/investor/events/fy-2026/earnings-fy-2026-q4",
+        "https://investor.atmeta.com/investor-news/press-release-details/2026/Meta-Reports-Second-Quarter-2026-Results/default.aspx",
+        "https://s206.q4cdn.com/479360582/files/doc_financials/2026/q2/2026q2-alphabet-earnings-release.pdf",
+        "https://s206.q4cdn.com/479360582/files/doc_events/2026/Jul/22/2026_Q2_Earnings_Transcript.pdf",
+        "https://data.sec.gov/api/xbrl/companyfacts/CIK0000789019.json",
+        "https://data.sec.gov/api/xbrl/companyfacts/CIK0001326801.json",
+        "https://s2.q4cdn.com/299287126/files/doc_earnings/2026/q2/earnings-result/AMZN-Q2-2026-Earnings-Release.pdf",
+        "https://data.sec.gov/api/xbrl/companyfacts/CIK0001018724.json",
+        "https://ir.aboutamazon.com/news-release/news-release-details/2026/Amazon-com-Announces-Second-Quarter-Results/default.aspx",
+        "https://data.sec.gov/api/xbrl/companyfacts/CIK0001652044.json",
+        "https://www.sec.gov/Archives/edgar/data/1341439/000119312526265848/0001193125-26-265848.txt",
+        "https://www.sec.gov/Archives/edgar/data/1326801/000162828026028364/meta-03312026xexhibit991.htm",
+        "https://www.sec.gov/Archives/edgar/data/1018724/000101872426000012/amzn-20260331xex991.htm",
+        "https://www.sec.gov/Archives/edgar/data/1652044/000165204426000043/googexhibit991q12026.htm",
+        "https://www.prnewswire.com/apac/news-releases/tencent-announces-2026-first-quarter-results-302770779.html",
+        "https://ir.baidu.com/news-releases/news-release-details/baidu-announces-first-quarter-2026-results/",
+        "https://www.microsoft.com/en-us/investor/events/fy-2026/earnings-fy-2026-q2",
+        "https://www.huawei.com/en/annual-report/2025",
+        "https://www.alibabagroup.com/en-US/document-1930116148192346112"
+      ],
+      "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001341439.json",
+      "definition": "季度与事件频率观测保留来源单位、不插值。共 48 个一手披露链接（SEC EDGAR / 投资者关系页），表中每行均可回溯。缓存覆盖：AMZN 最新 2026-06-30（滞后 89 天）、GOOGL 最新 2026-07-22（滞后 67 天）、META 最新 2026-07-29（滞后 60 天）、MSFT 最新 2026-06-30（滞后 89 天）、ORCL 最新 2026-08-31（滞后 27 天）；本期 5 家上游失败，全部来自缓存。"
     },
     "basisH100": {
-      "url": "https://gpu-index.semianalysis.com/ | https://index.ornn.com | https://gpurentalprices.com/data",
+      "urls": [
+        "https://gpu-index.semianalysis.com/api/public-data",
+        "https://index.ornn.com/api/gpu/*/index-history",
+        "https://raw.githubusercontent.com/adriannutiu/gpu-rental-prices/main/data/latest.json"
+      ],
+      "url": "https://gpu-index.semianalysis.com/api/public-data",
+      "sha256": "sha256:081b226815b37d2436d12322a3449d16a77a6bdd480e171b1f6a47137b2c18e4 sha256:f2e2fb4d0dcc015998c30f35e40d73ed8033db32a3310983d72e69ffc08f16f5 sha256:3a693bce3492100308ee4e70e948eaa8fc2da80f52adeeaac37f01f609e75e66",
       "label": "H100 三源价格对照",
       "definition": "同一 GPU 家族下三种口径并列：供应商报价中位、综合现货-合约指数、成交加权指数。口径不同，仅作交叉对照，不构成同质序列。"
     },
     "basisH200": {
-      "url": "https://gpu-index.semianalysis.com/ | https://index.ornn.com | https://gpurentalprices.com/data",
+      "urls": [
+        "https://gpu-index.semianalysis.com/api/public-data",
+        "https://index.ornn.com/api/gpu/*/index-history",
+        "https://raw.githubusercontent.com/adriannutiu/gpu-rental-prices/main/data/latest.json"
+      ],
+      "url": "https://gpu-index.semianalysis.com/api/public-data",
+      "sha256": "sha256:081b226815b37d2436d12322a3449d16a77a6bdd480e171b1f6a47137b2c18e4 sha256:f2e2fb4d0dcc015998c30f35e40d73ed8033db32a3310983d72e69ffc08f16f5 sha256:3a693bce3492100308ee4e70e948eaa8fc2da80f52adeeaac37f01f609e75e66",
       "label": "H200 三源价格对照",
       "definition": "口径同上（H200 无 SemiAnalysis 公开指数，为两源对照）。Neocloud 与 Ornn 可能方向分歧，分歧本身是证据而非噪声。"
     },
     "basisB200": {
-      "url": "https://gpu-index.semianalysis.com/ | https://index.ornn.com | https://gpurentalprices.com/data",
+      "urls": [
+        "https://gpu-index.semianalysis.com/api/public-data",
+        "https://index.ornn.com/api/gpu/*/index-history",
+        "https://raw.githubusercontent.com/adriannutiu/gpu-rental-prices/main/data/latest.json"
+      ],
+      "url": "https://gpu-index.semianalysis.com/api/public-data",
+      "sha256": "sha256:081b226815b37d2436d12322a3449d16a77a6bdd480e171b1f6a47137b2c18e4 sha256:f2e2fb4d0dcc015998c30f35e40d73ed8033db32a3310983d72e69ffc08f16f5 sha256:3a693bce3492100308ee4e70e948eaa8fc2da80f52adeeaac37f01f609e75e66",
       "label": "B200 三源价格对照",
       "definition": "口径同上。"
     },
     "contractBand": {
+      "urls": [
+        "https://gpu-index.semianalysis.com/api/public-data"
+      ],
       "url": "https://gpu-index.semianalysis.com/api/public-data",
+      "sha256": "sha256:081b226815b37d2436d12322a3449d16a77a6bdd480e171b1f6a47137b2c18e4",
       "label": "SemiAnalysis H100 1Y 合约调查区间",
       "definition": "月度调查的25-75分位合约价区间，半年期阶梯展示。许可：公开页引用需署名。"
     },
     "orderbookDepth": {
-      "url": "https://api.gpuindexes.com/api/offers | https://console.vast.ai/api/v0/bundles/ | https://api.runpod.io/graphql",
+      "urls": [
+        "https://api.gpuindexes.com/api/offers",
+        "https://console.vast.ai/api/v0/bundles/",
+        "https://api.runpod.io/graphql"
+      ],
+      "url": "https://api.gpuindexes.com/api/offers",
+      "sha256": "sha256:18a894f5e23b9220e57c6b10c45b8b9921166138d56e1bbb19b956e7ad9ceefb sha256:918a64ba287614fea5220fb890d3c0d753774aa147a4eaf9eb39346e6070ff8d sha256:b0a91c00a62496408889c0442b376f616770a2b5b825fb8f35db07dbe16d9127",
       "label": "GPU 订单簿逐源观测",
       "definition": "gpuperhour/vast 为逐条报价 offers、runpod 为型号挂牌 types，单位语义不同故分序列展示不合并。时点观测，<10 有效日只画点不连线。"
     },
     "otpi": {
+      "urls": [
+        "https://index.ornn.com/api/otpi"
+      ],
       "url": "https://index.ornn.com/api/otpi",
+      "sha256": "sha256:46c0a2ee6bda0030a58771eeed59d12adf73cb7f435ced1a50fcaf0c49197b4d",
       "label": "Ornn OTPI 已实现 token 价",
       "definition": "按 lab 的成交加权 token 实现价（USD/Mtok），免费层滚动窗口每日快照累积。许可：Ornn 免费层署名引用。"
     },
     "top5Share": {
+      "urls": [
+        "https://openrouter.ai/api/frontend/v1/rankings/model-rankings-chart"
+      ],
       "url": "https://openrouter.ai/api/frontend/v1/rankings/model-rankings-chart",
+      "sha256": "sha256:f9c4e4a3da436377a0fa82ed7fcd994257532e815cb4d0bc24f800f8d518cf2c",
       "label": "OpenRouter 公开周榜（Top-5 派生）",
       "definition": "每周公开榜单里最新 Top-5 模型各自的用量占比走势。看的是排名与份额的稳定性：曲线频繁交叉=头部不稳。"
     },
     "priceChanges": {
-      "url": "https://openrouter.ai/models",
+      "urls": [
+        "https://openrouter.ai/api/v1/models"
+      ],
+      "url": "https://openrouter.ai/api/v1/models",
+      "sha256": "sha256:b4691ccd4ac3c172013e531702d69b5fe83e4fdfd3cac384faf160aaf52671e4",
       "label": "OpenRouter 模型牌价调价点（change-point 账本）",
       "definition": "头部模型牌价近 4 周被修改的次数（来自我们记录的调价点账本）。高频调价=定价试探/竞争响应，是'价格战'的直接痕迹。"
     },
     "panelIndex": {
-      "url": "https://gpurentalprices.com/data",
+      "urls": [
+        "https://raw.githubusercontent.com/adriannutiu/gpu-rental-prices/main/data/latest.json"
+      ],
+      "url": "https://raw.githubusercontent.com/adriannutiu/gpu-rental-prices/main/data/latest.json",
+      "sha256": "sha256:3a693bce3492100308ee4e70e948eaa8fc2da80f52adeeaac37f01f609e75e66",
       "label": "固定供应商面板指数",
-      "definition": "从 34 家供应商数据集取窗口内持续在架成员（覆盖率≥90%），按非中断性租赁价计算成员均值，起点=100；成员当日缺价即断点。消除供应商构成漂移，是供给价格的首选趋势证据。橙色虚线标注 = 单成员挂牌价跳变（如 9/3 Together AI −50%：同规格 180GB 单家从 $8.19 调至 $4.09，属单供应商调价，非市场整体事件）；台阶来自成员个体动作，看趋势请看均线。 当前成员：H100（15 家）：AWS、Azure、CoreWeave、Crusoe、DataCrunch、HyperStack、JarvisLabs、Lambda、Massed Compute、Nebius、OVH、RunPod、Spheron、Together AI、Voltage Park；B200（7 家）：CoreWeave、DataCrunch、HyperStack、Lambda、Nebius、RunPod、Together AI"
+      "definition": "从 34 家供应商数据集取窗口内持续在架成员（覆盖率≥90%），按非中断性租赁价计算成员均值，起点=100；成员当日缺价即断点。消除供应商构成漂移，是供给价格的首选趋势证据。橙色虚线标注 = 固定成员里当日环比跳变最大的那一家（如「Together AI −50%」，同规格单家调价，非市场整体事件）；台阶来自成员个体动作，判断趋势请看均线。 当前成员：H100（15 家）：AWS、Azure、CoreWeave、Crusoe、DataCrunch、HyperStack、JarvisLabs、Lambda、Massed Compute、Nebius、OVH、RunPod、Spheron、Together AI、Voltage Park；B200（7 家）：CoreWeave、DataCrunch、HyperStack、Lambda、Nebius、RunPod、Together AI"
     }
   }
 }
