@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-09-27T13:25:33Z",
+    "generatedAt": "2026-09-27T13:30:41Z",
     "minDate": "2025-09-22",
     "maxDate": "2026-09-27",
     "basisCommonStart": {
@@ -17100,12 +17100,12 @@
       {
         "date": "2026-09-27",
         "series": "H100",
-        "value": 22.81
+        "value": 22.86
       },
       {
         "date": "2026-09-27",
         "series": "H200",
-        "value": 28.1
+        "value": 28.12
       }
     ],
     "listedGap": [
@@ -17140,6 +17140,48 @@
         "date": "2026-09-27",
         "series": "H200",
         "value": 15
+      }
+    ],
+    "priceChangeCounts": [
+      {
+        "name": "DeepSeek: DeepSeek V4 Flash 0423",
+        "recent4w": 52,
+        "total": 99
+      },
+      {
+        "name": "Tencent: Hy3",
+        "recent4w": 36,
+        "total": 44
+      },
+      {
+        "name": "DeepSeek: DeepSeek V4 Flash 0731",
+        "recent4w": 15,
+        "total": 25
+      },
+      {
+        "name": "Z.ai: GLM 5.3 Flash",
+        "recent4w": 2,
+        "total": 3
+      },
+      {
+        "name": "DeepSeek: DeepSeek V4.1 Flash",
+        "recent4w": 1,
+        "total": 1
+      },
+      {
+        "name": "OpenAI: GPT-5.6 Luna",
+        "recent4w": 0,
+        "total": 1
+      },
+      {
+        "name": "Tencent: Hy4 preview",
+        "recent4w": 0,
+        "total": 1
+      },
+      {
+        "name": "Xiaomi: MiMo-V2.5",
+        "recent4w": 0,
+        "total": 4
       }
     ],
     "capex": [
@@ -23324,7 +23366,7 @@
       {
         "date": "2026-09-27",
         "series": "gpuperhour",
-        "value": 283
+        "value": 287
       },
       {
         "date": "2026-09-27",
@@ -23334,7 +23376,7 @@
       {
         "date": "2026-09-27",
         "series": "vast",
-        "value": 28
+        "value": 32
       }
     ]
   },
@@ -23412,6 +23454,16 @@
       "url": "https://index.ornn.com/api/otpi",
       "label": "Ornn OTPI 已实现 token 价",
       "definition": "按 lab 的成交加权 token 实现价（USD/Mtok），免费层滚动窗口每日快照累积。许可：Ornn 免费层署名引用。"
+    },
+    "top5Share": {
+      "url": "https://openrouter.ai/api/frontend/v1/rankings/model-rankings-chart",
+      "label": "OpenRouter 公开周榜（Top-5 派生）",
+      "definition": "每周公开榜单里最新 Top-5 模型各自的用量占比走势。看的是排名与份额的稳定性：曲线频繁交叉=头部不稳。"
+    },
+    "priceChanges": {
+      "url": "https://openrouter.ai/models",
+      "label": "OpenRouter 模型牌价调价点（change-point 账本）",
+      "definition": "头部模型牌价近 4 周被修改的次数（来自我们记录的调价点账本）。高频调价=定价试探/竞争响应，是'价格战'的直接痕迹。"
     },
     "panelIndex": {
       "url": "https://gpurentalprices.com/data",
