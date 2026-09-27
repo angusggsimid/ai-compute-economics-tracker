@@ -9,12 +9,12 @@
 
 ## Capacity & Utilization — Trend
 - 下一个证明点：积累订单簿至 10/20 有效日（当前 36）。
-- 关键指标：`{"depthValidDates": 36, "latestTotalOffers": 352, "depthGrowthPct": 16.38, "latestGpuCapacity": 10249, "providerSnapshotRows": 23068, "providersCovered": 34}`
+- 关键指标：`{"depthValidDates": 36, "latestTotalOffers": 333, "depthGrowthPct": 16.01, "latestGpuCapacity": 10238, "providerSnapshotRows": 23068, "providersCovered": 34}`
 - 阻塞项：无
 
 ## Demand & Unit Economics — Trend
 - 下一个证明点：获取官方 usage 授权或接入新的非 proxy 用量源；OTPI 继续按日累积。
-- 关键指标：`{"completeWeeks": 52, "latestWeeklyTokens": 128895269979077.0, "weightedOutputPriceChange8wPct": -6.34, "recentPriceCutModels": 105, "otpiLabsCovered": 4, "otpiLatestDate": "2026-09-25"}`
+- 关键指标：`{"completeWeeks": 52, "latestWeeklyTokens": 128895269979077.0, "weightedOutputPriceChange8wPct": -6.34, "recentPriceCutModels": 105, "otpiLabsCovered": 4, "otpiLatestDate": "2026-09-26"}`
 - 阻塞项：['proxy_ceiling_requires_official_usage_for_inflection']
 
 ## Commitment & Monetization — Inflection Watch（intensifying）
