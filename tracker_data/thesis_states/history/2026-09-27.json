@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-27T12:27:55Z",
+  "generatedAt": "2026-09-27T12:51:27Z",
   "inputs": [
     "capex_official_history.json",
     "epoch_chip_sales.json",
@@ -18,6 +18,7 @@
   "clocks": [
     {
       "clock_id": "supply_price",
+      "stateBasis": "90D 确认窗口：B200、H200 家族涨幅 ≥15%（跨来源去重，≥2 家族达标）",
       "title": "Supply Price",
       "natural_frequency": "daily",
       "state": "Confirmed",
@@ -38,7 +39,7 @@
           "triggered": false,
           "conditions": [
             {
-              "condition": ">=2 个前沿 GPU 家族 30D 跌幅 >=10%（跨来源去重）",
+              "condition": ">=2 个前沿 GPU 家族 30D 跌幅 >=10%（短线触发窗口 · 跨来源去重）",
               "met": false,
               "evidence": [
                 "H100"
@@ -60,7 +61,7 @@
           "triggered": false,
           "conditions": [
             {
-              "condition": ">=2 个前沿 GPU 家族 30D 涨幅 >=10%（跨来源去重）",
+              "condition": ">=2 个前沿 GPU 家族 30D 涨幅 >=10%（短线触发窗口 · 跨来源去重）",
               "met": false,
               "evidence": [
                 "B200"
@@ -170,6 +171,7 @@
     },
     {
       "clock_id": "capacity",
+      "stateBasis": "订单簿已积累 36 个有效日（≥10 达标，趋势可判）；最新 offers 337",
       "title": "Capacity & Utilization",
       "natural_frequency": "daily",
       "state": "Trend",
@@ -220,6 +222,7 @@
     },
     {
       "clock_id": "demand_unit_economics",
+      "stateBasis": "OpenRouter 用量 52 个完整周达标（≥52）；但用量为公开 proxy——契约规定 proxy 不得升级 Inflection，封顶 Trend 属纪律而非保守",
       "title": "Demand & Unit Economics",
       "natural_frequency": "weekly/event",
       "state": "Trend",
@@ -273,6 +276,7 @@
     },
     {
       "clock_id": "commitment_monetization",
+      "stateBasis": "2 家公司 guidance 上修（Meta、Alphabet）触发紧缩 Watch",
       "title": "Commitment & Monetization",
       "natural_frequency": "quarterly/event",
       "state": "Inflection Watch",
@@ -292,7 +296,7 @@
           "triggered": false,
           "conditions": [
             {
-              "condition": ">=2 家公司 guidance 下修",
+              "condition": ">=2 家公司 guidance 下修（事件触发）",
               "met": false,
               "evidence": []
             },
@@ -306,7 +310,7 @@
           "triggered": true,
           "conditions": [
             {
-              "condition": ">=2 家公司 guidance 上修",
+              "condition": ">=2 家公司 guidance 上修（事件触发）",
               "met": true,
               "evidence": [
                 "Meta",

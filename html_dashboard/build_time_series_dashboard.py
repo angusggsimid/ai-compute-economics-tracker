@@ -504,15 +504,65 @@ def _reference_extract(reference_raw: dict[str, Any], orderbook_raw: dict[str, A
         base_date = window[0]
         base_mean = sum(per_day[base_date][m] for m in members) / len(members)
         panel_meta["members"][family] = {"members": members, "windowStart": base_date, "windowDays": len(window)}
+        panel_meta.setdefault("annotations", {})[family] = []
+        prev_vals: dict[str, float] | None = None
+        prev_mean: float | None = None
         for d in window:
-            vals = [per_day[d][m] for m in members if m in per_day[d]]
-            if len(vals) != len(members):
+            vals_map = {m: per_day[d][m] for m in members if m in per_day[d]}
+            if len(vals_map) != len(members):
                 continue
+            mean_now = sum(vals_map.values()) / len(vals_map)
+            # 台阶归因：环比 >5% 的跳变标注最大变动成员（多为单家调价，避免被误读为市场崩盘）
+            if prev_mean is not None and prev_mean > 0 and abs(mean_now / prev_mean - 1) > 0.05 and prev_vals:
+                movers = sorted(
+                    ((m, vals_map[m] / prev_vals[m] - 1) for m in members if m in prev_vals and prev_vals[m] > 0),
+                    key=lambda x: abs(x[1]), reverse=True,
+                )
+                if movers:
+                    m, chg = movers[0]
+                    panel_meta["annotations"][family].append({
+                        "date": d,
+                        "label": f"{PROVIDER_DISPLAY.get(m, m)} {chg * 100:+.0f}%",
+                    })
+            prev_mean, prev_vals = mean_now, vals_map
             panel_rows.append({
                 "date": d,
                 "series": f"{family} 固定面板",
-                "value": round(100 * (sum(vals) / len(vals)) / base_mean, 2),
+                "value": round(100 * (mean_now / base_mean), 2),
             })
+
+        # 持久性成员大变动（≥20% 且新价连续站稳 ≥3 天）：即使面板位移 <5% 也要标注——
+        # 只标持久台阶，不标 spheron 式两档翻烧饼的日度振荡。
+        annotated_dates = {a["date"] for a in panel_meta["annotations"][family]}
+        for m in members:
+            member_prices = {d: per_day[d][m] for d in window if m in per_day[d]}
+            days_sorted = sorted(member_prices)
+            i = 1
+            while i < len(days_sorted):
+                prev_d, cur_d = days_sorted[i - 1], days_sorted[i]
+                if prev_d and member_prices[prev_d] > 0:
+                    chg = member_prices[cur_d] / member_prices[prev_d] - 1
+                    if abs(chg) >= 0.20:
+                        head = days_sorted[max(0, i - 3):i]
+                        tail = days_sorted[i + 1:i + 6]
+                        head_stable = len(head) == 3 and all(
+                            abs(member_prices[h] / member_prices[prev_d] - 1) <= 0.10 for h in head
+                        )
+                        tail_stable = len(tail) == 5 and all(
+                            abs(member_prices[t] / member_prices[cur_d] - 1) <= 0.10 for t in tail
+                        )
+                        # 真台阶 = 稳(≥3天) → 跳(≥20%) → 稳(≥5天)；滤掉 spheron 式两档翻烧饼
+                        if head_stable and tail_stable:
+                            if cur_d not in annotated_dates:
+                                panel_meta["annotations"][family].append({
+                                    "date": cur_d,
+                                    "label": f"{PROVIDER_DISPLAY.get(m, m)} {chg * 100:+.0f}%",
+                                })
+                                annotated_dates.add(cur_d)
+                            i += 6
+                            continue
+                i += 1
+        panel_meta["annotations"][family].sort(key=lambda a: a["date"])
 
     return (
         {
@@ -530,6 +580,7 @@ def _reference_extract(reference_raw: dict[str, Any], orderbook_raw: dict[str, A
             "otpiValidDays": _valid_days(otpi),
             "contractPeriods": len({row["date"] for row in contract}),
             "panelMembers": panel_meta["members"],
+            "panelAnnotations": panel_meta.get("annotations") or {},
         },
     )
 
@@ -701,6 +752,7 @@ def build_snapshot() -> dict[str, Any]:
     }
     snapshot["datasets"].update(ref_datasets)
     snapshot["meta"].update(ref_meta)
+    snapshot["meta"]["panelAnnotations"] = ref_meta.get("panelAnnotations") or {}
     snapshot["meta"]["scarcityValidDays"] = len({r["date"] for r in scarcity})
     snapshot["meta"]["gapValidDays"] = len({r["date"] for r in listed_gap})
     # 全局时间轴纪律：任何序列不早于 OpenRouter 用量窗口起点（52 周滚动）
@@ -828,7 +880,8 @@ def _clocks_section() -> str:
             f'<div class="clock-state">{badge}</div>'
             f'<p class="clock-metric">{_clock_key_metric(clock)}</p>'
             f'<p class="clock-next">{clock.get("next_proof_point", "")}</p>'
-            f'<details class="clock-detail"><summary>证据与反证条件</summary>'
+            + (f'<p class="clock-basis">状态依据：{clock.get("stateBasis", "")}</p>' if clock.get("stateBasis") else "")
+            + f'<details class="clock-detail"><summary>证据与反证条件</summary>'
             f'<div class="clock-evidence">{"".join(f"<p>{x}</p>" for x in detail_items)}</div>'
             f"</details>"
             f"</article>"
@@ -856,6 +909,22 @@ def _stale_note() -> str:
     return ""
 
 
+SOURCE_IMPACT = {
+    "openrouter_usage": "需求区：Token 总量 / 组合更替 / 价格层级",
+    "openrouter_active_prices": "需求区：Input·Output 组合牌价、单模型调价史",
+    "foundry_signals": "交叉验证源（当前上游故障中，暂不影响图表）",
+    "sec_capex": "CAPEX 表（季度缓存）",
+    "gpu_orderbook": "供给深度图（积累中）",
+    "reference_indices": "三源对照图 / 合约带 / OTPI",
+    "neocloud_provider_prices": "GPU 价格图 / 代际溢价 / 固定面板指数",
+    "epoch_supply": "芯片出货（Capacity 长锚，积累中）",
+    "fred_cost_anchors": "CPI 平减与电价锚",
+    "gpu_markets_fixings": "Spot/On-demand/Reserved 定盘",
+    "throughput_benchmarks": "吞吐基准（单位经济）",
+    "gpufinder_market": "市场紧张度三图（稀缺度/虚低度/广度）",
+}
+
+
 def _fresh_badge(snapshot: dict[str, Any]) -> str:
     try:
         status = json.loads((ROOT / "tracker_data" / "deploy_refresh_status.json").read_text(encoding="utf-8"))
@@ -866,8 +935,32 @@ def _fresh_badge(snapshot: dict[str, Any]) -> str:
         tone = "ok" if healthy == total and status.get("publishable") else "warn"
     except Exception:
         return ""
+
+    rows_html = []
+    for src in sorted(sources, key=lambda x: (x.get("status") in ("fresh", "current_for_frequency"), str(x.get("source")))):
+        name = str(src.get("source"))
+        st = str(src.get("status"))
+        ready = st in ("fresh", "current_for_frequency")
+        dot_cls = "ok" if ready else ("stale" if st == "stale_last_good" else "bad")
+        impact = SOURCE_IMPACT.get(name, "")
+        note = ""
+        if not ready:
+            if st == "stale_last_good":
+                note = f"（滞后 {src.get('staleDays', '?')} 天，宽限内）"
+            elif st == "failed_using_last_good":
+                note = "（超期，阻塞发布）"
+            elif st == "partial":
+                note = "（部分成功）"
+            else:
+                note = "（失败）"
+        rows_html.append(
+            f'<div class="fresh-row"><span class="fresh-dot {dot_cls}"></span>'
+            f'<b>{name}</b> {st}{note}<span class="fresh-impact">{impact}</span></div>'
+        )
     return (
-        f'<span class="fresh-badge {tone}">● 数据更新于 {generated} UTC · {healthy}/{total} 源就绪</span>'
+        f'<details class="fresh-details"><summary class="fresh-badge {tone}">'
+        f'● 数据更新于 {generated} UTC · {healthy}/{total} 源就绪 ▾</summary>'
+        f'<div class="fresh-list">{"".join(rows_html)}</div></details>'
     )
 
 
@@ -899,10 +992,16 @@ HTML = r'''<!doctype html>
 .chart.compact{min-height:240px}.chart.compact svg{height:240px}
 @media(max-width:820px){.shell{padding:0 16px 48px}.topbar{position:static;margin:0 -16px;padding:0 16px}.nav{display:none}.hero{padding-top:28px}h1{font-size:32px}.grid{grid-template-columns:1fr}.panel.full{grid-column:1}.panel{padding:16px}.chart{min-height:190px}.chart svg{height:190px}.chart.compact svg{height:170px}.axis,.axis-title{font-size:24px}.key-stats{grid-template-columns:repeat(2,minmax(0,1fr))}.section-head{display:block}.section-kicker{display:block;margin-top:5px}}
 .grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}.grid.four{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}@media(max-width:820px){.grid.four{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:560px){.grid.four{grid-template-columns:1fr}}.clock-card{padding:16px;border:1px solid rgba(0,0,0,.09);border-radius:var(--radius);background:var(--paper)}.clock-card h4{margin:0;font-size:13px;color:var(--muted);font-weight:650}.clock-state{margin-top:8px;font-size:20px;font-weight:700}.st-observing .clock-state{color:#8e8e93}.st-trend .clock-state{color:#0071e3}.st-watch .clock-state{color:#b25000}.st-confirmed .clock-state{color:#1d7a3d}.clock-metric{margin:8px 0 0;font-size:12px;font-variant-numeric:tabular-nums}.clock-next{margin:6px 0 0;color:var(--muted);font-size:11px}.clock-detail{margin-top:10px;border-top:1px solid #ececf0;padding-top:8px}.clock-detail>summary{cursor:pointer;list-style:none;color:var(--muted);font-size:11px}.clock-detail>summary::-webkit-details-marker{display:none}.clock-detail[open]>summary{color:var(--ink)}.clock-evidence p{margin:4px 0;font-size:11px;line-height:1.5}.clock-evidence p b{display:block;margin-top:6px;color:var(--ink)}
+.clock-basis{margin:8px 0 0;padding:6px 10px;background:rgba(0,113,227,.07);border-left:2px solid #0071e3;font-size:11px;line-height:1.6;color:var(--ink)}
 .hero-meta{margin-top:14px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
 .fresh-badge{display:inline-flex;align-items:center;padding:5px 10px;border-radius:99px;border:1px solid rgba(0,0,0,.12);font-size:11px;color:var(--muted)}
 .fresh-badge.ok{color:#1d7a3d;border-color:rgba(29,122,61,.35)}
 .fresh-badge.warn{color:#b25000;border-color:rgba(178,80,0,.35)}
+.fresh-details{position:relative;display:inline-block}.fresh-details>summary{cursor:pointer;list-style:none}.fresh-details>summary::-webkit-details-marker{display:none}
+.fresh-list{position:absolute;top:110%;left:0;z-index:50;min-width:340px;max-width:480px;padding:10px 12px;background:var(--paper);border:1px solid var(--line);border-radius:10px;box-shadow:0 12px 32px rgba(0,0,0,.12)}
+.fresh-row{padding:5px 0;border-bottom:1px solid #ececf0;font-size:11px;line-height:1.5}.fresh-row:last-child{border-bottom:none}
+.fresh-dot{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:6px}.fresh-dot.ok{background:#248a3d}.fresh-dot.stale{background:#d76b00}.fresh-dot.bad{background:#d70015}
+.fresh-impact{display:block;color:var(--muted);margin-left:13px;font-size:10px}
 .stale-note{margin:0 0 14px;padding:10px 14px;border:1px solid rgba(178,80,0,.35);border-radius:8px;background:rgba(178,80,0,.06);color:#b25000;font-size:12px;line-height:1.6}
 .xsync-line{position:absolute;top:0;bottom:34px;width:1px;background:rgba(0,113,227,.45);pointer-events:none;display:none;z-index:2}
 @media print{body{background:#fff}.topbar,.controls,.segments,#presets,.nav{display:none!important}.clock-detail>summary{display:none}.panel{break-inside:avoid}}
@@ -916,7 +1015,7 @@ HTML = r'''<!doctype html>
 
 __CLOCKS__<section class="section" id="demand"><div class="section-head"><h2>需求与活跃模型结构</h2><span class="section-kicker">OpenRouter · 52周</span></div><div class="grid"><article class="panel full" data-source="openrouter"><h3>OpenRouter 模型 Token 总量</h3><p class="panel-note">每周 token 总量与 4 周均线 · 含未具名模型的汇总</p><div id="or-volume" class="chart"></div><div id="or-volume-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel full" data-source="openrouterComposition"><h3>OpenRouter 活跃模型组合更替</h3><p class="panel-note">每周 Top-9 模型的用量占比 · 灰色为未具名模型 · 悬停查看明细</p><div id="or-composition" class="chart"></div><div id="composition-legend" class="legend"></div><div id="composition-latest" class="key-stats"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel full" data-source="activePrice"><h3>活跃模型 Output 价格层级迁移</h3><p class="panel-note">按用量加权的输出价格分档 · 灰色为没匹配到价格的模型</p><div id="active-price-tier" class="chart"></div><div id="active-price-tier-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel" data-source="activePrice"><h3>活跃模型组合 Input 牌价</h3><p class="panel-note">按公开Token量加权 · 美元 / 100万 input tokens</p><div id="active-input-basket" class="chart compact"></div><div id="active-input-basket-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel" data-source="activePrice"><h3>活跃模型组合 Output 牌价</h3><p class="panel-note">按公开Token量加权 · 美元 / 100万 output tokens</p><div id="active-output-basket" class="chart compact"></div><div id="active-output-basket-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel" data-source="otpi"><h3>OTPI 已实现 Token 价（积累中）</h3><p class="panel-note" id="otpi-note">各实验室按实际成交加权的 token 价格 · 免费层 1 个月滚动窗口，每日快照累积</p><div id="otpi-price" class="chart compact"></div><div id="otpi-price-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><details class="model-detail"><summary>查看近期活跃模型与单模型价格历史</summary><div class="detail-controls"><select id="active-model-select" class="detail-select" aria-label="活跃模型"></select><span id="active-model-meta" class="detail-meta"></span></div><div id="active-model-history" class="chart compact"></div><div id="active-model-history-legend" class="legend"></div><div class="table-wrap"><table><thead><tr><th>近期活跃模型</th><th>4周Token</th><th>总量占比</th><th>Input（$/百万）</th><th>Output（$/百万）</th><th>调价点</th></tr></thead><tbody id="active-model-body"></tbody></table></div></details></div></section>
 
-<section class="section" id="compute"><div class="section-head"><h2>GPU市场</h2><span class="section-kicker">多源聚合 · 34 家供应商</span></div>__STALENOTE__<div class="grid three"><article class="panel" data-source="gpuPrice"><h3>H100 租赁价格</h3><p class="panel-note">上半：中位价走势（y 轴聚焦中位范围）· 下半窄条：P25–P75 价差（市场分化度，越厚越分散）· 均为整租挂牌价，剔除 spot/serverless</p><div id="gpu-price-h100" class="chart compact"></div><div class="legend"><span class="legend-item"><i class="swatch" style="background:#0071e3"></i>中位价</span><span class="legend-item"><i class="swatch" style="background:#1d1d1f"></i>30日均线</span><span class="legend-item"><i class="swatch band" style="background:#0071e3"></i>P25–P75 价差（见下方窄条）</span></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel" data-source="gpuPrice"><h3>H200 租赁价格</h3><p class="panel-note">上半：中位价走势（y 轴聚焦中位范围）· 下半窄条：P25–P75 价差（市场分化度，越厚越分散）· 均为整租挂牌价，剔除 spot/serverless</p><div id="gpu-price-h200" class="chart compact"></div><div class="legend"><span class="legend-item"><i class="swatch" style="background:#0071e3"></i>中位价</span><span class="legend-item"><i class="swatch" style="background:#1d1d1f"></i>30日均线</span><span class="legend-item"><i class="swatch band" style="background:#0071e3"></i>P25–P75 价差（见下方窄条）</span></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel" data-source="gpuPrice"><h3>B200 租赁价格</h3><p class="panel-note">上半：中位价走势（y 轴聚焦中位范围）· 下半窄条：P25–P75 价差（市场分化度，越厚越分散）· 均为整租挂牌价，剔除 spot/serverless</p><div id="gpu-price-b200" class="chart compact"></div><div class="legend"><span class="legend-item"><i class="swatch" style="background:#0071e3"></i>中位价</span><span class="legend-item"><i class="swatch" style="background:#1d1d1f"></i>30日均线</span><span class="legend-item"><i class="swatch band" style="background:#0071e3"></i>P25–P75 价差（见下方窄条）</span></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel full" data-source="gpuPremium"><h3>GPU 代际租赁溢价</h3><p class="panel-note">相对H100的30日中位价格倍数 · 1.0x表示无溢价</p><div id="gpu-premium" class="chart"></div><div id="gpu-premium-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><h3 class="subsection-title">跨来源交叉验证 · 报价 × 成交 × 合约</h3><article class="panel" data-source="basisH100"><h3>H100：报价 vs 成交指数</h3><p class="panel-note">Neocloud 挂牌 × SemiAnalysis 综合 × Ornn 成交 · 已截到三源共存窗口、统一起点=100，只看相对变化是否同步</p><div id="basis-h100" class="chart compact"></div><div id="basis-h100-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel" data-source="basisH200"><h3>H200：报价 vs 成交指数</h3><p class="panel-note">Neocloud 挂牌 × Ornn 成交（SemiAnalysis 无 H200 公开指数）· 起点=100，扇形开口=分歧扩大</p><div id="basis-h200" class="chart compact"></div><div id="basis-h200-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel" data-source="basisB200"><h3>B200：报价 vs 成交指数</h3><p class="panel-note">Neocloud 挂牌 × SemiAnalysis 综合 × Ornn 成交 · 起点=100，扇形开口=分歧扩大</p><div id="basis-b200" class="chart compact"></div><div id="basis-b200-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel full" data-source="panelIndex"><h3>固定供应商面板指数</h3><p class="panel-note" id="panel-index-note">固定同一批供应商的整租价均值 · 起点=100 · 有人缺报价当天就断开，避免新供应商进场把线拉歪</p><div id="panel-index-chart" class="chart"></div><div id="panel-index-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel" data-source="contractBand"><h3>H100 一年期合约价区间</h3><p class="panel-note">SemiAnalysis 公开调查区间 · 混合频率（2023 半年→2024 季度→2025-07 起月度）· 阶梯图不与日线混轴</p><div id="contract-band" class="chart compact"></div><div id="contract-band-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><h3 class="subsection-title">市场紧张度 · 供给端（GPU Finder 每日积累）</h3><article class="panel" data-source="scarcity"><h3>市场稀缺度：可租卡占比</h3><p class="panel-note" id="scarcity-note">能租到的卡数 ÷ 在架总卡数 · 越低越紧张 · 每日快照（7 天滚动窗口）</p><div id="scarcity-chart" class="chart compact"></div><div id="scarcity-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel" data-source="listedGap"><h3>报价虚低度：在库 ÷ 报价</h3><p class="panel-note" id="gap-note">最低在库价 ÷ 最低报价 − 1 · 越紧的型号，挂出来的低价越可能是空头支票</p><div id="gap-chart" class="chart compact"></div><div id="gap-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel" data-source="breadth"><h3>供应商广度</h3><p class="panel-note" id="breadth-note">在架供应商数 · 涨价时家数还在增，说明供给在跟上</p><div id="breadth-chart" class="chart compact"></div><div id="breadth-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel" data-source="orderbookDepth"><h3>供给深度：订单簿观测（积累中）</h3><p class="panel-note" id="orderbook-note">三个平台各自的在架报价条数（分开计，不混算）· 少于 10 个有效日只画点</p><div id="orderbook-depth" class="chart compact"></div><div id="orderbook-depth-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article></div></section>
+<section class="section" id="compute"><div class="section-head"><h2>GPU市场</h2><span class="section-kicker">多源聚合 · 34 家供应商</span></div>__STALENOTE__<div class="grid three"><article class="panel" data-source="gpuPrice"><h3>H100 租赁价格</h3><p class="panel-note">上半：中位价走势（y 轴聚焦中位范围）· 下半窄条：P25–P75 价差（市场分化度，越厚越分散）· 均为整租挂牌价，剔除 spot/serverless</p><div id="gpu-price-h100" class="chart compact"></div><div class="legend"><span class="legend-item"><i class="swatch" style="background:#0071e3"></i>中位价</span><span class="legend-item"><i class="swatch" style="background:#1d1d1f"></i>30日均线</span><span class="legend-item"><i class="swatch band" style="background:#0071e3"></i>P25–P75 价差（见下方窄条）</span></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel" data-source="gpuPrice"><h3>H200 租赁价格</h3><p class="panel-note">上半：中位价走势（y 轴聚焦中位范围）· 下半窄条：P25–P75 价差（市场分化度，越厚越分散）· 均为整租挂牌价，剔除 spot/serverless</p><div id="gpu-price-h200" class="chart compact"></div><div class="legend"><span class="legend-item"><i class="swatch" style="background:#0071e3"></i>中位价</span><span class="legend-item"><i class="swatch" style="background:#1d1d1f"></i>30日均线</span><span class="legend-item"><i class="swatch band" style="background:#0071e3"></i>P25–P75 价差（见下方窄条）</span></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel" data-source="gpuPrice"><h3>B200 租赁价格</h3><p class="panel-note">上半：中位价走势（y 轴聚焦中位范围）· 下半窄条：P25–P75 价差（市场分化度，越厚越分散）· 均为整租挂牌价，剔除 spot/serverless</p><div id="gpu-price-b200" class="chart compact"></div><div class="legend"><span class="legend-item"><i class="swatch" style="background:#0071e3"></i>中位价</span><span class="legend-item"><i class="swatch" style="background:#1d1d1f"></i>30日均线</span><span class="legend-item"><i class="swatch band" style="background:#0071e3"></i>P25–P75 价差（见下方窄条）</span></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel full" data-source="gpuPremium"><h3>GPU 代际租赁溢价</h3><p class="panel-note">相对H100的30日中位价格倍数 · 1.0x表示无溢价</p><div id="gpu-premium" class="chart"></div><div id="gpu-premium-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><h3 class="subsection-title">跨来源交叉验证 · 报价 × 成交 × 合约</h3><article class="panel" data-source="basisH100"><h3>H100：报价 vs 成交指数</h3><p class="panel-note">Neocloud 挂牌 × SemiAnalysis 综合 × Ornn 成交 · 已截到三源共存窗口、统一起点=100，只看相对变化是否同步</p><div id="basis-h100" class="chart compact"></div><div id="basis-h100-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel" data-source="basisH200"><h3>H200：报价 vs 成交指数</h3><p class="panel-note">Neocloud 挂牌 × Ornn 成交（SemiAnalysis 无 H200 公开指数）· 起点=100，扇形开口=分歧扩大</p><div id="basis-h200" class="chart compact"></div><div id="basis-h200-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel" data-source="basisB200"><h3>B200：报价 vs 成交指数</h3><p class="panel-note">Neocloud 挂牌 × SemiAnalysis 综合 × Ornn 成交 · 起点=100，扇形开口=分歧扩大</p><div id="basis-b200" class="chart compact"></div><div id="basis-b200-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel full" data-source="panelIndex"><h3>固定供应商面板指数</h3><p class="panel-note" id="panel-index-note">固定同一批供应商的整租价均值 · 起点=100（灰虚线）· 橙色虚线=成员个体调价造成的台阶 · 有人缺报价当天断开</p><div id="panel-index-chart" class="chart"></div><div id="panel-index-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel" data-source="contractBand"><h3>H100 一年期合约价区间</h3><p class="panel-note">SemiAnalysis 公开调查区间 · 混合频率（2023 半年→2024 季度→2025-07 起月度）· 阶梯图不与日线混轴</p><div id="contract-band" class="chart compact"></div><div id="contract-band-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><h3 class="subsection-title">市场紧张度 · 供给端（GPU Finder 每日积累）</h3><article class="panel" data-source="scarcity"><h3>市场稀缺度：可租卡占比</h3><p class="panel-note" id="scarcity-note">能租到的卡数 ÷ 在架总卡数 · 越低越紧张 · 每日快照（7 天滚动窗口）</p><div id="scarcity-chart" class="chart compact"></div><div id="scarcity-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel" data-source="listedGap"><h3>报价虚低度：在库 ÷ 报价</h3><p class="panel-note" id="gap-note">最低在库价 ÷ 最低报价 − 1 · 越紧的型号，挂出来的低价越可能是空头支票</p><div id="gap-chart" class="chart compact"></div><div id="gap-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel" data-source="breadth"><h3>供应商广度</h3><p class="panel-note" id="breadth-note">在架供应商数 · 涨价时家数还在增，说明供给在跟上</p><div id="breadth-chart" class="chart compact"></div><div id="breadth-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel" data-source="orderbookDepth"><h3>供给深度：订单簿观测（积累中）</h3><p class="panel-note" id="orderbook-note">三个平台各自的在架报价条数（分开计，不混算）· 少于 10 个有效日只画点</p><div id="orderbook-depth" class="chart compact"></div><div id="orderbook-depth-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article></div></section>
 
 <section class="section" id="capex"><div class="section-head"><h2>CAPEX与官方承诺</h2><span class="section-kicker">季度与事件 · 原始频率不插值</span></div><article class="panel full" data-source="capex"><div class="table-wrap"><table><thead><tr><th>日期</th><th>公司</th><th>指标</th><th>期间</th><th>单位</th><th>数值</th></tr></thead><tbody id="capex-body"></tbody></table></div><details class="source"><summary>来源与口径</summary><p></p></details></article></section>
 <footer class="footer" id="freshness"></footer></main><script>
@@ -940,6 +1039,7 @@ function renderChart(c){
   for(let i=0;i<=4;i++){let val=xmin+(xmax-xmin)*i/4,xx=x(val),d=new Date(val);svg+=`<text class="axis" x="${xx}" y="${H-20}" text-anchor="middle">${d.toLocaleDateString('zh-CN',{month:'short',day:'numeric'})}</text>`}
   svg+=`<text class="axis-title" transform="translate(15 ${H/2}) rotate(-90)" text-anchor="middle">${esc(c.opt.yTitle)}</text>`;
   if(Number.isFinite(c.opt.reference)){const yy=y(c.opt.reference);svg+=`<line x1="${m.l}" y1="${yy}" x2="${W-m.r}" y2="${yy}" stroke="#6e6e73" stroke-width="1.5" stroke-dasharray="6 5"/><text class="axis" x="${W-m.r}" y="${yy-6}" text-anchor="end">${fmt(c.opt.reference,c.opt.kind)}</text>`}
+  if(c.opt.annotations){Object.entries(c.opt.annotations).forEach(([fam,list])=>{if(!states[c.id]||!states[c.id].has(fam+' 固定面板'))return;(list||[]).forEach((a,ai)=>{const tv=dateNum(a.date);if(tv<start||tv>end)return;const xx=x(tv);svg+=`<line x1="${xx}" y1="${m.t}" x2="${xx}" y2="${H-m.b}" stroke="#d76b00" stroke-width="1.4" stroke-dasharray="4 4"/><text class="axis" x="${Math.min(xx+4,W-m.r-120)}" y="${m.t+14+((ai%2)*12)}" fill="#d76b00">${esc(a.label)}</text>`})})}
   const names=[...new Set(c.rows.map(r=>r.series))];
   names.forEach((name,idx)=>{
     const pts=visible.filter(r=>r.series===name).sort((a,b)=>dateNum(a.date)-dateNum(b.date));let segments=[],segment=[];
@@ -1068,7 +1168,7 @@ lineChart('contract-band','contract-band-legend',DATA.datasets.contractBand||[],
 
 const panelRows=DATA.datasets.panelIndex||[];
 (()=>{const pm=DATA.meta.panelMembers||{};const counts=Object.entries(pm).map(([g,m])=>{const arr=Array.isArray(m)?m:(m&&m.members)||[];return g+' '+arr.length+'家'}).join(' / ');document.getElementById('panel-index-note').textContent='非中断性租赁价 · 固定成员均值（'+counts+'）· 起点=100 · 成员明细见来源与口径'})();
-lineChart('panel-index-chart','panel-index-legend',panelRows,{title:'Fixed-provider panel index',kind:'index',yTitle:'Index (base=100)',zero:false,gapDays:11});
+lineChart('panel-index-chart','panel-index-legend',panelRows,{title:'Fixed-provider panel index',kind:'index',yTitle:'Index (base=100)',zero:false,gapDays:11,reference:100,annotations:DATA.meta.panelAnnotations});
 activeModelDetail();sourceDetails();renderTable();$('#freshness').textContent='更新于 '+DATA.meta.generatedAt.slice(0,16).replace('T',' ')+' UTC · 仅公开来源数据 · 不含综合评分';
 </script></body></html>'''
 

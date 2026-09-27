@@ -385,6 +385,16 @@ def build_fact(row: Dict[str, Any], raw_unit: str) -> Optional[SecCapexFact]:
 
     fp = str(row["fp"]).strip().upper()
     fiscal_period = f"FY{fiscal_year}" if fp == "FY" else f"FY{fiscal_year} {fp}"
+    # XBRL 把"半年/前三季累计"事实也常标成 fp=Q2/Q3，直接用会误标单季。
+    # 按事实真实时长（start→end）修正：超过一个季度就打上"累计（约 N 个月）"。
+    try:
+        from datetime import date as _date
+        span_days = (_date.fromisoformat(str(row["end"])) - _date.fromisoformat(str(row["start"]))).days
+        months = round(span_days / 30.44)
+        if months > 4:
+            fiscal_period = f"{fiscal_period} 累计（约{months}个月）"
+    except (TypeError, ValueError):
+        pass
     return SecCapexFact(
         raw=dict(row),
         raw_unit=raw_unit,

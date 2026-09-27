@@ -29,11 +29,13 @@ CAPEX_MAX_AGE_DAYS = 150
 
 
 def _key(row: dict[str, Any]) -> tuple[str, str, str, str]:
+    # 期间标签的"累计"后缀（时长修正）不算新行：按基期标签去重，修正版替换旧版
+    base_period = str(row.get("period") or "").split(" 累计")[0].strip()
     return (
         str(row.get("date") or ""),
         str(row.get("company") or ""),
         str(row.get("metric") or ""),
-        str(row.get("period") or ""),
+        base_period,
     )
 
 

@@ -180,12 +180,12 @@ def evaluate_supply(data: Dict[str, Any]) -> Dict[str, Any]:
     rising = sorted({p["family"] for p in eligible_watch if p["change30dPct"] >= 10})
 
     loosening_conditions = [
-        {"condition": ">=2 个前沿 GPU 家族 30D 跌幅 >=10%（跨来源去重）", "met": len(declining) >= 2, "evidence": declining},
+        {"condition": ">=2 个前沿 GPU 家族 30D 跌幅 >=10%（短线触发窗口 · 跨来源去重）", "met": len(declining) >= 2, "evidence": declining},
         {"condition": "订单簿深度增长 >=10%", "met": depth.get("depthGrowthPct") is not None and depth["depthGrowthPct"] >= 10, "evidence": []},
         {"condition": "深度序列 >=20 个有效日", "met": depth["depthValidDates"] >= 20, "evidence": []},
     ]
     intensifying_conditions = [
-        {"condition": ">=2 个前沿 GPU 家族 30D 涨幅 >=10%（跨来源去重）", "met": len(rising) >= 2, "evidence": rising},
+        {"condition": ">=2 个前沿 GPU 家族 30D 涨幅 >=10%（短线触发窗口 · 跨来源去重）", "met": len(rising) >= 2, "evidence": rising},
         {"condition": "订单簿深度收缩 >=10%", "met": depth.get("depthGrowthPct") is not None and depth["depthGrowthPct"] <= -10, "evidence": []},
         {"condition": "深度序列 >=20 个有效日", "met": depth["depthValidDates"] >= 20, "evidence": []},
     ]
@@ -222,8 +222,22 @@ def evaluate_supply(data: Dict[str, Any]) -> Dict[str, Any]:
                 "midpoint": round((row["lowValue"] + row["highValue"]) / 2, 3),
             })
 
+    if state == "Confirmed":
+        _fams = intensifying_confirmed or loosening_confirmed
+        _dir = "涨幅 ≥15%" if intensifying_confirmed else "跌幅 ≤−15%"
+        state_basis = (
+            f"90D 确认窗口：{'、'.join(_fams)} 家族{_dir}（跨来源去重，≥2 家族达标）"
+        )
+    elif state == "Inflection Watch":
+        state_basis = "30D 触发窗口：短线 Watch 条件全部满足（见下方）"
+    elif state == "Trend":
+        state_basis = "面板已达标可连线；30D/90D 触发条件均未满足（下方 Watch 未触发属正常）"
+    else:
+        state_basis = "证据不足"
+
     return {
         "clock_id": "supply_price",
+        "stateBasis": state_basis,
         "title": "Supply Price",
         "natural_frequency": "daily",
         "state": state,
@@ -286,6 +300,7 @@ def evaluate_capacity(data: Dict[str, Any]) -> Dict[str, Any]:
 
     return {
         "clock_id": "capacity",
+        "stateBasis": f"订单簿已积累 {depth['depthValidDates']} 个有效日" + (f"（≥10 达标，趋势可判）" if depth['depthValidDates']>=10 else "（<10，仅观测点）") + f"；最新 offers {depth['depthLatestTotalOffers']}",
         "title": "Capacity & Utilization",
         "natural_frequency": "daily",
         "state": state,
@@ -342,6 +357,7 @@ def evaluate_demand(data: Dict[str, Any]) -> Dict[str, Any]:
 
     return {
         "clock_id": "demand_unit_economics",
+        "stateBasis": f"OpenRouter 用量 {complete_weeks} 个完整周达标（≥52）；但用量为公开 proxy——契约规定 proxy 不得升级 Inflection，封顶 Trend 属纪律而非保守",
         "title": "Demand & Unit Economics",
         "natural_frequency": "weekly/event",
         "state": state,
@@ -473,6 +489,7 @@ def evaluate_commitment(data: Dict[str, Any]) -> Dict[str, Any]:
 
     return {
         "clock_id": "commitment_monetization",
+        "stateBasis": (f"{len(up_companies)} 家公司 guidance 上修（{'、'.join(up_companies)}）触发紧缩 Watch" if intensifying_watch else (f"{len(down_companies)} 家公司 guidance 下修触发松动 Watch" if loosening_watch else "季度数据积累中（≥3 家公司达 3 连续季度后进 Trend）")),
         "title": "Commitment & Monetization",
         "natural_frequency": "quarterly/event",
         "state": state,
@@ -486,11 +503,11 @@ def evaluate_commitment(data: Dict[str, Any]) -> Dict[str, Any]:
         "next_proof_point": "下一财报季追加季度行；合约区间每半年更新。",
         "watch": {
             "loosening": {"triggered": loosening_watch, "conditions": [
-                {"condition": ">=2 家公司 guidance 下修", "met": loosening_watch, "evidence": down_companies},
+                {"condition": ">=2 家公司 guidance 下修（事件触发）", "met": loosening_watch, "evidence": down_companies},
                 {"condition": "后续 actual 同向验证（Inflection→Confirmed）", "met": False},
             ]},
             "intensifying": {"triggered": intensifying_watch, "conditions": [
-                {"condition": ">=2 家公司 guidance 上修", "met": intensifying_watch, "evidence": up_companies},
+                {"condition": ">=2 家公司 guidance 上修（事件触发）", "met": intensifying_watch, "evidence": up_companies},
                 {"condition": "合约区间同向（旁证）", "met": contract_direction == "rising"},
             ]},
         },
