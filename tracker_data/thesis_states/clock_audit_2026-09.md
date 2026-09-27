@@ -9,7 +9,7 @@
 
 ## Capacity & Utilization — Trend
 - 下一个证明点：积累订单簿至 10/20 有效日（当前 36）。
-- 关键指标：`{"depthValidDates": 36, "latestTotalOffers": 333, "depthGrowthPct": 16.01, "latestGpuCapacity": 10238, "providerSnapshotRows": 23068, "providersCovered": 34}`
+- 关键指标：`{"depthValidDates": 36, "latestTotalOffers": 333, "depthGrowthPct": 16.01, "latestGpuCapacity": 10218, "providerSnapshotRows": 23068, "providersCovered": 34}`
 - 阻塞项：无
 
 ## Demand & Unit Economics — Trend
