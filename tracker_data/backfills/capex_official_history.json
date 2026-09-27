@@ -1,36 +1,45 @@
 {
-  "fetchedAt": "2026-09-25T04:55:06Z",
-  "refreshStatus": "current_for_frequency",
+  "fetchedAt": "2026-09-27T05:48:09Z",
+  "refreshStatus": "fresh",
   "publishable": true,
   "cacheMaxAgeDays": 150,
   "cacheCoverage": {
     "MSFT": {
       "latestDate": "2026-06-30",
-      "ageDays": 87,
+      "ageDays": 89,
       "current": true
     },
     "AMZN": {
       "latestDate": "2026-06-30",
-      "ageDays": 87,
+      "ageDays": 89,
       "current": true
     },
     "GOOGL": {
       "latestDate": "2026-07-22",
-      "ageDays": 65,
+      "ageDays": 67,
       "current": true
     },
     "META": {
       "latestDate": "2026-07-29",
-      "ageDays": 58,
+      "ageDays": 60,
       "current": true
     },
     "ORCL": {
-      "latestDate": "2026-05-31",
-      "ageDays": 117,
+      "latestDate": "2026-08-31",
+      "ageDays": 27,
       "current": true
     }
   },
   "rows": [
+    {
+      "date": "2026-08-31",
+      "company": "Oracle",
+      "metric": "capex actual",
+      "value": 28.499,
+      "unit": "USD_B",
+      "period": "FY2026 Q1",
+      "source_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001341439.json"
+    },
     {
       "date": "2026-07-29",
       "company": "Microsoft",
@@ -458,60 +467,34 @@
   "sources": {
     "MSFT": {
       "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000789019.json",
-      "fetchedAt": "2026-09-25T04:55:06Z",
-      "status": "failed",
-      "message": "SEC_SOURCE_UNAVAILABLE: HTTP 403 for MSFT"
+      "fetchedAt": "2026-09-27T05:48:09Z",
+      "sha256": "sha256:75bebe2eebf09fd5c1383646a761563922c8eb0f2cdb107a13e526572a5140c3",
+      "status": "fresh"
     },
     "AMZN": {
       "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001018724.json",
-      "fetchedAt": "2026-09-25T04:55:06Z",
-      "status": "failed",
-      "message": "SEC_SOURCE_UNAVAILABLE: HTTP 403 for AMZN"
+      "fetchedAt": "2026-09-27T05:48:09Z",
+      "sha256": "sha256:9ed7d44b3b63e1ddaa71cffd3828101a8f998b7c8198b3c62e218ff3ed440f84",
+      "status": "fresh"
     },
     "GOOGL": {
       "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001652044.json",
-      "fetchedAt": "2026-09-25T04:55:06Z",
-      "status": "failed",
-      "message": "SEC_SOURCE_UNAVAILABLE: HTTP 403 for GOOGL"
+      "fetchedAt": "2026-09-27T05:48:09Z",
+      "sha256": "sha256:67e9eb51a09725a55b786cc0a569efcfb9906ad170e445e4775bc2126e22ae7d",
+      "status": "fresh"
     },
     "META": {
       "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001326801.json",
-      "fetchedAt": "2026-09-25T04:55:06Z",
-      "status": "failed",
-      "message": "SEC_SOURCE_UNAVAILABLE: HTTP 403 for META"
+      "fetchedAt": "2026-09-27T05:48:09Z",
+      "sha256": "sha256:0317fc3e86d06ba1660234ad40ec4c1408d9828fd2c4c45e25e2394bfd676699",
+      "status": "fresh"
     },
     "ORCL": {
       "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001341439.json",
-      "fetchedAt": "2026-09-25T04:55:06Z",
-      "status": "failed",
-      "message": "SEC_SOURCE_UNAVAILABLE: HTTP 403 for ORCL"
+      "fetchedAt": "2026-09-27T05:48:09Z",
+      "sha256": "sha256:176f31598633890dadc2baf962ec5c46fe3d6412559af4be32a2e01c8fda12b7",
+      "status": "fresh"
     }
   },
-  "quality": [
-    {
-      "source": "MSFT",
-      "status": "failed",
-      "message": "SEC_SOURCE_UNAVAILABLE: HTTP 403 for MSFT"
-    },
-    {
-      "source": "AMZN",
-      "status": "failed",
-      "message": "SEC_SOURCE_UNAVAILABLE: HTTP 403 for AMZN"
-    },
-    {
-      "source": "GOOGL",
-      "status": "failed",
-      "message": "SEC_SOURCE_UNAVAILABLE: HTTP 403 for GOOGL"
-    },
-    {
-      "source": "META",
-      "status": "failed",
-      "message": "SEC_SOURCE_UNAVAILABLE: HTTP 403 for META"
-    },
-    {
-      "source": "ORCL",
-      "status": "failed",
-      "message": "SEC_SOURCE_UNAVAILABLE: HTTP 403 for ORCL"
-    }
-  ]
+  "quality": []
 }

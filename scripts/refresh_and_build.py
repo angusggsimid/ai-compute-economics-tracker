@@ -47,6 +47,9 @@ def _run(name: str, command: list[str], required_output: Path) -> dict:
         status["qualityWarnings"] = details["failedSources"]
     if "cacheCoverage" in details:
         status["cacheCoverage"] = details["cacheCoverage"]
+    for key in ("staleDays", "lastDataDate", "error"):
+        if key in details:
+            status[key] = details[key]
     if completed.returncode and not required_output.exists():
         raise RuntimeError(f"{name} failed and has no last-known-good output: {completed.stderr}")
     return status

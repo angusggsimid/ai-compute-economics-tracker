@@ -142,3 +142,33 @@ def test_deploy_validator_rejects_false_freshness():
     }
 
     assert "sec_capex 缓存覆盖不完整或已过期" in validate(payload, date(2026, 7, 13))
+
+
+def test_foundry_stale_last_good_within_grace_passes():
+    payload = {
+        "generatedAt": "2026-09-27T08:00:00Z",
+        "status": "ready",
+        "publishable": True,
+        "sources": [
+            {"source": name, "status": "fresh", "publishable": True}
+            for name in ("openrouter_usage", "openrouter_active_prices")
+        ]
+        + [
+            {
+                "source": "sec_capex",
+                "status": "current_for_frequency",
+                "publishable": True,
+                "cacheCoverage": {"MSFT": {"current": True}},
+            },
+            {"source": "foundry_signals", "status": "stale_last_good", "publishable": True, "staleDays": 3},
+            {"source": "gpu_orderbook", "status": "fresh", "publishable": True},
+            {"source": "reference_indices", "status": "fresh", "publishable": True},
+            {"source": "neocloud_provider_prices", "status": "fresh", "publishable": True},
+            {"source": "epoch_supply", "status": "fresh", "publishable": True},
+            {"source": "fred_cost_anchors", "status": "fresh", "publishable": True},
+            {"source": "gpu_markets_fixings", "status": "fresh", "publishable": True},
+            {"source": "throughput_benchmarks", "status": "fresh", "publishable": True},
+        ],
+    }
+
+    assert validate(payload, date(2026, 9, 27)) == []

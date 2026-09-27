@@ -1,5 +1,10 @@
 # CONTEXT
 
+## 2026-09-27 Foundry 宕机 + 7 天宽限容错上线
+
+- Foundry Signals 整站 523 宕机（09-26 起，上游问题，73 天来首次）；发布门按设计拦截两天后，上线容错：last-good ≤7 天 → `stale_last_good` 可发布（页面橙色标注+徽章黄色），>7 天恢复阻塞。
+- 待办：若 Foundry 超 7 天未恢复，启动替换方案（neocloud 34 家替代价格图/面板指数；可用率需重新定义；详见当日讨论）。
+
 ## 2026-08-23 E1 判断层上线：四时钟每日自动评估（双向化）
 
 - `thesis_engine.py` 接入每日管线（阻塞步骤）：JSON 底表 → 四时钟状态 → `tracker_data/thesis_states/latest-*` 入库 + 页面顶部时钟卡片。

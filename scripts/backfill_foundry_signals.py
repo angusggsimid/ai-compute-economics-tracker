@@ -5,7 +5,7 @@ from __future__ import annotations
 
 import hashlib
 import json
-from datetime import datetime, timezone
+from datetime import date, datetime, timezone
 from pathlib import Path
 from statistics import median
 from typing import Any
@@ -101,11 +101,40 @@ def normalize(availability: dict[str, Any], prices: dict[str, Any]) -> dict[str,
     }
 
 
+GRACE_DAYS = 7
+
+
+def _grace_or_fail(exc: Exception, fetched_at: str) -> int:
+    """上游故障容错：last-good 数据在宽限期内（≤GRACE_DAYS 天）时标记 stale 但允许发布；
+    超出宽限期或没有 last-good 数据则如实失败（阻塞发布，强制人工决策）。"""
+    if OUTPUT_PATH.exists():
+        try:
+            stored = json.loads(OUTPUT_PATH.read_text(encoding="utf-8"))
+            last_date = max(row["date"] for row in stored["datasets"]["prices"])
+            stale_days = (datetime.now(timezone.utc).date() - date.fromisoformat(last_date)).days
+            if stale_days <= GRACE_DAYS:
+                print(json.dumps({
+                    "output": str(OUTPUT_PATH),
+                    "refreshStatus": "stale_last_good",
+                    "staleDays": stale_days,
+                    "lastDataDate": last_date,
+                    "publishable": True,
+                    "error": str(exc)[:200],
+                }, ensure_ascii=False))
+                return 0
+        except Exception:
+            pass
+    raise exc
+
+
 def main() -> int:
-    availability, availability_raw = _fetch(AVAILABILITY_URL)
-    prices, price_raw = _fetch(PRICE_URL)
-    normalized = normalize(availability, prices)
     fetched_at = datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
+    try:
+        availability, availability_raw = _fetch(AVAILABILITY_URL)
+        prices, price_raw = _fetch(PRICE_URL)
+    except Exception as exc:
+        return _grace_or_fail(exc, fetched_at)
+    normalized = normalize(availability, prices)
     stamp = fetched_at.replace("-", "").replace(":", "").lower()
     SNAPSHOT_DIR.mkdir(parents=True, exist_ok=True)
     availability_snapshot = SNAPSHOT_DIR / f"{stamp}-foundry-signals-availability.json"

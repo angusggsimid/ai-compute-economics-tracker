@@ -47,10 +47,16 @@ def validate(payload: dict, expected_date: date) -> list[str]:
         errors.append("来源集合不完整")
         return errors
 
+    STALE_TOLERANT = {"foundry_signals": {"fresh", "stale_last_good"}}
     for name in EXPECTED_SOURCES - {"sec_capex"} - INFORMATIONAL_SOURCES:
         row = sources[name]
-        if row.get("status") != "fresh" or row.get("publishable") is not True:
+        allowed = STALE_TOLERANT.get(name, {"fresh"})
+        if row.get("status") not in allowed or row.get("publishable") is not True:
             errors.append(f"{name} 不是 fresh")
+        elif row.get("status") == "stale_last_good":
+            print(json.dumps({
+                "warning": f"{name} 上游故障，使用 last-good 数据（滞后 {row.get('staleDays', '?')} 天，宽限 7 天）",
+            }, ensure_ascii=False))
 
     for name in sorted(INFORMATIONAL_SOURCES):
         status = sources[name].get("status")
