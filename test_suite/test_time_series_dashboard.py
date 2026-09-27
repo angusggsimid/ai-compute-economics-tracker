@@ -34,42 +34,40 @@ def test_sparse_snapshot_charts_are_not_exposed_as_time_series():
 
     assert "gpuOffers" not in snapshot["datasets"]
     assert "cloudPrice" not in snapshot["datasets"]
-    assert len({row["date"] for row in snapshot["datasets"]["gpuPrice"]}) >= 200
-    # 全局时间轴纪律：一切序列不早于 OpenRouter 用量窗口起点（月度观测约12个）
-    assert len({row["date"] for row in snapshot["datasets"]["gpuAvailability"]}) >= 10
+    # 2026-09-27 起 gpuPrice 来自 neocloud 34 家数据集（历史自 2026-07-05 起向前积累）
+    assert len({row["date"] for row in snapshot["datasets"]["gpuPrice"]}) >= 40
     assert {row["series"] for row in snapshot["datasets"]["gpuPrice"]} == {"H100", "H200", "B200"}
     assert all(row.get("low") is not None and row.get("high") is not None for row in snapshot["datasets"]["gpuPrice"])
 
 
-def test_foundry_price_panels_use_provider_medians_and_expose_composition_changes():
+def test_price_panels_use_provider_medians_and_expose_composition_changes():
     snapshot = build_snapshot()
     prices = snapshot["datasets"]["gpuPrice"]
 
-    assert all(row["value"] == pytest.approx(median(row["providerPrices"].values())) for row in prices)
+    # 跨供应商中位：每家一票，value == median(逐供应商中位)
+    assert all(row["value"] == pytest.approx(median(row["providerPrices"].values()), abs=1e-4) for row in prices)
     assert all(row["providerCount"] == len(row["providerPrices"]) for row in prices)
-    assert snapshot["datasets"]["gpuPriceAnnotations"]["H100"][-1] == {
-        "date": "2026-06-22",
-        "label": "3→5",
-    }
+    # 构成变化标注结构自洽：每个标注都与 providerCount 变动对应
+    for gpu, changes in snapshot["datasets"]["gpuPriceAnnotations"].items():
+        rows = {r["date"]: r["providerCount"] for r in prices if r["series"] == gpu}
+        for change in changes:
+            assert "→" in change["label"] and change["date"] in rows
     assert {row["series"] for row in snapshot["datasets"]["gpuPremium"]} == {
         "H200 / H100",
         "B200 / H100",
     }
 
 
-def test_availability_is_faceted_and_h200_is_explicitly_point_only():
+def test_supply_tension_panels_accumulate_and_stay_point_only_until_threshold():
     snapshot = build_snapshot()
-    availability = snapshot["datasets"]["gpuAvailability"]
-    # The public Foundry history can gain new observations between refreshes;
-    # keep the regression floor while allowing verified additions.
-    assert len([row for row in availability if row["series"] == "H100"]) >= 10
-    # The public Foundry history can gain new observations between refreshes;
-    # keep the regression floor while allowing verified additions.
-    assert len([row for row in availability if row["series"] == "B200"]) >= 11
-    assert len([row for row in availability if row["series"] == "H200"]) >= 3
+    for name in ("scarcity", "listedGap", "breadth"):
+        rows = snapshot["datasets"][name]
+        assert {row["series"] for row in rows} == {"H100", "H200", "B200"}, name
     html = build_html(snapshot)
-    assert "gpu-availability-h200" in html
-    assert "pointOnly:true" in html
+    assert "scarcity-chart" in html and "gap-chart" in html and "breadth-chart" in html
+    # GPU Finder 为 7 天滚动窗口：少于 10 个有效日前只画观测点
+    assert "pointOnly:_sd<10" in html
+    assert "gpu-availability" not in html
 
 
 def test_active_model_price_tiers_preserve_unknown_and_sum_to_total():
