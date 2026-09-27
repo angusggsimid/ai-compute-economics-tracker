@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-09-27T10:01:43Z",
+    "generatedAt": "2026-09-27T10:08:12Z",
     "minDate": "2025-09-22",
     "maxDate": "2026-09-27",
     "orderbookValidDays": 36,
@@ -16475,7 +16475,7 @@
       {
         "date": "2026-09-27",
         "series": "H100",
-        "value": 22.16
+        "value": 22.17
       },
       {
         "date": "2026-09-27",
@@ -29697,12 +29697,12 @@
       {
         "date": "2026-09-27",
         "series": "gpuperhour",
-        "value": 79
+        "value": 84
       },
       {
         "date": "2026-09-27",
         "series": "gpuperhour",
-        "value": 36
+        "value": 37
       },
       {
         "date": "2026-09-27",
@@ -29722,7 +29722,7 @@
       {
         "date": "2026-09-27",
         "series": "gpuperhour",
-        "value": 13
+        "value": 16
       },
       {
         "date": "2026-09-27",
@@ -29772,12 +29772,12 @@
       {
         "date": "2026-09-27",
         "series": "vast",
-        "value": 4
+        "value": 2
       },
       {
         "date": "2026-09-27",
         "series": "vast",
-        "value": 3
+        "value": 2
       },
       {
         "date": "2026-09-27",
@@ -29787,12 +29787,12 @@
       {
         "date": "2026-09-27",
         "series": "vast",
-        "value": 3
+        "value": 7
       },
       {
         "date": "2026-09-27",
         "series": "vast",
-        "value": 6
+        "value": 7
       },
       {
         "date": "2026-09-27",
@@ -29852,17 +29852,17 @@
       "definition": "Quarterly and event-frequency observations preserve source units and are not interpolated."
     },
     "basisH100": {
-      "url": "https://gpu-index.semianalysis.com/ | https://index.ornn.com | https://signals.foundry.ai",
+      "url": "https://gpu-index.semianalysis.com/ | https://index.ornn.com | https://gpurentalprices.com/data",
       "label": "H100 三源价格对照",
       "definition": "同一 GPU 家族下三种口径并列：供应商报价中位、综合现货-合约指数、成交加权指数。口径不同，仅作交叉对照，不构成同质序列。"
     },
     "basisH200": {
-      "url": "https://gpu-index.semianalysis.com/ | https://index.ornn.com | https://signals.foundry.ai",
+      "url": "https://gpu-index.semianalysis.com/ | https://index.ornn.com | https://gpurentalprices.com/data",
       "label": "H200 三源价格对照",
-      "definition": "口径同上。Foundry 与 Ornn 可能方向分歧，分歧本身是证据而非噪声。"
+      "definition": "口径同上（H200 无 SemiAnalysis 公开指数，为两源对照）。Neocloud 与 Ornn 可能方向分歧，分歧本身是证据而非噪声。"
     },
     "basisB200": {
-      "url": "https://gpu-index.semianalysis.com/ | https://index.ornn.com | https://signals.foundry.ai",
+      "url": "https://gpu-index.semianalysis.com/ | https://index.ornn.com | https://gpurentalprices.com/data",
       "label": "B200 三源价格对照",
       "definition": "口径同上。"
     },
@@ -29882,9 +29882,9 @@
       "definition": "按 lab 的成交加权 token 实现价（USD/Mtok），免费层滚动窗口每日快照累积。许可：Ornn 免费层署名引用。"
     },
     "panelIndex": {
-      "url": "https://signals.foundry.ai",
-      "label": "固定供应商面板指数（E2）",
-      "definition": "在窗口内报价覆盖率>=80% 的 Foundry 供应商构成固定面板；起点=100；任一成员当日缺价则该日无观测点。消除供应商构成漂移，是 Supply Price 时钟的首选趋势证据。"
+      "url": "https://gpurentalprices.com/data",
+      "label": "固定供应商面板指数",
+      "definition": "从 34 家供应商数据集取窗口内持续在架成员（覆盖率≥90%），按非中断性租赁价计算成员均值，起点=100；成员当日缺价即断点。消除供应商构成漂移，是供给价格的首选趋势证据。 当前成员：H100（15 家）：AWS、Azure、CoreWeave、Crusoe、DataCrunch、HyperStack、JarvisLabs、Lambda、Massed Compute、Nebius、OVH、RunPod、Spheron、Together AI、Voltage Park；B200（7 家）：CoreWeave、DataCrunch、HyperStack、Lambda、Nebius、RunPod、Together AI"
     }
   }
 }
