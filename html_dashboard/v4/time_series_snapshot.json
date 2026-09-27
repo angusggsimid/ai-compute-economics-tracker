@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-09-27T13:59:26Z",
+    "generatedAt": "2026-09-27T14:31:26Z",
     "minDate": "2025-09-22",
     "maxDate": "2026-09-27",
     "basisCommonStart": {
@@ -81,10 +81,11 @@
         "low": 175.0,
         "high": 175.0,
         "prevLow": null,
-        "prevHigh": null
+        "prevHigh": null,
+        "note": "（租赁重分类后 CY2026）"
       }
     ],
-    "volumeYoYLabel": "52 周增长 ×172",
+    "volumeYoYLabel": "自首个完整周（2025-09-29起）×24",
     "scarcityValidDays": 1,
     "gapValidDays": 1
   },
@@ -17124,12 +17125,12 @@
       {
         "date": "2026-09-27",
         "series": "H100",
-        "value": 22.81
+        "value": 22.95
       },
       {
         "date": "2026-09-27",
         "series": "H200",
-        "value": 28.1
+        "value": 28.14
       }
     ],
     "listedGap": [
@@ -23437,7 +23438,7 @@
       {
         "date": "2026-09-27",
         "series": "gpuperhour",
-        "value": 284
+        "value": 279
       },
       {
         "date": "2026-09-27",
@@ -23539,7 +23540,7 @@
     "panelIndex": {
       "url": "https://gpurentalprices.com/data",
       "label": "固定供应商面板指数",
-      "definition": "从 34 家供应商数据集取窗口内持续在架成员（覆盖率≥90%），按非中断性租赁价计算成员均值，起点=100；成员当日缺价即断点。消除供应商构成漂移，是供给价格的首选趋势证据。 当前成员：H100（15 家）：AWS、Azure、CoreWeave、Crusoe、DataCrunch、HyperStack、JarvisLabs、Lambda、Massed Compute、Nebius、OVH、RunPod、Spheron、Together AI、Voltage Park；B200（7 家）：CoreWeave、DataCrunch、HyperStack、Lambda、Nebius、RunPod、Together AI"
+      "definition": "从 34 家供应商数据集取窗口内持续在架成员（覆盖率≥90%），按非中断性租赁价计算成员均值，起点=100；成员当日缺价即断点。消除供应商构成漂移，是供给价格的首选趋势证据。橙色虚线标注 = 单成员挂牌价跳变（如 9/3 Together AI −50%：同规格 180GB 单家从 $8.19 调至 $4.09，属单供应商调价，非市场整体事件）；台阶来自成员个体动作，看趋势请看均线。 当前成员：H100（15 家）：AWS、Azure、CoreWeave、Crusoe、DataCrunch、HyperStack、JarvisLabs、Lambda、Massed Compute、Nebius、OVH、RunPod、Spheron、Together AI、Voltage Park；B200（7 家）：CoreWeave、DataCrunch、HyperStack、Lambda、Nebius、RunPod、Together AI"
     }
   }
 }
