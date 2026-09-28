@@ -129,6 +129,18 @@ def main() -> int:
             row["blocking"] = False
             row["publishable"] = True
     publishable = all(row["publishable"] for row in results)
+    generated_at = datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
+    payload = {
+        "generatedAt": generated_at,
+        "status": "ready" if publishable else "degraded",
+        "publishable": publishable,
+        "sources": results,
+        "publicIndex": str(PUBLIC_INDEX.relative_to(ROOT)),
+    }
+    # 状态文件必须在构建【之前】落盘：页面顶部的新鲜度徽章由构建时读取该文件生成，
+    # 先构建后写会让徽章永远显示上一轮的时间戳（数据是新的、标称时间是旧的）。
+    STATUS_PATH.parent.mkdir(parents=True, exist_ok=True)
+    STATUS_PATH.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
     if publishable:
         # 四时钟判断层：读取已通过数据门的 JSON 底表，产出状态报告（阻塞步骤）。
         thesis = subprocess.run(
@@ -150,16 +162,6 @@ def main() -> int:
 
         PUBLIC_INDEX.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy2(ROOT / "html_dashboard" / "ai_compute_economics_monitor.html", PUBLIC_INDEX)
-    generated_at = datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
-    payload = {
-        "generatedAt": generated_at,
-        "status": "ready" if publishable else "degraded",
-        "publishable": publishable,
-        "sources": results,
-        "publicIndex": str(PUBLIC_INDEX.relative_to(ROOT)),
-    }
-    STATUS_PATH.parent.mkdir(parents=True, exist_ok=True)
-    STATUS_PATH.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
     print(json.dumps(payload, ensure_ascii=False))
     return 0 if publishable else 1
 

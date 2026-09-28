@@ -205,3 +205,52 @@ def test_neocloud_stale_last_good_within_grace_passes():
     }
 
     assert validate(payload, date(2026, 9, 27)) == []
+
+
+def test_status_file_is_written_before_dashboard_build(monkeypatch, tmp_path):
+    """新鲜度徽章由构建时读取状态文件生成——状态文件必须先落盘。
+
+    曾经的缺陷：先构建页面、后写状态文件，导致页面顶部"数据更新于 X"
+    永远显示【上一轮】的时间戳（数据是新的、标称时间是旧的），
+    与 capex 的 fetchedAt 谎报同属"新鲜度元数据说谎"。
+    """
+    status_path = tmp_path / "tracker_data" / "deploy_refresh_status.json"
+    public_index = tmp_path / "public" / "index.html"
+    seen: dict = {}
+
+    monkeypatch.setattr(refresh_and_build, "STATUS_PATH", status_path)
+    monkeypatch.setattr(refresh_and_build, "PUBLIC_INDEX", public_index)
+    monkeypatch.setattr(refresh_and_build, "ROOT", tmp_path)
+    (tmp_path / "html_dashboard").mkdir(parents=True, exist_ok=True)
+    (tmp_path / "html_dashboard" / "ai_compute_economics_monitor.html").write_text("<html>ok</html>")
+
+    def fake_run(name, command, required_output):
+        required_output.parent.mkdir(parents=True, exist_ok=True)
+        required_output.write_text("{}")
+        return {
+            "source": name, "status": "fresh", "publishable": True,
+            "returnCode": 0, "stdout": "{}", "stderr": "", "output": "x",
+        }
+
+    def fake_subprocess(command, **kwargs):
+        joined = " ".join(command)
+        if "build_time_series_dashboard.py" in joined:
+            # 构建被调用的瞬间，状态文件必须已经存在
+            seen["status_exists_at_build"] = status_path.exists()
+            seen["generated_at_at_build"] = (
+                json.loads(status_path.read_text(encoding="utf-8"))["generatedAt"] if status_path.exists() else None
+            )
+        return _Completed()
+
+    monkeypatch.setattr(refresh_and_build, "_run", fake_run)
+    monkeypatch.setattr(refresh_and_build.subprocess, "run", fake_subprocess)
+
+    assert refresh_and_build.main() == 0
+    assert seen.get("status_exists_at_build") is True, "构建时状态文件尚未落盘，徽章会滞后一轮"
+    assert seen.get("generated_at_at_build"), "构建时读到的状态缺少 generatedAt"
+    assert status_path.exists()
+
+
+class _Completed:
+    def __init__(self, code=0, out="", err=""):
+        self.returncode, self.stdout, self.stderr = code, out, err
