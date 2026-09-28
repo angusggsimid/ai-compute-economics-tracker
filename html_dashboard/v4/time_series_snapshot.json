@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-09-28T14:03:51Z",
+    "generatedAt": "2026-09-28T14:13:00Z",
     "minDate": "2025-09-29",
     "maxDate": "2026-09-28",
     "basisCommonStart": {
@@ -23565,7 +23565,7 @@
       {
         "date": "2026-09-28",
         "series": "vast",
-        "value": 31
+        "value": 33
       }
     ]
   },
@@ -23574,10 +23574,10 @@
       "label": "OpenRouter 公开模型排行榜",
       "urls": [
         "https://openrouter.ai/api/frontend/v1/rankings/model-rankings-chart",
-        "sha256:d60e90867fac19393dd04fad8f2b796d123ad1be63002121410859a8c4a893fb"
+        "sha256:211967a3fccddd98c8d81586f5c45167664cb4caa0bda9ff3ae2efca7383f35d"
       ],
       "url": "https://openrouter.ai/api/frontend/v1/rankings/model-rankings-chart",
-      "sha256": "sha256:d60e90867fac19393dd04fad8f2b796d123ad1be63002121410859a8c4a893fb",
+      "sha256": "sha256:211967a3fccddd98c8d81586f5c45167664cb4caa0bda9ff3ae2efca7383f35d",
       "definition": "Sum of source-provided named model rows and Others for each OpenRouter chart week."
     },
     "openrouterComposition": {
@@ -23586,7 +23586,7 @@
         "https://openrouter.ai/api/frontend/v1/rankings/model-rankings-chart"
       ],
       "url": "https://openrouter.ai/api/frontend/v1/rankings/model-rankings-chart",
-      "sha256": "sha256:d60e90867fac19393dd04fad8f2b796d123ad1be63002121410859a8c4a893fb",
+      "sha256": "sha256:211967a3fccddd98c8d81586f5c45167664cb4caa0bda9ff3ae2efca7383f35d",
       "definition": "Each weekly column independently stacks every model disclosed by the public chart plus Others. Segment height is share of that week's total token volume. Columns are not connected, so a model missing from another week is never treated as zero usage."
     },
     "activePrice": {
@@ -23596,7 +23596,7 @@
         "https://raw.githubusercontent.com/jvrck/openrouterlist/main/data/history/prices.json"
       ],
       "url": "https://openrouter.ai/api/v1/models",
-      "sha256": "sha256:a978e7be7afd20ea03f7ddfa18fbc1c4b9dd121ab7051da0cf826777185c6f91 sha256:0a78f649697399b292f864d56b6d08e719c6644bbb7b3dae54d426092d4d10de",
+      "sha256": "sha256:74e53e74fec73b7e5534b0777bed2d83c88701de1a5c20860d729892cf2b8fbd sha256:0a78f649697399b292f864d56b6d08e719c6644bbb7b3dae54d426092d4d10de",
       "definition": "Weekly named-model token volume is mapped through OpenRouter canonical slugs to OpenRouterList change-point prices. Free models are zero only when explicitly marked :free; Others and unmapped models remain Unknown. Weighted rates describe visible listed-price exposure, not realized spend, because public token volume is not split into input and output."
     },
     "gpuPrice": {
@@ -23729,7 +23729,7 @@
         "https://api.runpod.io/graphql"
       ],
       "url": "https://api.gpuindexes.com/api/offers",
-      "sha256": "sha256:bc0742725d70db492017c09278836dc327f4ad1b0f305a5b8117dfe06a309389 sha256:4644d65af5d966cb8dbed87427bf6edda699d894f5ccce03e0ed37981798044c sha256:b77e7d08af359376691e68904eba163c4eb079f7e4484ba993038ee444042272",
+      "sha256": "sha256:4e0e093f44db20e7e8c45dc40c6c0c417360f0c61b51955264a6259389dae6b5 sha256:90c6fa80eeb9cc9b7dc753db065f7873306271f5c7124e766ed002564336ec50 sha256:bab81e6525fed0178d82e86ed6257ab56cf9a583351cee8e295fdafcddffd43b",
       "label": "GPU 订单簿逐源观测",
       "definition": "gpuperhour/vast 为逐条报价 offers、runpod 为型号挂牌 types，单位语义不同故分序列展示不合并。时点观测，<10 有效日只画点不连线。"
     },
@@ -23747,7 +23747,7 @@
         "https://openrouter.ai/api/frontend/v1/rankings/model-rankings-chart"
       ],
       "url": "https://openrouter.ai/api/frontend/v1/rankings/model-rankings-chart",
-      "sha256": "sha256:d60e90867fac19393dd04fad8f2b796d123ad1be63002121410859a8c4a893fb",
+      "sha256": "sha256:211967a3fccddd98c8d81586f5c45167664cb4caa0bda9ff3ae2efca7383f35d",
       "label": "OpenRouter 公开周榜（Top-5 派生）",
       "definition": "每周公开榜单里最新 Top-5 模型各自的用量占比走势。看的是排名与份额的稳定性：曲线频繁交叉=头部不稳。"
     },
@@ -23756,7 +23756,7 @@
         "https://openrouter.ai/api/v1/models"
       ],
       "url": "https://openrouter.ai/api/v1/models",
-      "sha256": "sha256:a978e7be7afd20ea03f7ddfa18fbc1c4b9dd121ab7051da0cf826777185c6f91",
+      "sha256": "sha256:74e53e74fec73b7e5534b0777bed2d83c88701de1a5c20860d729892cf2b8fbd",
       "label": "OpenRouter 模型牌价调价点（change-point 账本）",
       "definition": "头部模型牌价近 4 周被修改的次数（来自我们记录的调价点账本）。高频调价=定价试探/竞争响应，是'价格战'的直接痕迹。"
     },
