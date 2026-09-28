@@ -22,14 +22,22 @@ def test_time_series_dashboard_uses_full_openrouter_history_without_synthetic_pr
     composition = snapshot["datasets"]["openrouterComposition"]
     dates = sorted({row["date"] for row in volume})
 
-    # 窗口起点周是残周，图中与倍数口径都必须剔除：断言"等于完整周数"而不是硬编码 52，
-    # 这样数据每周增长时测试依然成立，且能锁死"残周不得回到图上"。
+    # 图上只允许出现完整周：断言"等于完整周数"而不是硬编码 52，这样数据每周增长时依然成立。
+    # 注意：残周只在它还落在 370 天滚动窗口内时存在——窗口一旦滚过它，底表首周就是完整周、
+    # volumePartialWeekDropped 应为 None。因此这里必须按状态分支，不能假设残周永远存在。
+    # （曾因硬编码"残周一定是第一周"而在 2026-09-28 窗口滚动后误报失败。）
     raw_weeks = json.loads(COST_INDEX_PATH.read_text(encoding="utf-8"))["weeks"]
     expected = complete_week_count(raw_weeks)
     assert len(dates) == expected
     assert len({row["date"] for row in composition}) == expected
-    assert str(raw_weeks[0]["date"]) == snapshot["meta"]["volumePartialWeekDropped"]
-    assert dates[0] != snapshot["meta"]["volumePartialWeekDropped"]
+    dropped = snapshot["meta"]["volumePartialWeekDropped"]
+    if dropped is None:
+        # 无残周可剔：图上首周必须就是底表首周
+        assert dates[0] == str(raw_weeks[0]["date"])
+    else:
+        # 有残周：必须被剔除，且剔除的正是底表首周
+        assert dropped == str(raw_weeks[0]["date"])
+        assert dropped not in dates
     assert date.fromisoformat(dates[-1]) + timedelta(days=6) < date.today()
     for observed_date in {row["date"] for row in composition}:
         rows = [row for row in composition if row["date"] == observed_date]
