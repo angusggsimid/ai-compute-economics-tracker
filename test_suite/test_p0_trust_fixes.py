@@ -159,7 +159,7 @@ def test_successful_fetch_marks_rows_as_fresh(tmp_path):
 
     payload = refresh(path, client=WorkingSecClient(), as_of=date(2026, 7, 13))
 
-    assert payload["refreshedCount" if False else "fetchedCount"] == 5
+    assert payload["fetchedCount"] == len(decision_universe_configs())
     assert payload["fetchedAt"] == payload["runAt"]
     assert not any(row["fromCache"] for row in payload["rows"]), "本期实抓的行不应标为缓存"
 

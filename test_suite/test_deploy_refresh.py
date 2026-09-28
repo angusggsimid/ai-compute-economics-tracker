@@ -41,7 +41,7 @@ def test_capex_failures_use_current_quarterly_cache_without_claiming_fresh(tmp_p
 
     assert payload["refreshStatus"] == "current_for_frequency"
     assert payload["publishable"] is True
-    assert len(payload["quality"]) == 5
+    assert len(payload["quality"]) == len(decision_universe_configs())
     assert all(item["current"] for item in payload["cacheCoverage"].values())
 
 

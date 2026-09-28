@@ -5,6 +5,7 @@
 from __future__ import annotations
 
 import json
+import re
 from collections import defaultdict
 from datetime import date, datetime, timedelta, timezone
 from html import escape
@@ -574,12 +575,25 @@ CAPEX_METRIC_LABELS = {
     "rd spending": "研发支出",
     "ai cloud capex ttm": "AI 云基建支出（TTM）",
     "ttm capex increase reflects ai investment": "管理层：资本开支增长反映 AI 投入",
-    "fy2026 capex guidance low": "FY2026 指引下限",
-    "fy2026 capex guidance high": "FY2026 指引上限",
-    "fy2026 capex guidance previous low": "FY2026 指引下限（上调前）",
-    "fy2026 capex guidance previous high": "FY2026 指引上限（上调前）",
-    "calendar 2026 capex guidance": "2026 自然年指引",
 }
+
+# 指引类指标按正则生成中文标签，不逐年登记——写死 "fy2026 ..." 会让 FY2027 行
+# 回退成机器串，进而使冒烟门的中文正则匹配失败（2026-10 财报季会挂 CI）。
+_GUIDANCE_FY_RE = re.compile(r"fy(\d{4})\s+capex\s+guidance(?:\s+previous)?\s+(low|high)$")
+_GUIDANCE_CAL_RE = re.compile(r"calendar\s+(\d{4})\s+capex\s+guidance$")
+
+
+def _capex_metric_label(metric: str) -> str:
+    """任何财年/自然年的指引指标都能得到中文标签，年份由数据决定。"""
+    m = _GUIDANCE_FY_RE.match(metric)
+    if m:
+        fy, bound = m.group(1), "下限" if m.group(2) == "low" else "上限"
+        prev = "（上调前）" if "previous" in metric else ""
+        return f"FY{fy} 指引{bound}{prev}"
+    m = _GUIDANCE_CAL_RE.match(metric)
+    if m:
+        return f"{m.group(1)} 自然年指引"
+    return CAPEX_METRIC_LABELS.get(metric, metric)
 CAPEX_PERIOD_LABELS = {
     "capex_guidance_revision": "指引修订",
     "management_capacity_comment": "管理层口径（供给）",
@@ -598,7 +612,7 @@ CAPEX_UNIT_LABELS = {"USD_B": "十亿美元", "CNY_B": "十亿人民币", "evide
 def _capex_display(row: dict[str, Any]) -> dict[str, Any]:
     """把底表的机器格式（XBRL 标签/下划线期间/代码单位）翻译成人话；原始值保留不动。"""
     out = dict(row)
-    out["metricLabel"] = CAPEX_METRIC_LABELS.get(str(row.get("metric")), row.get("metric"))
+    out["metricLabel"] = _capex_metric_label(str(row.get("metric")))
     out["periodLabel"] = CAPEX_PERIOD_LABELS.get(str(row.get("period")), row.get("period") or "")
     out["unitLabel"] = CAPEX_UNIT_LABELS.get(str(row.get("unit")), row.get("unit") or "")
     if row.get("unit") == "evidence_flag":
@@ -845,11 +859,16 @@ def build_snapshot() -> dict[str, Any]:
         snapshot["meta"]["volumePartialWeekDropped"] = _dropped
     snapshot["meta"]["scarcityValidDays"] = len({r["date"] for r in scarcity})
     snapshot["meta"]["gapValidDays"] = len({r["date"] for r in listed_gap})
-    # 全局时间轴纪律：任何序列不早于 OpenRouter 用量窗口起点（52 周滚动）
+    # 全局时间轴纪律：周频/日频序列不早于 OpenRouter 用量窗口起点（52 周滚动）。
+    # 例外：季度/事件频率数据（官方披露、合约调查）绝不能跟着周窗口走——
+    # 它们永远追不上 52 周滚动窗口，会被逐周静默删行（CAPEX 溯源表曾只剩 57 天余量）。
+    _WINDOW_EXEMPT = {"capex", "capexQuarterly", "contractBand"}
     _or_rows = snapshot["datasets"].get("openrouterVolume") or []
     if _or_rows:
         _or_min = min(str(r.get("date", "")) for r in _or_rows)
         for _key, _rows in list(snapshot["datasets"].items()):
+            if _key in _WINDOW_EXEMPT:
+                continue
             if (
                 isinstance(_rows, list)
                 and _rows
@@ -971,21 +990,30 @@ def _capex_quarterly(rows: list[dict[str, Any]]) -> tuple[list[dict[str, Any]], 
             seen.add(key)
             quarterly.append({"group": group, "series": company, "value": round(float(value), 2)})
         elif "guidance" in metric:
-            slot = guidance.setdefault(company, {"low": None, "high": None, "prevLow": None, "prevHigh": None, "revisionDate": None})
-            if metric.endswith("guidance low") or metric.endswith("guidance previous low"):
-                field = "prevLow" if "previous" in metric else "low"
-            elif metric.endswith("guidance high") or metric.endswith("guidance previous high"):
-                field = "prevHigh" if "previous" in metric else "high"
-            elif metric == "calendar 2026 capex guidance":
+            # 同一家公司可能有多个财年的指引（FY2026 与 FY2027 并存于过渡期）。
+            # 按 (公司, 财年标签) 分桶，避免拿 FY2026 的值当 FY2027 的"上一版"。
+            m_fy = _GUIDANCE_FY_RE.match(metric)
+            m_cal = _GUIDANCE_CAL_RE.match(metric)
+            if m_fy:
+                bucket = f"FY{m_fy.group(1)}"
+                kind = m_fy.group(2)
+                field = ("prevLow" if "previous" in metric else "low") if kind == "low" else ("prevHigh" if "previous" in metric else "high")
+            elif m_cal:
+                year = m_cal.group(1)
+                bucket = f"CY{year}"
                 field = "calendar"
             else:
                 continue
+            slot = guidance.setdefault((company, bucket), {
+                "company": company, "fiscalYear": bucket,
+                "low": None, "high": None, "prevLow": None, "prevHigh": None, "revisionDate": None,
+            })
             # rows arrive newest-first（调用方按 (date, company) 倒序）；首写优先，
             # 否则旧修订会覆盖新修订，chip 显示被作废的上一版。
             if field == "calendar":
                 if slot["low"] is None:
                     slot["low"] = slot["high"] = float(value)
-                    slot["note"] = "（租赁重分类后 CY2026）"
+                    slot["note"] = f"（租赁重分类后 {bucket}）"
                     slot["revisionDate"] = str(row.get("date") or "")
             elif slot.get(field) is None:
                 slot[field] = float(value)
@@ -993,7 +1021,7 @@ def _capex_quarterly(rows: list[dict[str, Any]]) -> tuple[list[dict[str, Any]], 
                     slot["revisionDate"] = str(row.get("date") or "")
     quarterly.sort(key=lambda r: (r["group"], r["series"]))
     # 丢弃既无下限也无上限的空壳（否则 chip 会渲染成 $null–$nullB）
-    guidance_out = [{"company": k, **v} for k, v in sorted(guidance.items()) if v.get("low") is not None or v.get("high") is not None]
+    guidance_out = [v for _k, v in sorted(guidance.items()) if v.get("low") is not None or v.get("high") is not None]
     return quarterly, guidance_out
 
 
@@ -1255,7 +1283,7 @@ __CLOCKS__<section class="section" id="demand"><div class="section-head"><h2>需
 
 <section class="section" id="compute"><div class="section-head"><h2>GPU市场</h2><span class="section-kicker">多源聚合 · 供应商数据集 · 窗口 ~12 周（2026-09-27 起价格源切换为 gpurentalprices，与更早口径不连续）</span></div>__STALENOTE__<div class="grid three"><article class="panel full" data-source="gpuPrice"><h3>H100 租赁价格</h3><p class="panel-note">上半：中位价走势（y 轴聚焦中位范围）· 下半窄条：P25–P75 价差（市场分化度，越厚越分散）· 均为整租挂牌价，剔除 spot/serverless</p><div id="gpu-price-h100" class="chart compact"></div><div class="legend"><span class="legend-item"><i class="swatch" style="background:#0071e3"></i>中位价</span><span class="legend-item"><i class="swatch" style="background:#1d1d1f"></i>30日均线</span><span class="legend-item"><i class="swatch band" style="background:#0071e3"></i>P25–P75 价差（见下方窄条）</span></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel full" data-source="gpuPrice"><h3>H200 租赁价格</h3><p class="panel-note">上半：中位价走势（y 轴聚焦中位范围）· 下半窄条：P25–P75 价差（市场分化度，越厚越分散）· 均为整租挂牌价，剔除 spot/serverless</p><div id="gpu-price-h200" class="chart compact"></div><div class="legend"><span class="legend-item"><i class="swatch" style="background:#0071e3"></i>中位价</span><span class="legend-item"><i class="swatch" style="background:#1d1d1f"></i>30日均线</span><span class="legend-item"><i class="swatch band" style="background:#0071e3"></i>P25–P75 价差（见下方窄条）</span></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel full" data-source="gpuPrice"><h3>B200 租赁价格</h3><p class="panel-note">上半：中位价走势（y 轴聚焦中位范围）· 下半窄条：P25–P75 价差（市场分化度，越厚越分散）· 均为整租挂牌价，剔除 spot/serverless</p><div id="gpu-price-b200" class="chart compact"></div><div class="legend"><span class="legend-item"><i class="swatch" style="background:#0071e3"></i>中位价</span><span class="legend-item"><i class="swatch" style="background:#1d1d1f"></i>30日均线</span><span class="legend-item"><i class="swatch band" style="background:#0071e3"></i>P25–P75 价差（见下方窄条）</span></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel full" data-source="gpuPremium"><h3>GPU 代际租赁溢价</h3><p class="panel-note">相对H100的30日中位价格倍数 · 1.0x表示无溢价</p><div id="gpu-premium" class="chart"></div><div id="gpu-premium-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><h3 class="subsection-title">跨来源交叉验证 · 报价 × 成交 × 合约</h3><article class="panel" data-source="basisH100"><h3>H100：报价 vs 成交指数</h3><p class="panel-note">Neocloud 挂牌 × SemiAnalysis 综合 × Ornn 成交 · 统一起点=100，只看相对变化是否同步</p><div id="basis-h100" class="chart compact"></div><div id="basis-h100-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel" data-source="basisH200"><h3>H200：报价 vs 成交指数</h3><p class="panel-note">Neocloud 挂牌 × Ornn 成交（SemiAnalysis 无 H200 公开指数）· 起点=100，扇形开口=分歧扩大</p><div id="basis-h200" class="chart compact"></div><div id="basis-h200-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel" data-source="basisB200"><h3>B200：报价 vs 成交指数</h3><p class="panel-note">Neocloud 挂牌 × SemiAnalysis 综合 × Ornn 成交 · 起点=100，扇形开口=分歧扩大</p><div id="basis-b200" class="chart compact"></div><div id="basis-b200-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel full" data-source="panelIndex"><h3>固定供应商面板指数</h3><p class="panel-note" id="panel-index-note">固定同一批供应商的整租价均值 · 起点=100（灰虚线）· 橙色虚线=成员个体调价造成的台阶 · 有人缺报价当天断开</p><div id="panel-index-chart" class="chart"></div><div id="panel-index-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel wide" data-source="contractBand"><h3>H100 一年期合约价区间</h3><p class="panel-note">SemiAnalysis 公开调查区间（P25–P75）· 阶梯图不与日线混轴</p><div id="contract-band" class="chart compact"></div><div id="contract-band-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><h3 class="subsection-title">市场紧张度 · 供给端（GPU Finder 每日积累）</h3><article class="panel" data-source="scarcity"><h3>市场稀缺度：可租卡占比</h3><p class="panel-note" id="scarcity-note">能租到的卡数 ÷ 在架总卡数 · 越低越紧张 · 每日快照（7 天滚动窗口）</p><div id="scarcity-chart" class="chart compact"></div><div id="scarcity-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel" data-source="listedGap"><h3>报价虚低度：在库 ÷ 报价</h3><p class="panel-note" id="gap-note">最低在库价 ÷ 最低报价 − 1 · 越紧的型号，挂出来的低价越可能是空头支票</p><div id="gap-chart" class="chart compact"></div><div id="gap-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel" data-source="breadth"><h3>供应商广度</h3><p class="panel-note" id="breadth-note">在架供应商数 · 涨价时家数还在增，说明供给在跟上</p><div id="breadth-chart" class="chart compact"></div><div id="breadth-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel full" data-source="orderbookDepth"><h3>供给深度：订单簿观测（积累中）</h3><p class="panel-note" id="orderbook-note">三个平台各自的在架报价条数（分开计，不混算）· 少于 10 个有效日只画点</p><div class="grid three"><div><div id="ob-gpuperhour" class="chart compact"></div><div id="ob-gpuperhour-legend" class="legend"></div></div><div><div id="ob-vast" class="chart compact"></div><div id="ob-vast-legend" class="legend"></div></div><div><div id="ob-runpod" class="chart compact"></div><div id="ob-runpod-legend" class="legend"></div></div></div><details class="source"><summary>来源与口径</summary><p></p></details></article></div></section>
 
-<section class="section" id="capex"><div class="section-head"><h2>CAPEX与官方承诺</h2><span class="section-kicker">季度与事件 · 原始频率不插值</span></div><article class="panel full" data-source="capexQuarterly"><h3>五大厂季度 CapEx 轨迹</h3><p class="panel-note">各公司单季资本开支（十亿美元，按日历季对齐各公司财政季）· 悬停看数值 · 26Q3 仅 Oracle（其财年 Q1=6–8 月对齐至日历 Q3）· 中国厂商人民币口径见下表</p><div id="capex-quarterly" class="chart"></div><div id="capex-quarterly-legend" class="legend"></div><div id="guidance-strip" class="badge-line"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel full" data-source="capex"><div class="table-wrap"><table><thead><tr><th>日期</th><th>公司</th><th>指标</th><th>期间</th><th>单位</th><th>数值</th></tr></thead><tbody id="capex-body"></tbody></table></div><details class="source"><summary>来源与口径</summary><p></p></details></article></section>
+<section class="section" id="capex"><div class="section-head"><h2>CAPEX与官方承诺</h2><span class="section-kicker">季度与事件 · 原始频率不插值</span></div><article class="panel full" data-source="capexQuarterly"><h3>五大厂季度 CapEx 轨迹</h3><p class="panel-note">各公司单季资本开支（十亿美元，按日历季对齐各公司财政季）· 悬停看数值 · 中国厂商人民币口径见下表</p><div id="capex-quarterly" class="chart"></div><div id="capex-quarterly-legend" class="legend"></div><div id="guidance-strip" class="badge-line"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel full" data-source="capex"><div class="table-wrap"><table><thead><tr><th>日期</th><th>公司</th><th>指标</th><th>期间</th><th>单位</th><th>数值</th></tr></thead><tbody id="capex-body"></tbody></table></div><details class="source"><summary>来源与口径</summary><p></p></details></article></section>
 <footer class="footer" id="freshness"></footer></main><script>
 const DATA=__PAYLOAD__; const COLORS=['#0071e3','#d76b00','#248a3d','#d70015','#8944ab','#00a6a6','#6e6e73','#af52de','#8e8e93','#5e5ce6'];
 const charts=[]; const states={}; const $=s=>document.querySelector(s); const dateNum=s=>new Date(s+'T00:00:00Z').getTime();
@@ -1420,7 +1448,30 @@ const panelRows=DATA.datasets.panelIndex||[];
 lineChart('panel-index-chart','panel-index-legend',panelRows,{title:'Fixed-provider panel index',kind:'index',yTitle:'Index (base=100)',zero:false,gapDays:11,step:true,reference:100,annotations:DATA.meta.panelAnnotations});
 
 (()=>{const pc=DATA.datasets.priceChangeCounts||[];const maxRecent=Math.max(1,...pc.map(r=>r.recent4w));document.getElementById('price-change-bars').innerHTML=pc.slice(0,8).map(r=>`<div class="pc-row"><span class="pc-name">${esc(r.name)}</span><div class="pc-barwrap"><div class="pc-bar" style="width:${Math.max(2,100*r.recent4w/maxRecent)}%"></div></div><span class="pc-count">${r.recent4w}次</span></div>`).join('')||'<div class="empty">暂无</div>';const top3=pc.slice(0,3).map(r=>r.total).join('/');const sum=document.querySelector('.model-detail>summary');if(sum&&top3)sum.textContent=`头部模型近 4 周调价 ${pc.slice(0,3).map(r=>r.recent4w).join('/')} 次（全历史 ${top3} 次）——点开看单模型价格史`})();
-(()=>{const cq=DATA.datasets.capexQuarterly||[];if(document.getElementById("capex-quarterly")&&cq.length)barGroupsChart("capex-quarterly","capex-quarterly-legend",cq,{title:"Quarterly CapEx",kind:"count",yTitle:"十亿美元"});const gs=DATA.meta.capexGuidance||[];const rev=d=>{const m=/^\d{4}-(\d{1,2})-(\d{1,2})$/.exec(d||"");return m?`${+m[1]}/${+m[2]} 修订`:""};const chips=gs.map(g=>{if(g.low==null&&g.high==null)return"";const stamp=rev(g.revisionDate);if(g.low===g.high)return `<span class="chip">${esc(g.company)} $${g.low}B${esc(g.note||"")}${stamp?" · "+stamp:""}</span>`;const loUp=g.prevLow!=null&&g.low>g.prevLow,loDn=g.prevLow!=null&&g.low<g.prevLow,hiUp=g.prevHigh!=null&&g.high>g.prevHigh,hiDn=g.prevHigh!=null&&g.high<g.prevHigh;let cmp="";if(loUp&&hiUp)cmp=`（↑自 $${g.prevLow}–$${g.prevHigh}B）`;else if(loDn&&hiDn)cmp=`（↓自 $${g.prevLow}–$${g.prevHigh}B）`;else if(loUp||loDn)cmp=`（下限 ${loUp?"↑":"↓"} $${g.prevLow}B→$${g.low}B）`;else if(hiUp||hiDn)cmp=`（上限 ${hiUp?"↑":"↓"} $${g.prevHigh}B→$${g.high}B）`;else if(g.prevLow!=null&&g.prevHigh!=null)cmp=`（持平于 $${g.prevLow}–$${g.prevHigh}B）`;return `<span class="chip">${esc(g.company)} $${g.low}–$${g.high}B${cmp}${stamp?" · "+stamp:""}</span>`}).filter(Boolean).join("");const strip=document.getElementById("guidance-strip");if(strip)strip.innerHTML=`<b>2026 资本开支指引（已披露出 ${gs.length} 家）：</b>`+chips})();
+(()=>{const cq=DATA.datasets.capexQuarterly||[];if(document.getElementById("capex-quarterly")&&cq.length)barGroupsChart("capex-quarterly","capex-quarterly-legend",cq,{title:"Quarterly CapEx",kind:"count",yTitle:"十亿美元"});
+const gs=DATA.meta.capexGuidance||[];
+// 财年过渡期同一公司可能同时有 FY2026 与 FY2027 两版指引：只展示修订日最新的那一版，
+// 并在 chip 里标出财年，避免两条同公司 chip 并排或新旧混用。
+const byCo=new Map();for(const g of gs){const prev=byCo.get(g.company);if(!prev||String(g.revisionDate||"")>String(prev.revisionDate||""))byCo.set(g.company,g)}
+const shown=[...byCo.values()].sort((a,b)=>String(a.company).localeCompare(String(b.company)));
+const fyOf=g=>{const m=/^(FY|CY)(\d{4})$/.exec(g.fiscalYear||"");return m?m[2]:""};
+const years=[...new Set(shown.map(fyOf).filter(Boolean))].sort();
+const rev=d=>{const m=/^\d{4}-(\d{1,2})-(\d{1,2})$/.exec(d||"");return m?`${+m[1]}/${+m[2]} 修订`:""};
+const chips=shown.map(g=>{if(g.low==null&&g.high==null)return"";
+  // note 里已含年份时不再重复标财年（如 Microsoft 的"租赁重分类后 CY2026"）
+  const stamp=rev(g.revisionDate),fy=(g.fiscalYear&&!(g.note||"").includes(g.fiscalYear.replace(/^(FY|CY)/,"")))?`〔${g.fiscalYear}〕`:"";
+  if(g.low===g.high)return `<span class="chip">${esc(g.company)}${fy} $${g.low}B${esc(g.note||"")}${stamp?" · "+stamp:""}</span>`;
+  const loUp=g.prevLow!=null&&g.low>g.prevLow,loDn=g.prevLow!=null&&g.low<g.prevLow;
+  const hiUp=g.prevHigh!=null&&g.high>g.prevHigh,hiDn=g.prevHigh!=null&&g.high<g.prevHigh;
+  let cmp="";
+  if(loUp&&hiUp)cmp=`（↑自 $${g.prevLow}–$${g.prevHigh}B）`;
+  else if(loDn&&hiDn)cmp=`（↓自 $${g.prevLow}–$${g.prevHigh}B）`;
+  else if(loUp||loDn)cmp=`（下限 ${loUp?"↑":"↓"} $${g.prevLow}B→$${g.low}B）`;
+  else if(hiUp||hiDn)cmp=`（上限 ${hiUp?"↑":"↓"} $${g.prevHigh}B→$${g.high}B）`;
+  else if(g.prevLow!=null&&g.prevHigh!=null)cmp=`（持平于 $${g.prevLow}–$${g.prevHigh}B）`;
+  return `<span class="chip">${esc(g.company)}${fy} $${g.low}–$${g.high}B${cmp}${stamp?" · "+stamp:""}</span>`}).filter(Boolean).join("");
+const strip=document.getElementById("guidance-strip");
+if(strip)strip.innerHTML=`<b>${years.join("/")||""} 资本开支指引（已披露出 ${shown.length} 家）：</b>`+chips})();
 (()=>{{const comp=DATA.datasets.openrouterComposition||[];const weeks=[...new Set(comp.map(r=>r.date))].sort();let changes=0,lastTop="";weeks.forEach((w,i)=>{const rows=comp.filter(r=>r.date===w&&r.model!=="Others").sort((a,b)=>b.share-a.share);const top=rows[0];if(top&&lastTop!==top.model)changes++;if(top)lastTop=top.model;if(i===weeks.length-1){const allRows=comp.filter(r=>r.date===i&&r.share>0);const hhi=allRows.reduce((sum,r)=>sum+Math.pow(r.share/100,2),0)*10000;const el=document.getElementById("composition-badge");if(el)el.textContent=`${weeks.length} 周里 Top1 已更换 ${changes} 次 · 最新周 HHI 集中度 ${hhi.toFixed(0)}（含 Others）`}});const latestWeek=weeks[weeks.length-1];const top5=comp.filter(r=>r.date===latestWeek&&r.model!=="Others").sort((a,b)=>b.share-a.share).slice(0,5).map(r=>r.model);const rows5=comp.filter(r=>top5.includes(r.model)).map(r=>({date:r.date,series:r.model,label:(r.model.split("/")[1]||r.model),value:r.share}));if(document.getElementById("top5-share")&&rows5.length)lineChart("top5-share","top5-share-legend",rows5,{title:"Top-5 share",kind:"pct",yTitle:"用量占比 %",zero:true,gapDays:21,endLabels:true})};})();
 activeModelDetail();// ===== 数据驱动的面板注 =====
 // 铁律：图注里的每个数字都必须由当次数据算出来，不允许手写结论——
@@ -1523,6 +1574,19 @@ function _notes(){
     parts.push(`未具名（Others）占最新周 ${lastD.othersShare.toFixed(0)}%：总量口径完整，但无法归因到具体模型`);
     setNote('article[data-source="openrouter"] .panel-note',parts);
   }
+  // CAPEX 季度图：最新季覆盖必须由数据生成——写死"26Q3 仅 Oracle"会在下个财报季当场说反话
+  const cq=DATA.datasets.capexQuarterly||[];
+  if(cq.length){
+    const groups=[...new Set(cq.map(r=>r.group))].sort();
+    const lastG=groups[groups.length-1];
+    const cos=[...new Set(cq.filter(r=>r.group===lastG).map(r=>r.series))].sort();
+    setNote('article[data-source="capexQuarterly"] .panel-note',[
+      '各公司单季资本开支（十亿美元，按日历季对齐各公司财政季）· 悬停看数值',
+      `${lastG} 已披露 ${cos.length} 家：${cos.join('、')}`+(cos.includes('Oracle')?'（Oracle 财年 Q1=6–8 月，对齐至日历 Q3）':''),
+      '当季尚未出齐属正常（各公司财报日不同）',
+      '中国厂商人民币口径见下表'
+    ]);
+  }
   // 家数标签：全部由数据推导
   const gp=DATA.datasets.gpuPrice||[];
   if(gp.length){
@@ -1530,7 +1594,10 @@ function _notes(){
     const counts={};for(const r of gp.filter(r=>r.date===lastDate))counts[r.series]=r.providerCount;
     const all=DATA.meta.providerUniverse||0;
     const kicker=document.querySelector('#compute .section-kicker');
-    if(kicker&&counts.H100)kicker.textContent=`多源聚合 · 数据集全域 ${all} 家（${lastDate} 参与中位计算：${Object.entries(counts).map(([k,v])=>k+' '+v+' 家').join('、')}） · 窗口 ~12 周（2026-09-27 起价格源切换为 gpurentalprices，与更早口径不连续）`;
+    // 窗口长度由数据推导：写死"~12 周"会随每日累积越来越失真
+    const gd=[...new Set(gp.map(r=>r.date))].sort();
+    const spanDays=gd.length?Math.round((new Date(gd[gd.length-1])-new Date(gd[0]))/86400000):0;
+    if(kicker&&counts.H100)kicker.textContent=`多源聚合 · 数据集全域 ${all} 家（${lastDate} 参与中位计算：${Object.entries(counts).map(([k,v])=>k+' '+v+' 家').join('、')}） · 窗口 ${spanDays} 天（${gd[0]} 起，2026-09-27 换源 gpurentalprices，与更早口径不连续）`;
   }
 }
 _notes();sourceDetails();renderTable();$('#freshness').textContent='更新于 '+DATA.meta.generatedAt.slice(0,16).replace('T',' ')+' UTC · 仅公开来源数据 · 不含综合评分';

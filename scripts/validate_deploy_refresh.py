@@ -87,7 +87,7 @@ def validate(payload: dict, expected_date: date) -> list[str]:
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--status", type=Path, default=DEFAULT_STATUS)
-    parser.add_argument("--date", type=date.fromisoformat, default=date.today())
+    parser.add_argument("--date", type=date.fromisoformat, default=datetime.now(timezone.utc).date())
     args = parser.parse_args()
     payload = json.loads(args.status.read_text(encoding="utf-8"))
     errors = validate(payload, args.date)

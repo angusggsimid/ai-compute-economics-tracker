@@ -57,7 +57,8 @@ def _run(name: str, command: list[str], required_output: Path) -> dict:
 
 def main() -> int:
     python = sys.executable
-    start_date = (date.today() - timedelta(days=370)).isoformat()
+    # 统一 UTC：本地时区在 00:00–08:00 会比 UTC 早一天，370 天窗口可能只剩 51 个完整周
+    start_date = (datetime.now(timezone.utc).date() - timedelta(days=370)).isoformat()
     jobs = [
         (
             "openrouter_usage",

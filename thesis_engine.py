@@ -150,11 +150,16 @@ def _depth_metrics(orderbook_rows: List[Dict[str, Any]]) -> Dict[str, Any]:
         "depthLatestTotalOffers": daily[dates[-1]] if dates else None,
     }
     if len(dates) >= 4:
-        half = max(1, len(dates) // 2)
-        early = statistics.mean(daily[d] for d in dates[:half])
-        late = statistics.mean(daily[d] for d in dates[half:])
+        # 只看最近 60 天再对半（前 30 天 vs 后 30 天）：与同组条件里的 30D 价格窗口同尺度。
+        # 原先用"全历史对半"，数据积累越久前半段越被远史主导，
+        # 近期真实的收缩/扩张会被稀释，Watch 条件可能永远不触发。
+        window = dates[-60:] if len(dates) > 60 else dates
+        half = max(1, len(window) // 2)
+        early = statistics.mean(daily[d] for d in window[:half])
+        late = statistics.mean(daily[d] for d in window[half:])
         if early > 0:
             metrics["depthGrowthPct"] = round((late / early - 1) * 100, 2)
+        metrics["depthWindowDays"] = len(window)
     else:
         metrics["depthGrowthPct"] = None
     return metrics
@@ -398,7 +403,8 @@ def _load_cost_index(data: Dict[str, Any]) -> Dict[str, Any]:
 
 def _count_recent_price_cuts(active_price_data: Dict[str, Any], window_days: int = 90) -> int:
     history = (active_price_data.get("history")) or {}
-    cutoff = date.today() - timedelta(days=window_days)
+    # 统一 UTC：本地 date.today() 与 CI 的 UTC 在跨日窗口会差一天
+    cutoff = datetime.now(timezone.utc).date() - timedelta(days=window_days)
     cut_models = set()
     for model_id, entry in history.items():
         points = entry.get("points") or []

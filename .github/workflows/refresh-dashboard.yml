@@ -36,8 +36,11 @@ jobs:
           pip install playwright
           python -m playwright install --with-deps chromium
           python scripts/browser_smoke.py
-      - name: Validate dashboard
-        run: python -m pytest test_suite/test_time_series_dashboard.py -q
+      - name: Validate dashboard (full test suite)
+        # 必须跑全量：此前只跑 test_time_series_dashboard.py（7 条），
+        # 导致 P0/P1–P4 的 26 条回归测试根本没在守门——2026-09-28 的定时任务
+        # 就是在唯一被跑的测试文件里踩到过期假设而挂掉的。
+        run: python -m pytest test_suite/ -q
       - name: Commit refreshed artifacts
         run: |
           git config user.name "Angus"
@@ -45,4 +48,19 @@ jobs:
           git add public/index.html html_dashboard/ai_compute_economics_monitor.html html_dashboard/v4/time_series_snapshot.json tracker_data/backfills tracker_data/thesis_states tracker_data/deploy_refresh_status.json
           git diff --cached --quiet && exit 0
           git commit -m "data: refresh dashboard"
-          git push
+          # 手动推送（修 bug 等）与定时任务会竞争：直接 push 会因 non-fast-forward 失败。
+          # 先 rebase 再推；产物文件冲突时以【本次构建】为准（它就是最新数据）。
+          for attempt in 1 2 3; do
+            if git pull --rebase --autostash -q; then
+              :
+            else
+              for f in $(git diff --name-only --diff-filter=U); do
+                git checkout --theirs "$f" 2>/dev/null && git add "$f"
+              done
+              GIT_EDITOR=true git rebase --continue || { git rebase --abort; exit 1; }
+            fi
+            git push && exit 0
+            echo "push 失败（第 $attempt 次），重试…"
+            sleep 10
+          done
+          echo "三次推送均失败" && exit 1

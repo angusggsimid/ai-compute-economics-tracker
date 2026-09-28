@@ -153,7 +153,7 @@ def refresh(
         key=lambda row: (row["date"], row["company"]),
         reverse=True,
     )
-    coverage = _cache_coverage(sorted_rows, as_of or date.today())
+    coverage = _cache_coverage(sorted_rows, as_of or datetime.now(timezone.utc).date())
     cache_is_current = all(item["current"] for item in coverage.values())
     if not quality:
         refresh_status = "fresh"
