@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-09-28T15:39:42Z",
+    "generatedAt": "2026-09-28T15:42:15Z",
     "minDate": "2025-09-29",
     "maxDate": "2026-09-28",
     "basisCommonStart": {
@@ -17332,17 +17332,17 @@
       {
         "date": "2026-09-28",
         "series": "B200",
-        "value": 12.24
+        "value": 12.2
       },
       {
         "date": "2026-09-28",
         "series": "H100",
-        "value": 22.41
+        "value": 22.39
       },
       {
         "date": "2026-09-28",
         "series": "H200",
-        "value": 24.75
+        "value": 24.71
       }
     ],
     "listedGap": [
@@ -17472,7 +17472,7 @@
         "unit": "USD_B",
         "period": "FY2026 Q1",
         "source_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001341439.json",
-        "fromCache": false,
+        "fromCache": true,
         "metricLabel": "资本开支（实际）",
         "periodLabel": "FY2026 Q1",
         "unitLabel": "十亿美元",
@@ -17696,7 +17696,7 @@
         "unit": "USD_B",
         "period": "FY2026 Q4",
         "source_url": "https://www.microsoft.com/en-us/investor/events/fy-2026/earnings-fy-2026-q4",
-        "fromCache": false,
+        "fromCache": true,
         "metricLabel": "资本开支（实际）",
         "periodLabel": "FY2026 Q4",
         "unitLabel": "十亿美元",
@@ -17724,7 +17724,7 @@
         "unit": "USD_B",
         "period": "FY2026 累计（约12个月）",
         "source_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000789019.json",
-        "fromCache": false,
+        "fromCache": true,
         "metricLabel": "资本开支（实际）",
         "periodLabel": "FY2026 累计（约12个月）",
         "unitLabel": "十亿美元",
@@ -17738,7 +17738,7 @@
         "unit": "USD_B",
         "period": "FY2026 Q2 累计（约6个月）",
         "source_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001326801.json",
-        "fromCache": false,
+        "fromCache": true,
         "metricLabel": "资本开支（实际）",
         "periodLabel": "FY2026 Q2 累计（约6个月）",
         "unitLabel": "十亿美元",
@@ -17766,7 +17766,7 @@
         "unit": "USD_B",
         "period": "FY2026 Q2",
         "source_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001018724.json",
-        "fromCache": false,
+        "fromCache": true,
         "metricLabel": "资本开支（实际）",
         "periodLabel": "FY2026 Q2",
         "unitLabel": "十亿美元",
@@ -17794,7 +17794,7 @@
         "unit": "USD_B",
         "period": "FY2026 Q2 累计（约6个月）",
         "source_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001652044.json",
-        "fromCache": false,
+        "fromCache": true,
         "metricLabel": "资本开支（实际）",
         "periodLabel": "FY2026 Q2 累计（约6个月）",
         "unitLabel": "十亿美元",
@@ -23888,7 +23888,7 @@
       {
         "date": "2026-09-28",
         "series": "gpuperhour",
-        "value": 265
+        "value": 270
       },
       {
         "date": "2026-09-28",
@@ -23907,10 +23907,10 @@
       "label": "OpenRouter 公开模型排行榜",
       "urls": [
         "https://openrouter.ai/api/frontend/v1/rankings/model-rankings-chart",
-        "sha256:99fd4b808bbd725775c46d34ab2ca13ee3df5531502724087d9f6062a6c61f14"
+        "sha256:6c0898cfcb451872358f4fb730d98e66c18522a55e6d0e35b54dd60407979174"
       ],
       "url": "https://openrouter.ai/api/frontend/v1/rankings/model-rankings-chart",
-      "sha256": "sha256:99fd4b808bbd725775c46d34ab2ca13ee3df5531502724087d9f6062a6c61f14",
+      "sha256": "sha256:6c0898cfcb451872358f4fb730d98e66c18522a55e6d0e35b54dd60407979174",
       "definition": "Sum of source-provided named model rows and Others for each OpenRouter chart week."
     },
     "openrouterComposition": {
@@ -23919,7 +23919,7 @@
         "https://openrouter.ai/api/frontend/v1/rankings/model-rankings-chart"
       ],
       "url": "https://openrouter.ai/api/frontend/v1/rankings/model-rankings-chart",
-      "sha256": "sha256:99fd4b808bbd725775c46d34ab2ca13ee3df5531502724087d9f6062a6c61f14",
+      "sha256": "sha256:6c0898cfcb451872358f4fb730d98e66c18522a55e6d0e35b54dd60407979174",
       "definition": "Each weekly column independently stacks every model disclosed by the public chart plus Others. Segment height is share of that week's total token volume. Columns are not connected, so a model missing from another week is never treated as zero usage."
     },
     "activePrice": {
@@ -23959,7 +23959,7 @@
         "https://gpufinder.dev/api/v1/snapshot?gpu=h100"
       ],
       "url": "https://gpufinder.dev/api/v1/availability?gpu=h100",
-      "sha256": "sha256:945d438c94c3422b552a784d36045ddc60f65c9fa9fe59c1aefa5e01c5bea0e7 sha256:1042b3826ef1d7b47bc798d599dbb92c04a8d12fa87f8b9ce20888841a134816 sha256:c5e2b7a7a64d7e17d85ad595e8573549e64a5d71ffa6b20939ff4428a5c88ab8 sha256:8c858a10775d4e5acbd36ddd35090b073b8e3776007fc4ad9e7db1176000351f",
+      "sha256": "sha256:ae8691f632cbdfbec1737548d5fa4780ea96b9f17be3220a37a1222f7e6cbdca sha256:d61279d1158f18d87323ebb4c8603aafb591faf0524c1ebc0e4c7875aef13060 sha256:4d2d14f162ae59577b0e956d7821fd0fc91d4114ba0187371b8c7cc864508412 sha256:5a458c65f84ced8ede076db6296c66d39c92d82ba0d9abfb598a00019b2bb97c",
       "definition": "Σavailable/Σtotal 全市场可租卡占比（7 天滚动窗口，每日快照向前积累）。连续稀缺度指标，替代 Foundry 的二元可用率。"
     },
     "listedGap": {
@@ -23971,7 +23971,7 @@
         "https://gpufinder.dev/api/v1/snapshot?gpu=h100"
       ],
       "url": "https://gpufinder.dev/api/v1/availability?gpu=h100",
-      "sha256": "sha256:945d438c94c3422b552a784d36045ddc60f65c9fa9fe59c1aefa5e01c5bea0e7 sha256:1042b3826ef1d7b47bc798d599dbb92c04a8d12fa87f8b9ce20888841a134816 sha256:c5e2b7a7a64d7e17d85ad595e8573549e64a5d71ffa6b20939ff4428a5c88ab8 sha256:8c858a10775d4e5acbd36ddd35090b073b8e3776007fc4ad9e7db1176000351f",
+      "sha256": "sha256:ae8691f632cbdfbec1737548d5fa4780ea96b9f17be3220a37a1222f7e6cbdca sha256:d61279d1158f18d87323ebb4c8603aafb591faf0524c1ebc0e4c7875aef13060 sha256:4d2d14f162ae59577b0e956d7821fd0fc91d4114ba0187371b8c7cc864508412 sha256:5a458c65f84ced8ede076db6296c66d39c92d82ba0d9abfb598a00019b2bb97c",
       "definition": "最低在库价 ÷ 最低报价 − 1。衡量‘报价虚低程度’：市场越紧，最低报价越可能是没有库存的虚价，该差值越大。"
     },
     "breadth": {
@@ -23983,7 +23983,7 @@
         "https://gpufinder.dev/api/v1/snapshot?gpu=h100"
       ],
       "url": "https://gpufinder.dev/api/v1/availability?gpu=h100",
-      "sha256": "sha256:945d438c94c3422b552a784d36045ddc60f65c9fa9fe59c1aefa5e01c5bea0e7 sha256:1042b3826ef1d7b47bc798d599dbb92c04a8d12fa87f8b9ce20888841a134816 sha256:c5e2b7a7a64d7e17d85ad595e8573549e64a5d71ffa6b20939ff4428a5c88ab8 sha256:8c858a10775d4e5acbd36ddd35090b073b8e3776007fc4ad9e7db1176000351f",
+      "sha256": "sha256:ae8691f632cbdfbec1737548d5fa4780ea96b9f17be3220a37a1222f7e6cbdca sha256:d61279d1158f18d87323ebb4c8603aafb591faf0524c1ebc0e4c7875aef13060 sha256:4d2d14f162ae59577b0e956d7821fd0fc91d4114ba0187371b8c7cc864508412 sha256:5a458c65f84ced8ede076db6296c66d39c92d82ba0d9abfb598a00019b2bb97c",
       "definition": "在架供应商数量随时间变化：价格上行+家数增加=供给在响应；价格上行+家数减少=实质性紧缩。"
     },
     "capex": {
@@ -24011,8 +24011,7 @@
         "https://www.alibabagroup.com/en-US/document-1930116148192346112"
       ],
       "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001341439.json",
-      "sha256": "sha256:75bebe2eebf09fd5c1383646a761563922c8eb0f2cdb107a13e526572a5140c3 sha256:9ed7d44b3b63e1ddaa71cffd3828101a8f998b7c8198b3c62e218ff3ed440f84 sha256:67e9eb51a09725a55b786cc0a569efcfb9906ad170e445e4775bc2126e22ae7d sha256:0317fc3e86d06ba1660234ad40ec4c1408d9828fd2c4c45e25e2394bfd676699 sha256:176f31598633890dadc2baf962ec5c46fe3d6412559af4be32a2e01c8fda12b7",
-      "definition": "季度与事件频率观测保留来源单位、不插值。共 48 个一手披露链接（SEC EDGAR / 投资者关系页），表中每行均可回溯。缓存覆盖：AMZN 最新 2026-06-30（滞后 90 天）、GOOGL 最新 2026-07-22（滞后 68 天）、META 最新 2026-07-29（滞后 61 天）、MSFT 最新 2026-06-30（滞后 90 天）、ORCL 最新 2026-08-31（滞后 28 天）。"
+      "definition": "季度与事件频率观测保留来源单位、不插值。共 48 个一手披露链接（SEC EDGAR / 投资者关系页），表中每行均可回溯。缓存覆盖：AMZN 最新 2026-06-30（滞后 90 天）、GOOGL 最新 2026-07-22（滞后 68 天）、META 最新 2026-07-29（滞后 61 天）、MSFT 最新 2026-06-30（滞后 90 天）、ORCL 最新 2026-08-31（滞后 28 天）；本期 5 家上游失败，全部来自缓存。"
     },
     "basisH100": {
       "urls": [
@@ -24063,7 +24062,7 @@
         "https://api.runpod.io/graphql"
       ],
       "url": "https://api.gpuindexes.com/api/offers",
-      "sha256": "sha256:126648c803a983daf5734fe19245567533dae9cbed10dd3dc22d4f039d867efd sha256:348c934eabcafc005ef06250e8a533efdc20d164ba754a55a80cbc24aa8b7853 sha256:8c8c5ed78f3faf42991518d6e0499ee486227d6892ebafd8d2e36099ea8b3bc4",
+      "sha256": "sha256:af88fd00d689bc8f1b072ff9075c1d6d4c6a06ece29c32ae2af85d9266164231 sha256:7aeeda8bea66f42089a57c974d1be7e012e516a1abc89cc6b551939200dda221 sha256:3772a05f6f3b53935e8330a903885e177e57d8c52ede8d2ec25088da8b679593",
       "label": "GPU 订单簿逐源观测",
       "definition": "gpuperhour/vast 为逐条报价 offers、runpod 为型号挂牌 types，单位语义不同故分序列展示不合并。时点观测，<10 有效日只画点不连线。"
     },
@@ -24081,7 +24080,7 @@
         "https://openrouter.ai/api/frontend/v1/rankings/model-rankings-chart"
       ],
       "url": "https://openrouter.ai/api/frontend/v1/rankings/model-rankings-chart",
-      "sha256": "sha256:99fd4b808bbd725775c46d34ab2ca13ee3df5531502724087d9f6062a6c61f14",
+      "sha256": "sha256:6c0898cfcb451872358f4fb730d98e66c18522a55e6d0e35b54dd60407979174",
       "label": "OpenRouter 公开周榜（Top-5 派生）",
       "definition": "每周公开榜单里最新 Top-5 模型各自的用量占比走势。看的是排名与份额的稳定性：曲线频繁交叉=头部不稳。"
     },
