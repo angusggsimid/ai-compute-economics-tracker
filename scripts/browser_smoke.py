@@ -94,6 +94,35 @@ def main() -> int:
                     return [...new Set(dupes)];
                 }"""
             )
+            # 末端标签颜色必须指向它自己那条线。曾经图例关掉一条后，
+            # 标签用 states 索引着色、线条用 names 索引着色，两者错位（标签指错线）。
+            color_mismatch = page.evaluate(
+                """() => {
+                    const bad = [];
+                    for (const host of document.querySelectorAll('.chart')) {
+                        const svg = host.querySelector('svg');
+                        const legend = document.querySelector('#' + host.id + '-legend');
+                        if (!svg || !legend) continue;
+                        const btns = [...legend.querySelectorAll('button')];
+                        if (btns.length < 2) continue;
+                        const read = () => ({
+                            lines: [...svg.querySelectorAll('path')].map(p => p.getAttribute('stroke')).filter(Boolean),
+                            labels: [...svg.querySelectorAll('text')]
+                                .filter(t => (t.getAttribute('style') || '').includes('700'))
+                                .map(t => t.getAttribute('fill')).filter(Boolean),
+                        });
+                        btns[0].click();
+                        const after = read();
+                        btns[0].click();
+                        for (const col of after.labels) {
+                            if (after.lines.length && !after.lines.includes(col)) {
+                                bad.push(host.id + ': 标签色 ' + col + ' 不属于剩余线 ' + after.lines.join(','));
+                            }
+                        }
+                    }
+                    return [...new Set(bad)];
+                }"""
+            )
             checks = {
                 "console_zero_errors": len(errors) == 0,
                 "capex_table_filled": page.locator("#capex-body tr").count() > 0,
@@ -101,11 +130,13 @@ def main() -> int:
                 "charts_have_svg": page.locator(".chart svg").count() >= 10,
                 "guidance_matches_source_table": not consistency["mismatches"],
                 "no_duplicate_svg_labels": not duplicate_labels,
+                "end_label_colors_match_lines": not color_mismatch,
             }
             diagnostics = {
                 "errors": errors[:5],
                 "guidanceMismatches": consistency["mismatches"],
                 "duplicateLabels": duplicate_labels,
+                "labelColorMismatches": color_mismatch,
             }
             browser.close()
 

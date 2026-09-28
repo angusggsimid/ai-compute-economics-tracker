@@ -897,7 +897,7 @@ def build_snapshot() -> dict[str, Any]:
     )
     snapshot["sources"].update({
         "basisH100": {**_links(BASIS_URLS, BASIS_SHA), "label": "H100 三源价格对照", "definition": "同一 GPU 家族下三种口径并列：供应商报价中位、综合现货-合约指数、成交加权指数。口径不同，仅作交叉对照，不构成同质序列。"},
-        "basisH200": {**_links(BASIS_URLS, BASIS_SHA), "label": "H200 三源价格对照", "definition": "口径同上（H200 无 SemiAnalysis 公开指数，为两源对照）。Neocloud 与 Ornn 可能方向分歧，分歧本身是证据而非噪声。"},
+        "basisH200": {**_links(BASIS_URLS, BASIS_SHA), "label": "H200 两源价格对照（SemiAnalysis 无公开 H200 指数）", "definition": "口径同上（H200 无 SemiAnalysis 公开指数，为两源对照）。Neocloud 与 Ornn 可能方向分歧，分歧本身是证据而非噪声。"},
         "basisB200": {**_links(BASIS_URLS, BASIS_SHA), "label": "B200 三源价格对照", "definition": "口径同上。"},
         "contractBand": {**_links([CONTRACT_URL], _ref_sha("semianalysis_public")), "label": "SemiAnalysis H100 1Y 合约调查区间", "definition": "月度调查的25-75分位合约价区间，半年期阶梯展示。许可：公开页引用需署名。"},
         "orderbookDepth": {**_links(ORDERBOOK_URLS, " ".join(str(v.get("sha256")) for v in ob_sources.values() if isinstance(v, dict) and v.get("sha256"))), "label": "GPU 订单簿逐源观测", "definition": "gpuperhour/vast 为逐条报价 offers、runpod 为型号挂牌 types，单位语义不同故分序列展示不合并。时点观测，<10 有效日只画点不连线。"},
@@ -1048,22 +1048,26 @@ def _price_change_counts(active_price_raw: dict[str, Any], active_models: list[d
     return sorted(out, key=lambda r: -r["recent4w"])
 
 
-def _kpi_html(rows: list[dict[str, Any]], unit: str) -> str:
+def _kpi_html(rows: list[dict[str, Any]], unit: str, backfillable: bool = False) -> str:
     """积累期（<10 有效日）用 KPI 卡替代图：大数字 + 进度条，不画坐标轴。"""
     if not rows:
         return ""
     days = len({r["date"] for r in rows})
     latest_day = max(r["date"] for r in rows)
     latest = {r["series"]: r for r in rows if r["date"] == latest_day}
+    # 计数类指标不带小数（曾渲染成"22.0 家"）
+    fmt = (lambda v: f"{v:.0f}{unit}") if unit.strip().endswith("家") else (lambda v: f"{v:.1f}{unit}")
     cards = "".join(
-        f'<div class="kpi"><div class="kpi-value">{value}</div><div class="kpi-label">{series}</div></div>'
+        f'<div class="kpi"><div class="kpi-value">{fmt(row["value"])}</div><div class="kpi-label">{series}</div></div>'
         for series, row in sorted(latest.items())
-        for value in [f"{row['value']:.1f}{unit}"]
     )
+    # 上游保留 7 天滚动窗口的指标，每次入库会把窗口内所有日子一并落盘（可回补）；
+    # 快照类指标只看得到当天（缺口真的不可回填）。两者不能共用一句话。
+    tail = "（上游保留 7 天滚动窗口，每次入库一并落盘）" if backfillable else "（当天快照指标，缺口不可回填）"
     return (
         f'<div class="kpi-row">{cards}</div>'
         f'<div class="kpi-progress"><div class="kpi-bar" style="width:{min(100, days * 10)}%"></div></div>'
-        f'<div class="kpi-note">积累中 {days}/10 天——攒够后自动画趋势线（缺口不可回填，每天都在入库）</div>'
+        f'<div class="kpi-note">积累中 {days}/10 天——攒够后自动画趋势线{tail}</div>'
     )
 
 
@@ -1216,7 +1220,7 @@ def build_html(snapshot: dict[str, Any]) -> str:
     if _gf_days < 10:
         html_output = html_output.replace(
             '<div id="scarcity-chart" class="chart compact"></div>',
-            _kpi_html(snapshot["datasets"].get("scarcity") or [], "%"),
+            _kpi_html(snapshot["datasets"].get("scarcity") or [], "%", backfillable=True),
         )
     if _gap_days < 10:
         html_output = html_output.replace(
@@ -1247,7 +1251,7 @@ HTML = r'''<!doctype html>
 <meta name="description" content="AI Compute Economics——四时钟独立证据链追踪算力经济：GPU 租赁价格、订单簿深度、Token 用量与单位经济、云厂商 CAPEX。">
 <style>
 :root{--bg:#f5f5f7;--paper:#fff;--ink:#1d1d1f;--muted:#6e6e73;--line:#d2d2d7;--blue:#0071e3;--cyan:#00a6a6;--green:#248a3d;--orange:#d76b00;--red:#d70015;--purple:#8944ab;--radius:8px}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI","Noto Sans SC",sans-serif;letter-spacing:0}.shell{max-width:1440px;margin:auto;padding:0 28px 64px}.topbar{margin:0 -28px;padding:0 28px;border-bottom:1px solid rgba(0,0,0,.08);background:var(--bg)}.topbar-inner{height:52px;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{font-size:15px;font-weight:650;white-space:nowrap}.nav{display:flex;gap:4px;overflow:auto}.nav a{padding:7px 10px;color:var(--muted);font-size:13px;text-decoration:none;border-radius:6px}.nav a:hover{background:#fff;color:var(--ink)}.hero{padding:42px 0 30px;border-bottom:1px solid var(--line)}h1{margin:0;font-size:42px;line-height:1.12;font-weight:700}.sub{margin:10px 0 0;color:var(--muted);font-size:16px}.controls{display:flex;align-items:end;flex-wrap:wrap;gap:10px;margin-top:24px}.control label{display:block;margin:0 0 5px;color:var(--muted);font-size:11px;font-weight:650;text-transform:uppercase}.control input{height:36px;padding:0 10px;border:1px solid var(--line);border-radius:6px;background:#fff;color:var(--ink);font:inherit}.segments{display:flex;padding:3px;border:1px solid var(--line);border-radius:7px;background:#fff}.segments button{height:28px;padding:0 11px;border:0;border-radius:5px;background:transparent;color:var(--muted);font:inherit;font-size:12px;cursor:pointer}.segments button.active{background:var(--ink);color:#fff}.section{padding:34px 0 8px;border-bottom:1px solid var(--line)}.section-head{display:flex;align-items:baseline;justify-content:space-between;gap:20px;margin-bottom:20px}.section h2{margin:0;font-size:25px;line-height:1.2}.section-kicker{color:var(--muted);font-size:12px;text-transform:uppercase}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.panel{min-width:0;padding:20px;border:1px solid rgba(0,0,0,.09);border-radius:var(--radius);background:var(--paper)}.panel.full{grid-column:1/-1}.panel-head{display:flex;align-items:flex-start;justify-content:space-between;gap:18px}.panel h3{margin:0;font-size:17px;line-height:1.35}.panel-note{margin:5px 0 0;color:var(--muted);font-size:12px}.chart{position:relative;min-height:330px;margin-top:12px}.chart svg{display:block;width:100%;height:330px;overflow:visible}.legend{display:flex;flex-wrap:wrap;gap:7px 12px;margin-top:10px}.legend button{display:inline-flex;align-items:center;gap:6px;padding:3px 6px;border:0;border-radius:4px;background:transparent;color:var(--muted);font:inherit;font-size:11px;cursor:pointer}.legend button.off{opacity:.32}.swatch{width:16px;height:3px;border-radius:2px}.key-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;margin-top:12px;border:1px solid #e5e5ea;border-radius:6px;overflow:hidden;background:#e5e5ea}.key-stat{min-width:0;padding:10px 12px;background:#fafafa}.key-stat b{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:12px}.key-stat span{display:block;margin-top:4px;color:var(--muted);font-size:11px;font-variant-numeric:tabular-nums}.source{margin-top:12px;padding-top:10px;border-top:1px solid #ececf0;color:var(--muted);font-size:11px}.source summary{cursor:pointer;list-style:none}.source summary::-webkit-details-marker{display:none}.source a{color:var(--blue)}.tooltip{position:absolute;z-index:5;display:none;max-width:300px;padding:9px 11px;border-radius:6px;background:rgba(29,29,31,.95);color:#fff;font-size:11px;line-height:1.5;pointer-events:none;box-shadow:0 8px 24px rgba(0,0,0,.16)}.empty{display:grid;place-items:center;height:300px;color:var(--muted);font-size:13px}.table-wrap{overflow:auto;border-top:1px solid var(--line)}table{width:100%;border-collapse:collapse;font-size:12px}th,td{padding:10px 12px;border-bottom:1px solid #e8e8ed;text-align:left;white-space:nowrap}th{position:sticky;top:0;background:#fafafa;color:var(--muted);font-weight:650}td.num{text-align:right;font-variant-numeric:tabular-nums}.axis{fill:var(--muted);font-size:10px}.axis-title{fill:var(--muted);font-size:10px;font-weight:650}.gridline{stroke:#e5e5ea;stroke-width:1}.footer{padding:24px 0;color:var(--muted);font-size:11px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI","Noto Sans SC",sans-serif;letter-spacing:0}.shell{max-width:1440px;margin:auto;padding:0 28px 64px}.topbar{margin:0 -28px;padding:0 28px;border-bottom:1px solid rgba(0,0,0,.08);background:var(--bg)}.topbar-inner{height:52px;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{font-size:15px;font-weight:650;white-space:nowrap}.nav{display:flex;gap:4px;overflow:auto}.nav a{padding:7px 10px;color:var(--muted);font-size:13px;text-decoration:none;border-radius:6px}.nav a:hover{background:#fff;color:var(--ink)}.hero{padding:42px 0 30px;border-bottom:1px solid var(--line)}h1{margin:0;font-size:42px;line-height:1.12;font-weight:700}.sub{margin:10px 0 0;color:var(--muted);font-size:16px}.controls{display:flex;align-items:end;flex-wrap:wrap;gap:10px;margin-top:24px}.control label{display:block;margin:0 0 5px;color:var(--muted);font-size:11px;font-weight:650;text-transform:uppercase}.control input{height:36px;padding:0 10px;border:1px solid var(--line);border-radius:6px;background:#fff;color:var(--ink);font:inherit}.segments{display:flex;padding:3px;border:1px solid var(--line);border-radius:7px;background:#fff}.segments button{height:28px;padding:0 11px;border:0;border-radius:5px;background:transparent;color:var(--muted);font:inherit;font-size:12px;cursor:pointer}.segments button.active{background:var(--ink);color:#fff}.section{padding:34px 0 8px;border-bottom:1px solid var(--line)}.section-head{display:flex;align-items:baseline;justify-content:space-between;gap:20px;margin-bottom:20px}.section h2{margin:0;font-size:25px;line-height:1.2}.section-kicker{color:var(--muted);font-size:12px;text-transform:uppercase}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.panel{min-width:0;padding:20px;border:1px solid rgba(0,0,0,.09);border-radius:var(--radius);background:var(--paper)}.panel.full{grid-column:1/-1}.panel-head{display:flex;align-items:flex-start;justify-content:space-between;gap:18px}.panel h3{margin:0;font-size:17px;line-height:1.35}.panel-note{margin:5px 0 0;color:var(--muted);font-size:12px}.chart{position:relative;min-height:330px;margin-top:12px}.chart svg{display:block;width:100%;height:330px;overflow:visible}.legend{display:flex;flex-wrap:wrap;gap:7px 12px;margin-top:10px}.legend button{display:inline-flex;align-items:center;gap:6px;padding:3px 6px;border:0;border-radius:4px;background:transparent;color:var(--muted);font:inherit;font-size:11px;cursor:pointer}.legend button.off{opacity:.32}.swatch{width:16px;height:3px;border-radius:2px}.key-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;margin-top:12px;border:1px solid #e5e5ea;border-radius:6px;overflow:hidden;background:#e5e5ea}.key-stat{min-width:0;padding:10px 12px;background:#fafafa}.key-stat b{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:12px}.key-stat span{display:block;margin-top:4px;color:var(--muted);font-size:11px;font-variant-numeric:tabular-nums}.source{margin-top:12px;padding-top:10px;border-top:1px solid #ececf0;color:var(--muted);font-size:11px}.source summary{cursor:pointer;list-style:none}.source summary::-webkit-details-marker{display:none}.source a{color:var(--blue);overflow-wrap:anywhere;word-break:break-all}.tooltip{position:absolute;z-index:5;display:none;max-width:300px;padding:9px 11px;border-radius:6px;background:rgba(29,29,31,.95);color:#fff;font-size:11px;line-height:1.5;pointer-events:none;box-shadow:0 8px 24px rgba(0,0,0,.16)}.empty{display:grid;place-items:center;height:300px;color:var(--muted);font-size:13px;text-align:center}.empty-hint{margin-top:6px;font-size:11px;color:#8e8e93}.table-wrap{overflow:auto;border-top:1px solid var(--line)}table{width:100%;border-collapse:collapse;font-size:12px}th,td{padding:10px 12px;border-bottom:1px solid #e8e8ed;text-align:left;white-space:nowrap}th{position:sticky;top:0;background:#fafafa;color:var(--muted);font-weight:650}td.num{text-align:right;font-variant-numeric:tabular-nums}.axis{fill:var(--muted);font-size:10px}.axis-title{fill:var(--muted);font-size:10px;font-weight:650}.gridline{stroke:#e5e5ea;stroke-width:1}.footer{padding:24px 0;color:var(--muted);font-size:11px}
 .chart.compact{min-height:240px}.chart.compact svg{height:240px}#gpu-price-h100,#gpu-price-h200,#gpu-price-b200{min-height:420px}#gpu-price-h100 svg,#gpu-price-h200 svg,#gpu-price-b200 svg{height:420px}
 @media(max-width:820px){.shell{padding:0 16px 48px}.topbar{position:static;margin:0 -16px;padding:0 16px}.nav{display:none}.hero{padding-top:28px}h1{font-size:32px}.grid{grid-template-columns:1fr}.panel.full{grid-column:1}.panel{padding:16px}.chart{min-height:190px}.chart svg{height:190px}.chart.compact svg{height:170px}.axis,.axis-title{font-size:24px}.key-stats{grid-template-columns:repeat(2,minmax(0,1fr))}.section-head{display:block}.section-kicker{display:block;margin-top:5px}}
 .grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}.grid.four{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}@media(max-width:820px){.grid.four{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:560px){.grid.four{grid-template-columns:1fr}}.clock-card{padding:16px;border:1px solid rgba(0,0,0,.09);border-radius:var(--radius);background:var(--paper)}.clock-card h4{margin:0;font-size:13px;color:var(--muted);font-weight:650}.clock-state{margin-top:8px;font-size:20px;font-weight:700}.st-observing .clock-state{color:#8e8e93}.st-trend .clock-state{color:#0071e3}.st-watch .clock-state{color:#b25000}.st-confirmed .clock-state{color:#1d7a3d}.clock-metric{margin:8px 0 0;font-size:12px;font-variant-numeric:tabular-nums}.clock-next{margin:6px 0 0;color:var(--muted);font-size:11px}.clock-detail{margin-top:10px;border-top:1px solid #ececf0;padding-top:8px}.clock-detail>summary{cursor:pointer;list-style:none;color:var(--muted);font-size:11px}.clock-detail>summary::-webkit-details-marker{display:none}.clock-detail[open]>summary{color:var(--ink)}.clock-evidence p{margin:4px 0;font-size:11px;line-height:1.5}.clock-evidence p b{display:block;margin-top:6px;color:var(--ink)}
@@ -1257,11 +1261,11 @@ HTML = r'''<!doctype html>
 .fresh-badge.ok{color:#1d7a3d;border-color:rgba(29,122,61,.35)}
 .fresh-badge.warn{color:#b25000;border-color:rgba(178,80,0,.35)}
 .fresh-details{position:relative;display:inline-block}.fresh-details>summary{cursor:pointer;list-style:none}.fresh-details>summary::-webkit-details-marker{display:none}
-.fresh-list{position:absolute;top:110%;left:0;z-index:50;min-width:340px;max-width:480px;padding:10px 12px;background:var(--paper);border:1px solid var(--line);border-radius:10px;box-shadow:0 12px 32px rgba(0,0,0,.12)}
+.fresh-list{position:absolute;top:110%;left:0;z-index:50;min-width:min(340px,calc(100vw - 32px));max-width:min(480px,calc(100vw - 32px));padding:10px 12px;background:var(--paper);border:1px solid var(--line);border-radius:10px;box-shadow:0 12px 32px rgba(0,0,0,.12)}
 .fresh-row{padding:5px 0;border-bottom:1px solid #ececf0;font-size:11px;line-height:1.5}.fresh-row:last-child{border-bottom:none}
 .sha-line{display:inline-block;margin-top:3px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10px;color:#8e8e93;word-break:break-all}.fresh-dot{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:6px}.fresh-dot.ok{background:#248a3d}.fresh-dot.warn{background:#d76b00}.fresh-dot.stale{background:#d76b00}.fresh-dot.bad{background:#d70015}
 .fresh-impact{display:block;color:var(--muted);margin-left:13px;font-size:10px}
-.kpi-row{display:flex;gap:12px;justify-content:space-around;padding:22px 6px 10px}.kpi{text-align:center}.kpi-value{font-size:30px;font-weight:700;line-height:1.1}.kpi-label{font-size:11px;color:var(--muted);margin-top:4px}
+.kpi-row{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-around;padding:22px 6px 10px}.kpi{text-align:center}.kpi-value{font-size:30px;font-weight:700;line-height:1.1}@media(max-width:380px){.kpi-row{gap:8px}.kpi-value{font-size:22px}}.kpi-label{font-size:11px;color:var(--muted);margin-top:4px}
 .pc-row{display:flex;align-items:center;gap:8px;margin:6px 0}.pc-name{width:118px;font-size:10px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--muted)}.pc-barwrap{flex:1;background:#ececf0;height:10px;border-radius:5px}.pc-bar{background:#0071e3;height:10px;border-radius:5px}.pc-count{font-size:10px;width:34px;text-align:right;font-variant-numeric:tabular-nums}
 .badge-line{margin:6px 0 2px;font-size:11.5px;font-weight:600;color:#b25000}
 .panel.wide{grid-column:span 2}
@@ -1294,7 +1298,7 @@ function renderLegend(c){const names=[...new Set(c.rows.map(r=>r.series))];const
 function renderChart(c){
   const host=$('#'+c.id),start=dateNum($('#start').value),end=dateNum($('#end').value);
   const visible=c.rows.filter(r=>states[c.id].has(r.series)&&dateNum(r.date)>=start&&dateNum(r.date)<=end);
-  if(!visible.length){host.innerHTML='<div class="empty">所选时间内没有可比数据</div>';return}
+  if(!visible.length){host.innerHTML='<div class="empty">所选时间内没有可比数据<br><span class="empty-hint">数据范围 '+DATA.meta.minDate+' → '+DATA.meta.maxDate+'</span></div>';return}
   const W=1000,H=330,m={l:66,r:20,t:16,b:46},xs=visible.map(r=>dateNum(r.date)),ys=visible.map(r=>+r.value);
   let xmin=Math.min(...xs),xmax=Math.max(...xs);if(xmin===xmax){xmin-=86400000;xmax+=86400000}
   if(Number.isFinite(c.opt.reference))ys.push(c.opt.reference);let ymin=c.opt.zero?0:Math.min(...ys),ymax=Math.max(...ys),pad=(ymax-ymin||1)*.12;
@@ -1315,7 +1319,7 @@ function renderChart(c){
     if(!c.opt.pointOnly)segments.forEach(seg=>{let d=`M${x(dateNum(seg[0].date)).toFixed(1)},${y(+seg[0].value).toFixed(1)}`;for(let i=1;i<seg.length;i++){const xx=x(dateNum(seg[i].date)).toFixed(1),yy=y(+seg[i].value).toFixed(1);d+=c.opt.step?` H${xx} V${yy}`:` L${xx},${yy}`}svg+=`<path d="${d}" fill="none" stroke="${COLORS[idx%COLORS.length]}" stroke-width="${name.includes('average')?3:2}" opacity="${name==='Weekly tokens'?0.42:1}"/>`});
     pts.forEach((p,i)=>{if(!c.opt.step||i===0||i===pts.length-1||+p.value!==+pts[i-1].value)svg+=`<circle cx="${x(dateNum(p.date))}" cy="${y(+p.value)}" r="3" fill="${COLORS[idx%COLORS.length]}" data-date="${p.date}" data-series="${esc(name)}" data-value="${p.value}"/>`})
   });
-  if(c.opt.endLabels){const _lab=[...states[c.id]].map(name=>{const series=visible.filter(r=>r.series===name).sort((a,b)=>dateNum(a.date)-dateNum(b.date));if(!series.length)return null;const last=series[series.length-1],lv=+last.value;if(!Number.isFinite(lv))return null;const idx=[...states[c.id]].indexOf(name);return{y:y(lv),col:COLORS[idx%COLORS.length],txt:fmt(lv,c.opt.kind)}}).filter(Boolean);_lab.sort((a,b)=>a.y-b.y);for(let i=1;i<_lab.length;i++){if(_lab[i].y-_lab[i-1].y<13)_lab[i].y=_lab[i-1].y+13}_lab.forEach(l=>{svg+=`<text class="axis" x="${W-m.r-2}" y="${l.y-7}" text-anchor="end" fill="${l.col}" style="font-weight:700">${l.txt}</text>`})}
+  if(c.opt.endLabels){const _lab=[...states[c.id]].map(name=>{const series=visible.filter(r=>r.series===name).sort((a,b)=>dateNum(a.date)-dateNum(b.date));if(!series.length)return null;const last=series[series.length-1],lv=+last.value;if(!Number.isFinite(lv))return null;const idx=names.indexOf(name);return{y:y(lv),col:COLORS[idx%COLORS.length],txt:fmt(lv,c.opt.kind)}}).filter(Boolean);_lab.sort((a,b)=>a.y-b.y);for(let i=1;i<_lab.length;i++){if(_lab[i].y-_lab[i-1].y<13)_lab[i].y=_lab[i-1].y+13}_lab.forEach(l=>{svg+=`<text class="axis" x="${W-m.r-2}" y="${l.y-7}" text-anchor="end" fill="${l.col}" style="font-weight:700">${l.txt}</text>`})}
   svg+=`<rect class="hit" x="${m.l}" y="${m.t}" width="${W-m.l-m.r}" height="${H-m.t-m.b}" fill="transparent"/></svg><div class="tooltip"></div>`;host.innerHTML=svg;
   const tip=host.querySelector('.tooltip'),svgEl=host.querySelector('svg');
   svgEl.onpointermove=e=>{const rect=svgEl.getBoundingClientRect(),px=(e.clientX-rect.left)/rect.width*W,target=xmin+(px-m.l)/(W-m.l-m.r)*(xmax-xmin),dates=[...new Set(visible.map(r=>r.date))],nearest=dates.reduce((a,b)=>Math.abs(dateNum(b)-target)<Math.abs(dateNum(a)-target)?b:a),rows=visible.filter(r=>r.date===nearest).sort((a,b)=>b.value-a.value);tip.innerHTML=`<strong>${nearest}</strong><br>`+rows.map(r=>`${esc(r.series)}: ${fmt(+r.value,c.opt.kind)}${Number.isFinite(+r.low)&&Number.isFinite(+r.high)?` · range ${fmt(+r.low,c.opt.kind)}–${fmt(+r.high,c.opt.kind)}`:''}${Number.isFinite(+r.coverage)?` · coverage ${(+r.coverage).toFixed(1)}%`:''}`).join('<br>');tip.style.display='block';tip.style.left=Math.min(e.offsetX+14,host.clientWidth-300)+'px';tip.style.top=Math.max(8,e.offsetY-20)+'px'};
@@ -1337,7 +1341,7 @@ const VENDOR_COLORS={anthropic:'#d76b00',deepseek:'#0071e3',google:'#248a3d',ope
 function compositionChart(id,rows){const cfg={id,rows,renderer:renderComposition};charts.push(cfg);cfg.renderer(cfg);const vendors=[...new Set(rows.map(r=>r.vendor))];$('#composition-legend').innerHTML=vendors.map(v=>`<span class="legend-item"><i class="swatch" style="background:${VENDOR_COLORS[v]||'#8e8e93'}"></i>${esc(v==='OpenRouter'?'Others':v)}</span>`).join('')}
 function renderComposition(c){
   const host=$('#'+c.id),start=dateNum($('#start').value),end=dateNum($('#end').value),visible=c.rows.filter(r=>dateNum(r.date)>=start&&dateNum(r.date)<=end),dates=[...new Set(visible.map(r=>r.date))].sort();
-  if(!dates.length){host.innerHTML='<div class="empty">所选时间内没有活跃模型组合数据</div>';$('#composition-latest').innerHTML='';return}
+  if(!dates.length){host.innerHTML='<div class="empty">所选时间内没有活跃模型组合数据<br><span class="empty-hint">数据范围 '+DATA.meta.minDate+' → '+DATA.meta.maxDate+'</span></div>';$('#composition-latest').innerHTML='';return}
   const W=1000,H=350,m={l:58,r:18,t:18,b:48},pw=W-m.l-m.r,ph=H-m.t-m.b,step=pw/dates.length,bw=Math.max(2,step*.82),y=v=>m.t+(100-v)/100*ph;
   let svg=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="OpenRouter weekly active model composition">`;
   [0,25,50,75,100].forEach(v=>svg+=`<line class="gridline" x1="${m.l}" y1="${y(v)}" x2="${W-m.r}" y2="${y(v)}"/><text class="axis" x="${m.l-8}" y="${y(v)+3}" text-anchor="end">${v}%</text>`);
@@ -1358,7 +1362,7 @@ function renderRangeChart(c){
   // 两层设计：上层=中位价趋势（y轴只按中位/均线范围缩放，趋势可见）；
   // 下层=窄条显示 P25-P75 价差随时间（市场分化度）。全距与供应商数进悬停提示。
   const host=$('#'+c.id),start=dateNum($('#start').value),end=dateNum($('#end').value),rows=c.rows.filter(r=>dateNum(r.date)>=start&&dateNum(r.date)<=end).sort((a,b)=>dateNum(a.date)-dateNum(b.date));
-  if(!rows.length){host.innerHTML='<div class="empty">所选时间内没有价格数据</div>';return}
+  if(!rows.length){host.innerHTML='<div class="empty">所选时间内没有价格数据<br><span class="empty-hint">数据范围 '+DATA.meta.minDate+' → '+DATA.meta.maxDate+'</span></div>';return}
   // viewBox 必须与容器像素比一致：否则 preserveAspectRatio 会把整图等比缩小并在两侧留白
   // （曾导致本图只用到 43% 宽度，文字也随之变小）。高度按设计值，宽度按容器比例推算。
   const pw=host.clientWidth||1000,ph=host.clientHeight||420;
@@ -1540,11 +1544,15 @@ function _notes(){
     const dates=[...new Set(cb.map(r=>r.date))].sort();
     const last=cb.filter(r=>r.date===dates[dates.length-1]);
     const lo=last.map(r=>+r.lowValue).filter(Number.isFinite),hi=last.map(r=>+r.highValue).filter(Number.isFinite);
+    // 期间间距由数据推导：该调查早期半年/季度、后期月度，横轴上一段"台阶"的宽度并不等距，
+    // 不说明会被读成等间隔观测。
+    const gaps=dates.slice(1).map((d,i)=>Math.round((new Date(d)-new Date(dates[i]))/86400000)).filter(g=>g>0);
+    const gapTxt=gaps.length?`期间间距 ${Math.min(...gaps)}–${Math.max(...gaps)} 天不等（调查频率随年份变化，非等间隔观测）`:null;
     setNote('article[data-source="contractBand"] .panel-note',[
       'SemiAnalysis 公开调查区间（P25–P75）· 阶梯图不与日线混轴',
       `窗口内可见 ${dates.length} 期（${dates[0]} → ${dates[dates.length-1]}）`,
       (lo.length&&hi.length)?`最新区间 $${Math.min(...lo).toFixed(2)}–$${Math.max(...hi).toFixed(2)}`:null,
-      dates.length<12?'样本期数少，跨期比较需谨慎':null
+      gapTxt
     ]);
   }
   // 三源对照：把窗口起点与长度写出来（读者无法从图上判断样本多长）

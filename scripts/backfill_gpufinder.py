@@ -44,42 +44,38 @@ def _get(path: str) -> dict[str, Any]:
     return payload["data"]
 
 
-def _market_availability(availability: dict[str, Any]) -> tuple[float | None, dict[str, list[int]], str | None]:
-    """Σavailable/Σtotal（取最新一日）与逐供应商聚合。"""
-    latest_date: str | None = None
-    totals: dict[str, list[int]] = {}
+def _availability_series(availability: dict[str, Any]) -> list[dict[str, Any]]:
+    """逐日 Σavailable/Σtotal。
+
+    上游 /availability 返回的是 **7 天滚动窗口**——必须逐日全部落盘。
+    只取最新一天的话，上游一滚过去这些日子就永久丢失了。
+    """
+    agg: dict[str, list[float]] = {}
+    by_prov: dict[str, dict[str, list[int]]] = {}
     for provider in availability.get("providers") or []:
         name = str(provider.get("providerName") or provider.get("providerSlug") or "unknown")
         for count_block in provider.get("counts") or []:
             for cell in count_block.get("cells") or []:
-                day = cell.get("date")
-                total = cell.get("total")
+                day, total, available = cell.get("date"), cell.get("total") or 0, cell.get("available") or 0
                 if not day or not isinstance(total, (int, float)) or total <= 0:
                     continue
-                if latest_date is None or day > latest_date:
-                    latest_date = day
-    if latest_date is None:
-        return None, {}, None
-    agg: dict[str, list[int]] = {}
-    avail_sum = tot_sum = 0.0
-    for provider in availability.get("providers") or []:
-        name = str(provider.get("providerName") or provider.get("providerSlug") or "unknown")
-        for count_block in provider.get("counts") or []:
-            for cell in count_block.get("cells") or []:
-                if cell.get("date") != latest_date:
-                    continue
-                total = cell.get("total") or 0
-                available = cell.get("available") or 0
-                if total <= 0:
-                    continue
-                tot_sum += total
-                avail_sum += available
-                entry = agg.setdefault(name, [0, 0])
+                slot = agg.setdefault(day, [0.0, 0.0])
+                slot[0] += available
+                slot[1] += total
+                entry = by_prov.setdefault(day, {}).setdefault(name, [0, 0])
                 entry[0] += available
                 entry[1] += total
-    if tot_sum <= 0:
-        return None, agg, latest_date
-    return round(100 * avail_sum / tot_sum, 2), agg, latest_date
+    out: list[dict[str, Any]] = []
+    for day in sorted(agg):
+        avail_sum, tot_sum = agg[day]
+        if tot_sum <= 0:
+            continue
+        out.append({
+            "date": day,
+            "availabilityPct": round(100 * avail_sum / tot_sum, 2),
+            "availabilityByProvider": by_prov[day],
+        })
+    return out
 
 
 def collect(date_iso: str) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
@@ -111,10 +107,20 @@ def collect(date_iso: str) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
         except Exception as exc:
             row["snapshotError"] = str(exc)[:150]
         try:
-            pct, by_provider, day = _market_availability(_get(f"/availability?gpu={gpu.lower()}"))
-            row["availabilityPct"] = pct
-            row["availabilityDate"] = day
-            row["availabilityByProvider"] = by_provider
+            series = _availability_series(_get(f"/availability?gpu={gpu.lower()}"))
+            if series:
+                latest = series[-1]
+                row["availabilityPct"] = latest["availabilityPct"]
+                row["availabilityDate"] = latest["date"]
+                row["availabilityByProvider"] = latest["availabilityByProvider"]
+                # 滚动窗口里的历史日一并落盘（只有可用率类字段，其余为 None）
+                for hist in series[:-1]:
+                    daily_rows.append({
+                        "date": hist["date"],
+                        "gpu": gpu,
+                        "availabilityPct": hist["availabilityPct"],
+                        "availabilityByProvider": hist["availabilityByProvider"],
+                    })
         except Exception as exc:
             row["availabilityError"] = str(exc)[:150]
         daily_rows.append(row)
@@ -142,7 +148,9 @@ def _load_previous(path: Path) -> tuple[list[dict[str, Any]], list[dict[str, Any
         return [], []
     try:
         payload = json.loads(path.read_text(encoding="utf-8"))
-        return payload.get("daily") or [], payload.get("monthlyHistory") or []
+        # 写入键是 "rows"；只读 "daily" 会让每天都把之前累积的行丢掉，
+        # 累积永远停在 1 天（曾导致稀缺度/广度图长期卡在"已积累 1/10 天"）。
+        return payload.get("rows") or payload.get("daily") or [], payload.get("monthlyHistory") or []
     except (json.JSONDecodeError, ValueError) as exc:
         raise SystemExit(f"gpufinder_market.json 缓存损坏（{exc}）；拒绝覆盖累积历史。")
 
@@ -160,7 +168,14 @@ def main() -> int:
         quality.append({"source": "gpufinder", "status": "failed", "message": str(exc)})
 
     prev_daily, prev_monthly = _load_previous(OUTPUT_PATH)
-    daily = [r for r in prev_daily if r.get("date") != date_iso] + fresh_daily
+    # 按 (date, gpu) 去重：本期抓到的行字段更全，覆盖历史行。
+    # 只按 date != today 过滤会让回补的历史日重复运行两次就产生重复行。
+    _by_key: dict[tuple[Any, Any], dict[str, Any]] = {
+        (r.get("date"), r.get("gpu")): r for r in prev_daily if r.get("date") and r.get("gpu")
+    }
+    for r in fresh_daily:
+        _by_key[(r.get("date"), r.get("gpu"))] = r
+    daily = list(_by_key.values())
     monthly_map = {(r["month"], r["gpu"], str(r.get("provider"))): r for r in prev_monthly}
     for r in fresh_monthly:
         monthly_map[(r["month"], r["gpu"], str(r.get("provider")))] = r
