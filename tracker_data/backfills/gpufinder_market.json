@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-09-28T14:42:52Z",
+  "fetchedAt": "2026-09-28T15:19:08Z",
   "refreshStatus": "fresh",
   "publishable": true,
   "attribution": "Data by GPU Finder (gpufinder.dev), public read-only API; attribution required.",
@@ -10,18 +10,864 @@
     },
     "/gpus": {
       "url": "https://gpufinder.dev/api/v1/gpus",
-      "sha256": "sha256:75b3f3f1cee4c87f5ec7325273a870cf0ea0bd7d3b8cdf89073a673ec3d28bab"
+      "sha256": "sha256:d61279d1158f18d87323ebb4c8603aafb591faf0524c1ebc0e4c7875aef13060"
     },
     "/history": {
       "url": "https://gpufinder.dev/api/v1/history?gpu=h100",
-      "sha256": "sha256:342e87be1aa09b8f2d6b0f99c6aed55b29cb54183fd1756a0fe3d5b156ee23be"
+      "sha256": "sha256:4d2d14f162ae59577b0e956d7821fd0fc91d4114ba0187371b8c7cc864508412"
     },
     "/snapshot": {
       "url": "https://gpufinder.dev/api/v1/snapshot?gpu=h100",
-      "sha256": "sha256:e233040123ae123f07db315d3e134000c8edaca463b80e34641138fb7f1972ab"
+      "sha256": "sha256:5a458c65f84ced8ede076db6296c66d39c92d82ba0d9abfb598a00019b2bb97c"
     }
   },
   "rows": [
+    {
+      "date": "2026-09-22",
+      "gpu": "B200",
+      "availabilityPct": 11.25,
+      "availabilityByProvider": {
+        "Hyperstack": [
+          0,
+          24
+        ],
+        "Lambda": [
+          0,
+          72
+        ],
+        "Lium": [
+          18.160781944444444,
+          96
+        ],
+        "Nebius": [
+          25.659993611111112,
+          96
+        ],
+        "Packet": [
+          24,
+          96
+        ],
+        "PrimeIntellect": [
+          24,
+          24
+        ],
+        "Runpod": [
+          0,
+          120
+        ],
+        "Vast": [
+          0,
+          264
+        ],
+        "Vultr": [
+          0,
+          24
+        ]
+      }
+    },
+    {
+      "date": "2026-09-22",
+      "gpu": "H100",
+      "availabilityPct": 20.04,
+      "availabilityByProvider": {
+        "AceCloud": [
+          0,
+          96
+        ],
+        "Digital Ocean": [
+          48,
+          48
+        ],
+        "Gcore": [
+          48,
+          240
+        ],
+        "Hyperstack": [
+          1.5153933333333334,
+          192
+        ],
+        "Lambda": [
+          17.101506944444445,
+          312
+        ],
+        "Lium": [
+          42.88828777777778,
+          240
+        ],
+        "Nebius": [
+          47.643880833333334,
+          48
+        ],
+        "PrimeIntellect": [
+          384,
+          384
+        ],
+        "Runpod": [
+          0,
+          432
+        ],
+        "Scaleway": [
+          34.21526277777778,
+          48
+        ],
+        "Shadeform": [
+          146.10623416666667,
+          408
+        ],
+        "Vast": [
+          0,
+          1368
+        ],
+        "Vultr": [
+          0,
+          24
+        ]
+      }
+    },
+    {
+      "date": "2026-09-22",
+      "gpu": "H200",
+      "availabilityPct": 28.35,
+      "availabilityByProvider": {
+        "AceCloud": [
+          144,
+          144
+        ],
+        "Hyperstack": [
+          0,
+          24
+        ],
+        "Lium": [
+          22.48466722222222,
+          288
+        ],
+        "Nebius": [
+          39.50728111111111,
+          144
+        ],
+        "PrimeIntellect": [
+          456,
+          456
+        ],
+        "Runpod": [
+          0,
+          288
+        ],
+        "Shadeform": [
+          11.534201666666666,
+          24
+        ],
+        "Vast": [
+          0,
+          1008
+        ]
+      }
+    },
+    {
+      "date": "2026-09-23",
+      "gpu": "B200",
+      "availabilityPct": 9.55,
+      "availabilityByProvider": {
+        "Hyperstack": [
+          0,
+          24
+        ],
+        "Lambda": [
+          0,
+          72
+        ],
+        "Lium": [
+          17.42601611111111,
+          96
+        ],
+        "Nebius": [
+          12.518204166666667,
+          96
+        ],
+        "Packet": [
+          24,
+          96
+        ],
+        "PrimeIntellect": [
+          24,
+          24
+        ],
+        "Runpod": [
+          0,
+          120
+        ],
+        "Vast": [
+          0,
+          264
+        ],
+        "Vultr": [
+          0,
+          24
+        ]
+      }
+    },
+    {
+      "date": "2026-09-23",
+      "gpu": "H100",
+      "availabilityPct": 21.43,
+      "availabilityByProvider": {
+        "AceCloud": [
+          0,
+          96
+        ],
+        "Digital Ocean": [
+          48,
+          48
+        ],
+        "Gcore": [
+          48,
+          240
+        ],
+        "Hyperstack": [
+          19.00057333333333,
+          192
+        ],
+        "Lambda": [
+          9.405550277777778,
+          312
+        ],
+        "Lium": [
+          51.50108333333333,
+          240
+        ],
+        "Nebius": [
+          48,
+          48
+        ],
+        "PrimeIntellect": [
+          384,
+          384
+        ],
+        "Runpod": [
+          0,
+          432
+        ],
+        "Scaleway": [
+          42.865701388888894,
+          48
+        ],
+        "Shadeform": [
+          172.08221222222224,
+          408
+        ],
+        "Vast": [
+          0,
+          1368
+        ],
+        "Vultr": [
+          0,
+          24
+        ]
+      }
+    },
+    {
+      "date": "2026-09-23",
+      "gpu": "H200",
+      "availabilityPct": 26.87,
+      "availabilityByProvider": {
+        "AceCloud": [
+          144,
+          144
+        ],
+        "Hyperstack": [
+          0,
+          24
+        ],
+        "Lium": [
+          17.096312222222224,
+          301.02684805555555
+        ],
+        "Nebius": [
+          12.41267611111111,
+          144
+        ],
+        "PrimeIntellect": [
+          456,
+          456
+        ],
+        "Runpod": [
+          0,
+          288
+        ],
+        "Shadeform": [
+          12.412631944444444,
+          24
+        ],
+        "Vast": [
+          0,
+          1008
+        ]
+      }
+    },
+    {
+      "date": "2026-09-24",
+      "gpu": "B200",
+      "availabilityPct": 8.39,
+      "availabilityByProvider": {
+        "Hyperstack": [
+          0,
+          24
+        ],
+        "Lambda": [
+          0,
+          72
+        ],
+        "Lium": [
+          2.3882516666666667,
+          96
+        ],
+        "Nebius": [
+          18.048415555555554,
+          96
+        ],
+        "Packet": [
+          24,
+          96
+        ],
+        "PrimeIntellect": [
+          24,
+          24
+        ],
+        "Runpod": [
+          0,
+          120
+        ],
+        "Vast": [
+          0,
+          264
+        ],
+        "Vultr": [
+          0,
+          24
+        ]
+      }
+    },
+    {
+      "date": "2026-09-24",
+      "gpu": "H100",
+      "availabilityPct": 19.52,
+      "availabilityByProvider": {
+        "AceCloud": [
+          0,
+          96
+        ],
+        "Digital Ocean": [
+          48,
+          48
+        ],
+        "Gcore": [
+          22.583138333333334,
+          240
+        ],
+        "Hyperstack": [
+          2.028891111111111,
+          192
+        ],
+        "Lambda": [
+          11.378670833333334,
+          312
+        ],
+        "Lium": [
+          55.61043194444444,
+          240
+        ],
+        "Nebius": [
+          48,
+          48
+        ],
+        "PrimeIntellect": [
+          384,
+          384
+        ],
+        "Runpod": [
+          0,
+          432
+        ],
+        "Scaleway": [
+          30.653760277777778,
+          48
+        ],
+        "Shadeform": [
+          147.23843194444444,
+          408
+        ],
+        "Vast": [
+          0,
+          1368
+        ],
+        "Vultr": [
+          0,
+          24
+        ]
+      }
+    },
+    {
+      "date": "2026-09-24",
+      "gpu": "H200",
+      "availabilityPct": 26.46,
+      "availabilityByProvider": {
+        "AceCloud": [
+          144,
+          144
+        ],
+        "Hyperstack": [
+          0,
+          24
+        ],
+        "Lium": [
+          24.35930777777778,
+          312
+        ],
+        "Nebius": [
+          2.7471325,
+          144
+        ],
+        "PrimeIntellect": [
+          456,
+          456
+        ],
+        "Runpod": [
+          0,
+          288
+        ],
+        "Shadeform": [
+          7.907323888888889,
+          24
+        ],
+        "Vast": [
+          0,
+          1008
+        ]
+      }
+    },
+    {
+      "date": "2026-09-25",
+      "gpu": "B200",
+      "availabilityPct": 9.06,
+      "availabilityByProvider": {
+        "Hyperstack": [
+          0,
+          24
+        ],
+        "Lambda": [
+          0,
+          72
+        ],
+        "Lium": [
+          24,
+          96
+        ],
+        "Nebius": [
+          1.9576683333333333,
+          96
+        ],
+        "Packet": [
+          24,
+          96
+        ],
+        "PrimeIntellect": [
+          24,
+          24
+        ],
+        "Runpod": [
+          0,
+          120
+        ],
+        "Vast": [
+          0,
+          264
+        ],
+        "Vultr": [
+          0,
+          24
+        ]
+      }
+    },
+    {
+      "date": "2026-09-25",
+      "gpu": "H100",
+      "availabilityPct": 17.12,
+      "availabilityByProvider": {
+        "AceCloud": [
+          0,
+          96
+        ],
+        "Digital Ocean": [
+          48,
+          48
+        ],
+        "Gcore": [
+          12.619682777777777,
+          240
+        ],
+        "Hyperstack": [
+          0,
+          192
+        ],
+        "Lambda": [
+          0,
+          312
+        ],
+        "Lium": [
+          64.12064305555555,
+          252.62245972222223
+        ],
+        "Nebius": [
+          26.31062888888889,
+          48
+        ],
+        "PrimeIntellect": [
+          384,
+          384
+        ],
+        "Runpod": [
+          0,
+          432
+        ],
+        "Scaleway": [
+          26.555521666666667,
+          48
+        ],
+        "Shadeform": [
+          97.91730361111112,
+          408
+        ],
+        "Vast": [
+          0,
+          1368
+        ],
+        "Vultr": [
+          0,
+          24
+        ]
+      }
+    },
+    {
+      "date": "2026-09-25",
+      "gpu": "H200",
+      "availabilityPct": 27.03,
+      "availabilityByProvider": {
+        "AceCloud": [
+          144,
+          144
+        ],
+        "Hyperstack": [
+          0,
+          24
+        ],
+        "Lium": [
+          35.377540277777776,
+          312
+        ],
+        "Nebius": [
+          7.9368002777777775,
+          144
+        ],
+        "PrimeIntellect": [
+          456,
+          456
+        ],
+        "Runpod": [
+          0,
+          288
+        ],
+        "Shadeform": [
+          7.936893055555555,
+          24
+        ],
+        "Vast": [
+          0,
+          1017.7311108333333
+        ]
+      }
+    },
+    {
+      "date": "2026-09-26",
+      "gpu": "B200",
+      "availabilityPct": 10.45,
+      "availabilityByProvider": {
+        "Hyperstack": [
+          0,
+          24
+        ],
+        "Lambda": [
+          0,
+          72
+        ],
+        "Lium": [
+          36.23346472222222,
+          96
+        ],
+        "Nebius": [
+          1.0439980555555555,
+          96
+        ],
+        "Packet": [
+          24,
+          96
+        ],
+        "PrimeIntellect": [
+          24,
+          24
+        ],
+        "Runpod": [
+          0,
+          120
+        ],
+        "Vast": [
+          0,
+          264
+        ],
+        "Vultr": [
+          0,
+          24
+        ]
+      }
+    },
+    {
+      "date": "2026-09-26",
+      "gpu": "H100",
+      "availabilityPct": 24.04,
+      "availabilityByProvider": {
+        "AceCloud": [
+          0,
+          96
+        ],
+        "Digital Ocean": [
+          48,
+          48
+        ],
+        "Gcore": [
+          37.02417416666667,
+          240
+        ],
+        "Hyperstack": [
+          8.512885833333334,
+          192
+        ],
+        "Lambda": [
+          77.65107583333334,
+          312
+        ],
+        "Lium": [
+          48,
+          264
+        ],
+        "Nebius": [
+          38.32843694444445,
+          48
+        ],
+        "PrimeIntellect": [
+          384,
+          384
+        ],
+        "Runpod": [
+          30.14825638888889,
+          432
+        ],
+        "Scaleway": [
+          48,
+          48
+        ],
+        "Shadeform": [
+          209.40150944444449,
+          408
+        ],
+        "Vast": [
+          0,
+          1368
+        ],
+        "Vultr": [
+          0,
+          24
+        ]
+      }
+    },
+    {
+      "date": "2026-09-26",
+      "gpu": "H200",
+      "availabilityPct": 26.71,
+      "availabilityByProvider": {
+        "AceCloud": [
+          144,
+          144
+        ],
+        "Hyperstack": [
+          0,
+          24
+        ],
+        "Lium": [
+          24,
+          312
+        ],
+        "Nebius": [
+          1.0439980555555555,
+          144
+        ],
+        "PrimeIntellect": [
+          456,
+          456
+        ],
+        "Runpod": [
+          6.775465555555556,
+          288
+        ],
+        "Shadeform": [
+          18.814585,
+          24
+        ],
+        "Vast": [
+          0,
+          1044.075416388889
+        ]
+      }
+    },
+    {
+      "date": "2026-09-27",
+      "gpu": "B200",
+      "availabilityPct": 13.98,
+      "availabilityByProvider": {
+        "Hyperstack": [
+          0,
+          24
+        ],
+        "Lambda": [
+          0,
+          72
+        ],
+        "Lium": [
+          48,
+          96
+        ],
+        "Nebius": [
+          18.10525388888889,
+          96
+        ],
+        "Packet": [
+          24,
+          96
+        ],
+        "PrimeIntellect": [
+          24,
+          24
+        ],
+        "Runpod": [
+          0,
+          120
+        ],
+        "Vast": [
+          0,
+          264
+        ],
+        "Vultr": [
+          0,
+          24
+        ]
+      }
+    },
+    {
+      "date": "2026-09-27",
+      "gpu": "H100",
+      "availabilityPct": 21.94,
+      "availabilityByProvider": {
+        "AceCloud": [
+          0,
+          96
+        ],
+        "Digital Ocean": [
+          48,
+          48
+        ],
+        "Gcore": [
+          48,
+          240
+        ],
+        "Hyperstack": [
+          9.456456388888888,
+          192
+        ],
+        "Lambda": [
+          9.45646,
+          312
+        ],
+        "Lium": [
+          46.78874972222222,
+          276.3952016666667
+        ],
+        "Nebius": [
+          44.73329527777778,
+          48
+        ],
+        "PrimeIntellect": [
+          384,
+          384
+        ],
+        "Runpod": [
+          34.24330944444445,
+          432
+        ],
+        "Scaleway": [
+          48,
+          48
+        ],
+        "Shadeform": [
+          179.56398444444443,
+          408
+        ],
+        "Vast": [
+          0,
+          1376.5609083333334
+        ],
+        "Vultr": [
+          0,
+          24
+        ]
+      }
+    },
+    {
+      "date": "2026-09-27",
+      "gpu": "H200",
+      "availabilityPct": 26.95,
+      "availabilityByProvider": {
+        "AceCloud": [
+          144,
+          144
+        ],
+        "Hyperstack": [
+          0,
+          24
+        ],
+        "Lium": [
+          15.754809444444444,
+          312
+        ],
+        "Nebius": [
+          30.85679,
+          144
+        ],
+        "PrimeIntellect": [
+          456,
+          456
+        ],
+        "Runpod": [
+          0,
+          288
+        ],
+        "Shadeform": [
+          20.033598333333334,
+          24
+        ],
+        "Vast": [
+          0,
+          1081.6827250000001
+        ]
+      }
+    },
     {
       "date": "2026-09-28",
       "gpu": "B200",
