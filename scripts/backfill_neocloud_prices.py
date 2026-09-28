@@ -15,6 +15,11 @@ from typing import Any
 from urllib.request import Request, urlopen
 
 
+try:  # 直接执行（sys.path[0]=scripts/）与作为包导入（scripts.xxx）两种模式都要能用
+    from net_retry import retry_call
+except ImportError:  # pragma: no cover
+    from scripts.net_retry import retry_call
+
 ROOT = Path(__file__).resolve().parents[1]
 OUTPUT_PATH = ROOT / "tracker_data" / "backfills" / "neocloud_provider_price_history.json"
 SOURCE_URL = "https://raw.githubusercontent.com/adriannutiu/gpu-rental-prices/main/data/latest.json"
@@ -65,13 +70,17 @@ def _normalize_series(value: Any) -> str:
 
 
 def _fetch_offers() -> tuple[dict[str, Any], bytes]:
-    request = Request(SOURCE_URL, headers={"User-Agent": USER_AGENT})
-    with urlopen(request, timeout=30) as response:
-        raw = response.read()
-    payload = json.loads(raw)
-    if not isinstance(payload.get("offers"), list) or not payload.get("date"):
-        raise ValueError("gpu-rental-prices latest.json schema changed")
-    return payload, raw
+    # 瞬时故障重试（阻塞源）；schema 校验必须保留——它属于"确定性失败"，
+    # retry_call 对 ValueError 不会重试，立刻抛出。
+    def once() -> tuple[dict[str, Any], bytes]:
+        request = Request(SOURCE_URL, headers={"User-Agent": USER_AGENT})
+        with urlopen(request, timeout=30) as response:
+            raw = response.read()
+        payload = json.loads(raw)
+        if not isinstance(payload.get("offers"), list) or not payload.get("date"):
+            raise ValueError("gpu-rental-prices latest.json schema changed")
+        return payload, raw
+    return retry_call(once, label="GET gpu-rental-prices latest.json")
 
 
 def normalize(payload: dict[str, Any]) -> list[dict[str, Any]]:

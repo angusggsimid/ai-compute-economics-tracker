@@ -11,6 +11,11 @@ from typing import Any
 from urllib.request import Request, urlopen
 
 
+try:  # 直接执行（sys.path[0]=scripts/）与作为包导入（scripts.xxx）两种模式都要能用
+    from net_retry import retry_call
+except ImportError:  # pragma: no cover
+    from scripts.net_retry import retry_call
+
 ROOT = Path(__file__).resolve().parents[1]
 OUTPUT_PATH = ROOT / "tracker_data" / "backfills" / "openrouter_active_price_history.json"
 SNAPSHOT_DIR = ROOT / "tracker_snapshots" / "market_facts"
@@ -19,10 +24,12 @@ HISTORY_URL = "https://raw.githubusercontent.com/jvrck/openrouterlist/main/data/
 
 
 def _fetch(url: str) -> tuple[dict[str, Any], bytes]:
-    request = Request(url, headers={"User-Agent": "AIComputeEconomicsTracker/1.0"})
-    with urlopen(request, timeout=45) as response:
-        raw = response.read()
-    return json.loads(raw), raw
+    # 瞬时故障重试（阻塞源：一次抖动会让整条流水线变红）
+    def once() -> tuple[dict[str, Any], bytes]:
+        request = Request(url, headers={"User-Agent": "AIComputeEconomicsTracker/1.0"})
+        with urlopen(request, timeout=45) as response:
+            return json.loads(response.read()), response.read()
+    return retry_call(once, label=f"GET {url[:60]}")
 
 
 def normalize(models_payload: dict[str, Any], history_payload: dict[str, Any]) -> dict[str, Any]:

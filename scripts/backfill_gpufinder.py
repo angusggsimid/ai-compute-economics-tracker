@@ -143,6 +143,19 @@ def collect(date_iso: str) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
     return sorted(daily_rows, key=lambda r: r["gpu"]), sorted(monthly_rows, key=lambda r: (r["gpu"], r["month"], str(r.get("provider"))))
 
 
+def _merge_daily(prev_daily: list[dict[str, Any]], fresh_daily: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """按 (date, gpu) 合并：本期抓到的行字段更全，覆盖同键的历史行。
+
+    只按 date != today 过滤的话，回补的滚动窗口历史日在同一天重复运行就会产生重复行。
+    """
+    by_key: dict[tuple[Any, Any], dict[str, Any]] = {
+        (r.get("date"), r.get("gpu")): r for r in prev_daily if r.get("date") and r.get("gpu")
+    }
+    for r in fresh_daily:
+        by_key[(r.get("date"), r.get("gpu"))] = r
+    return list(by_key.values())
+
+
 def _load_previous(path: Path) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
     if not path.exists():
         return [], []
@@ -168,14 +181,7 @@ def main() -> int:
         quality.append({"source": "gpufinder", "status": "failed", "message": str(exc)})
 
     prev_daily, prev_monthly = _load_previous(OUTPUT_PATH)
-    # 按 (date, gpu) 去重：本期抓到的行字段更全，覆盖历史行。
-    # 只按 date != today 过滤会让回补的历史日重复运行两次就产生重复行。
-    _by_key: dict[tuple[Any, Any], dict[str, Any]] = {
-        (r.get("date"), r.get("gpu")): r for r in prev_daily if r.get("date") and r.get("gpu")
-    }
-    for r in fresh_daily:
-        _by_key[(r.get("date"), r.get("gpu"))] = r
-    daily = list(_by_key.values())
+    daily = _merge_daily(prev_daily, fresh_daily)
     monthly_map = {(r["month"], r["gpu"], str(r.get("provider"))): r for r in prev_monthly}
     for r in fresh_monthly:
         monthly_map[(r["month"], r["gpu"], str(r.get("provider")))] = r

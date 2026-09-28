@@ -16,6 +16,11 @@ from typing import Any
 import requests
 
 
+try:  # 直接执行（sys.path[0]=scripts/）与作为包导入（scripts.xxx）两种模式都要能用
+    from net_retry import retry_call
+except ImportError:  # pragma: no cover
+    from scripts.net_retry import retry_call
+
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_OUTPUT = ROOT / "tracker_data" / "backfills" / "openrouter_cost_index.json"
 OPENROUTER_CHART = "https://openrouter.ai/api/frontend/v1/rankings/model-rankings-chart"
@@ -29,9 +34,13 @@ PROVIDER_SHARE_REQUIRED_KEYS = ("date", "provider", "tokens", "share_pct")
 
 
 def _fetch_json(session: requests.Session, url: str, **kwargs: Any) -> tuple[dict[str, Any], bytes, str]:
-    response = session.get(url, timeout=90, **kwargs)
-    response.raise_for_status()
-    return response.json(), response.content, response.url
+    # 瞬时故障（超时/限流/5xx）重试；确定性 4xx 立即抛出。用尽后仍抛错，不掩盖失败。
+    def once() -> tuple[dict[str, Any], bytes, str]:
+        response = session.get(url, timeout=90, **kwargs)
+        response.raise_for_status()
+        return response.json(), response.content, response.url
+
+    return retry_call(once, label=f"GET {url[:60]}")
 
 
 def _model_candidates(slug: str) -> list[str]:
