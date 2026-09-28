@@ -1,8 +1,8 @@
 {
-  "runAt": "2026-09-28T14:39:29Z",
+  "runAt": "2026-09-28T14:42:40Z",
   "fetchedAt": "2026-09-28T14:39:29Z",
-  "fetchedCount": 5,
-  "refreshStatus": "fresh",
+  "fetchedCount": 0,
+  "refreshStatus": "current_for_frequency",
   "publishable": true,
   "cacheMaxAgeDays": 150,
   "cacheCoverage": {
@@ -41,7 +41,7 @@
       "unit": "USD_B",
       "period": "FY2026 Q1",
       "source_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001341439.json",
-      "fromCache": false
+      "fromCache": true
     },
     {
       "date": "2026-07-29",
@@ -201,7 +201,7 @@
       "unit": "USD_B",
       "period": "FY2026 Q4",
       "source_url": "https://www.microsoft.com/en-us/investor/events/fy-2026/earnings-fy-2026-q4",
-      "fromCache": false
+      "fromCache": true
     },
     {
       "date": "2026-06-30",
@@ -221,7 +221,7 @@
       "unit": "USD_B",
       "period": "FY2026 累计（约12个月）",
       "source_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000789019.json",
-      "fromCache": false
+      "fromCache": true
     },
     {
       "date": "2026-06-30",
@@ -231,7 +231,7 @@
       "unit": "USD_B",
       "period": "FY2026 Q2 累计（约6个月）",
       "source_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001326801.json",
-      "fromCache": false
+      "fromCache": true
     },
     {
       "date": "2026-06-30",
@@ -251,7 +251,7 @@
       "unit": "USD_B",
       "period": "FY2026 Q2",
       "source_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001018724.json",
-      "fromCache": false
+      "fromCache": true
     },
     {
       "date": "2026-06-30",
@@ -271,7 +271,7 @@
       "unit": "USD_B",
       "period": "FY2026 Q2 累计（约6个月）",
       "source_url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001652044.json",
-      "fromCache": false
+      "fromCache": true
     },
     {
       "date": "2026-06-11",
@@ -518,38 +518,64 @@
     "MSFT": {
       "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000789019.json",
       "fetchedAt": "2026-09-28T14:39:29Z",
-      "lastAttemptAt": "2026-09-28T14:39:29Z",
-      "sha256": "sha256:75bebe2eebf09fd5c1383646a761563922c8eb0f2cdb107a13e526572a5140c3",
-      "status": "fresh"
+      "lastAttemptAt": "2026-09-28T14:42:40Z",
+      "status": "failed",
+      "message": "SEC_SOURCE_UNAVAILABLE: HTTP 403 for MSFT"
     },
     "AMZN": {
       "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001018724.json",
       "fetchedAt": "2026-09-28T14:39:29Z",
-      "lastAttemptAt": "2026-09-28T14:39:29Z",
-      "sha256": "sha256:9ed7d44b3b63e1ddaa71cffd3828101a8f998b7c8198b3c62e218ff3ed440f84",
-      "status": "fresh"
+      "lastAttemptAt": "2026-09-28T14:42:40Z",
+      "status": "failed",
+      "message": "SEC_SOURCE_UNAVAILABLE: HTTP 403 for AMZN"
     },
     "GOOGL": {
       "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001652044.json",
       "fetchedAt": "2026-09-28T14:39:29Z",
-      "lastAttemptAt": "2026-09-28T14:39:29Z",
-      "sha256": "sha256:67e9eb51a09725a55b786cc0a569efcfb9906ad170e445e4775bc2126e22ae7d",
-      "status": "fresh"
+      "lastAttemptAt": "2026-09-28T14:42:40Z",
+      "status": "failed",
+      "message": "SEC_SOURCE_UNAVAILABLE: HTTP 403 for GOOGL"
     },
     "META": {
       "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001326801.json",
       "fetchedAt": "2026-09-28T14:39:29Z",
-      "lastAttemptAt": "2026-09-28T14:39:29Z",
-      "sha256": "sha256:0317fc3e86d06ba1660234ad40ec4c1408d9828fd2c4c45e25e2394bfd676699",
-      "status": "fresh"
+      "lastAttemptAt": "2026-09-28T14:42:40Z",
+      "status": "failed",
+      "message": "SEC_SOURCE_UNAVAILABLE: HTTP 403 for META"
     },
     "ORCL": {
       "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001341439.json",
       "fetchedAt": "2026-09-28T14:39:29Z",
-      "lastAttemptAt": "2026-09-28T14:39:29Z",
-      "sha256": "sha256:176f31598633890dadc2baf962ec5c46fe3d6412559af4be32a2e01c8fda12b7",
-      "status": "fresh"
+      "lastAttemptAt": "2026-09-28T14:42:40Z",
+      "status": "failed",
+      "message": "SEC_SOURCE_UNAVAILABLE: HTTP 403 for ORCL"
     }
   },
-  "quality": []
+  "quality": [
+    {
+      "source": "MSFT",
+      "status": "failed",
+      "message": "SEC_SOURCE_UNAVAILABLE: HTTP 403 for MSFT"
+    },
+    {
+      "source": "AMZN",
+      "status": "failed",
+      "message": "SEC_SOURCE_UNAVAILABLE: HTTP 403 for AMZN"
+    },
+    {
+      "source": "GOOGL",
+      "status": "failed",
+      "message": "SEC_SOURCE_UNAVAILABLE: HTTP 403 for GOOGL"
+    },
+    {
+      "source": "META",
+      "status": "failed",
+      "message": "SEC_SOURCE_UNAVAILABLE: HTTP 403 for META"
+    },
+    {
+      "source": "ORCL",
+      "status": "failed",
+      "message": "SEC_SOURCE_UNAVAILABLE: HTTP 403 for ORCL"
+    }
+  ]
 }
