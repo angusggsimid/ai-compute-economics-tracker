@@ -1,15 +1,15 @@
 {
   "meta": {
-    "generatedAt": "2026-10-01T05:49:42Z",
-    "minDate": "2025-09-29",
-    "maxDate": "2026-10-01",
+    "generatedAt": "2026-10-02T05:34:59Z",
+    "minDate": "2025-10-06",
+    "maxDate": "2026-10-02",
     "basisCommonStart": {
       "H100": "2026-07-05",
       "H200": "2026-07-05",
       "B200": "2026-07-05"
     },
-    "orderbookValidDays": 40,
-    "otpiValidDays": 38,
+    "orderbookValidDays": 41,
+    "otpiValidDays": 39,
     "contractPeriods": 21,
     "panelMembers": {
       "H100": {
@@ -31,7 +31,7 @@
           "voltagepark"
         ],
         "windowStart": "2026-07-07",
-        "windowDays": 86
+        "windowDays": 87
       },
       "B200": {
         "members": [
@@ -44,7 +44,7 @@
           "together"
         ],
         "windowStart": "2026-07-07",
-        "windowDays": 86
+        "windowDays": 87
       }
     },
     "panelAnnotations": {
@@ -92,18 +92,13 @@
       }
     ],
     "providerUniverse": 34,
-    "volumeYoYLabel": "自首个完整周（2025-09-29起）×51",
-    "volumePartialWeekDropped": null,
-    "scarcityValidDays": 10,
+    "volumeYoYLabel": "自首个完整周（2025-10-06起）×29",
+    "volumePartialWeekDropped": "2025-09-29",
+    "scarcityValidDays": 11,
     "gapValidDays": 1
   },
   "datasets": {
     "openrouterVolume": [
-      {
-        "date": "2025-09-29",
-        "series": "Weekly tokens",
-        "value": 2.857537030503
-      },
       {
         "date": "2025-10-06",
         "series": "Weekly tokens",
@@ -362,7 +357,7 @@
       {
         "date": "2025-10-20",
         "series": "4W average",
-        "value": 4.3520144738225
+        "value": 4.16283804208575
       },
       {
         "date": "2025-10-27",
@@ -606,86 +601,6 @@
       }
     ],
     "openrouterComposition": [
-      {
-        "date": "2025-09-29",
-        "rank": 1,
-        "model": "x-ai/grok-code-fast-1",
-        "vendor": "x-ai",
-        "tokens": 0.577059912674,
-        "share": 20.194310922802728
-      },
-      {
-        "date": "2025-09-29",
-        "rank": 2,
-        "model": "x-ai/grok-4-fast:free",
-        "vendor": "x-ai",
-        "tokens": 0.208535785979,
-        "share": 7.297745707333575
-      },
-      {
-        "date": "2025-09-29",
-        "rank": 3,
-        "model": "anthropic/claude-4.5-sonnet-20250929",
-        "vendor": "anthropic",
-        "tokens": 0.190630312613,
-        "share": 6.6711405863896776
-      },
-      {
-        "date": "2025-09-29",
-        "rank": 4,
-        "model": "google/gemini-2.5-flash",
-        "vendor": "google",
-        "tokens": 0.177719300385,
-        "share": 6.2193174922292025
-      },
-      {
-        "date": "2025-09-29",
-        "rank": 5,
-        "model": "deepseek/deepseek-chat-v3.1:free",
-        "vendor": "deepseek",
-        "tokens": 0.130711270835,
-        "share": 4.574263410752422
-      },
-      {
-        "date": "2025-09-29",
-        "rank": 6,
-        "model": "anthropic/claude-4-sonnet-20250522",
-        "vendor": "anthropic",
-        "tokens": 0.123590393798,
-        "share": 4.325067093749785
-      },
-      {
-        "date": "2025-09-29",
-        "rank": 7,
-        "model": "openai/gpt-4.1-mini-2025-04-14",
-        "vendor": "openai",
-        "tokens": 0.085821978883,
-        "share": 3.003354916030366
-      },
-      {
-        "date": "2025-09-29",
-        "rank": 8,
-        "model": "google/gemini-2.5-flash-lite",
-        "vendor": "google",
-        "tokens": 0.084544797675,
-        "share": 2.9586597399270778
-      },
-      {
-        "date": "2025-09-29",
-        "rank": 9,
-        "model": "google/gemini-2.5-pro",
-        "vendor": "google",
-        "tokens": 0.071090743891,
-        "share": 2.487832813088207
-      },
-      {
-        "date": "2025-09-29",
-        "rank": 10,
-        "model": "Others",
-        "vendor": "OpenRouter",
-        "tokens": 1.20783253377,
-        "share": 42.268307317696966
-      },
       {
         "date": "2025-10-06",
         "rank": 1,
@@ -4769,11 +4684,6 @@
     ],
     "openrouterDisclosure": [
       {
-        "date": "2025-09-29",
-        "othersShare": 42.268307317696966,
-        "namedShare": 57.731692682303034
-      },
-      {
         "date": "2025-10-06",
         "othersShare": 40.01260665865185,
         "namedShare": 59.98739334134815
@@ -5030,31 +4940,6 @@
       }
     ],
     "activePriceTiers": [
-      {
-        "date": "2025-09-29",
-        "series": "免费",
-        "value": 11.872009118085996
-      },
-      {
-        "date": "2025-09-29",
-        "series": "<$1",
-        "value": 0.0
-      },
-      {
-        "date": "2025-09-29",
-        "series": "$1–5",
-        "value": 20.194310922802728
-      },
-      {
-        "date": "2025-09-29",
-        "series": ">$5",
-        "value": 4.325067093749785
-      },
-      {
-        "date": "2025-09-29",
-        "series": "Others / 无法匹配",
-        "value": 63.60861286536149
-      },
       {
         "date": "2025-10-06",
         "series": "免费",
@@ -6333,12 +6218,6 @@
     ],
     "activeInputBasket": [
       {
-        "date": "2025-09-29",
-        "series": "Weekly weighted rate",
-        "value": 0.4675299516026241,
-        "coverage": 36.39138713463851
-      },
-      {
         "date": "2025-10-06",
         "series": "Weekly weighted rate",
         "value": 0.5518034118208658,
@@ -6647,8 +6526,8 @@
       {
         "date": "2025-10-20",
         "series": "4W average",
-        "value": 0.47146397422874187,
-        "coverage": 37.87343779751506
+        "value": 0.4684169337235366,
+        "coverage": 38.04634382368752
       },
       {
         "date": "2025-10-27",
@@ -6940,12 +6819,6 @@
       }
     ],
     "activeOutputBasket": [
-      {
-        "date": "2025-09-29",
-        "series": "Weekly weighted rate",
-        "value": 2.6151097906314034,
-        "coverage": 36.39138713463851
-      },
       {
         "date": "2025-10-06",
         "series": "Weekly weighted rate",
@@ -7255,8 +7128,8 @@
       {
         "date": "2025-10-20",
         "series": "4W average",
-        "value": 2.6183653812527425,
-        "coverage": 37.87343779751506
+        "value": 2.5943411430487817,
+        "coverage": 38.04634382368752
       },
       {
         "date": "2025-10-27",
@@ -7558,7 +7431,7 @@
         "outputPrice": 0.2,
         "historyPoints": 3,
         "firstSeen": "2026-08-29",
-        "lastSeen": "2026-10-01",
+        "lastSeen": "2026-10-02",
         "priceHistory": [
           {
             "date": "2026-08-29",
@@ -7586,9 +7459,9 @@
         "share": 10.377526004097238,
         "inputPrice": 0.834,
         "outputPrice": 2.501,
-        "historyPoints": 3,
+        "historyPoints": 5,
         "firstSeen": "2026-08-28",
-        "lastSeen": "2026-10-01",
+        "lastSeen": "2026-10-02",
         "priceHistory": [
           {
             "date": "2026-08-28",
@@ -7602,6 +7475,16 @@
           },
           {
             "date": "2026-10-01",
+            "input": 0.834,
+            "output": 2.501
+          },
+          {
+            "date": "2026-10-01",
+            "input": 0.7506,
+            "output": 2.2509
+          },
+          {
+            "date": "2026-10-02",
             "input": 0.834,
             "output": 2.501
           }
@@ -7618,7 +7501,7 @@
         "outputPrice": 0.6,
         "historyPoints": 1,
         "firstSeen": "2026-08-07",
-        "lastSeen": "2026-10-01",
+        "lastSeen": "2026-10-02",
         "priceHistory": [
           {
             "date": "2026-08-07",
@@ -7634,11 +7517,11 @@
         "name": "DeepSeek: DeepSeek V4 Flash 0731",
         "tokens": 41.187334648911,
         "share": 7.967115592571716,
-        "inputPrice": 0.0171,
+        "inputPrice": 0.0077,
         "outputPrice": 1.28,
-        "historyPoints": 29,
+        "historyPoints": 31,
         "firstSeen": "2026-07-31",
-        "lastSeen": "2026-10-01",
+        "lastSeen": "2026-10-02",
         "priceHistory": [
           {
             "date": "2026-07-31",
@@ -7784,6 +7667,16 @@
             "date": "2026-10-01",
             "input": 0.0171,
             "output": 1.28
+          },
+          {
+            "date": "2026-10-01",
+            "input": 0.0108,
+            "output": 1.28
+          },
+          {
+            "date": "2026-10-02",
+            "input": 0.0077,
+            "output": 1.28
           }
         ],
         "free": false
@@ -7798,7 +7691,7 @@
         "outputPrice": 0.336,
         "historyPoints": 1,
         "firstSeen": "2026-09-22",
-        "lastSeen": "2026-10-01",
+        "lastSeen": "2026-10-02",
         "priceHistory": [
           {
             "date": "2026-09-22",
@@ -7830,9 +7723,9 @@
         "share": 3.2244425763059352,
         "inputPrice": 0.042,
         "outputPrice": 0.084,
-        "historyPoints": 107,
+        "historyPoints": 109,
         "firstSeen": "2026-04-24",
-        "lastSeen": "2026-10-01",
+        "lastSeen": "2026-10-02",
         "priceHistory": [
           {
             "date": "2026-04-24",
@@ -8366,6 +8259,16 @@
           },
           {
             "date": "2026-10-01",
+            "input": 0.042,
+            "output": 0.084
+          },
+          {
+            "date": "2026-10-01",
+            "input": 0.04186,
+            "output": 0.08372
+          },
+          {
+            "date": "2026-10-02",
             "input": 0.042,
             "output": 0.084
           }
@@ -16480,6 +16383,101 @@
           "together": 2.99
         },
         "movingAverage30d": 4.2715
+      },
+      {
+        "date": "2026-10-01",
+        "series": "B200",
+        "value": 6.69,
+        "p25": 6.0,
+        "p75": 8.5,
+        "low": 3.49,
+        "high": 16.11,
+        "average": 7.3866,
+        "providerCount": 11,
+        "medianSynthetic": false,
+        "providerPrices": {
+          "coreweave": 8.6,
+          "datacrunch": 6.918,
+          "gcp": 16.11,
+          "gmicloud": 6.0,
+          "hyperstack": 6.0,
+          "lambda": 6.69,
+          "nebius": 8.5,
+          "primeintellect": 3.49,
+          "runpod": 6.385,
+          "spheron": 8.47,
+          "together": 4.09
+        },
+        "movingAverage30d": 6.4721
+      },
+      {
+        "date": "2026-10-01",
+        "series": "H100",
+        "value": 3.2,
+        "p25": 2.65,
+        "p75": 4.41,
+        "low": 1.99,
+        "high": 12.29,
+        "average": 4.1261,
+        "providerCount": 23,
+        "medianSynthetic": false,
+        "providerPrices": {
+          "aws": 12.29,
+          "azure": 9.0205,
+          "coreweave": 6.155,
+          "crusoe": 3.9,
+          "datacrunch": 3.627,
+          "digitalocean": 4.41,
+          "gcp": 9.7966,
+          "gmicloud": 2.0,
+          "hyperstack": 2.85,
+          "jarvislabs": 2.69,
+          "lambda": 3.64,
+          "latitude": 3.37,
+          "massedcompute": 2.92,
+          "nebius": 4.5,
+          "ovh": 2.99,
+          "primeintellect": 2.43,
+          "runpod": 2.79,
+          "scaleway": 3.4402,
+          "spheron": 2.65,
+          "tensordock": 2.25,
+          "thundercompute": 3.2,
+          "together": 1.99,
+          "voltagepark": 1.99
+        },
+        "movingAverage30d": 3.2017
+      },
+      {
+        "date": "2026-10-01",
+        "series": "H200",
+        "value": 4.38,
+        "p25": 3.6625,
+        "p75": 5.9962,
+        "low": 2.6,
+        "high": 10.6,
+        "average": 5.0134,
+        "providerCount": 16,
+        "medianSynthetic": true,
+        "providerPrices": {
+          "aws": 10.6,
+          "coreweave": 6.305,
+          "crusoe": 4.29,
+          "datacrunch": 4.732,
+          "digitalocean": 4.47,
+          "gcp": 9.3117,
+          "gmicloud": 2.6,
+          "hyperstack": 3.99,
+          "jarvislabs": 3.99,
+          "massedcompute": 3.62,
+          "nebius": 5.4,
+          "ovh": 6.195,
+          "primeintellect": 3.14,
+          "runpod": 3.79,
+          "spheron": 4.79,
+          "together": 2.99
+        },
+        "movingAverage30d": 4.2715
       }
     ],
     "gpuPriceAnnotations": {
@@ -17068,6 +17066,11 @@
         "value": 1.34640625
       },
       {
+        "date": "2026-10-01",
+        "series": "H200 / H100",
+        "value": 1.34640625
+      },
+      {
         "date": "2026-07-05",
         "series": "B200 / H100",
         "value": 1.963452566096423
@@ -17506,6 +17509,11 @@
         "date": "2026-09-30",
         "series": "B200 / H100",
         "value": 2.0037499999999997
+      },
+      {
+        "date": "2026-10-01",
+        "series": "B200 / H100",
+        "value": 2.0037499999999997
       }
     ],
     "scarcity": [
@@ -17577,12 +17585,12 @@
       {
         "date": "2026-09-26",
         "series": "H100",
-        "value": 25.14
+        "value": 24.66
       },
       {
         "date": "2026-09-26",
         "series": "H200",
-        "value": 26.45
+        "value": 25.45
       },
       {
         "date": "2026-09-27",
@@ -17592,12 +17600,12 @@
       {
         "date": "2026-09-27",
         "series": "H100",
-        "value": 22.93
+        "value": 22.49
       },
       {
         "date": "2026-09-27",
         "series": "H200",
-        "value": 26.69
+        "value": 25.7
       },
       {
         "date": "2026-09-28",
@@ -17607,12 +17615,12 @@
       {
         "date": "2026-09-28",
         "series": "H100",
-        "value": 21.58
+        "value": 21.17
       },
       {
         "date": "2026-09-28",
         "series": "H200",
-        "value": 24.22
+        "value": 23.34
       },
       {
         "date": "2026-09-29",
@@ -17622,12 +17630,12 @@
       {
         "date": "2026-09-29",
         "series": "H100",
-        "value": 19.22
+        "value": 18.86
       },
       {
         "date": "2026-09-29",
         "series": "H200",
-        "value": 24.45
+        "value": 23.57
       },
       {
         "date": "2026-09-30",
@@ -17637,12 +17645,12 @@
       {
         "date": "2026-09-30",
         "series": "H100",
-        "value": 19.7
+        "value": 19.33
       },
       {
         "date": "2026-09-30",
         "series": "H200",
-        "value": 21.0
+        "value": 20.26
       },
       {
         "date": "2026-10-01",
@@ -17652,44 +17660,59 @@
       {
         "date": "2026-10-01",
         "series": "H100",
-        "value": 21.29
+        "value": 17.87
       },
       {
         "date": "2026-10-01",
         "series": "H200",
-        "value": 20.65
+        "value": 19.53
+      },
+      {
+        "date": "2026-10-02",
+        "series": "B200",
+        "value": 8.33
+      },
+      {
+        "date": "2026-10-02",
+        "series": "H100",
+        "value": 20.24
+      },
+      {
+        "date": "2026-10-02",
+        "series": "H200",
+        "value": 19.95
       }
     ],
     "listedGap": [
       {
-        "date": "2026-10-01",
+        "date": "2026-10-02",
         "series": "B200",
-        "value": 42.59
+        "value": 0.0
       },
       {
-        "date": "2026-10-01",
+        "date": "2026-10-02",
         "series": "H100",
-        "value": 47.29
+        "value": 24.32
       },
       {
-        "date": "2026-10-01",
+        "date": "2026-10-02",
         "series": "H200",
         "value": 73.02
       }
     ],
     "breadth": [
       {
-        "date": "2026-10-01",
+        "date": "2026-10-02",
         "series": "B200",
         "value": 12
       },
       {
-        "date": "2026-10-01",
+        "date": "2026-10-02",
         "series": "H100",
         "value": 22
       },
       {
-        "date": "2026-10-01",
+        "date": "2026-10-02",
         "series": "H200",
         "value": 15
       }
@@ -17698,20 +17721,20 @@
       {
         "name": "DeepSeek: DeepSeek V4 Flash 0423",
         "recent4w": 53,
-        "total": 107
+        "total": 109
       },
       {
         "name": "DeepSeek: DeepSeek V4 Flash 0731",
-        "recent4w": 18,
-        "total": 29
-      },
-      {
-        "name": "Z.ai: GLM 5.3 Flash",
-        "recent4w": 2,
-        "total": 3
+        "recent4w": 20,
+        "total": 31
       },
       {
         "name": "Tencent: Hy4 preview",
+        "recent4w": 4,
+        "total": 5
+      },
+      {
+        "name": "Z.ai: GLM 5.3 Flash",
         "recent4w": 2,
         "total": 3
       },
@@ -19312,6 +19335,16 @@
         "date": "2026-09-30",
         "series": "H100 固定面板",
         "value": 95.52
+      },
+      {
+        "date": "2026-10-01",
+        "series": "B200 固定面板",
+        "value": 96.93
+      },
+      {
+        "date": "2026-10-01",
+        "series": "H100 固定面板",
+        "value": 96.57
       }
     ],
     "basisH100": [
@@ -20627,11 +20660,26 @@
       },
       {
         "date": "2026-09-30",
+        "series": "Ornn 成交指数",
+        "value": 105.45
+      },
+      {
+        "date": "2026-09-30",
         "series": "SemiAnalysis 综合指数",
         "value": 105.83
       },
       {
         "date": "2026-10-01",
+        "series": "Neocloud 报价中位",
+        "value": 99.53
+      },
+      {
+        "date": "2026-10-01",
+        "series": "SemiAnalysis 综合指数",
+        "value": 106.15
+      },
+      {
+        "date": "2026-10-02",
         "series": "SemiAnalysis 综合指数",
         "value": 105.5
       }
@@ -21509,6 +21557,16 @@
       },
       {
         "date": "2026-09-30",
+        "series": "Neocloud 报价中位",
+        "value": 115.57
+      },
+      {
+        "date": "2026-09-30",
+        "series": "Ornn 成交指数",
+        "value": 138.46
+      },
+      {
+        "date": "2026-10-01",
         "series": "Neocloud 报价中位",
         "value": 115.57
       }
@@ -22826,13 +22884,28 @@
       },
       {
         "date": "2026-09-30",
+        "series": "Ornn 成交指数",
+        "value": 157.39
+      },
+      {
+        "date": "2026-09-30",
         "series": "SemiAnalysis 综合指数",
         "value": 121.04
       },
       {
         "date": "2026-10-01",
+        "series": "Neocloud 报价中位",
+        "value": 105.98
+      },
+      {
+        "date": "2026-10-01",
         "series": "SemiAnalysis 综合指数",
-        "value": 120.83
+        "value": 121.04
+      },
+      {
+        "date": "2026-10-02",
+        "series": "SemiAnalysis 综合指数",
+        "value": 121.46
       }
     ],
     "contractBand": [
@@ -23807,6 +23880,26 @@
         "date": "2026-09-29",
         "series": "openai OTPI",
         "value": 0.482
+      },
+      {
+        "date": "2026-09-30",
+        "series": "anthropic OTPI",
+        "value": 1.44
+      },
+      {
+        "date": "2026-09-30",
+        "series": "deepseek OTPI",
+        "value": 0.0603
+      },
+      {
+        "date": "2026-09-30",
+        "series": "google OTPI",
+        "value": 0.6103
+      },
+      {
+        "date": "2026-09-30",
+        "series": "openai OTPI",
+        "value": 0.414
       }
     ],
     "orderbookDepth": [
@@ -24409,6 +24502,21 @@
         "date": "2026-10-01",
         "series": "vast",
         "value": 31
+      },
+      {
+        "date": "2026-10-02",
+        "series": "gpuperhour",
+        "value": 275
+      },
+      {
+        "date": "2026-10-02",
+        "series": "runpod",
+        "value": 14
+      },
+      {
+        "date": "2026-10-02",
+        "series": "vast",
+        "value": 28
       }
     ]
   },
@@ -24417,10 +24525,10 @@
       "label": "OpenRouter 公开模型排行榜",
       "urls": [
         "https://openrouter.ai/api/frontend/v1/rankings/model-rankings-chart",
-        "sha256:9ca9f29472b2ee90c2df497be9c02b6795d4230555b2653c1d55089aaa622457"
+        "sha256:0996db37b8a4d0da152d144e3b78c8263d7d0c168d1ed57c50b2b4712d2c1322"
       ],
       "url": "https://openrouter.ai/api/frontend/v1/rankings/model-rankings-chart",
-      "sha256": "sha256:9ca9f29472b2ee90c2df497be9c02b6795d4230555b2653c1d55089aaa622457",
+      "sha256": "sha256:0996db37b8a4d0da152d144e3b78c8263d7d0c168d1ed57c50b2b4712d2c1322",
       "definition": "Sum of source-provided named model rows and Others for each OpenRouter chart week."
     },
     "openrouterComposition": {
@@ -24429,7 +24537,7 @@
         "https://openrouter.ai/api/frontend/v1/rankings/model-rankings-chart"
       ],
       "url": "https://openrouter.ai/api/frontend/v1/rankings/model-rankings-chart",
-      "sha256": "sha256:9ca9f29472b2ee90c2df497be9c02b6795d4230555b2653c1d55089aaa622457",
+      "sha256": "sha256:0996db37b8a4d0da152d144e3b78c8263d7d0c168d1ed57c50b2b4712d2c1322",
       "definition": "Each weekly column independently stacks every model disclosed by the public chart plus Others. Segment height is share of that week's total token volume. Columns are not connected, so a model missing from another week is never treated as zero usage."
     },
     "activePrice": {
@@ -24448,7 +24556,7 @@
         "https://raw.githubusercontent.com/adriannutiu/gpu-rental-prices/main/data/latest.json"
       ],
       "url": "https://raw.githubusercontent.com/adriannutiu/gpu-rental-prices/main/data/latest.json",
-      "sha256": "sha256:019611bfb16553890671bbb828ff4c412852e779e9ba0d7496de28037f42e9ed",
+      "sha256": "sha256:00a66e499c6be82abe88f63129b403654ee14999540d0e0e16a513872eb68194",
       "definition": "整租挂牌价（on-demand/secure/community，剔除 spot/serverless）。聚合顺序：先对每家供应商当日多条报价取中位（每家一票），再对各家取中位，因此中位数恒等于一家真实供应商的报价；家数为偶数时中位是两家均值（页面上标 ⚠）。最新参与家数：B200 11 家、H100 23 家、H200 16 家（偶数家，中位为两家均值）。含 min–max 区间与 30 日均线。2026-09-27 起替代 Foundry Signals（口径断点）。"
     },
     "gpuPremium": {
@@ -24457,7 +24565,7 @@
         "https://raw.githubusercontent.com/adriannutiu/gpu-rental-prices/main/data/latest.json"
       ],
       "url": "https://raw.githubusercontent.com/adriannutiu/gpu-rental-prices/main/data/latest.json",
-      "sha256": "sha256:019611bfb16553890671bbb828ff4c412852e779e9ba0d7496de28037f42e9ed",
+      "sha256": "sha256:00a66e499c6be82abe88f63129b403654ee14999540d0e0e16a513872eb68194",
       "definition": "Rolling 30-day median of H200/H100 and B200/H100 daily rental-price ratios. A value above 1 means a premium to H100."
     },
     "scarcity": {
@@ -24469,7 +24577,7 @@
         "https://gpufinder.dev/api/v1/snapshot?gpu=h100"
       ],
       "url": "https://gpufinder.dev/api/v1/availability?gpu=h100",
-      "sha256": "sha256:7d76366a9121969658f573cb5267d025d344e274801e8a01ebb831329fdac8df sha256:2ff6d3a6523104217c1060ca75740cbaf93b4098629c770472cfe98b5173404e sha256:0b3aa03d2d7d516a5c37754a615be9e356822d9c7d3ae7c94c2b690b71b3f4fb sha256:5dfd4d89817bdbc8a1fd0603953f348d06b0c9dd514921cc6c9ad5222fcfc1ef",
+      "sha256": "sha256:e2af5c5b516e13e47f7f11fe998ba9665ae80c2846f36293cde2bec83c3195a9 sha256:584734b347569b7accea00183604f5fdeefacc7b38b61a0a2dda2bea199f95f7 sha256:dab7e9cb74720c5b612c8ee9e4c80941653b47100bc534346da22da8500fac15 sha256:3c7c58df4b1b7823c5a01de9bbdffdfc37a27b1b18fc0d8e49c323b15ed85e77",
       "definition": "Σavailable/Σtotal 全市场可租卡占比（7 天滚动窗口，每日快照向前积累）。连续稀缺度指标，替代 Foundry 的二元可用率。"
     },
     "listedGap": {
@@ -24481,7 +24589,7 @@
         "https://gpufinder.dev/api/v1/snapshot?gpu=h100"
       ],
       "url": "https://gpufinder.dev/api/v1/availability?gpu=h100",
-      "sha256": "sha256:7d76366a9121969658f573cb5267d025d344e274801e8a01ebb831329fdac8df sha256:2ff6d3a6523104217c1060ca75740cbaf93b4098629c770472cfe98b5173404e sha256:0b3aa03d2d7d516a5c37754a615be9e356822d9c7d3ae7c94c2b690b71b3f4fb sha256:5dfd4d89817bdbc8a1fd0603953f348d06b0c9dd514921cc6c9ad5222fcfc1ef",
+      "sha256": "sha256:e2af5c5b516e13e47f7f11fe998ba9665ae80c2846f36293cde2bec83c3195a9 sha256:584734b347569b7accea00183604f5fdeefacc7b38b61a0a2dda2bea199f95f7 sha256:dab7e9cb74720c5b612c8ee9e4c80941653b47100bc534346da22da8500fac15 sha256:3c7c58df4b1b7823c5a01de9bbdffdfc37a27b1b18fc0d8e49c323b15ed85e77",
       "definition": "最低在库价 ÷ 最低报价 − 1。衡量‘报价虚低程度’：市场越紧，最低报价越可能是没有库存的虚价，该差值越大。"
     },
     "breadth": {
@@ -24493,7 +24601,7 @@
         "https://gpufinder.dev/api/v1/snapshot?gpu=h100"
       ],
       "url": "https://gpufinder.dev/api/v1/availability?gpu=h100",
-      "sha256": "sha256:7d76366a9121969658f573cb5267d025d344e274801e8a01ebb831329fdac8df sha256:2ff6d3a6523104217c1060ca75740cbaf93b4098629c770472cfe98b5173404e sha256:0b3aa03d2d7d516a5c37754a615be9e356822d9c7d3ae7c94c2b690b71b3f4fb sha256:5dfd4d89817bdbc8a1fd0603953f348d06b0c9dd514921cc6c9ad5222fcfc1ef",
+      "sha256": "sha256:e2af5c5b516e13e47f7f11fe998ba9665ae80c2846f36293cde2bec83c3195a9 sha256:584734b347569b7accea00183604f5fdeefacc7b38b61a0a2dda2bea199f95f7 sha256:dab7e9cb74720c5b612c8ee9e4c80941653b47100bc534346da22da8500fac15 sha256:3c7c58df4b1b7823c5a01de9bbdffdfc37a27b1b18fc0d8e49c323b15ed85e77",
       "definition": "在架供应商数量随时间变化：价格上行+家数增加=供给在响应；价格上行+家数减少=实质性紧缩。"
     },
     "capex": {
@@ -24521,7 +24629,7 @@
         "https://www.alibabagroup.com/en-US/document-1930116148192346112"
       ],
       "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001341439.json",
-      "definition": "季度与事件频率观测保留来源单位、不插值。共 48 个一手披露链接（SEC EDGAR / 投资者关系页），表中每行均可回溯。缓存覆盖：AMZN 最新 2026-06-30（滞后 93 天）、GOOGL 最新 2026-07-22（滞后 71 天）、META 最新 2026-07-29（滞后 64 天）、MSFT 最新 2026-06-30（滞后 93 天）、ORCL 最新 2026-08-31（滞后 31 天）；本期 5 家上游失败，全部来自缓存。"
+      "definition": "季度与事件频率观测保留来源单位、不插值。共 48 个一手披露链接（SEC EDGAR / 投资者关系页），表中每行均可回溯。缓存覆盖：AMZN 最新 2026-06-30（滞后 94 天）、GOOGL 最新 2026-07-22（滞后 72 天）、META 最新 2026-07-29（滞后 65 天）、MSFT 最新 2026-06-30（滞后 94 天）、ORCL 最新 2026-08-31（滞后 32 天）；本期 5 家上游失败，全部来自缓存。"
     },
     "basisH100": {
       "urls": [
@@ -24530,7 +24638,7 @@
         "https://raw.githubusercontent.com/adriannutiu/gpu-rental-prices/main/data/latest.json"
       ],
       "url": "https://gpu-index.semianalysis.com/api/public-data",
-      "sha256": "sha256:2880c05ef104bc9baa5f651d357e151f04d9eb8455e4e46b8ccfc3a46f0eb4ea sha256:f0686eb2803a20820437007ea59108a063a9d57934505c8c556b7119afa533fe sha256:019611bfb16553890671bbb828ff4c412852e779e9ba0d7496de28037f42e9ed",
+      "sha256": "sha256:c22bd22abf3a1d2eea44189ef9dcd1c36996b13fd1241d25d3a1d24d6d317e1d sha256:124c2fce0f100d15251535a15dbc36a93b8cd425024a15cba2fc363d17f2e468 sha256:00a66e499c6be82abe88f63129b403654ee14999540d0e0e16a513872eb68194",
       "label": "H100 三源价格对照",
       "definition": "同一 GPU 家族下三种口径并列：供应商报价中位、综合现货-合约指数、成交加权指数。口径不同，仅作交叉对照，不构成同质序列。"
     },
@@ -24541,7 +24649,7 @@
         "https://raw.githubusercontent.com/adriannutiu/gpu-rental-prices/main/data/latest.json"
       ],
       "url": "https://gpu-index.semianalysis.com/api/public-data",
-      "sha256": "sha256:2880c05ef104bc9baa5f651d357e151f04d9eb8455e4e46b8ccfc3a46f0eb4ea sha256:f0686eb2803a20820437007ea59108a063a9d57934505c8c556b7119afa533fe sha256:019611bfb16553890671bbb828ff4c412852e779e9ba0d7496de28037f42e9ed",
+      "sha256": "sha256:c22bd22abf3a1d2eea44189ef9dcd1c36996b13fd1241d25d3a1d24d6d317e1d sha256:124c2fce0f100d15251535a15dbc36a93b8cd425024a15cba2fc363d17f2e468 sha256:00a66e499c6be82abe88f63129b403654ee14999540d0e0e16a513872eb68194",
       "label": "H200 两源价格对照（SemiAnalysis 无公开 H200 指数）",
       "definition": "口径同上（H200 无 SemiAnalysis 公开指数，为两源对照）。Neocloud 与 Ornn 可能方向分歧，分歧本身是证据而非噪声。"
     },
@@ -24552,7 +24660,7 @@
         "https://raw.githubusercontent.com/adriannutiu/gpu-rental-prices/main/data/latest.json"
       ],
       "url": "https://gpu-index.semianalysis.com/api/public-data",
-      "sha256": "sha256:2880c05ef104bc9baa5f651d357e151f04d9eb8455e4e46b8ccfc3a46f0eb4ea sha256:f0686eb2803a20820437007ea59108a063a9d57934505c8c556b7119afa533fe sha256:019611bfb16553890671bbb828ff4c412852e779e9ba0d7496de28037f42e9ed",
+      "sha256": "sha256:c22bd22abf3a1d2eea44189ef9dcd1c36996b13fd1241d25d3a1d24d6d317e1d sha256:124c2fce0f100d15251535a15dbc36a93b8cd425024a15cba2fc363d17f2e468 sha256:00a66e499c6be82abe88f63129b403654ee14999540d0e0e16a513872eb68194",
       "label": "B200 三源价格对照",
       "definition": "口径同上。"
     },
@@ -24561,7 +24669,7 @@
         "https://gpu-index.semianalysis.com/api/public-data"
       ],
       "url": "https://gpu-index.semianalysis.com/api/public-data",
-      "sha256": "sha256:2880c05ef104bc9baa5f651d357e151f04d9eb8455e4e46b8ccfc3a46f0eb4ea",
+      "sha256": "sha256:c22bd22abf3a1d2eea44189ef9dcd1c36996b13fd1241d25d3a1d24d6d317e1d",
       "label": "SemiAnalysis H100 1Y 合约调查区间",
       "definition": "月度调查的25-75分位合约价区间，半年期阶梯展示。许可：公开页引用需署名。"
     },
@@ -24572,7 +24680,7 @@
         "https://api.runpod.io/graphql"
       ],
       "url": "https://api.gpuindexes.com/api/offers",
-      "sha256": "sha256:dd4f0ad59bd72959887a4b9770fed3368e4f1d15ae95499deab0bdddce589635 sha256:e83a85c0ea29cc5e456433a80b82da5a3141b91863251470f64041f96d540633 sha256:6be215b9df190904687c76367077ebef868f8388cfeb655d4b3cda9c8317c5c3",
+      "sha256": "sha256:91986eae01e64507503795744445c978218753dc360d3d9176692770193e07da sha256:c9da203681d2f1e4d55fc7198d62778ebeaa85fe2f888ab35def35782ecb00cf sha256:1da7ff026fb63db831407e94f09fb24bf351284d666e0dae3eefe96e6e819ff1",
       "label": "GPU 订单簿逐源观测",
       "definition": "gpuperhour/vast 为逐条报价 offers、runpod 为型号挂牌 types，单位语义不同故分序列展示不合并。时点观测，<10 有效日只画点不连线。"
     },
@@ -24581,7 +24689,7 @@
         "https://index.ornn.com/api/otpi"
       ],
       "url": "https://index.ornn.com/api/otpi",
-      "sha256": "sha256:8936178e98fc5eb0c40443087a541cb329eb33b6820b2d054aa462d530c9325d",
+      "sha256": "sha256:fd67ff2b805123b0a9b0a22ee5ca6a69ec506f0356dc5c2dca812e9110ece632",
       "label": "Ornn OTPI 已实现 token 价",
       "definition": "按 lab 的成交加权 token 实现价（USD/Mtok），免费层滚动窗口每日快照累积。许可：Ornn 免费层署名引用。"
     },
@@ -24590,7 +24698,7 @@
         "https://openrouter.ai/api/frontend/v1/rankings/model-rankings-chart"
       ],
       "url": "https://openrouter.ai/api/frontend/v1/rankings/model-rankings-chart",
-      "sha256": "sha256:9ca9f29472b2ee90c2df497be9c02b6795d4230555b2653c1d55089aaa622457",
+      "sha256": "sha256:0996db37b8a4d0da152d144e3b78c8263d7d0c168d1ed57c50b2b4712d2c1322",
       "label": "OpenRouter 公开周榜（Top-5 派生）",
       "definition": "每周公开榜单里最新 Top-5 模型各自的用量占比走势。看的是排名与份额的稳定性：曲线频繁交叉=头部不稳。"
     },
@@ -24608,7 +24716,7 @@
         "https://raw.githubusercontent.com/adriannutiu/gpu-rental-prices/main/data/latest.json"
       ],
       "url": "https://raw.githubusercontent.com/adriannutiu/gpu-rental-prices/main/data/latest.json",
-      "sha256": "sha256:019611bfb16553890671bbb828ff4c412852e779e9ba0d7496de28037f42e9ed",
+      "sha256": "sha256:00a66e499c6be82abe88f63129b403654ee14999540d0e0e16a513872eb68194",
       "label": "固定供应商面板指数",
       "definition": "从 34 家供应商数据集取窗口内持续在架成员（覆盖率≥90%），按非中断性租赁价计算成员均值，起点=100；成员当日缺价即断点。消除供应商构成漂移，是供给价格的首选趋势证据。橙色虚线标注 = 固定成员里当日环比跳变最大的那一家（如「Together AI −50%」，同规格单家调价，非市场整体事件）；台阶来自成员个体动作，判断趋势请看均线。 当前成员：H100（15 家）：AWS、Azure、CoreWeave、Crusoe、DataCrunch、HyperStack、JarvisLabs、Lambda、Massed Compute、Nebius、OVH、RunPod、Spheron、Together AI、Voltage Park；B200（7 家）：CoreWeave、DataCrunch、HyperStack、Lambda、Nebius、RunPod、Together AI"
     }
