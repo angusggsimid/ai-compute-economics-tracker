@@ -1160,6 +1160,16 @@ SOURCE_IMPACT = {
 }
 
 
+def _quality_warning_count(value: Any) -> int:
+    """qualityWarnings 有两种形态：int（失败家数，如 sec_capex）与 list（失败明细，如 FRED/GPUFinder）。"""
+    if isinstance(value, list):
+        return len(value)
+    try:
+        return int(value or 0)
+    except (TypeError, ValueError):
+        return 0
+
+
 def _fresh_badge(snapshot: dict[str, Any]) -> str:
     try:
         status = json.loads((ROOT / "tracker_data" / "deploy_refresh_status.json").read_text(encoding="utf-8"))
@@ -1174,23 +1184,31 @@ def _fresh_badge(snapshot: dict[str, Any]) -> str:
     for src in sorted(sources, key=lambda x: (x.get("status") in ("fresh", "current_for_frequency") and not x.get("qualityWarnings"), str(x.get("source")))):
         name = str(src.get("source"))
         st = str(src.get("status"))
-        degraded_n = int(src.get("qualityWarnings") or 0)
+        degraded_n = _quality_warning_count(src.get("qualityWarnings"))
         # 上游部分失败时不得显示绿点：frequency 达标 ≠ 数据是本期抓的
         ready = st in ("fresh", "current_for_frequency") and not degraded_n
         dot_cls = "ok" if ready else ("warn" if degraded_n else ("stale" if st == "stale_last_good" else "bad"))
         impact = SOURCE_IMPACT.get(name, "")
         note = ""
         if degraded_n:
-            # 披露缓存覆盖：最旧一条滞后多少天
-            cov = src.get("cacheCoverage") or {}
-            ages = [int(v.get("ageDays") or 0) for v in cov.values() if isinstance(v, dict)]
-            age_txt = f"，最旧一条滞后 {max(ages)} 天" if ages else ""
-            note = f"（{degraded_n} 家上游失败，本次全部来自缓存{age_txt}）"
+            if isinstance(src.get("qualityWarnings"), list):
+                # 明细列表型（积累型信息源）：条数即失败上游数，无缓存回放语义
+                note = f"（{degraded_n} 个上游失败）"
+            else:
+                # int 型（sec_capex）：披露缓存覆盖，最旧一条滞后多少天
+                cov = src.get("cacheCoverage") or {}
+                ages = [int(v.get("ageDays") or 0) for v in cov.values() if isinstance(v, dict)]
+                age_txt = f"，最旧一条滞后 {max(ages)} 天" if ages else ""
+                note = f"（{degraded_n} 家上游失败，本次全部来自缓存{age_txt}）"
         elif not ready:
             if st == "stale_last_good":
                 note = f"（滞后 {src.get('staleDays', '?')} 天，宽限内）"
             elif st == "failed_using_last_good":
-                note = "（超期，阻塞发布）"
+                # 非阻塞源超期 ≠ 阻塞发布：按状态行里的降级标记如实披露
+                if src.get("publishable") is True and not src.get("blocking"):
+                    note = "（超期，非阻塞源）"
+                else:
+                    note = "（超期，阻塞发布）"
             elif st == "partial":
                 note = "（部分成功）"
             else:
@@ -1199,7 +1217,7 @@ def _fresh_badge(snapshot: dict[str, Any]) -> str:
             f'<div class="fresh-row"><span class="fresh-dot {dot_cls}"></span>'
             f'<b>{name}</b> {st}{note}<span class="fresh-impact">{impact}</span></div>'
         )
-    degraded_total = sum(1 for x in sources if int(x.get("qualityWarnings") or 0))
+    degraded_total = sum(1 for x in sources if _quality_warning_count(x.get("qualityWarnings")))
     tone = "ok" if (healthy == total and status.get("publishable") and not degraded_total) else "warn"
     ready_label = f"{healthy - degraded_total}/{total} 源就绪"
     return (

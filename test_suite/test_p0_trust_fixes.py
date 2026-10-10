@@ -203,6 +203,67 @@ def test_badge_downgrades_source_with_upstream_failures(monkeypatch, tmp_path):
     assert "1/2 源就绪" in html
 
 
+def test_badge_handles_list_quality_warnings(monkeypatch, tmp_path):
+    """积累型信息源上报的是失败明细列表（非 int）：非空时必须降级并计数，而不是让发布构建崩溃。"""
+    status = {
+        "generatedAt": "2026-10-10T06:00:00Z",
+        "publishable": True,
+        "sources": [
+            {
+                "source": "fred_cost_anchors",
+                "status": "fresh",
+                "publishable": True,
+                "blocking": False,
+                "qualityWarnings": [
+                    {"source": "DGS10", "status": "failed", "message": "HTTP 503"},
+                    {"source": "DEXCHUS", "status": "failed", "message": "timeout"},
+                ],
+            },
+            {"source": "openrouter_usage", "status": "fresh", "qualityWarnings": []},
+        ],
+    }
+    path = tmp_path / "tracker_data" / "deploy_refresh_status.json"
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(status), encoding="utf-8")
+    monkeypatch.setattr("html_dashboard.build_time_series_dashboard.ROOT", tmp_path)
+
+    html = _fresh_badge({})
+
+    rows = [r for r in html.split('<div class="fresh-row">')[1:]]
+    fred_row = next((r for r in rows if "fred_cost_anchors" in r), None)
+    assert fred_row, "fred_cost_anchors 行缺失"
+    assert 'class="fresh-dot warn"' in fred_row, "上游失败明细非空却给了非 warn 色调"
+    assert "2 个上游失败" in fred_row
+    # 空列表形态是常态，不得被当成降级
+    ok_row = next((r for r in rows if "openrouter_usage" in r), "")
+    assert 'class="fresh-dot ok"' in ok_row
+    assert "1/2 源就绪" in html
+
+
+def test_badge_nonblocking_source_not_labeled_blocking(monkeypatch, tmp_path):
+    """非阻塞信息源（如 foundry_signals）超期时不得标成"阻塞发布"。"""
+    status = {
+        "generatedAt": "2026-10-10T06:00:00Z",
+        "publishable": True,
+        "sources": [
+            {"source": "foundry_signals", "status": "failed_using_last_good", "publishable": True, "blocking": False},
+            {"source": "openrouter_usage", "status": "fresh"},
+        ],
+    }
+    path = tmp_path / "tracker_data" / "deploy_refresh_status.json"
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(status), encoding="utf-8")
+    monkeypatch.setattr("html_dashboard.build_time_series_dashboard.ROOT", tmp_path)
+
+    html = _fresh_badge({})
+
+    rows = [r for r in html.split('<div class="fresh-row">')[1:]]
+    row = next((r for r in rows if "foundry_signals" in r), None)
+    assert row, "foundry_signals 行缺失"
+    assert "非阻塞源" in row
+    assert "阻塞发布" not in row
+
+
 def test_badge_stays_ok_when_no_degradation(monkeypatch, tmp_path):
     status = {
         "generatedAt": "2026-09-27T13:59:06Z",
