@@ -1,5 +1,10 @@
 # CONTEXT
 
+## 2026-10-10 GPU Finder 鉴权迁移：采集改到期制周更
+
+- 上游 10-09 11:05 UTC 关闭无鉴权访问（全端点 401）；免费档 60 次/月 vs 原日更 ~300 次/月 → 采集改**到期制周更**（距上次成功 ≥6.5 天一轮，≈46 次/月；7 天滚动窗口内不丢日）；`GPUFINDER_API_KEY`（GitHub secret，Bearer 头）已支持，未配置时匿名请求并如实降级。
+- 断供日输出 `current_for_frequency` 跳过（不触网、文件不动）；抓取失败不再清空来源 URL/sha 元数据（`carriedFrom` 标注），等待用户注册配 key。当日事故链条与修复详见 `docs/FIX_LOG_2026-10-10.md`。
+
 ## 2026-09-27 引擎 Supply 时钟切至 neocloud
 
 - 页面与引擎口径统一（非中断性租赁价）；时钟结论保持 Confirmed·intensifying，证据表新增 neocloud 面板（H100/H200/B200 +5.7~6.9% 90D）与成交层对照（ornn B200 +40%）——挂牌 vs 成交分层进入引擎可见。
