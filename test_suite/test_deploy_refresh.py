@@ -116,6 +116,37 @@ def test_deploy_validator_accepts_current_quarterly_capex():
     assert validate(payload, date(2026, 7, 13)) == []
 
 
+def test_deploy_validator_accepts_weekly_cadence_skip_for_gpufinder():
+    """gpufinder 到期制周更后：跳过日的 current_for_frequency 不得被部署门当成未知状态拦下。"""
+    payload = {
+        "generatedAt": "2026-10-11T05:30:00Z",
+        "status": "ready",
+        "publishable": True,
+        "sources": [
+            {"source": name, "status": "fresh", "publishable": True}
+            for name in ("openrouter_usage", "foundry_signals", "openrouter_active_prices")
+        ]
+        + [
+            {
+                "source": "sec_capex",
+                "status": "current_for_frequency",
+                "publishable": True,
+                "cacheCoverage": {"MSFT": {"current": True}},
+            },
+            {"source": "gpu_orderbook", "status": "fresh", "publishable": True},
+            {"source": "reference_indices", "status": "fresh", "publishable": True},
+            {"source": "neocloud_provider_prices", "status": "fresh", "publishable": True},
+            {"source": "epoch_supply", "status": "fresh", "publishable": True},
+            {"source": "fred_cost_anchors", "status": "fresh", "publishable": True},
+            {"source": "gpu_markets_fixings", "status": "fresh", "publishable": True},
+            {"source": "throughput_benchmarks", "status": "fresh", "publishable": True},
+            {"source": "gpufinder_market", "status": "current_for_frequency", "publishable": True},
+        ],
+    }
+
+    assert validate(payload, date(2026, 10, 11)) == []
+
+
 def test_deploy_validator_rejects_false_freshness():
     payload = {
         "generatedAt": "2026-07-13T08:00:00Z",

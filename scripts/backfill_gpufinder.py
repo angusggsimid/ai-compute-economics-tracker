@@ -1,7 +1,13 @@
 #!/usr/bin/env python3
 """GPU Finder (gpufinder.dev) 市场采集：价格广度 × 可用率 × 报价-在库价差。
 
-免鉴权公开 API。为价格层提供第 6 个独立源，并解锁三类新指标：
+上游 2026-10-09 起要求 Bearer API Key（免费额度 60 次/月）。为守住额度：
+- 支持 GPUFINDER_API_KEY 环境变量（未配置时匿名请求，401 会被如实上报）；
+- 采集改为**到期制周更**：距上次成功 ≥ SWEEP_INTERVAL_DAYS 天才全量扫一轮
+  （一轮约 10 次调用 ≈ 46 次/月，留出重试余量）；其余日输出
+  current_for_frequency 跳过。上游 /availability 是 7 天滚动窗口，间隔 <7 天不丢日。
+
+为价格层提供第 6 个独立源，并解锁三类新指标：
 1. 市场可用率 = Σavailable/Σtotal（稀缺度连续指标，替代 Foundry 的二元可用率）
 2. 报价-在库价差 = cheapestAvailable / cheapestListed - 1（"报价虚低程度"）
 3. 供应商/实例数广度（市场参与度）+ 月度历史回补
@@ -13,6 +19,8 @@ from __future__ import annotations
 
 import hashlib
 import json
+import os
+import sys
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -25,13 +33,33 @@ BASE = "https://gpufinder.dev/api/v1"
 USER_AGENT = "AIComputeEconomicsTracker/1.0"
 ATTRIBUTION = "Data by GPU Finder (gpufinder.dev), public read-only API; attribution required."
 FRONTIER = ("H100", "H200", "B200")
+# 免费额度 60 次/月：一轮全量 ≈ 10 次调用，6.5 天间隔 ≈ 4.6 轮/月 ≈ 46 次，留重试余量
+SWEEP_INTERVAL_DAYS = 6.5
+
+
+def _sweep_due(last_success_at: str | None, now: datetime, interval_days: float = SWEEP_INTERVAL_DAYS) -> bool:
+    """到期制：距上次成功抓取达到间隔才允许再扫一轮；从未成功过则视为到期。"""
+    if not last_success_at:
+        return True
+    try:
+        last = datetime.fromisoformat(str(last_success_at).replace("Z", "+00:00"))
+    except ValueError:
+        return True
+    if last.tzinfo is None:
+        last = last.replace(tzinfo=timezone.utc)
+    return (now - last).total_seconds() >= interval_days * 86400
 
 
 _FETCH_LOG: dict[str, dict[str, Any]] = {}
 
 
 def _get(path: str) -> dict[str, Any]:
-    request = Request(f"{BASE}{path}", headers={"User-Agent": USER_AGENT})
+    headers = {"User-Agent": USER_AGENT}
+    api_key = os.environ.get("GPUFINDER_API_KEY", "").strip()
+    if api_key:
+        # 密钥只进请求头，绝不落入 URL/日志
+        headers["Authorization"] = f"Bearer {api_key}"
+    request = Request(f"{BASE}{path}", headers=headers)
     with urlopen(request, timeout=30) as response:
         body = response.read()
     payload = json.loads(body)
@@ -156,21 +184,64 @@ def _merge_daily(prev_daily: list[dict[str, Any]], fresh_daily: list[dict[str, A
     return list(by_key.values())
 
 
-def _load_previous(path: Path) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
+def _merge_sources(prev_sources: dict[str, Any], fresh_sources: dict[str, Any], prev_fetched_at: str | None) -> dict[str, Any]:
+    """来源元数据按端点合并：本期抓到的覆盖同键历史。
+
+    断供时（本期全失败）必须沿用上一次成功抓取的 URL/sha——面板仍展示累积数据，
+    来源链接不能因此消失（发布门会按"来源缺真实 URL"拦截）。carriedFrom 记录该条目
+    实际来自哪一轮抓取，避免把历史抓取误读成本轮成功。
+    """
+    merged: dict[str, Any] = {}
+    for key, entry in (prev_sources or {}).items():
+        if not isinstance(entry, dict):
+            continue
+        carried = dict(entry)
+        if prev_fetched_at and "carriedFrom" not in carried:
+            carried["carriedFrom"] = prev_fetched_at
+        merged[key] = carried
+    for key, entry in (fresh_sources or {}).items():
+        merged[key] = entry
+    return merged
+
+
+def _load_previous(path: Path) -> tuple[list[dict[str, Any]], list[dict[str, Any]], dict[str, Any]]:
     if not path.exists():
-        return [], []
+        return [], [], {}
     try:
         payload = json.loads(path.read_text(encoding="utf-8"))
         # 写入键是 "rows"；只读 "daily" 会让每天都把之前累积的行丢掉，
         # 累积永远停在 1 天（曾导致稀缺度/广度图长期卡在"已积累 1/10 天"）。
-        return payload.get("rows") or payload.get("daily") or [], payload.get("monthlyHistory") or []
+        meta = {
+            "sources": payload.get("sources") or {},
+            "fetchedAt": payload.get("fetchedAt"),
+            # 旧格式没有 lastSuccessAt：仅当上一轮确实成功时退回 fetchedAt 作为最后成功时间
+            "lastSuccessAt": payload.get("lastSuccessAt")
+            or (payload.get("fetchedAt") if payload.get("refreshStatus") == "fresh" else None),
+        }
+        return payload.get("rows") or payload.get("daily") or [], payload.get("monthlyHistory") or [], meta
     except (json.JSONDecodeError, ValueError) as exc:
         raise SystemExit(f"gpufinder_market.json 缓存损坏（{exc}）；拒绝覆盖累积历史。")
 
 
 def main() -> int:
-    fetched_at = datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
+    now = datetime.now(timezone.utc)
+    fetched_at = now.replace(microsecond=0).isoformat().replace("+00:00", "Z")
     date_iso = fetched_at[:10]
+    prev_daily, prev_monthly, prev_meta = _load_previous(OUTPUT_PATH)
+
+    # 到期制周更：未到采集窗口时不发请求、不动文件（守住免费额度）；
+    # 手动配置 key 后想立即验证可用 --force 绕过。
+    if "--force" not in sys.argv[1:] and not _sweep_due(prev_meta.get("lastSuccessAt"), now):
+        print(json.dumps({
+            "output": str(OUTPUT_PATH),
+            "refreshStatus": "current_for_frequency",
+            "publishable": True,
+            "skipped": "sweep-not-due",
+            "lastSuccessAt": prev_meta.get("lastSuccessAt"),
+            "blocking": False,
+        }, ensure_ascii=False))
+        return 0
+
     quality: list[dict[str, str]] = []
     try:
         fresh_daily, fresh_monthly = collect(date_iso)
@@ -180,19 +251,23 @@ def main() -> int:
         status = "failed"
         quality.append({"source": "gpufinder", "status": "failed", "message": str(exc)})
 
-    prev_daily, prev_monthly = _load_previous(OUTPUT_PATH)
     daily = _merge_daily(prev_daily, fresh_daily)
     monthly_map = {(r["month"], r["gpu"], str(r.get("provider"))): r for r in prev_monthly}
     for r in fresh_monthly:
         monthly_map[(r["month"], r["gpu"], str(r.get("provider")))] = r
     monthly = sorted(monthly_map.values(), key=lambda r: (r["gpu"], r["month"], str(r.get("provider"))))
 
+    # 断供时沿用上一次成功的时间与来源元数据（面板仍展示累积数据，URL/sha 不能丢）
+    last_success_at = fetched_at if status == "fresh" else prev_meta.get("lastSuccessAt") or prev_meta.get("fetchedAt")
+    sources = _merge_sources(prev_meta.get("sources") or {}, _FETCH_LOG, prev_meta.get("fetchedAt"))
+
     payload = {
         "fetchedAt": fetched_at,
+        "lastSuccessAt": last_success_at,
         "refreshStatus": status,
         "publishable": True,
         "attribution": ATTRIBUTION,
-        "sources": dict(sorted(_FETCH_LOG.items())),
+        "sources": dict(sorted(sources.items())),
         "rows": sorted(daily, key=lambda r: (r["date"], r["gpu"])),
         "monthlyHistory": monthly,
         "quality": quality,
@@ -200,6 +275,7 @@ def main() -> int:
         "notes": [
             "availabilityPct = Σavailable/Σtotal（最新一日，7 天滚动窗口，向前积累）。",
             "listedAvailableGapPct = cheapestAvailable/cheapestListed - 1，衡量报价虚低程度。",
+            f"采集为到期制周更：距上次成功 ≥{SWEEP_INTERVAL_DAYS} 天才全量扫（免费额度 60 次/月）；其余日跳过。",
         ],
     }
     OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)

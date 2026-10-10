@@ -28,6 +28,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SEC_USER_AGENT: "AI-Compute-Economics-Tracker/1.0 contact: ${{ github.repository_owner }}@users.noreply.github.com"
+          # GPU Finder 2026-10-09 起需 Bearer key；未配置时为空 → 采集脚本按匿名请求处理并如实降级
+          GPUFINDER_API_KEY: ${{ secrets.GPUFINDER_API_KEY }}
         run: python scripts/refresh_and_build.py
       - name: Validate deploy freshness
         run: python scripts/validate_deploy_refresh.py

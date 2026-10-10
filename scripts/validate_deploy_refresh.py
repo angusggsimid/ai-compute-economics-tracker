@@ -27,7 +27,7 @@ EXPECTED_SOURCES = {
 }
 CAPEX_READY_STATUSES = {"fresh", "current_for_frequency"}
 INFORMATIONAL_SOURCES = {"gpu_orderbook", "reference_indices", "epoch_supply", "fred_cost_anchors", "gpu_markets_fixings", "throughput_benchmarks", "gpufinder_market", "foundry_signals"}
-INFORMATIONAL_STATUSES = {"fresh", "partial", "failed", "stale_last_good", "failed_using_last_good"}
+INFORMATIONAL_STATUSES = {"fresh", "partial", "failed", "stale_last_good", "failed_using_last_good", "current_for_frequency"}
 
 
 def validate(payload: dict, expected_date: date) -> list[str]:
@@ -65,7 +65,7 @@ def validate(payload: dict, expected_date: date) -> list[str]:
     for name in sorted(INFORMATIONAL_SOURCES):
         status = sources[name].get("status")
         if status not in INFORMATIONAL_STATUSES:
-            errors.append(f"{name} 状态未知（应为 fresh/partial/failed 之一）")
+            errors.append(f"{name} 状态未知（应为 fresh/partial/failed/current_for_frequency 之一）")
         elif status == "failed":
             print(
                 json.dumps(

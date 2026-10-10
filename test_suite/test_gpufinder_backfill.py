@@ -15,7 +15,10 @@ from scripts.backfill_gpufinder import (  # noqa: E402
     _availability_series,
     _load_previous,
     _merge_daily,
+    _merge_sources,
+    _sweep_due,
 )
+from datetime import datetime, timezone  # noqa: E402
 
 
 def _availability_payload(days: list[str]) -> dict:
@@ -55,10 +58,44 @@ def test_load_previous_reads_rows_key(tmp_path):
     path.write_text(json.dumps({
         "rows": [{"date": "2026-09-22", "gpu": "H100", "availabilityPct": 20.0}],
         "monthlyHistory": [{"month": "2026-08", "gpu": "H100"}],
+        "fetchedAt": "2026-10-09T06:00:00Z",
+        "refreshStatus": "fresh",
+        "sources": {"/availability": {"url": "https://gpufinder.dev/api/v1/availability", "sha256": "sha256:abc"}},
     }), encoding="utf-8")
-    daily, monthly = _load_previous(path)
+    daily, monthly, meta = _load_previous(path)
     assert len(daily) == 1 and daily[0]["date"] == "2026-09-22", "累积行没有被读回来"
     assert len(monthly) == 1
+    assert meta["sources"]["/availability"]["url"].startswith("https://gpufinder.dev/")
+    assert meta["fetchedAt"] == "2026-10-09T06:00:00Z"
+    # 旧格式没有 lastSuccessAt：上一轮 refreshStatus 为 fresh 时退回 fetchedAt（避免首轮误判为"从未成功"）
+    assert meta["lastSuccessAt"] == "2026-10-09T06:00:00Z"
+
+
+def test_merge_sources_keeps_last_good_urls_on_total_failure():
+    """断供时必须沿用上次成功抓取的 URL/sha：面板仍展示累积数据，来源链接不能消失
+    （否则发布门会按"来源缺真实 URL"拦截）。"""
+    prev = {"/availability": {"url": "https://gpufinder.dev/api/v1/availability?gpu=h100", "sha256": "sha256:abc"}}
+    merged = _merge_sources(prev, {}, "2026-10-09T06:00:00Z")
+    assert merged["/availability"]["url"].startswith("https://gpufinder.dev/")
+    assert merged["/availability"]["sha256"] == "sha256:abc"
+    assert merged["/availability"]["carriedFrom"] == "2026-10-09T06:00:00Z", "沿用条目必须标注实际抓取时间"
+
+
+def test_merge_sources_fresh_entry_wins_and_drops_marker():
+    prev = {"/snapshot": {"url": "https://old.example", "sha256": "sha256:old", "carriedFrom": "2026-10-01T00:00:00Z"}}
+    fresh = {"/snapshot": {"url": "https://gpufinder.dev/api/v1/snapshot?gpu=h100", "sha256": "sha256:new"}}
+    merged = _merge_sources(prev, fresh, "2026-10-09T06:00:00Z")
+    assert merged["/snapshot"]["sha256"] == "sha256:new"
+    assert "carriedFrom" not in merged["/snapshot"], "本轮成功抓取的条目不得带沿用标记"
+
+
+def test_sweep_due_cadence_for_free_tier():
+    """到期制周更：距上次成功 <6.5 天跳过（守住 60 次/月免费额度），≥6.5 天才放行。"""
+    now = datetime(2026, 10, 16, 6, 0, tzinfo=timezone.utc)
+    assert _sweep_due(None, now), "从未成功过必须视为到期"
+    assert not _sweep_due("2026-10-14T06:00:00Z", now), "2 天前成功过不应再扫"
+    assert _sweep_due("2026-10-09T06:00:00Z", now), "7 天前成功必须到期"
+    assert _sweep_due("坏了的时间戳", now), "解析失败按到期处理，宁可多试一次"
 
 
 def test_merge_daily_accumulates_across_runs_without_duplicates():
@@ -90,3 +127,5 @@ def test_committed_artifact_shape_is_sane():
     assert payload["rows"], "rows 不应为空"
     keys = [(r["date"], r["gpu"]) for r in payload["rows"]]
     assert len(keys) == len(set(keys)), "存在重复的 (date, gpu) 行"
+    # 发布门要求每个展示面板都有真实来源 URL：断供期间元数据也必须保留，不得整体清空
+    assert payload.get("sources"), "来源元数据为空：断供时必须沿用上次成功抓取的 URL/sha（会被发布门拦截）"
