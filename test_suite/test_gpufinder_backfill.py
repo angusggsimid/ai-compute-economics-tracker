@@ -12,7 +12,9 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
 from scripts.backfill_gpufinder import (  # noqa: E402
+    TRACK_DUE_DAYS,
     _availability_series,
+    _due_tracks,
     _load_previous,
     _merge_daily,
     _merge_sources,
@@ -118,6 +120,47 @@ def test_merge_daily_keeps_history_when_today_is_empty():
     """上游今天全失败（fresh 为空）时，历史绝不能丢。"""
     prev = [{"date": "2026-09-27", "gpu": "H100", "availabilityPct": 21.9}]
     assert _merge_daily(prev, []) == prev
+
+
+def test_merge_daily_preserves_fields_against_window_rewrite():
+    """滚动窗口回写的行只带可用率字段：字段级合并必须保住该日此前抓到的价格/家数字段。
+
+    历史缺陷：整行覆盖让 gap/广度每个提交里都只剩最后一天（2026-10-11 复盘确认）。
+    """
+    prev = [{
+        "date": "2026-10-09", "gpu": "H100",
+        "cheapestListedPrice": 2.0, "cheapestAvailablePrice": 2.2,
+        "listedAvailableGapPct": 10.0, "providerCount": 23,
+        "availabilityPct": 13.0, "availabilityByProvider": {"A": [1, 4]},
+    }]
+    fresh = [{"date": "2026-10-09", "gpu": "H100", "availabilityPct": 13.5, "availabilityByProvider": {"A": [2, 4]}}]
+    merged = _merge_daily(prev, fresh)[0]
+    assert merged["listedAvailableGapPct"] == 10.0, "窗口回写把该日价差字段抹掉了"
+    assert merged["providerCount"] == 23, "窗口回写把该日家数字段抹掉了"
+    assert merged["availabilityPct"] == 13.5, "本轮抓到的可用率应覆盖旧值"
+
+
+def test_merge_daily_explicit_none_wins_and_stale_gap_removed():
+    """快照里"今日无在库报价"是事实：显式 None 必须覆盖旧值，且已不可计算的旧价差要清掉。"""
+    prev = [{"date": "2026-10-09", "gpu": "B200", "cheapestListedPrice": 3.75,
+             "cheapestAvailablePrice": 5.6, "listedAvailableGapPct": 49.3}]
+    fresh = [{"date": "2026-10-09", "gpu": "B200", "cheapestListedPrice": 3.75,
+              "cheapestListedProvider": "x", "cheapestAvailablePrice": None, "cheapestAvailableProvider": None}]
+    merged = _merge_daily(prev, fresh)[0]
+    assert merged["cheapestAvailablePrice"] is None
+    assert "listedAvailableGapPct" not in merged, "旧价差在已不可计算时必须清除而不是沿用"
+
+
+def test_due_tracks_per_track_cadence():
+    """轨道各按自己的间隔到期：availability 6 天、snapshot 2.5 天、history/catalog 低频。"""
+    now = datetime(2026, 10, 16, 6, 0, tzinfo=timezone.utc)
+    cadence = {"availability": "2026-10-15T06:00:00Z", "snapshot": "2026-10-13T06:00:00Z",
+               "history": "2026-09-16T06:00:00Z", "catalog": "2026-09-15T06:00:00Z"}
+    due = _due_tracks(cadence, now)
+    assert "availability" not in due, "1 天前采过可用率不应该再采"
+    assert "snapshot" in due and "history" in due and "catalog" in due
+    assert _due_tracks({}, now) == list(TRACK_DUE_DAYS), "没有任何节奏记录时全部视为到期"
+    assert _due_tracks(cadence, now, force=True) == list(TRACK_DUE_DAYS)
 
 
 def test_committed_artifact_shape_is_sane():

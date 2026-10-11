@@ -19,6 +19,7 @@ from week_quality import (  # noqa: E402
     is_partial_first_week,
 )
 from build_time_series_dashboard import (  # noqa: E402
+    _breadth_value,
     _capex_quarterly,
     _gpu_from_neocloud,
     build_snapshot,
@@ -180,6 +181,18 @@ def test_every_displayed_source_has_a_real_url():
     snapshot = build_snapshot()
     missing = [k for k, v in snapshot["sources"].items() if not (v.get("urls") or [])]
     assert not missing, f"这些来源没有可点击的真实 URL：{missing}"
+
+
+def test_breadth_derives_from_daily_availability_window():
+    """广度必须由 7 天窗口的逐日 provider 明细推导（可回填、日密）。
+
+    旧口径（目录 providerCount）只在运行日有值，且会被滚动窗口回写覆盖——
+    每个提交里都只剩最后一天（2026-10-11 复盘确认后切换）。
+    """
+    row = {"availabilityByProvider": {"A": [1, 4], "B": [0, 0], "C": [3, 5]}}
+    assert _breadth_value(row) == 2, "total=0 的供应商不得计入在架广度"
+    assert _breadth_value({"availabilityByProvider": {}}) is None
+    assert _breadth_value({}) is None
 
 
 def test_sources_carry_sha256_when_fetch_succeeded():
