@@ -230,8 +230,9 @@ def main() -> int:
     prev_daily, prev_monthly, prev_meta = _load_previous(OUTPUT_PATH)
 
     # 到期制周更：未到采集窗口时不发请求、不动文件（守住免费额度）；
-    # 手动配置 key 后想立即验证可用 --force 绕过。
-    if "--force" not in sys.argv[1:] and not _sweep_due(prev_meta.get("lastSuccessAt"), now):
+    # 手动配置 key 后想立即验证：本地 --force，或云端 workflow_dispatch 的 force_gpufinder 输入
+    force_requested = "--force" in sys.argv[1:] or os.environ.get("GPUFINDER_FORCE", "").strip().lower() in ("1", "true", "yes")
+    if not force_requested and not _sweep_due(prev_meta.get("lastSuccessAt"), now):
         print(json.dumps({
             "output": str(OUTPUT_PATH),
             "refreshStatus": "current_for_frequency",

@@ -4,6 +4,11 @@ on:
   schedule:
     - cron: "17 0 * * *"
   workflow_dispatch:
+    inputs:
+      force_gpufinder:
+        description: "忽略 GPU Finder 周更到期检查，立即采集一次（用于验证新 API key）"
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -30,6 +35,8 @@ jobs:
           SEC_USER_AGENT: "AI-Compute-Economics-Tracker/1.0 contact: ${{ github.repository_owner }}@users.noreply.github.com"
           # GPU Finder 2026-10-09 起需 Bearer key；未配置时为空 → 采集脚本按匿名请求处理并如实降级
           GPUFINDER_API_KEY: ${{ secrets.GPUFINDER_API_KEY }}
+          # workflow_dispatch 勾选 force_gpufinder 时忽略周更到期检查（仅用于验证 key）
+          GPUFINDER_FORCE: ${{ inputs.force_gpufinder }}
         run: python scripts/refresh_and_build.py
       - name: Validate deploy freshness
         run: python scripts/validate_deploy_refresh.py
