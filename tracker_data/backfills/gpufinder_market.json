@@ -1,24 +1,25 @@
 {
-  "fetchedAt": "2026-10-09T06:06:46Z",
+  "fetchedAt": "2026-10-11T01:44:16Z",
+  "lastSuccessAt": "2026-10-11T01:44:16Z",
   "refreshStatus": "fresh",
   "publishable": true,
   "attribution": "Data by GPU Finder (gpufinder.dev), public read-only API; attribution required.",
   "sources": {
     "/availability": {
       "url": "https://gpufinder.dev/api/v1/availability?gpu=h100",
-      "sha256": "sha256:4597463667da796116372a39db5280255f88d3900eb0c828a1c09aa0aee10581"
+      "sha256": "sha256:be0eadcfd9a64967fc1a543aeb75f2c52420ab23d60decc1f7c7a9271216dcb5"
     },
     "/gpus": {
       "url": "https://gpufinder.dev/api/v1/gpus",
-      "sha256": "sha256:eaa1bb2f7d0c061d36a253e4f4e5f62659cb83920017cd4d6446345b44d6478f"
+      "sha256": "sha256:3203674da771b388da9804eec03044c617ec99b1a2d16c59c60c15b92623a76b"
     },
     "/history": {
       "url": "https://gpufinder.dev/api/v1/history?gpu=h100",
-      "sha256": "sha256:f39333d34fcf34c5d063ef3ef2dc19b267c5f30f9d90792ced56b8c58e26dd02"
+      "sha256": "sha256:cf17bf8fd284fc750b3d65cf8d2dfda941e67b9891c49028c33bfdc860aa6ca2"
     },
     "/snapshot": {
       "url": "https://gpufinder.dev/api/v1/snapshot?gpu=h100",
-      "sha256": "sha256:bfb293f02e1028d04fe0ce42ed8eccb1f9a8bbd778ca827b4c5d8254de9747b6"
+      "sha256": "sha256:e19bdafbd9fd0d128742aefd1f19b38b094f9ee3346d047a205c5c643f379d45"
     }
   },
   "rows": [
@@ -1858,7 +1859,7 @@
     {
       "date": "2026-10-05",
       "gpu": "B200",
-      "availabilityPct": 8.32,
+      "availabilityPct": 5.88,
       "availabilityByProvider": {
         "Hyperstack": [
           0,
@@ -1869,8 +1870,8 @@
           72
         ],
         "Lium": [
-          48,
-          144
+          24,
+          120
         ],
         "Nebius": [
           9.854773055555556,
@@ -1890,7 +1891,7 @@
         ],
         "Vast": [
           0,
-          384
+          408
         ],
         "Vultr": [
           0,
@@ -1901,7 +1902,7 @@
     {
       "date": "2026-10-05",
       "gpu": "H100",
-      "availabilityPct": 17.31,
+      "availabilityPct": 17.63,
       "availabilityByProvider": {
         "AceCloud": [
           0,
@@ -1921,11 +1922,11 @@
         ],
         "Lambda": [
           6.4330702777777775,
-          336
+          264
         ],
         "Lium": [
           48,
-          288
+          312
         ],
         "Nebius": [
           46.98077111111111,
@@ -1945,11 +1946,11 @@
         ],
         "Shadeform": [
           86.6974411111111,
-          456
+          384
         ],
         "Vast": [
           0,
-          1399.4522211111112
+          1447.4522211111112
         ],
         "Vultr": [
           0,
@@ -1960,7 +1961,7 @@
     {
       "date": "2026-10-05",
       "gpu": "H200",
-      "availabilityPct": 18.08,
+      "availabilityPct": 18.41,
       "availabilityByProvider": {
         "AceCloud": [
           0,
@@ -1972,7 +1973,7 @@
         ],
         "Lium": [
           0,
-          240
+          264
         ],
         "Nebius": [
           24.321827222222222,
@@ -1992,14 +1993,14 @@
         ],
         "Vast": [
           0,
-          1344
+          1272
         ]
       }
     },
     {
       "date": "2026-10-06",
       "gpu": "B200",
-      "availabilityPct": 12.03,
+      "availabilityPct": 9.59,
       "availabilityByProvider": {
         "Hyperstack": [
           0,
@@ -2010,8 +2011,8 @@
           72
         ],
         "Lium": [
-          46.39223388888889,
-          144
+          22.39223388888889,
+          120
         ],
         "Nebius": [
           48,
@@ -2031,7 +2032,7 @@
         ],
         "Vast": [
           0,
-          384
+          408
         ],
         "Vultr": [
           0,
@@ -2042,7 +2043,7 @@
     {
       "date": "2026-10-06",
       "gpu": "H100",
-      "availabilityPct": 19.33,
+      "availabilityPct": 19.38,
       "availabilityByProvider": {
         "AceCloud": [
           0,
@@ -2062,11 +2063,11 @@
         ],
         "Lambda": [
           81.59554333333334,
-          336
+          264
         ],
         "Lium": [
           41.12327277777778,
-          288
+          312
         ],
         "Nebius": [
           33.45232055555556,
@@ -2085,12 +2086,12 @@
           48
         ],
         "Shadeform": [
-          137.6671986111111,
-          471.2796861111111
+          125.86421250000001,
+          399.2796861111111
         ],
         "Vast": [
           0,
-          1416
+          1464
         ],
         "Vultr": [
           0,
@@ -2101,10 +2102,10 @@
     {
       "date": "2026-10-06",
       "gpu": "H200",
-      "availabilityPct": 17.77,
+      "availabilityPct": 18.09,
       "availabilityByProvider": {
         "AceCloud": [
-          13.222545833333331,
+          13.222545833333335,
           144
         ],
         "Hyperstack": [
@@ -2113,7 +2114,7 @@
         ],
         "Lium": [
           0,
-          240
+          264
         ],
         "Nebius": [
           6.8077775,
@@ -2133,14 +2134,14 @@
         ],
         "Vast": [
           0,
-          1359.2793733333333
+          1287.2793733333333
         ]
       }
     },
     {
       "date": "2026-10-07",
       "gpu": "B200",
-      "availabilityPct": 10.91,
+      "availabilityPct": 8.47,
       "availabilityByProvider": {
         "Hyperstack": [
           0,
@@ -2151,8 +2152,8 @@
           72
         ],
         "Lium": [
-          39.10887694444445,
-          144
+          15.108876944444443,
+          120
         ],
         "Nebius": [
           44.28434083333333,
@@ -2172,7 +2173,7 @@
         ],
         "Vast": [
           0,
-          384
+          408
         ],
         "Vultr": [
           0,
@@ -2183,7 +2184,7 @@
     {
       "date": "2026-10-07",
       "gpu": "H100",
-      "availabilityPct": 16.49,
+      "availabilityPct": 16.56,
       "availabilityByProvider": {
         "AceCloud": [
           0,
@@ -2202,12 +2203,12 @@
           192
         ],
         "Lambda": [
-          21.56378611111111,
-          336
+          17.848115,
+          264
         ],
         "Lium": [
           48,
-          288
+          312
         ],
         "Nebius": [
           38.862855833333334,
@@ -2226,12 +2227,12 @@
           48
         ],
         "Shadeform": [
-          111.04335527777778,
-          504
+          105.62184916666666,
+          432
         ],
         "Vast": [
           0,
-          1434.2741255555557
+          1482.2741255555557
         ],
         "Vultr": [
           0,
@@ -2242,7 +2243,7 @@
     {
       "date": "2026-10-07",
       "gpu": "H200",
-      "availabilityPct": 22.62,
+      "availabilityPct": 23.03,
       "availabilityByProvider": {
         "AceCloud": [
           120,
@@ -2254,7 +2255,7 @@
         ],
         "Lium": [
           0,
-          240
+          264
         ],
         "Nebius": [
           32.03875277777777,
@@ -2274,14 +2275,14 @@
         ],
         "Vast": [
           0,
-          1392
+          1320
         ]
       }
     },
     {
       "date": "2026-10-08",
       "gpu": "B200",
-      "availabilityPct": 9.94,
+      "availabilityPct": 7.5,
       "availabilityByProvider": {
         "Hyperstack": [
           0,
@@ -2292,8 +2293,8 @@
           72
         ],
         "Lium": [
-          51.13837222222222,
-          144
+          27.138372222222223,
+          120
         ],
         "Nebius": [
           22.65503611111111,
@@ -2313,7 +2314,7 @@
         ],
         "Vast": [
           0,
-          384
+          408
         ],
         "Vultr": [
           0,
@@ -2324,7 +2325,7 @@
     {
       "date": "2026-10-08",
       "gpu": "H100",
-      "availabilityPct": 15.49,
+      "availabilityPct": 15.67,
       "availabilityByProvider": {
         "AceCloud": [
           0,
@@ -2343,12 +2344,12 @@
           192
         ],
         "Lambda": [
-          4.217350277777777,
-          336
+          3.6779269444444442,
+          264
         ],
         "Lium": [
           36.942237500000005,
-          288
+          312
         ],
         "Nebius": [
           24,
@@ -2367,12 +2368,12 @@
           48
         ],
         "Shadeform": [
-          104.70033944444444,
-          504
+          101.02234194444443,
+          432
         ],
         "Vast": [
           0,
-          1464
+          1512
         ],
         "Vultr": [
           0,
@@ -2383,7 +2384,7 @@
     {
       "date": "2026-10-08",
       "gpu": "H200",
-      "availabilityPct": 21.24,
+      "availabilityPct": 21.62,
       "availabilityByProvider": {
         "AceCloud": [
           70.80524027777778,
@@ -2395,7 +2396,7 @@
         ],
         "Lium": [
           7.3351355555555555,
-          240
+          264
         ],
         "Nebius": [
           35.516618333333334,
@@ -2415,178 +2416,520 @@
         ],
         "Vast": [
           0,
-          1392
+          1320
         ]
       }
     },
     {
       "date": "2026-10-09",
       "gpu": "B200",
-      "providerCount": 12,
-      "instanceCount": 60,
-      "priceMin": 5.4,
-      "priceMax": 8.5,
-      "cheapestListedPrice": 5.4,
-      "cheapestListedProvider": "Lium",
-      "cheapestAvailablePrice": 5.4,
-      "cheapestAvailableProvider": "Lium",
-      "listedAvailableGapPct": 0.0,
-      "availabilityPct": 12.51,
-      "availabilityDate": "2026-10-09",
+      "availabilityPct": 9.91,
       "availabilityByProvider": {
         "Hyperstack": [
           0,
-          6.114893333333334
+          24
         ],
         "Lambda": [
           0,
-          18.34468
+          72
         ],
         "Lium": [
-          18.34468,
-          36.68936
+          43.21487972222222,
+          120
         ],
         "Nebius": [
-          6.900036388888889,
-          24.459573333333335
+          30.030539444444443,
+          96
         ],
         "Packet": [
           0,
-          24.459573333333335
+          96
         ],
         "PrimeIntellect": [
-          6.114893333333334,
-          6.114893333333334
+          24,
+          24
         ],
         "Runpod": [
           0,
-          30.57446666666667
+          120
         ],
         "Vast": [
           0,
-          97.83829333333334
+          408
+        ],
+        "Verda": [
+          0.3362716666666667,
+          0.6725433333333334
         ],
         "Vultr": [
           0,
-          6.114893333333334
+          24
         ]
       }
     },
     {
       "date": "2026-10-09",
       "gpu": "H100",
-      "providerCount": 22,
-      "instanceCount": 344,
-      "priceMin": 1.2514814814814814,
-      "priceMax": 15.18003,
-      "cheapestListedPrice": 1.2514814814814814,
-      "cheapestListedProvider": "Vast",
-      "cheapestAvailablePrice": 1.2514814814814814,
-      "cheapestAvailableProvider": "Vast",
-      "listedAvailableGapPct": 0.0,
-      "availabilityPct": 16.81,
-      "availabilityDate": "2026-10-09",
+      "availabilityPct": 17.04,
       "availabilityByProvider": {
         "AceCloud": [
           0,
-          24.454454444444444
+          96
         ],
         "Digital Ocean": [
-          12.227227222222222,
-          12.227227222222222
+          48,
+          48
         ],
         "Gcore": [
           0,
-          61.13613611111112
+          240
         ],
         "Hyperstack": [
-          0,
-          48.90890888888889
+          7.050681944444444,
+          192
         ],
         "Lambda": [
-          0.7851408333333333,
-          85.59059055555555
+          28.021054722222225,
+          264
         ],
         "Lium": [
-          16.77032361111111,
-          73.36336333333334
+          43.65382638888889,
+          312
         ],
         "Nebius": [
-          6.113613611111111,
-          12.227227222222222
+          34.03060527777778,
+          48
         ],
         "PrimeIntellect": [
-          97.81781777777779,
-          97.81781777777779
+          384,
+          384
         ],
         "Runpod": [
           0,
-          110.04504500000002
+          432
         ],
         "Scaleway": [
-          12.227227222222222,
-          12.227227222222222
+          30.458550277777775,
+          48
         ],
         "Shadeform": [
-          29.783033611111108,
-          128.38588583333336
+          112.43006777777778,
+          432
         ],
         "Vast": [
           0,
-          372.9304302777777
+          1512
+        ],
+        "Verda": [
+          0,
+          3.026445
         ],
         "Vultr": [
           0,
-          6.113613611111111
+          24
         ]
       }
     },
     {
       "date": "2026-10-09",
       "gpu": "H200",
-      "providerCount": 15,
-      "instanceCount": 200,
-      "priceMin": 2,
-      "priceMax": 5.76,
-      "cheapestListedPrice": 2,
-      "cheapestListedProvider": "PrimeIntellect",
-      "cheapestAvailablePrice": 3.59,
-      "cheapestAvailableProvider": "Runpod",
-      "listedAvailableGapPct": 79.5,
-      "availabilityPct": 19.36,
-      "availabilityDate": "2026-10-09",
+      "availabilityPct": 21.02,
       "availabilityByProvider": {
         "AceCloud": [
-          0,
-          36.68626166666667
+          50.15281111111111,
+          144
         ],
         "Hyperstack": [
           0,
-          6.1143769444444445
+          24
         ],
         "Lium": [
-          0,
-          61.143769444444445
+          10.0305375,
+          264
         ],
         "Nebius": [
-          12.228753888888889,
-          36.68626166666667
+          48.33616444444444,
+          144
         ],
         "PrimeIntellect": [
-          116.17316194444444,
-          116.17316194444444
+          456,
+          456
         ],
         "Runpod": [
           0,
-          73.37252333333333
+          288
         ],
         "Shadeform": [
-          5.3293425,
-          6.1143769444444445
+          6.1335733333333335,
+          24
         ],
         "Vast": [
           0,
-          354.6338627777778
+          1370.1525388888888
+        ],
+        "Verda": [
+          0.3362716666666667,
+          2.01763
+        ]
+      }
+    },
+    {
+      "date": "2026-10-10",
+      "gpu": "B200",
+      "availabilityPct": 5.08,
+      "availabilityByProvider": {
+        "Hyperstack": [
+          0,
+          24
+        ],
+        "Lambda": [
+          0,
+          72
+        ],
+        "Lium": [
+          3.160327222222222,
+          120
+        ],
+        "Nebius": [
+          24,
+          96
+        ],
+        "Packet": [
+          0,
+          96
+        ],
+        "PrimeIntellect": [
+          19.77964111111111,
+          24
+        ],
+        "Runpod": [
+          0,
+          120
+        ],
+        "Vast": [
+          0,
+          440.0167866666667
+        ],
+        "Verda": [
+          7.164435,
+          48
+        ],
+        "Vultr": [
+          0,
+          24
+        ]
+      }
+    },
+    {
+      "date": "2026-10-10",
+      "gpu": "H100",
+      "availabilityPct": 17.92,
+      "availabilityByProvider": {
+        "AceCloud": [
+          0,
+          96
+        ],
+        "Akash": [
+          2.2536133333333335,
+          2.2536133333333335
+        ],
+        "Digital Ocean": [
+          48,
+          48
+        ],
+        "Gcore": [
+          0,
+          240
+        ],
+        "Hyperstack": [
+          22.65696222222222,
+          192
+        ],
+        "Koyeb": [
+          0,
+          6.760864166666667
+        ],
+        "Lambda": [
+          1.883971111111111,
+          264
+        ],
+        "Lium": [
+          38.39743333333333,
+          312
+        ],
+        "Nebius": [
+          48,
+          48
+        ],
+        "PrimeIntellect": [
+          316.4742577777778,
+          384
+        ],
+        "Runpod": [
+          66.2143825,
+          432
+        ],
+        "Scaleway": [
+          48,
+          48
+        ],
+        "Shadeform": [
+          172.28156833333333,
+          432
+        ],
+        "Vast": [
+          0,
+          1536.0125899999998
+        ],
+        "Verda": [
+          3.0400883333333333,
+          216
+        ],
+        "Vultr": [
+          0,
+          24
+        ]
+      }
+    },
+    {
+      "date": "2026-10-10",
+      "gpu": "H200",
+      "availabilityPct": 22.69,
+      "availabilityByProvider": {
+        "AceCloud": [
+          120,
+          144
+        ],
+        "Hyperstack": [
+          0,
+          24
+        ],
+        "Koyeb": [
+          4.507242777777778,
+          4.507242777777778
+        ],
+        "Lium": [
+          7.092884166666667,
+          264
+        ],
+        "Nebius": [
+          69.74641916666667,
+          144
+        ],
+        "PrimeIntellect": [
+          380.32030388888893,
+          460.5071227777778
+        ],
+        "Runpod": [
+          70.75784444444444,
+          288
+        ],
+        "Shadeform": [
+          0.9419269444444445,
+          24
+        ],
+        "Vast": [
+          0,
+          1461.7995380555556
+        ],
+        "Verda": [
+          17.90178416666667,
+          144
+        ]
+      }
+    },
+    {
+      "date": "2026-10-11",
+      "gpu": "B200",
+      "providerCount": 12,
+      "instanceCount": 64,
+      "priceMin": 5.6,
+      "priceMax": 8.610416666666666,
+      "cheapestListedPrice": 5.6,
+      "cheapestListedProvider": "Lium",
+      "cheapestAvailablePrice": 5.6,
+      "cheapestAvailableProvider": "Lium",
+      "listedAvailableGapPct": 0.0,
+      "availabilityPct": 2.13,
+      "availabilityDate": "2026-10-11",
+      "availabilityByProvider": {
+        "Hyperstack": [
+          0,
+          1.743165
+        ],
+        "Lambda": [
+          0,
+          5.229495
+        ],
+        "Lium": [
+          0,
+          8.715825
+        ],
+        "Nebius": [
+          1.743165,
+          6.97266
+        ],
+        "Packet": [
+          0,
+          6.97266
+        ],
+        "PrimeIntellect": [
+          0,
+          1.743165
+        ],
+        "Runpod": [
+          0,
+          8.715825
+        ],
+        "Vast": [
+          0,
+          36.606465
+        ],
+        "Verda": [
+          0,
+          3.48633
+        ],
+        "Vultr": [
+          0,
+          1.743165
+        ]
+      }
+    },
+    {
+      "date": "2026-10-11",
+      "gpu": "H100",
+      "providerCount": 24,
+      "instanceCount": 348,
+      "priceMin": 1.2514814814814814,
+      "priceMax": 15.18003,
+      "cheapestListedPrice": 1.2514814814814814,
+      "cheapestListedProvider": "Vast",
+      "cheapestAvailablePrice": 1.3,
+      "cheapestAvailableProvider": "Lium",
+      "listedAvailableGapPct": 3.88,
+      "availabilityPct": 13.59,
+      "availabilityDate": "2026-10-11",
+      "availabilityByProvider": {
+        "AceCloud": [
+          0,
+          6.95615
+        ],
+        "Akash": [
+          1.7390375,
+          1.7390375
+        ],
+        "Digital Ocean": [
+          3.478075,
+          3.478075
+        ],
+        "Gcore": [
+          0,
+          17.390375
+        ],
+        "Hyperstack": [
+          1.7390375,
+          13.912299999999998
+        ],
+        "Koyeb": [
+          0,
+          5.2171125
+        ],
+        "Lambda": [
+          3.478075,
+          19.129412499999997
+        ],
+        "Lium": [
+          3.478075,
+          22.6074875
+        ],
+        "Nebius": [
+          3.478075,
+          3.478075
+        ],
+        "PrimeIntellect": [
+          0,
+          27.8246
+        ],
+        "Runpod": [
+          5.2171125,
+          31.302675
+        ],
+        "Scaleway": [
+          3.478075,
+          3.478075
+        ],
+        "Shadeform": [
+          17.390375,
+          31.302675
+        ],
+        "Vast": [
+          0,
+          114.77647499999999
+        ],
+        "Verda": [
+          0,
+          15.6513375
+        ],
+        "Vultr": [
+          0,
+          1.7390375
+        ]
+      }
+    },
+    {
+      "date": "2026-10-11",
+      "gpu": "H200",
+      "providerCount": 16,
+      "instanceCount": 209,
+      "priceMin": 2,
+      "priceMax": 5.660087719298246,
+      "cheapestListedPrice": 2,
+      "cheapestListedProvider": "PrimeIntellect",
+      "cheapestAvailablePrice": 3,
+      "cheapestAvailableProvider": "Koyeb",
+      "listedAvailableGapPct": 50.0,
+      "availabilityPct": 13.28,
+      "availabilityDate": "2026-10-11",
+      "availabilityByProvider": {
+        "AceCloud": [
+          8.705680555555556,
+          10.446816666666667
+        ],
+        "Hyperstack": [
+          0,
+          1.741136111111111
+        ],
+        "Koyeb": [
+          3.482272222222222,
+          3.482272222222222
+        ],
+        "Lium": [
+          0,
+          19.15249722222222
+        ],
+        "Nebius": [
+          3.482272222222222,
+          10.446816666666667
+        ],
+        "PrimeIntellect": [
+          3.482272222222222,
+          36.56385833333333
+        ],
+        "Runpod": [
+          6.964544444444444,
+          20.893633333333334
+        ],
+        "Shadeform": [
+          1.741136111111111,
+          1.741136111111111
+        ],
+        "Vast": [
+          0,
+          107.95043888888887
+        ],
+        "Verda": [
+          1.741136111111111,
+          10.446816666666665
         ]
       }
     }
@@ -2792,7 +3135,7 @@
       "month": "2026-10",
       "gpu": "B200",
       "provider": "Lium",
-      "onDemandPrice": 5.4,
+      "onDemandPrice": 5.6,
       "spotPrice": null
     },
     {
@@ -2800,7 +3143,7 @@
       "gpu": "B200",
       "provider": "Nebius",
       "onDemandPrice": 8.5,
-      "spotPrice": 3.95
+      "spotPrice": 4
     },
     {
       "month": "2026-10",
@@ -2827,8 +3170,8 @@
       "month": "2026-10",
       "gpu": "B200",
       "provider": "Verda",
-      "onDemandPrice": 7.057,
-      "spotPrice": 3.529
+      "onDemandPrice": 7.416,
+      "spotPrice": 3.708
     },
     {
       "month": "2026-04",
@@ -3269,7 +3612,7 @@
       "gpu": "H100",
       "provider": "Verda",
       "onDemandPrice": 3.25,
-      "spotPrice": null
+      "spotPrice": 1.625
     },
     {
       "month": "2026-09",
@@ -3395,7 +3738,14 @@
       "gpu": "H100",
       "provider": "AWS",
       "onDemandPrice": 6.88,
-      "spotPrice": 3.583
+      "spotPrice": 3.9153
+    },
+    {
+      "month": "2026-10",
+      "gpu": "H100",
+      "provider": "Akash",
+      "onDemandPrice": 2.73,
+      "spotPrice": null
     },
     {
       "month": "2026-10",
@@ -3435,6 +3785,13 @@
     {
       "month": "2026-10",
       "gpu": "H100",
+      "provider": "Koyeb",
+      "onDemandPrice": 2.5,
+      "spotPrice": null
+    },
+    {
+      "month": "2026-10",
+      "gpu": "H100",
       "provider": "Lambda",
       "onDemandPrice": 3.29,
       "spotPrice": null
@@ -3451,7 +3808,7 @@
       "gpu": "H100",
       "provider": "Nebius",
       "onDemandPrice": 4.5,
-      "spotPrice": 2.15
+      "spotPrice": 0.79
     },
     {
       "month": "2026-10",
@@ -3799,8 +4156,15 @@
     {
       "month": "2026-10",
       "gpu": "H200",
+      "provider": "Koyeb",
+      "onDemandPrice": 3,
+      "spotPrice": null
+    },
+    {
+      "month": "2026-10",
+      "gpu": "H200",
       "provider": "Lium",
-      "onDemandPrice": 3.4,
+      "onDemandPrice": 3,
       "spotPrice": null
     },
     {
@@ -3808,7 +4172,7 @@
       "gpu": "H200",
       "provider": "Nebius",
       "onDemandPrice": 5.4,
-      "spotPrice": 2.45
+      "spotPrice": 0.79
     },
     {
       "month": "2026-10",
@@ -3871,6 +4235,7 @@
   "blocking": false,
   "notes": [
     "availabilityPct = Σavailable/Σtotal（最新一日，7 天滚动窗口，向前积累）。",
-    "listedAvailableGapPct = cheapestAvailable/cheapestListed - 1，衡量报价虚低程度。"
+    "listedAvailableGapPct = cheapestAvailable/cheapestListed - 1，衡量报价虚低程度。",
+    "采集为到期制周更：距上次成功 ≥6.5 天才全量扫（免费额度 60 次/月）；其余日跳过。"
   ]
 }
