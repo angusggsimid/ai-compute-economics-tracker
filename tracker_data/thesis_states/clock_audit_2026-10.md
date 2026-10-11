@@ -2,14 +2,14 @@
 
 > 每次刷新覆盖更新当月文件；历史轨迹见 history/ 目录。
 
-## Supply Price — Trend
+## Supply Price — Confirmed（intensifying）
 - 下一个证明点：订单簿深度已积累 50/20 有效日；面板 30D 变化每日更新。
-- 关键指标：`{"chartReadyPanels": 8, "looseningConfirmedFamilies": [], "intensifyingConfirmedFamilies": ["B200"]}`
+- 关键指标：`{"chartReadyPanels": 8, "looseningConfirmedFamilies": [], "intensifyingConfirmedFamilies": ["B200", "H200"]}`
 - 阻塞项：无
 
 ## Capacity & Utilization — Trend
 - 下一个证明点：积累订单簿至 10/20 有效日（当前 50）。
-- 关键指标：`{"depthValidDates": 50, "latestTotalOffers": 358, "depthGrowthPct": 9.31, "latestGpuCapacity": 10244, "providerSnapshotRows": 27315, "providersCovered": 38}`
+- 关键指标：`{"depthValidDates": 50, "latestTotalOffers": 360, "depthGrowthPct": 9.34, "latestGpuCapacity": 10230, "providerSnapshotRows": 27315, "providersCovered": 38}`
 - 阻塞项：无
 
 ## Demand & Unit Economics — Observing
