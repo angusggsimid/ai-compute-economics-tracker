@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-11T05:43:59Z",
+  "generatedAt": "2026-10-12T05:54:05Z",
   "inputs": [
     "capex_official_history.json",
     "epoch_chip_sales.json",
@@ -33,7 +33,7 @@
         "面板构成变更",
         "价格与深度方向矛盾"
       ],
-      "next_proof_point": "订单簿深度已积累 50/20 有效日；面板 30D 变化每日更新。",
+      "next_proof_point": "订单簿深度已积累 51/20 有效日；面板 30D 变化每日更新。",
       "watch": {
         "loosening": {
           "triggered": false,
@@ -88,19 +88,19 @@
         ],
         "frontierPanels": {
           "semi:B200": {
-            "days": 489,
-            "change30dPct": 17.76,
-            "change90dPct": 22.78
+            "days": 490,
+            "change30dPct": 14.24,
+            "change90dPct": 21.63
           },
           "semi:H100": {
-            "days": 1096,
+            "days": 1097,
             "change30dPct": 0.61,
             "change90dPct": 4.09
           },
           "ornn:B200": {
-            "days": 141,
-            "change30dPct": -2.33,
-            "change90dPct": 9.13
+            "days": 142,
+            "change30dPct": -3.37,
+            "change90dPct": 10.04
           },
           "ornn:H100 SXM": {
             "days": 141,
@@ -113,26 +113,26 @@
             "change90dPct": 22.11
           },
           "neocloud:B200": {
-            "days": 97,
+            "days": 98,
             "change30dPct": 4.48,
             "change90dPct": 4.48
           },
           "neocloud:H100": {
-            "days": 97,
+            "days": 98,
             "change30dPct": 5.48,
             "change90dPct": 12.71
           },
           "neocloud:H200": {
-            "days": 97,
+            "days": 98,
             "change30dPct": 6.0,
             "change90dPct": 10.74
           }
         },
         "depth": {
-          "depthValidDates": 50,
-          "depthLatestTotalOffers": 355,
-          "depthGrowthPct": 9.27,
-          "depthWindowDays": 50
+          "depthValidDates": 51,
+          "depthLatestTotalOffers": 339,
+          "depthGrowthPct": 9.46,
+          "depthWindowDays": 51
         },
         "h100Contract1yBands": [
           {
@@ -171,7 +171,7 @@
     },
     {
       "clock_id": "capacity",
-      "stateBasis": "订单簿已积累 50 个有效日（≥10 达标，趋势可判）；最新 offers 355",
+      "stateBasis": "订单簿已积累 51 个有效日（≥10 达标，趋势可判）；最新 offers 339",
       "title": "Capacity & Utilization",
       "natural_frequency": "daily",
       "state": "Trend",
@@ -185,7 +185,7 @@
         "单一来源驱动",
         "GPU 构成漂移"
       ],
-      "next_proof_point": "积累订单簿至 10/20 有效日（当前 50）。",
+      "next_proof_point": "积累订单簿至 10/20 有效日（当前 51）。",
       "watch": {
         "loosening": {
           "triggered": false,
@@ -207,11 +207,11 @@
         }
       },
       "metrics": {
-        "depthValidDates": 50,
-        "latestTotalOffers": 355,
-        "depthGrowthPct": 9.27,
-        "latestGpuCapacity": 10208,
-        "providerSnapshotRows": 27315,
+        "depthValidDates": 51,
+        "latestTotalOffers": 339,
+        "depthGrowthPct": 9.46,
+        "latestGpuCapacity": 10151,
+        "providerSnapshotRows": 27732,
         "providersCovered": 38
       },
       "blockers": [],
@@ -222,10 +222,10 @@
     },
     {
       "clock_id": "demand_unit_economics",
-      "stateBasis": "OpenRouter 用量 51 个完整周（已剔除抓取窗口起点的残周）达标（≥52）；但用量为公开 proxy——契约规定 proxy 不得升级 Inflection，封顶 Trend 属纪律而非保守",
+      "stateBasis": "OpenRouter 用量 52 个完整周（已剔除抓取窗口起点的残周）达标（≥52）；但用量为公开 proxy——契约规定 proxy 不得升级 Inflection，封顶 Trend 属纪律而非保守",
       "title": "Demand & Unit Economics",
       "natural_frequency": "weekly/event",
-      "state": "Observing",
+      "state": "Trend",
       "direction": null,
       "basis": "OpenRouter 完整周公开 proxy（封顶 Trend）+ 活跃模型牌价账本真实调价点 + Ornn OTPI 已实现 token 价。",
       "confirms": [
@@ -258,15 +258,14 @@
         }
       },
       "metrics": {
-        "completeWeeks": 51,
-        "latestWeeklyTokens": 165856038005319.0,
-        "weightedOutputPriceChange8wPct": -82.35,
+        "completeWeeks": 52,
+        "latestWeeklyTokens": 171842469811108.0,
+        "weightedOutputPriceChange8wPct": -65.37,
         "recentPriceCutModels": 107,
         "otpiLabsCovered": 4,
-        "otpiLatestDate": "2026-10-09"
+        "otpiLatestDate": "2026-10-10"
       },
       "blockers": [
-        "incomplete_weeks_51_of_52",
         "proxy_ceiling_requires_official_usage_for_inflection"
       ],
       "sources": [
