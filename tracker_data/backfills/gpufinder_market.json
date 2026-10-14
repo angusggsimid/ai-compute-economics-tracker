@@ -1,26 +1,35 @@
 {
-  "fetchedAt": "2026-10-11T01:44:16Z",
-  "lastSuccessAt": "2026-10-11T01:44:16Z",
+  "fetchedAt": "2026-10-14T04:51:01Z",
+  "lastSuccessAt": "2026-10-14T04:51:01Z",
   "refreshStatus": "fresh",
   "publishable": true,
   "attribution": "Data by GPU Finder (gpufinder.dev), public read-only API; attribution required.",
   "sources": {
     "/availability": {
       "url": "https://gpufinder.dev/api/v1/availability?gpu=h100",
-      "sha256": "sha256:be0eadcfd9a64967fc1a543aeb75f2c52420ab23d60decc1f7c7a9271216dcb5"
+      "sha256": "sha256:be0eadcfd9a64967fc1a543aeb75f2c52420ab23d60decc1f7c7a9271216dcb5",
+      "carriedFrom": "2026-10-11T01:44:16Z"
     },
     "/gpus": {
       "url": "https://gpufinder.dev/api/v1/gpus",
-      "sha256": "sha256:3203674da771b388da9804eec03044c617ec99b1a2d16c59c60c15b92623a76b"
+      "sha256": "sha256:3203674da771b388da9804eec03044c617ec99b1a2d16c59c60c15b92623a76b",
+      "carriedFrom": "2026-10-11T01:44:16Z"
     },
     "/history": {
       "url": "https://gpufinder.dev/api/v1/history?gpu=h100",
-      "sha256": "sha256:cf17bf8fd284fc750b3d65cf8d2dfda941e67b9891c49028c33bfdc860aa6ca2"
+      "sha256": "sha256:cf17bf8fd284fc750b3d65cf8d2dfda941e67b9891c49028c33bfdc860aa6ca2",
+      "carriedFrom": "2026-10-11T01:44:16Z"
     },
     "/snapshot": {
       "url": "https://gpufinder.dev/api/v1/snapshot?gpu=h100",
-      "sha256": "sha256:e19bdafbd9fd0d128742aefd1f19b38b094f9ee3346d047a205c5c643f379d45"
+      "sha256": "sha256:3ea4b8385c0a3a3ebad0622d73cd73fc769dc8c2b24ca64f31d819f3e3a11764"
     }
+  },
+  "cadence": {
+    "availability": "2026-10-11T01:44:16Z",
+    "catalog": "2026-10-11T01:44:16Z",
+    "history": "2026-10-11T01:44:16Z",
+    "snapshot": "2026-10-14T04:51:01Z"
   },
   "rows": [
     {
@@ -2932,6 +2941,33 @@
           10.446816666666665
         ]
       }
+    },
+    {
+      "date": "2026-10-14",
+      "gpu": "B200",
+      "cheapestListedPrice": 4.752083333333332,
+      "cheapestListedProvider": "Vast",
+      "cheapestAvailablePrice": 5.6,
+      "cheapestAvailableProvider": "Lium",
+      "listedAvailableGapPct": 17.84
+    },
+    {
+      "date": "2026-10-14",
+      "gpu": "H100",
+      "cheapestListedPrice": 1.2514814814814814,
+      "cheapestListedProvider": "Vast",
+      "cheapestAvailablePrice": 1.3,
+      "cheapestAvailableProvider": "Lium",
+      "listedAvailableGapPct": 3.88
+    },
+    {
+      "date": "2026-10-14",
+      "gpu": "H200",
+      "cheapestListedPrice": 2,
+      "cheapestListedProvider": "PrimeIntellect",
+      "cheapestAvailablePrice": 3,
+      "cheapestAvailableProvider": "Koyeb",
+      "listedAvailableGapPct": 50.0
     }
   ],
   "monthlyHistory": [
@@ -4236,6 +4272,6 @@
   "notes": [
     "availabilityPct = Σavailable/Σtotal（最新一日，7 天滚动窗口，向前积累）。",
     "listedAvailableGapPct = cheapestAvailable/cheapestListed - 1，衡量报价虚低程度。",
-    "采集为到期制周更：距上次成功 ≥6.5 天才全量扫（免费额度 60 次/月）；其余日跳过。"
+    "轨道化到期采集（免费额度 60 次/月）：availability ≤6 天一轮（7 天窗口→逐日零丢失）、snapshot ~2.5 天、history ~28 天、catalog ~30 天；未到期日零请求跳过。"
   ]
 }

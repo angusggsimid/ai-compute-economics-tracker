@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-13T06:46:27Z",
+  "generatedAt": "2026-10-14T04:51:09Z",
   "inputs": [
     "capex_official_history.json",
     "epoch_chip_sales.json",
@@ -33,7 +33,7 @@
         "面板构成变更",
         "价格与深度方向矛盾"
       ],
-      "next_proof_point": "订单簿深度已积累 52/20 有效日；面板 30D 变化每日更新。",
+      "next_proof_point": "订单簿深度已积累 53/20 有效日；面板 30D 变化每日更新。",
       "watch": {
         "loosening": {
           "triggered": false,
@@ -60,10 +60,9 @@
           "conditions": [
             {
               "condition": ">=2 个前沿 GPU 家族 30D 涨幅 >=10%（短线触发窗口 · 跨来源去重）",
-              "met": true,
+              "met": false,
               "evidence": [
-                "B200",
-                "H200"
+                "B200"
               ]
             },
             {
@@ -88,13 +87,13 @@
         ],
         "frontierPanels": {
           "semi:B200": {
-            "days": 491,
-            "change30dPct": 14.41,
-            "change90dPct": 21.81
+            "days": 492,
+            "change30dPct": 13.62,
+            "change90dPct": 22.72
           },
           "semi:H100": {
-            "days": 1098,
-            "change30dPct": 0.61,
+            "days": 1099,
+            "change30dPct": 1.22,
             "change90dPct": 4.09
           },
           "ornn:B200": {
@@ -103,36 +102,36 @@
             "change90dPct": 8.11
           },
           "ornn:H100 SXM": {
-            "days": 142,
-            "change30dPct": -5.02,
-            "change90dPct": -1.85
+            "days": 143,
+            "change30dPct": 2.46,
+            "change90dPct": 6.96
           },
           "ornn:H200": {
-            "days": 142,
-            "change30dPct": 10.65,
-            "change90dPct": 20.39
+            "days": 143,
+            "change30dPct": 6.07,
+            "change90dPct": 15.16
           },
           "neocloud:B200": {
-            "days": 99,
+            "days": 100,
             "change30dPct": 4.48,
-            "change90dPct": 9.22
+            "change90dPct": 4.48
           },
           "neocloud:H100": {
-            "days": 99,
+            "days": 100,
             "change30dPct": 5.48,
             "change90dPct": 12.71
           },
           "neocloud:H200": {
-            "days": 99,
-            "change30dPct": 5.47,
+            "days": 100,
+            "change30dPct": 4.94,
             "change90dPct": 10.74
           }
         },
         "depth": {
-          "depthValidDates": 52,
-          "depthLatestTotalOffers": 296,
-          "depthGrowthPct": 9.09,
-          "depthWindowDays": 52
+          "depthValidDates": 53,
+          "depthLatestTotalOffers": 289,
+          "depthGrowthPct": 8.65,
+          "depthWindowDays": 53
         },
         "h100Contract1yBands": [
           {
@@ -171,7 +170,7 @@
     },
     {
       "clock_id": "capacity",
-      "stateBasis": "订单簿已积累 52 个有效日（≥10 达标，趋势可判）；最新 offers 296",
+      "stateBasis": "订单簿已积累 53 个有效日（≥10 达标，趋势可判）；最新 offers 289",
       "title": "Capacity & Utilization",
       "natural_frequency": "daily",
       "state": "Trend",
@@ -185,7 +184,7 @@
         "单一来源驱动",
         "GPU 构成漂移"
       ],
-      "next_proof_point": "积累订单簿至 10/20 有效日（当前 52）。",
+      "next_proof_point": "积累订单簿至 10/20 有效日（当前 53）。",
       "watch": {
         "loosening": {
           "triggered": false,
@@ -207,11 +206,11 @@
         }
       },
       "metrics": {
-        "depthValidDates": 52,
-        "latestTotalOffers": 296,
-        "depthGrowthPct": 9.09,
-        "latestGpuCapacity": 10014,
-        "providerSnapshotRows": 28147,
+        "depthValidDates": 53,
+        "latestTotalOffers": 289,
+        "depthGrowthPct": 8.65,
+        "latestGpuCapacity": 10012,
+        "providerSnapshotRows": 28553,
         "providersCovered": 38
       },
       "blockers": [],
@@ -261,9 +260,9 @@
         "completeWeeks": 52,
         "latestWeeklyTokens": 171842501724714.0,
         "weightedOutputPriceChange8wPct": -65.37,
-        "recentPriceCutModels": 107,
+        "recentPriceCutModels": 104,
         "otpiLabsCovered": 4,
-        "otpiLatestDate": "2026-10-11"
+        "otpiLatestDate": "2026-10-12"
       },
       "blockers": [
         "proxy_ceiling_requires_official_usage_for_inflection"
