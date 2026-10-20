@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-19T04:37:01Z",
+  "generated_at": "2026-10-20T04:46:26Z",
   "window": {
     "start": "2025-10-20",
     "end": "2026-10-12",
@@ -14,15 +14,15 @@
   "sources": {
     "openrouter": {
       "url": "https://openrouter.ai/api/frontend/v1/rankings/model-rankings-chart",
-      "cached_at": 1792381050687,
-      "raw_sha256": "sha256:0a3d55624058c274491fb3b8fb532608fe15207b3dc340e79baf7234c06df65b",
+      "cached_at": 1792469012258,
+      "raw_sha256": "sha256:e002b621cc049bcc3ec6fd4f8dd27c91e0e939fec2bafabd82d8c4bb129a7694",
       "upstream_complete_weeks": 52,
       "retained_complete_weeks": 52,
       "history_provenance": {
-        "retention_start": "2025-10-14",
-        "as_of_utc": "2026-10-19",
+        "retention_start": "2025-10-15",
+        "as_of_utc": "2026-10-20",
         "min_complete_weeks": 52,
-        "prior_complete_weeks_in_window": 51,
+        "prior_complete_weeks_in_window": 52,
         "upstream_complete_weeks": 52,
         "retained_complete_weeks": 52,
         "local_only_weeks": [],
@@ -42,18 +42,18 @@
   "weeks": [
     {
       "date": "2025-10-20",
-      "total_tokens": 4886312194357.0,
-      "named_tokens": 2931239823832.0,
-      "named_coverage_pct": 59.99,
-      "price_mapped_coverage_pct": 28.2,
-      "weighted_input_usd_per_1m": 0.417104,
-      "weighted_output_usd_per_1m": 3.137951,
+      "total_tokens": 4196354663583.0,
+      "named_tokens": 2515119951901.0,
+      "named_coverage_pct": 59.94,
+      "price_mapped_coverage_pct": 28.21,
+      "weighted_input_usd_per_1m": 0.419073,
+      "weighted_output_usd_per_1m": 3.157269,
       "model_rows": [
         {
           "model": "x-ai/grok-code-fast-1",
           "provider": "x-ai",
-          "tokens": 1269863180383.0,
-          "share_pct": 25.9882,
+          "tokens": 1097602761208.0,
+          "share_pct": 26.1561,
           "input_usd_per_1m": null,
           "output_usd_per_1m": null,
           "matched_price_key": null
@@ -61,8 +61,8 @@
         {
           "model": "anthropic/claude-4.5-sonnet-20250929",
           "provider": "anthropic",
-          "tokens": 523625493331.0,
-          "share_pct": 10.7162,
+          "tokens": 443290678976.0,
+          "share_pct": 10.5637,
           "input_usd_per_1m": null,
           "output_usd_per_1m": null,
           "matched_price_key": null
@@ -70,8 +70,8 @@
         {
           "model": "google/gemini-2.5-flash",
           "provider": "google",
-          "tokens": 291420258676.0,
-          "share_pct": 5.964,
+          "tokens": 254059958103.0,
+          "share_pct": 6.0543,
           "input_usd_per_1m": 0.3,
           "output_usd_per_1m": 2.5,
           "matched_price_key": "openrouter/google/gemini-2.5-flash"
@@ -79,8 +79,8 @@
         {
           "model": "google/gemini-2.5-pro",
           "provider": "google",
-          "tokens": 173406076510.0,
-          "share_pct": 3.5488,
+          "tokens": 149394172396.0,
+          "share_pct": 3.5601,
           "input_usd_per_1m": 1.25,
           "output_usd_per_1m": 10.0,
           "matched_price_key": "openrouter/google/gemini-2.5-pro"
@@ -88,8 +88,8 @@
         {
           "model": "x-ai/grok-4-fast",
           "provider": "x-ai",
-          "tokens": 156196047559.0,
-          "share_pct": 3.1966,
+          "tokens": 136891002480.0,
+          "share_pct": 3.2621,
           "input_usd_per_1m": null,
           "output_usd_per_1m": null,
           "matched_price_key": null
@@ -97,8 +97,8 @@
         {
           "model": "anthropic/claude-4-sonnet-20250522",
           "provider": "anthropic",
-          "tokens": 154890504849.0,
-          "share_pct": 3.1699,
+          "tokens": 127801309695.0,
+          "share_pct": 3.0455,
           "input_usd_per_1m": null,
           "output_usd_per_1m": null,
           "matched_price_key": null
@@ -106,8 +106,8 @@
         {
           "model": "google/gemini-2.0-flash-001",
           "provider": "google",
-          "tokens": 145820284204.0,
-          "share_pct": 2.9843,
+          "tokens": 123314720912.0,
+          "share_pct": 2.9386,
           "input_usd_per_1m": 0.09999999999999999,
           "output_usd_per_1m": 0.39999999999999997,
           "matched_price_key": "openrouter/google/gemini-2.0-flash-001"
@@ -115,8 +115,8 @@
         {
           "model": "deepseek/deepseek-chat-v3-0324",
           "provider": "deepseek",
-          "tokens": 110948549313.0,
-          "share_pct": 2.2706,
+          "tokens": 94441971410.0,
+          "share_pct": 2.2506,
           "input_usd_per_1m": 0.14,
           "output_usd_per_1m": 0.28,
           "matched_price_key": "openrouter/deepseek/deepseek-chat-v3-0324"
@@ -124,8 +124,8 @@
         {
           "model": "google/gemini-2.5-flash-lite",
           "provider": "google",
-          "tokens": 105069429007.0,
-          "share_pct": 2.1503,
+          "tokens": 88323376721.0,
+          "share_pct": 2.1048,
           "input_usd_per_1m": 0.09999999999999999,
           "output_usd_per_1m": 0.39999999999999997,
           "matched_price_key": "gemini-2.5-flash-lite"
@@ -5091,8 +5091,8 @@
     },
     {
       "date": "2026-10-12",
-      "total_tokens": 164043940936045.0,
-      "named_tokens": 96575706261737.0,
+      "total_tokens": 164043985914931.0,
+      "named_tokens": 96575714647870.0,
       "named_coverage_pct": 58.87,
       "price_mapped_coverage_pct": 11.57,
       "weighted_input_usd_per_1m": 0.055543,
@@ -5101,7 +5101,7 @@
         {
           "model": "deepseek/deepseek-v4.1-flash-20260910",
           "provider": "deepseek",
-          "tokens": 32832408455862.0,
+          "tokens": 32832415061947.0,
           "share_pct": 20.0144,
           "input_usd_per_1m": null,
           "output_usd_per_1m": null,
@@ -5164,7 +5164,7 @@
         {
           "model": "z-ai/glm-5.3-20260816",
           "provider": "z-ai",
-          "tokens": 5192180323449.0,
+          "tokens": 5192182103497.0,
           "share_pct": 3.1651,
           "input_usd_per_1m": null,
           "output_usd_per_1m": null,
@@ -5193,32 +5193,32 @@
     {
       "date": "2025-10-20",
       "provider": "x-ai",
-      "tokens": 1426059227942.0,
-      "share_pct": 29.1848
+      "tokens": 1234493763688.0,
+      "share_pct": 29.4182
     },
     {
       "date": "2025-10-20",
       "provider": "anthropic",
-      "tokens": 678515998180.0,
-      "share_pct": 13.8861
+      "tokens": 571091988671.0,
+      "share_pct": 13.6092
     },
     {
       "date": "2025-10-20",
       "provider": "google",
-      "tokens": 715716048397.0,
-      "share_pct": 14.6474
+      "tokens": 615092228132.0,
+      "share_pct": 14.6578
     },
     {
       "date": "2025-10-20",
       "provider": "deepseek",
-      "tokens": 110948549313.0,
-      "share_pct": 2.2706
+      "tokens": 94441971410.0,
+      "share_pct": 2.2506
     },
     {
       "date": "2025-10-20",
       "provider": "Others",
-      "tokens": 1955072370525.0,
-      "share_pct": 40.0112
+      "tokens": 1681234711682.0,
+      "share_pct": 40.0642
     },
     {
       "date": "2025-10-27",
@@ -7383,13 +7383,13 @@
     {
       "date": "2026-10-12",
       "provider": "deepseek",
-      "tokens": 32832408455862.0,
+      "tokens": 32832415061947.0,
       "share_pct": 20.0144
     },
     {
       "date": "2026-10-12",
       "provider": "z-ai",
-      "tokens": 17423460672217.0,
+      "tokens": 17423462452265.0,
       "share_pct": 10.6212
     },
     {
@@ -7431,8 +7431,8 @@
     {
       "date": "2026-10-12",
       "provider": "Others",
-      "tokens": 67468234674308.0,
-      "share_pct": 41.1281
+      "tokens": 67468271267061.0,
+      "share_pct": 41.1282
     }
   ]
 }

@@ -1,13 +1,14 @@
 {
-  "fetchedAt": "2026-10-17T04:23:28Z",
-  "lastSuccessAt": "2026-10-17T04:23:28Z",
+  "fetchedAt": "2026-10-20T04:47:41Z",
+  "lastSuccessAt": "2026-10-20T04:47:41Z",
   "refreshStatus": "fresh",
   "publishable": true,
   "attribution": "Data by GPU Finder (gpufinder.dev), public read-only API; attribution required.",
   "sources": {
     "/availability": {
       "url": "https://gpufinder.dev/api/v1/availability?gpu=h100",
-      "sha256": "sha256:e56752349bd87924764a8778d00e986d52937046ba445daab424dc6d46169a06"
+      "sha256": "sha256:e56752349bd87924764a8778d00e986d52937046ba445daab424dc6d46169a06",
+      "carriedFrom": "2026-10-17T04:23:28Z"
     },
     "/gpus": {
       "url": "https://gpufinder.dev/api/v1/gpus",
@@ -21,14 +22,14 @@
     },
     "/snapshot": {
       "url": "https://gpufinder.dev/api/v1/snapshot?gpu=h100",
-      "sha256": "sha256:359b29ce2425794728f657d20edf5912bd713c9ae637ee09871ec6ca6dc37f2a"
+      "sha256": "sha256:5761fafdac2dfe07c4d98e691b02b766253d1bc19188d97cf74f471896d0213f"
     }
   },
   "cadence": {
     "availability": "2026-10-17T04:23:28Z",
     "catalog": "2026-10-11T01:44:16Z",
     "history": "2026-10-11T01:44:16Z",
-    "snapshot": "2026-10-17T04:23:28Z"
+    "snapshot": "2026-10-20T04:47:41Z"
   },
   "rows": [
     {
@@ -4019,6 +4020,33 @@
           26.36402833333333
         ]
       }
+    },
+    {
+      "date": "2026-10-20",
+      "gpu": "B200",
+      "cheapestListedPrice": 5.8,
+      "cheapestListedProvider": "Lium",
+      "cheapestAvailablePrice": 5.8,
+      "cheapestAvailableProvider": "Lium",
+      "listedAvailableGapPct": 0.0
+    },
+    {
+      "date": "2026-10-20",
+      "gpu": "H100",
+      "cheapestListedPrice": 1.29,
+      "cheapestListedProvider": "Hyperbolic",
+      "cheapestAvailablePrice": 1.4,
+      "cheapestAvailableProvider": "Lium",
+      "listedAvailableGapPct": 8.53
+    },
+    {
+      "date": "2026-10-20",
+      "gpu": "H200",
+      "cheapestListedPrice": 2.1,
+      "cheapestListedProvider": "Yotta",
+      "cheapestAvailablePrice": 2.7653508771929824,
+      "cheapestAvailableProvider": "Vast",
+      "listedAvailableGapPct": 31.68
     }
   ],
   "monthlyHistory": [
