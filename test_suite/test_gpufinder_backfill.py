@@ -152,7 +152,7 @@ def test_merge_daily_explicit_none_wins_and_stale_gap_removed():
 
 
 def test_due_tracks_per_track_cadence():
-    """轨道各按自己的间隔到期：availability 6 天、snapshot 2.5 天、history/catalog 低频。"""
+    """轨道各按自己的间隔到期：availability 4 天、snapshot 2.5 天、history/catalog 低频。"""
     now = datetime(2026, 10, 16, 6, 0, tzinfo=timezone.utc)
     cadence = {"availability": "2026-10-15T06:00:00Z", "snapshot": "2026-10-13T06:00:00Z",
                "history": "2026-09-16T06:00:00Z", "catalog": "2026-09-15T06:00:00Z"}

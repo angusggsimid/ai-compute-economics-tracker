@@ -2,7 +2,7 @@
 """GPU Finder (gpufinder.dev) 市场采集：价格广度 × 可用率 × 报价-在库价差。
 
 上游 2026-10-09 起要求 Bearer API Key（免费额度 60 次/月）。为守住额度，采集按**轨道**到期触发：
-- availability（≤6 天一轮）：/availability 每次返回 **7 天滚动窗口的逐日 cells**，
+- availability（≤4 天一轮，2026-10-27 起）：/availability 每次返回 **7 天滚动窗口的逐日 cells**，
   低频轮询即可保证"市场稀缺度/广度"日序列零丢失——单次跨度大，正是不缺额度的取数方式；
 - snapshot（~2.5 天一轮）：/snapshot 只有"当下"，没有历史可回补，密度=采集频率（额度内最优）；
 - history（~28 天）、catalog（~30 天）：月度/目录数据，低频即可。
@@ -36,9 +36,9 @@ USER_AGENT = "AIComputeEconomicsTracker/1.0"
 ATTRIBUTION = "Data by GPU Finder (gpufinder.dev), public read-only API; attribution required."
 FRONTIER = ("H100", "H200", "B200")
 # 免费额度 60 次/月。每轮成本：availability/snapshot/history 各 3 次（3 个 GPU），catalog 1 次。
-# 预算：availability 5 轮×3=15 + snapshot 10 轮×3=30 + history 3 + catalog 1 ≈ 49 次/月，其余为重试余量。
+# 预算：availability ~7 轮×3≈21 + snapshot 10 轮×3=30 + history 3 + catalog 1 ≈ 55 次/月，其余为重试余量。
 TRACK_DUE_DAYS = {
-    "availability": 6.0,   # 7 天滚动窗口：≤6 天一轮逐日零丢失（窗口每少采一天就永久缺一天）
+    "availability": 4.0,   # 7 天滚动窗口：≤4 天一轮逐日零丢失，最新点滞后从 6 天压到 4 天（2026-10-27 起）
     "snapshot": 2.5,       # 无历史可回补：密度=频率，额度内最优节奏
     "history": 28.0,       # 月度地板价
     "catalog": 30.0,       # 目录字段（providerCount/价格区间等）
@@ -346,7 +346,7 @@ def main() -> int:
         "notes": [
             "availabilityPct = Σavailable/Σtotal（最新一日，7 天滚动窗口，向前积累）。",
             "listedAvailableGapPct = cheapestAvailable/cheapestListed - 1，衡量报价虚低程度。",
-            "轨道化到期采集（免费额度 60 次/月）：availability ≤6 天一轮（7 天窗口→逐日零丢失）、snapshot ~2.5 天、history ~28 天、catalog ~30 天；未到期日零请求跳过。",
+            "轨道化到期采集（免费额度 60 次/月）：availability ≤4 天一轮（7 天窗口→逐日零丢失）、snapshot ~2.5 天、history ~28 天、catalog ~30 天；未到期日零请求跳过。",
         ],
     }
     OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
