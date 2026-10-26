@@ -1,13 +1,14 @@
 {
-  "fetchedAt": "2026-10-23T04:47:15Z",
-  "lastSuccessAt": "2026-10-23T04:47:15Z",
+  "fetchedAt": "2026-10-26T04:44:22Z",
+  "lastSuccessAt": "2026-10-26T04:44:22Z",
   "refreshStatus": "fresh",
   "publishable": true,
   "attribution": "Data by GPU Finder (gpufinder.dev), public read-only API; attribution required.",
   "sources": {
     "/availability": {
       "url": "https://gpufinder.dev/api/v1/availability?gpu=h100",
-      "sha256": "sha256:5a62c24b7c07541259c77f80ee6ee3b89c900168d38dd13782a82fba7637234d"
+      "sha256": "sha256:5a62c24b7c07541259c77f80ee6ee3b89c900168d38dd13782a82fba7637234d",
+      "carriedFrom": "2026-10-23T04:47:15Z"
     },
     "/gpus": {
       "url": "https://gpufinder.dev/api/v1/gpus",
@@ -21,14 +22,14 @@
     },
     "/snapshot": {
       "url": "https://gpufinder.dev/api/v1/snapshot?gpu=h100",
-      "sha256": "sha256:3384bd5138b32b310ef982a4ee4cb4022826e507453c180039758aa2632309dd"
+      "sha256": "sha256:c6d497beee1663286d0049ca56169825dc382db3a43328421514e371c3f154d4"
     }
   },
   "cadence": {
     "availability": "2026-10-23T04:47:15Z",
     "catalog": "2026-10-11T01:44:16Z",
     "history": "2026-10-11T01:44:16Z",
-    "snapshot": "2026-10-23T04:47:15Z"
+    "snapshot": "2026-10-26T04:44:22Z"
   },
   "rows": [
     {
@@ -5206,6 +5207,33 @@
           28.74308166666666
         ]
       }
+    },
+    {
+      "date": "2026-10-26",
+      "gpu": "B200",
+      "cheapestListedPrice": 5,
+      "cheapestListedProvider": "Lium",
+      "cheapestAvailablePrice": 5,
+      "cheapestAvailableProvider": "Lium",
+      "listedAvailableGapPct": 0.0
+    },
+    {
+      "date": "2026-10-26",
+      "gpu": "H100",
+      "cheapestListedPrice": 1.29,
+      "cheapestListedProvider": "Hyperbolic",
+      "cheapestAvailablePrice": 1.79,
+      "cheapestAvailableProvider": "Lium",
+      "listedAvailableGapPct": 38.76
+    },
+    {
+      "date": "2026-10-26",
+      "gpu": "H200",
+      "cheapestListedPrice": 2.1,
+      "cheapestListedProvider": "Yotta",
+      "cheapestAvailablePrice": 3,
+      "cheapestAvailableProvider": "Koyeb",
+      "listedAvailableGapPct": 42.86
     }
   ],
   "monthlyHistory": [
