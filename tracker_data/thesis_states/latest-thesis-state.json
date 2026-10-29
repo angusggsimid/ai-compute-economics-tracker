@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-28T05:39:39Z",
+  "generatedAt": "2026-10-29T05:45:32Z",
   "inputs": [
     "capex_official_history.json",
     "epoch_chip_sales.json",
@@ -33,7 +33,7 @@
         "面板构成变更",
         "价格与深度方向矛盾"
       ],
-      "next_proof_point": "订单簿深度已积累 67/20 有效日；面板 30D 变化每日更新。",
+      "next_proof_point": "订单簿深度已积累 68/20 有效日；面板 30D 变化每日更新。",
       "watch": {
         "loosening": {
           "triggered": false,
@@ -90,50 +90,50 @@
         ],
         "frontierPanels": {
           "semi:B200": {
-            "days": 506,
-            "change30dPct": 5.48,
-            "change90dPct": 24.13
+            "days": 507,
+            "change30dPct": 2.78,
+            "change90dPct": 22.65
           },
           "semi:H100": {
-            "days": 1113,
-            "change30dPct": 1.82,
-            "change90dPct": 5.33
+            "days": 1114,
+            "change30dPct": 2.42,
+            "change90dPct": 6.6
           },
           "ornn:B200": {
-            "days": 157,
-            "change30dPct": 29.1,
-            "change90dPct": 69.44
+            "days": 158,
+            "change30dPct": 27.78,
+            "change90dPct": 68.59
           },
           "ornn:H100 SXM": {
-            "days": 157,
-            "change30dPct": 10.84,
-            "change90dPct": 18.28
+            "days": 158,
+            "change30dPct": 25.26,
+            "change90dPct": 34.21
           },
           "ornn:H200": {
-            "days": 157,
-            "change30dPct": 23.21,
-            "change90dPct": 28.57
+            "days": 158,
+            "change30dPct": 21.36,
+            "change90dPct": 40.79
           },
           "neocloud:B200": {
-            "days": 110,
-            "change30dPct": 2.95,
+            "days": 111,
+            "change30dPct": 1.45,
             "change90dPct": 2.95
           },
           "neocloud:H100": {
-            "days": 110,
-            "change30dPct": 1.85,
-            "change90dPct": 2.97
+            "days": 111,
+            "change30dPct": -2.37,
+            "change90dPct": 2.02
           },
           "neocloud:H200": {
-            "days": 110,
-            "change30dPct": 7.08,
-            "change90dPct": 15.51
+            "days": 111,
+            "change30dPct": 1.74,
+            "change90dPct": 9.75
           }
         },
         "depth": {
-          "depthValidDates": 67,
-          "depthLatestTotalOffers": 275,
-          "depthGrowthPct": -2.27,
+          "depthValidDates": 68,
+          "depthLatestTotalOffers": 289,
+          "depthGrowthPct": -3.22,
           "depthWindowDays": 60
         },
         "h100Contract1yBands": [
@@ -173,7 +173,7 @@
     },
     {
       "clock_id": "capacity",
-      "stateBasis": "订单簿已积累 67 个有效日（≥10 达标，趋势可判）；最新 offers 275",
+      "stateBasis": "订单簿已积累 68 个有效日（≥10 达标，趋势可判）；最新 offers 289",
       "title": "Capacity & Utilization",
       "natural_frequency": "daily",
       "state": "Trend",
@@ -187,7 +187,7 @@
         "单一来源驱动",
         "GPU 构成漂移"
       ],
-      "next_proof_point": "积累订单簿至 10/20 有效日（当前 67）。",
+      "next_proof_point": "积累订单簿至 10/20 有效日（当前 68）。",
       "watch": {
         "loosening": {
           "triggered": false,
@@ -209,11 +209,11 @@
         }
       },
       "metrics": {
-        "depthValidDates": 67,
-        "latestTotalOffers": 275,
-        "depthGrowthPct": -2.27,
-        "latestGpuCapacity": 9967,
-        "providerSnapshotRows": 33086,
+        "depthValidDates": 68,
+        "latestTotalOffers": 289,
+        "depthGrowthPct": -3.22,
+        "latestGpuCapacity": 9997,
+        "providerSnapshotRows": 33578,
         "providersCovered": 39
       },
       "blockers": [],
@@ -265,7 +265,7 @@
         "weightedOutputPriceChange8wPct": -76.65,
         "recentPriceCutModels": 95,
         "otpiLabsCovered": 4,
-        "otpiLatestDate": "2026-10-26"
+        "otpiLatestDate": "2026-10-27"
       },
       "blockers": [
         "proxy_ceiling_requires_official_usage_for_inflection"
