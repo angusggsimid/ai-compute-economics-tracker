@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-10-30T03:16:33Z",
+    "generatedAt": "2026-10-30T05:45:10Z",
     "minDate": "2025-11-03",
     "maxDate": "2026-10-29",
     "basisCommonStart": {
@@ -7443,7 +7443,7 @@
         "outputPrice": 0.15,
         "historyPoints": 2,
         "firstSeen": "2026-09-22",
-        "lastSeen": "2026-10-29",
+        "lastSeen": "2026-10-30",
         "priceHistory": [
           {
             "date": "2026-09-22",
@@ -7468,7 +7468,7 @@
         "outputPrice": 0.18,
         "historyPoints": 4,
         "firstSeen": "2026-08-29",
-        "lastSeen": "2026-10-29",
+        "lastSeen": "2026-10-30",
         "priceHistory": [
           {
             "date": "2026-08-29",
@@ -7523,7 +7523,7 @@
         "outputPrice": 0.28,
         "historyPoints": 1,
         "firstSeen": "2026-09-22",
-        "lastSeen": "2026-10-29",
+        "lastSeen": "2026-10-30",
         "priceHistory": [
           {
             "date": "2026-09-22",
@@ -7543,7 +7543,7 @@
         "outputPrice": 0.6,
         "historyPoints": 15,
         "firstSeen": "2026-10-17",
-        "lastSeen": "2026-10-29",
+        "lastSeen": "2026-10-30",
         "priceHistory": [
           {
             "date": "2026-10-17",
@@ -7629,11 +7629,11 @@
         "name": "Tencent: Hy4 preview",
         "tokens": 31.314497371974,
         "share": 4.539768298576347,
-        "inputPrice": 0.7506,
-        "outputPrice": 2.2509,
-        "historyPoints": 50,
+        "inputPrice": 0.834,
+        "outputPrice": 2.501,
+        "historyPoints": 51,
         "firstSeen": "2026-08-28",
-        "lastSeen": "2026-10-29",
+        "lastSeen": "2026-10-30",
         "priceHistory": [
           {
             "date": "2026-08-28",
@@ -7884,6 +7884,11 @@
             "date": "2026-10-29",
             "input": 0.7506,
             "output": 2.2509
+          },
+          {
+            "date": "2026-10-30",
+            "input": 0.834,
+            "output": 2.501
           }
         ],
         "free": false
@@ -7898,7 +7903,7 @@
         "outputPrice": 0.25,
         "historyPoints": 1,
         "firstSeen": "2026-09-23",
-        "lastSeen": "2026-10-29",
+        "lastSeen": "2026-10-30",
         "priceHistory": [
           {
             "date": "2026-09-23",
@@ -21013,8 +21018,8 @@
     "priceChangeCounts": [
       {
         "name": "Tencent: Hy4 preview",
-        "recent4w": 46,
-        "total": 50
+        "recent4w": 47,
+        "total": 51
       },
       {
         "name": "DeepSeek: DeepSeek V4.1 Flash 1017",
@@ -30054,7 +30059,7 @@
       {
         "date": "2026-10-30",
         "series": "gpuperhour",
-        "value": 234
+        "value": 231
       },
       {
         "date": "2026-10-30",
@@ -30064,7 +30069,7 @@
       {
         "date": "2026-10-30",
         "series": "vast",
-        "value": 27
+        "value": 26
       }
     ]
   },
@@ -30073,10 +30078,10 @@
       "label": "OpenRouter 公开模型排行榜",
       "urls": [
         "https://openrouter.ai/api/frontend/v1/rankings/model-rankings-chart",
-        "sha256:ac04773d388df64e30300e4dbc6648b2e9e64b30e829bc9ed82ccf552ce5b6b6"
+        "sha256:7c13d2c8ed13fb019eef28ea7b882d125d110642a871ff8a0f0423b6733bd4f1"
       ],
       "url": "https://openrouter.ai/api/frontend/v1/rankings/model-rankings-chart",
-      "sha256": "sha256:ac04773d388df64e30300e4dbc6648b2e9e64b30e829bc9ed82ccf552ce5b6b6",
+      "sha256": "sha256:7c13d2c8ed13fb019eef28ea7b882d125d110642a871ff8a0f0423b6733bd4f1",
       "definition": "Sum of source-provided named model rows and Others for each OpenRouter chart week."
     },
     "openrouterComposition": {
@@ -30085,7 +30090,7 @@
         "https://openrouter.ai/api/frontend/v1/rankings/model-rankings-chart"
       ],
       "url": "https://openrouter.ai/api/frontend/v1/rankings/model-rankings-chart",
-      "sha256": "sha256:ac04773d388df64e30300e4dbc6648b2e9e64b30e829bc9ed82ccf552ce5b6b6",
+      "sha256": "sha256:7c13d2c8ed13fb019eef28ea7b882d125d110642a871ff8a0f0423b6733bd4f1",
       "definition": "Each weekly column independently stacks every model disclosed by the public chart plus Others. Segment height is share of that week's total token volume. Columns are not connected, so a model missing from another week is never treated as zero usage."
     },
     "activePrice": {
@@ -30228,7 +30233,7 @@
         "https://api.runpod.io/graphql"
       ],
       "url": "https://api.gpuindexes.com/api/offers",
-      "sha256": "sha256:25ec4e5d535d4b0a3a0d902eb7d6e95812aac72fb48a9444e4be935bad83bf03 sha256:e8356120a5650491856900a6a538ce22686e4467c13ae71a0aab3bc411ebaa39 sha256:1a658629d62a1c26bdd8da1be8b0428d6fe68472b07c05f56573c44d13eade1d",
+      "sha256": "sha256:e94457c8bdd35977be2d35250b50bf74156d637969684301e58904c615969873 sha256:d683da5efade2dd56ae799c5ae0a11d0477feb95d7eff9e0ece1e0305063b1cc sha256:c0d546a398c85841b978bea0c2482db30ffa8eea542b057df7801b774738fd8b",
       "label": "GPU 订单簿逐源观测",
       "definition": "gpuperhour/vast 为逐条报价 offers、runpod 为型号挂牌 types，单位语义不同故分序列展示不合并。时点观测，<10 有效日只画点不连线。"
     },
@@ -30246,7 +30251,7 @@
         "https://openrouter.ai/api/frontend/v1/rankings/model-rankings-chart"
       ],
       "url": "https://openrouter.ai/api/frontend/v1/rankings/model-rankings-chart",
-      "sha256": "sha256:ac04773d388df64e30300e4dbc6648b2e9e64b30e829bc9ed82ccf552ce5b6b6",
+      "sha256": "sha256:7c13d2c8ed13fb019eef28ea7b882d125d110642a871ff8a0f0423b6733bd4f1",
       "label": "OpenRouter 公开周榜（Top-5 派生）",
       "definition": "每周公开榜单里最新 Top-5 模型各自的用量占比走势。看的是排名与份额的稳定性：曲线频繁交叉=头部不稳。"
     },
