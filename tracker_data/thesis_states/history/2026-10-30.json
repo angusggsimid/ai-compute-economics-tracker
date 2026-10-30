@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-30T03:13:15Z",
+  "generatedAt": "2026-10-30T03:16:32Z",
   "inputs": [
     "capex_official_history.json",
     "epoch_chip_sales.json",
@@ -18,7 +18,7 @@
   "clocks": [
     {
       "clock_id": "supply_price",
-      "stateBasis": "90D 确认窗口：B200、H100、H200 家族涨幅 ≥15%（跨来源去重，≥2 家族达标）",
+      "stateBasis": "90D 确认窗口：B200、H200 家族涨幅 ≥15%（跨来源去重，≥2 家族达标）",
       "title": "Supply Price",
       "natural_frequency": "daily",
       "state": "Confirmed",
@@ -60,10 +60,9 @@
           "conditions": [
             {
               "condition": ">=2 个前沿 GPU 家族 30D 涨幅 >=10%（短线触发窗口 · 跨来源去重）",
-              "met": true,
+              "met": false,
               "evidence": [
-                "B200",
-                "H200"
+                "B200"
               ]
             },
             {
@@ -84,7 +83,6 @@
         "looseningConfirmedFamilies": [],
         "intensifyingConfirmedFamilies": [
           "B200",
-          "H100",
           "H200"
         ],
         "frontierPanels": {
@@ -99,19 +97,19 @@
             "change90dPct": 7.23
           },
           "ornn:B200": {
-            "days": 159,
-            "change30dPct": 30.89,
-            "change90dPct": 72.46
+            "days": 160,
+            "change30dPct": 31.77,
+            "change90dPct": 73.06
           },
           "ornn:H100 SXM": {
-            "days": 159,
-            "change30dPct": 4.23,
-            "change90dPct": 17.0
+            "days": 160,
+            "change30dPct": 4.66,
+            "change90dPct": 14.06
           },
           "ornn:H200": {
-            "days": 159,
-            "change30dPct": 16.81,
-            "change90dPct": 41.33
+            "days": 160,
+            "change30dPct": 4.56,
+            "change90dPct": 27.62
           },
           "neocloud:B200": {
             "days": 113,
@@ -131,8 +129,8 @@
         },
         "depth": {
           "depthValidDates": 69,
-          "depthLatestTotalOffers": 282,
-          "depthGrowthPct": -4.41,
+          "depthLatestTotalOffers": 275,
+          "depthGrowthPct": -4.49,
           "depthWindowDays": 60
         },
         "h100Contract1yBands": [
@@ -172,7 +170,7 @@
     },
     {
       "clock_id": "capacity",
-      "stateBasis": "订单簿已积累 69 个有效日（≥10 达标，趋势可判）；最新 offers 282",
+      "stateBasis": "订单簿已积累 69 个有效日（≥10 达标，趋势可判）；最新 offers 275",
       "title": "Capacity & Utilization",
       "natural_frequency": "daily",
       "state": "Trend",
@@ -209,9 +207,9 @@
       },
       "metrics": {
         "depthValidDates": 69,
-        "latestTotalOffers": 282,
-        "depthGrowthPct": -4.41,
-        "latestGpuCapacity": 9965,
+        "latestTotalOffers": 275,
+        "depthGrowthPct": -4.49,
+        "latestGpuCapacity": 9975,
         "providerSnapshotRows": 34498,
         "providersCovered": 39
       },

@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-10-30T03:13:15Z",
+    "generatedAt": "2026-10-30T03:16:33Z",
     "minDate": "2025-11-03",
     "maxDate": "2026-10-29",
     "basisCommonStart": {
@@ -24598,6 +24598,11 @@
       },
       {
         "date": "2026-10-29",
+        "series": "Ornn 成交指数",
+        "value": 113.62
+      },
+      {
+        "date": "2026-10-29",
         "series": "SemiAnalysis 综合指数",
         "value": 110.36
       },
@@ -25752,6 +25757,11 @@
         "date": "2026-10-29",
         "series": "Neocloud 报价中位",
         "value": 131.13
+      },
+      {
+        "date": "2026-10-29",
+        "series": "Ornn 成交指数",
+        "value": 147.89
       }
     ],
     "basisB200": [
@@ -27479,6 +27489,11 @@
         "date": "2026-10-29",
         "series": "Neocloud 报价中位",
         "value": 120.2
+      },
+      {
+        "date": "2026-10-29",
+        "series": "Ornn 成交指数",
+        "value": 191.25
       },
       {
         "date": "2026-10-29",
@@ -30039,7 +30054,7 @@
       {
         "date": "2026-10-30",
         "series": "gpuperhour",
-        "value": 240
+        "value": 234
       },
       {
         "date": "2026-10-30",
@@ -30049,7 +30064,7 @@
       {
         "date": "2026-10-30",
         "series": "vast",
-        "value": 28
+        "value": 27
       }
     ]
   },
@@ -30058,10 +30073,10 @@
       "label": "OpenRouter 公开模型排行榜",
       "urls": [
         "https://openrouter.ai/api/frontend/v1/rankings/model-rankings-chart",
-        "sha256:1c474456f399938199a19e4227fa57db9b60200b1778e1f19729f9a7beb95643"
+        "sha256:ac04773d388df64e30300e4dbc6648b2e9e64b30e829bc9ed82ccf552ce5b6b6"
       ],
       "url": "https://openrouter.ai/api/frontend/v1/rankings/model-rankings-chart",
-      "sha256": "sha256:1c474456f399938199a19e4227fa57db9b60200b1778e1f19729f9a7beb95643",
+      "sha256": "sha256:ac04773d388df64e30300e4dbc6648b2e9e64b30e829bc9ed82ccf552ce5b6b6",
       "definition": "Sum of source-provided named model rows and Others for each OpenRouter chart week."
     },
     "openrouterComposition": {
@@ -30070,7 +30085,7 @@
         "https://openrouter.ai/api/frontend/v1/rankings/model-rankings-chart"
       ],
       "url": "https://openrouter.ai/api/frontend/v1/rankings/model-rankings-chart",
-      "sha256": "sha256:1c474456f399938199a19e4227fa57db9b60200b1778e1f19729f9a7beb95643",
+      "sha256": "sha256:ac04773d388df64e30300e4dbc6648b2e9e64b30e829bc9ed82ccf552ce5b6b6",
       "definition": "Each weekly column independently stacks every model disclosed by the public chart plus Others. Segment height is share of that week's total token volume. Columns are not connected, so a model missing from another week is never treated as zero usage."
     },
     "activePrice": {
@@ -30171,7 +30186,7 @@
         "https://raw.githubusercontent.com/adriannutiu/gpu-rental-prices/main/data/latest.json"
       ],
       "url": "https://gpu-index.semianalysis.com/api/public-data",
-      "sha256": "sha256:127a9c873b22299049dd40e737420282431eec55884c16cadd8466357f3457d3 sha256:86536c801092131634196eeb5603e6cbb2b518041a7aa3fa26bdcf3d47e888ef sha256:fbc866dd77970021108950c2b20488923de35e86820ae392d403a02473638980",
+      "sha256": "sha256:127a9c873b22299049dd40e737420282431eec55884c16cadd8466357f3457d3 sha256:46071235b409a9f7d2c28d7c1091c1f6de106fd1c4f2c02c54bc636d451796b4 sha256:fbc866dd77970021108950c2b20488923de35e86820ae392d403a02473638980",
       "label": "H100 三源价格对照",
       "definition": "同一 GPU 家族下三种口径并列：供应商报价中位、综合现货-合约指数、成交加权指数。口径不同，仅作交叉对照，不构成同质序列。"
     },
@@ -30182,7 +30197,7 @@
         "https://raw.githubusercontent.com/adriannutiu/gpu-rental-prices/main/data/latest.json"
       ],
       "url": "https://gpu-index.semianalysis.com/api/public-data",
-      "sha256": "sha256:127a9c873b22299049dd40e737420282431eec55884c16cadd8466357f3457d3 sha256:86536c801092131634196eeb5603e6cbb2b518041a7aa3fa26bdcf3d47e888ef sha256:fbc866dd77970021108950c2b20488923de35e86820ae392d403a02473638980",
+      "sha256": "sha256:127a9c873b22299049dd40e737420282431eec55884c16cadd8466357f3457d3 sha256:46071235b409a9f7d2c28d7c1091c1f6de106fd1c4f2c02c54bc636d451796b4 sha256:fbc866dd77970021108950c2b20488923de35e86820ae392d403a02473638980",
       "label": "H200 两源价格对照（SemiAnalysis 无公开 H200 指数）",
       "definition": "口径同上（H200 无 SemiAnalysis 公开指数，为两源对照）。Neocloud 与 Ornn 可能方向分歧，分歧本身是证据而非噪声。"
     },
@@ -30193,7 +30208,7 @@
         "https://raw.githubusercontent.com/adriannutiu/gpu-rental-prices/main/data/latest.json"
       ],
       "url": "https://gpu-index.semianalysis.com/api/public-data",
-      "sha256": "sha256:127a9c873b22299049dd40e737420282431eec55884c16cadd8466357f3457d3 sha256:86536c801092131634196eeb5603e6cbb2b518041a7aa3fa26bdcf3d47e888ef sha256:fbc866dd77970021108950c2b20488923de35e86820ae392d403a02473638980",
+      "sha256": "sha256:127a9c873b22299049dd40e737420282431eec55884c16cadd8466357f3457d3 sha256:46071235b409a9f7d2c28d7c1091c1f6de106fd1c4f2c02c54bc636d451796b4 sha256:fbc866dd77970021108950c2b20488923de35e86820ae392d403a02473638980",
       "label": "B200 三源价格对照",
       "definition": "口径同上。"
     },
@@ -30213,7 +30228,7 @@
         "https://api.runpod.io/graphql"
       ],
       "url": "https://api.gpuindexes.com/api/offers",
-      "sha256": "sha256:dfb2e455b9005979758d480d2b3d64148b65840848af3b7c35ef2fe9d9d774b1 sha256:90fea776a16827e4718ee31299559543af8a9c2ea9924e4adfee8b1ee4f7f526 sha256:82ba8d3b4a08b737e0b542592f0d1c908e37f2a0e57e4e13b3f92abe306db5ed",
+      "sha256": "sha256:25ec4e5d535d4b0a3a0d902eb7d6e95812aac72fb48a9444e4be935bad83bf03 sha256:e8356120a5650491856900a6a538ce22686e4467c13ae71a0aab3bc411ebaa39 sha256:1a658629d62a1c26bdd8da1be8b0428d6fe68472b07c05f56573c44d13eade1d",
       "label": "GPU 订单簿逐源观测",
       "definition": "gpuperhour/vast 为逐条报价 offers、runpod 为型号挂牌 types，单位语义不同故分序列展示不合并。时点观测，<10 有效日只画点不连线。"
     },
@@ -30231,7 +30246,7 @@
         "https://openrouter.ai/api/frontend/v1/rankings/model-rankings-chart"
       ],
       "url": "https://openrouter.ai/api/frontend/v1/rankings/model-rankings-chart",
-      "sha256": "sha256:1c474456f399938199a19e4227fa57db9b60200b1778e1f19729f9a7beb95643",
+      "sha256": "sha256:ac04773d388df64e30300e4dbc6648b2e9e64b30e829bc9ed82ccf552ce5b6b6",
       "label": "OpenRouter 公开周榜（Top-5 派生）",
       "definition": "每周公开榜单里最新 Top-5 模型各自的用量占比走势。看的是排名与份额的稳定性：曲线频繁交叉=头部不稳。"
     },
