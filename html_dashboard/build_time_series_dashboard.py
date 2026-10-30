@@ -1467,11 +1467,11 @@ lineChart('active-output-basket','active-output-basket-legend',DATA.datasets.act
 ['H100','H200','B200'].forEach(g=>rangeChart('gpu-price-'+g.toLowerCase(),DATA.datasets.gpuPrice.filter(r=>r.series===g),DATA.datasets.gpuPriceAnnotations[g]));
 lineChart('gpu-premium','gpu-premium-legend',DATA.datasets.gpuPremium,{title:'GPU generation rental premium',kind:'multiple',yTitle:'Price ratio to H100',zero:false,reference:1,endLabels:true});
 const _sd=DATA.meta.scarcityValidDays||0,_gd=DATA.meta.gapValidDays||0;
-document.getElementById('scarcity-note').textContent=`能租到的卡数 ÷ 在架总卡数 · 已积累 ${_sd}/10 天${_sd>=10?'，已连线':'，先画观测点'}`;
+document.getElementById('scarcity-note').textContent=`能租到的卡数 ÷ 在架总卡数 · ${_sd>=10?`已积累 ${_sd} 天`:`已积累 ${_sd}/10 天，先画观测点`}`;
 if(document.getElementById('scarcity-chart'))lineChart('scarcity-chart','scarcity-legend',DATA.datasets.scarcity||[],{title:'Market availability pct',kind:'pct',yTitle:'% available',zero:true,gapDays:3,pointOnly:_sd<10});
 document.getElementById('gap-note').textContent=`最低在库价 ÷ 最低报价 − 1 · 已积累 ${_gd}/10 天${_gd>=10?'，已连线':'，先画观测点'}`;
 if(document.getElementById('gap-chart'))lineChart('gap-chart','gap-legend',DATA.datasets.listedGap||[],{title:'Listed vs in-stock gap',kind:'pct',yTitle:'Gap %',zero:false,gapDays:3,pointOnly:_gd<10});
-if(document.getElementById('breadth-chart'))lineChart('breadth-chart','breadth-legend',DATA.datasets.breadth||[],{title:'Provider breadth',kind:'count',yTitle:'Providers',zero:false,gapDays:3,pointOnly:_gd<10});
+if(document.getElementById('breadth-chart'))lineChart('breadth-chart','breadth-legend',DATA.datasets.breadth||[],{title:'Provider breadth',kind:'count',yTitle:'Providers',zero:false,gapDays:3,pointOnly:_sd<10});
 
 const orderbookRows=DATA.datasets.orderbookDepth||[];
 const obDays=DATA.meta&&DATA.meta.orderbookValidDays?DATA.meta.orderbookValidDays:0;
