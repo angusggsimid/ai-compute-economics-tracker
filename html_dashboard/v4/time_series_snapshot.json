@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-10-31T05:38:02Z",
+    "generatedAt": "2026-10-31T07:52:48Z",
     "minDate": "2025-11-03",
     "maxDate": "2026-10-31",
     "basisCommonStart": {
@@ -107,8 +107,8 @@
         "fiscalYear": "CY2026",
         "low": 170.0,
         "high": 170.0,
-        "prevLow": null,
-        "prevHigh": null,
+        "prevLow": 175.0,
+        "prevHigh": 175.0,
         "revisionDate": "2026-10-28",
         "note": "（CY2026）"
       }
@@ -117,7 +117,40 @@
     "volumeYoYLabel": "自首个完整周（2025-11-03起）×32",
     "volumePartialWeekDropped": "2025-10-27",
     "scarcityValidDays": 40,
-    "gapValidDays": 7
+    "gapValidDays": 7,
+    "executiveSummary": {
+      "generatedAt": "2026-10-31T07:52:48Z",
+      "macroStance": "现货偏紧，但资本开支指引不是单边上修",
+      "stanceLevel": "intensifying",
+      "coreNarrative": "供给价格长窗口仍偏紧。指引里同时有上移和下移，不能写成两套时钟同向上修。",
+      "takeaways": [
+        {
+          "clock": "Supply Price",
+          "title": "现货价格",
+          "badge": "Confirmed · intensifying",
+          "text": "90 日面板：neocloud:B200 +3.0%；neocloud:H100 +5.5%；neocloud:H200 +15.5%；ornn:B200 +73.8%；ornn:H100 SXM +13.2%；ornn:H200 +25.5%；semi:B200 +19.9%；semi:H100 +5.0%。这些是时钟用来确认的成交或综合指数，不是挂牌中位。哪一代没进确认名单，就不能写成同涨。"
+        },
+        {
+          "clock": "Capacity",
+          "title": "在库与挂牌水分",
+          "badge": "Trend · 70 个有效日",
+          "text": "最新报价虚低度：H100 38.8%，B200 0.0%。这是当天快照，不是趋势；虚低度高表示最低挂牌价和最低在库价分开。"
+        },
+        {
+          "clock": "Demand",
+          "title": "Token 用量",
+          "badge": "Observing · proxy 封顶",
+          "text": "最新完整周 token 188.0T。近 90 日降价模型 96 个。用量是公开榜代理，不能乘牌价篮子估算全市场支出。"
+        },
+        {
+          "clock": "Commitment",
+          "title": "资本开支指引",
+          "badge": "Inflection Watch · intensifying",
+          "text": "指引上移：Alphabet、Meta。指引下移或收紧：Microsoft。不得概括成全部上修。"
+        }
+      ],
+      "riskNotice": "反证以供给时钟自己的规则为准：90 日窗口里至少两个家族跌幅达到 15%，紧缩确认才被推翻。30 日波动本身不够。"
+    }
   },
   "datasets": {
     "openrouterVolume": [
@@ -30628,5 +30661,47 @@
       "label": "固定供应商面板指数",
       "definition": "从 34 家供应商数据集取窗口内持续在架成员（覆盖率≥90%），按非中断性租赁价计算成员均值，起点=100；成员当日缺价即断点。消除供应商构成漂移，是供给价格的首选趋势证据。橙色虚线标注 = 固定成员里当日环比跳变最大的那一家（如「Together AI −50%」，同规格单家调价，非市场整体事件）；台阶来自成员个体动作，判断趋势请看均线。 当前成员：H100（15 家）：AWS、Azure、CoreWeave、Crusoe、DataCrunch、HyperStack、JarvisLabs、Lambda、Massed Compute、Nebius、OVH、RunPod、Spheron、Together AI、Voltage Park；B200（7 家）：CoreWeave、DataCrunch、HyperStack、Lambda、Nebius、RunPod、Together AI"
     }
-  }
+  },
+  "events": [
+    {
+      "date": "2026-07-22",
+      "category": "capex",
+      "importance": "high",
+      "label": "Alphabet 上修 CAPEX",
+      "tooltip": "Alphabet 将 FY2026 资本开支指引上修至 1950–2050 亿美元。来源：capex_official_history.json 同日修订行。",
+      "source": "tracker_data/backfills/capex_official_history.json"
+    },
+    {
+      "date": "2026-09-03",
+      "category": "provider",
+      "importance": "medium",
+      "label": "Together B200 降价",
+      "tooltip": "Together 同款 180GB on-demand B200 在 2026-09-02 仍为 8.19 美元，2026-09-03 起为 4.09 美元。来源：neocloud_provider_price_history.json。",
+      "source": "tracker_data/backfills/neocloud_provider_price_history.json"
+    },
+    {
+      "date": "2026-09-27",
+      "category": "provider",
+      "importance": "high",
+      "label": "租赁价格换源",
+      "tooltip": "Foundry 从该日起退出价格图，改由供应商租赁数据集接管。neocloud 自己的日序列没有在这一天被切断。",
+      "source": "CONTEXT.md"
+    },
+    {
+      "date": "2026-10-21",
+      "category": "capex",
+      "importance": "high",
+      "label": "Meta 上移指引下限",
+      "tooltip": "Meta 将 FY2026 指引收窄为 1350–1450 亿美元，下限自 1300 上移。来源：capex_official_history.json。",
+      "source": "tracker_data/backfills/capex_official_history.json"
+    },
+    {
+      "date": "2026-10-28",
+      "category": "capex",
+      "importance": "high",
+      "label": "Microsoft 下调全年 CAPEX",
+      "tooltip": "微软日历年管理口径资本开支从约 1750 亿调至约 1700 亿，电话会归因于第三方 GPU 延期，不是需求消失。",
+      "source": "https://www.microsoft.com/en-us/investor/events/fy-2027/earnings-fy-2027-q1"
+    }
+  ]
 }

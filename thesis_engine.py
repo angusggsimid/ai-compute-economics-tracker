@@ -585,6 +585,7 @@ def evaluate_report(data_dir: Path) -> Dict[str, Any]:
         "generatedAt": datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z"),
         "inputs": sorted(p.name for p in data_dir.glob("*.json")),
         "clocks": clocks,
+        "executiveSummary": generate_executive_summary(clocks),
         "methodology": {
             "states": list(STATES),
             "bidirectional": "每个时钟并行评估松动(loosening)与紧缩(intensifying)两套 Watch 条件。",
@@ -618,6 +619,136 @@ def render_markdown(report: Dict[str, Any]) -> str:
         lines.append(f"| {clock['title']} | **{clock['state']}** | {direction} | {key} | {clock['next_proof_point']} |")
     lines.append("")
     return "\n".join(lines)
+
+
+def _fmt_pct(value: Any) -> str:
+    if not isinstance(value, (int, float)):
+        return "无读数"
+    return f"{value:+.1f}%"
+
+
+def generate_executive_summary(clocks: List[Dict[str, Any]], facts: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
+    """四时钟 → 30 秒简报。只使用时钟指标和调用方注入的事实，不写死数字。"""
+    facts = facts or {}
+    clock_map = {c.get("clock_id"): c for c in clocks}
+    supply = clock_map.get("supply_price") or {}
+    capacity = clock_map.get("capacity") or {}
+    demand = clock_map.get("demand_unit_economics") or {}
+    commitment = clock_map.get("commitment_monetization") or {}
+
+    supply_state = str(supply.get("state") or "Observing")
+    supply_dir = supply.get("direction")
+    commit_dir = commitment.get("direction")
+    ups = facts.get("guidanceUp") or []
+    downs = facts.get("guidanceDown") or []
+    if supply_state == "Confirmed" and supply_dir == "intensifying":
+        if downs:
+            stance, level = "现货偏紧，但资本开支指引不是单边上修", "intensifying"
+            narrative = "供给价格长窗口仍偏紧。指引里同时有上移和下移，不能写成两套时钟同向上修。"
+        elif commit_dir == "intensifying" and ups:
+            stance, level = "现货偏紧，部分公司上修了指引", "intensifying"
+            narrative = "供给价格时钟为 Confirmed·intensifying。指引上修只覆盖名单里的公司，不是五家一起加码。"
+        else:
+            stance, level = "现货价格偏紧，资本开支指引并未同向确认", "intensifying"
+            narrative = "供给价格时钟为 Confirmed·intensifying。资本开支指引没有同步上修，不能把现货涨价写成云厂商承诺已全面加码。"
+    elif supply_state == "Confirmed" and supply_dir == "loosening":
+        stance, level = "供给价格长窗口确认松动", "loosening"
+        narrative = "前沿卡价格的 90 日窗口已确认下行。是否伴随订单簿变厚，要看容量时钟，不能只靠这一句。"
+    elif supply_state == "Inflection Watch":
+        stance, level = "供给价格处于短线预警，尚未长窗口确认", "watch"
+        narrative = f"30 日条件已触发，方向是 {supply_dir or '未标注'}。90 日跨来源确认还没成立。"
+    else:
+        stance, level = "四时钟没有给出单一方向", "neutral"
+        narrative = "价格、容量、用量、资本开支没有同时指向一边。读细分代际，不要读一个总判断。"
+
+    panels = (supply.get("metrics") or {}).get("frontierPanels") or {}
+    panel_bits = [
+        f"{name} {_fmt_pct(item.get('change90dPct'))}"
+        for name, item in sorted(panels.items())
+        if isinstance(item, dict) and isinstance(item.get("change90dPct"), (int, float))
+    ]
+    panel_text = "；".join(panel_bits) if panel_bits else "90日面板读数不足"
+    gap_h100 = facts.get("listedGapH100")
+    gap_b200 = facts.get("listedGapB200")
+    if isinstance(gap_h100, (int, float)) and isinstance(gap_b200, (int, float)):
+        capacity_text = (
+            f"最新报价虚低度：H100 {gap_h100:.1f}%，B200 {gap_b200:.1f}%。"
+            "这是当天快照，不是趋势；虚低度高表示最低挂牌价和最低在库价分开。"
+        )
+    else:
+        capacity_text = "报价虚低度本轮没有注入最新读数，不引用记忆中的旧百分比。订单簿天数见容量时钟。"
+    tokens = (demand.get("metrics") or {}).get("latestWeeklyTokens")
+    token_text = f"{tokens / 1e12:.1f}T" if isinstance(tokens, (int, float)) else "无最新周读数"
+    cuts = (demand.get("metrics") or {}).get("recentPriceCutModels")
+    cuts_text = str(cuts) if isinstance(cuts, int) else "未计数"
+    if ups or downs:
+        commit_text = f"指引上移：{'、'.join(ups) or '无'}。指引下移或收紧：{'、'.join(downs) or '无'}。不得概括成全部上修。"
+    else:
+        commit_text = "本轮没有注入可核对的指引修订名单。看 CAPEX 区的指引条，不要用旧财报季的上修代替当前结论。"
+    depth_days = (capacity.get("metrics") or {}).get("depthValidDates")
+    depth_text = f"{depth_days} 个有效日" if isinstance(depth_days, int) else "有效日见容量时钟"
+
+    takeaways = [
+        {
+            "clock": "Supply Price",
+            "title": "现货价格",
+            "badge": f"{supply_state} · {supply_dir or 'neutral'}",
+            "text": f"90 日面板：{panel_text}。这些是时钟用来确认的成交或综合指数，不是挂牌中位。哪一代没进确认名单，就不能写成同涨。",
+        },
+        {
+            "clock": "Capacity",
+            "title": "在库与挂牌水分",
+            "badge": f"{capacity.get('state') or 'Observing'} · {depth_text}",
+            "text": capacity_text,
+        },
+        {
+            "clock": "Demand",
+            "title": "Token 用量",
+            "badge": f"{demand.get('state') or 'Observing'} · proxy 封顶",
+            "text": f"最新完整周 token {token_text}。近 90 日降价模型 {cuts_text} 个。用量是公开榜代理，不能乘牌价篮子估算全市场支出。",
+        },
+        {
+            "clock": "Commitment",
+            "title": "资本开支指引",
+            "badge": f"{commitment.get('state') or 'Observing'} · {commitment.get('direction') or 'neutral'}",
+            "text": commit_text,
+        },
+    ]
+    return {
+        "generatedAt": datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z"),
+        "macroStance": stance,
+        "stanceLevel": level,
+        "coreNarrative": narrative,
+        "takeaways": takeaways,
+        "riskNotice": "反证以供给时钟自己的规则为准：90 日窗口里至少两个家族跌幅达到 15%，紧缩确认才被推翻。30 日波动本身不够。",
+    }
+
+
+def format_freshness_business(source: str, status: str) -> Optional[Dict[str, str]]:
+    """工程状态 → 买方能读的一句。没有映射就返回 None，调用方保留原状态。"""
+    table = {
+        ("sec_capex", "current_for_frequency"): {
+            "title": "季度财报仍在披露节奏内",
+            "desc": "最近一期官方资本开支已入库。频率达标不等于本期重新抓到了新文件。",
+        },
+        ("sec_capex", "blocked"): {
+            "title": "官方资本开支已超过允许的披露间隔",
+            "desc": "超过 150 天没有新的可用披露，发布应被挡住。",
+        },
+        ("foundry_signals", "failed_using_last_good"): {
+            "title": "Foundry 已退出价格图",
+            "desc": "2026-09-27 起价格图改用供应商租赁数据集。本行失败不代表页面价格停更。",
+        },
+        ("foundry_signals", "stale_last_good"): {
+            "title": "Foundry 暂用旧文件，且已不喂价格图",
+            "desc": "宽限内不阻塞发布。价格图不读这一行。",
+        },
+        ("gpufinder_market", "current_for_frequency"): {
+            "title": "紧张度按轨道到期采集",
+            "desc": "未到期日不发请求。可用率窗口内的逐日点仍保留。",
+        },
+    }
+    return table.get((source, status))
 
 
 def main() -> int:

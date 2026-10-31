@@ -1,0 +1,42 @@
+[
+  {
+    "date": "2026-07-22",
+    "category": "capex",
+    "importance": "high",
+    "label": "Alphabet 上修 CAPEX",
+    "tooltip": "Alphabet 将 FY2026 资本开支指引上修至 1950–2050 亿美元。来源：capex_official_history.json 同日修订行。",
+    "source": "tracker_data/backfills/capex_official_history.json"
+  },
+  {
+    "date": "2026-09-03",
+    "category": "provider",
+    "importance": "medium",
+    "label": "Together B200 降价",
+    "tooltip": "Together 同款 180GB on-demand B200 在 2026-09-02 仍为 8.19 美元，2026-09-03 起为 4.09 美元。来源：neocloud_provider_price_history.json。",
+    "source": "tracker_data/backfills/neocloud_provider_price_history.json"
+  },
+  {
+    "date": "2026-09-27",
+    "category": "provider",
+    "importance": "high",
+    "label": "租赁价格换源",
+    "tooltip": "Foundry 从该日起退出价格图，改由供应商租赁数据集接管。neocloud 自己的日序列没有在这一天被切断。",
+    "source": "CONTEXT.md"
+  },
+  {
+    "date": "2026-10-21",
+    "category": "capex",
+    "importance": "high",
+    "label": "Meta 上移指引下限",
+    "tooltip": "Meta 将 FY2026 指引收窄为 1350–1450 亿美元，下限自 1300 上移。来源：capex_official_history.json。",
+    "source": "tracker_data/backfills/capex_official_history.json"
+  },
+  {
+    "date": "2026-10-28",
+    "category": "capex",
+    "importance": "high",
+    "label": "Microsoft 下调全年 CAPEX",
+    "tooltip": "微软日历年管理口径资本开支从约 1750 亿调至约 1700 亿，电话会归因于第三方 GPU 延期，不是需求消失。",
+    "source": "https://www.microsoft.com/en-us/investor/events/fy-2027/earnings-fy-2027-q1"
+  }
+]

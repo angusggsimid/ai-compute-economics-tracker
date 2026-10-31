@@ -20,6 +20,28 @@ ROOT = Path(__file__).resolve().parents[1]
 PORT = 8931
 
 
+def _event_toggle_works(page) -> bool:
+    before = page.locator(".event-marker").count()
+    if before == 0:
+        return False
+    page.locator("#toggle-events").click()
+    hidden = page.locator(".event-marker").count() == 0
+    page.locator("#toggle-events").click()
+    restored = page.locator(".event-marker").count() > 0
+    return hidden and restored
+
+
+def _sandbox_redraws(page) -> bool:
+    select = page.locator("#sandbox-series-a")
+    if select.count() != 1:
+        return False
+    before = page.locator("#sandbox-chart svg path").count()
+    select.select_option(index=1)
+    page.wait_for_timeout(200)
+    after = page.locator("#sandbox-chart svg path").count()
+    return before >= 1 and after >= 1
+
+
 def main() -> int:
     try:
         from playwright.sync_api import sync_playwright
@@ -131,6 +153,10 @@ def main() -> int:
                 "guidance_matches_source_table": not consistency["mismatches"],
                 "no_duplicate_svg_labels": not duplicate_labels,
                 "end_label_colors_match_lines": not color_mismatch,
+                "executive_card_visible": page.locator("#executive-summary").count() == 1
+                and len(page.locator("#executive-summary").inner_text()) > 40,
+                "event_toggle_hides_markers": _event_toggle_works(page),
+                "sandbox_redraws": _sandbox_redraws(page),
             }
             diagnostics = {
                 "errors": errors[:5],

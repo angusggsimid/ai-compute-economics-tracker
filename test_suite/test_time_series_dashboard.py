@@ -1,4 +1,5 @@
 import json
+import re
 import sys
 from datetime import date, timedelta
 from pathlib import Path
@@ -124,3 +125,43 @@ def test_fixed_representative_token_price_section_is_removed():
     assert "代表模型 Input Token 牌价" not in html
     assert "Token价格" not in html
     assert "OpenRouter 活跃模型组合更替" in html
+
+
+def test_executive_summary_contract():
+    snapshot = build_snapshot()
+    summary = snapshot.get("meta", {}).get("executiveSummary")
+    assert summary is not None
+    assert summary.get("macroStance")
+    assert len(summary.get("takeaways") or []) == 4
+    for item in summary["takeaways"]:
+        assert item["clock"] in ("Supply Price", "Capacity", "Demand", "Commitment")
+        assert len(item["text"]) >= 10
+    html = build_html(snapshot)
+    assert 'id="executive-summary"' in html
+    capacity = next(item for item in summary["takeaways"] if item["clock"] == "Capacity")
+    gap = next(row["value"] for row in reversed(snapshot["datasets"]["listedGap"]) if row["series"] == "H100")
+    assert f"{gap:.1f}%" in capacity["text"]
+    assert "同为上修" not in summary["coreNarrative"]
+    assert "Microsoft" in next(item["text"] for item in summary["takeaways"] if item["clock"] == "Commitment")
+
+
+def test_industry_events_are_dated_and_sourced():
+    events_path = TRACKER_V2 / "tracker_data" / "industry_events.json"
+    events = json.loads(events_path.read_text(encoding="utf-8"))
+    assert len(events) >= 5
+    dates = []
+    for event in events:
+        assert re.match(r"^\d{4}-\d{2}-\d{2}$", event["date"])
+        assert event["importance"] in ("high", "medium", "low")
+        assert event["label"]
+        assert event.get("source"), "事件必须能回到项目内来源，不能只凭记忆"
+        dates.append(event["date"])
+    assert dates == sorted(dates)
+    assert "Llama 3" not in json.dumps(events, ensure_ascii=False)
+
+
+def test_cross_clock_sandbox_is_in_the_page():
+    html = build_html(build_snapshot())
+    assert 'id="sandbox-chart"' in html
+    assert 'id="toggle-events"' in html
+    assert "SANDBOX_SERIES_CATALOG" in html
