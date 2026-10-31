@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-31T02:25:00Z",
+  "generatedAt": "2026-10-31T02:55:19Z",
   "inputs": [
     "capex_official_history.json",
     "epoch_chip_sales.json",
@@ -88,8 +88,8 @@
         "frontierPanels": {
           "semi:B200": {
             "days": 509,
-            "change30dPct": -1.96,
-            "change90dPct": 19.71
+            "change30dPct": -1.81,
+            "change90dPct": 19.89
           },
           "semi:H100": {
             "days": 1116,
@@ -98,18 +98,18 @@
           },
           "ornn:B200": {
             "days": 160,
-            "change30dPct": 31.77,
-            "change90dPct": 73.06
+            "change30dPct": 31.73,
+            "change90dPct": 73.85
           },
           "ornn:H100 SXM": {
             "days": 160,
-            "change30dPct": 4.66,
-            "change90dPct": 14.06
+            "change30dPct": 2.46,
+            "change90dPct": 13.18
           },
           "ornn:H200": {
             "days": 160,
-            "change30dPct": 4.56,
-            "change90dPct": 27.62
+            "change30dPct": 0.53,
+            "change90dPct": 25.49
           },
           "neocloud:B200": {
             "days": 113,
@@ -129,8 +129,8 @@
         },
         "depth": {
           "depthValidDates": 70,
-          "depthLatestTotalOffers": 293,
-          "depthGrowthPct": -5.08,
+          "depthLatestTotalOffers": 307,
+          "depthGrowthPct": -4.93,
           "depthWindowDays": 60
         },
         "h100Contract1yBands": [
@@ -170,7 +170,7 @@
     },
     {
       "clock_id": "capacity",
-      "stateBasis": "订单簿已积累 70 个有效日（≥10 达标，趋势可判）；最新 offers 293",
+      "stateBasis": "订单簿已积累 70 个有效日（≥10 达标，趋势可判）；最新 offers 307",
       "title": "Capacity & Utilization",
       "natural_frequency": "daily",
       "state": "Trend",
@@ -207,9 +207,9 @@
       },
       "metrics": {
         "depthValidDates": 70,
-        "latestTotalOffers": 293,
-        "depthGrowthPct": -5.08,
-        "latestGpuCapacity": 10085,
+        "latestTotalOffers": 307,
+        "depthGrowthPct": -4.93,
+        "latestGpuCapacity": 10128,
         "providerSnapshotRows": 34498,
         "providersCovered": 39
       },
@@ -326,13 +326,13 @@
       },
       "metrics": {
         "companiesCovered": 5,
-        "companiesWith3ConsecutiveQuarters": 0,
-        "maxConsecutiveQuarters": 2,
+        "companiesWith3ConsecutiveQuarters": 4,
+        "maxConsecutiveQuarters": 3,
         "consecutiveQuartersByCompany": {
-          "Alphabet": 2,
-          "Amazon": 2,
-          "Meta": 2,
-          "Microsoft": 2,
+          "Alphabet": 3,
+          "Amazon": 3,
+          "Meta": 3,
+          "Microsoft": 3,
           "Oracle": 1
         },
         "guidanceRevisedUp": [
@@ -344,10 +344,7 @@
         "h100ContractFirstMidpoint": 3.05,
         "h100ContractLatestMidpoint": 2.85
       },
-      "blockers": [
-        "companies_with_3_consecutive_quarters_0_of_3",
-        "longest_true_quarter_run_2_(Alphabet)_needs_3"
-      ],
+      "blockers": [],
       "sources": [
         "sec_capex",
         "semianalysis_contract"

@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-10-31T02:25:01Z",
+    "generatedAt": "2026-10-31T02:55:19Z",
     "minDate": "2025-11-03",
     "maxDate": "2026-10-29",
     "basisCommonStart": {
@@ -84,23 +84,33 @@
         "revisionDate": "2026-07-22"
       },
       {
+        "company": "Amazon",
+        "fiscalYear": "CY2026",
+        "low": 220.0,
+        "high": 220.0,
+        "prevLow": null,
+        "prevHigh": null,
+        "revisionDate": "2026-10-29",
+        "note": "（CY2026）"
+      },
+      {
         "company": "Meta",
         "fiscalYear": "FY2026",
-        "low": 130.0,
+        "low": 135.0,
         "high": 145.0,
-        "prevLow": 125.0,
+        "prevLow": 130.0,
         "prevHigh": 145.0,
-        "revisionDate": "2026-07-29"
+        "revisionDate": "2026-10-21"
       },
       {
         "company": "Microsoft",
         "fiscalYear": "CY2026",
-        "low": 175.0,
-        "high": 175.0,
+        "low": 170.0,
+        "high": 170.0,
         "prevLow": null,
         "prevHigh": null,
-        "revisionDate": "2026-07-29",
-        "note": "（租赁重分类后 CY2026）"
+        "revisionDate": "2026-10-28",
+        "note": "（CY2026）"
       }
     ],
     "providerUniverse": 39,
@@ -21105,11 +21115,177 @@
       },
       {
         "group": "26Q3",
+        "series": "Alphabet",
+        "value": 51.35
+      },
+      {
+        "group": "26Q3",
+        "series": "Amazon",
+        "value": 77.26
+      },
+      {
+        "group": "26Q3",
+        "series": "Meta",
+        "value": 33.94
+      },
+      {
+        "group": "26Q3",
+        "series": "Microsoft",
+        "value": 39.4
+      },
+      {
+        "group": "26Q3",
         "series": "Oracle",
         "value": 28.5
       }
     ],
     "capex": [
+      {
+        "date": "2026-10-29",
+        "company": "Amazon",
+        "metric": "calendar 2026 capex guidance",
+        "value": 220.0,
+        "unit": "USD_B",
+        "period": "calendar_2026_cash_capex_guidance",
+        "source_url": "https://ir.aboutamazon.com/news-release/news-release-details/2026/Amazon-com-Announces-Third-Quarter-Results/default.aspx",
+        "fromCache": true,
+        "note": "cash capital expenditures, approximately 220, unchanged",
+        "metricLabel": "2026 自然年指引",
+        "periodLabel": "calendar_2026_cash_capex_guidance",
+        "unitLabel": "十亿美元",
+        "valueDisplay": "220"
+      },
+      {
+        "date": "2026-10-28",
+        "company": "Microsoft",
+        "metric": "calendar 2026 capex guidance",
+        "value": 170.0,
+        "unit": "USD_B",
+        "period": "calendar_2026_management_capex",
+        "source_url": "https://www.microsoft.com/en-us/investor/events/fy-2027/earnings-fy-2027-q1",
+        "fromCache": true,
+        "note": "management capex including finance leases, cut from 175",
+        "metricLabel": "2026 自然年指引",
+        "periodLabel": "calendar_2026_management_capex",
+        "unitLabel": "十亿美元",
+        "valueDisplay": "170"
+      },
+      {
+        "date": "2026-10-21",
+        "company": "Meta",
+        "metric": "fy2026 capex guidance previous low",
+        "value": 130.0,
+        "unit": "USD_B",
+        "period": "capex_guidance_revision",
+        "source_url": "https://investor.atmeta.com/investor-news/press-release-details/2026/Meta-Reports-Third-Quarter-2026-Results/default.aspx",
+        "fromCache": true,
+        "metricLabel": "FY2026 指引下限（上调前）",
+        "periodLabel": "指引修订",
+        "unitLabel": "十亿美元",
+        "valueDisplay": "130"
+      },
+      {
+        "date": "2026-10-21",
+        "company": "Meta",
+        "metric": "fy2026 capex guidance previous high",
+        "value": 145.0,
+        "unit": "USD_B",
+        "period": "capex_guidance_revision",
+        "source_url": "https://investor.atmeta.com/investor-news/press-release-details/2026/Meta-Reports-Third-Quarter-2026-Results/default.aspx",
+        "fromCache": true,
+        "metricLabel": "FY2026 指引上限（上调前）",
+        "periodLabel": "指引修订",
+        "unitLabel": "十亿美元",
+        "valueDisplay": "145"
+      },
+      {
+        "date": "2026-10-21",
+        "company": "Meta",
+        "metric": "fy2026 capex guidance low",
+        "value": 135.0,
+        "unit": "USD_B",
+        "period": "capex_guidance_revision",
+        "source_url": "https://investor.atmeta.com/investor-news/press-release-details/2026/Meta-Reports-Third-Quarter-2026-Results/default.aspx",
+        "fromCache": true,
+        "metricLabel": "FY2026 指引下限",
+        "periodLabel": "指引修订",
+        "unitLabel": "十亿美元",
+        "valueDisplay": "135"
+      },
+      {
+        "date": "2026-10-21",
+        "company": "Meta",
+        "metric": "fy2026 capex guidance high",
+        "value": 145.0,
+        "unit": "USD_B",
+        "period": "capex_guidance_revision",
+        "source_url": "https://investor.atmeta.com/investor-news/press-release-details/2026/Meta-Reports-Third-Quarter-2026-Results/default.aspx",
+        "fromCache": true,
+        "metricLabel": "FY2026 指引上限",
+        "periodLabel": "指引修订",
+        "unitLabel": "十亿美元",
+        "valueDisplay": "145"
+      },
+      {
+        "date": "2026-09-30",
+        "company": "Microsoft",
+        "metric": "capex actual",
+        "value": 39.4,
+        "unit": "USD_B",
+        "period": "FY2027 Q1",
+        "source_url": "https://www.microsoft.com/en-us/investor/events/fy-2027/earnings-fy-2027-q1",
+        "fromCache": true,
+        "note": "cash paid for PP&E per FY27 Q1 call; management capex including finance leases is 45.2",
+        "metricLabel": "资本开支（实际）",
+        "periodLabel": "FY2027 Q1",
+        "unitLabel": "十亿美元",
+        "valueDisplay": "39.4"
+      },
+      {
+        "date": "2026-09-30",
+        "company": "Meta",
+        "metric": "capex actual",
+        "value": 33.942,
+        "unit": "USD_B",
+        "period": "FY2026 Q3",
+        "source_url": "https://investor.atmeta.com/investor-news/press-release-details/2026/Meta-Reports-Third-Quarter-2026-Results/default.aspx",
+        "fromCache": true,
+        "note": "cash purchases of PPE, comparable to prior XBRL tag; company capex including finance-lease principal is 34.91",
+        "metricLabel": "资本开支（实际）",
+        "periodLabel": "FY2026 Q3",
+        "unitLabel": "十亿美元",
+        "valueDisplay": "33.942"
+      },
+      {
+        "date": "2026-09-30",
+        "company": "Amazon",
+        "metric": "capex actual",
+        "value": 77.259,
+        "unit": "USD_B",
+        "period": "FY2026 Q3",
+        "source_url": "https://ir.aboutamazon.com/news-release/news-release-details/2026/Amazon-com-Announces-Third-Quarter-Results/default.aspx",
+        "fromCache": true,
+        "note": "earnings release purchases of property and equipment; not net of incentives",
+        "metricLabel": "资本开支（实际）",
+        "periodLabel": "FY2026 Q3",
+        "unitLabel": "十亿美元",
+        "valueDisplay": "77.259"
+      },
+      {
+        "date": "2026-09-30",
+        "company": "Alphabet",
+        "metric": "capex actual",
+        "value": 51.355,
+        "unit": "USD_B",
+        "period": "FY2026 Q3",
+        "source_url": "https://s206.q4cdn.com/479360582/files/doc_financials/2026/q3/2026q3-alphabet-earnings-release.pdf",
+        "fromCache": true,
+        "note": "earnings release cash purchases of property and equipment; SEC companyfacts unavailable",
+        "metricLabel": "资本开支（实际）",
+        "periodLabel": "FY2026 Q3",
+        "unitLabel": "十亿美元",
+        "valueDisplay": "51.355"
+      },
       {
         "date": "2026-08-31",
         "company": "Oracle",
@@ -23279,7 +23455,7 @@
       {
         "date": "2026-07-31",
         "series": "Ornn 成交指数",
-        "value": 107.39
+        "value": 106.23
       },
       {
         "date": "2026-07-31",
@@ -23294,7 +23470,7 @@
       {
         "date": "2026-08-01",
         "series": "Ornn 成交指数",
-        "value": 104.67
+        "value": 103.11
       },
       {
         "date": "2026-08-01",
@@ -23309,7 +23485,7 @@
       {
         "date": "2026-08-02",
         "series": "Ornn 成交指数",
-        "value": 101.17
+        "value": 101.56
       },
       {
         "date": "2026-08-02",
@@ -23324,7 +23500,7 @@
       {
         "date": "2026-08-03",
         "series": "Ornn 成交指数",
-        "value": 102.72
+        "value": 104.28
       },
       {
         "date": "2026-08-03",
@@ -23339,7 +23515,7 @@
       {
         "date": "2026-08-04",
         "series": "Ornn 成交指数",
-        "value": 104.28
+        "value": 103.5
       },
       {
         "date": "2026-08-04",
@@ -23354,7 +23530,7 @@
       {
         "date": "2026-08-05",
         "series": "Ornn 成交指数",
-        "value": 105.06
+        "value": 106.23
       },
       {
         "date": "2026-08-05",
@@ -23369,7 +23545,7 @@
       {
         "date": "2026-08-06",
         "series": "Ornn 成交指数",
-        "value": 105.84
+        "value": 104.28
       },
       {
         "date": "2026-08-06",
@@ -23384,7 +23560,7 @@
       {
         "date": "2026-08-07",
         "series": "Ornn 成交指数",
-        "value": 104.28
+        "value": 105.45
       },
       {
         "date": "2026-08-07",
@@ -23399,7 +23575,7 @@
       {
         "date": "2026-08-08",
         "series": "Ornn 成交指数",
-        "value": 103.5
+        "value": 100.78
       },
       {
         "date": "2026-08-08",
@@ -23414,7 +23590,7 @@
       {
         "date": "2026-08-09",
         "series": "Ornn 成交指数",
-        "value": 98.44
+        "value": 99.61
       },
       {
         "date": "2026-08-09",
@@ -23429,7 +23605,7 @@
       {
         "date": "2026-08-10",
         "series": "Ornn 成交指数",
-        "value": 99.61
+        "value": 100.39
       },
       {
         "date": "2026-08-10",
@@ -23459,7 +23635,7 @@
       {
         "date": "2026-08-12",
         "series": "Ornn 成交指数",
-        "value": 105.84
+        "value": 106.23
       },
       {
         "date": "2026-08-12",
@@ -23474,7 +23650,7 @@
       {
         "date": "2026-08-13",
         "series": "Ornn 成交指数",
-        "value": 106.23
+        "value": 107.39
       },
       {
         "date": "2026-08-13",
@@ -23489,7 +23665,7 @@
       {
         "date": "2026-08-14",
         "series": "Ornn 成交指数",
-        "value": 108.56
+        "value": 108.17
       },
       {
         "date": "2026-08-14",
@@ -23504,7 +23680,7 @@
       {
         "date": "2026-08-15",
         "series": "Ornn 成交指数",
-        "value": 103.5
+        "value": 102.33
       },
       {
         "date": "2026-08-15",
@@ -23519,7 +23695,7 @@
       {
         "date": "2026-08-16",
         "series": "Ornn 成交指数",
-        "value": 102.72
+        "value": 101.95
       },
       {
         "date": "2026-08-16",
@@ -23534,7 +23710,7 @@
       {
         "date": "2026-08-17",
         "series": "Ornn 成交指数",
-        "value": 106.61
+        "value": 111.67
       },
       {
         "date": "2026-08-17",
@@ -23549,7 +23725,7 @@
       {
         "date": "2026-08-18",
         "series": "Ornn 成交指数",
-        "value": 118.29
+        "value": 116.34
       },
       {
         "date": "2026-08-18",
@@ -23564,7 +23740,7 @@
       {
         "date": "2026-08-19",
         "series": "Ornn 成交指数",
-        "value": 114.01
+        "value": 115.18
       },
       {
         "date": "2026-08-19",
@@ -23579,7 +23755,7 @@
       {
         "date": "2026-08-20",
         "series": "Ornn 成交指数",
-        "value": 112.84
+        "value": 112.06
       },
       {
         "date": "2026-08-20",
@@ -23594,7 +23770,7 @@
       {
         "date": "2026-08-21",
         "series": "Ornn 成交指数",
-        "value": 112.06
+        "value": 108.95
       },
       {
         "date": "2026-08-21",
@@ -23609,7 +23785,7 @@
       {
         "date": "2026-08-22",
         "series": "Ornn 成交指数",
-        "value": 104.28
+        "value": 105.45
       },
       {
         "date": "2026-08-22",
@@ -23624,7 +23800,7 @@
       {
         "date": "2026-08-23",
         "series": "Ornn 成交指数",
-        "value": 111.67
+        "value": 112.84
       },
       {
         "date": "2026-08-23",
@@ -23639,7 +23815,7 @@
       {
         "date": "2026-08-24",
         "series": "Ornn 成交指数",
-        "value": 116.73
+        "value": 119.46
       },
       {
         "date": "2026-08-24",
@@ -23654,7 +23830,7 @@
       {
         "date": "2026-08-25",
         "series": "Ornn 成交指数",
-        "value": 115.56
+        "value": 110.12
       },
       {
         "date": "2026-08-25",
@@ -23669,7 +23845,7 @@
       {
         "date": "2026-08-26",
         "series": "Ornn 成交指数",
-        "value": 104.28
+        "value": 104.67
       },
       {
         "date": "2026-08-26",
@@ -23684,7 +23860,7 @@
       {
         "date": "2026-08-27",
         "series": "Ornn 成交指数",
-        "value": 107.39
+        "value": 110.51
       },
       {
         "date": "2026-08-27",
@@ -23699,7 +23875,7 @@
       {
         "date": "2026-08-28",
         "series": "Ornn 成交指数",
-        "value": 114.01
+        "value": 113.23
       },
       {
         "date": "2026-08-28",
@@ -23714,7 +23890,7 @@
       {
         "date": "2026-08-29",
         "series": "Ornn 成交指数",
-        "value": 111.67
+        "value": 113.23
       },
       {
         "date": "2026-08-29",
@@ -23729,7 +23905,7 @@
       {
         "date": "2026-08-30",
         "series": "Ornn 成交指数",
-        "value": 117.12
+        "value": 116.73
       },
       {
         "date": "2026-08-30",
@@ -23744,7 +23920,7 @@
       {
         "date": "2026-08-31",
         "series": "Ornn 成交指数",
-        "value": 115.56
+        "value": 113.23
       },
       {
         "date": "2026-08-31",
@@ -23759,7 +23935,7 @@
       {
         "date": "2026-09-01",
         "series": "Ornn 成交指数",
-        "value": 110.12
+        "value": 109.73
       },
       {
         "date": "2026-09-01",
@@ -23774,7 +23950,7 @@
       {
         "date": "2026-09-02",
         "series": "Ornn 成交指数",
-        "value": 110.12
+        "value": 113.62
       },
       {
         "date": "2026-09-02",
@@ -23789,7 +23965,7 @@
       {
         "date": "2026-09-03",
         "series": "Ornn 成交指数",
-        "value": 113.62
+        "value": 110.12
       },
       {
         "date": "2026-09-03",
@@ -23804,7 +23980,7 @@
       {
         "date": "2026-09-04",
         "series": "Ornn 成交指数",
-        "value": 112.45
+        "value": 114.01
       },
       {
         "date": "2026-09-04",
@@ -23819,7 +23995,7 @@
       {
         "date": "2026-09-05",
         "series": "Ornn 成交指数",
-        "value": 119.07
+        "value": 120.62
       },
       {
         "date": "2026-09-05",
@@ -23834,7 +24010,7 @@
       {
         "date": "2026-09-06",
         "series": "Ornn 成交指数",
-        "value": 119.46
+        "value": 120.23
       },
       {
         "date": "2026-09-06",
@@ -23849,7 +24025,7 @@
       {
         "date": "2026-09-07",
         "series": "Ornn 成交指数",
-        "value": 123.35
+        "value": 122.57
       },
       {
         "date": "2026-09-07",
@@ -23864,7 +24040,7 @@
       {
         "date": "2026-09-08",
         "series": "Ornn 成交指数",
-        "value": 119.84
+        "value": 120.23
       },
       {
         "date": "2026-09-08",
@@ -23879,7 +24055,7 @@
       {
         "date": "2026-09-09",
         "series": "Ornn 成交指数",
-        "value": 115.18
+        "value": 113.23
       },
       {
         "date": "2026-09-09",
@@ -23924,7 +24100,7 @@
       {
         "date": "2026-09-12",
         "series": "Ornn 成交指数",
-        "value": 109.34
+        "value": 107.78
       },
       {
         "date": "2026-09-12",
@@ -23939,7 +24115,7 @@
       {
         "date": "2026-09-13",
         "series": "Ornn 成交指数",
-        "value": 108.17
+        "value": 107.0
       },
       {
         "date": "2026-09-13",
@@ -23954,7 +24130,7 @@
       {
         "date": "2026-09-14",
         "series": "Ornn 成交指数",
-        "value": 107.0
+        "value": 103.89
       },
       {
         "date": "2026-09-14",
@@ -23969,7 +24145,7 @@
       {
         "date": "2026-09-15",
         "series": "Ornn 成交指数",
-        "value": 98.44
+        "value": 100.78
       },
       {
         "date": "2026-09-15",
@@ -23999,7 +24175,7 @@
       {
         "date": "2026-09-17",
         "series": "Ornn 成交指数",
-        "value": 110.89
+        "value": 114.01
       },
       {
         "date": "2026-09-17",
@@ -24014,7 +24190,7 @@
       {
         "date": "2026-09-18",
         "series": "Ornn 成交指数",
-        "value": 117.51
+        "value": 119.46
       },
       {
         "date": "2026-09-18",
@@ -24029,7 +24205,7 @@
       {
         "date": "2026-09-19",
         "series": "Ornn 成交指数",
-        "value": 110.89
+        "value": 104.67
       },
       {
         "date": "2026-09-19",
@@ -24044,7 +24220,7 @@
       {
         "date": "2026-09-20",
         "series": "Ornn 成交指数",
-        "value": 103.11
+        "value": 102.72
       },
       {
         "date": "2026-09-20",
@@ -24059,7 +24235,7 @@
       {
         "date": "2026-09-21",
         "series": "Ornn 成交指数",
-        "value": 108.56
+        "value": 111.28
       },
       {
         "date": "2026-09-21",
@@ -24074,7 +24250,7 @@
       {
         "date": "2026-09-22",
         "series": "Ornn 成交指数",
-        "value": 110.89
+        "value": 114.01
       },
       {
         "date": "2026-09-22",
@@ -24089,7 +24265,7 @@
       {
         "date": "2026-09-23",
         "series": "Ornn 成交指数",
-        "value": 118.68
+        "value": 117.12
       },
       {
         "date": "2026-09-23",
@@ -24104,7 +24280,7 @@
       {
         "date": "2026-09-24",
         "series": "Ornn 成交指数",
-        "value": 113.62
+        "value": 114.4
       },
       {
         "date": "2026-09-24",
@@ -24119,7 +24295,7 @@
       {
         "date": "2026-09-25",
         "series": "Ornn 成交指数",
-        "value": 110.89
+        "value": 103.89
       },
       {
         "date": "2026-09-25",
@@ -24134,7 +24310,7 @@
       {
         "date": "2026-09-26",
         "series": "Ornn 成交指数",
-        "value": 98.83
+        "value": 99.61
       },
       {
         "date": "2026-09-26",
@@ -24149,7 +24325,7 @@
       {
         "date": "2026-09-27",
         "series": "Ornn 成交指数",
-        "value": 96.89
+        "value": 97.28
       },
       {
         "date": "2026-09-27",
@@ -24164,7 +24340,7 @@
       {
         "date": "2026-09-28",
         "series": "Ornn 成交指数",
-        "value": 99.61
+        "value": 100.39
       },
       {
         "date": "2026-09-28",
@@ -24179,7 +24355,7 @@
       {
         "date": "2026-09-29",
         "series": "Ornn 成交指数",
-        "value": 106.61
+        "value": 108.56
       },
       {
         "date": "2026-09-29",
@@ -24194,7 +24370,7 @@
       {
         "date": "2026-09-30",
         "series": "Ornn 成交指数",
-        "value": 105.45
+        "value": 104.67
       },
       {
         "date": "2026-09-30",
@@ -24209,7 +24385,7 @@
       {
         "date": "2026-10-01",
         "series": "Ornn 成交指数",
-        "value": 113.62
+        "value": 116.34
       },
       {
         "date": "2026-10-01",
@@ -24224,7 +24400,7 @@
       {
         "date": "2026-10-02",
         "series": "Ornn 成交指数",
-        "value": 108.56
+        "value": 105.84
       },
       {
         "date": "2026-10-02",
@@ -24239,7 +24415,7 @@
       {
         "date": "2026-10-03",
         "series": "Ornn 成交指数",
-        "value": 102.72
+        "value": 105.06
       },
       {
         "date": "2026-10-03",
@@ -24254,7 +24430,7 @@
       {
         "date": "2026-10-04",
         "series": "Ornn 成交指数",
-        "value": 100.78
+        "value": 95.72
       },
       {
         "date": "2026-10-04",
@@ -24269,7 +24445,7 @@
       {
         "date": "2026-10-05",
         "series": "Ornn 成交指数",
-        "value": 98.05
+        "value": 103.5
       },
       {
         "date": "2026-10-05",
@@ -24284,7 +24460,7 @@
       {
         "date": "2026-10-06",
         "series": "Ornn 成交指数",
-        "value": 111.28
+        "value": 110.51
       },
       {
         "date": "2026-10-06",
@@ -24314,7 +24490,7 @@
       {
         "date": "2026-10-08",
         "series": "Ornn 成交指数",
-        "value": 110.51
+        "value": 108.17
       },
       {
         "date": "2026-10-08",
@@ -24329,7 +24505,7 @@
       {
         "date": "2026-10-09",
         "series": "Ornn 成交指数",
-        "value": 108.56
+        "value": 110.89
       },
       {
         "date": "2026-10-09",
@@ -24344,7 +24520,7 @@
       {
         "date": "2026-10-10",
         "series": "Ornn 成交指数",
-        "value": 103.89
+        "value": 103.11
       },
       {
         "date": "2026-10-10",
@@ -24359,7 +24535,7 @@
       {
         "date": "2026-10-11",
         "series": "Ornn 成交指数",
-        "value": 103.11
+        "value": 103.89
       },
       {
         "date": "2026-10-11",
@@ -24374,7 +24550,7 @@
       {
         "date": "2026-10-12",
         "series": "Ornn 成交指数",
-        "value": 113.62
+        "value": 116.73
       },
       {
         "date": "2026-10-12",
@@ -24389,7 +24565,7 @@
       {
         "date": "2026-10-13",
         "series": "Ornn 成交指数",
-        "value": 123.35
+        "value": 124.12
       },
       {
         "date": "2026-10-13",
@@ -24399,7 +24575,7 @@
       {
         "date": "2026-10-14",
         "series": "Ornn 成交指数",
-        "value": 124.9
+        "value": 127.24
       },
       {
         "date": "2026-10-14",
@@ -24414,7 +24590,7 @@
       {
         "date": "2026-10-15",
         "series": "Ornn 成交指数",
-        "value": 121.79
+        "value": 114.01
       },
       {
         "date": "2026-10-15",
@@ -24429,7 +24605,7 @@
       {
         "date": "2026-10-16",
         "series": "Ornn 成交指数",
-        "value": 106.61
+        "value": 108.95
       },
       {
         "date": "2026-10-16",
@@ -24439,7 +24615,7 @@
       {
         "date": "2026-10-17",
         "series": "Ornn 成交指数",
-        "value": 108.17
+        "value": 108.95
       },
       {
         "date": "2026-10-17",
@@ -24469,7 +24645,7 @@
       {
         "date": "2026-10-19",
         "series": "Ornn 成交指数",
-        "value": 115.95
+        "value": 116.34
       },
       {
         "date": "2026-10-19",
@@ -24484,7 +24660,7 @@
       {
         "date": "2026-10-20",
         "series": "Ornn 成交指数",
-        "value": 121.4
+        "value": 125.68
       },
       {
         "date": "2026-10-20",
@@ -24499,7 +24675,7 @@
       {
         "date": "2026-10-21",
         "series": "Ornn 成交指数",
-        "value": 120.23
+        "value": 120.62
       },
       {
         "date": "2026-10-21",
@@ -24514,7 +24690,7 @@
       {
         "date": "2026-10-22",
         "series": "Ornn 成交指数",
-        "value": 122.57
+        "value": 121.4
       },
       {
         "date": "2026-10-22",
@@ -24524,7 +24700,7 @@
       {
         "date": "2026-10-23",
         "series": "Ornn 成交指数",
-        "value": 123.35
+        "value": 122.57
       },
       {
         "date": "2026-10-23",
@@ -24534,7 +24710,7 @@
       {
         "date": "2026-10-24",
         "series": "Ornn 成交指数",
-        "value": 117.51
+        "value": 114.01
       },
       {
         "date": "2026-10-24",
@@ -24549,7 +24725,7 @@
       {
         "date": "2026-10-25",
         "series": "Ornn 成交指数",
-        "value": 117.9
+        "value": 121.79
       },
       {
         "date": "2026-10-25",
@@ -24564,7 +24740,7 @@
       {
         "date": "2026-10-26",
         "series": "Ornn 成交指数",
-        "value": 123.35
+        "value": 128.4
       },
       {
         "date": "2026-10-26",
@@ -24579,7 +24755,7 @@
       {
         "date": "2026-10-27",
         "series": "Ornn 成交指数",
-        "value": 138.91
+        "value": 129.57
       },
       {
         "date": "2026-10-27",
@@ -24594,7 +24770,7 @@
       {
         "date": "2026-10-28",
         "series": "Ornn 成交指数",
-        "value": 115.18
+        "value": 114.79
       },
       {
         "date": "2026-10-28",
@@ -24896,7 +25072,7 @@
       {
         "date": "2026-07-31",
         "series": "Ornn 成交指数",
-        "value": 139.45
+        "value": 138.71
       },
       {
         "date": "2026-08-01",
@@ -24906,7 +25082,7 @@
       {
         "date": "2026-08-01",
         "series": "Ornn 成交指数",
-        "value": 130.27
+        "value": 126.8
       },
       {
         "date": "2026-08-02",
@@ -24916,7 +25092,7 @@
       {
         "date": "2026-08-02",
         "series": "Ornn 成交指数",
-        "value": 119.6
+        "value": 114.64
       },
       {
         "date": "2026-08-03",
@@ -24926,7 +25102,7 @@
       {
         "date": "2026-08-03",
         "series": "Ornn 成交指数",
-        "value": 108.19
+        "value": 107.69
       },
       {
         "date": "2026-08-04",
@@ -24936,7 +25112,7 @@
       {
         "date": "2026-08-04",
         "series": "Ornn 成交指数",
-        "value": 112.66
+        "value": 115.14
       },
       {
         "date": "2026-08-05",
@@ -24945,28 +25121,28 @@
       },
       {
         "date": "2026-08-05",
-        "series": "Ornn 成交指数",
-        "value": 119.35
-      },
-      {
-        "date": "2026-08-06",
-        "series": "Neocloud 报价中位",
-        "value": 115.57
-      },
-      {
-        "date": "2026-08-06",
-        "series": "Ornn 成交指数",
-        "value": 122.08
-      },
-      {
-        "date": "2026-08-07",
-        "series": "Neocloud 报价中位",
-        "value": 112.27
-      },
-      {
-        "date": "2026-08-07",
         "series": "Ornn 成交指数",
         "value": 119.85
+      },
+      {
+        "date": "2026-08-06",
+        "series": "Neocloud 报价中位",
+        "value": 115.57
+      },
+      {
+        "date": "2026-08-06",
+        "series": "Ornn 成交指数",
+        "value": 122.83
+      },
+      {
+        "date": "2026-08-07",
+        "series": "Neocloud 报价中位",
+        "value": 112.27
+      },
+      {
+        "date": "2026-08-07",
+        "series": "Ornn 成交指数",
+        "value": 117.12
       },
       {
         "date": "2026-08-08",
@@ -24986,7 +25162,7 @@
       {
         "date": "2026-08-09",
         "series": "Ornn 成交指数",
-        "value": 115.88
+        "value": 117.37
       },
       {
         "date": "2026-08-10",
@@ -24996,7 +25172,7 @@
       {
         "date": "2026-08-10",
         "series": "Ornn 成交指数",
-        "value": 115.88
+        "value": 112.9
       },
       {
         "date": "2026-08-11",
@@ -25006,7 +25182,7 @@
       {
         "date": "2026-08-11",
         "series": "Ornn 成交指数",
-        "value": 111.41
+        "value": 112.16
       },
       {
         "date": "2026-08-12",
@@ -25016,7 +25192,7 @@
       {
         "date": "2026-08-12",
         "series": "Ornn 成交指数",
-        "value": 111.91
+        "value": 113.15
       },
       {
         "date": "2026-08-13",
@@ -25026,7 +25202,7 @@
       {
         "date": "2026-08-13",
         "series": "Ornn 成交指数",
-        "value": 116.63
+        "value": 118.36
       },
       {
         "date": "2026-08-14",
@@ -25036,7 +25212,7 @@
       {
         "date": "2026-08-14",
         "series": "Ornn 成交指数",
-        "value": 120.6
+        "value": 121.09
       },
       {
         "date": "2026-08-15",
@@ -25046,7 +25222,7 @@
       {
         "date": "2026-08-15",
         "series": "Ornn 成交指数",
-        "value": 122.58
+        "value": 122.33
       },
       {
         "date": "2026-08-16",
@@ -25056,7 +25232,7 @@
       {
         "date": "2026-08-16",
         "series": "Ornn 成交指数",
-        "value": 117.87
+        "value": 118.86
       },
       {
         "date": "2026-08-17",
@@ -25066,7 +25242,7 @@
       {
         "date": "2026-08-17",
         "series": "Ornn 成交指数",
-        "value": 124.07
+        "value": 125.81
       },
       {
         "date": "2026-08-18",
@@ -25076,7 +25252,7 @@
       {
         "date": "2026-08-18",
         "series": "Ornn 成交指数",
-        "value": 126.8
+        "value": 127.3
       },
       {
         "date": "2026-08-19",
@@ -25086,7 +25262,7 @@
       {
         "date": "2026-08-19",
         "series": "Ornn 成交指数",
-        "value": 131.27
+        "value": 132.75
       },
       {
         "date": "2026-08-20",
@@ -25096,7 +25272,7 @@
       {
         "date": "2026-08-20",
         "series": "Ornn 成交指数",
-        "value": 134.99
+        "value": 134.24
       },
       {
         "date": "2026-08-21",
@@ -25106,7 +25282,7 @@
       {
         "date": "2026-08-21",
         "series": "Ornn 成交指数",
-        "value": 126.3
+        "value": 122.33
       },
       {
         "date": "2026-08-22",
@@ -25116,7 +25292,7 @@
       {
         "date": "2026-08-22",
         "series": "Ornn 成交指数",
-        "value": 120.35
+        "value": 116.87
       },
       {
         "date": "2026-08-23",
@@ -25126,7 +25302,7 @@
       {
         "date": "2026-08-23",
         "series": "Ornn 成交指数",
-        "value": 109.68
+        "value": 107.94
       },
       {
         "date": "2026-08-24",
@@ -25136,7 +25312,7 @@
       {
         "date": "2026-08-24",
         "series": "Ornn 成交指数",
-        "value": 107.44
+        "value": 107.94
       },
       {
         "date": "2026-08-25",
@@ -25146,7 +25322,7 @@
       {
         "date": "2026-08-25",
         "series": "Ornn 成交指数",
-        "value": 105.71
+        "value": 104.96
       },
       {
         "date": "2026-08-26",
@@ -25166,7 +25342,7 @@
       {
         "date": "2026-08-27",
         "series": "Ornn 成交指数",
-        "value": 106.45
+        "value": 106.95
       },
       {
         "date": "2026-08-28",
@@ -25176,7 +25352,7 @@
       {
         "date": "2026-08-28",
         "series": "Ornn 成交指数",
-        "value": 111.41
+        "value": 113.65
       },
       {
         "date": "2026-08-29",
@@ -25186,7 +25362,7 @@
       {
         "date": "2026-08-29",
         "series": "Ornn 成交指数",
-        "value": 110.17
+        "value": 109.43
       },
       {
         "date": "2026-08-30",
@@ -25196,7 +25372,7 @@
       {
         "date": "2026-08-30",
         "series": "Ornn 成交指数",
-        "value": 111.66
+        "value": 111.17
       },
       {
         "date": "2026-08-31",
@@ -25206,7 +25382,7 @@
       {
         "date": "2026-08-31",
         "series": "Ornn 成交指数",
-        "value": 109.68
+        "value": 110.42
       },
       {
         "date": "2026-09-01",
@@ -25215,40 +25391,40 @@
       },
       {
         "date": "2026-09-01",
+        "series": "Ornn 成交指数",
+        "value": 109.43
+      },
+      {
+        "date": "2026-09-02",
+        "series": "Neocloud 报价中位",
+        "value": 115.57
+      },
+      {
+        "date": "2026-09-02",
+        "series": "Ornn 成交指数",
+        "value": 112.66
+      },
+      {
+        "date": "2026-09-03",
+        "series": "Neocloud 报价中位",
+        "value": 109.37
+      },
+      {
+        "date": "2026-09-03",
+        "series": "Ornn 成交指数",
+        "value": 116.87
+      },
+      {
+        "date": "2026-09-04",
+        "series": "Neocloud 报价中位",
+        "value": 109.37
+      },
+      {
+        "date": "2026-09-04",
         "series": "Ornn 成交指数",
         "value": 111.91
       },
       {
-        "date": "2026-09-02",
-        "series": "Neocloud 报价中位",
-        "value": 115.57
-      },
-      {
-        "date": "2026-09-02",
-        "series": "Ornn 成交指数",
-        "value": 110.92
-      },
-      {
-        "date": "2026-09-03",
-        "series": "Neocloud 报价中位",
-        "value": 109.37
-      },
-      {
-        "date": "2026-09-03",
-        "series": "Ornn 成交指数",
-        "value": 113.9
-      },
-      {
-        "date": "2026-09-04",
-        "series": "Neocloud 报价中位",
-        "value": 109.37
-      },
-      {
-        "date": "2026-09-04",
-        "series": "Ornn 成交指数",
-        "value": 114.89
-      },
-      {
         "date": "2026-09-05",
         "series": "Neocloud 报价中位",
         "value": 109.37
@@ -25256,7 +25432,7 @@
       {
         "date": "2026-09-05",
         "series": "Ornn 成交指数",
-        "value": 112.9
+        "value": 113.65
       },
       {
         "date": "2026-09-06",
@@ -25266,7 +25442,7 @@
       {
         "date": "2026-09-06",
         "series": "Ornn 成交指数",
-        "value": 110.92
+        "value": 110.17
       },
       {
         "date": "2026-09-07",
@@ -25276,7 +25452,7 @@
       {
         "date": "2026-09-07",
         "series": "Ornn 成交指数",
-        "value": 113.15
+        "value": 115.14
       },
       {
         "date": "2026-09-08",
@@ -25286,7 +25462,7 @@
       {
         "date": "2026-09-08",
         "series": "Ornn 成交指数",
-        "value": 121.84
+        "value": 123.57
       },
       {
         "date": "2026-09-09",
@@ -25296,7 +25472,7 @@
       {
         "date": "2026-09-09",
         "series": "Ornn 成交指数",
-        "value": 121.84
+        "value": 119.35
       },
       {
         "date": "2026-09-10",
@@ -25306,7 +25482,7 @@
       {
         "date": "2026-09-10",
         "series": "Ornn 成交指数",
-        "value": 122.33
+        "value": 127.3
       },
       {
         "date": "2026-09-11",
@@ -25316,7 +25492,7 @@
       {
         "date": "2026-09-11",
         "series": "Ornn 成交指数",
-        "value": 127.05
+        "value": 123.82
       },
       {
         "date": "2026-09-12",
@@ -25326,7 +25502,7 @@
       {
         "date": "2026-09-12",
         "series": "Ornn 成交指数",
-        "value": 116.38
+        "value": 111.91
       },
       {
         "date": "2026-09-13",
@@ -25336,7 +25512,7 @@
       {
         "date": "2026-09-13",
         "series": "Ornn 成交指数",
-        "value": 108.68
+        "value": 110.67
       },
       {
         "date": "2026-09-14",
@@ -25356,7 +25532,7 @@
       {
         "date": "2026-09-15",
         "series": "Ornn 成交指数",
-        "value": 116.13
+        "value": 120.1
       },
       {
         "date": "2026-09-16",
@@ -25366,7 +25542,7 @@
       {
         "date": "2026-09-16",
         "series": "Ornn 成交指数",
-        "value": 130.77
+        "value": 131.27
       },
       {
         "date": "2026-09-17",
@@ -25376,7 +25552,7 @@
       {
         "date": "2026-09-17",
         "series": "Ornn 成交指数",
-        "value": 128.04
+        "value": 130.52
       },
       {
         "date": "2026-09-18",
@@ -25386,7 +25562,7 @@
       {
         "date": "2026-09-18",
         "series": "Ornn 成交指数",
-        "value": 138.96
+        "value": 137.47
       },
       {
         "date": "2026-09-19",
@@ -25395,20 +25571,20 @@
       },
       {
         "date": "2026-09-19",
+        "series": "Ornn 成交指数",
+        "value": 129.03
+      },
+      {
+        "date": "2026-09-20",
+        "series": "Neocloud 报价中位",
+        "value": 114.25
+      },
+      {
+        "date": "2026-09-20",
         "series": "Ornn 成交指数",
         "value": 127.3
       },
       {
-        "date": "2026-09-20",
-        "series": "Neocloud 报价中位",
-        "value": 114.25
-      },
-      {
-        "date": "2026-09-20",
-        "series": "Ornn 成交指数",
-        "value": 129.53
-      },
-      {
         "date": "2026-09-21",
         "series": "Neocloud 报价中位",
         "value": 114.25
@@ -25416,7 +25592,7 @@
       {
         "date": "2026-09-21",
         "series": "Ornn 成交指数",
-        "value": 125.81
+        "value": 123.57
       },
       {
         "date": "2026-09-22",
@@ -25426,7 +25602,7 @@
       {
         "date": "2026-09-22",
         "series": "Ornn 成交指数",
-        "value": 122.58
+        "value": 123.08
       },
       {
         "date": "2026-09-23",
@@ -25436,7 +25612,7 @@
       {
         "date": "2026-09-23",
         "series": "Ornn 成交指数",
-        "value": 124.57
+        "value": 125.56
       },
       {
         "date": "2026-09-24",
@@ -25446,7 +25622,7 @@
       {
         "date": "2026-09-24",
         "series": "Ornn 成交指数",
-        "value": 128.04
+        "value": 128.78
       },
       {
         "date": "2026-09-25",
@@ -25456,7 +25632,7 @@
       {
         "date": "2026-09-25",
         "series": "Ornn 成交指数",
-        "value": 126.05
+        "value": 123.08
       },
       {
         "date": "2026-09-26",
@@ -25466,7 +25642,7 @@
       {
         "date": "2026-09-26",
         "series": "Ornn 成交指数",
-        "value": 118.61
+        "value": 115.63
       },
       {
         "date": "2026-09-27",
@@ -25476,7 +25652,7 @@
       {
         "date": "2026-09-27",
         "series": "Ornn 成交指数",
-        "value": 114.64
+        "value": 117.62
       },
       {
         "date": "2026-09-28",
@@ -25486,7 +25662,7 @@
       {
         "date": "2026-09-28",
         "series": "Ornn 成交指数",
-        "value": 120.1
+        "value": 119.11
       },
       {
         "date": "2026-09-29",
@@ -25496,7 +25672,7 @@
       {
         "date": "2026-09-29",
         "series": "Ornn 成交指数",
-        "value": 122.58
+        "value": 128.29
       },
       {
         "date": "2026-09-30",
@@ -25506,7 +25682,7 @@
       {
         "date": "2026-09-30",
         "series": "Ornn 成交指数",
-        "value": 138.46
+        "value": 141.94
       },
       {
         "date": "2026-10-01",
@@ -25516,7 +25692,7 @@
       {
         "date": "2026-10-01",
         "series": "Ornn 成交指数",
-        "value": 147.89
+        "value": 149.88
       },
       {
         "date": "2026-10-02",
@@ -25526,7 +25702,7 @@
       {
         "date": "2026-10-02",
         "series": "Ornn 成交指数",
-        "value": 154.59
+        "value": 156.58
       },
       {
         "date": "2026-10-03",
@@ -25536,7 +25712,7 @@
       {
         "date": "2026-10-03",
         "series": "Ornn 成交指数",
-        "value": 150.12
+        "value": 144.42
       },
       {
         "date": "2026-10-04",
@@ -25546,7 +25722,7 @@
       {
         "date": "2026-10-04",
         "series": "Ornn 成交指数",
-        "value": 138.21
+        "value": 134.49
       },
       {
         "date": "2026-10-05",
@@ -25556,7 +25732,7 @@
       {
         "date": "2026-10-05",
         "series": "Ornn 成交指数",
-        "value": 129.78
+        "value": 128.29
       },
       {
         "date": "2026-10-06",
@@ -25566,7 +25742,7 @@
       {
         "date": "2026-10-06",
         "series": "Ornn 成交指数",
-        "value": 125.06
+        "value": 125.81
       },
       {
         "date": "2026-10-07",
@@ -25576,7 +25752,7 @@
       {
         "date": "2026-10-07",
         "series": "Ornn 成交指数",
-        "value": 131.27
+        "value": 134.49
       },
       {
         "date": "2026-10-08",
@@ -25586,7 +25762,7 @@
       {
         "date": "2026-10-08",
         "series": "Ornn 成交指数",
-        "value": 140.2
+        "value": 142.18
       },
       {
         "date": "2026-10-09",
@@ -25596,7 +25772,7 @@
       {
         "date": "2026-10-09",
         "series": "Ornn 成交指数",
-        "value": 141.44
+        "value": 140.94
       },
       {
         "date": "2026-10-10",
@@ -25606,7 +25782,7 @@
       {
         "date": "2026-10-10",
         "series": "Ornn 成交指数",
-        "value": 146.65
+        "value": 149.13
       },
       {
         "date": "2026-10-11",
@@ -25616,7 +25792,7 @@
       {
         "date": "2026-10-11",
         "series": "Ornn 成交指数",
-        "value": 139.21
+        "value": 133.0
       },
       {
         "date": "2026-10-12",
@@ -25626,7 +25802,7 @@
       {
         "date": "2026-10-12",
         "series": "Ornn 成交指数",
-        "value": 130.02
+        "value": 129.28
       },
       {
         "date": "2026-10-13",
@@ -25636,12 +25812,12 @@
       {
         "date": "2026-10-13",
         "series": "Ornn 成交指数",
-        "value": 136.72
+        "value": 142.93
       },
       {
         "date": "2026-10-14",
         "series": "Ornn 成交指数",
-        "value": 151.86
+        "value": 155.83
       },
       {
         "date": "2026-10-15",
@@ -25651,7 +25827,7 @@
       {
         "date": "2026-10-15",
         "series": "Ornn 成交指数",
-        "value": 161.54
+        "value": 161.04
       },
       {
         "date": "2026-10-16",
@@ -25661,12 +25837,12 @@
       {
         "date": "2026-10-16",
         "series": "Ornn 成交指数",
-        "value": 157.32
+        "value": 158.81
       },
       {
         "date": "2026-10-17",
         "series": "Ornn 成交指数",
-        "value": 158.56
+        "value": 156.82
       },
       {
         "date": "2026-10-18",
@@ -25676,7 +25852,7 @@
       {
         "date": "2026-10-18",
         "series": "Ornn 成交指数",
-        "value": 157.32
+        "value": 157.82
       },
       {
         "date": "2026-10-19",
@@ -25686,7 +25862,7 @@
       {
         "date": "2026-10-19",
         "series": "Ornn 成交指数",
-        "value": 157.57
+        "value": 155.58
       },
       {
         "date": "2026-10-20",
@@ -25696,7 +25872,7 @@
       {
         "date": "2026-10-20",
         "series": "Ornn 成交指数",
-        "value": 152.85
+        "value": 150.37
       },
       {
         "date": "2026-10-21",
@@ -25706,7 +25882,7 @@
       {
         "date": "2026-10-21",
         "series": "Ornn 成交指数",
-        "value": 145.91
+        "value": 146.4
       },
       {
         "date": "2026-10-22",
@@ -25716,17 +25892,17 @@
       {
         "date": "2026-10-22",
         "series": "Ornn 成交指数",
-        "value": 149.38
+        "value": 148.64
       },
       {
         "date": "2026-10-23",
         "series": "Ornn 成交指数",
-        "value": 142.43
+        "value": 143.92
       },
       {
         "date": "2026-10-24",
         "series": "Ornn 成交指数",
-        "value": 153.85
+        "value": 156.58
       },
       {
         "date": "2026-10-25",
@@ -25736,7 +25912,7 @@
       {
         "date": "2026-10-25",
         "series": "Ornn 成交指数",
-        "value": 156.33
+        "value": 156.08
       },
       {
         "date": "2026-10-26",
@@ -25756,7 +25932,7 @@
       {
         "date": "2026-10-27",
         "series": "Ornn 成交指数",
-        "value": 159.31
+        "value": 162.78
       },
       {
         "date": "2026-10-28",
@@ -25766,7 +25942,7 @@
       {
         "date": "2026-10-28",
         "series": "Ornn 成交指数",
-        "value": 163.77
+        "value": 160.05
       },
       {
         "date": "2026-10-29",
@@ -25776,7 +25952,7 @@
       {
         "date": "2026-10-29",
         "series": "Ornn 成交指数",
-        "value": 147.89
+        "value": 141.69
       }
     ],
     "basisB200": [
@@ -26178,7 +26354,7 @@
       {
         "date": "2026-07-31",
         "series": "Ornn 成交指数",
-        "value": 124.71
+        "value": 124.9
       },
       {
         "date": "2026-07-31",
@@ -26193,7 +26369,7 @@
       {
         "date": "2026-08-01",
         "series": "Ornn 成交指数",
-        "value": 125.1
+        "value": 124.51
       },
       {
         "date": "2026-08-01",
@@ -26208,7 +26384,7 @@
       {
         "date": "2026-08-02",
         "series": "Ornn 成交指数",
-        "value": 123.15
+        "value": 121.21
       },
       {
         "date": "2026-08-02",
@@ -26223,7 +26399,7 @@
       {
         "date": "2026-08-03",
         "series": "Ornn 成交指数",
-        "value": 118.48
+        "value": 118.29
       },
       {
         "date": "2026-08-03",
@@ -26238,7 +26414,7 @@
       {
         "date": "2026-08-04",
         "series": "Ornn 成交指数",
-        "value": 115.95
+        "value": 115.18
       },
       {
         "date": "2026-08-04",
@@ -26253,7 +26429,7 @@
       {
         "date": "2026-08-05",
         "series": "Ornn 成交指数",
-        "value": 113.62
+        "value": 112.65
       },
       {
         "date": "2026-08-05",
@@ -26268,7 +26444,7 @@
       {
         "date": "2026-08-06",
         "series": "Ornn 成交指数",
-        "value": 111.87
+        "value": 112.06
       },
       {
         "date": "2026-08-06",
@@ -26283,7 +26459,7 @@
       {
         "date": "2026-08-07",
         "series": "Ornn 成交指数",
-        "value": 112.06
+        "value": 111.67
       },
       {
         "date": "2026-08-07",
@@ -26313,7 +26489,7 @@
       {
         "date": "2026-08-09",
         "series": "Ornn 成交指数",
-        "value": 110.89
+        "value": 110.7
       },
       {
         "date": "2026-08-09",
@@ -26328,7 +26504,7 @@
       {
         "date": "2026-08-10",
         "series": "Ornn 成交指数",
-        "value": 110.51
+        "value": 110.12
       },
       {
         "date": "2026-08-10",
@@ -26343,7 +26519,7 @@
       {
         "date": "2026-08-11",
         "series": "Ornn 成交指数",
-        "value": 111.09
+        "value": 111.28
       },
       {
         "date": "2026-08-11",
@@ -26358,7 +26534,7 @@
       {
         "date": "2026-08-12",
         "series": "Ornn 成交指数",
-        "value": 111.28
+        "value": 111.67
       },
       {
         "date": "2026-08-12",
@@ -26373,7 +26549,7 @@
       {
         "date": "2026-08-13",
         "series": "Ornn 成交指数",
-        "value": 113.23
+        "value": 114.79
       },
       {
         "date": "2026-08-13",
@@ -26403,7 +26579,7 @@
       {
         "date": "2026-08-15",
         "series": "Ornn 成交指数",
-        "value": 114.98
+        "value": 114.59
       },
       {
         "date": "2026-08-15",
@@ -26418,7 +26594,7 @@
       {
         "date": "2026-08-16",
         "series": "Ornn 成交指数",
-        "value": 115.37
+        "value": 115.76
       },
       {
         "date": "2026-08-16",
@@ -26433,7 +26609,7 @@
       {
         "date": "2026-08-17",
         "series": "Ornn 成交指数",
-        "value": 120.04
+        "value": 123.74
       },
       {
         "date": "2026-08-17",
@@ -26448,7 +26624,7 @@
       {
         "date": "2026-08-18",
         "series": "Ornn 成交指数",
-        "value": 128.4
+        "value": 128.6
       },
       {
         "date": "2026-08-18",
@@ -26463,7 +26639,7 @@
       {
         "date": "2026-08-19",
         "series": "Ornn 成交指数",
-        "value": 128.99
+        "value": 130.35
       },
       {
         "date": "2026-08-19",
@@ -26478,7 +26654,7 @@
       {
         "date": "2026-08-20",
         "series": "Ornn 成交指数",
-        "value": 133.66
+        "value": 135.02
       },
       {
         "date": "2026-08-20",
@@ -26493,7 +26669,7 @@
       {
         "date": "2026-08-21",
         "series": "Ornn 成交指数",
-        "value": 135.21
+        "value": 133.85
       },
       {
         "date": "2026-08-21",
@@ -26508,7 +26684,7 @@
       {
         "date": "2026-08-22",
         "series": "Ornn 成交指数",
-        "value": 131.13
+        "value": 129.96
       },
       {
         "date": "2026-08-22",
@@ -26523,7 +26699,7 @@
       {
         "date": "2026-08-23",
         "series": "Ornn 成交指数",
-        "value": 129.18
+        "value": 128.4
       },
       {
         "date": "2026-08-23",
@@ -26538,7 +26714,7 @@
       {
         "date": "2026-08-24",
         "series": "Ornn 成交指数",
-        "value": 127.43
+        "value": 126.85
       },
       {
         "date": "2026-08-24",
@@ -26553,7 +26729,7 @@
       {
         "date": "2026-08-25",
         "series": "Ornn 成交指数",
-        "value": 125.49
+        "value": 124.71
       },
       {
         "date": "2026-08-25",
@@ -26568,7 +26744,7 @@
       {
         "date": "2026-08-26",
         "series": "Ornn 成交指数",
-        "value": 121.01
+        "value": 119.26
       },
       {
         "date": "2026-08-26",
@@ -26583,7 +26759,7 @@
       {
         "date": "2026-08-27",
         "series": "Ornn 成交指数",
-        "value": 117.32
+        "value": 116.73
       },
       {
         "date": "2026-08-27",
@@ -26598,7 +26774,7 @@
       {
         "date": "2026-08-28",
         "series": "Ornn 成交指数",
-        "value": 116.93
+        "value": 117.51
       },
       {
         "date": "2026-08-28",
@@ -26613,7 +26789,7 @@
       {
         "date": "2026-08-29",
         "series": "Ornn 成交指数",
-        "value": 117.9
+        "value": 118.09
       },
       {
         "date": "2026-08-29",
@@ -26628,7 +26804,7 @@
       {
         "date": "2026-08-30",
         "series": "Ornn 成交指数",
-        "value": 117.7
+        "value": 117.9
       },
       {
         "date": "2026-08-30",
@@ -26643,7 +26819,7 @@
       {
         "date": "2026-08-31",
         "series": "Ornn 成交指数",
-        "value": 118.09
+        "value": 119.84
       },
       {
         "date": "2026-08-31",
@@ -26658,7 +26834,7 @@
       {
         "date": "2026-09-01",
         "series": "Ornn 成交指数",
-        "value": 124.51
+        "value": 125.68
       },
       {
         "date": "2026-09-01",
@@ -26673,7 +26849,7 @@
       {
         "date": "2026-09-02",
         "series": "Ornn 成交指数",
-        "value": 125.68
+        "value": 124.12
       },
       {
         "date": "2026-09-02",
@@ -26688,7 +26864,7 @@
       {
         "date": "2026-09-03",
         "series": "Ornn 成交指数",
-        "value": 122.18
+        "value": 123.15
       },
       {
         "date": "2026-09-03",
@@ -26703,7 +26879,7 @@
       {
         "date": "2026-09-04",
         "series": "Ornn 成交指数",
-        "value": 124.51
+        "value": 124.12
       },
       {
         "date": "2026-09-04",
@@ -26718,7 +26894,7 @@
       {
         "date": "2026-09-05",
         "series": "Ornn 成交指数",
-        "value": 124.9
+        "value": 125.68
       },
       {
         "date": "2026-09-05",
@@ -26733,7 +26909,7 @@
       {
         "date": "2026-09-06",
         "series": "Ornn 成交指数",
-        "value": 129.18
+        "value": 130.74
       },
       {
         "date": "2026-09-06",
@@ -26763,7 +26939,7 @@
       {
         "date": "2026-09-08",
         "series": "Ornn 成交指数",
-        "value": 130.74
+        "value": 131.13
       },
       {
         "date": "2026-09-08",
@@ -26778,7 +26954,7 @@
       {
         "date": "2026-09-09",
         "series": "Ornn 成交指数",
-        "value": 132.68
+        "value": 133.46
       },
       {
         "date": "2026-09-09",
@@ -26808,7 +26984,7 @@
       {
         "date": "2026-09-11",
         "series": "Ornn 成交指数",
-        "value": 133.07
+        "value": 132.68
       },
       {
         "date": "2026-09-11",
@@ -26823,7 +26999,7 @@
       {
         "date": "2026-09-12",
         "series": "Ornn 成交指数",
-        "value": 132.3
+        "value": 132.68
       },
       {
         "date": "2026-09-12",
@@ -26838,7 +27014,7 @@
       {
         "date": "2026-09-13",
         "series": "Ornn 成交指数",
-        "value": 137.35
+        "value": 140.08
       },
       {
         "date": "2026-09-13",
@@ -26853,7 +27029,7 @@
       {
         "date": "2026-09-14",
         "series": "Ornn 成交指数",
-        "value": 139.88
+        "value": 138.72
       },
       {
         "date": "2026-09-14",
@@ -26868,7 +27044,7 @@
       {
         "date": "2026-09-15",
         "series": "Ornn 成交指数",
-        "value": 140.27
+        "value": 139.88
       },
       {
         "date": "2026-09-15",
@@ -26898,7 +27074,7 @@
       {
         "date": "2026-09-17",
         "series": "Ornn 成交指数",
-        "value": 138.13
+        "value": 138.91
       },
       {
         "date": "2026-09-17",
@@ -26913,7 +27089,7 @@
       {
         "date": "2026-09-18",
         "series": "Ornn 成交指数",
-        "value": 141.25
+        "value": 142.22
       },
       {
         "date": "2026-09-18",
@@ -26928,7 +27104,7 @@
       {
         "date": "2026-09-19",
         "series": "Ornn 成交指数",
-        "value": 144.55
+        "value": 147.08
       },
       {
         "date": "2026-09-19",
@@ -26973,7 +27149,7 @@
       {
         "date": "2026-09-22",
         "series": "Ornn 成交指数",
-        "value": 151.17
+        "value": 152.53
       },
       {
         "date": "2026-09-22",
@@ -26988,7 +27164,7 @@
       {
         "date": "2026-09-23",
         "series": "Ornn 成交指数",
-        "value": 154.67
+        "value": 155.06
       },
       {
         "date": "2026-09-23",
@@ -27003,7 +27179,7 @@
       {
         "date": "2026-09-24",
         "series": "Ornn 成交指数",
-        "value": 155.84
+        "value": 156.03
       },
       {
         "date": "2026-09-24",
@@ -27018,7 +27194,7 @@
       {
         "date": "2026-09-25",
         "series": "Ornn 成交指数",
-        "value": 156.42
+        "value": 156.61
       },
       {
         "date": "2026-09-25",
@@ -27033,7 +27209,7 @@
       {
         "date": "2026-09-26",
         "series": "Ornn 成交指数",
-        "value": 156.42
+        "value": 156.61
       },
       {
         "date": "2026-09-26",
@@ -27048,7 +27224,7 @@
       {
         "date": "2026-09-27",
         "series": "Ornn 成交指数",
-        "value": 157.2
+        "value": 157.39
       },
       {
         "date": "2026-09-27",
@@ -27063,7 +27239,7 @@
       {
         "date": "2026-09-28",
         "series": "Ornn 成交指数",
-        "value": 157.78
+        "value": 158.17
       },
       {
         "date": "2026-09-28",
@@ -27078,7 +27254,7 @@
       {
         "date": "2026-09-29",
         "series": "Ornn 成交指数",
-        "value": 158.37
+        "value": 157.98
       },
       {
         "date": "2026-09-29",
@@ -27093,7 +27269,7 @@
       {
         "date": "2026-09-30",
         "series": "Ornn 成交指数",
-        "value": 157.39
+        "value": 156.61
       },
       {
         "date": "2026-09-30",
@@ -27108,7 +27284,7 @@
       {
         "date": "2026-10-01",
         "series": "Ornn 成交指数",
-        "value": 154.86
+        "value": 153.89
       },
       {
         "date": "2026-10-01",
@@ -27123,7 +27299,7 @@
       {
         "date": "2026-10-02",
         "series": "Ornn 成交指数",
-        "value": 153.7
+        "value": 153.31
       },
       {
         "date": "2026-10-02",
@@ -27138,7 +27314,7 @@
       {
         "date": "2026-10-03",
         "series": "Ornn 成交指数",
-        "value": 151.95
+        "value": 151.75
       },
       {
         "date": "2026-10-03",
@@ -27153,7 +27329,7 @@
       {
         "date": "2026-10-04",
         "series": "Ornn 成交指数",
-        "value": 150.0
+        "value": 148.25
       },
       {
         "date": "2026-10-04",
@@ -27183,7 +27359,7 @@
       {
         "date": "2026-10-06",
         "series": "Ornn 成交指数",
-        "value": 147.08
+        "value": 147.28
       },
       {
         "date": "2026-10-06",
@@ -27198,7 +27374,7 @@
       {
         "date": "2026-10-07",
         "series": "Ornn 成交指数",
-        "value": 147.08
+        "value": 146.3
       },
       {
         "date": "2026-10-07",
@@ -27228,7 +27404,7 @@
       {
         "date": "2026-10-09",
         "series": "Ornn 成交指数",
-        "value": 145.14
+        "value": 145.33
       },
       {
         "date": "2026-10-09",
@@ -27258,7 +27434,7 @@
       {
         "date": "2026-10-11",
         "series": "Ornn 成交指数",
-        "value": 144.94
+        "value": 143.58
       },
       {
         "date": "2026-10-11",
@@ -27273,7 +27449,7 @@
       {
         "date": "2026-10-12",
         "series": "Ornn 成交指数",
-        "value": 142.61
+        "value": 144.94
       },
       {
         "date": "2026-10-12",
@@ -27288,7 +27464,7 @@
       {
         "date": "2026-10-13",
         "series": "Ornn 成交指数",
-        "value": 152.33
+        "value": 153.7
       },
       {
         "date": "2026-10-13",
@@ -27298,7 +27474,7 @@
       {
         "date": "2026-10-14",
         "series": "Ornn 成交指数",
-        "value": 153.31
+        "value": 153.5
       },
       {
         "date": "2026-10-14",
@@ -27313,7 +27489,7 @@
       {
         "date": "2026-10-15",
         "series": "Ornn 成交指数",
-        "value": 154.09
+        "value": 154.28
       },
       {
         "date": "2026-10-15",
@@ -27328,7 +27504,7 @@
       {
         "date": "2026-10-16",
         "series": "Ornn 成交指数",
-        "value": 157.98
+        "value": 161.48
       },
       {
         "date": "2026-10-16",
@@ -27338,7 +27514,7 @@
       {
         "date": "2026-10-17",
         "series": "Ornn 成交指数",
-        "value": 164.98
+        "value": 165.56
       },
       {
         "date": "2026-10-17",
@@ -27353,7 +27529,7 @@
       {
         "date": "2026-10-18",
         "series": "Ornn 成交指数",
-        "value": 166.15
+        "value": 165.18
       },
       {
         "date": "2026-10-18",
@@ -27383,7 +27559,7 @@
       {
         "date": "2026-10-20",
         "series": "Ornn 成交指数",
-        "value": 171.79
+        "value": 178.21
       },
       {
         "date": "2026-10-20",
@@ -27398,7 +27574,7 @@
       {
         "date": "2026-10-21",
         "series": "Ornn 成交指数",
-        "value": 182.88
+        "value": 182.3
       },
       {
         "date": "2026-10-21",
@@ -27413,7 +27589,7 @@
       {
         "date": "2026-10-22",
         "series": "Ornn 成交指数",
-        "value": 181.32
+        "value": 182.68
       },
       {
         "date": "2026-10-22",
@@ -27423,7 +27599,7 @@
       {
         "date": "2026-10-23",
         "series": "Ornn 成交指数",
-        "value": 186.38
+        "value": 186.58
       },
       {
         "date": "2026-10-23",
@@ -27433,7 +27609,7 @@
       {
         "date": "2026-10-24",
         "series": "Ornn 成交指数",
-        "value": 186.19
+        "value": 186.38
       },
       {
         "date": "2026-10-24",
@@ -27448,7 +27624,7 @@
       {
         "date": "2026-10-25",
         "series": "Ornn 成交指数",
-        "value": 188.72
+        "value": 189.88
       },
       {
         "date": "2026-10-25",
@@ -27463,7 +27639,7 @@
       {
         "date": "2026-10-26",
         "series": "Ornn 成交指数",
-        "value": 189.88
+        "value": 189.11
       },
       {
         "date": "2026-10-26",
@@ -27478,7 +27654,7 @@
       {
         "date": "2026-10-27",
         "series": "Ornn 成交指数",
-        "value": 187.94
+        "value": 188.72
       },
       {
         "date": "2026-10-27",
@@ -27493,7 +27669,7 @@
       {
         "date": "2026-10-28",
         "series": "Ornn 成交指数",
-        "value": 191.25
+        "value": 191.63
       },
       {
         "date": "2026-10-28",
@@ -27508,7 +27684,7 @@
       {
         "date": "2026-10-29",
         "series": "Ornn 成交指数",
-        "value": 191.25
+        "value": 191.44
       },
       {
         "date": "2026-10-29",
@@ -27523,7 +27699,7 @@
       {
         "date": "2026-10-31",
         "series": "SemiAnalysis 综合指数",
-        "value": 135.42
+        "value": 135.62
       }
     ],
     "contractBand": [
@@ -30109,7 +30285,7 @@
       {
         "date": "2026-10-31",
         "series": "gpuperhour",
-        "value": 255
+        "value": 269
       },
       {
         "date": "2026-10-31",
@@ -30128,10 +30304,10 @@
       "label": "OpenRouter 公开模型排行榜",
       "urls": [
         "https://openrouter.ai/api/frontend/v1/rankings/model-rankings-chart",
-        "sha256:d172dee3e5f618cd237333727b8cebb4e0b58dde3db3c3e9307cc82e65dbfec9"
+        "sha256:b0feabf91369164e62b73891ce2a48a725ce28499260e726f594f38a97d8593a"
       ],
       "url": "https://openrouter.ai/api/frontend/v1/rankings/model-rankings-chart",
-      "sha256": "sha256:d172dee3e5f618cd237333727b8cebb4e0b58dde3db3c3e9307cc82e65dbfec9",
+      "sha256": "sha256:b0feabf91369164e62b73891ce2a48a725ce28499260e726f594f38a97d8593a",
       "definition": "Sum of source-provided named model rows and Others for each OpenRouter chart week."
     },
     "openrouterComposition": {
@@ -30140,7 +30316,7 @@
         "https://openrouter.ai/api/frontend/v1/rankings/model-rankings-chart"
       ],
       "url": "https://openrouter.ai/api/frontend/v1/rankings/model-rankings-chart",
-      "sha256": "sha256:d172dee3e5f618cd237333727b8cebb4e0b58dde3db3c3e9307cc82e65dbfec9",
+      "sha256": "sha256:b0feabf91369164e62b73891ce2a48a725ce28499260e726f594f38a97d8593a",
       "definition": "Each weekly column independently stacks every model disclosed by the public chart plus Others. Segment height is share of that week's total token volume. Columns are not connected, so a model missing from another week is never treated as zero usage."
     },
     "activePrice": {
@@ -30210,6 +30386,10 @@
     "capex": {
       "label": "SEC companyfacts + 各公司官方业绩披露（原始单位，不插值）",
       "urls": [
+        "https://ir.aboutamazon.com/news-release/news-release-details/2026/Amazon-com-Announces-Third-Quarter-Results/default.aspx",
+        "https://www.microsoft.com/en-us/investor/events/fy-2027/earnings-fy-2027-q1",
+        "https://investor.atmeta.com/investor-news/press-release-details/2026/Meta-Reports-Third-Quarter-2026-Results/default.aspx",
+        "https://s206.q4cdn.com/479360582/files/doc_financials/2026/q3/2026q3-alphabet-earnings-release.pdf",
         "https://data.sec.gov/api/xbrl/companyfacts/CIK0001341439.json",
         "https://www.microsoft.com/en-us/investor/events/fy-2026/earnings-fy-2026-q4",
         "https://investor.atmeta.com/investor-news/press-release-details/2026/Meta-Reports-Second-Quarter-2026-Results/default.aspx",
@@ -30231,8 +30411,8 @@
         "https://www.huawei.com/en/annual-report/2025",
         "https://www.alibabagroup.com/en-US/document-1930116148192346112"
       ],
-      "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001341439.json",
-      "definition": "季度与事件频率观测保留来源单位、不插值。共 48 个一手披露链接（SEC EDGAR / 投资者关系页），表中每行均可回溯。缓存覆盖：AMZN 最新 2026-06-30（滞后 123 天）、GOOGL 最新 2026-07-22（滞后 101 天）、META 最新 2026-07-29（滞后 94 天）、MSFT 最新 2026-06-30（滞后 123 天）、ORCL 最新 2026-08-31（滞后 61 天）；本期 5 家上游失败，全部来自缓存。"
+      "url": "https://ir.aboutamazon.com/news-release/news-release-details/2026/Amazon-com-Announces-Third-Quarter-Results/default.aspx",
+      "definition": "季度与事件频率观测保留来源单位、不插值。共 58 个一手披露链接（SEC EDGAR / 投资者关系页），表中每行均可回溯。缓存覆盖：AMZN 最新 2026-09-30（滞后 31 天）、GOOGL 最新 2026-09-30（滞后 31 天）、META 最新 2026-09-30（滞后 31 天）、MSFT 最新 2026-09-30（滞后 31 天）、ORCL 最新 2026-08-31（滞后 61 天）；本期 5 家上游失败，全部来自缓存。"
     },
     "basisH100": {
       "urls": [
@@ -30241,7 +30421,7 @@
         "https://raw.githubusercontent.com/adriannutiu/gpu-rental-prices/main/data/latest.json"
       ],
       "url": "https://gpu-index.semianalysis.com/api/public-data",
-      "sha256": "sha256:ce3b2434990de3c4892daf66125d6fe4d17b30826ac75ee311df74a869eb32fd sha256:46071235b409a9f7d2c28d7c1091c1f6de106fd1c4f2c02c54bc636d451796b4 sha256:fbc866dd77970021108950c2b20488923de35e86820ae392d403a02473638980",
+      "sha256": "sha256:fb13463f6a85b25ceb5f7b30b84a8e858b7dfc7b9346b46dbbf0026a607f1c0d sha256:2ab4049d9d8edb1fef9f3b59ca1b458025d32d1d7c9a98d94e782f4ea412d648 sha256:fbc866dd77970021108950c2b20488923de35e86820ae392d403a02473638980",
       "label": "H100 三源价格对照",
       "definition": "同一 GPU 家族下三种口径并列：供应商报价中位、综合现货-合约指数、成交加权指数。口径不同，仅作交叉对照，不构成同质序列。"
     },
@@ -30252,7 +30432,7 @@
         "https://raw.githubusercontent.com/adriannutiu/gpu-rental-prices/main/data/latest.json"
       ],
       "url": "https://gpu-index.semianalysis.com/api/public-data",
-      "sha256": "sha256:ce3b2434990de3c4892daf66125d6fe4d17b30826ac75ee311df74a869eb32fd sha256:46071235b409a9f7d2c28d7c1091c1f6de106fd1c4f2c02c54bc636d451796b4 sha256:fbc866dd77970021108950c2b20488923de35e86820ae392d403a02473638980",
+      "sha256": "sha256:fb13463f6a85b25ceb5f7b30b84a8e858b7dfc7b9346b46dbbf0026a607f1c0d sha256:2ab4049d9d8edb1fef9f3b59ca1b458025d32d1d7c9a98d94e782f4ea412d648 sha256:fbc866dd77970021108950c2b20488923de35e86820ae392d403a02473638980",
       "label": "H200 两源价格对照（SemiAnalysis 无公开 H200 指数）",
       "definition": "口径同上（H200 无 SemiAnalysis 公开指数，为两源对照）。Neocloud 与 Ornn 可能方向分歧，分歧本身是证据而非噪声。"
     },
@@ -30263,7 +30443,7 @@
         "https://raw.githubusercontent.com/adriannutiu/gpu-rental-prices/main/data/latest.json"
       ],
       "url": "https://gpu-index.semianalysis.com/api/public-data",
-      "sha256": "sha256:ce3b2434990de3c4892daf66125d6fe4d17b30826ac75ee311df74a869eb32fd sha256:46071235b409a9f7d2c28d7c1091c1f6de106fd1c4f2c02c54bc636d451796b4 sha256:fbc866dd77970021108950c2b20488923de35e86820ae392d403a02473638980",
+      "sha256": "sha256:fb13463f6a85b25ceb5f7b30b84a8e858b7dfc7b9346b46dbbf0026a607f1c0d sha256:2ab4049d9d8edb1fef9f3b59ca1b458025d32d1d7c9a98d94e782f4ea412d648 sha256:fbc866dd77970021108950c2b20488923de35e86820ae392d403a02473638980",
       "label": "B200 三源价格对照",
       "definition": "口径同上。"
     },
@@ -30272,7 +30452,7 @@
         "https://gpu-index.semianalysis.com/api/public-data"
       ],
       "url": "https://gpu-index.semianalysis.com/api/public-data",
-      "sha256": "sha256:ce3b2434990de3c4892daf66125d6fe4d17b30826ac75ee311df74a869eb32fd",
+      "sha256": "sha256:fb13463f6a85b25ceb5f7b30b84a8e858b7dfc7b9346b46dbbf0026a607f1c0d",
       "label": "SemiAnalysis H100 1Y 合约调查区间",
       "definition": "月度调查的25-75分位合约价区间，半年期阶梯展示。许可：公开页引用需署名。"
     },
@@ -30283,7 +30463,7 @@
         "https://api.runpod.io/graphql"
       ],
       "url": "https://api.gpuindexes.com/api/offers",
-      "sha256": "sha256:606fe30b25eebab611cb978da7feb6b55f1bf29c87ba1d6f06aeb14289753a78 sha256:fe7a30aff6f82c3c25d6cc56d907738f7ba0db961b31846a330c17f31aa39f42 sha256:2d06b0c6699ad75212e46ea70b1d9ee82246a1cfc4e8cf0e46e3836705ac0e01",
+      "sha256": "sha256:2cb53c50b3805814c04b6b0c591dd7512da478c040fd4cb2472bed8c7676973b sha256:1ef426f20c6d69dbb68c560e7f158de9ed3893dfc684b41f1d821a436b83cbca sha256:762aef5a11f83f45c44eca97ade2c094d521b4248eb636b842cc4376246b2bf6",
       "label": "GPU 订单簿逐源观测",
       "definition": "gpuperhour/vast 为逐条报价 offers、runpod 为型号挂牌 types，单位语义不同故分序列展示不合并。时点观测，<10 有效日只画点不连线。"
     },
@@ -30301,7 +30481,7 @@
         "https://openrouter.ai/api/frontend/v1/rankings/model-rankings-chart"
       ],
       "url": "https://openrouter.ai/api/frontend/v1/rankings/model-rankings-chart",
-      "sha256": "sha256:d172dee3e5f618cd237333727b8cebb4e0b58dde3db3c3e9307cc82e65dbfec9",
+      "sha256": "sha256:b0feabf91369164e62b73891ce2a48a725ce28499260e726f594f38a97d8593a",
       "label": "OpenRouter 公开周榜（Top-5 派生）",
       "definition": "每周公开榜单里最新 Top-5 模型各自的用量占比走势。看的是排名与份额的稳定性：曲线频繁交叉=头部不稳。"
     },

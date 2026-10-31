@@ -9,7 +9,7 @@
 
 ## Capacity & Utilization — Trend
 - 下一个证明点：积累订单簿至 10/20 有效日（当前 70）。
-- 关键指标：`{"depthValidDates": 70, "latestTotalOffers": 293, "depthGrowthPct": -5.08, "latestGpuCapacity": 10085, "providerSnapshotRows": 34498, "providersCovered": 39}`
+- 关键指标：`{"depthValidDates": 70, "latestTotalOffers": 307, "depthGrowthPct": -4.93, "latestGpuCapacity": 10128, "providerSnapshotRows": 34498, "providersCovered": 39}`
 - 阻塞项：无
 
 ## Demand & Unit Economics — Observing
@@ -19,5 +19,5 @@
 
 ## Commitment & Monetization — Inflection Watch（intensifying）
 - 下一个证明点：下一财报季追加季度行；合约区间每半年更新。
-- 关键指标：`{"companiesCovered": 5, "companiesWith3ConsecutiveQuarters": 0, "maxConsecutiveQuarters": 2, "guidanceRevisedUp": ["Alphabet", "Meta"], "guidanceRevisedDown": [], "h100ContractDirectionSinceStart": "falling", "h100ContractFirstMidpoint": 3.05, "h100ContractLatestMidpoint": 2.85}`
-- 阻塞项：['companies_with_3_consecutive_quarters_0_of_3', 'longest_true_quarter_run_2_(Alphabet)_needs_3']
+- 关键指标：`{"companiesCovered": 5, "companiesWith3ConsecutiveQuarters": 4, "maxConsecutiveQuarters": 3, "guidanceRevisedUp": ["Alphabet", "Meta"], "guidanceRevisedDown": [], "h100ContractDirectionSinceStart": "falling", "h100ContractFirstMidpoint": 3.05, "h100ContractLatestMidpoint": 2.85}`
+- 阻塞项：无
