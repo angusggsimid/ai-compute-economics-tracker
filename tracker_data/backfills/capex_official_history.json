@@ -34,6 +34,112 @@
   },
   "rows": [
     {
+      "date": "2026-10-29",
+      "company": "Amazon",
+      "metric": "calendar 2026 capex guidance",
+      "value": 220.0,
+      "unit": "USD_B",
+      "period": "calendar_2026_cash_capex_guidance",
+      "source_url": "https://ir.aboutamazon.com/news-release/news-release-details/2026/Amazon-com-Announces-Third-Quarter-Results/default.aspx",
+      "fromCache": false,
+      "note": "cash capital expenditures, approximately 220, unchanged"
+    },
+    {
+      "date": "2026-10-28",
+      "company": "Microsoft",
+      "metric": "calendar 2026 capex guidance",
+      "value": 170.0,
+      "unit": "USD_B",
+      "period": "calendar_2026_management_capex",
+      "source_url": "https://www.microsoft.com/en-us/investor/events/fy-2027/earnings-fy-2027-q1",
+      "fromCache": false,
+      "note": "management capex including finance leases, cut from 175"
+    },
+    {
+      "date": "2026-10-21",
+      "company": "Meta",
+      "metric": "fy2026 capex guidance previous low",
+      "value": 130.0,
+      "unit": "USD_B",
+      "period": "capex_guidance_revision",
+      "source_url": "https://investor.atmeta.com/investor-news/press-release-details/2026/Meta-Reports-Third-Quarter-2026-Results/default.aspx",
+      "fromCache": false
+    },
+    {
+      "date": "2026-10-21",
+      "company": "Meta",
+      "metric": "fy2026 capex guidance previous high",
+      "value": 145.0,
+      "unit": "USD_B",
+      "period": "capex_guidance_revision",
+      "source_url": "https://investor.atmeta.com/investor-news/press-release-details/2026/Meta-Reports-Third-Quarter-2026-Results/default.aspx",
+      "fromCache": false
+    },
+    {
+      "date": "2026-10-21",
+      "company": "Meta",
+      "metric": "fy2026 capex guidance low",
+      "value": 135.0,
+      "unit": "USD_B",
+      "period": "capex_guidance_revision",
+      "source_url": "https://investor.atmeta.com/investor-news/press-release-details/2026/Meta-Reports-Third-Quarter-2026-Results/default.aspx",
+      "fromCache": false
+    },
+    {
+      "date": "2026-10-21",
+      "company": "Meta",
+      "metric": "fy2026 capex guidance high",
+      "value": 145.0,
+      "unit": "USD_B",
+      "period": "capex_guidance_revision",
+      "source_url": "https://investor.atmeta.com/investor-news/press-release-details/2026/Meta-Reports-Third-Quarter-2026-Results/default.aspx",
+      "fromCache": false
+    },
+    {
+      "date": "2026-09-30",
+      "company": "Microsoft",
+      "metric": "capex actual",
+      "value": 39.4,
+      "unit": "USD_B",
+      "period": "FY2027 Q1",
+      "source_url": "https://www.microsoft.com/en-us/investor/events/fy-2027/earnings-fy-2027-q1",
+      "fromCache": false,
+      "note": "cash paid for PP&E per FY27 Q1 call; management capex including finance leases is 45.2"
+    },
+    {
+      "date": "2026-09-30",
+      "company": "Meta",
+      "metric": "capex actual",
+      "value": 33.942,
+      "unit": "USD_B",
+      "period": "FY2026 Q3",
+      "source_url": "https://investor.atmeta.com/investor-news/press-release-details/2026/Meta-Reports-Third-Quarter-2026-Results/default.aspx",
+      "fromCache": false,
+      "note": "cash purchases of PPE, comparable to prior XBRL tag; company capex including finance-lease principal is 34.91"
+    },
+    {
+      "date": "2026-09-30",
+      "company": "Amazon",
+      "metric": "capex actual",
+      "value": 77.259,
+      "unit": "USD_B",
+      "period": "FY2026 Q3",
+      "source_url": "https://ir.aboutamazon.com/news-release/news-release-details/2026/Amazon-com-Announces-Third-Quarter-Results/default.aspx",
+      "fromCache": false,
+      "note": "earnings release purchases of property and equipment; not net of incentives"
+    },
+    {
+      "date": "2026-09-30",
+      "company": "Alphabet",
+      "metric": "capex actual",
+      "value": 51.355,
+      "unit": "USD_B",
+      "period": "FY2026 Q3",
+      "source_url": "https://s206.q4cdn.com/479360582/files/doc_financials/2026/q3/2026q3-alphabet-earnings-release.pdf",
+      "fromCache": false,
+      "note": "earnings release cash purchases of property and equipment; SEC companyfacts unavailable"
+    },
+    {
       "date": "2026-08-31",
       "company": "Oracle",
       "metric": "capex actual",
@@ -577,5 +683,10 @@
       "status": "failed",
       "message": "SEC_SOURCE_UNAVAILABLE: HTTP 403 for ORCL"
     }
-  ]
+  ],
+  "manualEarningsUpdate": {
+    "updatedAt": "2026-10-31T02:47:07Z",
+    "reason": "SEC companyfacts returned 403; Q3 2026 actuals and guidance taken from company earnings releases / cash-flow statements",
+    "addedRows": 10
+  }
 }

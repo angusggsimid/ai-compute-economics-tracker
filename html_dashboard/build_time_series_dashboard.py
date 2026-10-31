@@ -1014,7 +1014,11 @@ def _capex_quarterly(rows: list[dict[str, Any]]) -> tuple[list[dict[str, Any]], 
             if field == "calendar":
                 if slot["low"] is None:
                     slot["low"] = slot["high"] = float(value)
-                    slot["note"] = f"（租赁重分类后 {bucket}）"
+                    slot["note"] = (
+                        f"（租赁重分类后 {bucket}）"
+                        if ("租赁" in period or "lease" in period.lower())
+                        else f"（{bucket}）"
+                    )
                     slot["revisionDate"] = str(row.get("date") or "")
             elif slot.get(field) is None:
                 slot[field] = float(value)
