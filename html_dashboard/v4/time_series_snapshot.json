@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-10-30T05:45:10Z",
+    "generatedAt": "2026-10-31T02:25:01Z",
     "minDate": "2025-11-03",
     "maxDate": "2026-10-29",
     "basisCommonStart": {
@@ -8,8 +8,8 @@
       "H200": "2026-07-05",
       "B200": "2026-07-05"
     },
-    "orderbookValidDays": 69,
-    "otpiValidDays": 65,
+    "orderbookValidDays": 70,
+    "otpiValidDays": 66,
     "contractPeriods": 22,
     "panelMembers": {
       "H100": {
@@ -369,7 +369,7 @@
       {
         "date": "2025-11-17",
         "series": "4W average",
-        "value": 5.042817514335
+        "value": 4.8439213822275
       },
       {
         "date": "2025-11-24",
@@ -6538,8 +6538,8 @@
       {
         "date": "2025-11-17",
         "series": "4W average",
-        "value": 0.25754318129493736,
-        "coverage": 47.31791925594661
+        "value": 0.2564082144302632,
+        "coverage": 47.525886603935845
       },
       {
         "date": "2025-11-24",
@@ -7140,8 +7140,8 @@
       {
         "date": "2025-11-17",
         "series": "4W average",
-        "value": 1.8577543446736038,
-        "coverage": 47.31791925594661
+        "value": 1.847611648004695,
+        "coverage": 47.525886603935845
       },
       {
         "date": "2025-11-24",
@@ -7629,9 +7629,9 @@
         "name": "Tencent: Hy4 preview",
         "tokens": 31.314497371974,
         "share": 4.539768298576347,
-        "inputPrice": 0.834,
-        "outputPrice": 2.501,
-        "historyPoints": 51,
+        "inputPrice": 0.7506,
+        "outputPrice": 2.2509,
+        "historyPoints": 52,
         "firstSeen": "2026-08-28",
         "lastSeen": "2026-10-30",
         "priceHistory": [
@@ -7889,6 +7889,11 @@
             "date": "2026-10-30",
             "input": 0.834,
             "output": 2.501
+          },
+          {
+            "date": "2026-10-30",
+            "input": 0.7506,
+            "output": 2.2509
           }
         ],
         "free": false
@@ -21018,8 +21023,8 @@
     "priceChangeCounts": [
       {
         "name": "Tencent: Hy4 preview",
-        "recent4w": 47,
-        "total": 51
+        "recent4w": 46,
+        "total": 52
       },
       {
         "name": "DeepSeek: DeepSeek V4.1 Flash 1017",
@@ -24614,7 +24619,12 @@
       {
         "date": "2026-10-30",
         "series": "SemiAnalysis 综合指数",
-        "value": 110.36
+        "value": 110.68
+      },
+      {
+        "date": "2026-10-31",
+        "series": "SemiAnalysis 综合指数",
+        "value": 108.09
       }
     ],
     "basisH200": [
@@ -27509,6 +27519,11 @@
         "date": "2026-10-30",
         "series": "SemiAnalysis 综合指数",
         "value": 137.29
+      },
+      {
+        "date": "2026-10-31",
+        "series": "SemiAnalysis 综合指数",
+        "value": 135.42
       }
     ],
     "contractBand": [
@@ -29033,6 +29048,26 @@
         "date": "2026-10-27",
         "series": "openai OTPI",
         "value": 0.4181
+      },
+      {
+        "date": "2026-10-29",
+        "series": "anthropic OTPI",
+        "value": 0.8073
+      },
+      {
+        "date": "2026-10-29",
+        "series": "deepseek OTPI",
+        "value": 0.0377
+      },
+      {
+        "date": "2026-10-29",
+        "series": "google OTPI",
+        "value": 0.6303
+      },
+      {
+        "date": "2026-10-29",
+        "series": "openai OTPI",
+        "value": 0.2465
       }
     ],
     "orderbookDepth": [
@@ -30070,6 +30105,21 @@
         "date": "2026-10-30",
         "series": "vast",
         "value": 26
+      },
+      {
+        "date": "2026-10-31",
+        "series": "gpuperhour",
+        "value": 255
+      },
+      {
+        "date": "2026-10-31",
+        "series": "runpod",
+        "value": 14
+      },
+      {
+        "date": "2026-10-31",
+        "series": "vast",
+        "value": 24
       }
     ]
   },
@@ -30078,10 +30128,10 @@
       "label": "OpenRouter 公开模型排行榜",
       "urls": [
         "https://openrouter.ai/api/frontend/v1/rankings/model-rankings-chart",
-        "sha256:7c13d2c8ed13fb019eef28ea7b882d125d110642a871ff8a0f0423b6733bd4f1"
+        "sha256:d172dee3e5f618cd237333727b8cebb4e0b58dde3db3c3e9307cc82e65dbfec9"
       ],
       "url": "https://openrouter.ai/api/frontend/v1/rankings/model-rankings-chart",
-      "sha256": "sha256:7c13d2c8ed13fb019eef28ea7b882d125d110642a871ff8a0f0423b6733bd4f1",
+      "sha256": "sha256:d172dee3e5f618cd237333727b8cebb4e0b58dde3db3c3e9307cc82e65dbfec9",
       "definition": "Sum of source-provided named model rows and Others for each OpenRouter chart week."
     },
     "openrouterComposition": {
@@ -30090,7 +30140,7 @@
         "https://openrouter.ai/api/frontend/v1/rankings/model-rankings-chart"
       ],
       "url": "https://openrouter.ai/api/frontend/v1/rankings/model-rankings-chart",
-      "sha256": "sha256:7c13d2c8ed13fb019eef28ea7b882d125d110642a871ff8a0f0423b6733bd4f1",
+      "sha256": "sha256:d172dee3e5f618cd237333727b8cebb4e0b58dde3db3c3e9307cc82e65dbfec9",
       "definition": "Each weekly column independently stacks every model disclosed by the public chart plus Others. Segment height is share of that week's total token volume. Columns are not connected, so a model missing from another week is never treated as zero usage."
     },
     "activePrice": {
@@ -30182,7 +30232,7 @@
         "https://www.alibabagroup.com/en-US/document-1930116148192346112"
       ],
       "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001341439.json",
-      "definition": "季度与事件频率观测保留来源单位、不插值。共 48 个一手披露链接（SEC EDGAR / 投资者关系页），表中每行均可回溯。缓存覆盖：AMZN 最新 2026-06-30（滞后 122 天）、GOOGL 最新 2026-07-22（滞后 100 天）、META 最新 2026-07-29（滞后 93 天）、MSFT 最新 2026-06-30（滞后 122 天）、ORCL 最新 2026-08-31（滞后 60 天）；本期 5 家上游失败，全部来自缓存。"
+      "definition": "季度与事件频率观测保留来源单位、不插值。共 48 个一手披露链接（SEC EDGAR / 投资者关系页），表中每行均可回溯。缓存覆盖：AMZN 最新 2026-06-30（滞后 123 天）、GOOGL 最新 2026-07-22（滞后 101 天）、META 最新 2026-07-29（滞后 94 天）、MSFT 最新 2026-06-30（滞后 123 天）、ORCL 最新 2026-08-31（滞后 61 天）；本期 5 家上游失败，全部来自缓存。"
     },
     "basisH100": {
       "urls": [
@@ -30191,7 +30241,7 @@
         "https://raw.githubusercontent.com/adriannutiu/gpu-rental-prices/main/data/latest.json"
       ],
       "url": "https://gpu-index.semianalysis.com/api/public-data",
-      "sha256": "sha256:127a9c873b22299049dd40e737420282431eec55884c16cadd8466357f3457d3 sha256:46071235b409a9f7d2c28d7c1091c1f6de106fd1c4f2c02c54bc636d451796b4 sha256:fbc866dd77970021108950c2b20488923de35e86820ae392d403a02473638980",
+      "sha256": "sha256:ce3b2434990de3c4892daf66125d6fe4d17b30826ac75ee311df74a869eb32fd sha256:46071235b409a9f7d2c28d7c1091c1f6de106fd1c4f2c02c54bc636d451796b4 sha256:fbc866dd77970021108950c2b20488923de35e86820ae392d403a02473638980",
       "label": "H100 三源价格对照",
       "definition": "同一 GPU 家族下三种口径并列：供应商报价中位、综合现货-合约指数、成交加权指数。口径不同，仅作交叉对照，不构成同质序列。"
     },
@@ -30202,7 +30252,7 @@
         "https://raw.githubusercontent.com/adriannutiu/gpu-rental-prices/main/data/latest.json"
       ],
       "url": "https://gpu-index.semianalysis.com/api/public-data",
-      "sha256": "sha256:127a9c873b22299049dd40e737420282431eec55884c16cadd8466357f3457d3 sha256:46071235b409a9f7d2c28d7c1091c1f6de106fd1c4f2c02c54bc636d451796b4 sha256:fbc866dd77970021108950c2b20488923de35e86820ae392d403a02473638980",
+      "sha256": "sha256:ce3b2434990de3c4892daf66125d6fe4d17b30826ac75ee311df74a869eb32fd sha256:46071235b409a9f7d2c28d7c1091c1f6de106fd1c4f2c02c54bc636d451796b4 sha256:fbc866dd77970021108950c2b20488923de35e86820ae392d403a02473638980",
       "label": "H200 两源价格对照（SemiAnalysis 无公开 H200 指数）",
       "definition": "口径同上（H200 无 SemiAnalysis 公开指数，为两源对照）。Neocloud 与 Ornn 可能方向分歧，分歧本身是证据而非噪声。"
     },
@@ -30213,7 +30263,7 @@
         "https://raw.githubusercontent.com/adriannutiu/gpu-rental-prices/main/data/latest.json"
       ],
       "url": "https://gpu-index.semianalysis.com/api/public-data",
-      "sha256": "sha256:127a9c873b22299049dd40e737420282431eec55884c16cadd8466357f3457d3 sha256:46071235b409a9f7d2c28d7c1091c1f6de106fd1c4f2c02c54bc636d451796b4 sha256:fbc866dd77970021108950c2b20488923de35e86820ae392d403a02473638980",
+      "sha256": "sha256:ce3b2434990de3c4892daf66125d6fe4d17b30826ac75ee311df74a869eb32fd sha256:46071235b409a9f7d2c28d7c1091c1f6de106fd1c4f2c02c54bc636d451796b4 sha256:fbc866dd77970021108950c2b20488923de35e86820ae392d403a02473638980",
       "label": "B200 三源价格对照",
       "definition": "口径同上。"
     },
@@ -30222,7 +30272,7 @@
         "https://gpu-index.semianalysis.com/api/public-data"
       ],
       "url": "https://gpu-index.semianalysis.com/api/public-data",
-      "sha256": "sha256:127a9c873b22299049dd40e737420282431eec55884c16cadd8466357f3457d3",
+      "sha256": "sha256:ce3b2434990de3c4892daf66125d6fe4d17b30826ac75ee311df74a869eb32fd",
       "label": "SemiAnalysis H100 1Y 合约调查区间",
       "definition": "月度调查的25-75分位合约价区间，半年期阶梯展示。许可：公开页引用需署名。"
     },
@@ -30233,7 +30283,7 @@
         "https://api.runpod.io/graphql"
       ],
       "url": "https://api.gpuindexes.com/api/offers",
-      "sha256": "sha256:e94457c8bdd35977be2d35250b50bf74156d637969684301e58904c615969873 sha256:d683da5efade2dd56ae799c5ae0a11d0477feb95d7eff9e0ece1e0305063b1cc sha256:c0d546a398c85841b978bea0c2482db30ffa8eea542b057df7801b774738fd8b",
+      "sha256": "sha256:606fe30b25eebab611cb978da7feb6b55f1bf29c87ba1d6f06aeb14289753a78 sha256:fe7a30aff6f82c3c25d6cc56d907738f7ba0db961b31846a330c17f31aa39f42 sha256:2d06b0c6699ad75212e46ea70b1d9ee82246a1cfc4e8cf0e46e3836705ac0e01",
       "label": "GPU 订单簿逐源观测",
       "definition": "gpuperhour/vast 为逐条报价 offers、runpod 为型号挂牌 types，单位语义不同故分序列展示不合并。时点观测，<10 有效日只画点不连线。"
     },
@@ -30242,7 +30292,7 @@
         "https://index.ornn.com/api/otpi"
       ],
       "url": "https://index.ornn.com/api/otpi",
-      "sha256": "sha256:351d794f0605230dddacff6eb118deff8773a160f17d11b48eaaab8af882a803",
+      "sha256": "sha256:4472cfdd0d2b0216ea032524d7fbf11fc52dd4d9ea48bc01538e7804b96c13df",
       "label": "Ornn OTPI 已实现 token 价",
       "definition": "按 lab 的成交加权 token 实现价（USD/Mtok），免费层滚动窗口每日快照累积。许可：Ornn 免费层署名引用。"
     },
@@ -30251,7 +30301,7 @@
         "https://openrouter.ai/api/frontend/v1/rankings/model-rankings-chart"
       ],
       "url": "https://openrouter.ai/api/frontend/v1/rankings/model-rankings-chart",
-      "sha256": "sha256:7c13d2c8ed13fb019eef28ea7b882d125d110642a871ff8a0f0423b6733bd4f1",
+      "sha256": "sha256:d172dee3e5f618cd237333727b8cebb4e0b58dde3db3c3e9307cc82e65dbfec9",
       "label": "OpenRouter 公开周榜（Top-5 派生）",
       "definition": "每周公开榜单里最新 Top-5 模型各自的用量占比走势。看的是排名与份额的稳定性：曲线频繁交叉=头部不稳。"
     },
