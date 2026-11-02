@@ -195,6 +195,8 @@ def test_badge_downgrades_source_with_upstream_failures(monkeypatch, tmp_path):
     assert 'class="fresh-dot warn"' in sec_row, "上游失败却给了非 warn 色调"
     assert "5 家上游失败" in sec_row
     assert "最旧一条滞后 89 天" in sec_row
+    assert "季度财报仍在披露节奏内" in sec_row, "业务化文案没有渲染"
+    assert '<details class="dev-trace">' in sec_row, "工程细节应折叠而不是直接铺在首屏"
     assert 'class="fresh-dot ok"' not in sec_row
     # 正常源仍应是绿点（降级不得扩散）
     ok_row = next((r for r in rows if "openrouter_usage" in r), "")
@@ -262,6 +264,32 @@ def test_badge_nonblocking_source_not_labeled_blocking(monkeypatch, tmp_path):
     assert row, "foundry_signals 行缺失"
     assert "非阻塞源" in row
     assert "阻塞发布" not in row
+
+
+def test_badge_ready_count_does_not_double_subtract(monkeypatch, tmp_path):
+    """失败源同时带质量告警时，就绪数只能扣一次，不能出现 0/2 或负数。"""
+    status = {
+        "generatedAt": "2026-10-10T06:00:00Z",
+        "publishable": True,
+        "sources": [
+            {
+                "source": "foundry_signals",
+                "status": "failed_using_last_good",
+                "publishable": True,
+                "blocking": False,
+                "qualityWarnings": [{"source": "upstream", "status": "failed"}],
+            },
+            {"source": "openrouter_usage", "status": "fresh"},
+        ],
+    }
+    path = tmp_path / "tracker_data" / "deploy_refresh_status.json"
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(status), encoding="utf-8")
+    monkeypatch.setattr("html_dashboard.build_time_series_dashboard.ROOT", tmp_path)
+
+    html = _fresh_badge({})
+
+    assert "1/2 源就绪" in html
 
 
 def test_badge_stays_ok_when_no_degradation(monkeypatch, tmp_path):

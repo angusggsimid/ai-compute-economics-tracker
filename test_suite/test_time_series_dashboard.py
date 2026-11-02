@@ -12,7 +12,8 @@ TRACKER_V2 = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(TRACKER_V2 / "html_dashboard"))
 sys.path.insert(0, str(TRACKER_V2))
 
-from build_time_series_dashboard import COST_INDEX_PATH, build_html, build_snapshot  # noqa: E402
+from build_time_series_dashboard import COST_INDEX_PATH, build_html, build_snapshot, _executive_summary, _guidance_moves  # noqa: E402
+from thesis_engine import generate_executive_summary  # noqa: E402
 from week_quality import complete_week_count  # noqa: E402
 
 
@@ -140,9 +141,72 @@ def test_executive_summary_contract():
     assert 'id="executive-summary"' in html
     capacity = next(item for item in summary["takeaways"] if item["clock"] == "Capacity")
     gap = next(row["value"] for row in reversed(snapshot["datasets"]["listedGap"]) if row["series"] == "H100")
+    gap_date = max(row["date"] for row in snapshot["datasets"]["listedGap"] if row["series"] == "H100")
     assert f"{gap:.1f}%" in capacity["text"]
+    assert gap_date in capacity["text"], "虚低度必须带快照日期"
+    assert "当天快照" not in capacity["text"]
+    demand = next(item for item in summary["takeaways"] if item["clock"] == "Demand")
+    token_date = max(row["date"] for row in snapshot["datasets"]["openrouterVolume"] if row["series"] == "Weekly tokens")
+    assert token_date in demand["text"], "周 token 必须带完整周日期"
     assert "同为上修" not in summary["coreNarrative"]
-    assert "Microsoft" in next(item["text"] for item in summary["takeaways"] if item["clock"] == "Commitment")
+    # 下移公司必须写进承诺条；从同一份底表推导，避免数据更新后测试变成硬编码。
+    downs = [
+        item["company"]
+        for item in snapshot["meta"].get("capexGuidance") or []
+        if isinstance(item.get("prevLow"), (int, float))
+        and isinstance(item.get("low"), (int, float))
+        and item["low"] < item["prevLow"]
+    ]
+    commit_text = next(item["text"] for item in summary["takeaways"] if item["clock"] == "Commitment")
+    for company in downs:
+        assert company in commit_text
+    assert "不得概括" not in commit_text
+
+
+def test_executive_summary_refuses_to_invent_clocks():
+    summary = generate_executive_summary([])
+    assert "未运行" in summary["macroStance"]
+    assert len(summary["takeaways"]) == 4
+    assert all(item["badge"] == "未运行" for item in summary["takeaways"])
+    assert "Observing" not in json.dumps(summary, ensure_ascii=False)
+    partial = generate_executive_summary([{"clock_id": "supply_price", "state": "Trend", "direction": None}])
+    assert "缺少时钟" in partial["macroStance"]
+    assert "Observing" not in json.dumps(partial, ensure_ascii=False)
+
+
+def test_summary_does_not_claim_simultaneous_upgrade_when_only_cuts():
+    clocks = [
+        {"clock_id": "supply_price", "state": "Confirmed", "direction": "intensifying", "metrics": {}},
+        {"clock_id": "capacity", "state": "Trend", "metrics": {}},
+        {"clock_id": "demand_unit_economics", "state": "Observing", "metrics": {}, "blockers": []},
+        {"clock_id": "commitment_monetization", "state": "Inflection Watch", "direction": "intensifying", "metrics": {}},
+    ]
+    summary = generate_executive_summary(clocks, {"guidanceUp": [], "guidanceDown": ["Microsoft"]})
+    assert "同时" not in summary["coreNarrative"]
+    assert "下移" in summary["coreNarrative"]
+
+
+def test_executive_summary_handles_malformed_thesis_file(monkeypatch, tmp_path):
+    path = tmp_path / "latest-thesis-state.json"
+    monkeypatch.setattr("build_time_series_dashboard.THESIS_PATH", path)
+    path.write_text("[]", encoding="utf-8")
+    summary = _executive_summary({"datasets": {}, "meta": {}})
+    assert "缺失或不可读" in summary["macroStance"]
+    path.write_text("{}", encoding="utf-8")
+    summary = _executive_summary({"datasets": {}, "meta": {}})
+    assert "没有四时钟状态" in summary["macroStance"]
+    assert all(item["badge"] == "未运行" for item in summary["takeaways"])
+
+
+def test_guidance_moves_detects_calendar_cut_and_keeps_upgrade():
+    ups, downs = _guidance_moves([
+        {"company": "Microsoft", "low": 170, "high": 170, "prevLow": 175, "prevHigh": 175},
+        {"company": "Alphabet", "low": 195, "high": 205, "prevLow": 180, "prevHigh": 190},
+        {"company": "NoPrev", "low": 10, "high": 20, "prevLow": None, "prevHigh": None},
+    ])
+    assert downs == ["Microsoft"]
+    assert ups == ["Alphabet"]
+    assert "NoPrev" not in ups + downs
 
 
 def test_industry_events_are_dated_and_sourced():
@@ -161,7 +225,22 @@ def test_industry_events_are_dated_and_sourced():
 
 
 def test_cross_clock_sandbox_is_in_the_page():
-    html = build_html(build_snapshot())
+    snapshot = build_snapshot()
+    html = build_html(snapshot)
     assert 'id="sandbox-chart"' in html
     assert 'id="toggle-events"' in html
     assert "SANDBOX_SERIES_CATALOG" in html
+    # 下拉里的 dataset/series 必须真的能取到点；否则默认选项和切换都会画出空图。
+    pairs = re.findall(r"\{id:'([^']+)',label:'[^']*',dataset:'([^']+)',series:'([^']+)'\}", html)
+    assert len(pairs) >= 7
+    for combo_id, dataset, series in pairs:
+        rows = [row for row in snapshot["datasets"].get(dataset, []) if row.get("series") == series]
+        assert rows, f"{combo_id} -> {dataset}/{series} 没有数据"
+
+
+def test_event_markers_reach_primary_volume_and_price_charts():
+    html = build_html(build_snapshot())
+    # 事件线不能只落在次要图上：主图（Token 总量、H100 价格）必须调用同一个渲染器。
+    assert "function eventMarkers" in html
+    assert html.count("eventMarkers(start,end,x") >= 2
+    assert "g==='H100'?{eventLabels:true}" in html

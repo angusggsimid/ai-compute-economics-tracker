@@ -585,7 +585,6 @@ def evaluate_report(data_dir: Path) -> Dict[str, Any]:
         "generatedAt": datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z"),
         "inputs": sorted(p.name for p in data_dir.glob("*.json")),
         "clocks": clocks,
-        "executiveSummary": generate_executive_summary(clocks),
         "methodology": {
             "states": list(STATES),
             "bidirectional": "每个时钟并行评估松动(loosening)与紧缩(intensifying)两套 Watch 条件。",
@@ -621,16 +620,33 @@ def render_markdown(report: Dict[str, Any]) -> str:
     return "\n".join(lines)
 
 
-def _fmt_pct(value: Any) -> str:
-    if not isinstance(value, (int, float)):
-        return "无读数"
-    return f"{value:+.1f}%"
-
-
 def generate_executive_summary(clocks: List[Dict[str, Any]], facts: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
     """四时钟 → 30 秒简报。只使用时钟指标和调用方注入的事实，不写死数字。"""
     facts = facts or {}
+
+    def unevaluated(reason: str) -> Dict[str, Any]:
+        return {
+            "generatedAt": "",
+            "macroStance": f"{reason}，本页不代写结论",
+            "stanceLevel": "neutral",
+            "coreNarrative": f"{reason}。下面不把快照数字说成时钟判断。",
+            "takeaways": [
+                {"clock": "Supply Price", "title": "未评估", "badge": "未运行", "text": "供给时钟没有运行，不引用价格涨幅。"},
+                {"clock": "Capacity", "title": "未评估", "badge": "未运行", "text": "容量时钟没有运行，不引用订单簿天数。"},
+                {"clock": "Demand", "title": "未评估", "badge": "未运行", "text": "需求时钟没有运行，不引用周度 token。"},
+                {"clock": "Commitment", "title": "未评估", "badge": "未运行", "text": "承诺时钟没有运行，不引用资本开支指引。"},
+            ],
+            "riskNotice": "先恢复时钟状态文件，再读这张简报。",
+        }
+
+    if not clocks:
+        return unevaluated("四时钟未运行")
     clock_map = {c.get("clock_id"): c for c in clocks}
+    required = ("supply_price", "capacity", "demand_unit_economics", "commitment_monetization")
+    missing = [clock_id for clock_id in required if clock_id not in clock_map]
+    if missing:
+        # 文件存在但少了一个时钟时也不能用 Observing 顶替：那会把"没跑"说成"观察中"。
+        return unevaluated(f"缺少时钟 {'、'.join(missing)}")
     supply = clock_map.get("supply_price") or {}
     capacity = clock_map.get("capacity") or {}
     demand = clock_map.get("demand_unit_economics") or {}
@@ -639,12 +655,16 @@ def generate_executive_summary(clocks: List[Dict[str, Any]], facts: Optional[Dic
     supply_state = str(supply.get("state") or "Observing")
     supply_dir = supply.get("direction")
     commit_dir = commitment.get("direction")
-    ups = facts.get("guidanceUp") or []
-    downs = facts.get("guidanceDown") or []
+    ups = list(dict.fromkeys(facts.get("guidanceUp") or []))
+    downs = list(dict.fromkeys(facts.get("guidanceDown") or []))
     if supply_state == "Confirmed" and supply_dir == "intensifying":
         if downs:
             stance, level = "现货偏紧，但资本开支指引不是单边上修", "intensifying"
-            narrative = "供给价格长窗口仍偏紧。指引里同时有上移和下移，不能写成两套时钟同向上修。"
+            narrative = (
+                "供给价格长窗口仍偏紧。指引里同时有上移和下移，不能写成两套时钟同向上修。"
+                if ups
+                else "供给价格长窗口仍偏紧。指引里出现下移，不能写成云厂商承诺继续加码。"
+            )
         elif commit_dir == "intensifying" and ups:
             stance, level = "现货偏紧，部分公司上修了指引", "intensifying"
             narrative = "供给价格时钟为 Confirmed·intensifying。指引上修只覆盖名单里的公司，不是五家一起加码。"
@@ -661,32 +681,90 @@ def generate_executive_summary(clocks: List[Dict[str, Any]], facts: Optional[Dic
         stance, level = "四时钟没有给出单一方向", "neutral"
         narrative = "价格、容量、用量、资本开支没有同时指向一边。读细分代际，不要读一个总判断。"
 
+    # 同一代际跨来源差异本身是证据：摘要只给区间，不把 8 个面板名塞进 30 秒卡片。
     panels = (supply.get("metrics") or {}).get("frontierPanels") or {}
-    panel_bits = [
-        f"{name} {_fmt_pct(item.get('change90dPct'))}"
-        for name, item in sorted(panels.items())
-        if isinstance(item, dict) and isinstance(item.get("change90dPct"), (int, float))
-    ]
+    family_values: Dict[str, List[float]] = {}
+    for name, item in panels.items():
+        if not isinstance(item, dict):
+            continue
+        change = item.get("change90dPct")
+        if not isinstance(change, (int, float)):
+            continue
+        family = str(name).split(":")[-1].replace(" SXM", "").strip()
+        family_values.setdefault(family, []).append(float(change))
+    family_order = ["B200", "H100", "H200"]
+    panel_bits = []
+    for family in family_order + sorted(set(family_values) - set(family_order)):
+        values = family_values.get(family)
+        if not values:
+            continue
+        lo, hi = min(values), max(values)
+        if len(values) == 1 or abs(hi - lo) < 0.05:
+            panel_bits.append(f"{family} {lo:+.1f}%")
+        else:
+            panel_bits.append(f"{family} {lo:+.1f}% 至 {hi:+.1f}%（{len(values)} 源）")
     panel_text = "；".join(panel_bits) if panel_bits else "90日面板读数不足"
-    gap_h100 = facts.get("listedGapH100")
-    gap_b200 = facts.get("listedGapB200")
-    if isinstance(gap_h100, (int, float)) and isinstance(gap_b200, (int, float)):
+
+    gap_map = facts.get("listedGaps")
+    gap_items: List[Tuple[str, float, Optional[str]]] = []
+    if isinstance(gap_map, dict) and gap_map:
+        for label in ("H100", "H200", "B200"):
+            item = gap_map.get(label) or {}
+            value = item.get("value") if isinstance(item, dict) else item
+            as_of = item.get("date") if isinstance(item, dict) else None
+            if isinstance(value, (int, float)):
+                gap_items.append((label, float(value), str(as_of) if as_of else None))
+    else:
+        # 兼容只注入单值的旧调用方。
+        for label, key in (("H100", "listedGapH100"), ("H200", "listedGapH200"), ("B200", "listedGapB200")):
+            value = facts.get(key)
+            if isinstance(value, (int, float)):
+                gap_items.append((label, float(value), None))
+    gap_dates = [as_of for _, _, as_of in gap_items if as_of]
+    same_date = bool(gap_dates) and len(set(gap_dates)) == 1
+    gap_bits = [
+        f"{label} {value:.1f}%" + ("" if same_date or not as_of else f"（{as_of}）")
+        for label, value, as_of in gap_items
+    ]
+    if gap_bits:
+        if same_date:
+            date_text = f"快照日期：{gap_dates[0]}。"
+        elif gap_dates:
+            date_text = "快照日期见各读数。"
+        else:
+            date_text = "快照日期未注入。"
         capacity_text = (
-            f"最新报价虚低度：H100 {gap_h100:.1f}%，B200 {gap_b200:.1f}%。"
-            "这是当天快照，不是趋势；虚低度高表示最低挂牌价和最低在库价分开。"
+            f"报价虚低度：{'，'.join(gap_bits)}。{date_text}"
+            "这是快照，不是趋势；虚低度高表示最低挂牌价和最低在库价分开。"
         )
     else:
         capacity_text = "报价虚低度本轮没有注入最新读数，不引用记忆中的旧百分比。订单簿天数见容量时钟。"
+
     tokens = (demand.get("metrics") or {}).get("latestWeeklyTokens")
-    token_text = f"{tokens / 1e12:.1f}T" if isinstance(tokens, (int, float)) else "无最新周读数"
+    latest_week = facts.get("latestTokenWeek")
+    if isinstance(tokens, (int, float)):
+        token_text = f"{tokens / 1e12:.1f}T" + (f"（{latest_week}）" if latest_week else "")
+    else:
+        token_text = "无最新周读数"
     cuts = (demand.get("metrics") or {}).get("recentPriceCutModels")
     cuts_text = str(cuts) if isinstance(cuts, int) else "未计数"
+    demand_blockers = " ".join(str(b) for b in demand.get("blockers") or [])
+    demand_suffix = " · 公开 proxy" if "proxy" in demand_blockers else ""
     if ups or downs:
-        commit_text = f"指引上移：{'、'.join(ups) or '无'}。指引下移或收紧：{'、'.join(downs) or '无'}。不得概括成全部上修。"
+        commit_text = (
+            f"指引上移：{'、'.join(ups) or '无'}；下移或收紧：{'、'.join(downs) or '无'}。"
+            "只覆盖名单内公司，不能外推为全行业。"
+        )
     else:
         commit_text = "本轮没有注入可核对的指引修订名单。看 CAPEX 区的指引条，不要用旧财报季的上修代替当前结论。"
     depth_days = (capacity.get("metrics") or {}).get("depthValidDates")
-    depth_text = f"{depth_days} 个有效日" if isinstance(depth_days, int) else "有效日见容量时钟"
+    depth_badge = f"订单簿 {depth_days} 日" if isinstance(depth_days, int) else "订单簿见时钟"
+    disconfirms = [str(x) for x in (supply.get("disconfirms") or []) if x]
+    risk_notice = (
+        "供给时钟的反证条件：" + "；".join(disconfirms) + "。任一条成立，当前方向就不能外推。"
+        if disconfirms
+        else "时钟文件没有给出反证条件，本页不代写。"
+    )
 
     takeaways = [
         {
@@ -698,13 +776,13 @@ def generate_executive_summary(clocks: List[Dict[str, Any]], facts: Optional[Dic
         {
             "clock": "Capacity",
             "title": "在库与挂牌水分",
-            "badge": f"{capacity.get('state') or 'Observing'} · {depth_text}",
+            "badge": f"{capacity.get('state') or 'Observing'} · {depth_badge}",
             "text": capacity_text,
         },
         {
             "clock": "Demand",
             "title": "Token 用量",
-            "badge": f"{demand.get('state') or 'Observing'} · proxy 封顶",
+            "badge": f"{demand.get('state') or 'Observing'}{demand_suffix}",
             "text": f"最新完整周 token {token_text}。近 90 日降价模型 {cuts_text} 个。用量是公开榜代理，不能乘牌价篮子估算全市场支出。",
         },
         {
@@ -720,7 +798,7 @@ def generate_executive_summary(clocks: List[Dict[str, Any]], facts: Optional[Dic
         "stanceLevel": level,
         "coreNarrative": narrative,
         "takeaways": takeaways,
-        "riskNotice": "反证以供给时钟自己的规则为准：90 日窗口里至少两个家族跌幅达到 15%，紧缩确认才被推翻。30 日波动本身不够。",
+        "riskNotice": risk_notice,
     }
 
 

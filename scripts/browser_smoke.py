@@ -9,6 +9,7 @@ console 零错误、CAPEX 表格已填充、四时钟卡片齐全、核心图表
 from __future__ import annotations
 
 import json
+import re
 import socketserver
 import sys
 import threading
@@ -24,22 +25,103 @@ def _event_toggle_works(page) -> bool:
     before = page.locator(".event-marker").count()
     if before == 0:
         return False
-    page.locator("#toggle-events").click()
+    button = page.locator("#toggle-events")
+    pressed_before = button.get_attribute("aria-pressed")
+    button.click()
     hidden = page.locator(".event-marker").count() == 0
-    page.locator("#toggle-events").click()
+    pressed_off = button.get_attribute("aria-pressed")
+    button.click()
     restored = page.locator(".event-marker").count() > 0
-    return hidden and restored
+    pressed_on = button.get_attribute("aria-pressed")
+    return hidden and restored and pressed_before == "true" and pressed_off == "false" and pressed_on == "true"
 
 
 def _sandbox_redraws(page) -> bool:
     select = page.locator("#sandbox-series-a")
     if select.count() != 1:
         return False
-    before = page.locator("#sandbox-chart svg path").count()
+    before = page.locator("#sandbox-chart svg path").first.get_attribute("d")
     select.select_option(index=1)
     page.wait_for_timeout(200)
-    after = page.locator("#sandbox-chart svg path").count()
-    return before >= 1 and after >= 1
+    after = page.locator("#sandbox-chart svg path").first.get_attribute("d")
+    chip = page.locator("#sandbox-correlation").inner_text()
+    axis_text = page.locator("#sandbox-chart svg text").count()
+    return bool(before and after and before != after and "n=" in chip and axis_text >= 8)
+
+
+def _sandbox_correlation_is_symmetric(page) -> bool:
+    """左右对调序列 A/B，相关系数必须不变；否则配对算法偏向某一侧。"""
+    def r_value() -> str | None:
+        text = page.locator("#sandbox-correlation").inner_text()
+        match = re.search(r"r=(-?\d+\.\d+)", text)
+        return match.group(1) if match else None
+
+    page.locator("#sandbox-series-a").select_option(index=0)
+    page.locator("#sandbox-series-b").select_option(index=3)
+    page.wait_for_timeout(120)
+    first = r_value()
+    page.locator("#sandbox-series-a").select_option(index=3)
+    page.locator("#sandbox-series-b").select_option(index=0)
+    page.wait_for_timeout(120)
+    second = r_value()
+    page.locator("#sandbox-series-a").select_option(index=0)
+    page.locator("#sandbox-series-b").select_option(index=3)
+    if first is None or second is None:
+        return False
+    return abs(float(first) - float(second)) < 0.001
+
+
+def _sandbox_respects_range(page) -> bool:
+    before = page.locator("#sandbox-correlation").inner_text()
+    page.locator('#presets button[data-days="90"]').click()
+    page.wait_for_timeout(220)
+    during = page.locator("#sandbox-correlation").inner_text()
+    page.locator('#presets button[data-days="0"]').click()
+    page.wait_for_timeout(220)
+    after = page.locator("#sandbox-correlation").inner_text()
+    return before == after and before != during
+
+
+def _mobile_price_chart_fits(page) -> bool:
+    """390px 下 GPU 价格图的 viewBox 宽度必须跟随容器，不能被 1000px 下限压扁。"""
+    page.set_viewport_size({"width": 390, "height": 844})
+    page.wait_for_timeout(350)
+    dims = page.evaluate(
+        """() => {
+            const host = document.querySelector('#gpu-price-h100');
+            const svg = host && host.querySelector('svg');
+            if (!host || !svg) return null;
+            return {host: host.clientWidth, viewBox: svg.viewBox.baseVal.width, height: svg.viewBox.baseVal.height};
+        }"""
+    )
+    page.set_viewport_size({"width": 1280, "height": 720})
+    page.wait_for_timeout(250)
+    return bool(dims) and abs(dims["viewBox"] - dims["host"]) <= 2 and dims["height"] >= 300
+
+
+def _event_markers_reach_primary_charts(page) -> bool:
+    return (
+        page.locator("#gpu-price-h100 .event-marker").count() > 0
+        and page.locator("#or-volume .event-marker").count() > 0
+        and page.locator(".event-label").count() <= page.locator(".event-marker").count()
+    )
+
+
+def _event_tooltip_on_price_chart(page) -> bool:
+    marker = page.locator("#gpu-price-h100 .event-marker").first
+    if marker.count() == 0:
+        return False
+    event_date = marker.get_attribute("data-date") or ""
+    line = marker.locator("line").first
+    line.scroll_into_view_if_needed()
+    page.wait_for_timeout(100)
+    box = line.bounding_box()
+    if not box:
+        return False
+    page.mouse.move(box["x"] + box["width"] / 2, box["y"] + 40)
+    page.wait_for_timeout(150)
+    tooltip = page.locator("#gpu-price-h100 .tooltip").inner_text()
+    return bool(event_date) and event_date in tooltip
 
 
 def main() -> int:
@@ -156,7 +238,12 @@ def main() -> int:
                 "executive_card_visible": page.locator("#executive-summary").count() == 1
                 and len(page.locator("#executive-summary").inner_text()) > 40,
                 "event_toggle_hides_markers": _event_toggle_works(page),
+                "event_markers_on_primary_charts": _event_markers_reach_primary_charts(page),
+                "event_tooltip_on_price_chart": _event_tooltip_on_price_chart(page),
                 "sandbox_redraws": _sandbox_redraws(page),
+                "sandbox_correlation_symmetric": _sandbox_correlation_is_symmetric(page),
+                "sandbox_respects_range": _sandbox_respects_range(page),
+                "mobile_price_chart_fits": _mobile_price_chart_fits(page),
             }
             diagnostics = {
                 "errors": errors[:5],
