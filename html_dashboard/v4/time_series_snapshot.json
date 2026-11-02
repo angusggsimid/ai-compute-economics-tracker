@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-11-01T06:00:16Z",
+    "generatedAt": "2026-11-02T05:59:39Z",
     "minDate": "2025-11-03",
     "maxDate": "2026-10-31",
     "basisCommonStart": {
@@ -8,8 +8,8 @@
       "H200": "2026-07-05",
       "B200": "2026-07-05"
     },
-    "orderbookValidDays": 71,
-    "otpiValidDays": 67,
+    "orderbookValidDays": 72,
+    "otpiValidDays": 68,
     "contractPeriods": 22,
     "panelMembers": {
       "H100": {
@@ -114,12 +114,12 @@
       }
     ],
     "providerUniverse": 41,
-    "volumeYoYLabel": "自首个完整周（2025-11-03起）×32",
-    "volumePartialWeekDropped": "2025-10-27",
+    "volumeYoYLabel": "自首个完整周（2025-11-03起）×33",
+    "volumePartialWeekDropped": null,
     "scarcityValidDays": 40,
     "gapValidDays": 8,
     "executiveSummary": {
-      "generatedAt": "2026-11-01T06:00:16Z",
+      "generatedAt": "2026-11-02T05:59:39Z",
       "macroStance": "现货偏紧，但资本开支指引不是单边上修",
       "stanceLevel": "intensifying",
       "coreNarrative": "供给价格长窗口仍偏紧。指引里同时有上移和下移，不能写成两套时钟同向上修。",
@@ -128,19 +128,19 @@
           "clock": "Supply Price",
           "title": "现货价格",
           "badge": "Confirmed · intensifying",
-          "text": "90 日面板：neocloud:B200 +3.0%；neocloud:H100 +5.5%；neocloud:H200 +5.2%；ornn:B200 +70.8%；ornn:H100 SXM +13.5%；ornn:H200 +21.5%；semi:B200 +19.1%；semi:H100 +7.9%。这些是时钟用来确认的成交或综合指数，不是挂牌中位。哪一代没进确认名单，就不能写成同涨。"
+          "text": "90 日面板：neocloud:B200 +3.0%；neocloud:H100 +5.5%；neocloud:H200 +5.2%；ornn:B200 +66.2%；ornn:H100 SXM +9.9%；ornn:H200 +23.7%；semi:B200 +19.3%；semi:H100 +7.2%。这些是时钟用来确认的成交或综合指数，不是挂牌中位。哪一代没进确认名单，就不能写成同涨。"
         },
         {
           "clock": "Capacity",
           "title": "在库与挂牌水分",
-          "badge": "Trend · 71 个有效日",
+          "badge": "Trend · 72 个有效日",
           "text": "最新报价虚低度：H100 34.5%，B200 0.0%。这是当天快照，不是趋势；虚低度高表示最低挂牌价和最低在库价分开。"
         },
         {
           "clock": "Demand",
           "title": "Token 用量",
-          "badge": "Observing · proxy 封顶",
-          "text": "最新完整周 token 188.0T。近 90 日降价模型 96 个。用量是公开榜代理，不能乘牌价篮子估算全市场支出。"
+          "badge": "Trend · proxy 封顶",
+          "text": "最新完整周 token 193.6T。近 90 日降价模型 96 个。用量是公开榜代理，不能乘牌价篮子估算全市场支出。"
         },
         {
           "clock": "Commitment",
@@ -410,9 +410,9 @@
         "value": 188.039304051712
       },
       {
-        "date": "2025-11-17",
-        "series": "4W average",
-        "value": 4.67701746223025
+        "date": "2026-10-26",
+        "series": "Weekly tokens",
+        "value": 193.593135731405
       },
       {
         "date": "2025-11-24",
@@ -653,6 +653,11 @@
         "date": "2026-10-19",
         "series": "4W average",
         "value": 172.44546038723
+      },
+      {
+        "date": "2026-10-26",
+        "series": "4W average",
+        "value": 179.3797318556905
       }
     ],
     "openrouterComposition": [
@@ -4735,6 +4740,86 @@
         "vendor": "OpenRouter",
         "tokens": 72.053202018421,
         "share": 38.31816033450428
+      },
+      {
+        "date": "2026-10-26",
+        "rank": 1,
+        "model": "deepseek/deepseek-v4.1-flash-20261017",
+        "vendor": "deepseek",
+        "tokens": 48.081980882647,
+        "share": 24.836614532323555
+      },
+      {
+        "date": "2026-10-26",
+        "rank": 2,
+        "model": "z-ai/glm-5.3-flash-20260826",
+        "vendor": "z-ai",
+        "tokens": 15.007396960929,
+        "share": 7.752029484015675
+      },
+      {
+        "date": "2026-10-26",
+        "rank": 3,
+        "model": "deepseek/deepseek-v4.1-flash-20260910",
+        "vendor": "deepseek",
+        "tokens": 14.874416944306,
+        "share": 7.683339023416131
+      },
+      {
+        "date": "2026-10-26",
+        "rank": 4,
+        "model": "openai/gpt-6-luna-20260922",
+        "vendor": "openai",
+        "tokens": 9.616370348993,
+        "share": 4.9673095653220605
+      },
+      {
+        "date": "2026-10-26",
+        "rank": 5,
+        "model": "tencent/hy4-preview-20260827",
+        "vendor": "tencent",
+        "tokens": 9.069028059825,
+        "share": 4.684581416361555
+      },
+      {
+        "date": "2026-10-26",
+        "rank": 6,
+        "model": "anthropic/claude-opus-5.5-20260921",
+        "vendor": "anthropic",
+        "tokens": 6.732244402942,
+        "share": 3.4775222672576835
+      },
+      {
+        "date": "2026-10-26",
+        "rank": 7,
+        "model": "stepfun/step-5-preview-20261008",
+        "vendor": "stepfun",
+        "tokens": 6.247539931436,
+        "share": 3.2271495101479024
+      },
+      {
+        "date": "2026-10-26",
+        "rank": 8,
+        "model": "minimax/minimax-m3.1-flash-20261019",
+        "vendor": "minimax",
+        "tokens": 6.232964046828,
+        "share": 3.2196203771789405
+      },
+      {
+        "date": "2026-10-26",
+        "rank": 9,
+        "model": "openai/gpt-5.6-luna-20260709",
+        "vendor": "openai",
+        "tokens": 4.328258630901,
+        "share": 2.235750051027694
+      },
+      {
+        "date": "2026-10-26",
+        "rank": 10,
+        "model": "Others",
+        "vendor": "OpenRouter",
+        "tokens": 73.402935522598,
+        "share": 37.9160837729488
       }
     ],
     "openrouterDisclosure": [
@@ -4992,6 +5077,11 @@
         "date": "2026-10-19",
         "othersShare": 38.31816033450428,
         "namedShare": 61.681839665495716
+      },
+      {
+        "date": "2026-10-26",
+        "othersShare": 37.9160837729488,
+        "namedShare": 62.0839162270512
       }
     ],
     "activePriceTiers": [
@@ -6269,6 +6359,31 @@
         "date": "2026-10-19",
         "series": "Others / 无法匹配",
         "value": 38.31816033450428
+      },
+      {
+        "date": "2026-10-26",
+        "series": "免费",
+        "value": 0.0
+      },
+      {
+        "date": "2026-10-26",
+        "series": "<$1",
+        "value": 50.69466303328406
+      },
+      {
+        "date": "2026-10-26",
+        "series": "$1–5",
+        "value": 7.911730926509457
+      },
+      {
+        "date": "2026-10-26",
+        "series": ">$5",
+        "value": 3.4775222672576835
+      },
+      {
+        "date": "2026-10-26",
+        "series": "Others / 无法匹配",
+        "value": 37.9160837729488
       }
     ],
     "activeInputBasket": [
@@ -6579,10 +6694,10 @@
         "coverage": 61.681839665495716
       },
       {
-        "date": "2025-11-17",
-        "series": "4W average",
-        "value": 0.25998063169844904,
-        "coverage": 47.47807668583232
+        "date": "2026-10-26",
+        "series": "Weekly weighted rate",
+        "value": 0.30846290254811276,
+        "coverage": 62.0839162270512
       },
       {
         "date": "2025-11-24",
@@ -6871,6 +6986,12 @@
         "series": "4W average",
         "value": 0.251005623725423,
         "coverage": 61.158276157199744
+      },
+      {
+        "date": "2026-10-26",
+        "series": "4W average",
+        "value": 0.3034155342334237,
+        "coverage": 59.74681201637475
       }
     ],
     "activeOutputBasket": [
@@ -7181,10 +7302,10 @@
         "coverage": 61.681839665495716
       },
       {
-        "date": "2025-11-17",
-        "series": "4W average",
-        "value": 1.863458476440781,
-        "coverage": 47.47807668583232
+        "date": "2026-10-26",
+        "series": "Weekly weighted rate",
+        "value": 1.2241163220182694,
+        "coverage": 62.0839162270512
       },
       {
         "date": "2025-11-24",
@@ -7473,6 +7594,12 @@
         "series": "4W average",
         "value": 0.9693684575987218,
         "coverage": 61.158276157199744
+      },
+      {
+        "date": "2026-10-26",
+        "series": "4W average",
+        "value": 1.196137792633002,
+        "coverage": 59.74681201637475
       }
     ],
     "activeModels": [
@@ -7480,13 +7607,13 @@
         "rankId": "deepseek/deepseek-v4.1-flash-20260910",
         "baseId": "deepseek/deepseek-v4.1-flash:batch",
         "name": "DeepSeek: DeepSeek V4.1 Flash (batch)",
-        "tokens": 117.40974325207,
-        "share": 17.021286467678518,
+        "tokens": 106.674715537865,
+        "share": 14.86716398144746,
         "inputPrice": 0.05,
         "outputPrice": 0.15,
         "historyPoints": 2,
         "firstSeen": "2026-09-22",
-        "lastSeen": "2026-11-01",
+        "lastSeen": "2026-11-02",
         "priceHistory": [
           {
             "date": "2026-09-22",
@@ -7502,16 +7629,106 @@
         "free": false
       },
       {
+        "rankId": "deepseek/deepseek-v4.1-flash-20261017",
+        "baseId": "deepseek/deepseek-v4.1-flash-1017",
+        "name": "DeepSeek: DeepSeek V4.1 Flash 1017",
+        "tokens": 81.639408030241,
+        "share": 11.378014559626951,
+        "inputPrice": 0.15,
+        "outputPrice": 0.6,
+        "historyPoints": 15,
+        "firstSeen": "2026-10-17",
+        "lastSeen": "2026-11-02",
+        "priceHistory": [
+          {
+            "date": "2026-10-17",
+            "input": 0.15,
+            "output": 0.6
+          },
+          {
+            "date": "2026-10-19",
+            "input": 0.3,
+            "output": 1.2
+          },
+          {
+            "date": "2026-10-19",
+            "input": 0.15,
+            "output": 0.6
+          },
+          {
+            "date": "2026-10-20",
+            "input": 0.3,
+            "output": 1.2
+          },
+          {
+            "date": "2026-10-20",
+            "input": 0.15,
+            "output": 0.6
+          },
+          {
+            "date": "2026-10-20",
+            "input": 0.3,
+            "output": 1.2
+          },
+          {
+            "date": "2026-10-20",
+            "input": 0.15,
+            "output": 0.6
+          },
+          {
+            "date": "2026-10-21",
+            "input": 0.3,
+            "output": 1.2
+          },
+          {
+            "date": "2026-10-21",
+            "input": 0.15,
+            "output": 0.6
+          },
+          {
+            "date": "2026-10-22",
+            "input": 0.3,
+            "output": 1.2
+          },
+          {
+            "date": "2026-10-22",
+            "input": 0.15,
+            "output": 0.6
+          },
+          {
+            "date": "2026-10-23",
+            "input": 0.3,
+            "output": 1.2
+          },
+          {
+            "date": "2026-10-23",
+            "input": 0.15,
+            "output": 0.6
+          },
+          {
+            "date": "2026-10-26",
+            "input": 0.3,
+            "output": 1.2
+          },
+          {
+            "date": "2026-10-26",
+            "input": 0.15,
+            "output": 0.6
+          }
+        ],
+        "free": false
+      },
+      {
         "rankId": "z-ai/glm-5.3-flash-20260826",
         "baseId": "z-ai/glm-5.3-flash:batch",
         "name": "Z.ai: GLM 5.3 Flash (batch)",
-        "tokens": 47.435952938837,
-        "share": 6.876950085017974,
+        "tokens": 52.710150608824,
+        "share": 7.346168664588718,
         "inputPrice": 0.05,
         "outputPrice": 0.18,
         "historyPoints": 4,
         "firstSeen": "2026-08-29",
-        "lastSeen": "2026-11-01",
+        "lastSeen": "2026-11-02",
         "priceHistory": [
           {
             "date": "2026-08-29",
@@ -7537,146 +7754,16 @@
         "free": false
       },
       {
-        "rankId": "stealth/space-bunny-alpha",
-        "baseId": "stealth/space-bunny-alpha",
-        "name": "Space Bunny Alpha",
-        "tokens": 38.661199699827,
-        "share": 5.604844513304735,
-        "inputPrice": 0.0,
-        "outputPrice": 0.0,
-        "historyPoints": 1,
-        "firstSeen": "2026-09-24",
-        "lastSeen": "2026-10-05",
-        "priceHistory": [
-          {
-            "date": "2026-09-24",
-            "input": 0.0,
-            "output": 0.0
-          }
-        ],
-        "free": false
-      },
-      {
-        "rankId": "xiaomi/mimo-v2.6-flash-20260921",
-        "baseId": "xiaomi/mimo-v2.6-flash",
-        "name": "Xiaomi: MiMo-V2.6-Flash",
-        "tokens": 37.094868515172,
-        "share": 5.37776819869231,
-        "inputPrice": 0.14,
-        "outputPrice": 0.28,
-        "historyPoints": 1,
-        "firstSeen": "2026-09-22",
-        "lastSeen": "2026-11-01",
-        "priceHistory": [
-          {
-            "date": "2026-09-22",
-            "input": 0.14,
-            "output": 0.28
-          }
-        ],
-        "free": false
-      },
-      {
-        "rankId": "deepseek/deepseek-v4.1-flash-20261017",
-        "baseId": "deepseek/deepseek-v4.1-flash-1017",
-        "name": "DeepSeek: DeepSeek V4.1 Flash 1017",
-        "tokens": 33.557427147594,
-        "share": 4.864933392888406,
-        "inputPrice": 0.15,
-        "outputPrice": 0.6,
-        "historyPoints": 15,
-        "firstSeen": "2026-10-17",
-        "lastSeen": "2026-11-01",
-        "priceHistory": [
-          {
-            "date": "2026-10-17",
-            "input": 0.15,
-            "output": 0.6
-          },
-          {
-            "date": "2026-10-19",
-            "input": 0.3,
-            "output": 1.2
-          },
-          {
-            "date": "2026-10-19",
-            "input": 0.15,
-            "output": 0.6
-          },
-          {
-            "date": "2026-10-20",
-            "input": 0.3,
-            "output": 1.2
-          },
-          {
-            "date": "2026-10-20",
-            "input": 0.15,
-            "output": 0.6
-          },
-          {
-            "date": "2026-10-20",
-            "input": 0.3,
-            "output": 1.2
-          },
-          {
-            "date": "2026-10-20",
-            "input": 0.15,
-            "output": 0.6
-          },
-          {
-            "date": "2026-10-21",
-            "input": 0.3,
-            "output": 1.2
-          },
-          {
-            "date": "2026-10-21",
-            "input": 0.15,
-            "output": 0.6
-          },
-          {
-            "date": "2026-10-22",
-            "input": 0.3,
-            "output": 1.2
-          },
-          {
-            "date": "2026-10-22",
-            "input": 0.15,
-            "output": 0.6
-          },
-          {
-            "date": "2026-10-23",
-            "input": 0.3,
-            "output": 1.2
-          },
-          {
-            "date": "2026-10-23",
-            "input": 0.15,
-            "output": 0.6
-          },
-          {
-            "date": "2026-10-26",
-            "input": 0.3,
-            "output": 1.2
-          },
-          {
-            "date": "2026-10-26",
-            "input": 0.15,
-            "output": 0.6
-          }
-        ],
-        "free": false
-      },
-      {
         "rankId": "tencent/hy4-preview-20260827",
         "baseId": "tencent/hy4-preview",
         "name": "Tencent: Hy4 preview",
-        "tokens": 31.314497371974,
-        "share": 4.539768298576347,
+        "tokens": 33.873810246281,
+        "share": 4.720963998531924,
         "inputPrice": 0.834,
         "outputPrice": 2.501,
-        "historyPoints": 55,
+        "historyPoints": 57,
         "firstSeen": "2026-08-28",
-        "lastSeen": "2026-11-01",
+        "lastSeen": "2026-11-02",
         "priceHistory": [
           {
             "date": "2026-08-28",
@@ -7952,6 +8039,16 @@
             "date": "2026-11-01",
             "input": 0.834,
             "output": 2.501
+          },
+          {
+            "date": "2026-11-01",
+            "input": 0.7506,
+            "output": 2.2509
+          },
+          {
+            "date": "2026-11-02",
+            "input": 0.834,
+            "output": 2.501
           }
         ],
         "free": false
@@ -7960,13 +8057,13 @@
         "rankId": "openai/gpt-6-luna-20260922",
         "baseId": "openai/gpt-6-luna:batch",
         "name": "OpenAI: GPT-6 Luna (batch)",
-        "tokens": 27.822706334786,
-        "share": 4.033551575134178,
+        "tokens": 31.258550183447,
+        "share": 4.356477437567228,
         "inputPrice": 0.05,
         "outputPrice": 0.25,
         "historyPoints": 1,
         "firstSeen": "2026-09-23",
-        "lastSeen": "2026-11-01",
+        "lastSeen": "2026-11-02",
         "priceHistory": [
           {
             "date": "2026-09-23",
@@ -7977,18 +8074,44 @@
         "free": false
       },
       {
-        "rankId": "nvidia/nemotron-3-ultra-550b-a55b-20260604:free",
-        "baseId": null,
-        "name": "nvidia/nemotron-3-ultra-550b-a55b-20260604:free",
-        "tokens": 23.343471565094,
-        "share": 3.3841818034345077,
-        "inputPrice": 0.0,
-        "outputPrice": 0.0,
-        "historyPoints": 0,
-        "firstSeen": null,
-        "lastSeen": null,
-        "priceHistory": [],
-        "free": true
+        "rankId": "xiaomi/mimo-v2.6-flash-20260921",
+        "baseId": "xiaomi/mimo-v2.6-flash",
+        "name": "Xiaomi: MiMo-V2.6-Flash",
+        "tokens": 27.469377788763,
+        "share": 3.8283837176852686,
+        "inputPrice": 0.14,
+        "outputPrice": 0.28,
+        "historyPoints": 1,
+        "firstSeen": "2026-09-22",
+        "lastSeen": "2026-11-02",
+        "priceHistory": [
+          {
+            "date": "2026-09-22",
+            "input": 0.14,
+            "output": 0.28
+          }
+        ],
+        "free": false
+      },
+      {
+        "rankId": "stepfun/step-5-preview-20261008",
+        "baseId": "stepfun/step-5-preview",
+        "name": "StepFun: Step 5 Preview",
+        "tokens": 26.550710264821,
+        "share": 3.700349809612385,
+        "inputPrice": 1.0,
+        "outputPrice": 2.7,
+        "historyPoints": 1,
+        "firstSeen": "2026-10-08",
+        "lastSeen": "2026-11-02",
+        "priceHistory": [
+          {
+            "date": "2026-10-08",
+            "input": 1.0,
+            "output": 2.7
+          }
+        ],
+        "free": false
       }
     ],
     "activeTierOrder": [
@@ -21334,8 +21457,8 @@
     "priceChangeCounts": [
       {
         "name": "Tencent: Hy4 preview",
-        "recent4w": 48,
-        "total": 55
+        "recent4w": 49,
+        "total": 57
       },
       {
         "name": "DeepSeek: DeepSeek V4.1 Flash 1017",
@@ -21353,13 +21476,8 @@
         "total": 4
       },
       {
-        "name": "Space Bunny Alpha",
-        "recent4w": 0,
-        "total": 1
-      },
-      {
-        "name": "Xiaomi: MiMo-V2.6-Flash",
-        "recent4w": 0,
+        "name": "StepFun: Step 5 Preview",
+        "recent4w": 1,
         "total": 1
       },
       {
@@ -21368,9 +21486,9 @@
         "total": 1
       },
       {
-        "name": "nvidia/nemotron-3-ultra-550b-a55b-20260604:free",
+        "name": "Xiaomi: MiMo-V2.6-Flash",
         "recent4w": 0,
-        "total": 0
+        "total": 1
       }
     ],
     "capexQuarterly": [
@@ -25120,13 +25238,23 @@
       },
       {
         "date": "2026-10-31",
+        "series": "Ornn 成交指数",
+        "value": 116.73
+      },
+      {
+        "date": "2026-10-31",
         "series": "SemiAnalysis 综合指数",
         "value": 111.97
       },
       {
         "date": "2026-11-01",
         "series": "SemiAnalysis 综合指数",
-        "value": 111.0
+        "value": 111.33
+      },
+      {
+        "date": "2026-11-02",
+        "series": "SemiAnalysis 综合指数",
+        "value": 110.36
       }
     ],
     "basisH200": [
@@ -26289,6 +26417,11 @@
         "date": "2026-10-31",
         "series": "Neocloud 报价中位",
         "value": 121.64
+      },
+      {
+        "date": "2026-10-31",
+        "series": "Ornn 成交指数",
+        "value": 139.95
       }
     ],
     "basisB200": [
@@ -28044,6 +28177,11 @@
       },
       {
         "date": "2026-10-31",
+        "series": "Ornn 成交指数",
+        "value": 185.6
+      },
+      {
+        "date": "2026-10-31",
         "series": "SemiAnalysis 综合指数",
         "value": 135.83
       },
@@ -28051,6 +28189,11 @@
         "date": "2026-11-01",
         "series": "SemiAnalysis 综合指数",
         "value": 134.79
+      },
+      {
+        "date": "2026-11-02",
+        "series": "SemiAnalysis 综合指数",
+        "value": 135.21
       }
     ],
     "contractBand": [
@@ -29615,6 +29758,26 @@
         "date": "2026-10-30",
         "series": "openai OTPI",
         "value": 0.2902
+      },
+      {
+        "date": "2026-10-31",
+        "series": "anthropic OTPI",
+        "value": 0.8644
+      },
+      {
+        "date": "2026-10-31",
+        "series": "deepseek OTPI",
+        "value": 0.0306
+      },
+      {
+        "date": "2026-10-31",
+        "series": "google OTPI",
+        "value": 0.6919
+      },
+      {
+        "date": "2026-10-31",
+        "series": "openai OTPI",
+        "value": 0.2676
       }
     ],
     "orderbookDepth": [
@@ -30682,6 +30845,21 @@
         "date": "2026-11-01",
         "series": "vast",
         "value": 26
+      },
+      {
+        "date": "2026-11-02",
+        "series": "gpuperhour",
+        "value": 247
+      },
+      {
+        "date": "2026-11-02",
+        "series": "runpod",
+        "value": 14
+      },
+      {
+        "date": "2026-11-02",
+        "series": "vast",
+        "value": 24
       }
     ]
   },
@@ -30690,10 +30868,10 @@
       "label": "OpenRouter 公开模型排行榜",
       "urls": [
         "https://openrouter.ai/api/frontend/v1/rankings/model-rankings-chart",
-        "sha256:ab0ade646da4c2308aec623fac50e55c0460df7eea2e0cea63bccabd0bebb870"
+        "sha256:865270c4044fd4676bb40a4d285c332dd075a4607b91b616d2f9ee11679012b0"
       ],
       "url": "https://openrouter.ai/api/frontend/v1/rankings/model-rankings-chart",
-      "sha256": "sha256:ab0ade646da4c2308aec623fac50e55c0460df7eea2e0cea63bccabd0bebb870",
+      "sha256": "sha256:865270c4044fd4676bb40a4d285c332dd075a4607b91b616d2f9ee11679012b0",
       "definition": "Sum of source-provided named model rows and Others for each OpenRouter chart week."
     },
     "openrouterComposition": {
@@ -30702,7 +30880,7 @@
         "https://openrouter.ai/api/frontend/v1/rankings/model-rankings-chart"
       ],
       "url": "https://openrouter.ai/api/frontend/v1/rankings/model-rankings-chart",
-      "sha256": "sha256:ab0ade646da4c2308aec623fac50e55c0460df7eea2e0cea63bccabd0bebb870",
+      "sha256": "sha256:865270c4044fd4676bb40a4d285c332dd075a4607b91b616d2f9ee11679012b0",
       "definition": "Each weekly column independently stacks every model disclosed by the public chart plus Others. Segment height is share of that week's total token volume. Columns are not connected, so a model missing from another week is never treated as zero usage."
     },
     "activePrice": {
@@ -30798,7 +30976,7 @@
         "https://www.alibabagroup.com/en-US/document-1930116148192346112"
       ],
       "url": "https://ir.aboutamazon.com/news-release/news-release-details/2026/Amazon-com-Announces-Third-Quarter-Results/default.aspx",
-      "definition": "季度与事件频率观测保留来源单位、不插值。共 58 个一手披露链接（SEC EDGAR / 投资者关系页），表中每行均可回溯。缓存覆盖：AMZN 最新 2026-09-30（滞后 32 天）、GOOGL 最新 2026-09-30（滞后 32 天）、META 最新 2026-09-30（滞后 32 天）、MSFT 最新 2026-09-30（滞后 32 天）、ORCL 最新 2026-08-31（滞后 62 天）；本期 5 家上游失败，全部来自缓存。"
+      "definition": "季度与事件频率观测保留来源单位、不插值。共 58 个一手披露链接（SEC EDGAR / 投资者关系页），表中每行均可回溯。缓存覆盖：AMZN 最新 2026-09-30（滞后 33 天）、GOOGL 最新 2026-09-30（滞后 33 天）、META 最新 2026-09-30（滞后 33 天）、MSFT 最新 2026-09-30（滞后 33 天）、ORCL 最新 2026-08-31（滞后 63 天）；本期 5 家上游失败，全部来自缓存。"
     },
     "basisH100": {
       "urls": [
@@ -30807,7 +30985,7 @@
         "https://raw.githubusercontent.com/adriannutiu/gpu-rental-prices/main/data/latest.json"
       ],
       "url": "https://gpu-index.semianalysis.com/api/public-data",
-      "sha256": "sha256:17e72abc37a544419bba35016dafaf5253e46377a78fe1ef3771742a597a5c6d sha256:908c3701ec3eb3528c126921bd4114ed8f3d676f6976784906855df361806371 sha256:96d78c76521b40cfb5c0ea07bee5311a5e69588d16ea05f0fbdb0a441a94c7e5",
+      "sha256": "sha256:54345eeb424bca36e11fde2f798183d4d60c0272ed5efefb4bc177b1d8a87212 sha256:5cfd7dc670e10a21e511ef7d267a6a1560c324a5ded6a61eedf0f7c709a7a698 sha256:96d78c76521b40cfb5c0ea07bee5311a5e69588d16ea05f0fbdb0a441a94c7e5",
       "label": "H100 三源价格对照",
       "definition": "同一 GPU 家族下三种口径并列：供应商报价中位、综合现货-合约指数、成交加权指数。口径不同，仅作交叉对照，不构成同质序列。"
     },
@@ -30818,7 +30996,7 @@
         "https://raw.githubusercontent.com/adriannutiu/gpu-rental-prices/main/data/latest.json"
       ],
       "url": "https://gpu-index.semianalysis.com/api/public-data",
-      "sha256": "sha256:17e72abc37a544419bba35016dafaf5253e46377a78fe1ef3771742a597a5c6d sha256:908c3701ec3eb3528c126921bd4114ed8f3d676f6976784906855df361806371 sha256:96d78c76521b40cfb5c0ea07bee5311a5e69588d16ea05f0fbdb0a441a94c7e5",
+      "sha256": "sha256:54345eeb424bca36e11fde2f798183d4d60c0272ed5efefb4bc177b1d8a87212 sha256:5cfd7dc670e10a21e511ef7d267a6a1560c324a5ded6a61eedf0f7c709a7a698 sha256:96d78c76521b40cfb5c0ea07bee5311a5e69588d16ea05f0fbdb0a441a94c7e5",
       "label": "H200 两源价格对照（SemiAnalysis 无公开 H200 指数）",
       "definition": "口径同上（H200 无 SemiAnalysis 公开指数，为两源对照）。Neocloud 与 Ornn 可能方向分歧，分歧本身是证据而非噪声。"
     },
@@ -30829,7 +31007,7 @@
         "https://raw.githubusercontent.com/adriannutiu/gpu-rental-prices/main/data/latest.json"
       ],
       "url": "https://gpu-index.semianalysis.com/api/public-data",
-      "sha256": "sha256:17e72abc37a544419bba35016dafaf5253e46377a78fe1ef3771742a597a5c6d sha256:908c3701ec3eb3528c126921bd4114ed8f3d676f6976784906855df361806371 sha256:96d78c76521b40cfb5c0ea07bee5311a5e69588d16ea05f0fbdb0a441a94c7e5",
+      "sha256": "sha256:54345eeb424bca36e11fde2f798183d4d60c0272ed5efefb4bc177b1d8a87212 sha256:5cfd7dc670e10a21e511ef7d267a6a1560c324a5ded6a61eedf0f7c709a7a698 sha256:96d78c76521b40cfb5c0ea07bee5311a5e69588d16ea05f0fbdb0a441a94c7e5",
       "label": "B200 三源价格对照",
       "definition": "口径同上。"
     },
@@ -30838,7 +31016,7 @@
         "https://gpu-index.semianalysis.com/api/public-data"
       ],
       "url": "https://gpu-index.semianalysis.com/api/public-data",
-      "sha256": "sha256:17e72abc37a544419bba35016dafaf5253e46377a78fe1ef3771742a597a5c6d",
+      "sha256": "sha256:54345eeb424bca36e11fde2f798183d4d60c0272ed5efefb4bc177b1d8a87212",
       "label": "SemiAnalysis H100 1Y 合约调查区间",
       "definition": "月度调查的25-75分位合约价区间，半年期阶梯展示。许可：公开页引用需署名。"
     },
@@ -30849,7 +31027,7 @@
         "https://api.runpod.io/graphql"
       ],
       "url": "https://api.gpuindexes.com/api/offers",
-      "sha256": "sha256:98aaf1c2517b0bd6f745052a9e1cf044d16680390127b17a1418364f10b63c47 sha256:243f16d5a0087b9a8339b8b70faa0c049d176880e4d941e1f6e022b3860a5083 sha256:e1a770c8c5e09eba09f901dac6fe97d139830bf8ef3dd885b9bf7e2fd83bc9c8",
+      "sha256": "sha256:9b804111acf7c40617a7fc7bf4a6b00d7b5c58cf8676a2bb74f46fb04d83a62e sha256:8606e9c2444bf24b210216c7fd7da0a7150ec2182d857a3849806df9fa491fdb sha256:81fdd075c484e188abd025cf10499dfff9f69223a712ecc9e36a56ca345cee05",
       "label": "GPU 订单簿逐源观测",
       "definition": "gpuperhour/vast 为逐条报价 offers、runpod 为型号挂牌 types，单位语义不同故分序列展示不合并。时点观测，<10 有效日只画点不连线。"
     },
@@ -30858,7 +31036,7 @@
         "https://index.ornn.com/api/otpi"
       ],
       "url": "https://index.ornn.com/api/otpi",
-      "sha256": "sha256:cebb16e9aab315fdd8988c9cebd2ec75ca975b8096545144804e447b9960c46a",
+      "sha256": "sha256:56eacb0205867467f0318eae0e2990d78b6aaddea2b72f306ff81d0d85571476",
       "label": "Ornn OTPI 已实现 token 价",
       "definition": "按 lab 的成交加权 token 实现价（USD/Mtok），免费层滚动窗口每日快照累积。许可：Ornn 免费层署名引用。"
     },
@@ -30867,7 +31045,7 @@
         "https://openrouter.ai/api/frontend/v1/rankings/model-rankings-chart"
       ],
       "url": "https://openrouter.ai/api/frontend/v1/rankings/model-rankings-chart",
-      "sha256": "sha256:ab0ade646da4c2308aec623fac50e55c0460df7eea2e0cea63bccabd0bebb870",
+      "sha256": "sha256:865270c4044fd4676bb40a4d285c332dd075a4607b91b616d2f9ee11679012b0",
       "label": "OpenRouter 公开周榜（Top-5 派生）",
       "definition": "每周公开榜单里最新 Top-5 模型各自的用量占比走势。看的是排名与份额的稳定性：曲线频繁交叉=头部不稳。"
     },

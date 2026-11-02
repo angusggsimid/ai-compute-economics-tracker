@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-01T06:00:16Z",
+  "generatedAt": "2026-11-02T05:59:38Z",
   "status": "ready",
   "publishable": true,
   "sources": [
@@ -8,7 +8,7 @@
       "status": "fresh",
       "publishable": true,
       "returnCode": 0,
-      "stdout": "{\"output\": \"/home/runner/work/ai-compute-economics-tracker/ai-compute-economics-tracker/tracker_data/backfills/openrouter_cost_index.json\", \"weeks\": 52, \"start\": \"2025-10-27\", \"end\": \"2026-10-19\", \"local_only_weeks\": []}\n",
+      "stdout": "{\"output\": \"/home/runner/work/ai-compute-economics-tracker/ai-compute-economics-tracker/tracker_data/backfills/openrouter_cost_index.json\", \"weeks\": 52, \"start\": \"2025-11-03\", \"end\": \"2026-10-26\", \"local_only_weeks\": []}\n",
       "stderr": "",
       "output": "tracker_data/backfills/openrouter_cost_index.json"
     },
@@ -36,34 +36,34 @@
       "status": "current_for_frequency",
       "publishable": true,
       "returnCode": 0,
-      "stdout": "{\"output\": \"/home/runner/work/ai-compute-economics-tracker/ai-compute-economics-tracker/tracker_data/backfills/capex_official_history.json\", \"rows\": 58, \"failedSources\": 5, \"fetchedCount\": 0, \"fetchedAt\": \"2026-09-28T15:39:12Z\", \"runAt\": \"2026-11-01T05:59:58Z\", \"refreshStatus\": \"current_for_frequency\", \"publishable\": true, \"cacheCoverage\": {\"MSFT\": {\"latestDate\": \"2026-09-30\", \"ageDays\": 32, \"current\": true}, \"AMZN\": {\"latestDate\": \"2026-09-30\", \"ageDays\": 32, \"current\": true}, \"GOOGL\": {\"latestDate\": \"2026-09-30\", \"ageDays\": 32, \"current\": true}, \"META\": {\"latestDate\": \"2026-09-30\", \"ageDays\": 32, \"current\": true}, \"ORCL\": {\"latestDate\": \"2026-08-31\", \"ageDays\": 62, \"current\": true}}}\n",
+      "stdout": "{\"output\": \"/home/runner/work/ai-compute-economics-tracker/ai-compute-economics-tracker/tracker_data/backfills/capex_official_history.json\", \"rows\": 58, \"failedSources\": 5, \"fetchedCount\": 0, \"fetchedAt\": \"2026-09-28T15:39:12Z\", \"runAt\": \"2026-11-02T05:59:24Z\", \"refreshStatus\": \"current_for_frequency\", \"publishable\": true, \"cacheCoverage\": {\"MSFT\": {\"latestDate\": \"2026-09-30\", \"ageDays\": 33, \"current\": true}, \"AMZN\": {\"latestDate\": \"2026-09-30\", \"ageDays\": 33, \"current\": true}, \"GOOGL\": {\"latestDate\": \"2026-09-30\", \"ageDays\": 33, \"current\": true}, \"META\": {\"latestDate\": \"2026-09-30\", \"ageDays\": 33, \"current\": true}, \"ORCL\": {\"latestDate\": \"2026-08-31\", \"ageDays\": 63, \"current\": true}}}\n",
       "stderr": "",
       "output": "tracker_data/backfills/capex_official_history.json",
       "qualityWarnings": 5,
       "cacheCoverage": {
         "MSFT": {
           "latestDate": "2026-09-30",
-          "ageDays": 32,
+          "ageDays": 33,
           "current": true
         },
         "AMZN": {
           "latestDate": "2026-09-30",
-          "ageDays": 32,
+          "ageDays": 33,
           "current": true
         },
         "GOOGL": {
           "latestDate": "2026-09-30",
-          "ageDays": 32,
+          "ageDays": 33,
           "current": true
         },
         "META": {
           "latestDate": "2026-09-30",
-          "ageDays": 32,
+          "ageDays": 33,
           "current": true
         },
         "ORCL": {
           "latestDate": "2026-08-31",
-          "ageDays": 62,
+          "ageDays": 63,
           "current": true
         }
       }
@@ -73,7 +73,7 @@
       "status": "fresh",
       "publishable": true,
       "returnCode": 0,
-      "stdout": "{\"output\": \"/home/runner/work/ai-compute-economics-tracker/ai-compute-economics-tracker/tracker_data/backfills/gpu_orderbook_history.json\", \"refreshStatus\": \"fresh\", \"publishable\": true, \"rowsTotal\": 1749, \"todayRows\": 26, \"failedSources\": [], \"blocking\": false}\n",
+      "stdout": "{\"output\": \"/home/runner/work/ai-compute-economics-tracker/ai-compute-economics-tracker/tracker_data/backfills/gpu_orderbook_history.json\", \"refreshStatus\": \"fresh\", \"publishable\": true, \"rowsTotal\": 1773, \"todayRows\": 24, \"failedSources\": [], \"blocking\": false}\n",
       "stderr": "",
       "output": "tracker_data/backfills/gpu_orderbook_history.json",
       "qualityWarnings": [],
@@ -84,7 +84,7 @@
       "status": "fresh",
       "publishable": true,
       "returnCode": 0,
-      "stdout": "{\"output\": \"/home/runner/work/ai-compute-economics-tracker/ai-compute-economics-tracker/tracker_data/backfills/reference_index_history.json\", \"refreshStatus\": \"fresh\", \"publishable\": true, \"datasetRows\": {\"ornnOcpi\": 805, \"ornnOtpi\": 268, \"semiComposite\": 2865, \"semiContract1y\": 35}, \"failedSources\": [], \"blocking\": false}\n",
+      "stdout": "{\"output\": \"/home/runner/work/ai-compute-economics-tracker/ai-compute-economics-tracker/tracker_data/backfills/reference_index_history.json\", \"refreshStatus\": \"fresh\", \"publishable\": true, \"datasetRows\": {\"ornnOcpi\": 810, \"ornnOtpi\": 272, \"semiComposite\": 2868, \"semiContract1y\": 35}, \"failedSources\": [], \"blocking\": false}\n",
       "stderr": "",
       "output": "tracker_data/backfills/reference_index_history.json",
       "qualityWarnings": [],
@@ -126,7 +126,7 @@
       "status": "fresh",
       "publishable": true,
       "returnCode": 0,
-      "stdout": "{\"output\": \"/home/runner/work/ai-compute-economics-tracker/ai-compute-economics-tracker/tracker_data/backfills/gpu_markets_fixings.json\", \"refreshStatus\": \"fresh\", \"publishable\": true, \"todayRows\": 7, \"rowsTotal\": 483, \"failedSources\": [], \"blocking\": false}\n",
+      "stdout": "{\"output\": \"/home/runner/work/ai-compute-economics-tracker/ai-compute-economics-tracker/tracker_data/backfills/gpu_markets_fixings.json\", \"refreshStatus\": \"fresh\", \"publishable\": true, \"todayRows\": 7, \"rowsTotal\": 490, \"failedSources\": [], \"blocking\": false}\n",
       "stderr": "",
       "output": "tracker_data/backfills/gpu_markets_fixings.json",
       "qualityWarnings": [],
@@ -145,13 +145,12 @@
     },
     {
       "source": "gpufinder_market",
-      "status": "fresh",
+      "status": "current_for_frequency",
       "publishable": true,
       "returnCode": 0,
-      "stdout": "{\"output\": \"/home/runner/work/ai-compute-economics-tracker/ai-compute-economics-tracker/tracker_data/backfills/gpufinder_market.json\", \"refreshStatus\": \"fresh\", \"publishable\": true, \"fetchedTracks\": [\"snapshot\"], \"failedTracks\": [], \"monthlyRows\": 185, \"failedSources\": [], \"blocking\": false}\n",
+      "stdout": "{\"output\": \"/home/runner/work/ai-compute-economics-tracker/ai-compute-economics-tracker/tracker_data/backfills/gpufinder_market.json\", \"refreshStatus\": \"current_for_frequency\", \"publishable\": true, \"skipped\": \"tracks-not-due\", \"cadence\": {\"availability\": \"2026-10-31T05:38:00Z\", \"catalog\": \"2026-10-11T01:44:16Z\", \"history\": \"2026-10-11T01:44:16Z\", \"snapshot\": \"2026-11-01T06:00:14Z\"}, \"blocking\": false}\n",
       "stderr": "",
       "output": "tracker_data/backfills/gpufinder_market.json",
-      "qualityWarnings": [],
       "blocking": false
     }
   ],
