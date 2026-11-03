@@ -94,9 +94,11 @@ def _mobile_price_chart_fits(page) -> bool:
             return {host: host.clientWidth, viewBox: svg.viewBox.baseVal.width, height: svg.viewBox.baseVal.height};
         }"""
     )
+    mobile_nav = page.locator(".mobile-nav")
+    nav_ok = mobile_nav.count() == 1 and mobile_nav.is_visible() and mobile_nav.locator("a").count() >= 5
     page.set_viewport_size({"width": 1280, "height": 720})
     page.wait_for_timeout(250)
-    return bool(dims) and abs(dims["viewBox"] - dims["host"]) <= 2 and dims["height"] >= 300
+    return bool(dims) and abs(dims["viewBox"] - dims["host"]) <= 2 and dims["height"] >= 300 and nav_ok
 
 
 def _landscape_works(page) -> bool:
@@ -114,10 +116,11 @@ def _landscape_works(page) -> bool:
     page.locator('#landscape-market button[data-market="spot"]').click()
     page.wait_for_timeout(250)
     spot = page.locator("#landscape-kpis").inner_text()
+    url_ok = "gpu=B200" in page.url and "market=spot" in page.url
     page.locator('#landscape-market button[data-market="on_demand"]').click()
     page.locator("#landscape-card").select_option(index=0)
     page.wait_for_timeout(200)
-    return bool(before and after and before != after and len(kpi) > 20 and "Spot" in spot)
+    return bool(before and after and before != after and len(kpi) > 20 and "Spot" in spot and url_ok)
 
 
 def _landscape_table_click(page) -> bool:
@@ -139,7 +142,7 @@ def _landscape_stale_table(page) -> bool:
     statuses = page.locator("#landscape-all-body tr td:last-child").all_inner_texts()
     if "数据滞后" not in evidence:
         return True
-    return "stale" in {status.strip().lower() for status in statuses}
+    return "滞后" in {status.strip() for status in statuses}
 
 
 def _landscape_receipt_csv(page) -> bool:
@@ -199,6 +202,11 @@ def main() -> int:
             page.on("pageerror", lambda exc: errors.append(f"pageerror: {exc}"))
             page.goto(f"http://127.0.0.1:{PORT}/index.html", wait_until="networkidle")
             page.wait_for_timeout(500)
+            legacy = page.locator("details.gpu-legacy")
+            gpu_legacy_collapsed = legacy.count() == 1 and not legacy.evaluate("el => el.open")
+            if legacy.count() == 1:
+                legacy.locator("summary").first.click()
+                page.wait_for_timeout(350)
 
             # 指引条与 CAPEX 溯源表必须指向同一版修订：
             # chip 数字取自 payload，表格数字取自同一批底表行，二者不一致即页面自相矛盾。
@@ -290,6 +298,9 @@ def main() -> int:
                 "end_label_colors_match_lines": not color_mismatch,
                 "executive_card_visible": page.locator("#executive-summary").count() == 1
                 and len(page.locator("#executive-summary").inner_text()) > 40,
+                "price_asof_visible": page.locator(".price-asof").count() == 1
+                and "价格截至" in page.locator(".price-asof").inner_text(),
+                "gpu_legacy_collapsed": gpu_legacy_collapsed,
                 "event_toggle_hides_markers": _event_toggle_works(page),
                 "event_markers_on_primary_charts": _event_markers_reach_primary_charts(page),
                 "event_tooltip_on_price_chart": _event_tooltip_on_price_chart(page),

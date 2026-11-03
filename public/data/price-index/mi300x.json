@@ -1,0 +1,1226 @@
+{
+ "name": "AI Compute Economics - weekly GPU supply index",
+ "description": "Weekly on-demand median per card, chain-linked base-100 over providers present in both weeks; one provider once per week. Weeks below the provider guard are withheld, not backfilled.",
+ "unit": "USD per GPU per hour; base-100 index",
+ "as_of": "2026-10-29",
+ "methodology_version": "2026-11-03.2",
+ "index_min_providers": 4,
+ "index_publish_min": 8,
+ "index_confirm_days": 2,
+ "cards": {
+  "MI300X": {
+   "name": "MI300X 192GB",
+   "as_of": "2026-10-29",
+   "min_providers": 4,
+   "latest": {
+    "weekStart": "2026-10-26",
+    "isoWeek": "2026-W44",
+    "vintage": "provisional",
+    "status": "thin",
+    "methodologyVersion": "2026-11-03.2",
+    "median": 2.99,
+    "p25": 2.49,
+    "p75": 3.52,
+    "providerCount": 5,
+    "index": 106.8099,
+    "linkPairs": 5,
+    "withheldReason": null,
+    "receipt": "2026-W44",
+    "ageDays": 3
+   },
+   "weeks": [
+    {
+     "weekStart": "2026-06-29",
+     "isoWeek": "2026-W27",
+     "vintage": "final",
+     "status": "withheld",
+     "methodologyVersion": "2026-11-03.2",
+     "median": 2.19,
+     "p25": null,
+     "p75": null,
+     "providerCount": 1,
+     "index": null,
+     "linkPairs": 0,
+     "withheldReason": "only 1 confirmed providers (needs >=4)",
+     "receipt": "2026-W27"
+    },
+    {
+     "weekStart": "2026-07-06",
+     "isoWeek": "2026-W28",
+     "vintage": "final",
+     "status": "withheld",
+     "methodologyVersion": "2026-11-03.2",
+     "median": 2.82,
+     "p25": null,
+     "p75": null,
+     "providerCount": 2,
+     "index": null,
+     "linkPairs": 0,
+     "withheldReason": "only 2 confirmed providers (needs >=4)",
+     "receipt": "2026-W28"
+    },
+    {
+     "weekStart": "2026-07-13",
+     "isoWeek": "2026-W29",
+     "vintage": "final",
+     "status": "withheld",
+     "methodologyVersion": "2026-11-03.2",
+     "median": 2.82,
+     "p25": null,
+     "p75": null,
+     "providerCount": 2,
+     "index": null,
+     "linkPairs": 0,
+     "withheldReason": "only 2 confirmed providers (needs >=4)",
+     "receipt": "2026-W29"
+    },
+    {
+     "weekStart": "2026-07-20",
+     "isoWeek": "2026-W30",
+     "vintage": "final",
+     "status": "thin",
+     "methodologyVersion": "2026-11-03.2",
+     "median": 2.69,
+     "p25": 2.09,
+     "p75": 3.335,
+     "providerCount": 4,
+     "index": 100.0,
+     "linkPairs": 0,
+     "withheldReason": null,
+     "receipt": "2026-W30"
+    },
+    {
+     "weekStart": "2026-07-27",
+     "isoWeek": "2026-W31",
+     "vintage": "final",
+     "status": "thin",
+     "methodologyVersion": "2026-11-03.2",
+     "median": 2.79,
+     "p25": 2.44,
+     "p75": 3.335,
+     "providerCount": 4,
+     "index": 106.8099,
+     "linkPairs": 4,
+     "withheldReason": null,
+     "receipt": "2026-W31"
+    },
+    {
+     "weekStart": "2026-08-03",
+     "isoWeek": "2026-W32",
+     "vintage": "final",
+     "status": "thin",
+     "methodologyVersion": "2026-11-03.2",
+     "median": 2.79,
+     "p25": 2.44,
+     "p75": 3.335,
+     "providerCount": 4,
+     "index": 106.8099,
+     "linkPairs": 4,
+     "withheldReason": null,
+     "receipt": "2026-W32"
+    },
+    {
+     "weekStart": "2026-08-10",
+     "isoWeek": "2026-W33",
+     "vintage": "final",
+     "status": "thin",
+     "methodologyVersion": "2026-11-03.2",
+     "median": 2.79,
+     "p25": 2.44,
+     "p75": 3.335,
+     "providerCount": 4,
+     "index": 106.8099,
+     "linkPairs": 4,
+     "withheldReason": null,
+     "receipt": "2026-W33"
+    },
+    {
+     "weekStart": "2026-08-17",
+     "isoWeek": "2026-W34",
+     "vintage": "final",
+     "status": "thin",
+     "methodologyVersion": "2026-11-03.2",
+     "median": 2.79,
+     "p25": 2.44,
+     "p75": 3.335,
+     "providerCount": 4,
+     "index": 106.8099,
+     "linkPairs": 4,
+     "withheldReason": null,
+     "receipt": "2026-W34"
+    },
+    {
+     "weekStart": "2026-08-24",
+     "isoWeek": "2026-W35",
+     "vintage": "final",
+     "status": "thin",
+     "methodologyVersion": "2026-11-03.2",
+     "median": 2.79,
+     "p25": 2.44,
+     "p75": 3.335,
+     "providerCount": 4,
+     "index": 106.8099,
+     "linkPairs": 4,
+     "withheldReason": null,
+     "receipt": "2026-W35"
+    },
+    {
+     "weekStart": "2026-08-31",
+     "isoWeek": "2026-W36",
+     "vintage": "final",
+     "status": "thin",
+     "methodologyVersion": "2026-11-03.2",
+     "median": 2.79,
+     "p25": 2.44,
+     "p75": 3.335,
+     "providerCount": 4,
+     "index": 106.8099,
+     "linkPairs": 4,
+     "withheldReason": null,
+     "receipt": "2026-W36"
+    },
+    {
+     "weekStart": "2026-09-07",
+     "isoWeek": "2026-W37",
+     "vintage": "final",
+     "status": "thin",
+     "methodologyVersion": "2026-11-03.2",
+     "median": 2.79,
+     "p25": 2.44,
+     "p75": 3.335,
+     "providerCount": 4,
+     "index": 106.8099,
+     "linkPairs": 4,
+     "withheldReason": null,
+     "receipt": "2026-W37"
+    },
+    {
+     "weekStart": "2026-09-14",
+     "isoWeek": "2026-W38",
+     "vintage": "final",
+     "status": "thin",
+     "methodologyVersion": "2026-11-03.2",
+     "median": 2.99,
+     "p25": 2.49,
+     "p75": 3.52,
+     "providerCount": 5,
+     "index": 106.8099,
+     "linkPairs": 4,
+     "withheldReason": null,
+     "receipt": "2026-W38"
+    },
+    {
+     "weekStart": "2026-09-21",
+     "isoWeek": "2026-W39",
+     "vintage": "final",
+     "status": "thin",
+     "methodologyVersion": "2026-11-03.2",
+     "median": 2.99,
+     "p25": 2.49,
+     "p75": 3.52,
+     "providerCount": 5,
+     "index": 106.8099,
+     "linkPairs": 5,
+     "withheldReason": null,
+     "receipt": "2026-W39"
+    },
+    {
+     "weekStart": "2026-09-28",
+     "isoWeek": "2026-W40",
+     "vintage": "final",
+     "status": "thin",
+     "methodologyVersion": "2026-11-03.2",
+     "median": 2.99,
+     "p25": 2.49,
+     "p75": 3.52,
+     "providerCount": 5,
+     "index": 106.8099,
+     "linkPairs": 5,
+     "withheldReason": null,
+     "receipt": "2026-W40"
+    },
+    {
+     "weekStart": "2026-10-05",
+     "isoWeek": "2026-W41",
+     "vintage": "final",
+     "status": "thin",
+     "methodologyVersion": "2026-11-03.2",
+     "median": 2.99,
+     "p25": 2.49,
+     "p75": 3.52,
+     "providerCount": 5,
+     "index": 106.8099,
+     "linkPairs": 5,
+     "withheldReason": null,
+     "receipt": "2026-W41"
+    },
+    {
+     "weekStart": "2026-10-12",
+     "isoWeek": "2026-W42",
+     "vintage": "final",
+     "status": "thin",
+     "methodologyVersion": "2026-11-03.2",
+     "median": 2.99,
+     "p25": 2.49,
+     "p75": 3.52,
+     "providerCount": 5,
+     "index": 106.8099,
+     "linkPairs": 5,
+     "withheldReason": null,
+     "receipt": "2026-W42"
+    },
+    {
+     "weekStart": "2026-10-19",
+     "isoWeek": "2026-W43",
+     "vintage": "final",
+     "status": "thin",
+     "methodologyVersion": "2026-11-03.2",
+     "median": 2.99,
+     "p25": 2.49,
+     "p75": 3.52,
+     "providerCount": 5,
+     "index": 106.8099,
+     "linkPairs": 5,
+     "withheldReason": null,
+     "receipt": "2026-W43"
+    },
+    {
+     "weekStart": "2026-10-26",
+     "isoWeek": "2026-W44",
+     "vintage": "provisional",
+     "status": "thin",
+     "methodologyVersion": "2026-11-03.2",
+     "median": 2.99,
+     "p25": 2.49,
+     "p75": 3.52,
+     "providerCount": 5,
+     "index": 106.8099,
+     "linkPairs": 5,
+     "withheldReason": null,
+     "receipt": "2026-W44",
+     "ageDays": 3
+    }
+   ],
+   "receipts": {
+    "2026-W27": {
+     "weekStart": "2026-06-29",
+     "weekEnd": "2026-07-05",
+     "vintage": "final",
+     "status": "withheld",
+     "methodologyVersion": "2026-11-03.2",
+     "median": 2.19,
+     "p25": null,
+     "p75": null,
+     "providerCount": 1,
+     "index": null,
+     "linkPairs": 0,
+     "withheldReason": "only 1 confirmed providers (needs >=4)",
+     "notConfirmed48h": 0,
+     "included": [
+      {
+       "provider": "RunPod",
+       "providerId": "runpod",
+       "value": 2.19,
+       "date": "2026-07-05",
+       "sourceUrl": "https://www.runpod.io/pricing",
+       "quotes": 1
+      }
+     ],
+     "excluded": [],
+     "excludedQuoteRowsByMarket": {}
+    },
+    "2026-W28": {
+     "weekStart": "2026-07-06",
+     "weekEnd": "2026-07-12",
+     "vintage": "final",
+     "status": "withheld",
+     "methodologyVersion": "2026-11-03.2",
+     "median": 2.82,
+     "p25": null,
+     "p75": null,
+     "providerCount": 2,
+     "index": null,
+     "linkPairs": 0,
+     "withheldReason": "only 2 confirmed providers (needs >=4)",
+     "notConfirmed48h": 0,
+     "included": [
+      {
+       "provider": "RunPod",
+       "providerId": "runpod",
+       "value": 2.19,
+       "date": "2026-07-12",
+       "sourceUrl": "https://www.runpod.io/pricing",
+       "quotes": 1
+      },
+      {
+       "provider": "Crusoe",
+       "providerId": "crusoe",
+       "value": 3.45,
+       "date": "2026-07-12",
+       "sourceUrl": "https://www.crusoe.ai/cloud/pricing",
+       "quotes": 1
+      }
+     ],
+     "excluded": [],
+     "excludedQuoteRowsByMarket": {}
+    },
+    "2026-W29": {
+     "weekStart": "2026-07-13",
+     "weekEnd": "2026-07-19",
+     "vintage": "final",
+     "status": "withheld",
+     "methodologyVersion": "2026-11-03.2",
+     "median": 2.82,
+     "p25": null,
+     "p75": null,
+     "providerCount": 2,
+     "index": null,
+     "linkPairs": 0,
+     "withheldReason": "only 2 confirmed providers (needs >=4)",
+     "notConfirmed48h": 0,
+     "included": [
+      {
+       "provider": "RunPod",
+       "providerId": "runpod",
+       "value": 2.19,
+       "date": "2026-07-19",
+       "sourceUrl": "https://www.runpod.io/pricing",
+       "quotes": 1
+      },
+      {
+       "provider": "Crusoe",
+       "providerId": "crusoe",
+       "value": 3.45,
+       "date": "2026-07-19",
+       "sourceUrl": "https://www.crusoe.ai/cloud/pricing",
+       "quotes": 1
+      }
+     ],
+     "excluded": [],
+     "excludedQuoteRowsByMarket": {}
+    },
+    "2026-W30": {
+     "weekStart": "2026-07-20",
+     "weekEnd": "2026-07-26",
+     "vintage": "final",
+     "status": "thin",
+     "methodologyVersion": "2026-11-03.2",
+     "median": 2.69,
+     "p25": 2.09,
+     "p75": 3.335,
+     "providerCount": 4,
+     "index": 100.0,
+     "linkPairs": 0,
+     "withheldReason": null,
+     "notConfirmed48h": 0,
+     "included": [
+      {
+       "provider": "DigitalOcean",
+       "providerId": "digitalocean",
+       "value": 1.99,
+       "date": "2026-07-26",
+       "sourceUrl": "https://www.digitalocean.com/pricing/gpu-droplets",
+       "quotes": 1
+      },
+      {
+       "provider": "RunPod",
+       "providerId": "runpod",
+       "value": 2.39,
+       "date": "2026-07-26",
+       "sourceUrl": "https://www.runpod.io/pricing",
+       "quotes": 1
+      },
+      {
+       "provider": "Hot Aisle",
+       "providerId": "hotaisle",
+       "value": 2.99,
+       "date": "2026-07-26",
+       "sourceUrl": "https://hotaisle.xyz/pricing",
+       "quotes": 1
+      },
+      {
+       "provider": "Crusoe",
+       "providerId": "crusoe",
+       "value": 3.45,
+       "date": "2026-07-26",
+       "sourceUrl": "https://www.crusoe.ai/cloud/pricing",
+       "quotes": 1
+      }
+     ],
+     "excluded": [],
+     "excludedQuoteRowsByMarket": {}
+    },
+    "2026-W31": {
+     "weekStart": "2026-07-27",
+     "weekEnd": "2026-08-02",
+     "vintage": "final",
+     "status": "thin",
+     "methodologyVersion": "2026-11-03.2",
+     "median": 2.79,
+     "p25": 2.44,
+     "p75": 3.335,
+     "providerCount": 4,
+     "index": 106.8099,
+     "linkPairs": 4,
+     "withheldReason": null,
+     "notConfirmed48h": 0,
+     "included": [
+      {
+       "provider": "RunPod",
+       "providerId": "runpod",
+       "value": 2.39,
+       "date": "2026-08-02",
+       "sourceUrl": "https://www.runpod.io/pricing",
+       "quotes": 1
+      },
+      {
+       "provider": "DigitalOcean",
+       "providerId": "digitalocean",
+       "value": 2.59,
+       "date": "2026-08-02",
+       "sourceUrl": "https://www.digitalocean.com/pricing/gpu-droplets",
+       "quotes": 1
+      },
+      {
+       "provider": "Hot Aisle",
+       "providerId": "hotaisle",
+       "value": 2.99,
+       "date": "2026-08-02",
+       "sourceUrl": "https://hotaisle.xyz/pricing",
+       "quotes": 1
+      },
+      {
+       "provider": "Crusoe",
+       "providerId": "crusoe",
+       "value": 3.45,
+       "date": "2026-08-02",
+       "sourceUrl": "https://www.crusoe.ai/cloud/pricing",
+       "quotes": 1
+      }
+     ],
+     "excluded": [],
+     "excludedQuoteRowsByMarket": {}
+    },
+    "2026-W32": {
+     "weekStart": "2026-08-03",
+     "weekEnd": "2026-08-09",
+     "vintage": "final",
+     "status": "thin",
+     "methodologyVersion": "2026-11-03.2",
+     "median": 2.79,
+     "p25": 2.44,
+     "p75": 3.335,
+     "providerCount": 4,
+     "index": 106.8099,
+     "linkPairs": 4,
+     "withheldReason": null,
+     "notConfirmed48h": 0,
+     "included": [
+      {
+       "provider": "RunPod",
+       "providerId": "runpod",
+       "value": 2.39,
+       "date": "2026-08-09",
+       "sourceUrl": "https://www.runpod.io/pricing",
+       "quotes": 1
+      },
+      {
+       "provider": "DigitalOcean",
+       "providerId": "digitalocean",
+       "value": 2.59,
+       "date": "2026-08-09",
+       "sourceUrl": "https://www.digitalocean.com/pricing/gpu-droplets",
+       "quotes": 1
+      },
+      {
+       "provider": "Hot Aisle",
+       "providerId": "hotaisle",
+       "value": 2.99,
+       "date": "2026-08-09",
+       "sourceUrl": "https://hotaisle.xyz/pricing",
+       "quotes": 1
+      },
+      {
+       "provider": "Crusoe",
+       "providerId": "crusoe",
+       "value": 3.45,
+       "date": "2026-08-09",
+       "sourceUrl": "https://www.crusoe.ai/cloud/pricing",
+       "quotes": 1
+      }
+     ],
+     "excluded": [],
+     "excludedQuoteRowsByMarket": {}
+    },
+    "2026-W33": {
+     "weekStart": "2026-08-10",
+     "weekEnd": "2026-08-16",
+     "vintage": "final",
+     "status": "thin",
+     "methodologyVersion": "2026-11-03.2",
+     "median": 2.79,
+     "p25": 2.44,
+     "p75": 3.335,
+     "providerCount": 4,
+     "index": 106.8099,
+     "linkPairs": 4,
+     "withheldReason": null,
+     "notConfirmed48h": 0,
+     "included": [
+      {
+       "provider": "RunPod",
+       "providerId": "runpod",
+       "value": 2.39,
+       "date": "2026-08-16",
+       "sourceUrl": "https://www.runpod.io/pricing",
+       "quotes": 1
+      },
+      {
+       "provider": "DigitalOcean",
+       "providerId": "digitalocean",
+       "value": 2.59,
+       "date": "2026-08-16",
+       "sourceUrl": "https://www.digitalocean.com/pricing/gpu-droplets",
+       "quotes": 1
+      },
+      {
+       "provider": "Hot Aisle",
+       "providerId": "hotaisle",
+       "value": 2.99,
+       "date": "2026-08-16",
+       "sourceUrl": "https://hotaisle.xyz/pricing",
+       "quotes": 1
+      },
+      {
+       "provider": "Crusoe",
+       "providerId": "crusoe",
+       "value": 3.45,
+       "date": "2026-08-16",
+       "sourceUrl": "https://www.crusoe.ai/cloud/pricing",
+       "quotes": 1
+      }
+     ],
+     "excluded": [],
+     "excludedQuoteRowsByMarket": {}
+    },
+    "2026-W34": {
+     "weekStart": "2026-08-17",
+     "weekEnd": "2026-08-23",
+     "vintage": "final",
+     "status": "thin",
+     "methodologyVersion": "2026-11-03.2",
+     "median": 2.79,
+     "p25": 2.44,
+     "p75": 3.335,
+     "providerCount": 4,
+     "index": 106.8099,
+     "linkPairs": 4,
+     "withheldReason": null,
+     "notConfirmed48h": 0,
+     "included": [
+      {
+       "provider": "RunPod",
+       "providerId": "runpod",
+       "value": 2.39,
+       "date": "2026-08-23",
+       "sourceUrl": "https://www.runpod.io/pricing",
+       "quotes": 1
+      },
+      {
+       "provider": "DigitalOcean",
+       "providerId": "digitalocean",
+       "value": 2.59,
+       "date": "2026-08-23",
+       "sourceUrl": "https://www.digitalocean.com/pricing/gpu-droplets",
+       "quotes": 1
+      },
+      {
+       "provider": "Hot Aisle",
+       "providerId": "hotaisle",
+       "value": 2.99,
+       "date": "2026-08-23",
+       "sourceUrl": "https://hotaisle.xyz/pricing",
+       "quotes": 1
+      },
+      {
+       "provider": "Crusoe",
+       "providerId": "crusoe",
+       "value": 3.45,
+       "date": "2026-08-23",
+       "sourceUrl": "https://www.crusoe.ai/cloud/pricing",
+       "quotes": 1
+      }
+     ],
+     "excluded": [],
+     "excludedQuoteRowsByMarket": {}
+    },
+    "2026-W35": {
+     "weekStart": "2026-08-24",
+     "weekEnd": "2026-08-30",
+     "vintage": "final",
+     "status": "thin",
+     "methodologyVersion": "2026-11-03.2",
+     "median": 2.79,
+     "p25": 2.44,
+     "p75": 3.335,
+     "providerCount": 4,
+     "index": 106.8099,
+     "linkPairs": 4,
+     "withheldReason": null,
+     "notConfirmed48h": 0,
+     "included": [
+      {
+       "provider": "RunPod",
+       "providerId": "runpod",
+       "value": 2.39,
+       "date": "2026-08-30",
+       "sourceUrl": "https://www.runpod.io/pricing",
+       "quotes": 1
+      },
+      {
+       "provider": "DigitalOcean",
+       "providerId": "digitalocean",
+       "value": 2.59,
+       "date": "2026-08-30",
+       "sourceUrl": "https://www.digitalocean.com/pricing/gpu-droplets",
+       "quotes": 1
+      },
+      {
+       "provider": "Hot Aisle",
+       "providerId": "hotaisle",
+       "value": 2.99,
+       "date": "2026-08-30",
+       "sourceUrl": "https://hotaisle.xyz/pricing",
+       "quotes": 1
+      },
+      {
+       "provider": "Crusoe",
+       "providerId": "crusoe",
+       "value": 3.45,
+       "date": "2026-08-30",
+       "sourceUrl": "https://www.crusoe.ai/cloud/pricing",
+       "quotes": 1
+      }
+     ],
+     "excluded": [],
+     "excludedQuoteRowsByMarket": {}
+    },
+    "2026-W36": {
+     "weekStart": "2026-08-31",
+     "weekEnd": "2026-09-06",
+     "vintage": "final",
+     "status": "thin",
+     "methodologyVersion": "2026-11-03.2",
+     "median": 2.79,
+     "p25": 2.44,
+     "p75": 3.335,
+     "providerCount": 4,
+     "index": 106.8099,
+     "linkPairs": 4,
+     "withheldReason": null,
+     "notConfirmed48h": 0,
+     "included": [
+      {
+       "provider": "RunPod",
+       "providerId": "runpod",
+       "value": 2.39,
+       "date": "2026-09-06",
+       "sourceUrl": "https://www.runpod.io/pricing",
+       "quotes": 1
+      },
+      {
+       "provider": "DigitalOcean",
+       "providerId": "digitalocean",
+       "value": 2.59,
+       "date": "2026-09-06",
+       "sourceUrl": "https://www.digitalocean.com/pricing/gpu-droplets",
+       "quotes": 1
+      },
+      {
+       "provider": "Hot Aisle",
+       "providerId": "hotaisle",
+       "value": 2.99,
+       "date": "2026-09-06",
+       "sourceUrl": "https://hotaisle.xyz/pricing",
+       "quotes": 1
+      },
+      {
+       "provider": "Crusoe",
+       "providerId": "crusoe",
+       "value": 3.45,
+       "date": "2026-09-06",
+       "sourceUrl": "https://www.crusoe.ai/cloud/pricing",
+       "quotes": 1
+      }
+     ],
+     "excluded": [],
+     "excludedQuoteRowsByMarket": {}
+    },
+    "2026-W37": {
+     "weekStart": "2026-09-07",
+     "weekEnd": "2026-09-13",
+     "vintage": "final",
+     "status": "thin",
+     "methodologyVersion": "2026-11-03.2",
+     "median": 2.79,
+     "p25": 2.44,
+     "p75": 3.335,
+     "providerCount": 4,
+     "index": 106.8099,
+     "linkPairs": 4,
+     "withheldReason": null,
+     "notConfirmed48h": 0,
+     "included": [
+      {
+       "provider": "RunPod",
+       "providerId": "runpod",
+       "value": 2.39,
+       "date": "2026-09-13",
+       "sourceUrl": "https://www.runpod.io/pricing",
+       "quotes": 1
+      },
+      {
+       "provider": "DigitalOcean",
+       "providerId": "digitalocean",
+       "value": 2.59,
+       "date": "2026-09-13",
+       "sourceUrl": "https://www.digitalocean.com/pricing/gpu-droplets",
+       "quotes": 1
+      },
+      {
+       "provider": "Hot Aisle",
+       "providerId": "hotaisle",
+       "value": 2.99,
+       "date": "2026-09-13",
+       "sourceUrl": "https://hotaisle.xyz/pricing",
+       "quotes": 1
+      },
+      {
+       "provider": "Crusoe",
+       "providerId": "crusoe",
+       "value": 3.45,
+       "date": "2026-09-13",
+       "sourceUrl": "https://www.crusoe.ai/cloud/pricing",
+       "quotes": 1
+      }
+     ],
+     "excluded": [],
+     "excludedQuoteRowsByMarket": {}
+    },
+    "2026-W38": {
+     "weekStart": "2026-09-14",
+     "weekEnd": "2026-09-20",
+     "vintage": "final",
+     "status": "thin",
+     "methodologyVersion": "2026-11-03.2",
+     "median": 2.99,
+     "p25": 2.49,
+     "p75": 3.52,
+     "providerCount": 5,
+     "index": 106.8099,
+     "linkPairs": 4,
+     "withheldReason": null,
+     "notConfirmed48h": 0,
+     "included": [
+      {
+       "provider": "RunPod",
+       "providerId": "runpod",
+       "value": 2.39,
+       "date": "2026-09-20",
+       "sourceUrl": "https://www.runpod.io/pricing",
+       "quotes": 1
+      },
+      {
+       "provider": "DigitalOcean",
+       "providerId": "digitalocean",
+       "value": 2.59,
+       "date": "2026-09-20",
+       "sourceUrl": "https://www.digitalocean.com/pricing/gpu-droplets",
+       "quotes": 1
+      },
+      {
+       "provider": "Hot Aisle",
+       "providerId": "hotaisle",
+       "value": 2.99,
+       "date": "2026-09-20",
+       "sourceUrl": "https://hotaisle.xyz/pricing",
+       "quotes": 1
+      },
+      {
+       "provider": "Crusoe",
+       "providerId": "crusoe",
+       "value": 3.45,
+       "date": "2026-09-20",
+       "sourceUrl": "https://www.crusoe.ai/cloud/pricing",
+       "quotes": 1
+      },
+      {
+       "provider": "Spheron",
+       "providerId": "spheron",
+       "value": 3.59,
+       "date": "2026-09-20",
+       "sourceUrl": "https://www.spheron.network/pricing/",
+       "quotes": 1
+      }
+     ],
+     "excluded": [],
+     "excludedQuoteRowsByMarket": {}
+    },
+    "2026-W39": {
+     "weekStart": "2026-09-21",
+     "weekEnd": "2026-09-27",
+     "vintage": "final",
+     "status": "thin",
+     "methodologyVersion": "2026-11-03.2",
+     "median": 2.99,
+     "p25": 2.49,
+     "p75": 3.52,
+     "providerCount": 5,
+     "index": 106.8099,
+     "linkPairs": 5,
+     "withheldReason": null,
+     "notConfirmed48h": 0,
+     "included": [
+      {
+       "provider": "RunPod",
+       "providerId": "runpod",
+       "value": 2.39,
+       "date": "2026-09-27",
+       "sourceUrl": "https://www.runpod.io/pricing",
+       "quotes": 1
+      },
+      {
+       "provider": "DigitalOcean",
+       "providerId": "digitalocean",
+       "value": 2.59,
+       "date": "2026-09-27",
+       "sourceUrl": "https://www.digitalocean.com/pricing/gpu-droplets",
+       "quotes": 1
+      },
+      {
+       "provider": "Hot Aisle",
+       "providerId": "hotaisle",
+       "value": 2.99,
+       "date": "2026-09-27",
+       "sourceUrl": "https://hotaisle.xyz/pricing",
+       "quotes": 1
+      },
+      {
+       "provider": "Crusoe",
+       "providerId": "crusoe",
+       "value": 3.45,
+       "date": "2026-09-27",
+       "sourceUrl": "https://www.crusoe.ai/cloud/pricing",
+       "quotes": 1
+      },
+      {
+       "provider": "Spheron",
+       "providerId": "spheron",
+       "value": 3.59,
+       "date": "2026-09-27",
+       "sourceUrl": "https://www.spheron.network/pricing/",
+       "quotes": 1
+      }
+     ],
+     "excluded": [],
+     "excludedQuoteRowsByMarket": {}
+    },
+    "2026-W40": {
+     "weekStart": "2026-09-28",
+     "weekEnd": "2026-10-04",
+     "vintage": "final",
+     "status": "thin",
+     "methodologyVersion": "2026-11-03.2",
+     "median": 2.99,
+     "p25": 2.49,
+     "p75": 3.52,
+     "providerCount": 5,
+     "index": 106.8099,
+     "linkPairs": 5,
+     "withheldReason": null,
+     "notConfirmed48h": 0,
+     "included": [
+      {
+       "provider": "RunPod",
+       "providerId": "runpod",
+       "value": 2.39,
+       "date": "2026-10-04",
+       "sourceUrl": "https://www.runpod.io/pricing",
+       "quotes": 1
+      },
+      {
+       "provider": "DigitalOcean",
+       "providerId": "digitalocean",
+       "value": 2.59,
+       "date": "2026-10-04",
+       "sourceUrl": "https://www.digitalocean.com/pricing/gpu-droplets",
+       "quotes": 1
+      },
+      {
+       "provider": "Hot Aisle",
+       "providerId": "hotaisle",
+       "value": 2.99,
+       "date": "2026-10-04",
+       "sourceUrl": "https://hotaisle.xyz/pricing",
+       "quotes": 1
+      },
+      {
+       "provider": "Crusoe",
+       "providerId": "crusoe",
+       "value": 3.45,
+       "date": "2026-10-04",
+       "sourceUrl": "https://www.crusoe.ai/cloud/pricing",
+       "quotes": 1
+      },
+      {
+       "provider": "Spheron",
+       "providerId": "spheron",
+       "value": 3.59,
+       "date": "2026-10-04",
+       "sourceUrl": "https://www.spheron.network/pricing/",
+       "quotes": 1
+      }
+     ],
+     "excluded": [],
+     "excludedQuoteRowsByMarket": {}
+    },
+    "2026-W41": {
+     "weekStart": "2026-10-05",
+     "weekEnd": "2026-10-11",
+     "vintage": "final",
+     "status": "thin",
+     "methodologyVersion": "2026-11-03.2",
+     "median": 2.99,
+     "p25": 2.49,
+     "p75": 3.52,
+     "providerCount": 5,
+     "index": 106.8099,
+     "linkPairs": 5,
+     "withheldReason": null,
+     "notConfirmed48h": 0,
+     "included": [
+      {
+       "provider": "RunPod",
+       "providerId": "runpod",
+       "value": 2.39,
+       "date": "2026-10-11",
+       "sourceUrl": "https://www.runpod.io/pricing",
+       "quotes": 1
+      },
+      {
+       "provider": "DigitalOcean",
+       "providerId": "digitalocean",
+       "value": 2.59,
+       "date": "2026-10-11",
+       "sourceUrl": "https://www.digitalocean.com/pricing/gpu-droplets",
+       "quotes": 1
+      },
+      {
+       "provider": "Hot Aisle",
+       "providerId": "hotaisle",
+       "value": 2.99,
+       "date": "2026-10-11",
+       "sourceUrl": "https://hotaisle.xyz/pricing",
+       "quotes": 1
+      },
+      {
+       "provider": "Crusoe",
+       "providerId": "crusoe",
+       "value": 3.45,
+       "date": "2026-10-11",
+       "sourceUrl": "https://www.crusoe.ai/cloud/pricing",
+       "quotes": 1
+      },
+      {
+       "provider": "Spheron",
+       "providerId": "spheron",
+       "value": 3.59,
+       "date": "2026-10-11",
+       "sourceUrl": "https://www.spheron.network/pricing/",
+       "quotes": 1
+      }
+     ],
+     "excluded": [],
+     "excludedQuoteRowsByMarket": {}
+    },
+    "2026-W42": {
+     "weekStart": "2026-10-12",
+     "weekEnd": "2026-10-18",
+     "vintage": "final",
+     "status": "thin",
+     "methodologyVersion": "2026-11-03.2",
+     "median": 2.99,
+     "p25": 2.49,
+     "p75": 3.52,
+     "providerCount": 5,
+     "index": 106.8099,
+     "linkPairs": 5,
+     "withheldReason": null,
+     "notConfirmed48h": 0,
+     "included": [
+      {
+       "provider": "RunPod",
+       "providerId": "runpod",
+       "value": 2.39,
+       "date": "2026-10-18",
+       "sourceUrl": "https://www.runpod.io/pricing",
+       "quotes": 1
+      },
+      {
+       "provider": "DigitalOcean",
+       "providerId": "digitalocean",
+       "value": 2.59,
+       "date": "2026-10-18",
+       "sourceUrl": "https://www.digitalocean.com/pricing/gpu-droplets",
+       "quotes": 1
+      },
+      {
+       "provider": "Hot Aisle",
+       "providerId": "hotaisle",
+       "value": 2.99,
+       "date": "2026-10-18",
+       "sourceUrl": "https://hotaisle.xyz/pricing",
+       "quotes": 1
+      },
+      {
+       "provider": "Crusoe",
+       "providerId": "crusoe",
+       "value": 3.45,
+       "date": "2026-10-18",
+       "sourceUrl": "https://www.crusoe.ai/cloud/pricing",
+       "quotes": 1
+      },
+      {
+       "provider": "Spheron",
+       "providerId": "spheron",
+       "value": 3.59,
+       "date": "2026-10-18",
+       "sourceUrl": "https://www.spheron.network/pricing/",
+       "quotes": 1
+      }
+     ],
+     "excluded": [],
+     "excludedQuoteRowsByMarket": {}
+    },
+    "2026-W43": {
+     "weekStart": "2026-10-19",
+     "weekEnd": "2026-10-25",
+     "vintage": "final",
+     "status": "thin",
+     "methodologyVersion": "2026-11-03.2",
+     "median": 2.99,
+     "p25": 2.49,
+     "p75": 3.52,
+     "providerCount": 5,
+     "index": 106.8099,
+     "linkPairs": 5,
+     "withheldReason": null,
+     "notConfirmed48h": 0,
+     "included": [
+      {
+       "provider": "RunPod",
+       "providerId": "runpod",
+       "value": 2.39,
+       "date": "2026-10-25",
+       "sourceUrl": "https://www.runpod.io/pricing",
+       "quotes": 1
+      },
+      {
+       "provider": "DigitalOcean",
+       "providerId": "digitalocean",
+       "value": 2.59,
+       "date": "2026-10-25",
+       "sourceUrl": "https://www.digitalocean.com/pricing/gpu-droplets",
+       "quotes": 1
+      },
+      {
+       "provider": "Hot Aisle",
+       "providerId": "hotaisle",
+       "value": 2.99,
+       "date": "2026-10-25",
+       "sourceUrl": "https://hotaisle.xyz/pricing",
+       "quotes": 1
+      },
+      {
+       "provider": "Crusoe",
+       "providerId": "crusoe",
+       "value": 3.45,
+       "date": "2026-10-25",
+       "sourceUrl": "https://www.crusoe.ai/cloud/pricing",
+       "quotes": 1
+      },
+      {
+       "provider": "Spheron",
+       "providerId": "spheron",
+       "value": 3.59,
+       "date": "2026-10-25",
+       "sourceUrl": "https://www.spheron.network/pricing/",
+       "quotes": 1
+      }
+     ],
+     "excluded": [],
+     "excludedQuoteRowsByMarket": {}
+    },
+    "2026-W44": {
+     "weekStart": "2026-10-26",
+     "weekEnd": "2026-11-01",
+     "vintage": "provisional",
+     "status": "thin",
+     "methodologyVersion": "2026-11-03.2",
+     "median": 2.99,
+     "p25": 2.49,
+     "p75": 3.52,
+     "providerCount": 5,
+     "index": 106.8099,
+     "linkPairs": 5,
+     "withheldReason": null,
+     "notConfirmed48h": 0,
+     "included": [
+      {
+       "provider": "RunPod",
+       "providerId": "runpod",
+       "value": 2.39,
+       "date": "2026-10-29",
+       "sourceUrl": "https://www.runpod.io/pricing",
+       "quotes": 1
+      },
+      {
+       "provider": "DigitalOcean",
+       "providerId": "digitalocean",
+       "value": 2.59,
+       "date": "2026-10-29",
+       "sourceUrl": "https://www.digitalocean.com/pricing/gpu-droplets",
+       "quotes": 1
+      },
+      {
+       "provider": "Hot Aisle",
+       "providerId": "hotaisle",
+       "value": 2.99,
+       "date": "2026-10-29",
+       "sourceUrl": "https://hotaisle.xyz/pricing",
+       "quotes": 1
+      },
+      {
+       "provider": "Crusoe",
+       "providerId": "crusoe",
+       "value": 3.45,
+       "date": "2026-10-29",
+       "sourceUrl": "https://www.crusoe.ai/cloud/pricing",
+       "quotes": 1
+      },
+      {
+       "provider": "Spheron",
+       "providerId": "spheron",
+       "value": 3.59,
+       "date": "2026-10-29",
+       "sourceUrl": "https://www.spheron.network/pricing/",
+       "quotes": 1
+      }
+     ],
+     "excluded": [],
+     "excludedQuoteRowsByMarket": {}
+    }
+   }
+  }
+ }
+}

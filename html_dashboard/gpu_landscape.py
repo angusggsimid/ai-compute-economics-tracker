@@ -9,6 +9,7 @@ from __future__ import annotations
 
 from collections import defaultdict
 from datetime import date, datetime, timedelta, timezone
+import re
 from statistics import median, quantiles
 from typing import Any, Dict, List, Optional, Tuple
 
@@ -126,12 +127,33 @@ PROVIDER_LABELS = {
     "spheron": "Spheron",
     "voltagepark": "Voltage Park",
     "fluidstack": "FluidStack",
+    "cerebrium": "Cerebrium",
+    "daytona": "Daytona",
+    "digitalocean": "DigitalOcean",
+    "fireworks": "Fireworks AI",
+    "gmicloud": "GMI Cloud",
+    "hotaisle": "Hot Aisle",
+    "hyperai": "Hyper.ai",
+    "impossiblecloud": "Impossible Cloud",
+    "koyeb": "Koyeb",
+    "latitude": "Latitude.sh",
+    "lium": "Lium",
+    "ovh": "OVHcloud",
+    "primeintellect": "Prime Intellect",
+    "scaleway": "Scaleway",
+    "sfcompute": "SF Compute",
+    "synteq": "Synteq",
+    "tensordock": "TensorDock",
 }
 
 
 def provider_label(provider: str) -> str:
     key = str(provider or "").strip().lower()
     return PROVIDER_LABELS.get(key, str(provider or "").replace("-", " ").title())
+
+
+def index_slug(card_id: str) -> str:
+    return re.sub(r"[^a-z0-9]+", "-", str(card_id).lower()).strip("-")
 
 
 def _iso_week(day: str) -> Tuple[str, str, str]:
@@ -733,6 +755,7 @@ def public_manifest(full: Dict[str, Any], generated_at: str) -> Dict[str, Any]:
             {"path": "gpus.json", "description": f"{len(full['cards'])}-card landscape summary and per-market latest."},
             {"path": "providers.json", "description": "Provider coverage and cheapest observed quote."},
             {"path": "price-index.json", "description": "Weekly per-card index with chain-linked base-100 and receipts."},
+            {"path": "price-index/{gpu}.json", "description": "Per-card slice of price-index.json, used by the receipt download."},
             {"path": "changelog.json", "description": "Weekly index and median changes by card."},
         ],
         "definitions": {

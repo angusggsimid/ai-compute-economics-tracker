@@ -198,6 +198,8 @@ def test_write_public_data(tmp_path, snapshot):
         path = tmp_path / name
         assert path.exists() and path.stat().st_size > 0
         assert written[name].endswith(name)
+    assert (tmp_path / "price-index" / "h100.json").exists()
+    assert (tmp_path / "price-index" / "rtx-pro-6000.json").exists()
     assert json.loads((tmp_path / "prices.json").read_text(encoding="utf-8"))["count"] > 0
 
 
