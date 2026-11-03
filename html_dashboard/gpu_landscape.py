@@ -240,6 +240,7 @@ def _market_series(
             "high": round(raw_values[-1], 6),
             "providerCount": len(values),
             "quoteCount": len(raw_items),
+            "thin": len(values) < MIN_PROVIDERS,
             "medianSynthetic": len(values) % 2 == 0,
             "cheapestProvider": provider_label(cheapest_provider),
             "cheapestProviderId": cheapest_provider,
@@ -624,6 +625,7 @@ def public_gpus(full: Dict[str, Any]) -> Dict[str, Any]:
                 "cheapest": latest["cheapestValue"],
                 "cheapest_provider": latest["cheapestProvider"],
                 "provider_count": latest["providerCount"],
+                "thin": bool(latest.get("thin")),
                 "date": latest["date"],
             }
         cards.append({
@@ -720,23 +722,39 @@ def public_index(full: Dict[str, Any]) -> Dict[str, Any]:
     cards = {}
     for card in full["cards"]:
         weekly = card["weekly"]
+        latest_week = (weekly.get("latest") or {}).get("receipt")
+        # Public receipts are evidence for the current headline week only.
+        # Keeping every historical week made the file ~3MB and multiplied the
+        # per-card slices; the full history stays in tracker_data.
+        receipts = (
+            {latest_week: weekly["receipts"][latest_week]}
+            if latest_week in weekly.get("receipts", {})
+            else {}
+        )
+        weeks = []
+        for week in weekly["weeks"]:
+            item = dict(week)
+            if item.get("receipt") != latest_week:
+                item.pop("receipt", None)
+            weeks.append(item)
         cards[card["id"]] = {
             "name": card["name"],
             "as_of": card["asOf"],
             "min_providers": weekly["minProviders"],
             "latest": weekly["latest"],
-            "weeks": weekly["weeks"],
-            "receipts": weekly["receipts"],
+            "weeks": weeks,
+            "receipts": receipts,
         }
     return {
         "name": "AI Compute Economics - weekly GPU supply index",
-        "description": "Weekly on-demand median per card, chain-linked base-100 over providers present in both weeks; one provider once per week. Weeks below the provider guard are withheld, not backfilled.",
+        "description": "Weekly on-demand median per card, chain-linked base-100 over providers present in both weeks; one provider once per week. Weeks below the provider guard are withheld, not backfilled. Public receipts retain the latest published week only.",
         "unit": "USD per GPU per hour; base-100 index",
         "as_of": full["asOf"],
         "methodology_version": full["methodologyVersion"],
         "index_min_providers": full["indexMinProviders"],
         "index_publish_min": full.get("indexPublishMin"),
         "index_confirm_days": full.get("indexConfirmDays"),
+        "receipt_retention": "latest_week_only",
         "cards": cards,
     }
 
@@ -754,8 +772,8 @@ def public_manifest(full: Dict[str, Any], generated_at: str) -> Dict[str, Any]:
             {"path": "prices.json", "description": "Latest provider x card x market quote, normalized to USD/GPU-hour."},
             {"path": "gpus.json", "description": f"{len(full['cards'])}-card landscape summary and per-market latest."},
             {"path": "providers.json", "description": "Provider coverage and cheapest observed quote."},
-            {"path": "price-index.json", "description": "Weekly per-card index with chain-linked base-100 and receipts."},
-            {"path": "price-index/{gpu}.json", "description": "Per-card slice of price-index.json, used by the receipt download."},
+            {"path": "price-index.json", "description": "Weekly per-card index with chain-linked base-100; latest-week receipt only."},
+            {"path": "price-index/{gpu}.json", "description": "Per-card slice of price-index.json, used by the receipt download; latest-week receipt only."},
             {"path": "changelog.json", "description": "Weekly index and median changes by card."},
         ],
         "definitions": {
@@ -765,6 +783,7 @@ def public_manifest(full: Dict[str, Any], generated_at: str) -> Dict[str, Any]:
             "status": "live if within 2 days of data as-of; unconfirmed within 7 days; stopped otherwise",
             "vintage": "provisional for the current ISO week; final after the week closes",
             "index": "published at >=8 confirmed providers; thin at 4-7; withheld below 4; only the provider's latest day in the week, confirmed within 2 days of the week's last day",
+            "receipts": "public price-index.json and per-card slices retain the latest published week only; full history stays in tracker_data",
             "risk": "low for on-demand/reserved; medium for serverless/shared; high for spot/community/marketplace floor",
             "price_scope": "rate_card is a listed rate normalized to one GPU; instance vs GPU-only scope is not retained in this version; marketplace_floor and serverless are separate",
         },

@@ -61,6 +61,7 @@ def test_on_demand_market_does_not_mix_community_or_spot():
     h100 = next(card for card in full["cards"] if card["id"] == "H100")
     assert h100["markets"]["on_demand"]["latest"]["value"] == 5.0
     assert h100["markets"]["on_demand"]["latest"]["providerCount"] == 1
+    assert h100["markets"]["on_demand"]["latest"]["thin"] is True
     assert h100["markets"]["community"]["latest"]["value"] == 1.0
     assert h100["markets"]["spot"]["latest"]["value"] == 0.5
     assert h100["markets"]["marketplace"]["latest"]["value"] == 0.2
@@ -151,6 +152,7 @@ def test_cheapest_and_range_use_raw_quotes_not_provider_medians():
     assert latest["cheapestProvider"] == "A"
     assert latest["low"] == 1.0
     assert latest["high"] == 7.0
+    assert latest["thin"] is False
 
 
 def test_old_index_age_is_visible():
@@ -178,10 +180,12 @@ def test_public_payloads_are_machine_readable(snapshot):
     assert all({"card_id", "market", "risk", "price_scope", "usd_per_gpu_hour", "source_url", "quotes"} <= set(row) for row in prices["quotes"])
     gpus = public_gpus(full)
     assert gpus["count"] == len(gpus["gpus"]) >= 8
+    assert "thin" in next(card for card in gpus["gpus"] if card["id"] == "H100")["markets"]["on_demand"]
     providers = public_providers(full)
     assert providers["count"] == len(providers["providers"]) > 0
     index = public_index(full)
-    assert index["cards"]["H100"]["receipts"]
+    assert index["receipt_retention"] == "latest_week_only"
+    assert len(index["cards"]["H100"]["receipts"]) == 1
     receipt = next(iter(index["cards"]["H100"]["receipts"].values()))
     assert receipt["methodologyVersion"] == index["methodology_version"]
     change = public_changelog(full)

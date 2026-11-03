@@ -137,12 +137,80 @@ def _landscape_table_click(page) -> bool:
     )
 
 
-def _landscape_stale_table(page) -> bool:
-    evidence = page.locator("#landscape-evidence").inner_text()
-    statuses = page.locator("#landscape-all-body tr td:last-child").all_inner_texts()
-    if "数据滞后" not in evidence:
-        return True
-    return "滞后" in {status.strip() for status in statuses}
+def _landscape_stale_not_repeated(page) -> bool:
+    """全局滞后只提示一次；逐行不再重复 11 个“滞后”，但市场自己的状态仍要保留。"""
+    return bool(
+        page.evaluate(
+            """() => {
+                const prevFresh = LANDSCAPE_DATA.dataFreshness;
+                const prevAge = LANDSCAPE_DATA.dataAgeDays;
+                LANDSCAPE_DATA.dataFreshness = 'stale';
+                LANDSCAPE_DATA.dataAgeDays = 5;
+                renderLandscape();
+                const body = document.querySelector('#landscape-all-body');
+                const repeated = [...body.querySelectorAll('tr td:last-child')]
+                    .some(td => /滞后/.test(td.textContent || ''));
+                const summary = document.querySelector('.landscape-all>summary').textContent || '';
+                LANDSCAPE_DATA.dataFreshness = prevFresh;
+                LANDSCAPE_DATA.dataAgeDays = prevAge;
+                renderLandscape();
+                return !repeated && /全局数据滞后 5 天/.test(summary);
+            }"""
+        )
+    )
+
+
+def _landscape_market_status_visible(page) -> bool:
+    """市场级 unconfirmed 不能被全局状态或空状态列吞掉。"""
+    return bool(
+        page.evaluate(
+            """() => {
+                landscapeCardSelect.value = 'A100';
+                _landscapeSetMarket('marketplace');
+                const card = _landscapeCard();
+                const market = card && card.markets.marketplace;
+                if (!market || !market.latest) return false;
+                const prev = market.status;
+                market.status = 'unconfirmed';
+                renderLandscape();
+                const row = document.querySelector('#landscape-market-table tr[data-market="marketplace"]');
+                const evidence = document.querySelector('#landscape-evidence').textContent || '';
+                const ok = !!row && /待确认/.test(row.textContent || '') && /该市场：待确认/.test(evidence);
+                market.status = prev;
+                landscapeCardSelect.value = 'H100';
+                _landscapeSetMarket('on_demand');
+                return ok;
+            }"""
+        )
+    )
+
+
+def _nav_has_clocks(page) -> bool:
+    return (
+        page.locator('.nav a[href="#clocks"]').count() == 1
+        and page.locator('.mobile-nav a[href="#clocks"]').count() == 1
+    )
+
+
+def _scroll_through(page) -> None:
+    """滚动一遍触发 IntersectionObserver 懒渲染，确保全页图表都真正构建过。"""
+    page.evaluate(
+        """async () => {
+            const root = document.documentElement;
+            const prev = root.style.scrollBehavior;
+            root.style.scrollBehavior = 'auto';
+            const step = Math.max(280, Math.round(window.innerHeight * 0.45));
+            for (let y = 0; y < root.scrollHeight; y += step) {
+                window.scrollTo(0, y);
+                await new Promise(resolve => setTimeout(resolve, 90));
+            }
+            await new Promise(resolve => setTimeout(resolve, 250));
+            window.scrollTo(0, 0);
+            root.style.scrollBehavior = prev;
+            await new Promise(resolve => setTimeout(resolve, 120));
+        }"""
+    )
+    page.wait_for_timeout(150)
 
 
 def _landscape_receipt_csv(page) -> bool:
@@ -207,6 +275,7 @@ def main() -> int:
             if legacy.count() == 1:
                 legacy.locator("summary").first.click()
                 page.wait_for_timeout(350)
+            _scroll_through(page)
 
             # 指引条与 CAPEX 溯源表必须指向同一版修订：
             # chip 数字取自 payload，表格数字取自同一批底表行，二者不一致即页面自相矛盾。
@@ -300,13 +369,15 @@ def main() -> int:
                 and len(page.locator("#executive-summary").inner_text()) > 40,
                 "price_asof_visible": page.locator(".price-asof").count() == 1
                 and "价格截至" in page.locator(".price-asof").inner_text(),
+                "nav_has_clocks": _nav_has_clocks(page),
                 "gpu_legacy_collapsed": gpu_legacy_collapsed,
                 "event_toggle_hides_markers": _event_toggle_works(page),
                 "event_markers_on_primary_charts": _event_markers_reach_primary_charts(page),
                 "event_tooltip_on_price_chart": _event_tooltip_on_price_chart(page),
                 "landscape_switches": _landscape_works(page),
                 "landscape_table_click": _landscape_table_click(page),
-                "landscape_stale_table": _landscape_stale_table(page),
+                "landscape_stale_not_repeated": _landscape_stale_not_repeated(page),
+                "landscape_market_status": _landscape_market_status_visible(page),
                 "landscape_receipt_csv": _landscape_receipt_csv(page),
                 "sandbox_redraws": _sandbox_redraws(page),
                 "sandbox_correlation_symmetric": _sandbox_correlation_is_symmetric(page),

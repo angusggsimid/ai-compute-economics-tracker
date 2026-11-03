@@ -7,6 +7,8 @@
 - 新增周度 chain-linked base-100、48h 确认、provisional/final、≥8 published / 4–7 thin、逐条 receipts；公开 `public/data/{prices,gpus,providers,price-index,changelog,manifest}.json`，页面可下载本周回执 CSV。
 - 数据截至日与构建日分开显示；滞后超过 2 天标 `数据滞后`，不把旧快照说成当天。
 - 首屏拆分“源状态更新于”和“价格截至”；三张主力卡连续图默认折叠；移动端加 sticky 章节导航；GPU/市场选择写入 URL；回执按单卡切片下载。
+- 市场级状态在分层表和证据区单独显示；全卡表只在表头提示全局滞后，逐行只标样本偏薄/待确认/停止。
+- 首屏以下的图表用 IntersectionObserver 懒渲染；公开 price-index 回执只保留最新周，控制仓库体积。
 
 ## 2026-10-27 可用率轨道提频至 4 天
 
