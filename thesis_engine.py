@@ -80,11 +80,11 @@ def _change_pct_window(
     return round((latest_value / base[1] - 1) * 100, 2)
 
 
-RENTAL_KINDS = {"on-demand", "secure", "community"}
+RENTAL_KINDS = {"on-demand", "secure"}
 
 
 def _neocloud_series(rows: List[Dict[str, Any]]) -> Dict[str, List[tuple]]:
-    """neocloud 逐报价 → 只取非中断性租赁档 → 每 (日期, 家族) 跨供应商中位序列。"""
+    """neocloud 逐报价 → 只取正规 on-demand（不含 community/spot）→ 每 (日期, 家族) 跨供应商中位序列。"""
     from collections import defaultdict as _dd
     by_day: Dict[str, Dict[str, List[float]]] = _dd(lambda: _dd(list))
     for row in rows or []:
@@ -249,7 +249,7 @@ def evaluate_supply(data: Dict[str, Any]) -> Dict[str, Any]:
         "natural_frequency": "daily",
         "state": state,
         "direction": direction,
-        "basis": "固定来源价格面板（SemiAnalysis 综合指数/Ornn 成交指数/Neocloud 34 家非中断性租赁中位），横截面不连线。",
+        "basis": "固定来源价格面板（SemiAnalysis 综合指数/Ornn 成交指数/Neocloud 正规 on-demand 中位，不含 community/spot），横截面不连线。",
         "confirms": [
             "松动：≥2 前沿面板 30D 跌幅≥10% 且订单簿深度增长≥10%（≥20 有效日）",
             "紧缩：≥2 前沿面板 30D 涨幅≥10% 且订单簿深度收缩≥10%（≥20 有效日）",
@@ -771,7 +771,7 @@ def generate_executive_summary(clocks: List[Dict[str, Any]], facts: Optional[Dic
             "clock": "Supply Price",
             "title": "现货价格",
             "badge": f"{supply_state} · {supply_dir or 'neutral'}",
-            "text": f"90 日面板：{panel_text}。这些是时钟用来确认的成交或综合指数，不是挂牌中位。哪一代没进确认名单，就不能写成同涨。",
+            "text": f"90 日面板：{panel_text}。这些是时钟用来确认的面板读数（成交、综合、正规 on-demand 挂牌），不是单一挂牌价。哪一代没进确认名单，就不能写成同涨。",
         },
         {
             "clock": "Capacity",

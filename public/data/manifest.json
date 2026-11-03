@@ -1,0 +1,40 @@
+{
+ "name": "AI Compute Economics - public GPU supply data",
+ "generated_at": "2026-11-03T14:27:19Z",
+ "data_as_of": "2026-10-29",
+ "data_age_days": 5,
+ "methodology_version": "2026-11-03.1",
+ "license": "Project data. Underlying neocloud rows are CC BY 4.0; see the dashboard source panel.",
+ "attribution": "AI Compute Economics; underlying provider prices from the tracked provider pages.",
+ "files": [
+  {
+   "path": "prices.json",
+   "description": "Latest provider x card x market quote, normalized to USD/GPU-hour."
+  },
+  {
+   "path": "gpus.json",
+   "description": "11-card landscape summary and per-market latest."
+  },
+  {
+   "path": "providers.json",
+   "description": "Provider coverage and cheapest observed quote."
+  },
+  {
+   "path": "price-index.json",
+   "description": "Weekly per-card index with chain-linked base-100 and receipts."
+  },
+  {
+   "path": "changelog.json",
+   "description": "Weekly index and median changes by card."
+  }
+ ],
+ "definitions": {
+  "on_demand": "kinds on-demand and secure; community, spot, reserved, marketplace and serverless excluded from this median",
+  "median": "each provider once per day; median across providers",
+  "p25_p75": "quartiles across provider medians; omitted when fewer than 4 providers",
+  "status": "live if within 2 days of data as-of; unconfirmed within 7 days; stopped otherwise",
+  "vintage": "provisional for the current ISO week; final after the week closes",
+  "risk": "low for on-demand/reserved; medium for serverless/shared; high for spot/community/marketplace floor",
+  "price_scope": "rate_card is a listed rate normalized to one GPU; instance vs GPU-only scope is not retained in this version; marketplace_floor and serverless are separate"
+ }
+}

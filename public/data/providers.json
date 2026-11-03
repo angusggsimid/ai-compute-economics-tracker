@@ -1,0 +1,787 @@
+{
+ "name": "AI Compute Economics - provider coverage",
+ "as_of": "2026-10-29",
+ "methodology_version": "2026-11-03.1",
+ "count": 37,
+ "providers": [
+  {
+   "id": "spheron",
+   "name": "Spheron",
+   "cards": [
+    "A100",
+    "B200",
+    "B300",
+    "GH200",
+    "H100",
+    "H200",
+    "L40S",
+    "MI300X",
+    "RTX 4090",
+    "RTX 5090",
+    "RTX PRO 6000"
+   ],
+   "markets": [
+    "on_demand",
+    "spot"
+   ],
+   "quotes": 18,
+   "cheapest": {
+    "card": "RTX 4090",
+    "market": "on_demand",
+    "usd_per_gpu_hour": 0.58,
+    "source_url": "https://www.spheron.network/pricing/"
+   }
+  },
+  {
+   "id": "runpod",
+   "name": "RunPod",
+   "cards": [
+    "A100",
+    "B200",
+    "B300",
+    "H100",
+    "H200",
+    "L40S",
+    "MI300X",
+    "RTX 4090",
+    "RTX 5090",
+    "RTX PRO 6000"
+   ],
+   "markets": [
+    "community",
+    "on_demand",
+    "serverless"
+   ],
+   "quotes": 26,
+   "cheapest": {
+    "card": "RTX 4090",
+    "market": "community",
+    "usd_per_gpu_hour": 0.34,
+    "source_url": "https://www.runpod.io/pricing"
+   }
+  },
+  {
+   "id": "lium",
+   "name": "Lium",
+   "cards": [
+    "A100",
+    "B200",
+    "B300",
+    "H100",
+    "H200",
+    "L40S",
+    "RTX 4090",
+    "RTX 5090",
+    "RTX PRO 6000"
+   ],
+   "markets": [
+    "marketplace",
+    "spot"
+   ],
+   "quotes": 15,
+   "cheapest": {
+    "card": "L40S",
+    "market": "marketplace",
+    "usd_per_gpu_hour": 0.38,
+    "source_url": "https://lium.io/api/public/v1/nodes"
+   }
+  },
+  {
+   "id": "coreweave",
+   "name": "CoreWeave",
+   "cards": [
+    "A100",
+    "B200",
+    "GH200",
+    "H100",
+    "H200",
+    "L40S",
+    "RTX PRO 6000"
+   ],
+   "markets": [
+    "on_demand"
+   ],
+   "quotes": 7,
+   "cheapest": {
+    "card": "L40S",
+    "market": "on_demand",
+    "usd_per_gpu_hour": 2.25,
+    "source_url": "https://www.coreweave.com/pricing"
+   }
+  },
+  {
+   "id": "daytona",
+   "name": "Daytona",
+   "cards": [
+    "B200",
+    "B300",
+    "H100",
+    "H200",
+    "RTX 4090",
+    "RTX 5090",
+    "RTX PRO 6000"
+   ],
+   "markets": [
+    "on_demand",
+    "spot"
+   ],
+   "quotes": 14,
+   "cheapest": {
+    "card": "RTX 4090",
+    "market": "spot",
+    "usd_per_gpu_hour": 0.57,
+    "source_url": "https://billing.app.daytona.io/gpu-pricing"
+   }
+  },
+  {
+   "id": "modal",
+   "name": "Modal",
+   "cards": [
+    "A100",
+    "B200",
+    "B300",
+    "H100",
+    "H200",
+    "L40S",
+    "RTX PRO 6000"
+   ],
+   "markets": [
+    "serverless"
+   ],
+   "quotes": 7,
+   "cheapest": {
+    "card": "L40S",
+    "market": "serverless",
+    "usd_per_gpu_hour": 1.9512,
+    "source_url": "https://modal.com/pricing"
+   }
+  },
+  {
+   "id": "datacrunch",
+   "name": "Verda",
+   "cards": [
+    "A100",
+    "B200",
+    "B300",
+    "H100",
+    "H200",
+    "L40S",
+    "RTX PRO 6000"
+   ],
+   "markets": [
+    "on_demand",
+    "spot"
+   ],
+   "quotes": 14,
+   "cheapest": {
+    "card": "L40S",
+    "market": "spot",
+    "usd_per_gpu_hour": 0.941,
+    "source_url": "https://datacrunch.io/pricing"
+   }
+  },
+  {
+   "id": "cerebrium",
+   "name": "Cerebrium",
+   "cards": [
+    "A100",
+    "B200",
+    "H100",
+    "H200",
+    "L40S",
+    "RTX PRO 6000"
+   ],
+   "markets": [
+    "serverless"
+   ],
+   "quotes": 6,
+   "cheapest": {
+    "card": "L40S",
+    "market": "serverless",
+    "usd_per_gpu_hour": 1.9512,
+    "source_url": "https://www.cerebrium.ai/pricing"
+   }
+  },
+  {
+   "id": "crusoe",
+   "name": "Crusoe",
+   "cards": [
+    "A100",
+    "B300",
+    "H100",
+    "H200",
+    "L40S",
+    "MI300X"
+   ],
+   "markets": [
+    "on_demand"
+   ],
+   "quotes": 6,
+   "cheapest": {
+    "card": "L40S",
+    "market": "on_demand",
+    "usd_per_gpu_hour": 1.5,
+    "source_url": "https://www.crusoe.ai/cloud/pricing"
+   }
+  },
+  {
+   "id": "hyperstack",
+   "name": "Hyperstack",
+   "cards": [
+    "A100",
+    "B200",
+    "B300",
+    "H100",
+    "H200",
+    "RTX PRO 6000"
+   ],
+   "markets": [
+    "on_demand",
+    "reserved"
+   ],
+   "quotes": 11,
+   "cheapest": {
+    "card": "A100",
+    "market": "reserved",
+    "usd_per_gpu_hour": 1.155,
+    "source_url": "https://www.hyperstack.cloud/gpu-pricing"
+   }
+  },
+  {
+   "id": "koyeb",
+   "name": "Koyeb",
+   "cards": [
+    "A100",
+    "B200",
+    "H100",
+    "H200",
+    "L40S",
+    "RTX PRO 6000"
+   ],
+   "markets": [
+    "serverless"
+   ],
+   "quotes": 6,
+   "cheapest": {
+    "card": "L40S",
+    "market": "serverless",
+    "usd_per_gpu_hour": 1.2,
+    "source_url": "https://www.koyeb.com/pricing"
+   }
+  },
+  {
+   "id": "nebius",
+   "name": "Nebius",
+   "cards": [
+    "B200",
+    "B300",
+    "H100",
+    "H200",
+    "L40S",
+    "RTX PRO 6000"
+   ],
+   "markets": [
+    "on_demand"
+   ],
+   "quotes": 6,
+   "cheapest": {
+    "card": "L40S",
+    "market": "on_demand",
+    "usd_per_gpu_hour": 1.35,
+    "source_url": "https://docs.nebius.com/compute/resources/pricing"
+   }
+  },
+  {
+   "id": "digitalocean",
+   "name": "Digitalocean",
+   "cards": [
+    "B300",
+    "H100",
+    "H200",
+    "L40S",
+    "MI300X"
+   ],
+   "markets": [
+    "on_demand"
+   ],
+   "quotes": 5,
+   "cheapest": {
+    "card": "L40S",
+    "market": "on_demand",
+    "usd_per_gpu_hour": 1.57,
+    "source_url": "https://www.digitalocean.com/pricing/gpu-droplets"
+   }
+  },
+  {
+   "id": "gcp",
+   "name": "Google Cloud",
+   "cards": [
+    "A100",
+    "B200",
+    "H100",
+    "H200",
+    "RTX PRO 6000"
+   ],
+   "markets": [
+    "on_demand",
+    "spot"
+   ],
+   "quotes": 10,
+   "cheapest": {
+    "card": "RTX PRO 6000",
+    "market": "spot",
+    "usd_per_gpu_hour": 0.4278,
+    "source_url": "https://cloud.google.com/products/compute/gpus-pricing?hl=en"
+   }
+  },
+  {
+   "id": "massedcompute",
+   "name": "Massed Compute",
+   "cards": [
+    "A100",
+    "H100",
+    "H200",
+    "L40S",
+    "RTX PRO 6000"
+   ],
+   "markets": [
+    "on_demand"
+   ],
+   "quotes": 5,
+   "cheapest": {
+    "card": "L40S",
+    "market": "on_demand",
+    "usd_per_gpu_hour": 0.97,
+    "source_url": "https://massedcompute.com/pricing"
+   }
+  },
+  {
+   "id": "fal",
+   "name": "fal",
+   "cards": [
+    "B200",
+    "B300",
+    "H100",
+    "H200",
+    "RTX PRO 6000"
+   ],
+   "markets": [
+    "serverless"
+   ],
+   "quotes": 5,
+   "cheapest": {
+    "card": "RTX PRO 6000",
+    "market": "serverless",
+    "usd_per_gpu_hour": 4.0,
+    "source_url": "https://fal.ai/pricing"
+   }
+  },
+  {
+   "id": "aws",
+   "name": "AWS",
+   "cards": [
+    "A100",
+    "H100",
+    "H200",
+    "L40S"
+   ],
+   "markets": [
+    "on_demand",
+    "spot"
+   ],
+   "quotes": 6,
+   "cheapest": {
+    "card": "A100",
+    "market": "spot",
+    "usd_per_gpu_hour": 1.633338,
+    "source_url": "https://website.spot.ec2.aws.a2z.com/spot.js"
+   }
+  },
+  {
+   "id": "fireworks",
+   "name": "Fireworks",
+   "cards": [
+    "B200",
+    "B300",
+    "H100",
+    "H200"
+   ],
+   "markets": [
+    "serverless"
+   ],
+   "quotes": 4,
+   "cheapest": {
+    "card": "H100",
+    "market": "serverless",
+    "usd_per_gpu_hour": 8.0,
+    "source_url": "https://fireworks.ai/pricing"
+   }
+  },
+  {
+   "id": "impossiblecloud",
+   "name": "Impossiblecloud",
+   "cards": [
+    "B200",
+    "B300",
+    "H100",
+    "H200"
+   ],
+   "markets": [
+    "reserved"
+   ],
+   "quotes": 4,
+   "cheapest": {
+    "card": "H200",
+    "market": "reserved",
+    "usd_per_gpu_hour": 3.157895,
+    "source_url": "https://www.impossiblecloud.com/en-us/baremetal"
+   }
+  },
+  {
+   "id": "lambda",
+   "name": "Lambda",
+   "cards": [
+    "A100",
+    "B200",
+    "GH200",
+    "H100"
+   ],
+   "markets": [
+    "on_demand"
+   ],
+   "quotes": 4,
+   "cheapest": {
+    "card": "GH200",
+    "market": "on_demand",
+    "usd_per_gpu_hour": 2.29,
+    "source_url": "https://lambda.ai/instances"
+   }
+  },
+  {
+   "id": "ovh",
+   "name": "Ovh",
+   "cards": [
+    "A100",
+    "H100",
+    "H200",
+    "L40S"
+   ],
+   "markets": [
+    "on_demand"
+   ],
+   "quotes": 4,
+   "cheapest": {
+    "card": "L40S",
+    "market": "on_demand",
+    "usd_per_gpu_hour": 1.8,
+    "source_url": "https://www.ovhcloud.com/en/public-cloud/prices/"
+   }
+  },
+  {
+   "id": "primeintellect",
+   "name": "Primeintellect",
+   "cards": [
+    "B200",
+    "B300",
+    "H100",
+    "H200"
+   ],
+   "markets": [
+    "on_demand",
+    "spot"
+   ],
+   "quotes": 5,
+   "cheapest": {
+    "card": "H100",
+    "market": "spot",
+    "usd_per_gpu_hour": 0.94,
+    "source_url": "https://www.primeintellect.ai/"
+   }
+  },
+  {
+   "id": "replicate",
+   "name": "Replicate",
+   "cards": [
+    "A100",
+    "H100",
+    "H200",
+    "L40S"
+   ],
+   "markets": [
+    "serverless"
+   ],
+   "quotes": 4,
+   "cheapest": {
+    "card": "L40S",
+    "market": "serverless",
+    "usd_per_gpu_hour": 3.51,
+    "source_url": "https://replicate.com/pricing"
+   }
+  },
+  {
+   "id": "together",
+   "name": "Together AI",
+   "cards": [
+    "B200",
+    "B300",
+    "H100",
+    "H200"
+   ],
+   "markets": [
+    "on_demand",
+    "spot"
+   ],
+   "quotes": 8,
+   "cheapest": {
+    "card": "H100",
+    "market": "spot",
+    "usd_per_gpu_hour": 1.99,
+    "source_url": "https://www.together.ai/pricing"
+   }
+  },
+  {
+   "id": "vultr",
+   "name": "Vultr",
+   "cards": [
+    "A100",
+    "B200",
+    "H100",
+    "L40S"
+   ],
+   "markets": [
+    "on_demand",
+    "spot"
+   ],
+   "quotes": 4,
+   "cheapest": {
+    "card": "L40S",
+    "market": "on_demand",
+    "usd_per_gpu_hour": 1.671,
+    "source_url": "https://api.vultr.com/v2/plans?type=all&per_page=500"
+   }
+  },
+  {
+   "id": "baseten",
+   "name": "Baseten",
+   "cards": [
+    "A100",
+    "B200",
+    "H100"
+   ],
+   "markets": [
+    "serverless"
+   ],
+   "quotes": 3,
+   "cheapest": {
+    "card": "A100",
+    "market": "serverless",
+    "usd_per_gpu_hour": 4.0,
+    "source_url": "https://www.baseten.co/pricing/"
+   }
+  },
+  {
+   "id": "gmicloud",
+   "name": "Gmicloud",
+   "cards": [
+    "B200",
+    "H100",
+    "H200"
+   ],
+   "markets": [
+    "on_demand"
+   ],
+   "quotes": 3,
+   "cheapest": {
+    "card": "H100",
+    "market": "on_demand",
+    "usd_per_gpu_hour": 2.6,
+    "source_url": "https://www.gmicloud.ai/en/pricing"
+   }
+  },
+  {
+   "id": "hyperai",
+   "name": "Hyperai",
+   "cards": [
+    "H100",
+    "RTX 5090",
+    "RTX PRO 6000"
+   ],
+   "markets": [
+    "on_demand"
+   ],
+   "quotes": 3,
+   "cheapest": {
+    "card": "RTX 5090",
+    "market": "on_demand",
+    "usd_per_gpu_hour": 0.35,
+    "source_url": "https://hyper.ai/en/pricing"
+   }
+  },
+  {
+   "id": "latitude",
+   "name": "Latitude",
+   "cards": [
+    "B300",
+    "H100",
+    "RTX PRO 6000"
+   ],
+   "markets": [
+    "on_demand",
+    "reserved"
+   ],
+   "quotes": 6,
+   "cheapest": {
+    "card": "H100",
+    "market": "reserved",
+    "usd_per_gpu_hour": 1.443893,
+    "source_url": "https://www.latitude.sh/pricing"
+   }
+  },
+  {
+   "id": "scaleway",
+   "name": "Scaleway",
+   "cards": [
+    "B300",
+    "H100",
+    "L40S"
+   ],
+   "markets": [
+    "on_demand"
+   ],
+   "quotes": 3,
+   "cheapest": {
+    "card": "L40S",
+    "market": "on_demand",
+    "usd_per_gpu_hour": 1.6365,
+    "source_url": "https://www.scaleway.com/en/pricing/gpu/"
+   }
+  },
+  {
+   "id": "tensordock",
+   "name": "Tensordock",
+   "cards": [
+    "A100",
+    "H100",
+    "RTX 4090"
+   ],
+   "markets": [
+    "on_demand",
+    "spot"
+   ],
+   "quotes": 4,
+   "cheapest": {
+    "card": "RTX 4090",
+    "market": "on_demand",
+    "usd_per_gpu_hour": 0.35,
+    "source_url": "https://www.tensordock.com/cloud-gpus.html"
+   }
+  },
+  {
+   "id": "azure",
+   "name": "Azure",
+   "cards": [
+    "A100",
+    "H100"
+   ],
+   "markets": [
+    "on_demand",
+    "spot"
+   ],
+   "quotes": 4,
+   "cheapest": {
+    "card": "A100",
+    "market": "spot",
+    "usd_per_gpu_hour": 0.738059,
+    "source_url": "https://prices.azure.com/api/retail/prices"
+   }
+  },
+  {
+   "id": "salad",
+   "name": "Salad",
+   "cards": [
+    "RTX 4090",
+    "RTX 5090"
+   ],
+   "markets": [
+    "community"
+   ],
+   "quotes": 2,
+   "cheapest": {
+    "card": "RTX 4090",
+    "market": "community",
+    "usd_per_gpu_hour": 0.16,
+    "source_url": "https://salad.com/pricing"
+   }
+  },
+  {
+   "id": "synteq",
+   "name": "Synteq",
+   "cards": [
+    "B300",
+    "RTX PRO 6000"
+   ],
+   "markets": [
+    "reserved"
+   ],
+   "quotes": 2,
+   "cheapest": {
+    "card": "RTX PRO 6000",
+    "market": "reserved",
+    "usd_per_gpu_hour": 1.212329,
+    "source_url": "https://synteq.com/api/catalog/vps"
+   }
+  },
+  {
+   "id": "thundercompute",
+   "name": "Thunder Compute",
+   "cards": [
+    "A100",
+    "H100"
+   ],
+   "markets": [
+    "on_demand"
+   ],
+   "quotes": 2,
+   "cheapest": {
+    "card": "A100",
+    "market": "on_demand",
+    "usd_per_gpu_hour": 1.09,
+    "source_url": "https://www.thundercompute.com/pricing"
+   }
+  },
+  {
+   "id": "hotaisle",
+   "name": "Hotaisle",
+   "cards": [
+    "MI300X"
+   ],
+   "markets": [
+    "on_demand"
+   ],
+   "quotes": 1,
+   "cheapest": {
+    "card": "MI300X",
+    "market": "on_demand",
+    "usd_per_gpu_hour": 2.99,
+    "source_url": "https://hotaisle.xyz/pricing"
+   }
+  },
+  {
+   "id": "voltagepark",
+   "name": "Voltage Park",
+   "cards": [
+    "H100"
+   ],
+   "markets": [
+    "on_demand"
+   ],
+   "quotes": 1,
+   "cheapest": {
+    "card": "H100",
+    "market": "on_demand",
+    "usd_per_gpu_hour": 1.99,
+    "source_url": "https://support.voltagepark.com/article/example-deploying-gpt-oss-on-voltage-park"
+   }
+  }
+ ]
+}

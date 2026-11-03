@@ -1,5 +1,12 @@
 # CONTEXT
 
+## 2026-11-03 GPU 供给全景与证据链
+
+- 新增 11 张关键卡的 `GPU 供给全景`：单卡下拉 + 市场切换（on-demand/spot/reserved/community/marketplace/serverless），不再为每张卡堆一张图。
+- 主 neocloud 中位统一为正规 on-demand（on-demand/secure）；community/spot/marketplace/serverless 单列，不进主中位。Supply 时钟同步收紧口径。
+- 新增周度 chain-linked base-100、provisional/final、provider 门槛、receipts；公开 `public/data/{prices,gpus,providers,price-index,changelog,manifest}.json`，页面可下载本周回执 CSV。
+- 数据截至日与构建日分开显示；滞后超过 2 天标 `数据滞后`，不把旧快照说成当天。
+
 ## 2026-10-27 可用率轨道提频至 4 天
 
 - 稀缺度/广度最新点滞后从最多 6 天压到约 4 天：availability 阈值 6.0 → 4.0；7 天窗口内 ≥3 天重叠，逐日零丢失不变。

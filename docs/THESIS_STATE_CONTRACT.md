@@ -11,6 +11,7 @@
 ## Supply Price
 
 - Chart：固定配置 panel >=10 个有效日。
+- Neocloud 面板只取正规 on-demand（on-demand/secure）；community 与 spot 不入主面板，单独展示。
 - Inflection Watch：至少两个 frontier GPU panel 30D 跌幅 >=10%，且订单簿 >=20 日、深度增长 >=10%。
 - Confirmed：至少两个 panel 具备 90D 资格且持续跌幅 >=15%。
 

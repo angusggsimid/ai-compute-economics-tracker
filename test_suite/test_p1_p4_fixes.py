@@ -25,7 +25,7 @@ from build_time_series_dashboard import (  # noqa: E402
     build_snapshot,
 )
 
-KINDS = {"on-demand", "secure", "community"}
+KINDS = {"on-demand", "secure"}
 
 
 # ---------- P2.1 财政季→日历季映射 ----------
@@ -167,9 +167,10 @@ def test_p25_p75_undefined_when_fewer_than_four_providers():
     assert out["low"] == 1.0 and out["high"] == 9.0, "全距仍须保留"
 
 
-def test_spot_and_serverless_kinds_are_excluded():
+def test_non_rate_card_kinds_are_excluded():
     rows = [_offer("2026-09-27", "a", 1.0), _offer("2026-09-27", "b", 5.0),
-            _offer("2026-09-27", "c", 0.01, kind="spot"), _offer("2026-09-27", "d", 99.0, kind="serverless")]
+            _offer("2026-09-27", "c", 0.01, kind="spot"), _offer("2026-09-27", "d", 99.0, kind="serverless"),
+            _offer("2026-09-27", "e", 0.02, kind="community")]
     out = _gpu_from_neocloud(rows)["prices"][0]
     assert out["providerCount"] == 2
     assert out["high"] == 5.0

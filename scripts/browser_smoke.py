@@ -99,6 +99,27 @@ def _mobile_price_chart_fits(page) -> bool:
     return bool(dims) and abs(dims["viewBox"] - dims["host"]) <= 2 and dims["height"] >= 300
 
 
+def _landscape_works(page) -> bool:
+    card = page.locator("#landscape-card")
+    markets = page.locator("#landscape-market button")
+    if card.count() != 1 or markets.count() != 6:
+        return False
+    if page.locator("#landscape-all-body tr").count() < 8:
+        return False
+    before = page.locator("#landscape-chart svg path").first.get_attribute("d")
+    card.select_option(index=2)
+    page.wait_for_timeout(250)
+    after = page.locator("#landscape-chart svg path").first.get_attribute("d")
+    kpi = page.locator("#landscape-kpis").inner_text()
+    page.locator('#landscape-market button[data-market="spot"]').click()
+    page.wait_for_timeout(250)
+    spot = page.locator("#landscape-kpis").inner_text()
+    page.locator('#landscape-market button[data-market="on_demand"]').click()
+    page.locator("#landscape-card").select_option(index=0)
+    page.wait_for_timeout(200)
+    return bool(before and after and before != after and len(kpi) > 20 and "Spot" in spot)
+
+
 def _event_markers_reach_primary_charts(page) -> bool:
     return (
         page.locator("#gpu-price-h100 .event-marker").count() > 0
@@ -240,6 +261,7 @@ def main() -> int:
                 "event_toggle_hides_markers": _event_toggle_works(page),
                 "event_markers_on_primary_charts": _event_markers_reach_primary_charts(page),
                 "event_tooltip_on_price_chart": _event_tooltip_on_price_chart(page),
+                "landscape_switches": _landscape_works(page),
                 "sandbox_redraws": _sandbox_redraws(page),
                 "sandbox_correlation_symmetric": _sandbox_correlation_is_symmetric(page),
                 "sandbox_respects_range": _sandbox_respects_range(page),
