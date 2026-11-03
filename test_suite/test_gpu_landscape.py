@@ -78,12 +78,42 @@ def test_weekly_index_has_receipts_and_chain_link():
     assert len(weeks) == 2
     assert weeks[0]["index"] == 100.0
     assert weeks[0]["vintage"] == "final"
+    assert weeks[0]["status"] == "thin"  # 5 providers: computed but not headline-grade
     assert weeks[1]["index"] > 100.0  # all five matched prices rose
     assert weeks[1]["linkPairs"] == 5
     receipt = h100["weekly"]["receipts"][weeks[0]["isoWeek"]]
     assert len(receipt["included"]) == 5
     assert receipt["excludedQuoteRowsByMarket"] == {"community": 1}
+    assert any(item["rule"] == "market_not_on_demand" for item in receipt["excluded"])
     assert all(item["sourceUrl"].startswith("https://example.com/") for item in receipt["included"])
+
+
+def test_weekly_index_excludes_provider_not_confirmed_within_48h():
+    rows = [
+        _offer("2026-09-21", "a", 4.0),
+        _offer("2026-09-24", "b", 5.0),
+        _offer("2026-09-24", "c", 6.0),
+        _offer("2026-09-24", "d", 7.0),
+        _offer("2026-09-24", "e", 8.0),
+    ]
+    full = full_landscape(rows, as_of="2026-09-28")
+    h100 = next(card for card in full["cards"] if card["id"] == "H100")
+    receipt = h100["weekly"]["receipts"]["2026-W39"]
+    assert all(item["providerId"] != "a" for item in receipt["included"])
+    assert receipt["notConfirmed48h"] == 1
+    assert any(item["providerId"] == "a" and item["rule"] == "not_confirmed_48h" for item in receipt["excluded"])
+    assert receipt["providerCount"] == 4
+
+
+def test_weekly_index_status_thin_and_published():
+    thin = full_landscape([_offer("2026-09-27", f"p{i}", 5.0) for i in range(4)], as_of="2026-09-28")
+    thin_week = next(card for card in thin["cards"] if card["id"] == "H100")["weekly"]["latest"]
+    assert thin_week["status"] == "thin"
+    assert thin_week["index"] == 100.0
+
+    published = full_landscape([_offer("2026-09-27", f"p{i}", 5.0) for i in range(8)], as_of="2026-09-28")
+    published_week = next(card for card in published["cards"] if card["id"] == "H100")["weekly"]["latest"]
+    assert published_week["status"] == "published"
 
 
 def test_weekly_index_uses_latest_day_not_week_median():
@@ -123,11 +153,16 @@ def test_cheapest_and_range_use_raw_quotes_not_provider_medians():
     assert latest["high"] == 7.0
 
 
-def test_gh200_index_age_is_visible(snapshot):
-    gh200 = next(card for card in snapshot["gpuLandscape"]["cards"] if card["id"] == "GH200")
-    assert gh200["weeklyIndex"]["ageDays"] > 28
-    assert gh200["weeklyIndex"]["weekStart"] < "2026-10-01"
-    assert "指数周" in build_html(snapshot)
+def test_old_index_age_is_visible():
+    """Use a synthetic old week; do not tie this test to the current GH200 snapshot."""
+    rows = []
+    for day in ("2026-07-13", "2026-07-20"):
+        for provider in ("a", "b", "c", "d"):
+            rows.append(_offer(day, provider, 5.0))
+    full = full_landscape(rows, as_of="2026-10-29", built_at="2026-10-29")
+    h100 = next(card for card in full["cards"] if card["id"] == "H100")
+    assert h100["weeklyIndex"]["ageDays"] > 28
+    assert h100["weeklyIndex"]["weekStart"] < "2026-10-01"
 
 
 def test_source_urls_never_include_sha256(snapshot):

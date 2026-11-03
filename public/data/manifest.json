@@ -1,9 +1,9 @@
 {
  "name": "AI Compute Economics - public GPU supply data",
- "generated_at": "2026-11-03T14:43:10Z",
+ "generated_at": "2026-11-03T14:55:08Z",
  "data_as_of": "2026-10-29",
  "data_age_days": 5,
- "methodology_version": "2026-11-03.1",
+ "methodology_version": "2026-11-03.2",
  "license": "Project data. Underlying neocloud rows are CC BY 4.0; see the dashboard source panel.",
  "attribution": "AI Compute Economics; underlying provider prices from the tracked provider pages.",
  "files": [
@@ -34,6 +34,7 @@
   "p25_p75": "quartiles across provider medians; omitted when fewer than 4 providers",
   "status": "live if within 2 days of data as-of; unconfirmed within 7 days; stopped otherwise",
   "vintage": "provisional for the current ISO week; final after the week closes",
+  "index": "published at >=8 confirmed providers; thin at 4-7; withheld below 4; only the provider's latest day in the week, confirmed within 2 days of the week's last day",
   "risk": "low for on-demand/reserved; medium for serverless/shared; high for spot/community/marketplace floor",
   "price_scope": "rate_card is a listed rate normalized to one GPU; instance vs GPU-only scope is not retained in this version; marketplace_floor and serverless are separate"
  }

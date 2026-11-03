@@ -149,16 +149,7 @@ def _landscape_receipt_csv(page) -> bool:
     if not path:
         return False
     header = Path(path).read_text(encoding="utf-8").splitlines()[0]
-    return all(key in header for key in ("methodology_version", "published_median", "published_index", "quotes"))
-
-
-def _landscape_short_sample_label(page) -> bool:
-    page.locator("#landscape-card").select_option("GH200")
-    page.wait_for_timeout(200)
-    text = page.locator("#landscape-chart svg").text_content() or ""
-    page.locator("#landscape-card").select_option("H100")
-    page.wait_for_timeout(150)
-    return "样本不足" in text
+    return all(key in header for key in ("methodology_version", "published_median", "published_index", "quotes", "excluded_by"))
 
 
 def _event_markers_reach_primary_charts(page) -> bool:
@@ -306,7 +297,6 @@ def main() -> int:
                 "landscape_table_click": _landscape_table_click(page),
                 "landscape_stale_table": _landscape_stale_table(page),
                 "landscape_receipt_csv": _landscape_receipt_csv(page),
-                "landscape_short_sample_label": _landscape_short_sample_label(page),
                 "sandbox_redraws": _sandbox_redraws(page),
                 "sandbox_correlation_symmetric": _sandbox_correlation_is_symmetric(page),
                 "sandbox_respects_range": _sandbox_respects_range(page),

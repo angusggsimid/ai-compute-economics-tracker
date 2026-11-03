@@ -13,9 +13,11 @@ from statistics import median, quantiles
 from typing import Any, Dict, List, Optional, Tuple
 
 
-METHODOLOGY_VERSION = "2026-11-03.1"
+METHODOLOGY_VERSION = "2026-11-03.2"
 MIN_PROVIDERS = 4
 INDEX_MIN_PROVIDERS = 4
+INDEX_PUBLISH_MIN = 8
+INDEX_CONFIRM_DAYS = 2
 
 CARDS: List[Dict[str, Any]] = [
     {"id": "H100", "name": "H100 80GB", "vramGb": 80, "family": "Hopper"},
@@ -279,7 +281,7 @@ def _market_series(
 def _weekly_index(rows: List[Dict[str, Any]], as_of: str) -> Dict[str, Any]:
     """Weekly on-demand index per card, with chain-linked base-100 and receipts."""
     by_week_provider: Dict[str, Dict[str, Dict[str, Any]]] = defaultdict(dict)
-    excluded_by_week: Dict[str, Dict[str, int]] = defaultdict(lambda: defaultdict(int))
+    excluded_by_week: Dict[str, List[Dict[str, Any]]] = defaultdict(list)
     for row in rows:
         kind = str(row.get("kind") or "").lower()
         day = str(row["date"])
@@ -287,7 +289,15 @@ def _weekly_index(rows: List[Dict[str, Any]], as_of: str) -> Dict[str, Any]:
         if kind not in MARKET_BY_ID["on_demand"]["kinds"]:
             market_id = KIND_TO_MARKET.get(kind)
             if market_id:
-                excluded_by_week[iso_week][market_id] += 1
+                excluded_by_week[iso_week].append({
+                    "provider": provider_label(str(row["provider"])),
+                    "providerId": str(row["provider"]),
+                    "market": market_id,
+                    "value": round(float(row["usdPerGpuHour"]), 6),
+                    "date": day,
+                    "sourceUrl": str(row.get("sourceUrl") or ""),
+                    "rule": "market_not_on_demand",
+                })
             continue
         provider = str(row["provider"])
         slot = by_week_provider[iso_week].setdefault(provider, {
@@ -310,19 +320,39 @@ def _weekly_index(rows: List[Dict[str, Any]], as_of: str) -> Dict[str, Any]:
     last_published_providers: Dict[str, float] = {}
     for iso_week in sorted(by_week_provider):
         entries = by_week_provider[iso_week]
-        sample = next(iter(entries.values()))
-        week_start, _, week_end = _iso_week(sample["date"])
-        provider_values = {provider: round(median(item["values"]), 6) for provider, item in entries.items()}
+        week_last_day = max(item["date"] for item in entries.values())
+        week_start, _, week_end = _iso_week(week_last_day)
+        confirmed: Dict[str, Dict[str, Any]] = {}
+        stale: List[Dict[str, Any]] = []
+        for provider, item in entries.items():
+            age = (date.fromisoformat(week_last_day) - date.fromisoformat(item["date"])).days
+            if age <= INDEX_CONFIRM_DAYS:
+                confirmed[provider] = item
+            else:
+                stale.append({
+                    "provider": provider_label(provider),
+                    "providerId": provider,
+                    "market": "on_demand",
+                    "value": round(median(item["values"]), 6),
+                    "date": item["date"],
+                    "sourceUrl": item["sourceUrl"],
+                    "rule": "not_confirmed_48h",
+                })
+        provider_values = {provider: round(median(item["values"]), 6) for provider, item in confirmed.items()}
         values = sorted(provider_values.values())
         p25, p75 = _quartiles(values)
         vintage = "final" if week_end < as_of else "provisional"
-        withheld_reason = None
-        if len(values) < INDEX_MIN_PROVIDERS:
-            withheld_reason = f"only {len(values)} providers (needs >={INDEX_MIN_PROVIDERS})"
+        if len(values) >= INDEX_PUBLISH_MIN:
+            status = "published"
+        elif len(values) >= INDEX_MIN_PROVIDERS:
+            status = "thin"
+        else:
+            status = "withheld"
+        withheld_reason = None if status != "withheld" else f"only {len(values)} confirmed providers (needs >={INDEX_MIN_PROVIDERS})"
         median_value = round(median(values), 6) if values else None
         index: Optional[float] = None
         link_pairs = 0
-        if withheld_reason is None:
+        if status != "withheld":
             if last_index is None:
                 index = 100.0
             else:
@@ -344,16 +374,24 @@ def _weekly_index(rows: List[Dict[str, Any]], as_of: str) -> Dict[str, Any]:
                 "provider": provider_label(provider),
                 "providerId": provider,
                 "value": value,
-                "date": entries[provider]["date"],
-                "sourceUrl": entries[provider]["sourceUrl"],
-                "quotes": len(entries[provider]["values"]),
+                "date": confirmed[provider]["date"],
+                "sourceUrl": confirmed[provider]["sourceUrl"],
+                "quotes": len(confirmed[provider]["values"]),
             }
             for provider, value in sorted(provider_values.items(), key=lambda item: item[1])
         ]
+        excluded = sorted(
+            excluded_by_week.get(iso_week, []) + stale,
+            key=lambda item: (item["date"], item["providerId"], item["market"]),
+        )
+        excluded_counts: Dict[str, int] = defaultdict(int)
+        for item in excluded_by_week.get(iso_week, []):
+            excluded_counts[str(item["market"])] += 1
         receipts[iso_week] = {
             "weekStart": week_start,
             "weekEnd": week_end,
             "vintage": vintage,
+            "status": status,
             "methodologyVersion": METHODOLOGY_VERSION,
             "median": median_value,
             "p25": p25,
@@ -362,13 +400,16 @@ def _weekly_index(rows: List[Dict[str, Any]], as_of: str) -> Dict[str, Any]:
             "index": index,
             "linkPairs": link_pairs,
             "withheldReason": withheld_reason,
+            "notConfirmed48h": len(stale),
             "included": included,
-            "excludedQuoteRowsByMarket": dict(excluded_by_week.get(iso_week, {})),
+            "excluded": excluded,
+            "excludedQuoteRowsByMarket": dict(excluded_counts),
         }
         weeks.append({
             "weekStart": week_start,
             "isoWeek": iso_week,
             "vintage": vintage,
+            "status": status,
             "methodologyVersion": METHODOLOGY_VERSION,
             "median": median_value,
             "p25": p25,
@@ -389,6 +430,8 @@ def _weekly_index(rows: List[Dict[str, Any]], as_of: str) -> Dict[str, Any]:
         "receipts": receipts,
         "latest": latest,
         "minProviders": INDEX_MIN_PROVIDERS,
+        "publishMin": INDEX_PUBLISH_MIN,
+        "confirmDays": INDEX_CONFIRM_DAYS,
     }
 
 
@@ -441,6 +484,8 @@ def full_landscape(rows: List[Dict[str, Any]], as_of: Optional[str] = None, buil
         "methodologyVersion": METHODOLOGY_VERSION,
         "minProviders": MIN_PROVIDERS,
         "indexMinProviders": INDEX_MIN_PROVIDERS,
+        "indexPublishMin": INDEX_PUBLISH_MIN,
+        "indexConfirmDays": INDEX_CONFIRM_DAYS,
         "cards": cards,
         "markets": MARKETS,
     }
@@ -494,6 +539,8 @@ def trim_landscape(full: Dict[str, Any]) -> Dict[str, Any]:
         "methodologyVersion": full["methodologyVersion"],
         "minProviders": full["minProviders"],
         "indexMinProviders": full["indexMinProviders"],
+        "indexPublishMin": full.get("indexPublishMin"),
+        "indexConfirmDays": full.get("indexConfirmDays"),
         "cards": cards,
         "markets": full["markets"],
     }
@@ -666,6 +713,8 @@ def public_index(full: Dict[str, Any]) -> Dict[str, Any]:
         "as_of": full["asOf"],
         "methodology_version": full["methodologyVersion"],
         "index_min_providers": full["indexMinProviders"],
+        "index_publish_min": full.get("indexPublishMin"),
+        "index_confirm_days": full.get("indexConfirmDays"),
         "cards": cards,
     }
 
@@ -692,6 +741,7 @@ def public_manifest(full: Dict[str, Any], generated_at: str) -> Dict[str, Any]:
             "p25_p75": "quartiles across provider medians; omitted when fewer than 4 providers",
             "status": "live if within 2 days of data as-of; unconfirmed within 7 days; stopped otherwise",
             "vintage": "provisional for the current ISO week; final after the week closes",
+            "index": "published at >=8 confirmed providers; thin at 4-7; withheld below 4; only the provider's latest day in the week, confirmed within 2 days of the week's last day",
             "risk": "low for on-demand/reserved; medium for serverless/shared; high for spot/community/marketplace floor",
             "price_scope": "rate_card is a listed rate normalized to one GPU; instance vs GPU-only scope is not retained in this version; marketplace_floor and serverless are separate",
         },
@@ -713,6 +763,7 @@ def public_changelog(full: Dict[str, Any]) -> Dict[str, Any]:
                 "week_start": week["weekStart"],
                 "iso_week": week["isoWeek"],
                 "vintage": week["vintage"],
+                "status": week["status"],
                 "median": week["median"],
                 "p25": week["p25"],
                 "p75": week["p75"],
