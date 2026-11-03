@@ -199,19 +199,28 @@ def _market_series(
         per_provider = _provider_medians(by_day_provider[day])
         values = sorted(per_provider.values())
         p25, p75 = _quartiles(values)
-        cheapest_provider = min(per_provider, key=per_provider.get)
+        raw_items = [
+            (provider, float(price))
+            for provider, prices in by_day_provider[day].items()
+            for price in prices
+        ]
+        raw_values = sorted(price for _, price in raw_items)
+        cheapest_provider, cheapest_value = min(raw_items, key=lambda item: item[1])
         daily.append({
             "date": day,
             "series": market["id"],
             "value": round(median(values), 6),
             "p25": p25,
             "p75": p75,
-            "low": round(values[0], 6),
-            "high": round(values[-1], 6),
+            "low": round(raw_values[0], 6),
+            "high": round(raw_values[-1], 6),
             "providerCount": len(values),
+            "quoteCount": len(raw_items),
             "medianSynthetic": len(values) % 2 == 0,
             "cheapestProvider": provider_label(cheapest_provider),
-            "cheapestValue": round(per_provider[cheapest_provider], 6),
+            "cheapestProviderId": cheapest_provider,
+            "cheapestValue": round(cheapest_value, 6),
+            "cheapestSourceUrl": source_by_day_provider.get((day, cheapest_provider), ""),
         })
     _moving_average(daily)
 
@@ -287,10 +296,13 @@ def _weekly_index(rows: List[Dict[str, Any]], as_of: str) -> Dict[str, Any]:
             "date": day,
             "sourceUrl": str(row.get("sourceUrl") or ""),
         })
-        slot["values"].append(float(row["usdPerGpuHour"]))
         if day > slot["date"]:
+            # 周度指数取该周最新一天的 provider 报价；同一天多个配置再取中位。
+            slot["values"] = [float(row["usdPerGpuHour"])]
             slot["date"] = day
             slot["sourceUrl"] = str(row.get("sourceUrl") or "")
+        elif day == slot["date"]:
+            slot["values"].append(float(row["usdPerGpuHour"]))
 
     weeks: List[Dict[str, Any]] = []
     receipts: Dict[str, Dict[str, Any]] = {}
@@ -334,6 +346,7 @@ def _weekly_index(rows: List[Dict[str, Any]], as_of: str) -> Dict[str, Any]:
                 "value": value,
                 "date": entries[provider]["date"],
                 "sourceUrl": entries[provider]["sourceUrl"],
+                "quotes": len(entries[provider]["values"]),
             }
             for provider, value in sorted(provider_values.items(), key=lambda item: item[1])
         ]
@@ -369,6 +382,8 @@ def _weekly_index(rows: List[Dict[str, Any]], as_of: str) -> Dict[str, Any]:
 
     published = [week for week in weeks if week["index"] is not None]
     latest = published[-1] if published else None
+    if latest is not None:
+        latest["ageDays"] = (date.fromisoformat(as_of) - date.fromisoformat(latest["weekStart"])).days
     return {
         "weeks": weeks,
         "receipts": receipts,
@@ -507,11 +522,12 @@ def public_prices(full: Dict[str, Any]) -> Dict[str, Any]:
                     "date": latest["date"],
                     "status": market["status"],
                     "source_url": provider["sourceUrl"],
+                    "quotes": provider.get("quotes", 1),
                 })
     return {
         "name": "AI Compute Economics - latest GPU supply quotes",
         "unit": "USD per GPU per hour",
-        "description": "Latest reading per provider, GPU and market. Node prices in the source dataset are already normalized to one GPU; community, spot and marketplace floors are kept separate from the main on-demand median.",
+        "description": "Latest reading per provider, GPU and market, normalized to one GPU. A provider's value is the median of its same-day configurations; quotes records how many rows it rests on. Node prices in the source dataset are already normalized to one GPU; community, spot and marketplace floors are kept separate from the main on-demand median.",
         "as_of": full["asOf"],
         "methodology_version": full["methodologyVersion"],
         "count": len(quotes),
@@ -594,6 +610,26 @@ def public_providers(full: Dict[str, Any]) -> Dict[str, Any]:
                         "market": market_id,
                         "usd_per_gpu_hour": quote["value"],
                         "source_url": quote["sourceUrl"],
+                    }
+            raw_provider = latest.get("cheapestProviderId")
+            raw_value = latest.get("cheapestValue")
+            if raw_provider and isinstance(raw_value, (int, float)):
+                item = by_provider.setdefault(raw_provider, {
+                    "id": raw_provider,
+                    "name": latest.get("cheapestProvider") or raw_provider,
+                    "cards": set(),
+                    "markets": set(),
+                    "quotes": 0,
+                    "cheapest": None,
+                })
+                item["cards"].add(card["id"])
+                item["markets"].add(market_id)
+                if item["cheapest"] is None or raw_value < item["cheapest"]["usd_per_gpu_hour"]:
+                    item["cheapest"] = {
+                        "card": card["id"],
+                        "market": market_id,
+                        "usd_per_gpu_hour": raw_value,
+                        "source_url": latest.get("cheapestSourceUrl", ""),
                     }
     providers = []
     for item in by_provider.values():

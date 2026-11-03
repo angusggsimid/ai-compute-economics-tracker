@@ -1,7 +1,7 @@
 {
  "name": "AI Compute Economics - latest GPU supply quotes",
  "unit": "USD per GPU per hour",
- "description": "Latest reading per provider, GPU and market. Node prices in the source dataset are already normalized to one GPU; community, spot and marketplace floors are kept separate from the main on-demand median.",
+ "description": "Latest reading per provider, GPU and market, normalized to one GPU. A provider's value is the median of its same-day configurations; quotes records how many rows it rests on. Node prices in the source dataset are already normalized to one GPU; community, spot and marketplace floors are kept separate from the main on-demand median.",
  "as_of": "2026-10-29",
  "methodology_version": "2026-11-03.1",
  "count": 238,
@@ -19,7 +19,8 @@
    "usd_per_gpu_hour": 1.19,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.runpod.io/pricing"
+   "source_url": "https://www.runpod.io/pricing",
+   "quotes": 3
   },
   {
    "provider": "Lium",
@@ -34,7 +35,8 @@
    "usd_per_gpu_hour": 1.68,
    "date": "2026-10-25",
    "status": "unconfirmed",
-   "source_url": "https://lium.io/api/public/v1/nodes"
+   "source_url": "https://lium.io/api/public/v1/nodes",
+   "quotes": 1
   },
   {
    "provider": "Thunder Compute",
@@ -49,7 +51,8 @@
    "usd_per_gpu_hour": 1.09,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.thundercompute.com/pricing"
+   "source_url": "https://www.thundercompute.com/pricing",
+   "quotes": 1
   },
   {
    "provider": "Massed Compute",
@@ -64,7 +67,8 @@
    "usd_per_gpu_hour": 1.365,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://massedcompute.com/pricing"
+   "source_url": "https://massedcompute.com/pricing",
+   "quotes": 2
   },
   {
    "provider": "Hyperstack",
@@ -79,7 +83,8 @@
    "usd_per_gpu_hour": 1.475,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.hyperstack.cloud/gpu-pricing"
+   "source_url": "https://www.hyperstack.cloud/gpu-pricing",
+   "quotes": 2
   },
   {
    "provider": "Spheron",
@@ -94,7 +99,8 @@
    "usd_per_gpu_hour": 1.48,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.spheron.network/pricing/"
+   "source_url": "https://www.spheron.network/pricing/",
+   "quotes": 1
   },
   {
    "provider": "Tensordock",
@@ -109,7 +115,8 @@
    "usd_per_gpu_hour": 1.65,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.tensordock.com/cloud-gpus.html"
+   "source_url": "https://www.tensordock.com/cloud-gpus.html",
+   "quotes": 2
   },
   {
    "provider": "RunPod",
@@ -124,7 +131,8 @@
    "usd_per_gpu_hour": 1.79,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.runpod.io/pricing"
+   "source_url": "https://www.runpod.io/pricing",
+   "quotes": 1
   },
   {
    "provider": "Verda",
@@ -139,7 +147,8 @@
    "usd_per_gpu_hour": 1.9095,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://datacrunch.io/pricing"
+   "source_url": "https://datacrunch.io/pricing",
+   "quotes": 2
   },
   {
    "provider": "Crusoe",
@@ -154,7 +163,8 @@
    "usd_per_gpu_hour": 2.15,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.crusoe.ai/cloud/pricing"
+   "source_url": "https://www.crusoe.ai/cloud/pricing",
+   "quotes": 2
   },
   {
    "provider": "Lambda",
@@ -169,7 +179,8 @@
    "usd_per_gpu_hour": 2.39,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://lambda.ai/instances"
+   "source_url": "https://lambda.ai/instances",
+   "quotes": 2
   },
   {
    "provider": "Vultr",
@@ -184,7 +195,8 @@
    "usd_per_gpu_hour": 2.397,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://api.vultr.com/v2/plans?type=all&per_page=500"
+   "source_url": "https://api.vultr.com/v2/plans?type=all&per_page=500",
+   "quotes": 1
   },
   {
    "provider": "CoreWeave",
@@ -199,7 +211,8 @@
    "usd_per_gpu_hour": 2.7,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.coreweave.com/pricing"
+   "source_url": "https://www.coreweave.com/pricing",
+   "quotes": 1
   },
   {
    "provider": "Ovh",
@@ -214,7 +227,8 @@
    "usd_per_gpu_hour": 3.07,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.ovhcloud.com/en/public-cloud/prices/"
+   "source_url": "https://www.ovhcloud.com/en/public-cloud/prices/",
+   "quotes": 1
   },
   {
    "provider": "AWS",
@@ -229,7 +243,8 @@
    "usd_per_gpu_hour": 3.087793,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://b0.p.awsstatic.com/pricing/2.0/meteredUnitMaps/ec2/USD/current/ec2-ondemand-without-sec-sel/US%20East%20(N.%20Virginia)/Linux/index.json"
+   "source_url": "https://b0.p.awsstatic.com/pricing/2.0/meteredUnitMaps/ec2/USD/current/ec2-ondemand-without-sec-sel/US%20East%20(N.%20Virginia)/Linux/index.json",
+   "quotes": 2
   },
   {
    "provider": "Google Cloud",
@@ -244,7 +259,8 @@
    "usd_per_gpu_hour": 3.430994,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://cloud.google.com/products/compute/gpus-pricing?hl=en"
+   "source_url": "https://cloud.google.com/products/compute/gpus-pricing?hl=en",
+   "quotes": 2
   },
   {
    "provider": "Azure",
@@ -259,7 +275,8 @@
    "usd_per_gpu_hour": 3.673,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://prices.azure.com/api/retail/prices"
+   "source_url": "https://prices.azure.com/api/retail/prices",
+   "quotes": 3
   },
   {
    "provider": "Hyperstack",
@@ -274,7 +291,8 @@
    "usd_per_gpu_hour": 1.155,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.hyperstack.cloud/gpu-pricing"
+   "source_url": "https://www.hyperstack.cloud/gpu-pricing",
+   "quotes": 2
   },
   {
    "provider": "Koyeb",
@@ -289,7 +307,8 @@
    "usd_per_gpu_hour": 1.875,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.koyeb.com/pricing"
+   "source_url": "https://www.koyeb.com/pricing",
+   "quotes": 2
   },
   {
    "provider": "Cerebrium",
@@ -304,7 +323,8 @@
    "usd_per_gpu_hour": 2.0484,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.cerebrium.ai/pricing"
+   "source_url": "https://www.cerebrium.ai/pricing",
+   "quotes": 2
   },
   {
    "provider": "Modal",
@@ -319,7 +339,8 @@
    "usd_per_gpu_hour": 2.2986,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://modal.com/pricing"
+   "source_url": "https://modal.com/pricing",
+   "quotes": 2
   },
   {
    "provider": "RunPod",
@@ -334,7 +355,8 @@
    "usd_per_gpu_hour": 2.72,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.runpod.io/pricing"
+   "source_url": "https://www.runpod.io/pricing",
+   "quotes": 1
   },
   {
    "provider": "Baseten",
@@ -349,7 +371,8 @@
    "usd_per_gpu_hour": 4.0,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.baseten.co/pricing/"
+   "source_url": "https://www.baseten.co/pricing/",
+   "quotes": 1
   },
   {
    "provider": "Replicate",
@@ -364,7 +387,8 @@
    "usd_per_gpu_hour": 5.04,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://replicate.com/pricing"
+   "source_url": "https://replicate.com/pricing",
+   "quotes": 1
   },
   {
    "provider": "Azure",
@@ -379,7 +403,8 @@
    "usd_per_gpu_hour": 0.738059,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://prices.azure.com/api/retail/prices"
+   "source_url": "https://prices.azure.com/api/retail/prices",
+   "quotes": 5
   },
   {
    "provider": "Verda",
@@ -394,7 +419,8 @@
    "usd_per_gpu_hour": 0.95475,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://datacrunch.io/pricing"
+   "source_url": "https://datacrunch.io/pricing",
+   "quotes": 2
   },
   {
    "provider": "Spheron",
@@ -409,7 +435,8 @@
    "usd_per_gpu_hour": 1.19,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.spheron.network/pricing/"
+   "source_url": "https://www.spheron.network/pricing/",
+   "quotes": 1
   },
   {
    "provider": "AWS",
@@ -424,7 +451,8 @@
    "usd_per_gpu_hour": 1.633338,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://website.spot.ec2.aws.a2z.com/spot.js"
+   "source_url": "https://website.spot.ec2.aws.a2z.com/spot.js",
+   "quotes": 1
   },
   {
    "provider": "Google Cloud",
@@ -439,7 +467,8 @@
    "usd_per_gpu_hour": 2.01455,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://cloud.google.com/products/compute/gpus-pricing?hl=en"
+   "source_url": "https://cloud.google.com/products/compute/gpus-pricing?hl=en",
+   "quotes": 2
   },
   {
    "provider": "RunPod",
@@ -454,7 +483,8 @@
    "usd_per_gpu_hour": 5.98,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.runpod.io/pricing"
+   "source_url": "https://www.runpod.io/pricing",
+   "quotes": 1
   },
   {
    "provider": "Lium",
@@ -469,7 +499,8 @@
    "usd_per_gpu_hour": 6.05,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://lium.io/api/public/v1/nodes"
+   "source_url": "https://lium.io/api/public/v1/nodes",
+   "quotes": 5
   },
   {
    "provider": "Primeintellect",
@@ -484,7 +515,8 @@
    "usd_per_gpu_hour": 3.49,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.primeintellect.ai/"
+   "source_url": "https://www.primeintellect.ai/",
+   "quotes": 1
   },
   {
    "provider": "Hyperstack",
@@ -499,7 +531,8 @@
    "usd_per_gpu_hour": 6.0,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.hyperstack.cloud/gpu-pricing"
+   "source_url": "https://www.hyperstack.cloud/gpu-pricing",
+   "quotes": 1
   },
   {
    "provider": "Daytona",
@@ -514,7 +547,8 @@
    "usd_per_gpu_hour": 6.25,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://billing.app.daytona.io/gpu-pricing"
+   "source_url": "https://billing.app.daytona.io/gpu-pricing",
+   "quotes": 1
   },
   {
    "provider": "Gmicloud",
@@ -529,7 +563,8 @@
    "usd_per_gpu_hour": 6.5,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.gmicloud.ai/en/pricing"
+   "source_url": "https://www.gmicloud.ai/en/pricing",
+   "quotes": 2
   },
   {
    "provider": "Lambda",
@@ -544,7 +579,8 @@
    "usd_per_gpu_hour": 6.84,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://lambda.ai/instances"
+   "source_url": "https://lambda.ai/instances",
+   "quotes": 4
   },
   {
    "provider": "RunPod",
@@ -559,7 +595,8 @@
    "usd_per_gpu_hour": 7.99,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.runpod.io/pricing"
+   "source_url": "https://www.runpod.io/pricing",
+   "quotes": 1
   },
   {
    "provider": "Together AI",
@@ -574,7 +611,8 @@
    "usd_per_gpu_hour": 8.19,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.together.ai/pricing"
+   "source_url": "https://www.together.ai/pricing",
+   "quotes": 1
   },
   {
    "provider": "Nebius",
@@ -589,7 +627,8 @@
    "usd_per_gpu_hour": 8.5,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://docs.nebius.com/compute/resources/pricing"
+   "source_url": "https://docs.nebius.com/compute/resources/pricing",
+   "quotes": 1
   },
   {
    "provider": "CoreWeave",
@@ -604,7 +643,8 @@
    "usd_per_gpu_hour": 8.6,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.coreweave.com/pricing"
+   "source_url": "https://www.coreweave.com/pricing",
+   "quotes": 1
   },
   {
    "provider": "Verda",
@@ -619,7 +659,8 @@
    "usd_per_gpu_hour": 8.781,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://datacrunch.io/pricing"
+   "source_url": "https://datacrunch.io/pricing",
+   "quotes": 1
   },
   {
    "provider": "Spheron",
@@ -634,7 +675,8 @@
    "usd_per_gpu_hour": 11.12,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.spheron.network/pricing/"
+   "source_url": "https://www.spheron.network/pricing/",
+   "quotes": 1
   },
   {
    "provider": "Google Cloud",
@@ -649,7 +691,8 @@
    "usd_per_gpu_hour": 16.11,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://cloud.google.com/products/compute/gpus-pricing?hl=en"
+   "source_url": "https://cloud.google.com/products/compute/gpus-pricing?hl=en",
+   "quotes": 1
   },
   {
    "provider": "Impossiblecloud",
@@ -664,7 +707,8 @@
    "usd_per_gpu_hour": 4.631579,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.impossiblecloud.com/en-us/baremetal"
+   "source_url": "https://www.impossiblecloud.com/en-us/baremetal",
+   "quotes": 5
   },
   {
    "provider": "Hyperstack",
@@ -679,7 +723,8 @@
    "usd_per_gpu_hour": 5.1,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.hyperstack.cloud/gpu-pricing"
+   "source_url": "https://www.hyperstack.cloud/gpu-pricing",
+   "quotes": 1
   },
   {
    "provider": "Koyeb",
@@ -694,7 +739,8 @@
    "usd_per_gpu_hour": 5.5,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.koyeb.com/pricing"
+   "source_url": "https://www.koyeb.com/pricing",
+   "quotes": 1
   },
   {
    "provider": "Cerebrium",
@@ -709,7 +755,8 @@
    "usd_per_gpu_hour": 6.012,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.cerebrium.ai/pricing"
+   "source_url": "https://www.cerebrium.ai/pricing",
+   "quotes": 1
   },
   {
    "provider": "Modal",
@@ -724,7 +771,8 @@
    "usd_per_gpu_hour": 6.2496,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://modal.com/pricing"
+   "source_url": "https://modal.com/pricing",
+   "quotes": 1
   },
   {
    "provider": "RunPod",
@@ -739,7 +787,8 @@
    "usd_per_gpu_hour": 8.64,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.runpod.io/pricing"
+   "source_url": "https://www.runpod.io/pricing",
+   "quotes": 1
   },
   {
    "provider": "fal",
@@ -754,7 +803,8 @@
    "usd_per_gpu_hour": 8.99,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://fal.ai/pricing"
+   "source_url": "https://fal.ai/pricing",
+   "quotes": 2
   },
   {
    "provider": "Baseten",
@@ -769,7 +819,8 @@
    "usd_per_gpu_hour": 9.98,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.baseten.co/pricing/"
+   "source_url": "https://www.baseten.co/pricing/",
+   "quotes": 1
   },
   {
    "provider": "Fireworks",
@@ -784,7 +835,8 @@
    "usd_per_gpu_hour": 13.0,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://fireworks.ai/pricing"
+   "source_url": "https://fireworks.ai/pricing",
+   "quotes": 1
   },
   {
    "provider": "Vultr",
@@ -799,7 +851,8 @@
    "usd_per_gpu_hour": 3.2,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://api.vultr.com/v2/plans?type=all&per_page=500"
+   "source_url": "https://api.vultr.com/v2/plans?type=all&per_page=500",
+   "quotes": 1
   },
   {
    "provider": "Daytona",
@@ -814,7 +867,8 @@
    "usd_per_gpu_hour": 3.59,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://billing.app.daytona.io/gpu-pricing"
+   "source_url": "https://billing.app.daytona.io/gpu-pricing",
+   "quotes": 1
   },
   {
    "provider": "Together AI",
@@ -829,7 +883,8 @@
    "usd_per_gpu_hour": 4.09,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.together.ai/pricing"
+   "source_url": "https://www.together.ai/pricing",
+   "quotes": 1
   },
   {
    "provider": "Verda",
@@ -844,7 +899,8 @@
    "usd_per_gpu_hour": 4.391,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://datacrunch.io/pricing"
+   "source_url": "https://datacrunch.io/pricing",
+   "quotes": 1
   },
   {
    "provider": "Google Cloud",
@@ -859,7 +915,8 @@
    "usd_per_gpu_hour": 4.9542,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://cloud.google.com/products/compute/gpus-pricing?hl=en"
+   "source_url": "https://cloud.google.com/products/compute/gpus-pricing?hl=en",
+   "quotes": 1
   },
   {
    "provider": "Spheron",
@@ -874,7 +931,8 @@
    "usd_per_gpu_hour": 5.54,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.spheron.network/pricing/"
+   "source_url": "https://www.spheron.network/pricing/",
+   "quotes": 1
   },
   {
    "provider": "RunPod",
@@ -889,7 +947,8 @@
    "usd_per_gpu_hour": 6.94,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.runpod.io/pricing"
+   "source_url": "https://www.runpod.io/pricing",
+   "quotes": 1
   },
   {
    "provider": "Lium",
@@ -904,7 +963,8 @@
    "usd_per_gpu_hour": 8.5,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://lium.io/api/public/v1/nodes"
+   "source_url": "https://lium.io/api/public/v1/nodes",
+   "quotes": 3
   },
   {
    "provider": "Primeintellect",
@@ -919,7 +979,8 @@
    "usd_per_gpu_hour": 4.99,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.primeintellect.ai/"
+   "source_url": "https://www.primeintellect.ai/",
+   "quotes": 1
   },
   {
    "provider": "Daytona",
@@ -934,7 +995,8 @@
    "usd_per_gpu_hour": 7.1,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://billing.app.daytona.io/gpu-pricing"
+   "source_url": "https://billing.app.daytona.io/gpu-pricing",
+   "quotes": 1
   },
   {
    "provider": "Hyperstack",
@@ -949,7 +1011,8 @@
    "usd_per_gpu_hour": 7.4,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.hyperstack.cloud/gpu-pricing"
+   "source_url": "https://www.hyperstack.cloud/gpu-pricing",
+   "quotes": 1
   },
   {
    "provider": "Scaleway",
@@ -964,7 +1027,8 @@
    "usd_per_gpu_hour": 8.3498,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.scaleway.com/en/pricing/gpu/"
+   "source_url": "https://www.scaleway.com/en/pricing/gpu/",
+   "quotes": 1
   },
   {
    "provider": "Crusoe",
@@ -979,7 +1043,8 @@
    "usd_per_gpu_hour": 8.96,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.crusoe.ai/cloud/pricing"
+   "source_url": "https://www.crusoe.ai/cloud/pricing",
+   "quotes": 1
   },
   {
    "provider": "RunPod",
@@ -994,7 +1059,8 @@
    "usd_per_gpu_hour": 8.99,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.runpod.io/pricing"
+   "source_url": "https://www.runpod.io/pricing",
+   "quotes": 1
   },
   {
    "provider": "Nebius",
@@ -1009,7 +1075,8 @@
    "usd_per_gpu_hour": 9.5,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://docs.nebius.com/compute/resources/pricing"
+   "source_url": "https://docs.nebius.com/compute/resources/pricing",
+   "quotes": 1
   },
   {
    "provider": "Together AI",
@@ -1024,7 +1091,8 @@
    "usd_per_gpu_hour": 9.99,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.together.ai/pricing"
+   "source_url": "https://www.together.ai/pricing",
+   "quotes": 1
   },
   {
    "provider": "Digitalocean",
@@ -1039,7 +1107,8 @@
    "usd_per_gpu_hour": 11.19,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.digitalocean.com/pricing/gpu-droplets"
+   "source_url": "https://www.digitalocean.com/pricing/gpu-droplets",
+   "quotes": 1
   },
   {
    "provider": "Verda",
@@ -1054,7 +1123,8 @@
    "usd_per_gpu_hour": 12.085,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://datacrunch.io/pricing"
+   "source_url": "https://datacrunch.io/pricing",
+   "quotes": 2
   },
   {
    "provider": "Spheron",
@@ -1069,7 +1139,8 @@
    "usd_per_gpu_hour": 12.42,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.spheron.network/pricing/"
+   "source_url": "https://www.spheron.network/pricing/",
+   "quotes": 1
   },
   {
    "provider": "Latitude",
@@ -1084,7 +1155,8 @@
    "usd_per_gpu_hour": 16.0,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.latitude.sh/pricing"
+   "source_url": "https://www.latitude.sh/pricing",
+   "quotes": 1
   },
   {
    "provider": "Impossiblecloud",
@@ -1099,7 +1171,8 @@
    "usd_per_gpu_hour": 5.631579,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.impossiblecloud.com/en-us/baremetal"
+   "source_url": "https://www.impossiblecloud.com/en-us/baremetal",
+   "quotes": 19
   },
   {
    "provider": "Synteq",
@@ -1114,7 +1187,8 @@
    "usd_per_gpu_hour": 6.239726,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://synteq.com/api/catalog/vps"
+   "source_url": "https://synteq.com/api/catalog/vps",
+   "quotes": 1
   },
   {
    "provider": "Latitude",
@@ -1129,7 +1203,8 @@
    "usd_per_gpu_hour": 6.855555,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.latitude.sh/pricing"
+   "source_url": "https://www.latitude.sh/pricing",
+   "quotes": 2
   },
   {
    "provider": "Modal",
@@ -1144,7 +1219,8 @@
    "usd_per_gpu_hour": 7.0992,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://modal.com/pricing"
+   "source_url": "https://modal.com/pricing",
+   "quotes": 1
   },
   {
    "provider": "fal",
@@ -1159,7 +1235,8 @@
    "usd_per_gpu_hour": 12.99,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://fal.ai/pricing"
+   "source_url": "https://fal.ai/pricing",
+   "quotes": 1
   },
   {
    "provider": "Fireworks",
@@ -1174,7 +1251,8 @@
    "usd_per_gpu_hour": 17.5,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://fireworks.ai/pricing"
+   "source_url": "https://fireworks.ai/pricing",
+   "quotes": 2
   },
   {
    "provider": "Daytona",
@@ -1189,7 +1267,8 @@
    "usd_per_gpu_hour": 4.08,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://billing.app.daytona.io/gpu-pricing"
+   "source_url": "https://billing.app.daytona.io/gpu-pricing",
+   "quotes": 1
   },
   {
    "provider": "Together AI",
@@ -1204,7 +1283,8 @@
    "usd_per_gpu_hour": 4.99,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.together.ai/pricing"
+   "source_url": "https://www.together.ai/pricing",
+   "quotes": 1
   },
   {
    "provider": "Lium",
@@ -1219,7 +1299,8 @@
    "usd_per_gpu_hour": 5.5,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://lium.io/api/public/v1/nodes"
+   "source_url": "https://lium.io/api/public/v1/nodes",
+   "quotes": 2
   },
   {
    "provider": "Spheron",
@@ -1234,7 +1315,8 @@
    "usd_per_gpu_hour": 5.84,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.spheron.network/pricing/"
+   "source_url": "https://www.spheron.network/pricing/",
+   "quotes": 1
   },
   {
    "provider": "Verda",
@@ -1249,7 +1331,8 @@
    "usd_per_gpu_hour": 6.0415,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://datacrunch.io/pricing"
+   "source_url": "https://datacrunch.io/pricing",
+   "quotes": 2
   },
   {
    "provider": "Lambda",
@@ -1264,7 +1347,8 @@
    "usd_per_gpu_hour": 2.29,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://lambda.ai/instances"
+   "source_url": "https://lambda.ai/instances",
+   "quotes": 1
   },
   {
    "provider": "Spheron",
@@ -1279,7 +1363,8 @@
    "usd_per_gpu_hour": 3.02,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.spheron.network/pricing/"
+   "source_url": "https://www.spheron.network/pricing/",
+   "quotes": 1
   },
   {
    "provider": "CoreWeave",
@@ -1294,7 +1379,8 @@
    "usd_per_gpu_hour": 6.5,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.coreweave.com/pricing"
+   "source_url": "https://www.coreweave.com/pricing",
+   "quotes": 1
   },
   {
    "provider": "RunPod",
@@ -1309,7 +1395,8 @@
    "usd_per_gpu_hour": 2.59,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.runpod.io/pricing"
+   "source_url": "https://www.runpod.io/pricing",
+   "quotes": 3
   },
   {
    "provider": "Lium",
@@ -1324,7 +1411,8 @@
    "usd_per_gpu_hour": 3.375,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://lium.io/api/public/v1/nodes"
+   "source_url": "https://lium.io/api/public/v1/nodes",
+   "quotes": 2
   },
   {
    "provider": "Hyperai",
@@ -1339,7 +1427,8 @@
    "usd_per_gpu_hour": 1.8,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://hyper.ai/en/pricing"
+   "source_url": "https://hyper.ai/en/pricing",
+   "quotes": 1
   },
   {
    "provider": "Voltage Park",
@@ -1354,7 +1443,8 @@
    "usd_per_gpu_hour": 1.99,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://support.voltagepark.com/article/example-deploying-gpt-oss-on-voltage-park"
+   "source_url": "https://support.voltagepark.com/article/example-deploying-gpt-oss-on-voltage-park",
+   "quotes": 1
   },
   {
    "provider": "Tensordock",
@@ -1369,7 +1459,8 @@
    "usd_per_gpu_hour": 2.25,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.tensordock.com/cloud-gpus.html"
+   "source_url": "https://www.tensordock.com/cloud-gpus.html",
+   "quotes": 1
   },
   {
    "provider": "Primeintellect",
@@ -1384,7 +1475,8 @@
    "usd_per_gpu_hour": 2.43,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.primeintellect.ai/"
+   "source_url": "https://www.primeintellect.ai/",
+   "quotes": 1
   },
   {
    "provider": "Gmicloud",
@@ -1399,7 +1491,8 @@
    "usd_per_gpu_hour": 2.6,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.gmicloud.ai/en/pricing"
+   "source_url": "https://www.gmicloud.ai/en/pricing",
+   "quotes": 1
   },
   {
    "provider": "Hyperstack",
@@ -1414,7 +1507,8 @@
    "usd_per_gpu_hour": 2.85,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.hyperstack.cloud/gpu-pricing"
+   "source_url": "https://www.hyperstack.cloud/gpu-pricing",
+   "quotes": 2
   },
   {
    "provider": "Massed Compute",
@@ -1429,7 +1523,8 @@
    "usd_per_gpu_hour": 2.92,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://massedcompute.com/pricing"
+   "source_url": "https://massedcompute.com/pricing",
+   "quotes": 3
   },
   {
    "provider": "Ovh",
@@ -1444,7 +1539,8 @@
    "usd_per_gpu_hour": 2.99,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.ovhcloud.com/en/public-cloud/prices/"
+   "source_url": "https://www.ovhcloud.com/en/public-cloud/prices/",
+   "quotes": 1
   },
   {
    "provider": "RunPod",
@@ -1459,7 +1555,8 @@
    "usd_per_gpu_hour": 3.19,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.runpod.io/pricing"
+   "source_url": "https://www.runpod.io/pricing",
+   "quotes": 3
   },
   {
    "provider": "Thunder Compute",
@@ -1474,7 +1571,8 @@
    "usd_per_gpu_hour": 3.2,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.thundercompute.com/pricing"
+   "source_url": "https://www.thundercompute.com/pricing",
+   "quotes": 1
   },
   {
    "provider": "Latitude",
@@ -1489,7 +1587,8 @@
    "usd_per_gpu_hour": 3.37,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.latitude.sh/pricing"
+   "source_url": "https://www.latitude.sh/pricing",
+   "quotes": 1
   },
   {
    "provider": "Scaleway",
@@ -1504,7 +1603,8 @@
    "usd_per_gpu_hour": 3.3729,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.scaleway.com/en/pricing/gpu/"
+   "source_url": "https://www.scaleway.com/en/pricing/gpu/",
+   "quotes": 2
   },
   {
    "provider": "Crusoe",
@@ -1519,7 +1619,8 @@
    "usd_per_gpu_hour": 3.9,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.crusoe.ai/cloud/pricing"
+   "source_url": "https://www.crusoe.ai/cloud/pricing",
+   "quotes": 1
   },
   {
    "provider": "Daytona",
@@ -1534,7 +1635,8 @@
    "usd_per_gpu_hour": 3.95,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://billing.app.daytona.io/gpu-pricing"
+   "source_url": "https://billing.app.daytona.io/gpu-pricing",
+   "quotes": 1
   },
   {
    "provider": "Together AI",
@@ -1549,7 +1651,8 @@
    "usd_per_gpu_hour": 3.99,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.together.ai/pricing"
+   "source_url": "https://www.together.ai/pricing",
+   "quotes": 1
   },
   {
    "provider": "Lambda",
@@ -1564,7 +1667,8 @@
    "usd_per_gpu_hour": 4.09,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://lambda.ai/instances"
+   "source_url": "https://lambda.ai/instances",
+   "quotes": 5
   },
   {
    "provider": "Spheron",
@@ -1579,7 +1683,8 @@
    "usd_per_gpu_hour": 4.2,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.spheron.network/pricing/"
+   "source_url": "https://www.spheron.network/pricing/",
+   "quotes": 1
   },
   {
    "provider": "Digitalocean",
@@ -1594,7 +1699,8 @@
    "usd_per_gpu_hour": 4.41,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.digitalocean.com/pricing/gpu-droplets"
+   "source_url": "https://www.digitalocean.com/pricing/gpu-droplets",
+   "quotes": 1
   },
   {
    "provider": "Nebius",
@@ -1609,7 +1715,8 @@
    "usd_per_gpu_hour": 4.5,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://docs.nebius.com/compute/resources/pricing"
+   "source_url": "https://docs.nebius.com/compute/resources/pricing",
+   "quotes": 1
   },
   {
    "provider": "Verda",
@@ -1624,7 +1731,8 @@
    "usd_per_gpu_hour": 4.746,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://datacrunch.io/pricing"
+   "source_url": "https://datacrunch.io/pricing",
+   "quotes": 1
   },
   {
    "provider": "CoreWeave",
@@ -1639,7 +1747,8 @@
    "usd_per_gpu_hour": 6.155,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.coreweave.com/pricing"
+   "source_url": "https://www.coreweave.com/pricing",
+   "quotes": 1
   },
   {
    "provider": "AWS",
@@ -1654,7 +1763,8 @@
    "usd_per_gpu_hour": 6.88,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://b0.p.awsstatic.com/pricing/2.0/meteredUnitMaps/ec2/USD/current/ec2-ondemand-without-sec-sel/US%20East%20(N.%20Virginia)/Linux/index.json"
+   "source_url": "https://b0.p.awsstatic.com/pricing/2.0/meteredUnitMaps/ec2/USD/current/ec2-ondemand-without-sec-sel/US%20East%20(N.%20Virginia)/Linux/index.json",
+   "quotes": 1
   },
   {
    "provider": "Google Cloud",
@@ -1669,7 +1779,8 @@
    "usd_per_gpu_hour": 9.796551,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://cloud.google.com/products/compute/gpus-pricing?hl=en"
+   "source_url": "https://cloud.google.com/products/compute/gpus-pricing?hl=en",
+   "quotes": 1
   },
   {
    "provider": "Azure",
@@ -1684,7 +1795,8 @@
    "usd_per_gpu_hour": 11.061,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://prices.azure.com/api/retail/prices"
+   "source_url": "https://prices.azure.com/api/retail/prices",
+   "quotes": 3
   },
   {
    "provider": "Latitude",
@@ -1699,7 +1811,8 @@
    "usd_per_gpu_hour": 1.443893,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.latitude.sh/pricing"
+   "source_url": "https://www.latitude.sh/pricing",
+   "quotes": 2
   },
   {
    "provider": "Hyperstack",
@@ -1714,7 +1827,8 @@
    "usd_per_gpu_hour": 2.235,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.hyperstack.cloud/gpu-pricing"
+   "source_url": "https://www.hyperstack.cloud/gpu-pricing",
+   "quotes": 2
   },
   {
    "provider": "Impossiblecloud",
@@ -1729,7 +1843,8 @@
    "usd_per_gpu_hour": 3.290526,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.impossiblecloud.com/en-us/baremetal"
+   "source_url": "https://www.impossiblecloud.com/en-us/baremetal",
+   "quotes": 9
   },
   {
    "provider": "Koyeb",
@@ -1744,7 +1859,8 @@
    "usd_per_gpu_hour": 2.5,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.koyeb.com/pricing"
+   "source_url": "https://www.koyeb.com/pricing",
+   "quotes": 1
   },
   {
    "provider": "Cerebrium",
@@ -1759,7 +1875,8 @@
    "usd_per_gpu_hour": 3.3984,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.cerebrium.ai/pricing"
+   "source_url": "https://www.cerebrium.ai/pricing",
+   "quotes": 1
   },
   {
    "provider": "Modal",
@@ -1774,7 +1891,8 @@
    "usd_per_gpu_hour": 3.9492,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://modal.com/pricing"
+   "source_url": "https://modal.com/pricing",
+   "quotes": 1
   },
   {
    "provider": "fal",
@@ -1789,7 +1907,8 @@
    "usd_per_gpu_hour": 4.5,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://fal.ai/pricing"
+   "source_url": "https://fal.ai/pricing",
+   "quotes": 1
   },
   {
    "provider": "RunPod",
@@ -1804,7 +1923,8 @@
    "usd_per_gpu_hour": 4.79,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.runpod.io/pricing"
+   "source_url": "https://www.runpod.io/pricing",
+   "quotes": 1
   },
   {
    "provider": "Replicate",
@@ -1819,7 +1939,8 @@
    "usd_per_gpu_hour": 5.49,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://replicate.com/pricing"
+   "source_url": "https://replicate.com/pricing",
+   "quotes": 1
   },
   {
    "provider": "Baseten",
@@ -1834,7 +1955,8 @@
    "usd_per_gpu_hour": 6.5,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.baseten.co/pricing/"
+   "source_url": "https://www.baseten.co/pricing/",
+   "quotes": 1
   },
   {
    "provider": "Fireworks",
@@ -1849,7 +1971,8 @@
    "usd_per_gpu_hour": 8.0,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://fireworks.ai/pricing"
+   "source_url": "https://fireworks.ai/pricing",
+   "quotes": 1
   },
   {
    "provider": "Primeintellect",
@@ -1864,7 +1987,8 @@
    "usd_per_gpu_hour": 0.94,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.primeintellect.ai/"
+   "source_url": "https://www.primeintellect.ai/",
+   "quotes": 1
   },
   {
    "provider": "Tensordock",
@@ -1879,7 +2003,8 @@
    "usd_per_gpu_hour": 1.91,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.tensordock.com/gpu-h100.html"
+   "source_url": "https://www.tensordock.com/gpu-h100.html",
+   "quotes": 1
   },
   {
    "provider": "Together AI",
@@ -1894,7 +2019,8 @@
    "usd_per_gpu_hour": 1.99,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.together.ai/pricing"
+   "source_url": "https://www.together.ai/pricing",
+   "quotes": 1
   },
   {
    "provider": "Azure",
@@ -1909,7 +2035,8 @@
    "usd_per_gpu_hour": 2.044073,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://prices.azure.com/api/retail/prices"
+   "source_url": "https://prices.azure.com/api/retail/prices",
+   "quotes": 3
   },
   {
    "provider": "Lium",
@@ -1924,7 +2051,8 @@
    "usd_per_gpu_hour": 2.155,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://lium.io/api/public/v1/nodes"
+   "source_url": "https://lium.io/api/public/v1/nodes",
+   "quotes": 4
   },
   {
    "provider": "Daytona",
@@ -1939,7 +2067,8 @@
    "usd_per_gpu_hour": 2.27,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://billing.app.daytona.io/gpu-pricing"
+   "source_url": "https://billing.app.daytona.io/gpu-pricing",
+   "quotes": 1
   },
   {
    "provider": "Vultr",
@@ -1954,7 +2083,8 @@
    "usd_per_gpu_hour": 2.3,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://api.vultr.com/v2/plans?type=all&per_page=500"
+   "source_url": "https://api.vultr.com/v2/plans?type=all&per_page=500",
+   "quotes": 1
   },
   {
    "provider": "Verda",
@@ -1969,7 +2099,8 @@
    "usd_per_gpu_hour": 2.373,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://datacrunch.io/pricing"
+   "source_url": "https://datacrunch.io/pricing",
+   "quotes": 1
   },
   {
    "provider": "Spheron",
@@ -1984,7 +2115,8 @@
    "usd_per_gpu_hour": 2.79,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.spheron.network/pricing/"
+   "source_url": "https://www.spheron.network/pricing/",
+   "quotes": 1
   },
   {
    "provider": "Google Cloud",
@@ -1999,7 +2131,8 @@
    "usd_per_gpu_hour": 5.0419,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://cloud.google.com/products/compute/gpus-pricing?hl=en"
+   "source_url": "https://cloud.google.com/products/compute/gpus-pricing?hl=en",
+   "quotes": 1
   },
   {
    "provider": "AWS",
@@ -2014,7 +2147,8 @@
    "usd_per_gpu_hour": 7.220225,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://website.spot.ec2.aws.a2z.com/spot.js"
+   "source_url": "https://website.spot.ec2.aws.a2z.com/spot.js",
+   "quotes": 1
   },
   {
    "provider": "RunPod",
@@ -2029,7 +2163,8 @@
    "usd_per_gpu_hour": 3.59,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.runpod.io/pricing"
+   "source_url": "https://www.runpod.io/pricing",
+   "quotes": 1
   },
   {
    "provider": "Lium",
@@ -2044,7 +2179,8 @@
    "usd_per_gpu_hour": 4.84,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://lium.io/api/public/v1/nodes"
+   "source_url": "https://lium.io/api/public/v1/nodes",
+   "quotes": 7
   },
   {
    "provider": "Primeintellect",
@@ -2059,7 +2195,8 @@
    "usd_per_gpu_hour": 3.14,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.primeintellect.ai/"
+   "source_url": "https://www.primeintellect.ai/",
+   "quotes": 1
   },
   {
    "provider": "Gmicloud",
@@ -2074,7 +2211,8 @@
    "usd_per_gpu_hour": 3.2,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.gmicloud.ai/en/pricing"
+   "source_url": "https://www.gmicloud.ai/en/pricing",
+   "quotes": 1
   },
   {
    "provider": "Massed Compute",
@@ -2089,7 +2227,8 @@
    "usd_per_gpu_hour": 3.62,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://massedcompute.com/pricing"
+   "source_url": "https://massedcompute.com/pricing",
+   "quotes": 1
   },
   {
    "provider": "Hyperstack",
@@ -2104,7 +2243,8 @@
    "usd_per_gpu_hour": 3.99,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.hyperstack.cloud/gpu-pricing"
+   "source_url": "https://www.hyperstack.cloud/gpu-pricing",
+   "quotes": 1
   },
   {
    "provider": "Crusoe",
@@ -2119,7 +2259,8 @@
    "usd_per_gpu_hour": 4.29,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.crusoe.ai/cloud/pricing"
+   "source_url": "https://www.crusoe.ai/cloud/pricing",
+   "quotes": 1
   },
   {
    "provider": "Digitalocean",
@@ -2134,7 +2275,8 @@
    "usd_per_gpu_hour": 4.47,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.digitalocean.com/pricing/gpu-droplets"
+   "source_url": "https://www.digitalocean.com/pricing/gpu-droplets",
+   "quotes": 1
   },
   {
    "provider": "Daytona",
@@ -2149,7 +2291,8 @@
    "usd_per_gpu_hour": 4.54,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://billing.app.daytona.io/gpu-pricing"
+   "source_url": "https://billing.app.daytona.io/gpu-pricing",
+   "quotes": 1
   },
   {
    "provider": "RunPod",
@@ -2164,7 +2307,8 @@
    "usd_per_gpu_hour": 4.54,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.runpod.io/pricing"
+   "source_url": "https://www.runpod.io/pricing",
+   "quotes": 2
   },
   {
    "provider": "Nebius",
@@ -2179,7 +2323,8 @@
    "usd_per_gpu_hour": 5.4,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://docs.nebius.com/compute/resources/pricing"
+   "source_url": "https://docs.nebius.com/compute/resources/pricing",
+   "quotes": 1
   },
   {
    "provider": "Spheron",
@@ -2194,7 +2339,8 @@
    "usd_per_gpu_hour": 5.54,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.spheron.network/pricing/"
+   "source_url": "https://www.spheron.network/pricing/",
+   "quotes": 1
   },
   {
    "provider": "Together AI",
@@ -2209,7 +2355,8 @@
    "usd_per_gpu_hour": 5.99,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.together.ai/pricing"
+   "source_url": "https://www.together.ai/pricing",
+   "quotes": 1
   },
   {
    "provider": "Verda",
@@ -2224,7 +2371,8 @@
    "usd_per_gpu_hour": 6.188,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://datacrunch.io/pricing"
+   "source_url": "https://datacrunch.io/pricing",
+   "quotes": 1
   },
   {
    "provider": "Ovh",
@@ -2239,7 +2387,8 @@
    "usd_per_gpu_hour": 6.195,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.ovhcloud.com/en/public-cloud/prices/"
+   "source_url": "https://www.ovhcloud.com/en/public-cloud/prices/",
+   "quotes": 1
   },
   {
    "provider": "CoreWeave",
@@ -2254,7 +2403,8 @@
    "usd_per_gpu_hour": 6.305,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.coreweave.com/pricing"
+   "source_url": "https://www.coreweave.com/pricing",
+   "quotes": 1
   },
   {
    "provider": "AWS",
@@ -2269,7 +2419,8 @@
    "usd_per_gpu_hour": 7.912,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://b0.p.awsstatic.com/pricing/2.0/meteredUnitMaps/ec2/USD/current/ec2-ondemand-without-sec-sel/US%20East%20(N.%20Virginia)/Linux/index.json"
+   "source_url": "https://b0.p.awsstatic.com/pricing/2.0/meteredUnitMaps/ec2/USD/current/ec2-ondemand-without-sec-sel/US%20East%20(N.%20Virginia)/Linux/index.json",
+   "quotes": 1
   },
   {
    "provider": "Google Cloud",
@@ -2284,7 +2435,8 @@
    "usd_per_gpu_hour": 9.31174,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://cloud.google.com/products/compute/gpus-pricing?hl=en"
+   "source_url": "https://cloud.google.com/products/compute/gpus-pricing?hl=en",
+   "quotes": 1
   },
   {
    "provider": "Hyperstack",
@@ -2299,7 +2451,8 @@
    "usd_per_gpu_hour": 2.79,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.hyperstack.cloud/gpu-pricing"
+   "source_url": "https://www.hyperstack.cloud/gpu-pricing",
+   "quotes": 1
   },
   {
    "provider": "Impossiblecloud",
@@ -2314,7 +2467,8 @@
    "usd_per_gpu_hour": 3.157895,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.impossiblecloud.com/en-us/baremetal"
+   "source_url": "https://www.impossiblecloud.com/en-us/baremetal",
+   "quotes": 3
   },
   {
    "provider": "Koyeb",
@@ -2329,7 +2483,8 @@
    "usd_per_gpu_hour": 3.0,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.koyeb.com/pricing"
+   "source_url": "https://www.koyeb.com/pricing",
+   "quotes": 1
   },
   {
    "provider": "Cerebrium",
@@ -2344,7 +2499,8 @@
    "usd_per_gpu_hour": 4.1976,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.cerebrium.ai/pricing"
+   "source_url": "https://www.cerebrium.ai/pricing",
+   "quotes": 1
   },
   {
    "provider": "Modal",
@@ -2359,7 +2515,8 @@
    "usd_per_gpu_hour": 4.5396,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://modal.com/pricing"
+   "source_url": "https://modal.com/pricing",
+   "quotes": 1
   },
   {
    "provider": "Replicate",
@@ -2374,7 +2531,8 @@
    "usd_per_gpu_hour": 5.49,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://replicate.com/pricing"
+   "source_url": "https://replicate.com/pricing",
+   "quotes": 1
   },
   {
    "provider": "RunPod",
@@ -2389,7 +2547,8 @@
    "usd_per_gpu_hour": 5.93,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.runpod.io/pricing"
+   "source_url": "https://www.runpod.io/pricing",
+   "quotes": 1
   },
   {
    "provider": "fal",
@@ -2404,7 +2563,8 @@
    "usd_per_gpu_hour": 6.0,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://fal.ai/pricing"
+   "source_url": "https://fal.ai/pricing",
+   "quotes": 1
   },
   {
    "provider": "Fireworks",
@@ -2419,7 +2579,8 @@
    "usd_per_gpu_hour": 8.0,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://fireworks.ai/pricing"
+   "source_url": "https://fireworks.ai/pricing",
+   "quotes": 1
   },
   {
    "provider": "Daytona",
@@ -2434,7 +2595,8 @@
    "usd_per_gpu_hour": 2.61,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://billing.app.daytona.io/gpu-pricing"
+   "source_url": "https://billing.app.daytona.io/gpu-pricing",
+   "quotes": 1
   },
   {
    "provider": "Together AI",
@@ -2449,7 +2611,8 @@
    "usd_per_gpu_hour": 2.99,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.together.ai/pricing"
+   "source_url": "https://www.together.ai/pricing",
+   "quotes": 1
   },
   {
    "provider": "Verda",
@@ -2464,7 +2627,8 @@
    "usd_per_gpu_hour": 3.094,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://datacrunch.io/pricing"
+   "source_url": "https://datacrunch.io/pricing",
+   "quotes": 1
   },
   {
    "provider": "Spheron",
@@ -2479,7 +2643,8 @@
    "usd_per_gpu_hour": 3.35,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.spheron.network/pricing/"
+   "source_url": "https://www.spheron.network/pricing/",
+   "quotes": 1
   },
   {
    "provider": "Lium",
@@ -2494,7 +2659,8 @@
    "usd_per_gpu_hour": 5.48,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://lium.io/api/public/v1/nodes"
+   "source_url": "https://lium.io/api/public/v1/nodes",
+   "quotes": 1
   },
   {
    "provider": "Google Cloud",
@@ -2509,7 +2675,8 @@
    "usd_per_gpu_hour": 5.586,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://cloud.google.com/products/compute/gpus-pricing?hl=en"
+   "source_url": "https://cloud.google.com/products/compute/gpus-pricing?hl=en",
+   "quotes": 1
   },
   {
    "provider": "RunPod",
@@ -2524,7 +2691,8 @@
    "usd_per_gpu_hour": 0.79,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.runpod.io/pricing"
+   "source_url": "https://www.runpod.io/pricing",
+   "quotes": 1
   },
   {
    "provider": "Lium",
@@ -2539,7 +2707,8 @@
    "usd_per_gpu_hour": 0.38,
    "date": "2026-10-28",
    "status": "live",
-   "source_url": "https://lium.io/api/public/v1/nodes"
+   "source_url": "https://lium.io/api/public/v1/nodes",
+   "quotes": 1
   },
   {
    "provider": "Spheron",
@@ -2554,7 +2723,8 @@
    "usd_per_gpu_hour": 0.96,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.spheron.network/pricing/"
+   "source_url": "https://www.spheron.network/pricing/",
+   "quotes": 1
   },
   {
    "provider": "Massed Compute",
@@ -2569,7 +2739,8 @@
    "usd_per_gpu_hour": 0.97,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://massedcompute.com/pricing"
+   "source_url": "https://massedcompute.com/pricing",
+   "quotes": 1
   },
   {
    "provider": "RunPod",
@@ -2584,7 +2755,8 @@
    "usd_per_gpu_hour": 1.09,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.runpod.io/pricing"
+   "source_url": "https://www.runpod.io/pricing",
+   "quotes": 1
   },
   {
    "provider": "Nebius",
@@ -2599,7 +2771,8 @@
    "usd_per_gpu_hour": 1.35,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://docs.nebius.com/compute/resources/pricing"
+   "source_url": "https://docs.nebius.com/compute/resources/pricing",
+   "quotes": 1
   },
   {
    "provider": "Crusoe",
@@ -2614,7 +2787,8 @@
    "usd_per_gpu_hour": 1.5,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.crusoe.ai/cloud/pricing"
+   "source_url": "https://www.crusoe.ai/cloud/pricing",
+   "quotes": 1
   },
   {
    "provider": "Digitalocean",
@@ -2629,7 +2803,8 @@
    "usd_per_gpu_hour": 1.57,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.digitalocean.com/pricing/gpu-droplets"
+   "source_url": "https://www.digitalocean.com/pricing/gpu-droplets",
+   "quotes": 1
   },
   {
    "provider": "Scaleway",
@@ -2644,7 +2819,8 @@
    "usd_per_gpu_hour": 1.6365,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.scaleway.com/en/pricing/gpu/"
+   "source_url": "https://www.scaleway.com/en/pricing/gpu/",
+   "quotes": 1
   },
   {
    "provider": "Vultr",
@@ -2659,7 +2835,8 @@
    "usd_per_gpu_hour": 1.671,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://api.vultr.com/v2/plans?type=all&per_page=500"
+   "source_url": "https://api.vultr.com/v2/plans?type=all&per_page=500",
+   "quotes": 1
   },
   {
    "provider": "Ovh",
@@ -2674,7 +2851,8 @@
    "usd_per_gpu_hour": 1.8,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.ovhcloud.com/en/public-cloud/prices/"
+   "source_url": "https://www.ovhcloud.com/en/public-cloud/prices/",
+   "quotes": 1
   },
   {
    "provider": "Verda",
@@ -2689,7 +2867,8 @@
    "usd_per_gpu_hour": 1.882,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://datacrunch.io/pricing"
+   "source_url": "https://datacrunch.io/pricing",
+   "quotes": 1
   },
   {
    "provider": "CoreWeave",
@@ -2704,7 +2883,8 @@
    "usd_per_gpu_hour": 2.25,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.coreweave.com/pricing"
+   "source_url": "https://www.coreweave.com/pricing",
+   "quotes": 1
   },
   {
    "provider": "AWS",
@@ -2719,7 +2899,8 @@
    "usd_per_gpu_hour": 2.813699,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://b0.p.awsstatic.com/pricing/2.0/meteredUnitMaps/ec2/USD/current/ec2-ondemand-without-sec-sel/US%20East%20(N.%20Virginia)/Linux/index.json"
+   "source_url": "https://b0.p.awsstatic.com/pricing/2.0/meteredUnitMaps/ec2/USD/current/ec2-ondemand-without-sec-sel/US%20East%20(N.%20Virginia)/Linux/index.json",
+   "quotes": 2
   },
   {
    "provider": "Koyeb",
@@ -2734,7 +2915,8 @@
    "usd_per_gpu_hour": 1.2,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.koyeb.com/pricing"
+   "source_url": "https://www.koyeb.com/pricing",
+   "quotes": 1
   },
   {
    "provider": "Cerebrium",
@@ -2749,7 +2931,8 @@
    "usd_per_gpu_hour": 1.9512,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.cerebrium.ai/pricing"
+   "source_url": "https://www.cerebrium.ai/pricing",
+   "quotes": 1
   },
   {
    "provider": "Modal",
@@ -2764,7 +2947,8 @@
    "usd_per_gpu_hour": 1.9512,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://modal.com/pricing"
+   "source_url": "https://modal.com/pricing",
+   "quotes": 1
   },
   {
    "provider": "Replicate",
@@ -2779,7 +2963,8 @@
    "usd_per_gpu_hour": 3.51,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://replicate.com/pricing"
+   "source_url": "https://replicate.com/pricing",
+   "quotes": 1
   },
   {
    "provider": "Verda",
@@ -2794,7 +2979,8 @@
    "usd_per_gpu_hour": 0.941,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://datacrunch.io/pricing"
+   "source_url": "https://datacrunch.io/pricing",
+   "quotes": 1
   },
   {
    "provider": "Spheron",
@@ -2809,7 +2995,8 @@
    "usd_per_gpu_hour": 1.18,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.spheron.network/pricing/"
+   "source_url": "https://www.spheron.network/pricing/",
+   "quotes": 1
   },
   {
    "provider": "RunPod",
@@ -2824,7 +3011,8 @@
    "usd_per_gpu_hour": 2.39,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.runpod.io/pricing"
+   "source_url": "https://www.runpod.io/pricing",
+   "quotes": 1
   },
   {
    "provider": "Digitalocean",
@@ -2839,7 +3027,8 @@
    "usd_per_gpu_hour": 2.59,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.digitalocean.com/pricing/gpu-droplets"
+   "source_url": "https://www.digitalocean.com/pricing/gpu-droplets",
+   "quotes": 1
   },
   {
    "provider": "Hotaisle",
@@ -2854,7 +3043,8 @@
    "usd_per_gpu_hour": 2.99,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://hotaisle.xyz/pricing"
+   "source_url": "https://hotaisle.xyz/pricing",
+   "quotes": 1
   },
   {
    "provider": "Crusoe",
@@ -2869,7 +3059,8 @@
    "usd_per_gpu_hour": 3.45,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.crusoe.ai/cloud/pricing"
+   "source_url": "https://www.crusoe.ai/cloud/pricing",
+   "quotes": 1
   },
   {
    "provider": "Spheron",
@@ -2884,7 +3075,8 @@
    "usd_per_gpu_hour": 3.59,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.spheron.network/pricing/"
+   "source_url": "https://www.spheron.network/pricing/",
+   "quotes": 1
   },
   {
    "provider": "Salad",
@@ -2899,7 +3091,8 @@
    "usd_per_gpu_hour": 0.16,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://salad.com/pricing"
+   "source_url": "https://salad.com/pricing",
+   "quotes": 1
   },
   {
    "provider": "RunPod",
@@ -2914,7 +3107,8 @@
    "usd_per_gpu_hour": 0.34,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.runpod.io/pricing"
+   "source_url": "https://www.runpod.io/pricing",
+   "quotes": 1
   },
   {
    "provider": "Lium",
@@ -2929,7 +3123,8 @@
    "usd_per_gpu_hour": 0.675,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://lium.io/api/public/v1/nodes"
+   "source_url": "https://lium.io/api/public/v1/nodes",
+   "quotes": 8
   },
   {
    "provider": "Tensordock",
@@ -2944,7 +3139,8 @@
    "usd_per_gpu_hour": 0.35,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.tensordock.com/cloud-gpus.html"
+   "source_url": "https://www.tensordock.com/cloud-gpus.html",
+   "quotes": 1
   },
   {
    "provider": "Spheron",
@@ -2959,7 +3155,8 @@
    "usd_per_gpu_hour": 0.58,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.spheron.network/pricing/"
+   "source_url": "https://www.spheron.network/pricing/",
+   "quotes": 1
   },
   {
    "provider": "RunPod",
@@ -2974,7 +3171,8 @@
    "usd_per_gpu_hour": 0.89,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.runpod.io/pricing"
+   "source_url": "https://www.runpod.io/pricing",
+   "quotes": 1
   },
   {
    "provider": "Daytona",
@@ -2989,7 +3187,8 @@
    "usd_per_gpu_hour": 0.99,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://billing.app.daytona.io/gpu-pricing"
+   "source_url": "https://billing.app.daytona.io/gpu-pricing",
+   "quotes": 1
   },
   {
    "provider": "RunPod",
@@ -3004,7 +3203,8 @@
    "usd_per_gpu_hour": 1.1,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.runpod.io/pricing"
+   "source_url": "https://www.runpod.io/pricing",
+   "quotes": 1
   },
   {
    "provider": "Daytona",
@@ -3019,7 +3219,8 @@
    "usd_per_gpu_hour": 0.57,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://billing.app.daytona.io/gpu-pricing"
+   "source_url": "https://billing.app.daytona.io/gpu-pricing",
+   "quotes": 1
   },
   {
    "provider": "Lium",
@@ -3034,7 +3235,8 @@
    "usd_per_gpu_hour": 0.65,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://lium.io/api/public/v1/nodes"
+   "source_url": "https://lium.io/api/public/v1/nodes",
+   "quotes": 5
   },
   {
    "provider": "Salad",
@@ -3049,7 +3251,8 @@
    "usd_per_gpu_hour": 0.175,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://salad.com/pricing"
+   "source_url": "https://salad.com/pricing",
+   "quotes": 2
   },
   {
    "provider": "RunPod",
@@ -3064,7 +3267,8 @@
    "usd_per_gpu_hour": 0.69,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.runpod.io/pricing"
+   "source_url": "https://www.runpod.io/pricing",
+   "quotes": 1
   },
   {
    "provider": "Lium",
@@ -3079,7 +3283,8 @@
    "usd_per_gpu_hour": 0.85,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://lium.io/api/public/v1/nodes"
+   "source_url": "https://lium.io/api/public/v1/nodes",
+   "quotes": 5
   },
   {
    "provider": "Hyperai",
@@ -3094,7 +3299,8 @@
    "usd_per_gpu_hour": 0.35,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://hyper.ai/en/pricing"
+   "source_url": "https://hyper.ai/en/pricing",
+   "quotes": 1
   },
   {
    "provider": "Spheron",
@@ -3109,7 +3315,8 @@
    "usd_per_gpu_hour": 0.68,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.spheron.network/pricing/"
+   "source_url": "https://www.spheron.network/pricing/",
+   "quotes": 1
   },
   {
    "provider": "RunPod",
@@ -3124,7 +3331,8 @@
    "usd_per_gpu_hour": 1.19,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.runpod.io/pricing"
+   "source_url": "https://www.runpod.io/pricing",
+   "quotes": 1
   },
   {
    "provider": "Daytona",
@@ -3139,7 +3347,8 @@
    "usd_per_gpu_hour": 1.29,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://billing.app.daytona.io/gpu-pricing"
+   "source_url": "https://billing.app.daytona.io/gpu-pricing",
+   "quotes": 1
   },
   {
    "provider": "RunPod",
@@ -3154,7 +3363,8 @@
    "usd_per_gpu_hour": 1.58,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.runpod.io/pricing"
+   "source_url": "https://www.runpod.io/pricing",
+   "quotes": 1
   },
   {
    "provider": "Daytona",
@@ -3169,7 +3379,8 @@
    "usd_per_gpu_hour": 0.74,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://billing.app.daytona.io/gpu-pricing"
+   "source_url": "https://billing.app.daytona.io/gpu-pricing",
+   "quotes": 1
   },
   {
    "provider": "Lium",
@@ -3184,7 +3395,8 @@
    "usd_per_gpu_hour": 0.85,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://lium.io/api/public/v1/nodes"
+   "source_url": "https://lium.io/api/public/v1/nodes",
+   "quotes": 9
   },
   {
    "provider": "RunPod",
@@ -3199,7 +3411,8 @@
    "usd_per_gpu_hour": 1.665,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.runpod.io/pricing"
+   "source_url": "https://www.runpod.io/pricing",
+   "quotes": 2
   },
   {
    "provider": "Lium",
@@ -3214,7 +3427,8 @@
    "usd_per_gpu_hour": 1.995,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://lium.io/api/public/v1/nodes"
+   "source_url": "https://lium.io/api/public/v1/nodes",
+   "quotes": 2
   },
   {
    "provider": "Hyperai",
@@ -3229,7 +3443,8 @@
    "usd_per_gpu_hour": 0.8,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://hyper.ai/en/pricing"
+   "source_url": "https://hyper.ai/en/pricing",
+   "quotes": 1
   },
   {
    "provider": "Google Cloud",
@@ -3244,7 +3459,8 @@
    "usd_per_gpu_hour": 1.09565,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://cloud.google.com/products/compute/gpus-pricing?hl=en"
+   "source_url": "https://cloud.google.com/products/compute/gpus-pricing?hl=en",
+   "quotes": 1
   },
   {
    "provider": "Nebius",
@@ -3259,7 +3475,8 @@
    "usd_per_gpu_hour": 1.8,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://docs.nebius.com/compute/resources/pricing"
+   "source_url": "https://docs.nebius.com/compute/resources/pricing",
+   "quotes": 1
   },
   {
    "provider": "Hyperstack",
@@ -3274,7 +3491,8 @@
    "usd_per_gpu_hour": 1.85,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.hyperstack.cloud/gpu-pricing"
+   "source_url": "https://www.hyperstack.cloud/gpu-pricing",
+   "quotes": 1
   },
   {
    "provider": "Massed Compute",
@@ -3289,7 +3507,8 @@
    "usd_per_gpu_hour": 2.19,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://massedcompute.com/pricing"
+   "source_url": "https://massedcompute.com/pricing",
+   "quotes": 1
   },
   {
    "provider": "Spheron",
@@ -3304,7 +3523,8 @@
    "usd_per_gpu_hour": 2.35,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.spheron.network/pricing/"
+   "source_url": "https://www.spheron.network/pricing/",
+   "quotes": 1
   },
   {
    "provider": "CoreWeave",
@@ -3319,7 +3539,8 @@
    "usd_per_gpu_hour": 2.5,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.coreweave.com/pricing"
+   "source_url": "https://www.coreweave.com/pricing",
+   "quotes": 1
   },
   {
    "provider": "RunPod",
@@ -3334,7 +3555,8 @@
    "usd_per_gpu_hour": 2.54,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.runpod.io/pricing"
+   "source_url": "https://www.runpod.io/pricing",
+   "quotes": 2
   },
   {
    "provider": "Verda",
@@ -3349,7 +3571,8 @@
    "usd_per_gpu_hour": 2.619,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://datacrunch.io/pricing"
+   "source_url": "https://datacrunch.io/pricing",
+   "quotes": 1
   },
   {
    "provider": "Daytona",
@@ -3364,7 +3587,8 @@
    "usd_per_gpu_hour": 3.03,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://billing.app.daytona.io/gpu-pricing"
+   "source_url": "https://billing.app.daytona.io/gpu-pricing",
+   "quotes": 1
   },
   {
    "provider": "Latitude",
@@ -3379,7 +3603,8 @@
    "usd_per_gpu_hour": 6.0,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.latitude.sh/pricing"
+   "source_url": "https://www.latitude.sh/pricing",
+   "quotes": 1
   },
   {
    "provider": "Synteq",
@@ -3394,7 +3619,8 @@
    "usd_per_gpu_hour": 1.212329,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://synteq.com/api/catalog/vps"
+   "source_url": "https://synteq.com/api/catalog/vps",
+   "quotes": 1
   },
   {
    "provider": "Hyperstack",
@@ -3409,7 +3635,8 @@
    "usd_per_gpu_hour": 1.3,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.hyperstack.cloud/gpu-pricing"
+   "source_url": "https://www.hyperstack.cloud/gpu-pricing",
+   "quotes": 1
   },
   {
    "provider": "Latitude",
@@ -3424,7 +3651,8 @@
    "usd_per_gpu_hour": 2.570833,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.latitude.sh/pricing"
+   "source_url": "https://www.latitude.sh/pricing",
+   "quotes": 2
   },
   {
    "provider": "Koyeb",
@@ -3439,7 +3667,8 @@
    "usd_per_gpu_hour": 2.2,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.koyeb.com/pricing"
+   "source_url": "https://www.koyeb.com/pricing",
+   "quotes": 1
   },
   {
    "provider": "Cerebrium",
@@ -3454,7 +3683,8 @@
    "usd_per_gpu_hour": 2.4984,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.cerebrium.ai/pricing"
+   "source_url": "https://www.cerebrium.ai/pricing",
+   "quotes": 1
   },
   {
    "provider": "Modal",
@@ -3469,7 +3699,8 @@
    "usd_per_gpu_hour": 3.0312,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://modal.com/pricing"
+   "source_url": "https://modal.com/pricing",
+   "quotes": 1
   },
   {
    "provider": "RunPod",
@@ -3484,7 +3715,8 @@
    "usd_per_gpu_hour": 3.49,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.runpod.io/pricing"
+   "source_url": "https://www.runpod.io/pricing",
+   "quotes": 1
   },
   {
    "provider": "fal",
@@ -3499,7 +3731,8 @@
    "usd_per_gpu_hour": 4.0,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://fal.ai/pricing"
+   "source_url": "https://fal.ai/pricing",
+   "quotes": 1
   },
   {
    "provider": "Google Cloud",
@@ -3514,7 +3747,8 @@
    "usd_per_gpu_hour": 0.4278,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://cloud.google.com/products/compute/gpus-pricing?hl=en"
+   "source_url": "https://cloud.google.com/products/compute/gpus-pricing?hl=en",
+   "quotes": 1
   },
   {
    "provider": "Verda",
@@ -3529,7 +3763,8 @@
    "usd_per_gpu_hour": 1.31,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://datacrunch.io/pricing"
+   "source_url": "https://datacrunch.io/pricing",
+   "quotes": 1
   },
   {
    "provider": "Spheron",
@@ -3544,7 +3779,8 @@
    "usd_per_gpu_hour": 1.54,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://www.spheron.network/pricing/"
+   "source_url": "https://www.spheron.network/pricing/",
+   "quotes": 1
   },
   {
    "provider": "Daytona",
@@ -3559,7 +3795,8 @@
    "usd_per_gpu_hour": 1.74,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://billing.app.daytona.io/gpu-pricing"
+   "source_url": "https://billing.app.daytona.io/gpu-pricing",
+   "quotes": 1
   },
   {
    "provider": "Lium",
@@ -3574,7 +3811,8 @@
    "usd_per_gpu_hour": 1.99,
    "date": "2026-10-29",
    "status": "live",
-   "source_url": "https://lium.io/api/public/v1/nodes"
+   "source_url": "https://lium.io/api/public/v1/nodes",
+   "quotes": 1
   }
  ]
 }

@@ -120,6 +120,47 @@ def _landscape_works(page) -> bool:
     return bool(before and after and before != after and len(kpi) > 20 and "Spot" in spot)
 
 
+def _landscape_table_click(page) -> bool:
+    """The all-card table is on-demand; clicking a row must reset a previously selected market."""
+    page.locator("#landscape-card").select_option("L40S")
+    page.locator('#landscape-market button[data-market="reserved"]').click()
+    page.wait_for_timeout(150)
+    page.locator('#landscape-all-body tr[data-card="B200"]').click()
+    page.wait_for_timeout(200)
+    return (
+        page.locator("#landscape-card").input_value() == "B200"
+        and page.locator("#landscape-market button.active").inner_text() == "On-demand"
+        and "正规 on-demand" in page.locator(".landscape-kpi").first.inner_text()
+    )
+
+
+def _landscape_stale_table(page) -> bool:
+    evidence = page.locator("#landscape-evidence").inner_text()
+    statuses = page.locator("#landscape-all-body tr td:last-child").all_inner_texts()
+    if "数据滞后" not in evidence:
+        return True
+    return "stale" in {status.strip().lower() for status in statuses}
+
+
+def _landscape_receipt_csv(page) -> bool:
+    with page.expect_download() as download:
+        page.locator("#landscape-receipt").click()
+    path = download.value.path()
+    if not path:
+        return False
+    header = Path(path).read_text(encoding="utf-8").splitlines()[0]
+    return all(key in header for key in ("methodology_version", "published_median", "published_index", "quotes"))
+
+
+def _landscape_short_sample_label(page) -> bool:
+    page.locator("#landscape-card").select_option("GH200")
+    page.wait_for_timeout(200)
+    text = page.locator("#landscape-chart svg").text_content() or ""
+    page.locator("#landscape-card").select_option("H100")
+    page.wait_for_timeout(150)
+    return "样本不足" in text
+
+
 def _event_markers_reach_primary_charts(page) -> bool:
     return (
         page.locator("#gpu-price-h100 .event-marker").count() > 0
@@ -262,6 +303,10 @@ def main() -> int:
                 "event_markers_on_primary_charts": _event_markers_reach_primary_charts(page),
                 "event_tooltip_on_price_chart": _event_tooltip_on_price_chart(page),
                 "landscape_switches": _landscape_works(page),
+                "landscape_table_click": _landscape_table_click(page),
+                "landscape_stale_table": _landscape_stale_table(page),
+                "landscape_receipt_csv": _landscape_receipt_csv(page),
+                "landscape_short_sample_label": _landscape_short_sample_label(page),
                 "sandbox_redraws": _sandbox_redraws(page),
                 "sandbox_correlation_symmetric": _sandbox_correlation_is_symmetric(page),
                 "sandbox_respects_range": _sandbox_respects_range(page),

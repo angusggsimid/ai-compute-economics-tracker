@@ -808,7 +808,7 @@ def build_snapshot() -> dict[str, Any]:
         "sources": {
             "openrouter": {
                 "label": "OpenRouter 公开模型排行榜",
-                **_links([*_src_entry(openrouter_raw, "openrouter")], _src_entry(openrouter_raw, "openrouter")[1]),
+                **_links([_src_entry(openrouter_raw, "openrouter")[0]], _src_entry(openrouter_raw, "openrouter")[1]),
                 "definition": openrouter_raw["method"]["volume"],
             },
             "openrouterComposition": {
@@ -1526,6 +1526,7 @@ HTML = r'''<!doctype html>
 .landscape-evidence a{color:var(--blue);text-decoration:none}
 .landscape-evidence .status-pill{padding:2px 7px;border-radius:99px;background:#f2f2f7;color:#48484a;font-size:10px}
 .landscape-evidence .status-pill.stale-pill{background:#fff3e6;color:#b25000}
+.landscape-evidence .stale-index{color:#b25000;font-weight:650}
 .landscape-all,.landscape-method{margin:0 20px;border-top:1px solid #ececf0;padding:12px 0 16px}
 .landscape-all>summary,.landscape-method>summary{cursor:pointer;list-style:none;color:var(--muted);font-size:12px;font-weight:650}
 .landscape-all>summary::-webkit-details-marker,.landscape-method>summary::-webkit-details-marker{display:none}
@@ -1725,16 +1726,18 @@ function renderRangeChart(c){
   rows.forEach((r,i)=>{if(i&&dateNum(r.date)-dateNum(rows[i-1].date)>gapMs){if(_seg.length)segments.push(_seg);_seg=[]}_seg.push(r)});if(_seg.length)segments.push(_seg);
   const pathFor=(field)=>segments.map(seg=>seg.map((r,i)=>`${i?'L':'M'}${x(dateNum(r.date)).toFixed(1)},${y(+r[field]).toFixed(1)}`).join(' ')).join(' ');
   svg+=`<path d="${pathFor('value')}" fill="none" stroke="#0071e3" stroke-width="1.4" opacity=".55"/><path d="${pathFor('movingAverage30d')}" fill="none" stroke="#1d1d1f" stroke-width="3"/>`;
-  const spTop=spread.map((r,i)=>`${i?'L':'M'}${x(dateNum(r.date)).toFixed(1)},${ys(r.w).toFixed(1)}`).join(' ');
-  const spBot=spread.slice().reverse().map(r=>`L${x(dateNum(r.date)).toFixed(1)},${(stripTop+stripH).toFixed(1)}`).join(' ');
+  const spreadSegments=[];let _sp=[];
+  spread.forEach((r,i)=>{if(i&&dateNum(r.date)-dateNum(spread[i-1].date)>gapMs){if(_sp.length)spreadSegments.push(_sp);_sp=[]}_sp.push(r)});if(_sp.length)spreadSegments.push(_sp);
+  const areaFor=seg=>{if(seg.length<2)return '';const top=seg.map((r,i)=>`${i?'L':'M'}${x(dateNum(r.date)).toFixed(1)},${ys(r.w).toFixed(1)}`).join(' '),bottom=seg.slice().reverse().map(r=>`L${x(dateNum(r.date)).toFixed(1)},${(stripTop+stripH).toFixed(1)}`).join(' ');return `${top} ${bottom} Z`};
   svg+=`<line class="gridline" x1="${m.l}" y1="${stripTop+stripH}" x2="${W-m.r}" y2="${stripTop+stripH}"/>`;
-  svg+=`<path d="${spTop} ${spBot} Z" fill="#0071e3" fill-opacity=".12"/>`;
+  spreadSegments.forEach(seg=>{const d=areaFor(seg);if(d)svg+=`<path d="${d}" fill="#0071e3" fill-opacity=".12"/>`});
   svg+=`<text class="axis" x="${m.l-8}" y="${stripTop+16}" text-anchor="end">价差</text><text class="axis" x="${m.l-8}" y="${stripTop+30}" text-anchor="end">${fmt(smax/1.2,'usd')}</text>`;
   const last=rows[rows.length-1];
   svg+=`<text class="axis" x="${W-m.r-2}" y="${y(+last.value)-8}" text-anchor="end" fill="#0071e3" style="font-weight:700">${fmt(+last.value,'usd')}</text>`;
   const lastSpread=spread[spread.length-1];
+  const lastHasQuartiles=rows[rows.length-1].p25!=null&&rows[rows.length-1].p75!=null;
   svg+=`<text class="axis" x="${m.l}" y="${stripTop-8}" fill="#8e8e93">P25–P75 价差（市场分化度）</text>`;
-  svg+=`<text class="axis" x="${W-m.r-2}" y="${ys(lastSpread.w)-6}" text-anchor="end" fill="#8e8e93" style="font-weight:700">${fmt(lastSpread.w,'usd')}</text>`;
+  svg+=`<text class="axis" x="${W-m.r-2}" y="${ys(lastSpread.w)-6}" text-anchor="end" fill="#8e8e93" style="font-weight:700">${lastHasQuartiles?fmt(lastSpread.w,'usd'):'样本不足'}</text>`;
   svg+=`<rect class="hit" x="${m.l}" y="${m.t}" width="${W-m.l-m.r}" height="${H-m.t-m.b}" fill="transparent"/></svg><div class="tooltip"></div>`;
   host.innerHTML=svg;
   const tip=host.querySelector('.tooltip'),svgEl=host.querySelector('svg');
@@ -2098,9 +2101,10 @@ function _landscapeReceipt(){
     const receipt=data.cards&&data.cards[card.id]&&data.cards[card.id].receipts&&data.cards[card.id].receipts[idx.isoWeek];
     if(!receipt)throw new Error('receipt not found');
     const cell=v=>`"${String(v??'').replace(/"/g,'""')}"`;
-    const lines=[['card','iso_week','vintage','provider','provider_id','usd_per_gpu_hour','date','source_url','included','excluded_quote_rows_by_market'].join(',')];
-    (receipt.included||[]).forEach(x=>lines.push([card.id,idx.isoWeek,receipt.vintage,x.provider,x.providerId,x.value,x.date,x.sourceUrl,'true',''].map(cell).join(',')));
-    Object.entries(receipt.excludedQuoteRowsByMarket||{}).forEach(([market,count])=>lines.push([card.id,idx.isoWeek,receipt.vintage,'','','','','','false',`${market}:${count}`].map(cell).join(',')));
+    const lines=[['card','iso_week','vintage','methodology_version','published_median','published_index','p25','p75','provider_count','provider','provider_id','usd_per_gpu_hour','date','source_url','quotes','included','excluded_quote_rows_by_market'].join(',')];
+    const meta=[card.id,idx.isoWeek,receipt.vintage,receipt.methodologyVersion,receipt.median,receipt.index,receipt.p25,receipt.p75,receipt.providerCount];
+    (receipt.included||[]).forEach(x=>lines.push([...meta,x.provider,x.providerId,x.value,x.date,x.sourceUrl,x.quotes,'true',''].map(cell).join(',')));
+    Object.entries(receipt.excludedQuoteRowsByMarket||{}).forEach(([market,count])=>lines.push([...meta,'','','','','','','false',`${market}:${count}`].map(cell).join(',')));
     const blob=new Blob([lines.join('\n')],{type:'text/csv;charset=utf-8'});
     const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`${card.id}-${idx.isoWeek}-receipt.csv`;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);
   }).catch(err=>{
@@ -2127,7 +2131,7 @@ function renderLandscape(){
     ['最低挂牌',_money(latest.cheapestValue),latest.cheapestProvider||'—'],
     ['Provider',latest.providerCount??'—','有效报价家数'],
     ['7 日变化',_pct(market.change7dPct),market.change7dBaseDate?`vs ${market.change7dBaseDate}`:'基准不足'],
-    ['on-demand 指数',idx&&_num(idx.index)?(+idx.index).toFixed(1):'—',idx?`周度 ${_money(idx.median)} · ${idx.vintage}`:'—'],
+    ['on-demand 指数',idx&&_num(idx.index)?(+idx.index).toFixed(1):'—',idx?`周度 ${_money(idx.median)} · ${idx.ageDays>28?`${idx.ageDays} 天前`:idx.vintage}`:'—'],
   ].map(([label,value,sub])=>`<div class="landscape-kpi"><div class="landscape-kpi-label">${esc(label)}</div><div class="landscape-kpi-value">${esc(value)}</div><div class="landscape-kpi-sub">${esc(sub)}</div></div>`).join('');
   const kicker=$('#landscape-market-kicker');
   if(kicker)kicker.textContent=`${LANDSCAPE_RISK[market.risk]||market.risk} · ${market.scope||''}`;
@@ -2141,14 +2145,15 @@ function renderLandscape(){
   const statusHtml=LANDSCAPE_DATA.dataFreshness==='stale'
     ? `<span class="status-pill stale-pill">数据滞后 ${esc(LANDSCAPE_DATA.dataAgeDays)} 天</span>`
     : `<span class="status-pill">${esc(market.status||'—')}</span>`;
-  if(evidence)evidence.innerHTML=`<span>截至 <b>${esc(card.asOf||LANDSCAPE_DATA.asOf)}</b>${_num(LANDSCAPE_DATA.dataAgeDays)?` · ${LANDSCAPE_DATA.dataAgeDays} 天前`:''}</span><span>${esc(market.label)} · <b>${latest.providerCount??0}</b> 家</span>${statusHtml}<button type="button" id="landscape-receipt" class="toggle-btn" style="height:28px;padding:0 9px;font-size:11px">下载本周回执 CSV</button>`;
+  if(evidence)evidence.innerHTML=`<span>截至 <b>${esc(card.asOf||LANDSCAPE_DATA.asOf)}</b>${_num(LANDSCAPE_DATA.dataAgeDays)?` · ${LANDSCAPE_DATA.dataAgeDays} 天前`:''}</span><span>${esc(market.label)} · <b>${latest.providerCount??0}</b> 家</span>${statusHtml}<span class="${idx&&idx.ageDays>28?'stale-index':''}">${idx?`指数周 ${esc(idx.weekStart)}${idx.ageDays>28?`（${idx.ageDays} 天前）`:''}`:'无周指数'}</span><button type="button" id="landscape-receipt" class="toggle-btn" style="height:28px;padding:0 9px;font-size:11px" title="${idx?`下载 ${esc(idx.isoWeek)} 回执 CSV`:'暂无可下载回执'}">${idx?`下载 ${esc(idx.isoWeek)} 回执 CSV`:'暂无可下载回执'}</button>`;
   const receiptBtn=$('#landscape-receipt');if(receiptBtn)receiptBtn.onclick=_landscapeReceipt;
   const body=$('#landscape-all-body');
   if(body)body.innerHTML=[...LANDSCAPE_DATA.cards].sort((a,b)=>(_num(a.median)?+a.median:Infinity)-(_num(b.median)?+b.median:Infinity)).map(c=>{
     const m=c.markets.on_demand||{};const l=m.latest||{};
-    return `<tr data-card="${esc(c.id)}" class="${c.id===card.id?'active':''}"><td><b>${esc(c.name)}</b></td><td class="num">${c.vramGb} GB</td><td class="num">${_money(l.value)}</td><td class="num">${_p25p75(l)}</td><td class="num">${_money(l.cheapestValue)}${l.cheapestProvider?` · ${esc(l.cheapestProvider)}`:''}</td><td class="num">${l.providerCount??'—'}</td><td class="num">${_pct(m.change7dPct)}</td><td><span class="status-pill">${esc(c.status||'—')}</span></td></tr>`
+    const tableStatus=LANDSCAPE_DATA.dataFreshness==='stale'&&c.status==='live'?'stale':c.status;
+    return `<tr data-card="${esc(c.id)}" class="${c.id===card.id?'active':''}"><td><b>${esc(c.name)}</b></td><td class="num">${c.vramGb} GB</td><td class="num">${_money(l.value)}</td><td class="num">${_p25p75(l)}</td><td class="num">${_money(l.cheapestValue)}${l.cheapestProvider?` · ${esc(l.cheapestProvider)}`:''}</td><td class="num">${l.providerCount??'—'}</td><td class="num">${_pct(m.change7dPct)}</td><td><span class="status-pill ${tableStatus==='stale'?'stale-pill':''}">${esc(tableStatus||'—')}</span></td></tr>`
   }).join('');
-  body&&body.querySelectorAll('tr[data-card]').forEach(row=>row.onclick=()=>{landscapeCardSelect.value=row.dataset.card;renderLandscape()});
+  body&&body.querySelectorAll('tr[data-card]').forEach(row=>row.onclick=()=>{landscapeCardSelect.value=row.dataset.card;_landscapeSetMarket('on_demand')});
 }
 function initLandscape(){
   if(!LANDSCAPE_DATA||!landscapeCardSelect||!landscapeMarketHost)return;
