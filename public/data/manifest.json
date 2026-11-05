@@ -1,9 +1,9 @@
 {
  "name": "AI Compute Economics - public GPU supply data",
- "generated_at": "2026-11-03T15:48:23Z",
+ "generated_at": "2026-11-05T17:19:23Z",
  "data_as_of": "2026-10-29",
- "data_age_days": 5,
- "methodology_version": "2026-11-03.2",
+ "data_age_days": 7,
+ "methodology_version": "2026-11-04.1",
  "license": "Project data. Underlying neocloud rows are CC BY 4.0; see the dashboard source panel.",
  "attribution": "AI Compute Economics; underlying provider prices from the tracked provider pages.",
  "files": [
@@ -30,17 +30,90 @@
   {
    "path": "changelog.json",
    "description": "Weekly index and median changes by card."
+  },
+  {
+   "path": "receipts/index.json",
+   "description": "Every reproducible card x ISO week, its frozen status and methodology version; the public site keeps only the latest week per card."
+  },
+  {
+   "path": "external/gpueconomy.json",
+   "description": "GPU Economy reference layer normalized to the 11 landscape cards (CC BY 4.0). Secondary only; it never changes our medians or index."
+  },
+  {
+   "path": "crosscheck.json",
+   "description": "Own vs GPU Economy medians by card and market. diff_pct is a methodology/sample gap, not a transaction price spread."
   }
  ],
+ "field_availability": {
+  "native": {
+   "date": "source row date (UTC day)",
+   "provider_id": "source provider id",
+   "series": "source GPU series label",
+   "kind": "source market kind (on-demand, secure, spot, community, ...)",
+   "usd_per_gpu_hour": "source price already normalized to USD per GPU-hour",
+   "source_url": "per-row provider source URL",
+   "venue_grade": "source venue class; present in the rows but not used by the landscape"
+  },
+  "derived": {
+   "provider": "display label derived from provider_id",
+   "card": "card display name mapped from series through the card catalog",
+   "card_id": "card catalog id mapped from series",
+   "vram_gb": "card catalog memory size; the source row's vramGb is not used to split cards",
+   "market": "market id mapped from kind",
+   "market_label": "market display label mapped from kind",
+   "risk": "market risk label mapped from kind",
+   "price_scope": "market scope mapped from kind",
+   "quotes": "count of same-day source rows behind the provider value",
+   "source_layer": "'own' for every row in this dataset; external reference layers are published separately",
+   "median": "median of same-day per-provider medians; one provider one vote",
+   "p25_p75": "quartiles of same-day provider medians; null below 4 providers",
+   "cheapest": "minimum raw same-day quote before per-provider aggregation",
+   "cheapest_series": "one daily minimum raw quote with its provider and source URL",
+   "monthly": "fixed-panel monthly summary from daily on-demand quotes; see definitions.monthly",
+   "status": "live/unconfirmed/stopped derived from quote age against the data as-of",
+   "change_7d_pct (market)": "market-level change against the last reading at or before as-of minus 7 days",
+   "last_confirmed_at": "quote date used as a confirmation proxy; the source has no per-row confirmation timestamp",
+   "listed_currency": "'USD' declared because the source dataset is already normalized to USD",
+   "fx_rate": "1.0 sentinel because no per-row FX conversion is retained",
+   "listed_unit": "'USD/GPU-hour', the unit of the normalized source price"
+  },
+  "unavailable": {
+   "region": "null: source rows carry no region dimension",
+   "gpu_count": "null: source rows carry no GPU count and the node-to-GPU normalization cannot be re-derived",
+   "listed_price": "null: only the normalized per-GPU price is retained, not the original listing price",
+   "fx_date": "null: no per-row FX date exists",
+   "scraped_at": "null: only a dataset-level fetchedAt exists, not a per-row scrape time",
+   "listed_since": "null: source rows have no first-listed date",
+   "source_kind": "null: source rows have no source-kind field (venueGrade is not equivalent)",
+   "change_7d_pct (per quote)": "null: no per-quote 7-day history is retained; only the market-level change is derived"
+  }
+ },
  "definitions": {
   "on_demand": "kinds on-demand and secure; community, spot, reserved, marketplace and serverless excluded from this median",
   "median": "each provider once per day; median across providers",
   "p25_p75": "quartiles across provider medians; omitted when fewer than 4 providers",
-  "status": "live if within 2 days of data as-of; unconfirmed within 7 days; stopped otherwise",
+  "status": "live if within 2 days of data as-of; unconfirmed within 7 days; stopped otherwise. Stopped markets keep their last reading and are still used for daily medians and cheapest values; the weekly index only includes readings confirmed within 2 days of the week's last day.",
   "vintage": "provisional for the current ISO week; final after the week closes",
   "index": "published at >=8 confirmed providers; thin at 4-7; withheld below 4; only the provider's latest day in the week, confirmed within 2 days of the week's last day",
   "receipts": "public price-index.json and per-card slices retain the latest published week only; full history stays in tracker_data",
+  "monthly": "calendar month UTC; panel fixed before the month starts from providers with on-demand quotes on >=13 of the 14 days immediately before the month starts (month_start - 14 days through month_start - 1 day); value is the arithmetic mean of daily median-of-panel-provider-medians over days with >=8 panel providers; published at >=75% valid-day coverage and >=8 panel providers, withheld otherwise; vintage is provisional for the month containing the data as-of and final for earlier months; a daily-frequency approximation, not an hourly panel",
+  "cheapest_series": "one point per day: the minimum raw quoted USD/GPU-hour among that day's quotes, with the provider and source URL of that quote; not a provider median and not the market median",
   "risk": "low for on-demand/reserved; medium for serverless/shared; high for spot/community/marketplace floor",
   "price_scope": "rate_card is a listed rate normalized to one GPU; instance vs GPU-only scope is not retained in this version; marketplace_floor and serverless are separate"
+ },
+ "external_sources": {
+  "gpueconomy": {
+   "source": "gpueconomy",
+   "source_url": "https://gpueconomy.com/data",
+   "license": "CC BY 4.0",
+   "license_url": "https://creativecommons.org/licenses/by/4.0/",
+   "attribution": "GPU Economy (https://gpueconomy.com)",
+   "methodology_version": "1.33.63",
+   "own_methodology_version": "2026-11-04.1",
+   "ext_methodology_version": "1.33.63",
+   "data_updated_at": "2026-11-03T12:48:20.451387+00:00",
+   "retrieved_at": "2026-11-04T09:12:14Z",
+   "role": "secondary reference layer; own medians, provider counts and index are unchanged"
+  }
  }
 }

@@ -54,7 +54,7 @@ jobs:
         run: |
           git config user.name "Angus"
           git config user.email "281128372+angusggsimid@users.noreply.github.com"
-          git add public/index.html public/data html_dashboard/ai_compute_economics_monitor.html html_dashboard/v4/time_series_snapshot.json tracker_data/backfills tracker_data/thesis_states tracker_data/deploy_refresh_status.json
+          git add public/index.html public/data html_dashboard/ai_compute_economics_monitor.html html_dashboard/v4/time_series_snapshot.json tracker_data/backfills tracker_data/thesis_states tracker_data/index_snapshots tracker_data/external tracker_data/deploy_refresh_status.json
           git diff --cached --quiet && exit 0
           git commit -m "data: refresh dashboard"
           # 手动推送（修 bug 等）与定时任务会竞争：直接 push 会因 non-fast-forward 失败。

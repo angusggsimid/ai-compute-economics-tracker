@@ -7,6 +7,7 @@ full weekly receipts.
 
 from __future__ import annotations
 
+import calendar
 from collections import defaultdict
 from datetime import date, datetime, timedelta, timezone
 import re
@@ -14,11 +15,15 @@ from statistics import median, quantiles
 from typing import Any, Dict, List, Optional, Tuple
 
 
-METHODOLOGY_VERSION = "2026-11-03.2"
+METHODOLOGY_VERSION = "2026-11-04.1"
 MIN_PROVIDERS = 4
 INDEX_MIN_PROVIDERS = 4
 INDEX_PUBLISH_MIN = 8
 INDEX_CONFIRM_DAYS = 2
+MONTHLY_PANEL_WINDOW_DAYS = 14
+MONTHLY_PANEL_MIN_DAYS = 13
+MONTHLY_MIN_PROVIDERS = 8
+MONTHLY_MIN_COVERAGE = 0.75
 
 CARDS: List[Dict[str, Any]] = [
     {"id": "H100", "name": "H100 80GB", "vramGb": 80, "family": "Hopper"},
@@ -205,8 +210,7 @@ def _market_series(
     market: Dict[str, Any],
     as_of: str,
 ) -> Dict[str, Any]:
-    by_day_provider: Dict[str, Dict[str, List[float]]] = defaultdict(lambda: defaultdict(list))
-    source_by_day_provider: Dict[Tuple[str, str], str] = {}
+    quotes_by_day_provider: Dict[str, Dict[str, List[Tuple[float, str]]]] = defaultdict(lambda: defaultdict(list))
     counts_by_day: Dict[str, int] = defaultdict(int)
     for row in rows:
         kind = str(row.get("kind") or "").lower()
@@ -214,22 +218,29 @@ def _market_series(
             continue
         day = str(row["date"])
         provider = str(row["provider"])
-        by_day_provider[day][provider].append(float(row["usdPerGpuHour"]))
-        source_by_day_provider.setdefault((day, provider), str(row.get("sourceUrl") or ""))
+        quotes_by_day_provider[day][provider].append((
+            float(row["usdPerGpuHour"]),
+            str(row.get("sourceUrl") or ""),
+        ))
         counts_by_day[day] += 1
 
     daily: List[Dict[str, Any]] = []
-    for day in sorted(by_day_provider):
-        per_provider = _provider_medians(by_day_provider[day])
+    cheapest_series: List[Dict[str, Any]] = []
+    for day in sorted(quotes_by_day_provider):
+        provider_quotes = quotes_by_day_provider[day]
+        per_provider = _provider_medians({
+            provider: [price for price, _ in quotes]
+            for provider, quotes in provider_quotes.items()
+        })
         values = sorted(per_provider.values())
         p25, p75 = _quartiles(values)
         raw_items = [
-            (provider, float(price))
-            for provider, prices in by_day_provider[day].items()
-            for price in prices
+            (provider, price, source_url)
+            for provider, quotes in provider_quotes.items()
+            for price, source_url in quotes
         ]
-        raw_values = sorted(price for _, price in raw_items)
-        cheapest_provider, cheapest_value = min(raw_items, key=lambda item: item[1])
+        raw_values = sorted(price for _, price, _ in raw_items)
+        cheapest_provider, cheapest_value, cheapest_source = min(raw_items, key=lambda item: item[1])
         daily.append({
             "date": day,
             "series": market["id"],
@@ -245,7 +256,14 @@ def _market_series(
             "cheapestProvider": provider_label(cheapest_provider),
             "cheapestProviderId": cheapest_provider,
             "cheapestValue": round(cheapest_value, 6),
-            "cheapestSourceUrl": source_by_day_provider.get((day, cheapest_provider), ""),
+            "cheapestSourceUrl": cheapest_source,
+        })
+        cheapest_series.append({
+            "date": day,
+            "value": round(cheapest_value, 6),
+            "provider": provider_label(cheapest_provider),
+            "providerId": cheapest_provider,
+            "sourceUrl": cheapest_source,
         })
     _moving_average(daily)
 
@@ -258,6 +276,7 @@ def _market_series(
             "note": market["note"],
             "status": "no_data",
             "series": [],
+            "cheapestSeries": [],
             "latest": None,
             "change7dPct": None,
             "change7dBaseDate": None,
@@ -266,17 +285,24 @@ def _market_series(
 
     latest = daily[-1]
     last_day = latest["date"]
-    per_provider = _provider_medians(by_day_provider[last_day])
-    providers = [
-        {
+    latest_quotes = quotes_by_day_provider[last_day]
+    per_provider = _provider_medians({
+        provider: [price for price, _ in quotes]
+        for provider, quotes in latest_quotes.items()
+    })
+    providers = []
+    for provider, value in sorted(per_provider.items(), key=lambda item: item[1]):
+        quotes = latest_quotes[provider]
+        # The provider value is a median across its same-day configurations;
+        # point the source at the configuration closest to that median.
+        source_url = min(quotes, key=lambda item: (abs(item[0] - value), item[0]))[1]
+        providers.append({
             "provider": provider_label(provider),
             "providerId": provider,
             "value": round(value, 6),
-            "sourceUrl": source_by_day_provider.get((last_day, provider), ""),
-            "quotes": len(by_day_provider[last_day][provider]),
-        }
-        for provider, value in sorted(per_provider.items(), key=lambda item: item[1])
-    ]
+            "sourceUrl": source_url,
+            "quotes": len(quotes),
+        })
     latest["providers"] = providers
 
     cutoff = (date.fromisoformat(as_of) - timedelta(days=7)).isoformat()
@@ -293,12 +319,116 @@ def _market_series(
         "note": market["note"],
         "status": _status_for(last_day, as_of),
         "series": daily,
+        "cheapestSeries": cheapest_series,
         "latest": latest,
         "change7dPct": change,
         "change7dBaseDate": base["date"] if base else None,
         "coverageDays": len(daily),
         "quoteRows": sum(counts_by_day.values()),
     }
+
+
+def _monthly_index(rows: List[Dict[str, Any]], as_of: str) -> List[Dict[str, Any]]:
+    """Monthly on-demand summary on a fixed, pre-committed provider panel.
+
+    This is a daily-frequency approximation of the hourly monthly panel used by
+    other trackers, so it is not directly comparable to an hourly index:
+
+    * Months are calendar months in UTC.
+    * The panel for a month is fixed before that month starts.  A provider
+      qualifies when it has at least one valid on-demand quote on at least 13
+      of the 14 calendar days immediately before the month starts (from
+      ``month_start - 14 days`` through ``month_start - 1 day``), i.e. >=90%
+      day coverage.  No data from inside the month is used to select the panel.
+    * The monthly value is the arithmetic mean of the valid daily values.  A
+      daily value is the median of that day's provider medians inside the
+      fixed panel; only days with at least 8 panel providers quoting are valid.
+    * A month is published only when the panel has at least 8 providers and
+      valid days cover at least 75% of the calendar days.  Otherwise it is
+      withheld with a reason and no value is emitted.
+    * ``vintage`` is provisional for the calendar month containing ``as_of``
+      and final for earlier months; ``isComplete`` mirrors that distinction.
+    * The first month in a dataset has no prior window, so it is withheld; no
+      future data is used to backfill a panel.
+
+    ``as_of`` is accepted for interface symmetry with the other index
+    builders; months are derived from the rows themselves.
+    """
+    on_demand_kinds = MARKET_BY_ID["on_demand"]["kinds"]
+    daily_provider_prices: Dict[str, Dict[str, List[float]]] = defaultdict(lambda: defaultdict(list))
+    for row in rows:
+        if str(row.get("kind") or "").lower() not in on_demand_kinds:
+            continue
+        price = row.get("usdPerGpuHour")
+        if not isinstance(price, (int, float)) or float(price) <= 0:
+            continue
+        daily_provider_prices[str(row["date"])][str(row["provider"])].append(float(price))
+
+    months = sorted({day[:7] for day in daily_provider_prices})
+    current_month = as_of[:7]
+    output: List[Dict[str, Any]] = []
+    for month in months:
+        year, month_number = (int(part) for part in month.split("-"))
+        days_in_month = calendar.monthrange(year, month_number)[1]
+        month_start = date(year, month_number, 1)
+        window_end = month_start - timedelta(days=1)
+        window_start = month_start - timedelta(days=MONTHLY_PANEL_WINDOW_DAYS)
+        presence: Dict[str, int] = defaultdict(int)
+        for offset in range(MONTHLY_PANEL_WINDOW_DAYS):
+            day = (window_start + timedelta(days=offset)).isoformat()
+            for provider in daily_provider_prices.get(day, {}):
+                presence[provider] += 1
+        panel = sorted(provider for provider, days in presence.items() if days >= MONTHLY_PANEL_MIN_DAYS)
+        panel_set = set(panel)
+
+        valid_days = 0
+        daily_values: List[float] = []
+        for day_number in range(1, days_in_month + 1):
+            day = f"{month}-{day_number:02d}"
+            per_provider = _provider_medians(daily_provider_prices.get(day, {}))
+            panel_values = [value for provider, value in per_provider.items() if provider in panel_set]
+            if len(panel_values) >= MONTHLY_MIN_PROVIDERS:
+                valid_days += 1
+                daily_values.append(median(panel_values))
+
+        coverage_pct = round(valid_days * 100.0 / days_in_month, 1)
+        value: Optional[float] = None
+        if not panel:
+            status = "withheld"
+            withheld_reason = (
+                f"no provider met the {MONTHLY_PANEL_MIN_DAYS}/{MONTHLY_PANEL_WINDOW_DAYS}-day panel test "
+                f"in {window_start.isoformat()}..{window_end.isoformat()}"
+            )
+        elif len(panel) < MONTHLY_MIN_PROVIDERS:
+            status = "withheld"
+            withheld_reason = f"panel has {len(panel)} providers (needs >={MONTHLY_MIN_PROVIDERS})"
+        elif valid_days / days_in_month < MONTHLY_MIN_COVERAGE:
+            status = "withheld"
+            withheld_reason = (
+                f"valid days {valid_days}/{days_in_month} ({coverage_pct}%) "
+                f"below {int(MONTHLY_MIN_COVERAGE * 100)}% coverage"
+            )
+        else:
+            status = "published"
+            withheld_reason = None
+            value = round(sum(daily_values) / len(daily_values), 6)
+
+        vintage = "provisional" if month >= current_month else "final"
+        output.append({
+            "month": month,
+            "value": value,
+            "panelCount": len(panel),
+            "coverageDays": valid_days,
+            "daysInMonth": days_in_month,
+            "coveragePct": coverage_pct,
+            "status": status,
+            "vintage": vintage,
+            "isComplete": vintage == "final",
+            "withheldReason": withheld_reason,
+            "methodologyVersion": METHODOLOGY_VERSION,
+            "panel": panel,
+        })
+    return output
 
 
 def _weekly_index(rows: List[Dict[str, Any]], as_of: str) -> Dict[str, Any]:
@@ -495,6 +625,7 @@ def full_landscape(rows: List[Dict[str, Any]], as_of: Optional[str] = None, buil
             "change7dPct": on_demand["change7dPct"],
             "weeklyIndex": weekly["latest"],
             "weekly": weekly,
+            "monthly": _monthly_index(card_rows, as_of),
             "markets": markets,
         })
     if not cards:
@@ -515,14 +646,23 @@ def full_landscape(rows: List[Dict[str, Any]], as_of: Optional[str] = None, buil
 
 
 def trim_landscape(full: Dict[str, Any]) -> Dict[str, Any]:
-    """Payload embedded in the page: no receipts, no repeated provider lists."""
+    """Payload embedded in the page: no receipts; cheapest line derives from series.
+
+    Every ``series`` point carries ``cheapestValue``, ``cheapestProvider`` and
+    ``cheapestSourceUrl``, so the page can draw the cheapest line without a
+    duplicate ``cheapestSeries`` array.  The full payload keeps
+    ``cheapestSeries`` for machine-readable exports.
+    """
     cards = []
     for card in full["cards"]:
         markets = {}
         for market_id, market in card["markets"].items():
             latest = market.get("latest")
             if latest:
-                latest = {key: value for key, value in latest.items() if key != "providers"}
+                latest = dict(latest)
+                offers = latest.pop("providers", None)
+                if offers is not None:
+                    latest["offers"] = offers
             markets[market_id] = {
                 "label": market["label"],
                 "short": market["short"],
@@ -552,6 +692,7 @@ def trim_landscape(full: Dict[str, Any]) -> Dict[str, Any]:
             "providerCount": card["providerCount"],
             "change7dPct": card["change7dPct"],
             "weeklyIndex": card["weeklyIndex"],
+            "monthly": card.get("monthly", []),
             "markets": markets,
         })
     return {
@@ -593,15 +734,62 @@ def public_prices(full: Dict[str, Any]) -> Dict[str, Any]:
                     "status": market["status"],
                     "source_url": provider["sourceUrl"],
                     "quotes": provider.get("quotes", 1),
+                    "source_layer": "own",
+                    "region": None,
+                    "gpu_count": None,
+                    "listed_price": None,
+                    "listed_currency": "USD",
+                    "fx_rate": 1.0,
+                    "fx_date": None,
+                    "listed_unit": "USD/GPU-hour",
+                    "scraped_at": None,
+                    "last_confirmed_at": latest["date"],
+                    "listed_since": None,
+                    "change_7d_pct": None,
+                    "source_kind": None,
                 })
     return {
         "name": "AI Compute Economics - latest GPU supply quotes",
         "unit": "USD per GPU per hour",
-        "description": "Latest reading per provider, GPU and market, normalized to one GPU. A provider's value is the median of its same-day configurations; quotes records how many rows it rests on. Node prices in the source dataset are already normalized to one GPU; community, spot and marketplace floors are kept separate from the main on-demand median.",
+        "description": "Latest reading per provider, GPU and market, normalized to one GPU. A provider's value is the median of its same-day configurations; quotes records how many rows it rests on. Node prices in the source dataset are already normalized to one GPU; community, spot and marketplace floors are kept separate from the main on-demand median. Every row is source_layer='own'. Fields the underlying rows do not carry are null instead of estimated: region, gpu_count, listed_price, fx_date, scraped_at, listed_since, source_kind and per-quote change_7d_pct. listed_currency='USD', fx_rate=1.0 and listed_unit='USD/GPU-hour' describe the USD normalization of the source; last_confirmed_at is the quote date used as a proxy because the source has no confirmation timestamp.",
         "as_of": full["asOf"],
         "methodology_version": full["methodologyVersion"],
         "count": len(quotes),
         "quotes": sorted(quotes, key=lambda row: (row["card_id"], row["market"], row["usd_per_gpu_hour"])),
+    }
+
+
+def _columnar_cheapest_series(points: List[Dict[str, Any]]) -> Dict[str, List[Any]]:
+    """Columnar cheapest series with a per-market source URL dictionary.
+
+    Repeating ``{"date": ..., "value": ..., "providerId": ..., "sourceUrl": ...}``
+    for every day and every market made gpus.json too large.  The columnar form
+    keeps the same information for every market while sharing repeated URLs.
+    """
+    dates: List[str] = []
+    values: List[float] = []
+    provider_ids: List[str] = []
+    source_urls: List[str] = []
+    source_idx: List[int] = []
+    url_index: Dict[str, int] = {}
+    for point in points:
+        value = point.get("value")
+        if not isinstance(value, (int, float)):
+            continue
+        source_url = str(point.get("sourceUrl") or "")
+        if source_url not in url_index:
+            url_index[source_url] = len(source_urls)
+            source_urls.append(source_url)
+        dates.append(str(point["date"]))
+        values.append(value)
+        provider_ids.append(str(point.get("providerId") or ""))
+        source_idx.append(url_index[source_url])
+    return {
+        "dates": dates,
+        "values": values,
+        "provider_ids": provider_ids,
+        "source_urls": source_urls,
+        "source_idx": source_idx,
     }
 
 
@@ -611,8 +799,13 @@ def public_gpus(full: Dict[str, Any]) -> Dict[str, Any]:
         markets = {}
         for market_id, market in card["markets"].items():
             latest = market.get("latest")
+            series = _columnar_cheapest_series(market.get("cheapestSeries", []))
             if not latest:
-                markets[market_id] = {"status": "no_data"}
+                markets[market_id] = {
+                    "status": "no_data",
+                    "cheapest": None,
+                    "cheapest_series": series,
+                }
                 continue
             markets[market_id] = {
                 "label": market["label"],
@@ -627,6 +820,7 @@ def public_gpus(full: Dict[str, Any]) -> Dict[str, Any]:
                 "provider_count": latest["providerCount"],
                 "thin": bool(latest.get("thin")),
                 "date": latest["date"],
+                "cheapest_series": series,
             }
         cards.append({
             "id": card["id"],
@@ -643,6 +837,7 @@ def public_gpus(full: Dict[str, Any]) -> Dict[str, Any]:
             "provider_count": card["providerCount"],
             "change_7d_pct": card["change7dPct"],
             "weekly_index": card["weeklyIndex"],
+            "monthly": card.get("monthly", []),
             "markets": markets,
         })
     return {
@@ -744,10 +939,11 @@ def public_index(full: Dict[str, Any]) -> Dict[str, Any]:
             "latest": weekly["latest"],
             "weeks": weeks,
             "receipts": receipts,
+            "monthly": card.get("monthly", []),
         }
     return {
         "name": "AI Compute Economics - weekly GPU supply index",
-        "description": "Weekly on-demand median per card, chain-linked base-100 over providers present in both weeks; one provider once per week. Weeks below the provider guard are withheld, not backfilled. Public receipts retain the latest published week only.",
+        "description": "Weekly on-demand median per card, chain-linked base-100 over providers present in both weeks; one provider once per week. Weeks below the provider guard are withheld, not backfilled. Public receipts retain the latest published week only. Monthly values use a fixed pre-committed provider panel and a daily-frequency approximation; see monthly_method.",
         "unit": "USD per GPU per hour; base-100 index",
         "as_of": full["asOf"],
         "methodology_version": full["methodologyVersion"],
@@ -755,6 +951,7 @@ def public_index(full: Dict[str, Any]) -> Dict[str, Any]:
         "index_publish_min": full.get("indexPublishMin"),
         "index_confirm_days": full.get("indexConfirmDays"),
         "receipt_retention": "latest_week_only",
+        "monthly_method": "Calendar month UTC. The panel is fixed before the month starts: providers need at least one on-demand quote on >=13 of the 14 days immediately before the month starts (month_start - 14 days through month_start - 1 day). The monthly value is the mean of daily median-of-panel-provider-medians over days with >=8 panel providers quoting. A month is published only with >=8 panel providers and >=75% valid-day coverage; otherwise it is withheld with a reason. vintage is provisional for the month containing the data as-of and final for earlier months. Daily-frequency approximation, not an hourly panel.",
         "cards": cards,
     }
 
@@ -776,14 +973,60 @@ def public_manifest(full: Dict[str, Any], generated_at: str) -> Dict[str, Any]:
             {"path": "price-index/{gpu}.json", "description": "Per-card slice of price-index.json, used by the receipt download; latest-week receipt only."},
             {"path": "changelog.json", "description": "Weekly index and median changes by card."},
         ],
+        "field_availability": {
+            "native": {
+                "date": "source row date (UTC day)",
+                "provider_id": "source provider id",
+                "series": "source GPU series label",
+                "kind": "source market kind (on-demand, secure, spot, community, ...)",
+                "usd_per_gpu_hour": "source price already normalized to USD per GPU-hour",
+                "source_url": "per-row provider source URL",
+                "venue_grade": "source venue class; present in the rows but not used by the landscape",
+            },
+            "derived": {
+                "provider": "display label derived from provider_id",
+                "card": "card display name mapped from series through the card catalog",
+                "card_id": "card catalog id mapped from series",
+                "vram_gb": "card catalog memory size; the source row's vramGb is not used to split cards",
+                "market": "market id mapped from kind",
+                "market_label": "market display label mapped from kind",
+                "risk": "market risk label mapped from kind",
+                "price_scope": "market scope mapped from kind",
+                "quotes": "count of same-day source rows behind the provider value",
+                "source_layer": "'own' for every row in this dataset; external reference layers are published separately",
+                "median": "median of same-day per-provider medians; one provider one vote",
+                "p25_p75": "quartiles of same-day provider medians; null below 4 providers",
+                "cheapest": "minimum raw same-day quote before per-provider aggregation",
+                "cheapest_series": "one daily minimum raw quote with its provider and source URL",
+                "monthly": "fixed-panel monthly summary from daily on-demand quotes; see definitions.monthly",
+                "status": "live/unconfirmed/stopped derived from quote age against the data as-of",
+                "change_7d_pct (market)": "market-level change against the last reading at or before as-of minus 7 days",
+                "last_confirmed_at": "quote date used as a confirmation proxy; the source has no per-row confirmation timestamp",
+                "listed_currency": "'USD' declared because the source dataset is already normalized to USD",
+                "fx_rate": "1.0 sentinel because no per-row FX conversion is retained",
+                "listed_unit": "'USD/GPU-hour', the unit of the normalized source price",
+            },
+            "unavailable": {
+                "region": "null: source rows carry no region dimension",
+                "gpu_count": "null: source rows carry no GPU count and the node-to-GPU normalization cannot be re-derived",
+                "listed_price": "null: only the normalized per-GPU price is retained, not the original listing price",
+                "fx_date": "null: no per-row FX date exists",
+                "scraped_at": "null: only a dataset-level fetchedAt exists, not a per-row scrape time",
+                "listed_since": "null: source rows have no first-listed date",
+                "source_kind": "null: source rows have no source-kind field (venueGrade is not equivalent)",
+                "change_7d_pct (per quote)": "null: no per-quote 7-day history is retained; only the market-level change is derived",
+            },
+        },
         "definitions": {
             "on_demand": "kinds on-demand and secure; community, spot, reserved, marketplace and serverless excluded from this median",
             "median": "each provider once per day; median across providers",
             "p25_p75": "quartiles across provider medians; omitted when fewer than 4 providers",
-            "status": "live if within 2 days of data as-of; unconfirmed within 7 days; stopped otherwise",
+            "status": "live if within 2 days of data as-of; unconfirmed within 7 days; stopped otherwise. Stopped markets keep their last reading and are still used for daily medians and cheapest values; the weekly index only includes readings confirmed within 2 days of the week's last day.",
             "vintage": "provisional for the current ISO week; final after the week closes",
             "index": "published at >=8 confirmed providers; thin at 4-7; withheld below 4; only the provider's latest day in the week, confirmed within 2 days of the week's last day",
             "receipts": "public price-index.json and per-card slices retain the latest published week only; full history stays in tracker_data",
+            "monthly": "calendar month UTC; panel fixed before the month starts from providers with on-demand quotes on >=13 of the 14 days immediately before the month starts (month_start - 14 days through month_start - 1 day); value is the arithmetic mean of daily median-of-panel-provider-medians over days with >=8 panel providers; published at >=75% valid-day coverage and >=8 panel providers, withheld otherwise; vintage is provisional for the month containing the data as-of and final for earlier months; a daily-frequency approximation, not an hourly panel",
+            "cheapest_series": "one point per day: the minimum raw quoted USD/GPU-hour among that day's quotes, with the provider and source URL of that quote; not a provider median and not the market median",
             "risk": "low for on-demand/reserved; medium for serverless/shared; high for spot/community/marketplace floor",
             "price_scope": "rate_card is a listed rate normalized to one GPU; instance vs GPU-only scope is not retained in this version; marketplace_floor and serverless are separate",
         },

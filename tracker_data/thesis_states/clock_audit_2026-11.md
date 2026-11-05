@@ -14,7 +14,7 @@
 
 ## Demand & Unit Economics — Observing
 - 下一个证明点：获取官方 usage 授权或接入新的非 proxy 用量源；OTPI 继续按日累积。
-- 关键指标：`{"completeWeeks": 51, "latestWeeklyTokens": 188039304051712.0, "weightedOutputPriceChange8wPct": -76.65, "recentPriceCutModels": 96, "otpiLabsCovered": 4, "otpiLatestDate": "2026-10-29"}`
+- 关键指标：`{"completeWeeks": 51, "latestWeeklyTokens": 188039304051712.0, "weightedOutputPriceChange8wPct": -76.65, "recentPriceCutModels": 95, "otpiLabsCovered": 4, "otpiLatestDate": "2026-10-29"}`
 - 阻塞项：['incomplete_weeks_51_of_52', 'proxy_ceiling_requires_official_usage_for_inflection']
 
 ## Commitment & Monetization — Inflection Watch（intensifying）

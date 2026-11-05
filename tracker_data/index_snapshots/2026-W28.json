@@ -1,0 +1,2806 @@
+{
+  "isoWeek": "2026-W28",
+  "frozenAt": "2026-11-04T11:42:35Z",
+  "methodologyVersion": "2026-11-04.1",
+  "cards": {
+    "H100": {
+      "week": {
+        "weekStart": "2026-07-06",
+        "isoWeek": "2026-W28",
+        "vintage": "final",
+        "status": "published",
+        "methodologyVersion": "2026-11-04.1",
+        "median": 3.12,
+        "p25": 2.6225,
+        "p75": 3.9675,
+        "providerCount": 16,
+        "index": 100.0,
+        "linkPairs": 0,
+        "withheldReason": null,
+        "receipt": "2026-W28"
+      },
+      "receipt": {
+        "weekStart": "2026-07-06",
+        "weekEnd": "2026-07-12",
+        "vintage": "final",
+        "status": "published",
+        "methodologyVersion": "2026-11-04.1",
+        "median": 3.12,
+        "p25": 2.6225,
+        "p75": 3.9675,
+        "providerCount": 16,
+        "index": 100.0,
+        "linkPairs": 0,
+        "withheldReason": null,
+        "notConfirmed48h": 0,
+        "included": [
+          {
+            "provider": "Voltage Park",
+            "providerId": "voltagepark",
+            "value": 1.99,
+            "date": "2026-07-12",
+            "sourceUrl": "https://www.voltagepark.com/pricing",
+            "quotes": 1
+          },
+          {
+            "provider": "Spheron",
+            "providerId": "spheron",
+            "value": 2.01,
+            "date": "2026-07-12",
+            "sourceUrl": "https://www.spheron.network/pricing/",
+            "quotes": 1
+          },
+          {
+            "provider": "Vultr",
+            "providerId": "vultr",
+            "value": 2.3,
+            "date": "2026-07-12",
+            "sourceUrl": "https://www.vultr.com/pricing/",
+            "quotes": 1
+          },
+          {
+            "provider": "Hyperstack",
+            "providerId": "hyperstack",
+            "value": 2.6,
+            "date": "2026-07-12",
+            "sourceUrl": "https://www.hyperstack.cloud/gpu-pricing",
+            "quotes": 3
+          },
+          {
+            "provider": "JarvisLabs",
+            "providerId": "jarvislabs",
+            "value": 2.69,
+            "date": "2026-07-12",
+            "sourceUrl": "https://jarvislabs.ai/pricing",
+            "quotes": 1
+          },
+          {
+            "provider": "Massed Compute",
+            "providerId": "massedcompute",
+            "value": 2.92,
+            "date": "2026-07-12",
+            "sourceUrl": "https://massedcompute.com/pricing",
+            "quotes": 3
+          },
+          {
+            "provider": "OVHcloud",
+            "providerId": "ovh",
+            "value": 2.99,
+            "date": "2026-07-12",
+            "sourceUrl": "https://www.ovhcloud.com/en/public-cloud/prices/",
+            "quotes": 1
+          },
+          {
+            "provider": "RunPod",
+            "providerId": "runpod",
+            "value": 2.99,
+            "date": "2026-07-12",
+            "sourceUrl": "https://www.runpod.io/pricing",
+            "quotes": 3
+          },
+          {
+            "provider": "Verda",
+            "providerId": "datacrunch",
+            "value": 3.25,
+            "date": "2026-07-12",
+            "sourceUrl": "https://datacrunch.io/pricing",
+            "quotes": 1
+          },
+          {
+            "provider": "Lambda",
+            "providerId": "lambda",
+            "value": 3.64,
+            "date": "2026-07-12",
+            "sourceUrl": "https://lambda.ai/service/gpu-cloud",
+            "quotes": 2
+          },
+          {
+            "provider": "Nebius",
+            "providerId": "nebius",
+            "value": 3.85,
+            "date": "2026-07-12",
+            "sourceUrl": "https://docs.nebius.com/compute/resources/pricing",
+            "quotes": 1
+          },
+          {
+            "provider": "Crusoe",
+            "providerId": "crusoe",
+            "value": 3.9,
+            "date": "2026-07-12",
+            "sourceUrl": "https://www.crusoe.ai/cloud/pricing",
+            "quotes": 1
+          },
+          {
+            "provider": "Together AI",
+            "providerId": "together",
+            "value": 3.99,
+            "date": "2026-07-12",
+            "sourceUrl": "https://www.together.ai/pricing",
+            "quotes": 1
+          },
+          {
+            "provider": "CoreWeave",
+            "providerId": "coreweave",
+            "value": 6.155,
+            "date": "2026-07-12",
+            "sourceUrl": "https://www.coreweave.com/pricing",
+            "quotes": 1
+          },
+          {
+            "provider": "Azure",
+            "providerId": "azure",
+            "value": 9.0205,
+            "date": "2026-07-12",
+            "sourceUrl": "https://prices.azure.com/api/retail/prices",
+            "quotes": 2
+          },
+          {
+            "provider": "AWS",
+            "providerId": "aws",
+            "value": 12.29,
+            "date": "2026-07-12",
+            "sourceUrl": "https://ec2.shop",
+            "quotes": 1
+          }
+        ],
+        "excluded": [
+          {
+            "provider": "RunPod",
+            "providerId": "runpod",
+            "market": "community",
+            "value": 1.99,
+            "date": "2026-07-06",
+            "sourceUrl": "https://www.runpod.io/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "RunPod",
+            "providerId": "runpod",
+            "market": "community",
+            "value": 2.59,
+            "date": "2026-07-06",
+            "sourceUrl": "https://www.runpod.io/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "RunPod",
+            "providerId": "runpod",
+            "market": "community",
+            "value": 2.69,
+            "date": "2026-07-06",
+            "sourceUrl": "https://www.runpod.io/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "AWS",
+            "providerId": "aws",
+            "market": "spot",
+            "value": 7.220225,
+            "date": "2026-07-07",
+            "sourceUrl": "https://ec2.shop",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "Azure",
+            "providerId": "azure",
+            "market": "spot",
+            "value": 1.40298,
+            "date": "2026-07-07",
+            "sourceUrl": "https://prices.azure.com/api/retail/prices",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "Azure",
+            "providerId": "azure",
+            "market": "spot",
+            "value": 2.044073,
+            "date": "2026-07-07",
+            "sourceUrl": "https://prices.azure.com/api/retail/prices",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "fal",
+            "providerId": "fal",
+            "market": "serverless",
+            "value": 3.99,
+            "date": "2026-07-07",
+            "sourceUrl": "https://fal.ai/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "Modal",
+            "providerId": "modal",
+            "market": "serverless",
+            "value": 3.9492,
+            "date": "2026-07-07",
+            "sourceUrl": "https://modal.com/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "RunPod",
+            "providerId": "runpod",
+            "market": "community",
+            "value": 1.99,
+            "date": "2026-07-07",
+            "sourceUrl": "https://www.runpod.io/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "RunPod",
+            "providerId": "runpod",
+            "market": "community",
+            "value": 2.59,
+            "date": "2026-07-07",
+            "sourceUrl": "https://www.runpod.io/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "RunPod",
+            "providerId": "runpod",
+            "market": "community",
+            "value": 2.69,
+            "date": "2026-07-07",
+            "sourceUrl": "https://www.runpod.io/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "AWS",
+            "providerId": "aws",
+            "market": "spot",
+            "value": 7.220225,
+            "date": "2026-07-08",
+            "sourceUrl": "https://ec2.shop",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "Azure",
+            "providerId": "azure",
+            "market": "spot",
+            "value": 1.40298,
+            "date": "2026-07-08",
+            "sourceUrl": "https://prices.azure.com/api/retail/prices",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "Azure",
+            "providerId": "azure",
+            "market": "spot",
+            "value": 2.044073,
+            "date": "2026-07-08",
+            "sourceUrl": "https://prices.azure.com/api/retail/prices",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "fal",
+            "providerId": "fal",
+            "market": "serverless",
+            "value": 3.99,
+            "date": "2026-07-08",
+            "sourceUrl": "https://fal.ai/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "Modal",
+            "providerId": "modal",
+            "market": "serverless",
+            "value": 3.9492,
+            "date": "2026-07-08",
+            "sourceUrl": "https://modal.com/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "RunPod",
+            "providerId": "runpod",
+            "market": "community",
+            "value": 1.99,
+            "date": "2026-07-08",
+            "sourceUrl": "https://www.runpod.io/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "RunPod",
+            "providerId": "runpod",
+            "market": "community",
+            "value": 2.59,
+            "date": "2026-07-08",
+            "sourceUrl": "https://www.runpod.io/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "RunPod",
+            "providerId": "runpod",
+            "market": "community",
+            "value": 2.69,
+            "date": "2026-07-08",
+            "sourceUrl": "https://www.runpod.io/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "AWS",
+            "providerId": "aws",
+            "market": "spot",
+            "value": 7.220225,
+            "date": "2026-07-09",
+            "sourceUrl": "https://ec2.shop",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "Azure",
+            "providerId": "azure",
+            "market": "spot",
+            "value": 1.40298,
+            "date": "2026-07-09",
+            "sourceUrl": "https://prices.azure.com/api/retail/prices",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "Azure",
+            "providerId": "azure",
+            "market": "spot",
+            "value": 2.044073,
+            "date": "2026-07-09",
+            "sourceUrl": "https://prices.azure.com/api/retail/prices",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "fal",
+            "providerId": "fal",
+            "market": "serverless",
+            "value": 3.99,
+            "date": "2026-07-09",
+            "sourceUrl": "https://fal.ai/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "Modal",
+            "providerId": "modal",
+            "market": "serverless",
+            "value": 3.9492,
+            "date": "2026-07-09",
+            "sourceUrl": "https://modal.com/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "RunPod",
+            "providerId": "runpod",
+            "market": "community",
+            "value": 1.99,
+            "date": "2026-07-09",
+            "sourceUrl": "https://www.runpod.io/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "RunPod",
+            "providerId": "runpod",
+            "market": "community",
+            "value": 2.59,
+            "date": "2026-07-09",
+            "sourceUrl": "https://www.runpod.io/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "RunPod",
+            "providerId": "runpod",
+            "market": "community",
+            "value": 2.69,
+            "date": "2026-07-09",
+            "sourceUrl": "https://www.runpod.io/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "AWS",
+            "providerId": "aws",
+            "market": "spot",
+            "value": 7.220225,
+            "date": "2026-07-10",
+            "sourceUrl": "https://ec2.shop",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "Azure",
+            "providerId": "azure",
+            "market": "spot",
+            "value": 1.40298,
+            "date": "2026-07-10",
+            "sourceUrl": "https://prices.azure.com/api/retail/prices",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "Azure",
+            "providerId": "azure",
+            "market": "spot",
+            "value": 2.044073,
+            "date": "2026-07-10",
+            "sourceUrl": "https://prices.azure.com/api/retail/prices",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "fal",
+            "providerId": "fal",
+            "market": "serverless",
+            "value": 3.99,
+            "date": "2026-07-10",
+            "sourceUrl": "https://fal.ai/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "Modal",
+            "providerId": "modal",
+            "market": "serverless",
+            "value": 3.9492,
+            "date": "2026-07-10",
+            "sourceUrl": "https://modal.com/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "RunPod",
+            "providerId": "runpod",
+            "market": "community",
+            "value": 1.99,
+            "date": "2026-07-10",
+            "sourceUrl": "https://www.runpod.io/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "RunPod",
+            "providerId": "runpod",
+            "market": "community",
+            "value": 2.59,
+            "date": "2026-07-10",
+            "sourceUrl": "https://www.runpod.io/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "RunPod",
+            "providerId": "runpod",
+            "market": "community",
+            "value": 2.69,
+            "date": "2026-07-10",
+            "sourceUrl": "https://www.runpod.io/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "AWS",
+            "providerId": "aws",
+            "market": "spot",
+            "value": 7.220225,
+            "date": "2026-07-11",
+            "sourceUrl": "https://ec2.shop",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "Azure",
+            "providerId": "azure",
+            "market": "spot",
+            "value": 1.40298,
+            "date": "2026-07-11",
+            "sourceUrl": "https://prices.azure.com/api/retail/prices",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "Azure",
+            "providerId": "azure",
+            "market": "spot",
+            "value": 2.044073,
+            "date": "2026-07-11",
+            "sourceUrl": "https://prices.azure.com/api/retail/prices",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "fal",
+            "providerId": "fal",
+            "market": "serverless",
+            "value": 3.99,
+            "date": "2026-07-11",
+            "sourceUrl": "https://fal.ai/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "Modal",
+            "providerId": "modal",
+            "market": "serverless",
+            "value": 3.9492,
+            "date": "2026-07-11",
+            "sourceUrl": "https://modal.com/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "RunPod",
+            "providerId": "runpod",
+            "market": "community",
+            "value": 1.99,
+            "date": "2026-07-11",
+            "sourceUrl": "https://www.runpod.io/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "RunPod",
+            "providerId": "runpod",
+            "market": "community",
+            "value": 2.59,
+            "date": "2026-07-11",
+            "sourceUrl": "https://www.runpod.io/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "RunPod",
+            "providerId": "runpod",
+            "market": "community",
+            "value": 2.69,
+            "date": "2026-07-11",
+            "sourceUrl": "https://www.runpod.io/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "AWS",
+            "providerId": "aws",
+            "market": "spot",
+            "value": 7.220225,
+            "date": "2026-07-12",
+            "sourceUrl": "https://ec2.shop",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "Azure",
+            "providerId": "azure",
+            "market": "spot",
+            "value": 1.40298,
+            "date": "2026-07-12",
+            "sourceUrl": "https://prices.azure.com/api/retail/prices",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "Azure",
+            "providerId": "azure",
+            "market": "spot",
+            "value": 2.044073,
+            "date": "2026-07-12",
+            "sourceUrl": "https://prices.azure.com/api/retail/prices",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "fal",
+            "providerId": "fal",
+            "market": "serverless",
+            "value": 3.99,
+            "date": "2026-07-12",
+            "sourceUrl": "https://fal.ai/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "Modal",
+            "providerId": "modal",
+            "market": "serverless",
+            "value": 3.9492,
+            "date": "2026-07-12",
+            "sourceUrl": "https://modal.com/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "RunPod",
+            "providerId": "runpod",
+            "market": "community",
+            "value": 1.99,
+            "date": "2026-07-12",
+            "sourceUrl": "https://www.runpod.io/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "RunPod",
+            "providerId": "runpod",
+            "market": "community",
+            "value": 2.59,
+            "date": "2026-07-12",
+            "sourceUrl": "https://www.runpod.io/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "RunPod",
+            "providerId": "runpod",
+            "market": "community",
+            "value": 2.69,
+            "date": "2026-07-12",
+            "sourceUrl": "https://www.runpod.io/pricing",
+            "rule": "market_not_on_demand"
+          }
+        ],
+        "excludedQuoteRowsByMarket": {
+          "community": 21,
+          "spot": 18,
+          "serverless": 12
+        }
+      }
+    },
+    "H200": {
+      "week": {
+        "weekStart": "2026-07-06",
+        "isoWeek": "2026-W28",
+        "vintage": "final",
+        "status": "published",
+        "methodologyVersion": "2026-11-04.1",
+        "median": 4.395,
+        "p25": 3.9925,
+        "p75": 6.14375,
+        "providerCount": 12,
+        "index": 100.0,
+        "linkPairs": 0,
+        "withheldReason": null,
+        "receipt": "2026-W28"
+      },
+      "receipt": {
+        "weekStart": "2026-07-06",
+        "weekEnd": "2026-07-12",
+        "vintage": "final",
+        "status": "published",
+        "methodologyVersion": "2026-11-04.1",
+        "median": 4.395,
+        "p25": 3.9925,
+        "p75": 6.14375,
+        "providerCount": 12,
+        "index": 100.0,
+        "linkPairs": 0,
+        "withheldReason": null,
+        "notConfirmed48h": 0,
+        "included": [
+          {
+            "provider": "Massed Compute",
+            "providerId": "massedcompute",
+            "value": 3.62,
+            "date": "2026-07-12",
+            "sourceUrl": "https://massedcompute.com/pricing",
+            "quotes": 1
+          },
+          {
+            "provider": "JarvisLabs",
+            "providerId": "jarvislabs",
+            "value": 3.8,
+            "date": "2026-07-12",
+            "sourceUrl": "https://jarvislabs.ai/pricing",
+            "quotes": 1
+          },
+          {
+            "provider": "Hyperstack",
+            "providerId": "hyperstack",
+            "value": 3.99,
+            "date": "2026-07-12",
+            "sourceUrl": "https://www.hyperstack.cloud/gpu-pricing",
+            "quotes": 1
+          },
+          {
+            "provider": "Verda",
+            "providerId": "datacrunch",
+            "value": 4.0,
+            "date": "2026-07-12",
+            "sourceUrl": "https://datacrunch.io/pricing",
+            "quotes": 1
+          },
+          {
+            "provider": "RunPod",
+            "providerId": "runpod",
+            "value": 4.09,
+            "date": "2026-07-12",
+            "sourceUrl": "https://www.runpod.io/pricing",
+            "quotes": 2
+          },
+          {
+            "provider": "Crusoe",
+            "providerId": "crusoe",
+            "value": 4.29,
+            "date": "2026-07-12",
+            "sourceUrl": "https://www.crusoe.ai/cloud/pricing",
+            "quotes": 1
+          },
+          {
+            "provider": "Nebius",
+            "providerId": "nebius",
+            "value": 4.5,
+            "date": "2026-07-12",
+            "sourceUrl": "https://docs.nebius.com/compute/resources/pricing",
+            "quotes": 1
+          },
+          {
+            "provider": "Spheron",
+            "providerId": "spheron",
+            "value": 4.54,
+            "date": "2026-07-12",
+            "sourceUrl": "https://www.spheron.network/pricing/",
+            "quotes": 1
+          },
+          {
+            "provider": "Together AI",
+            "providerId": "together",
+            "value": 5.99,
+            "date": "2026-07-12",
+            "sourceUrl": "https://www.together.ai/pricing",
+            "quotes": 1
+          },
+          {
+            "provider": "OVHcloud",
+            "providerId": "ovh",
+            "value": 6.195,
+            "date": "2026-07-12",
+            "sourceUrl": "https://www.ovhcloud.com/en/public-cloud/prices/",
+            "quotes": 1
+          },
+          {
+            "provider": "CoreWeave",
+            "providerId": "coreweave",
+            "value": 6.305,
+            "date": "2026-07-12",
+            "sourceUrl": "https://www.coreweave.com/pricing",
+            "quotes": 1
+          },
+          {
+            "provider": "AWS",
+            "providerId": "aws",
+            "value": 10.6,
+            "date": "2026-07-12",
+            "sourceUrl": "https://ec2.shop",
+            "quotes": 1
+          }
+        ],
+        "excluded": [
+          {
+            "provider": "RunPod",
+            "providerId": "runpod",
+            "market": "community",
+            "value": 3.59,
+            "date": "2026-07-06",
+            "sourceUrl": "https://www.runpod.io/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "fal",
+            "providerId": "fal",
+            "market": "serverless",
+            "value": 4.5,
+            "date": "2026-07-07",
+            "sourceUrl": "https://fal.ai/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "Modal",
+            "providerId": "modal",
+            "market": "serverless",
+            "value": 4.5396,
+            "date": "2026-07-07",
+            "sourceUrl": "https://modal.com/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "RunPod",
+            "providerId": "runpod",
+            "market": "community",
+            "value": 3.59,
+            "date": "2026-07-07",
+            "sourceUrl": "https://www.runpod.io/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "fal",
+            "providerId": "fal",
+            "market": "serverless",
+            "value": 4.5,
+            "date": "2026-07-08",
+            "sourceUrl": "https://fal.ai/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "Modal",
+            "providerId": "modal",
+            "market": "serverless",
+            "value": 4.5396,
+            "date": "2026-07-08",
+            "sourceUrl": "https://modal.com/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "RunPod",
+            "providerId": "runpod",
+            "market": "community",
+            "value": 3.59,
+            "date": "2026-07-08",
+            "sourceUrl": "https://www.runpod.io/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "fal",
+            "providerId": "fal",
+            "market": "serverless",
+            "value": 4.5,
+            "date": "2026-07-09",
+            "sourceUrl": "https://fal.ai/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "Modal",
+            "providerId": "modal",
+            "market": "serverless",
+            "value": 4.5396,
+            "date": "2026-07-09",
+            "sourceUrl": "https://modal.com/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "RunPod",
+            "providerId": "runpod",
+            "market": "community",
+            "value": 3.59,
+            "date": "2026-07-09",
+            "sourceUrl": "https://www.runpod.io/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "fal",
+            "providerId": "fal",
+            "market": "serverless",
+            "value": 4.5,
+            "date": "2026-07-10",
+            "sourceUrl": "https://fal.ai/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "Modal",
+            "providerId": "modal",
+            "market": "serverless",
+            "value": 4.5396,
+            "date": "2026-07-10",
+            "sourceUrl": "https://modal.com/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "RunPod",
+            "providerId": "runpod",
+            "market": "community",
+            "value": 3.59,
+            "date": "2026-07-10",
+            "sourceUrl": "https://www.runpod.io/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "fal",
+            "providerId": "fal",
+            "market": "serverless",
+            "value": 4.5,
+            "date": "2026-07-11",
+            "sourceUrl": "https://fal.ai/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "Modal",
+            "providerId": "modal",
+            "market": "serverless",
+            "value": 4.5396,
+            "date": "2026-07-11",
+            "sourceUrl": "https://modal.com/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "RunPod",
+            "providerId": "runpod",
+            "market": "community",
+            "value": 3.59,
+            "date": "2026-07-11",
+            "sourceUrl": "https://www.runpod.io/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "fal",
+            "providerId": "fal",
+            "market": "serverless",
+            "value": 4.5,
+            "date": "2026-07-12",
+            "sourceUrl": "https://fal.ai/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "Modal",
+            "providerId": "modal",
+            "market": "serverless",
+            "value": 4.5396,
+            "date": "2026-07-12",
+            "sourceUrl": "https://modal.com/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "RunPod",
+            "providerId": "runpod",
+            "market": "community",
+            "value": 3.59,
+            "date": "2026-07-12",
+            "sourceUrl": "https://www.runpod.io/pricing",
+            "rule": "market_not_on_demand"
+          }
+        ],
+        "excludedQuoteRowsByMarket": {
+          "community": 7,
+          "serverless": 12
+        }
+      }
+    },
+    "B200": {
+      "week": {
+        "weekStart": "2026-07-06",
+        "isoWeek": "2026-W28",
+        "vintage": "final",
+        "status": "published",
+        "methodologyVersion": "2026-11-04.1",
+        "median": 6.69,
+        "p25": 5.945,
+        "p75": 8.395,
+        "providerCount": 9,
+        "index": 100.0,
+        "linkPairs": 0,
+        "withheldReason": null,
+        "receipt": "2026-W28"
+      },
+      "receipt": {
+        "weekStart": "2026-07-06",
+        "weekEnd": "2026-07-12",
+        "vintage": "final",
+        "status": "published",
+        "methodologyVersion": "2026-11-04.1",
+        "median": 6.69,
+        "p25": 5.945,
+        "p75": 8.395,
+        "providerCount": 9,
+        "index": 100.0,
+        "linkPairs": 0,
+        "withheldReason": null,
+        "notConfirmed48h": 0,
+        "included": [
+          {
+            "provider": "Vultr",
+            "providerId": "vultr",
+            "value": 3.5,
+            "date": "2026-07-12",
+            "sourceUrl": "https://www.vultr.com/pricing/",
+            "quotes": 1
+          },
+          {
+            "provider": "RunPod",
+            "providerId": "runpod",
+            "value": 5.89,
+            "date": "2026-07-12",
+            "sourceUrl": "https://www.runpod.io/pricing",
+            "quotes": 1
+          },
+          {
+            "provider": "Hyperstack",
+            "providerId": "hyperstack",
+            "value": 6.0,
+            "date": "2026-07-12",
+            "sourceUrl": "https://www.hyperstack.cloud/gpu-pricing",
+            "quotes": 1
+          },
+          {
+            "provider": "Verda",
+            "providerId": "datacrunch",
+            "value": 6.11,
+            "date": "2026-07-12",
+            "sourceUrl": "https://datacrunch.io/pricing",
+            "quotes": 1
+          },
+          {
+            "provider": "Lambda",
+            "providerId": "lambda",
+            "value": 6.69,
+            "date": "2026-07-12",
+            "sourceUrl": "https://lambda.ai/service/gpu-cloud",
+            "quotes": 1
+          },
+          {
+            "provider": "Nebius",
+            "providerId": "nebius",
+            "value": 7.15,
+            "date": "2026-07-12",
+            "sourceUrl": "https://docs.nebius.com/compute/resources/pricing",
+            "quotes": 1
+          },
+          {
+            "provider": "Together AI",
+            "providerId": "together",
+            "value": 8.19,
+            "date": "2026-07-12",
+            "sourceUrl": "https://www.together.ai/pricing",
+            "quotes": 1
+          },
+          {
+            "provider": "CoreWeave",
+            "providerId": "coreweave",
+            "value": 8.6,
+            "date": "2026-07-12",
+            "sourceUrl": "https://www.coreweave.com/pricing",
+            "quotes": 1
+          },
+          {
+            "provider": "Spheron",
+            "providerId": "spheron",
+            "value": 9.36,
+            "date": "2026-07-12",
+            "sourceUrl": "https://www.spheron.network/pricing/",
+            "quotes": 1
+          }
+        ],
+        "excluded": [
+          {
+            "provider": "RunPod",
+            "providerId": "runpod",
+            "market": "community",
+            "value": 5.98,
+            "date": "2026-07-06",
+            "sourceUrl": "https://www.runpod.io/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "fal",
+            "providerId": "fal",
+            "market": "serverless",
+            "value": 6.25,
+            "date": "2026-07-07",
+            "sourceUrl": "https://fal.ai/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "Modal",
+            "providerId": "modal",
+            "market": "serverless",
+            "value": 6.2496,
+            "date": "2026-07-07",
+            "sourceUrl": "https://modal.com/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "RunPod",
+            "providerId": "runpod",
+            "market": "community",
+            "value": 5.98,
+            "date": "2026-07-07",
+            "sourceUrl": "https://www.runpod.io/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "fal",
+            "providerId": "fal",
+            "market": "serverless",
+            "value": 6.25,
+            "date": "2026-07-08",
+            "sourceUrl": "https://fal.ai/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "Modal",
+            "providerId": "modal",
+            "market": "serverless",
+            "value": 6.2496,
+            "date": "2026-07-08",
+            "sourceUrl": "https://modal.com/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "RunPod",
+            "providerId": "runpod",
+            "market": "community",
+            "value": 5.98,
+            "date": "2026-07-08",
+            "sourceUrl": "https://www.runpod.io/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "fal",
+            "providerId": "fal",
+            "market": "serverless",
+            "value": 6.25,
+            "date": "2026-07-09",
+            "sourceUrl": "https://fal.ai/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "Modal",
+            "providerId": "modal",
+            "market": "serverless",
+            "value": 6.2496,
+            "date": "2026-07-09",
+            "sourceUrl": "https://modal.com/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "RunPod",
+            "providerId": "runpod",
+            "market": "community",
+            "value": 5.98,
+            "date": "2026-07-09",
+            "sourceUrl": "https://www.runpod.io/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "fal",
+            "providerId": "fal",
+            "market": "serverless",
+            "value": 6.25,
+            "date": "2026-07-10",
+            "sourceUrl": "https://fal.ai/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "Modal",
+            "providerId": "modal",
+            "market": "serverless",
+            "value": 6.2496,
+            "date": "2026-07-10",
+            "sourceUrl": "https://modal.com/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "RunPod",
+            "providerId": "runpod",
+            "market": "community",
+            "value": 5.98,
+            "date": "2026-07-10",
+            "sourceUrl": "https://www.runpod.io/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "fal",
+            "providerId": "fal",
+            "market": "serverless",
+            "value": 6.25,
+            "date": "2026-07-11",
+            "sourceUrl": "https://fal.ai/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "Modal",
+            "providerId": "modal",
+            "market": "serverless",
+            "value": 6.2496,
+            "date": "2026-07-11",
+            "sourceUrl": "https://modal.com/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "RunPod",
+            "providerId": "runpod",
+            "market": "community",
+            "value": 5.98,
+            "date": "2026-07-11",
+            "sourceUrl": "https://www.runpod.io/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "fal",
+            "providerId": "fal",
+            "market": "serverless",
+            "value": 6.25,
+            "date": "2026-07-12",
+            "sourceUrl": "https://fal.ai/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "Modal",
+            "providerId": "modal",
+            "market": "serverless",
+            "value": 6.2496,
+            "date": "2026-07-12",
+            "sourceUrl": "https://modal.com/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "RunPod",
+            "providerId": "runpod",
+            "market": "community",
+            "value": 5.98,
+            "date": "2026-07-12",
+            "sourceUrl": "https://www.runpod.io/pricing",
+            "rule": "market_not_on_demand"
+          }
+        ],
+        "excludedQuoteRowsByMarket": {
+          "community": 7,
+          "serverless": 12
+        }
+      }
+    },
+    "A100": {
+      "week": {
+        "weekStart": "2026-07-06",
+        "isoWeek": "2026-W28",
+        "vintage": "final",
+        "status": "published",
+        "methodologyVersion": "2026-11-04.1",
+        "median": 2.15,
+        "p25": 1.435,
+        "p75": 2.935,
+        "providerCount": 13,
+        "index": 100.0,
+        "linkPairs": 0,
+        "withheldReason": null,
+        "receipt": "2026-W28"
+      },
+      "receipt": {
+        "weekStart": "2026-07-06",
+        "weekEnd": "2026-07-12",
+        "vintage": "final",
+        "status": "published",
+        "methodologyVersion": "2026-11-04.1",
+        "median": 2.15,
+        "p25": 1.435,
+        "p75": 2.935,
+        "providerCount": 13,
+        "index": 100.0,
+        "linkPairs": 0,
+        "withheldReason": null,
+        "notConfirmed48h": 0,
+        "included": [
+          {
+            "provider": "JarvisLabs",
+            "providerId": "jarvislabs",
+            "value": 1.19,
+            "date": "2026-07-12",
+            "sourceUrl": "https://jarvislabs.ai/pricing",
+            "quotes": 2
+          },
+          {
+            "provider": "Massed Compute",
+            "providerId": "massedcompute",
+            "value": 1.365,
+            "date": "2026-07-12",
+            "sourceUrl": "https://massedcompute.com/pricing",
+            "quotes": 2
+          },
+          {
+            "provider": "Spheron",
+            "providerId": "spheron",
+            "value": 1.43,
+            "date": "2026-07-12",
+            "sourceUrl": "https://www.spheron.network/pricing/",
+            "quotes": 1
+          },
+          {
+            "provider": "RunPod",
+            "providerId": "runpod",
+            "value": 1.44,
+            "date": "2026-07-12",
+            "sourceUrl": "https://www.runpod.io/pricing",
+            "quotes": 2
+          },
+          {
+            "provider": "Hyperstack",
+            "providerId": "hyperstack",
+            "value": 1.475,
+            "date": "2026-07-12",
+            "sourceUrl": "https://www.hyperstack.cloud/gpu-pricing",
+            "quotes": 2
+          },
+          {
+            "provider": "Verda",
+            "providerId": "datacrunch",
+            "value": 1.54,
+            "date": "2026-07-12",
+            "sourceUrl": "https://datacrunch.io/pricing",
+            "quotes": 2
+          },
+          {
+            "provider": "Crusoe",
+            "providerId": "crusoe",
+            "value": 2.15,
+            "date": "2026-07-12",
+            "sourceUrl": "https://www.crusoe.ai/cloud/pricing",
+            "quotes": 2
+          },
+          {
+            "provider": "Lambda",
+            "providerId": "lambda",
+            "value": 2.39,
+            "date": "2026-07-12",
+            "sourceUrl": "https://lambda.ai/service/gpu-cloud",
+            "quotes": 2
+          },
+          {
+            "provider": "CoreWeave",
+            "providerId": "coreweave",
+            "value": 2.7,
+            "date": "2026-07-12",
+            "sourceUrl": "https://www.coreweave.com/pricing",
+            "quotes": 1
+          },
+          {
+            "provider": "Vultr",
+            "providerId": "vultr",
+            "value": 2.8,
+            "date": "2026-07-12",
+            "sourceUrl": "https://www.vultr.com/pricing/",
+            "quotes": 1
+          },
+          {
+            "provider": "OVHcloud",
+            "providerId": "ovh",
+            "value": 3.07,
+            "date": "2026-07-12",
+            "sourceUrl": "https://www.ovhcloud.com/en/public-cloud/prices/",
+            "quotes": 1
+          },
+          {
+            "provider": "Azure",
+            "providerId": "azure",
+            "value": 3.673,
+            "date": "2026-07-12",
+            "sourceUrl": "https://prices.azure.com/api/retail/prices",
+            "quotes": 3
+          },
+          {
+            "provider": "AWS",
+            "providerId": "aws",
+            "value": 4.608647,
+            "date": "2026-07-12",
+            "sourceUrl": "https://ec2.shop",
+            "quotes": 2
+          }
+        ],
+        "excluded": [
+          {
+            "provider": "RunPod",
+            "providerId": "runpod",
+            "market": "community",
+            "value": 1.0,
+            "date": "2026-07-06",
+            "sourceUrl": "https://www.runpod.io/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "RunPod",
+            "providerId": "runpod",
+            "market": "community",
+            "value": 1.19,
+            "date": "2026-07-06",
+            "sourceUrl": "https://www.runpod.io/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "RunPod",
+            "providerId": "runpod",
+            "market": "community",
+            "value": 1.39,
+            "date": "2026-07-06",
+            "sourceUrl": "https://www.runpod.io/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "AWS",
+            "providerId": "aws",
+            "market": "spot",
+            "value": 1.633338,
+            "date": "2026-07-07",
+            "sourceUrl": "https://ec2.shop",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "Azure",
+            "providerId": "azure",
+            "market": "spot",
+            "value": 0.67877,
+            "date": "2026-07-07",
+            "sourceUrl": "https://prices.azure.com/api/retail/prices",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "Azure",
+            "providerId": "azure",
+            "market": "spot",
+            "value": 0.747918,
+            "date": "2026-07-07",
+            "sourceUrl": "https://prices.azure.com/api/retail/prices",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "Azure",
+            "providerId": "azure",
+            "market": "spot",
+            "value": 1.065025,
+            "date": "2026-07-07",
+            "sourceUrl": "https://prices.azure.com/api/retail/prices",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "Modal",
+            "providerId": "modal",
+            "market": "serverless",
+            "value": 2.0988,
+            "date": "2026-07-07",
+            "sourceUrl": "https://modal.com/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "Modal",
+            "providerId": "modal",
+            "market": "serverless",
+            "value": 2.4984,
+            "date": "2026-07-07",
+            "sourceUrl": "https://modal.com/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "RunPod",
+            "providerId": "runpod",
+            "market": "community",
+            "value": 1.0,
+            "date": "2026-07-07",
+            "sourceUrl": "https://www.runpod.io/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "RunPod",
+            "providerId": "runpod",
+            "market": "community",
+            "value": 1.19,
+            "date": "2026-07-07",
+            "sourceUrl": "https://www.runpod.io/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "RunPod",
+            "providerId": "runpod",
+            "market": "community",
+            "value": 1.39,
+            "date": "2026-07-07",
+            "sourceUrl": "https://www.runpod.io/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "AWS",
+            "providerId": "aws",
+            "market": "spot",
+            "value": 1.633338,
+            "date": "2026-07-08",
+            "sourceUrl": "https://ec2.shop",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "Azure",
+            "providerId": "azure",
+            "market": "spot",
+            "value": 0.67877,
+            "date": "2026-07-08",
+            "sourceUrl": "https://prices.azure.com/api/retail/prices",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "Azure",
+            "providerId": "azure",
+            "market": "spot",
+            "value": 0.747918,
+            "date": "2026-07-08",
+            "sourceUrl": "https://prices.azure.com/api/retail/prices",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "Azure",
+            "providerId": "azure",
+            "market": "spot",
+            "value": 1.065025,
+            "date": "2026-07-08",
+            "sourceUrl": "https://prices.azure.com/api/retail/prices",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "Modal",
+            "providerId": "modal",
+            "market": "serverless",
+            "value": 2.0988,
+            "date": "2026-07-08",
+            "sourceUrl": "https://modal.com/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "Modal",
+            "providerId": "modal",
+            "market": "serverless",
+            "value": 2.4984,
+            "date": "2026-07-08",
+            "sourceUrl": "https://modal.com/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "RunPod",
+            "providerId": "runpod",
+            "market": "community",
+            "value": 1.0,
+            "date": "2026-07-08",
+            "sourceUrl": "https://www.runpod.io/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "RunPod",
+            "providerId": "runpod",
+            "market": "community",
+            "value": 1.19,
+            "date": "2026-07-08",
+            "sourceUrl": "https://www.runpod.io/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "RunPod",
+            "providerId": "runpod",
+            "market": "community",
+            "value": 1.39,
+            "date": "2026-07-08",
+            "sourceUrl": "https://www.runpod.io/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "AWS",
+            "providerId": "aws",
+            "market": "spot",
+            "value": 1.633338,
+            "date": "2026-07-09",
+            "sourceUrl": "https://ec2.shop",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "Azure",
+            "providerId": "azure",
+            "market": "spot",
+            "value": 0.67877,
+            "date": "2026-07-09",
+            "sourceUrl": "https://prices.azure.com/api/retail/prices",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "Azure",
+            "providerId": "azure",
+            "market": "spot",
+            "value": 0.747918,
+            "date": "2026-07-09",
+            "sourceUrl": "https://prices.azure.com/api/retail/prices",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "Azure",
+            "providerId": "azure",
+            "market": "spot",
+            "value": 1.065025,
+            "date": "2026-07-09",
+            "sourceUrl": "https://prices.azure.com/api/retail/prices",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "Modal",
+            "providerId": "modal",
+            "market": "serverless",
+            "value": 2.0988,
+            "date": "2026-07-09",
+            "sourceUrl": "https://modal.com/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "Modal",
+            "providerId": "modal",
+            "market": "serverless",
+            "value": 2.4984,
+            "date": "2026-07-09",
+            "sourceUrl": "https://modal.com/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "RunPod",
+            "providerId": "runpod",
+            "market": "community",
+            "value": 1.0,
+            "date": "2026-07-09",
+            "sourceUrl": "https://www.runpod.io/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "RunPod",
+            "providerId": "runpod",
+            "market": "community",
+            "value": 1.19,
+            "date": "2026-07-09",
+            "sourceUrl": "https://www.runpod.io/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "RunPod",
+            "providerId": "runpod",
+            "market": "community",
+            "value": 1.39,
+            "date": "2026-07-09",
+            "sourceUrl": "https://www.runpod.io/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "AWS",
+            "providerId": "aws",
+            "market": "spot",
+            "value": 1.633338,
+            "date": "2026-07-10",
+            "sourceUrl": "https://ec2.shop",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "Azure",
+            "providerId": "azure",
+            "market": "spot",
+            "value": 0.67877,
+            "date": "2026-07-10",
+            "sourceUrl": "https://prices.azure.com/api/retail/prices",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "Azure",
+            "providerId": "azure",
+            "market": "spot",
+            "value": 0.747918,
+            "date": "2026-07-10",
+            "sourceUrl": "https://prices.azure.com/api/retail/prices",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "Azure",
+            "providerId": "azure",
+            "market": "spot",
+            "value": 1.065025,
+            "date": "2026-07-10",
+            "sourceUrl": "https://prices.azure.com/api/retail/prices",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "Modal",
+            "providerId": "modal",
+            "market": "serverless",
+            "value": 2.0988,
+            "date": "2026-07-10",
+            "sourceUrl": "https://modal.com/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "Modal",
+            "providerId": "modal",
+            "market": "serverless",
+            "value": 2.4984,
+            "date": "2026-07-10",
+            "sourceUrl": "https://modal.com/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "RunPod",
+            "providerId": "runpod",
+            "market": "community",
+            "value": 1.0,
+            "date": "2026-07-10",
+            "sourceUrl": "https://www.runpod.io/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "RunPod",
+            "providerId": "runpod",
+            "market": "community",
+            "value": 1.19,
+            "date": "2026-07-10",
+            "sourceUrl": "https://www.runpod.io/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "RunPod",
+            "providerId": "runpod",
+            "market": "community",
+            "value": 1.39,
+            "date": "2026-07-10",
+            "sourceUrl": "https://www.runpod.io/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "AWS",
+            "providerId": "aws",
+            "market": "spot",
+            "value": 1.633338,
+            "date": "2026-07-11",
+            "sourceUrl": "https://ec2.shop",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "Azure",
+            "providerId": "azure",
+            "market": "spot",
+            "value": 0.67877,
+            "date": "2026-07-11",
+            "sourceUrl": "https://prices.azure.com/api/retail/prices",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "Azure",
+            "providerId": "azure",
+            "market": "spot",
+            "value": 0.747918,
+            "date": "2026-07-11",
+            "sourceUrl": "https://prices.azure.com/api/retail/prices",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "Azure",
+            "providerId": "azure",
+            "market": "spot",
+            "value": 1.065025,
+            "date": "2026-07-11",
+            "sourceUrl": "https://prices.azure.com/api/retail/prices",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "Modal",
+            "providerId": "modal",
+            "market": "serverless",
+            "value": 2.0988,
+            "date": "2026-07-11",
+            "sourceUrl": "https://modal.com/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "Modal",
+            "providerId": "modal",
+            "market": "serverless",
+            "value": 2.4984,
+            "date": "2026-07-11",
+            "sourceUrl": "https://modal.com/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "RunPod",
+            "providerId": "runpod",
+            "market": "community",
+            "value": 1.0,
+            "date": "2026-07-11",
+            "sourceUrl": "https://www.runpod.io/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "RunPod",
+            "providerId": "runpod",
+            "market": "community",
+            "value": 1.19,
+            "date": "2026-07-11",
+            "sourceUrl": "https://www.runpod.io/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "RunPod",
+            "providerId": "runpod",
+            "market": "community",
+            "value": 1.39,
+            "date": "2026-07-11",
+            "sourceUrl": "https://www.runpod.io/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "AWS",
+            "providerId": "aws",
+            "market": "spot",
+            "value": 1.633338,
+            "date": "2026-07-12",
+            "sourceUrl": "https://ec2.shop",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "Azure",
+            "providerId": "azure",
+            "market": "spot",
+            "value": 0.67877,
+            "date": "2026-07-12",
+            "sourceUrl": "https://prices.azure.com/api/retail/prices",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "Azure",
+            "providerId": "azure",
+            "market": "spot",
+            "value": 0.747918,
+            "date": "2026-07-12",
+            "sourceUrl": "https://prices.azure.com/api/retail/prices",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "Azure",
+            "providerId": "azure",
+            "market": "spot",
+            "value": 1.065025,
+            "date": "2026-07-12",
+            "sourceUrl": "https://prices.azure.com/api/retail/prices",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "Modal",
+            "providerId": "modal",
+            "market": "serverless",
+            "value": 2.0988,
+            "date": "2026-07-12",
+            "sourceUrl": "https://modal.com/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "Modal",
+            "providerId": "modal",
+            "market": "serverless",
+            "value": 2.4984,
+            "date": "2026-07-12",
+            "sourceUrl": "https://modal.com/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "RunPod",
+            "providerId": "runpod",
+            "market": "community",
+            "value": 1.0,
+            "date": "2026-07-12",
+            "sourceUrl": "https://www.runpod.io/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "RunPod",
+            "providerId": "runpod",
+            "market": "community",
+            "value": 1.19,
+            "date": "2026-07-12",
+            "sourceUrl": "https://www.runpod.io/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "RunPod",
+            "providerId": "runpod",
+            "market": "community",
+            "value": 1.39,
+            "date": "2026-07-12",
+            "sourceUrl": "https://www.runpod.io/pricing",
+            "rule": "market_not_on_demand"
+          }
+        ],
+        "excludedQuoteRowsByMarket": {
+          "community": 21,
+          "spot": 24,
+          "serverless": 12
+        }
+      }
+    },
+    "L40S": {
+      "week": {
+        "weekStart": "2026-07-06",
+        "isoWeek": "2026-W28",
+        "vintage": "final",
+        "status": "published",
+        "methodologyVersion": "2026-11-04.1",
+        "median": 1.435,
+        "p25": 0.9825,
+        "p75": 1.9125,
+        "providerCount": 10,
+        "index": 100.0,
+        "linkPairs": 0,
+        "withheldReason": null,
+        "receipt": "2026-W28"
+      },
+      "receipt": {
+        "weekStart": "2026-07-06",
+        "weekEnd": "2026-07-12",
+        "vintage": "final",
+        "status": "published",
+        "methodologyVersion": "2026-11-04.1",
+        "median": 1.435,
+        "p25": 0.9825,
+        "p75": 1.9125,
+        "providerCount": 10,
+        "index": 100.0,
+        "linkPairs": 0,
+        "withheldReason": null,
+        "notConfirmed48h": 0,
+        "included": [
+          {
+            "provider": "Massed Compute",
+            "providerId": "massedcompute",
+            "value": 0.88,
+            "date": "2026-07-12",
+            "sourceUrl": "https://massedcompute.com/pricing",
+            "quotes": 1
+          },
+          {
+            "provider": "Spheron",
+            "providerId": "spheron",
+            "value": 0.96,
+            "date": "2026-07-12",
+            "sourceUrl": "https://www.spheron.network/pricing/",
+            "quotes": 1
+          },
+          {
+            "provider": "RunPod",
+            "providerId": "runpod",
+            "value": 0.99,
+            "date": "2026-07-12",
+            "sourceUrl": "https://www.runpod.io/pricing",
+            "quotes": 1
+          },
+          {
+            "provider": "Nebius",
+            "providerId": "nebius",
+            "value": 1.35,
+            "date": "2026-07-12",
+            "sourceUrl": "https://docs.nebius.com/compute/resources/pricing",
+            "quotes": 1
+          },
+          {
+            "provider": "Verda",
+            "providerId": "datacrunch",
+            "value": 1.37,
+            "date": "2026-07-12",
+            "sourceUrl": "https://datacrunch.io/pricing",
+            "quotes": 1
+          },
+          {
+            "provider": "Crusoe",
+            "providerId": "crusoe",
+            "value": 1.5,
+            "date": "2026-07-12",
+            "sourceUrl": "https://www.crusoe.ai/cloud/pricing",
+            "quotes": 1
+          },
+          {
+            "provider": "Vultr",
+            "providerId": "vultr",
+            "value": 1.671,
+            "date": "2026-07-12",
+            "sourceUrl": "https://www.vultr.com/pricing/",
+            "quotes": 1
+          },
+          {
+            "provider": "OVHcloud",
+            "providerId": "ovh",
+            "value": 1.8,
+            "date": "2026-07-12",
+            "sourceUrl": "https://www.ovhcloud.com/en/public-cloud/prices/",
+            "quotes": 1
+          },
+          {
+            "provider": "CoreWeave",
+            "providerId": "coreweave",
+            "value": 2.25,
+            "date": "2026-07-12",
+            "sourceUrl": "https://www.coreweave.com/pricing",
+            "quotes": 1
+          },
+          {
+            "provider": "AWS",
+            "providerId": "aws",
+            "value": 3.766398,
+            "date": "2026-07-12",
+            "sourceUrl": "https://ec2.shop",
+            "quotes": 1
+          }
+        ],
+        "excluded": [
+          {
+            "provider": "RunPod",
+            "providerId": "runpod",
+            "market": "community",
+            "value": 0.79,
+            "date": "2026-07-06",
+            "sourceUrl": "https://www.runpod.io/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "Modal",
+            "providerId": "modal",
+            "market": "serverless",
+            "value": 1.9512,
+            "date": "2026-07-07",
+            "sourceUrl": "https://modal.com/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "RunPod",
+            "providerId": "runpod",
+            "market": "community",
+            "value": 0.79,
+            "date": "2026-07-07",
+            "sourceUrl": "https://www.runpod.io/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "Modal",
+            "providerId": "modal",
+            "market": "serverless",
+            "value": 1.9512,
+            "date": "2026-07-08",
+            "sourceUrl": "https://modal.com/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "RunPod",
+            "providerId": "runpod",
+            "market": "community",
+            "value": 0.79,
+            "date": "2026-07-08",
+            "sourceUrl": "https://www.runpod.io/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "Modal",
+            "providerId": "modal",
+            "market": "serverless",
+            "value": 1.9512,
+            "date": "2026-07-09",
+            "sourceUrl": "https://modal.com/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "RunPod",
+            "providerId": "runpod",
+            "market": "community",
+            "value": 0.79,
+            "date": "2026-07-09",
+            "sourceUrl": "https://www.runpod.io/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "Modal",
+            "providerId": "modal",
+            "market": "serverless",
+            "value": 1.9512,
+            "date": "2026-07-10",
+            "sourceUrl": "https://modal.com/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "RunPod",
+            "providerId": "runpod",
+            "market": "community",
+            "value": 0.79,
+            "date": "2026-07-10",
+            "sourceUrl": "https://www.runpod.io/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "Modal",
+            "providerId": "modal",
+            "market": "serverless",
+            "value": 1.9512,
+            "date": "2026-07-11",
+            "sourceUrl": "https://modal.com/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "RunPod",
+            "providerId": "runpod",
+            "market": "community",
+            "value": 0.79,
+            "date": "2026-07-11",
+            "sourceUrl": "https://www.runpod.io/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "Modal",
+            "providerId": "modal",
+            "market": "serverless",
+            "value": 1.9512,
+            "date": "2026-07-12",
+            "sourceUrl": "https://modal.com/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "RunPod",
+            "providerId": "runpod",
+            "market": "community",
+            "value": 0.79,
+            "date": "2026-07-12",
+            "sourceUrl": "https://www.runpod.io/pricing",
+            "rule": "market_not_on_demand"
+          }
+        ],
+        "excludedQuoteRowsByMarket": {
+          "community": 7,
+          "serverless": 6
+        }
+      }
+    },
+    "RTX PRO 6000": {
+      "week": {
+        "weekStart": "2026-07-06",
+        "isoWeek": "2026-W28",
+        "vintage": "final",
+        "status": "thin",
+        "methodologyVersion": "2026-11-04.1",
+        "median": 1.89,
+        "p25": 1.85,
+        "p75": 2.39,
+        "providerCount": 7,
+        "index": 100.0,
+        "linkPairs": 0,
+        "withheldReason": null,
+        "receipt": "2026-W28"
+      },
+      "receipt": {
+        "weekStart": "2026-07-06",
+        "weekEnd": "2026-07-12",
+        "vintage": "final",
+        "status": "thin",
+        "methodologyVersion": "2026-11-04.1",
+        "median": 1.89,
+        "p25": 1.85,
+        "p75": 2.39,
+        "providerCount": 7,
+        "index": 100.0,
+        "linkPairs": 0,
+        "withheldReason": null,
+        "notConfirmed48h": 0,
+        "included": [
+          {
+            "provider": "Nebius",
+            "providerId": "nebius",
+            "value": 1.8,
+            "date": "2026-07-12",
+            "sourceUrl": "https://docs.nebius.com/compute/resources/pricing",
+            "quotes": 1
+          },
+          {
+            "provider": "Hyperstack",
+            "providerId": "hyperstack",
+            "value": 1.85,
+            "date": "2026-07-12",
+            "sourceUrl": "https://www.hyperstack.cloud/gpu-pricing",
+            "quotes": 1
+          },
+          {
+            "provider": "Verda",
+            "providerId": "datacrunch",
+            "value": 1.89,
+            "date": "2026-07-12",
+            "sourceUrl": "https://datacrunch.io/pricing",
+            "quotes": 1
+          },
+          {
+            "provider": "JarvisLabs",
+            "providerId": "jarvislabs",
+            "value": 1.89,
+            "date": "2026-07-12",
+            "sourceUrl": "https://jarvislabs.ai/pricing",
+            "quotes": 1
+          },
+          {
+            "provider": "RunPod",
+            "providerId": "runpod",
+            "value": 1.94,
+            "date": "2026-07-12",
+            "sourceUrl": "https://www.runpod.io/pricing",
+            "quotes": 2
+          },
+          {
+            "provider": "Spheron",
+            "providerId": "spheron",
+            "value": 2.39,
+            "date": "2026-07-12",
+            "sourceUrl": "https://www.spheron.network/pricing/",
+            "quotes": 1
+          },
+          {
+            "provider": "CoreWeave",
+            "providerId": "coreweave",
+            "value": 2.5,
+            "date": "2026-07-12",
+            "sourceUrl": "https://www.coreweave.com/pricing",
+            "quotes": 1
+          }
+        ],
+        "excluded": [
+          {
+            "provider": "RunPod",
+            "providerId": "runpod",
+            "market": "community",
+            "value": 1.64,
+            "date": "2026-07-06",
+            "sourceUrl": "https://www.runpod.io/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "RunPod",
+            "providerId": "runpod",
+            "market": "community",
+            "value": 1.69,
+            "date": "2026-07-06",
+            "sourceUrl": "https://www.runpod.io/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "fal",
+            "providerId": "fal",
+            "market": "serverless",
+            "value": 2.99,
+            "date": "2026-07-07",
+            "sourceUrl": "https://fal.ai/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "Modal",
+            "providerId": "modal",
+            "market": "serverless",
+            "value": 3.0312,
+            "date": "2026-07-07",
+            "sourceUrl": "https://modal.com/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "RunPod",
+            "providerId": "runpod",
+            "market": "community",
+            "value": 1.64,
+            "date": "2026-07-07",
+            "sourceUrl": "https://www.runpod.io/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "RunPod",
+            "providerId": "runpod",
+            "market": "community",
+            "value": 1.69,
+            "date": "2026-07-07",
+            "sourceUrl": "https://www.runpod.io/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "fal",
+            "providerId": "fal",
+            "market": "serverless",
+            "value": 2.99,
+            "date": "2026-07-08",
+            "sourceUrl": "https://fal.ai/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "Modal",
+            "providerId": "modal",
+            "market": "serverless",
+            "value": 3.0312,
+            "date": "2026-07-08",
+            "sourceUrl": "https://modal.com/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "RunPod",
+            "providerId": "runpod",
+            "market": "community",
+            "value": 1.64,
+            "date": "2026-07-08",
+            "sourceUrl": "https://www.runpod.io/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "RunPod",
+            "providerId": "runpod",
+            "market": "community",
+            "value": 1.69,
+            "date": "2026-07-08",
+            "sourceUrl": "https://www.runpod.io/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "fal",
+            "providerId": "fal",
+            "market": "serverless",
+            "value": 2.99,
+            "date": "2026-07-09",
+            "sourceUrl": "https://fal.ai/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "Modal",
+            "providerId": "modal",
+            "market": "serverless",
+            "value": 3.0312,
+            "date": "2026-07-09",
+            "sourceUrl": "https://modal.com/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "RunPod",
+            "providerId": "runpod",
+            "market": "community",
+            "value": 1.64,
+            "date": "2026-07-09",
+            "sourceUrl": "https://www.runpod.io/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "RunPod",
+            "providerId": "runpod",
+            "market": "community",
+            "value": 1.69,
+            "date": "2026-07-09",
+            "sourceUrl": "https://www.runpod.io/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "fal",
+            "providerId": "fal",
+            "market": "serverless",
+            "value": 2.99,
+            "date": "2026-07-10",
+            "sourceUrl": "https://fal.ai/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "Modal",
+            "providerId": "modal",
+            "market": "serverless",
+            "value": 3.0312,
+            "date": "2026-07-10",
+            "sourceUrl": "https://modal.com/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "RunPod",
+            "providerId": "runpod",
+            "market": "community",
+            "value": 1.64,
+            "date": "2026-07-10",
+            "sourceUrl": "https://www.runpod.io/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "RunPod",
+            "providerId": "runpod",
+            "market": "community",
+            "value": 1.69,
+            "date": "2026-07-10",
+            "sourceUrl": "https://www.runpod.io/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "fal",
+            "providerId": "fal",
+            "market": "serverless",
+            "value": 2.99,
+            "date": "2026-07-11",
+            "sourceUrl": "https://fal.ai/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "Modal",
+            "providerId": "modal",
+            "market": "serverless",
+            "value": 3.0312,
+            "date": "2026-07-11",
+            "sourceUrl": "https://modal.com/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "RunPod",
+            "providerId": "runpod",
+            "market": "community",
+            "value": 1.64,
+            "date": "2026-07-11",
+            "sourceUrl": "https://www.runpod.io/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "RunPod",
+            "providerId": "runpod",
+            "market": "community",
+            "value": 1.69,
+            "date": "2026-07-11",
+            "sourceUrl": "https://www.runpod.io/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "fal",
+            "providerId": "fal",
+            "market": "serverless",
+            "value": 2.99,
+            "date": "2026-07-12",
+            "sourceUrl": "https://fal.ai/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "Modal",
+            "providerId": "modal",
+            "market": "serverless",
+            "value": 3.0312,
+            "date": "2026-07-12",
+            "sourceUrl": "https://modal.com/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "RunPod",
+            "providerId": "runpod",
+            "market": "community",
+            "value": 1.64,
+            "date": "2026-07-12",
+            "sourceUrl": "https://www.runpod.io/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "RunPod",
+            "providerId": "runpod",
+            "market": "community",
+            "value": 1.69,
+            "date": "2026-07-12",
+            "sourceUrl": "https://www.runpod.io/pricing",
+            "rule": "market_not_on_demand"
+          }
+        ],
+        "excludedQuoteRowsByMarket": {
+          "community": 14,
+          "serverless": 12
+        }
+      }
+    },
+    "RTX 4090": {
+      "week": {
+        "weekStart": "2026-07-06",
+        "isoWeek": "2026-W28",
+        "vintage": "final",
+        "status": "withheld",
+        "methodologyVersion": "2026-11-04.1",
+        "median": 0.61,
+        "p25": null,
+        "p75": null,
+        "providerCount": 2,
+        "index": null,
+        "linkPairs": 0,
+        "withheldReason": "only 2 confirmed providers (needs >=4)",
+        "receipt": "2026-W28"
+      },
+      "receipt": {
+        "weekStart": "2026-07-06",
+        "weekEnd": "2026-07-12",
+        "vintage": "final",
+        "status": "withheld",
+        "methodologyVersion": "2026-11-04.1",
+        "median": 0.61,
+        "p25": null,
+        "p75": null,
+        "providerCount": 2,
+        "index": null,
+        "linkPairs": 0,
+        "withheldReason": "only 2 confirmed providers (needs >=4)",
+        "notConfirmed48h": 0,
+        "included": [
+          {
+            "provider": "Spheron",
+            "providerId": "spheron",
+            "value": 0.53,
+            "date": "2026-07-12",
+            "sourceUrl": "https://www.spheron.network/pricing/",
+            "quotes": 1
+          },
+          {
+            "provider": "RunPod",
+            "providerId": "runpod",
+            "value": 0.69,
+            "date": "2026-07-12",
+            "sourceUrl": "https://www.runpod.io/pricing",
+            "quotes": 1
+          }
+        ],
+        "excluded": [
+          {
+            "provider": "RunPod",
+            "providerId": "runpod",
+            "market": "community",
+            "value": 0.34,
+            "date": "2026-07-06",
+            "sourceUrl": "https://www.runpod.io/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "RunPod",
+            "providerId": "runpod",
+            "market": "community",
+            "value": 0.34,
+            "date": "2026-07-07",
+            "sourceUrl": "https://www.runpod.io/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "RunPod",
+            "providerId": "runpod",
+            "market": "community",
+            "value": 0.34,
+            "date": "2026-07-08",
+            "sourceUrl": "https://www.runpod.io/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "RunPod",
+            "providerId": "runpod",
+            "market": "community",
+            "value": 0.34,
+            "date": "2026-07-09",
+            "sourceUrl": "https://www.runpod.io/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "RunPod",
+            "providerId": "runpod",
+            "market": "community",
+            "value": 0.34,
+            "date": "2026-07-10",
+            "sourceUrl": "https://www.runpod.io/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "RunPod",
+            "providerId": "runpod",
+            "market": "community",
+            "value": 0.34,
+            "date": "2026-07-11",
+            "sourceUrl": "https://www.runpod.io/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "RunPod",
+            "providerId": "runpod",
+            "market": "community",
+            "value": 0.34,
+            "date": "2026-07-12",
+            "sourceUrl": "https://www.runpod.io/pricing",
+            "rule": "market_not_on_demand"
+          }
+        ],
+        "excludedQuoteRowsByMarket": {
+          "community": 7
+        }
+      }
+    },
+    "RTX 5090": {
+      "week": {
+        "weekStart": "2026-07-06",
+        "isoWeek": "2026-W28",
+        "vintage": "final",
+        "status": "withheld",
+        "methodologyVersion": "2026-11-04.1",
+        "median": 0.925,
+        "p25": null,
+        "p75": null,
+        "providerCount": 2,
+        "index": null,
+        "linkPairs": 0,
+        "withheldReason": "only 2 confirmed providers (needs >=4)",
+        "receipt": "2026-W28"
+      },
+      "receipt": {
+        "weekStart": "2026-07-06",
+        "weekEnd": "2026-07-12",
+        "vintage": "final",
+        "status": "withheld",
+        "methodologyVersion": "2026-11-04.1",
+        "median": 0.925,
+        "p25": null,
+        "p75": null,
+        "providerCount": 2,
+        "index": null,
+        "linkPairs": 0,
+        "withheldReason": "only 2 confirmed providers (needs >=4)",
+        "notConfirmed48h": 0,
+        "included": [
+          {
+            "provider": "Spheron",
+            "providerId": "spheron",
+            "value": 0.86,
+            "date": "2026-07-12",
+            "sourceUrl": "https://www.spheron.network/pricing/",
+            "quotes": 1
+          },
+          {
+            "provider": "RunPod",
+            "providerId": "runpod",
+            "value": 0.99,
+            "date": "2026-07-12",
+            "sourceUrl": "https://www.runpod.io/pricing",
+            "quotes": 1
+          }
+        ],
+        "excluded": [
+          {
+            "provider": "RunPod",
+            "providerId": "runpod",
+            "market": "community",
+            "value": 0.69,
+            "date": "2026-07-06",
+            "sourceUrl": "https://www.runpod.io/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "RunPod",
+            "providerId": "runpod",
+            "market": "community",
+            "value": 0.69,
+            "date": "2026-07-07",
+            "sourceUrl": "https://www.runpod.io/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "RunPod",
+            "providerId": "runpod",
+            "market": "community",
+            "value": 0.69,
+            "date": "2026-07-08",
+            "sourceUrl": "https://www.runpod.io/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "RunPod",
+            "providerId": "runpod",
+            "market": "community",
+            "value": 0.69,
+            "date": "2026-07-09",
+            "sourceUrl": "https://www.runpod.io/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "RunPod",
+            "providerId": "runpod",
+            "market": "community",
+            "value": 0.69,
+            "date": "2026-07-10",
+            "sourceUrl": "https://www.runpod.io/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "RunPod",
+            "providerId": "runpod",
+            "market": "community",
+            "value": 0.69,
+            "date": "2026-07-11",
+            "sourceUrl": "https://www.runpod.io/pricing",
+            "rule": "market_not_on_demand"
+          },
+          {
+            "provider": "RunPod",
+            "providerId": "runpod",
+            "market": "community",
+            "value": 0.69,
+            "date": "2026-07-12",
+            "sourceUrl": "https://www.runpod.io/pricing",
+            "rule": "market_not_on_demand"
+          }
+        ],
+        "excludedQuoteRowsByMarket": {
+          "community": 7
+        }
+      }
+    },
+    "MI300X": {
+      "week": {
+        "weekStart": "2026-07-06",
+        "isoWeek": "2026-W28",
+        "vintage": "final",
+        "status": "withheld",
+        "methodologyVersion": "2026-11-04.1",
+        "median": 2.82,
+        "p25": null,
+        "p75": null,
+        "providerCount": 2,
+        "index": null,
+        "linkPairs": 0,
+        "withheldReason": "only 2 confirmed providers (needs >=4)",
+        "receipt": "2026-W28"
+      },
+      "receipt": {
+        "weekStart": "2026-07-06",
+        "weekEnd": "2026-07-12",
+        "vintage": "final",
+        "status": "withheld",
+        "methodologyVersion": "2026-11-04.1",
+        "median": 2.82,
+        "p25": null,
+        "p75": null,
+        "providerCount": 2,
+        "index": null,
+        "linkPairs": 0,
+        "withheldReason": "only 2 confirmed providers (needs >=4)",
+        "notConfirmed48h": 0,
+        "included": [
+          {
+            "provider": "RunPod",
+            "providerId": "runpod",
+            "value": 2.19,
+            "date": "2026-07-12",
+            "sourceUrl": "https://www.runpod.io/pricing",
+            "quotes": 1
+          },
+          {
+            "provider": "Crusoe",
+            "providerId": "crusoe",
+            "value": 3.45,
+            "date": "2026-07-12",
+            "sourceUrl": "https://www.crusoe.ai/cloud/pricing",
+            "quotes": 1
+          }
+        ],
+        "excluded": [],
+        "excludedQuoteRowsByMarket": {}
+      }
+    },
+    "GH200": {
+      "week": {
+        "weekStart": "2026-07-06",
+        "isoWeek": "2026-W28",
+        "vintage": "final",
+        "status": "thin",
+        "methodologyVersion": "2026-11-04.1",
+        "median": 2.14,
+        "p25": 1.9075,
+        "p75": 5.4475,
+        "providerCount": 4,
+        "index": 100.0,
+        "linkPairs": 0,
+        "withheldReason": null,
+        "receipt": "2026-W28"
+      },
+      "receipt": {
+        "weekStart": "2026-07-06",
+        "weekEnd": "2026-07-12",
+        "vintage": "final",
+        "status": "thin",
+        "methodologyVersion": "2026-11-04.1",
+        "median": 2.14,
+        "p25": 1.9075,
+        "p75": 5.4475,
+        "providerCount": 4,
+        "index": 100.0,
+        "linkPairs": 0,
+        "withheldReason": null,
+        "notConfirmed48h": 0,
+        "included": [
+          {
+            "provider": "Spheron",
+            "providerId": "spheron",
+            "value": 1.88,
+            "date": "2026-07-12",
+            "sourceUrl": "https://www.spheron.network/pricing/",
+            "quotes": 1
+          },
+          {
+            "provider": "Vultr",
+            "providerId": "vultr",
+            "value": 1.99,
+            "date": "2026-07-12",
+            "sourceUrl": "https://www.vultr.com/pricing/",
+            "quotes": 1
+          },
+          {
+            "provider": "Lambda",
+            "providerId": "lambda",
+            "value": 2.29,
+            "date": "2026-07-12",
+            "sourceUrl": "https://lambda.ai/service/gpu-cloud",
+            "quotes": 1
+          },
+          {
+            "provider": "CoreWeave",
+            "providerId": "coreweave",
+            "value": 6.5,
+            "date": "2026-07-12",
+            "sourceUrl": "https://www.coreweave.com/pricing",
+            "quotes": 1
+          }
+        ],
+        "excluded": [],
+        "excludedQuoteRowsByMarket": {}
+      }
+    }
+  }
+}

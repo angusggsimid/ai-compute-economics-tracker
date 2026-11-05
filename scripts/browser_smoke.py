@@ -185,6 +185,253 @@ def _landscape_market_status_visible(page) -> bool:
     )
 
 
+def _landscape_cheapest_toggle(page) -> bool:
+    page.locator("#landscape-card").select_option("H100")
+    page.locator('#landscape-market button[data-market="on_demand"]').click()
+    page.wait_for_timeout(200)
+    toggle = page.locator("#landscape-cheapest-toggle")
+    if toggle.count() != 1:
+        return False
+    line = page.locator("#landscape-chart svg path.cheapest-line")
+    before = line.count()
+    pressed_before = toggle.get_attribute("aria-pressed")
+    toggle.click()
+    page.wait_for_timeout(180)
+    hidden = line.count() == 0
+    pressed_off = toggle.get_attribute("aria-pressed")
+    toggle.click()
+    page.wait_for_timeout(180)
+    restored = line.count() == before
+    pressed_on = toggle.get_attribute("aria-pressed")
+    return before >= 1 and hidden and restored and pressed_before == "true" and pressed_off == "false" and pressed_on == "true"
+
+
+def _landscape_offers_rows(page) -> bool:
+    page.locator("#landscape-card").select_option("H100")
+    page.locator('#landscape-market button[data-market="on_demand"]').click()
+    page.wait_for_timeout(200)
+    details = page.locator("#landscape-offers")
+    if details.count() != 1:
+        return False
+    details.locator("summary").first.click()
+    page.wait_for_timeout(150)
+    rows = page.locator("#landscape-offers-body tr")
+    row_count = rows.count()
+    cells = rows.first.locator("td").count() if row_count else 0
+    hrefs = page.eval_on_selector_all(
+        "#landscape-offers-body a", "els => els.map(e => e.getAttribute('href'))"
+    )
+    links_ok = bool(hrefs) and all(str(href).startswith(("http://", "https://")) for href in hrefs)
+    header = page.locator("#landscape-offers thead").inner_text()
+    note = page.locator("#landscape-offers-note").inner_text()
+    page.locator("#landscape-card").select_option("MI300X")
+    page.locator('#landscape-market button[data-market="spot"]').click()
+    page.wait_for_timeout(200)
+    empty_ok = "该市场暂无报价" in page.locator("#landscape-offers-body").inner_text()
+    page.locator("#landscape-card").select_option("H100")
+    page.locator('#landscape-market button[data-market="on_demand"]').click()
+    page.wait_for_timeout(180)
+    return (
+        row_count >= 10
+        and cells == 7
+        and links_ok
+        and empty_ok
+        and "市场" in header
+        and "市场风险" in header
+        and "日期与市场风险为市场级" in note
+    )
+
+
+def _landscape_monthly_rows(page) -> bool:
+    page.locator("#landscape-card").select_option("H100")
+    page.locator('#landscape-market button[data-market="on_demand"]').click()
+    page.wait_for_timeout(200)
+    rows = page.locator("#landscape-monthly-body tr")
+    if rows.count() < 4:
+        return False
+    cells = rows.first.locator("td").count()
+    statuses = page.eval_on_selector_all(
+        "#landscape-monthly-body tr", "els => els.map(e => e.dataset.status)"
+    )
+    vintages = page.eval_on_selector_all(
+        "#landscape-monthly-body tr", "els => els.map(e => e.dataset.vintage)"
+    )
+    stage_text = page.eval_on_selector_all(
+        "#landscape-monthly-body tr", "els => els.map(e => e.children[6].textContent.trim())"
+    )
+    page.locator("#landscape-monthly > summary").click()
+    page.wait_for_timeout(120)
+    monthly_note = page.locator("#landscape-monthly .panel-note").inner_text()
+    note_ok = "日频近似" in monthly_note and "不是不可变快照" in monthly_note
+    header = page.locator("#landscape-monthly thead").inner_text()
+    return (
+        cells == 8
+        and "published" in statuses
+        and "withheld" in statuses
+        and "provisional" in vintages
+        and "final" in vintages
+        and any("进行中" in text or "暂定" in text for text in stage_text)
+        and any("已结束" in text for text in stage_text)
+        and "阶段" in header
+        and note_ok
+    )
+
+
+def _landscape_crosscheck_table(page) -> bool:
+    page.wait_for_function(
+        "() => document.querySelectorAll('#landscape-crosscheck-body tr').length >= 11",
+        timeout=5000,
+    )
+    page.locator("#landscape-card").select_option("H100")
+    page.locator('#landscape-market button[data-market="on_demand"]').click()
+    page.wait_for_timeout(250)
+    page.locator("#landscape-crosscheck > summary").click()
+    page.wait_for_timeout(150)
+    rows = page.locator("#landscape-crosscheck-body tr")
+    markets = page.eval_on_selector_all(
+        "#landscape-crosscheck-body tr", "els => [...new Set(els.map(e => e.dataset.market))]"
+    )
+    h100 = page.locator('#landscape-crosscheck-body tr[data-card="H100"]').first
+    h100_rows = page.locator('#landscape-crosscheck-body tr[data-card="H100"]').count()
+    h100_bench = page.locator('#landscape-crosscheck-body tr[data-card="H100"][data-benchmark="1"]').count()
+    a100 = page.locator('#landscape-crosscheck-body tr[data-card="A100"]')
+    if a100.count() != 1:
+        return False
+    a100_text = a100.inner_text()
+    a100_diff = a100.locator("td").nth(4).inner_text().strip()
+    selected = page.locator("#landscape-crosscheck-selected").inner_text()
+    header = page.locator("#landscape-crosscheck thead").inner_text()
+    return (
+        rows.count() >= 11
+        and markets == ["on_demand"]
+        and h100_rows == 2
+        and h100_bench == 1
+        and "SKU 混合" in h100.inner_text()
+        and "型号不一致" in a100_text
+        and a100_diff == "—"
+        and "口径差" in header
+        and "我方/外部" in header
+        and "GPU Economy 中位" in selected
+        and "暂不可用" not in selected
+    )
+
+
+def _landscape_crosscheck_own_sample(page) -> bool:
+    """Table and selected row must show our provider sample and thin status."""
+    page.wait_for_function(
+        "() => typeof LANDSCAPE_CROSSCHECK !== 'undefined' && !!LANDSCAPE_CROSSCHECK.data",
+        timeout=5000,
+    )
+    page.locator("#landscape-card").select_option("H100")
+    page.locator('#landscape-market button[data-market="on_demand"]').click()
+    page.wait_for_timeout(250)
+    info = page.evaluate(
+        """() => {
+            const rows = LANDSCAPE_CROSSCHECK.data.rows;
+            const h = rows.find(r => r.card_id === 'H100' && r.market === 'on_demand');
+            const g = rows.find(r => r.card_id === 'GH200' && r.market === 'on_demand');
+            const tr = id => [...document.querySelectorAll('#landscape-crosscheck-body tr')]
+                .find(row => row.dataset.card === id);
+            const gRow = tr('GH200');
+            return {
+                hOwn: h.own_providers,
+                hExt: h.ext_providers,
+                hOverlap: h.overlap_count,
+                hText: tr('H100').textContent,
+                gText: gRow.textContent,
+                gDiff: gRow.children[4].textContent.trim(),
+                gCoverageText: gRow.children[7].textContent.trim(),
+                gCoverage: g.coverage,
+                selected: document.querySelector('#landscape-crosscheck-selected').textContent,
+                header: document.querySelector('#landscape-crosscheck thead').textContent,
+            };
+        }"""
+    )
+    counts_ok = f"{info['hOwn']} / {info['hExt']}" in info["hText"]
+    selected_ok = (
+        f"我方 {info['hOwn']} 家 / 外部 {info['hExt']} 家 / 重叠 {info['hOverlap']}"
+        in info["selected"]
+    )
+    gh200_ok = (
+        info["gCoverage"] == "thin"
+        and info["gCoverageText"] == "样本偏薄"
+        and "可比" not in info["gCoverageText"]
+        and info["gDiff"] == "—"
+    )
+    return counts_ok and selected_ok and gh200_ok and "我方/外部" in info["header"]
+
+
+def _landscape_crosscheck_license(page) -> bool:
+    """Attribution text and CC BY 4.0 links must come from crosscheck.json."""
+    page.wait_for_function(
+        "() => typeof LANDSCAPE_CROSSCHECK !== 'undefined' && !!LANDSCAPE_CROSSCHECK.data",
+        timeout=5000,
+    )
+    info = page.evaluate(
+        """() => {
+            const d = LANDSCAPE_CROSSCHECK.data;
+            const href = sel => {
+                const a = document.querySelector(sel);
+                return a ? a.getAttribute('href') : null;
+            };
+            return {
+                version: d.methodology_version,
+                date: (d.data_updated_at || '').slice(0, 10),
+                license: d.license_url,
+                metaText: document.querySelector('#landscape-crosscheck-meta').textContent,
+                metaHref: href('#landscape-crosscheck-meta a[href*="creativecommons"]'),
+                noteHref: href('#landscape-crosscheck-note a[href*="creativecommons"]'),
+                selectedHref: href('#landscape-crosscheck-selected a[href*="creativecommons"]'),
+            };
+        }"""
+    )
+    if not info["license"]:
+        return False
+    return (
+        info["license"] == "https://creativecommons.org/licenses/by/4.0/"
+        and info["metaHref"] == info["license"]
+        and info["noteHref"] == info["license"]
+        and info["selectedHref"] == info["license"]
+        and f"methodology {info['version']}" in info["metaText"]
+        and f"data {info['date']}" in info["metaText"]
+    )
+
+
+def _landscape_crosscheck_market_guard(page) -> bool:
+    """SXM is on-demand only; thin markets must not show a diff."""
+    page.locator("#landscape-card").select_option("H100")
+    page.locator('#landscape-market button[data-market="spot"]').click()
+    page.wait_for_timeout(250)
+    spot_text = page.locator("#landscape-crosscheck-selected").inner_text()
+    spot_ok = "SXM 基准" not in spot_text and "SKU 混合" in spot_text
+    page.locator('#landscape-market button[data-market="reserved"]').click()
+    page.wait_for_timeout(250)
+    reserved_text = page.locator("#landscape-crosscheck-selected").inner_text()
+    reserved_ok = (
+        "SXM 基准" not in reserved_text
+        and "样本偏薄" in reserved_text
+        and "口径差 —" in reserved_text
+    )
+    page.locator('#landscape-market button[data-market="on_demand"]').click()
+    page.wait_for_timeout(250)
+    on_text = page.locator("#landscape-crosscheck-selected").inner_text()
+    on_ok = "SXM 基准" in on_text and "SKU 混合" in on_text and "口径差 —" not in on_text
+    return spot_ok and reserved_ok and on_ok
+
+
+def _mobile_full_page_no_overflow(page) -> bool:
+    page.set_viewport_size({"width": 390, "height": 844})
+    page.wait_for_timeout(300)
+    page.evaluate("() => document.querySelectorAll('details').forEach(d => d.open = true)")
+    page.wait_for_timeout(600)
+    dims = page.evaluate(
+        "() => ({doc: document.documentElement.scrollWidth, win: window.innerWidth})"
+    )
+    page.set_viewport_size({"width": 1280, "height": 720})
+    page.wait_for_timeout(300)
+    return dims["doc"] <= dims["win"]
+
+
 def _nav_has_clocks(page) -> bool:
     return (
         page.locator('.nav a[href="#clocks"]').count() == 1
@@ -379,10 +626,18 @@ def main() -> int:
                 "landscape_stale_not_repeated": _landscape_stale_not_repeated(page),
                 "landscape_market_status": _landscape_market_status_visible(page),
                 "landscape_receipt_csv": _landscape_receipt_csv(page),
+                "landscape_cheapest_toggle": _landscape_cheapest_toggle(page),
+                "landscape_offers_rows": _landscape_offers_rows(page),
+                "landscape_monthly_rows": _landscape_monthly_rows(page),
+                "landscape_crosscheck_table": _landscape_crosscheck_table(page),
+                "landscape_crosscheck_own_sample": _landscape_crosscheck_own_sample(page),
+                "landscape_crosscheck_license": _landscape_crosscheck_license(page),
+                "landscape_crosscheck_market_guard": _landscape_crosscheck_market_guard(page),
                 "sandbox_redraws": _sandbox_redraws(page),
                 "sandbox_correlation_symmetric": _sandbox_correlation_is_symmetric(page),
                 "sandbox_respects_range": _sandbox_respects_range(page),
                 "mobile_price_chart_fits": _mobile_price_chart_fits(page),
+                "mobile_full_page_no_overflow": _mobile_full_page_no_overflow(page),
             }
             diagnostics = {
                 "errors": errors[:5],

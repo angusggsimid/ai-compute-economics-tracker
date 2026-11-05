@@ -1,0 +1,136 @@
+{
+ "source": "gpueconomy",
+ "source_url": "https://gpueconomy.com/data",
+ "fetched_at": "2026-11-04T09:12:14Z",
+ "data_updated_at": "2026-11-03T12:48:20.451387+00:00",
+ "methodology_version": "1.33.63",
+ "methodology_version_source": "prices.json",
+ "methodology_version_format": "N.N.N",
+ "methodology_changelog": "https://gpueconomy.com/methodology/changelog",
+ "license": "CC BY 4.0",
+ "license_url": "https://creativecommons.org/licenses/by/4.0/",
+ "attribution": "GPU Economy (https://gpueconomy.com)",
+ "compression": "gzip -9 -n semantics: GzipFile(compresslevel=9, mtime=0), no stored filename",
+ "files": [
+  {
+   "path": "prices.json.gz",
+   "source": "prices.json",
+   "url": "https://gpueconomy.com/prices.json",
+   "count": 1399,
+   "count_unit": "rows",
+   "count_detail": {
+    "rows": 1399,
+    "providers": 121,
+    "gpus": 82
+   },
+   "bytes_raw": 1749556,
+   "bytes_gz": 89621,
+   "sha256_raw": "60b890680ab38866d6a1f3e709f60ebedb53c26eb6b429e22f26ac3a2255f7e7",
+   "sha256_gz": "b72b213ffc4d5e18c46fadf8949243d79c421dc2a48cd704a2d4dcd43689d849"
+  },
+  {
+   "path": "gpus.json.gz",
+   "source": "gpus.json",
+   "url": "https://gpueconomy.com/gpus.json",
+   "count": 82,
+   "count_unit": "gpus",
+   "count_detail": {},
+   "bytes_raw": 57620,
+   "bytes_gz": 3523,
+   "sha256_raw": "b9e3c62a81cf78f0a75f3753e3ceabc6ffb6df17d42063cdf8f6027f0a8c66ce",
+   "sha256_gz": "face904b2a99ea66020de0143a2c68fcf246bc11ba4429dea0f20c2c47df4798"
+  },
+  {
+   "path": "providers.json.gz",
+   "source": "providers.json",
+   "url": "https://gpueconomy.com/providers.json",
+   "count": 127,
+   "count_unit": "providers",
+   "count_detail": {
+    "providers": 127,
+    "scraped": 121,
+    "not_listed": 151
+   },
+   "bytes_raw": 249042,
+   "bytes_gz": 56888,
+   "sha256_raw": "46c5f0cabfeb560ef6d57864656d2c7287cf50637dbc15b2479b7b15e49e3745",
+   "sha256_gz": "2aab9289b14825ed05f8544dcff2677b16ced10b1a525cfd65fdac224a3c41d2"
+  },
+  {
+   "path": "history.json.gz",
+   "source": "history.json",
+   "url": "https://gpueconomy.com/history.json",
+   "count": 1773,
+   "count_unit": "model-weeks",
+   "count_detail": {
+    "models": 25,
+    "series": 43,
+    "model_weeks": 1773
+   },
+   "bytes_raw": 767954,
+   "bytes_gz": 40173,
+   "sha256_raw": "e34737d89fefeed06e3d0fdb2e6ccc4efb245ecdee93e33f7b4d666be7cab89c",
+   "sha256_gz": "0d2d23e4d7456745785ad881017281dd2436eba5d9e7dd4ba84d374677db6e55"
+  },
+  {
+   "path": "token-cost.json.gz",
+   "source": "token-cost.json",
+   "url": "https://gpueconomy.com/token-cost.json",
+   "count": 20,
+   "count_unit": "benchmark-runs",
+   "count_detail": {
+    "cards": 6,
+    "runs": 20
+   },
+   "bytes_raw": 7588,
+   "bytes_gz": 1381,
+   "sha256_raw": "d1c74083e5813380de35543518da7434e7ccdee113284ba1cc53a51dcdadceec",
+   "sha256_gz": "125cc601a3be9aa5e06e02e83817f5cff5e1ad2f96ae1f709d8875b9b8e56e13"
+  },
+  {
+   "path": "changelog.json.gz",
+   "source": "changelog.json",
+   "url": "https://gpueconomy.com/changelog.json",
+   "count": 12848,
+   "count_unit": "moves",
+   "count_detail": {},
+   "bytes_raw": 8249539,
+   "bytes_gz": 330805,
+   "sha256_raw": "5aac760f107e665e8bcbef0806f40a2b5b3dd4ba33306a9d7dbd4113d8ff6fc6",
+   "sha256_gz": "3c806e075327db0aaade669f56fb7c6a04dee6f00e1ffe77c5371d145de88200"
+  },
+  {
+   "path": "price-index.json.gz",
+   "source": "price-index.json",
+   "url": "https://gpueconomy.com/price-index.json",
+   "count": 9,
+   "count_unit": "weekly-points",
+   "count_detail": {
+    "weekly_points": 9,
+    "months": 5,
+    "current_constituents": 40
+   },
+   "bytes_raw": 132719,
+   "bytes_gz": 11273,
+   "sha256_raw": "4a04a27bac687f61c010f3b691fde3e8d0a606dc5826eae2efd3cadd699bc837",
+   "sha256_gz": "e2c1e9b529aae8a7d38348c5ede399a5e33ee1e54b1913b06eb01baaee4851bf"
+  }
+ ],
+ "file_count": 7,
+ "total_bytes_raw": 11214018,
+ "total_bytes_gz": 533664,
+ "counts": {
+  "prices.json": 1399,
+  "gpus.json": 82,
+  "providers.json": 127,
+  "history.json": 1773,
+  "token-cost.json": 20,
+  "changelog.json": 12848,
+  "price-index.json": 9
+ },
+ "notes": [
+  "Archived files are the raw upstream JSON, gzip-compressed without modification. The dashboard filters and recomputes medians for cross-checking; those derived values are not figures published by GPU Economy.",
+  "prices.json 'providers' (121) counts scraped=true providers only; providers.json has 127 entries, including 6 unscraped providers with no quotes.",
+  "token-cost.json has no attribution field upstream; it inherits the snapshot attribution and its throughput figures remain NVIDIA's (CC BY 4.0 selection/formula)."
+ ]
+}

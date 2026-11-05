@@ -1,5 +1,13 @@
 # CONTEXT
 
+## 2026-11-04 P0/P1 收口 + GPU Economy P2（2026-11-06 Challenger R1 更新）
+
+- GPU Economy 只做二级参考层：自有报价 `source_layer="own"`，外部报价 `source_layer="gpueconomy"`；external 只参与覆盖与交叉校验，不改写自有中位、provider 数或指数。页面差值统一叫“口径差”，不叫价差。H100 因 80 SXM/80 PCIe/94 NVL 混合标 `coverage=mixed`，仍保留卡级 `-8.4%`，但不是 provider 级等价；A100 40/80GB 混标 `sku_mismatch`。
+- closed ISO 周首次构建即冻结到 `tracker_data/index_snapshots/`（当前 W27–W43 共 17 个，W44 provisional 不冻），之后不再重算；公开站回执仍只保留最新周，历史周用 `scripts/reproduce_receipt.py` 复算。
+- 月度 panel 是日频近似：月初前 14 天（月初前第 14 天到第 1 天）至少 13/14 天有报价的 provider 进 panel，≥8 家且有效日覆盖 ≥75% 才发布；不是 gpueconomy 的 hourly monthly panel，不能等同。
+- GPU Economy 快照固定在 `tracker_data/external/gpueconomy/2026-11-03`（CC BY 4.0，ext methodology 1.33.63），构建离线读取；`ingest_gpueconomy.py --url` 已实现，`--from-dir` 仍可用。`crosscheck.json` 顶层区分 `own_methodology_version=2026-11-04.1` 与 `ext_methodology_version=1.33.63`。
+- crosscheck 的我方样本门槛是 8 家：own<8 一律标 `thin`、不显示口径差；monthly 历史月会随底表回填重算，不是不可变快照，只有周指数有 final 冻结。external/crosscheck 的 `rules.comparable` 统一为“on_demand 主口径；spot/serverless 同规则可算但不可混读；reserved/community/marketplace 不可比”。
+
 ## 2026-11-03 GPU 供给全景与证据链
 
 - 新增 11 张关键卡的 `GPU 供给全景`：单卡下拉 + 市场切换（on-demand/spot/reserved/community/marketplace/serverless），不再为每张卡堆一张图。
