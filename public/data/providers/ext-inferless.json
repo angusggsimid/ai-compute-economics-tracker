@@ -1,0 +1,93 @@
+{
+ "layer": "gpueconomy",
+ "external": {
+  "source": "gpueconomy",
+  "source_url": "https://gpueconomy.com/data",
+  "license": "CC BY 4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "attribution": "GPU Economy (https://gpueconomy.com)",
+  "methodology_version": "1.33.63",
+  "data_updated_at": "2026-11-03T12:48:20.451387+00:00",
+  "retrieved_at": "2026-11-04T09:12:14Z"
+ },
+ "provider": {
+  "id": "inferless",
+  "name": "Inferless",
+  "type": "specialist",
+  "website": "https://www.inferless.com/",
+  "pricing_page": "https://www.inferless.com/pricing",
+  "source_kind": "html",
+  "regions": null,
+  "scraped": true,
+  "models_tracked": 3,
+  "current_quotes": 3,
+  "summary": "Serverless inference endpoints: billed by the second, scaled to zero when idle. Each price is one whole card with the vCPUs and memory listed beside it. The same page also prices a shared half of each card, which this site does not publish - half a card is not a card.",
+  "notes": "Dedicated rows only - the Shared row of each card is half of it (memory and vCPUs halved); per-second and per-hour columns are the same figure, the hourly one is read; no region printed",
+  "page": "https://gpueconomy.com/providers/inferless",
+  "referral_url": null,
+  "fees": [],
+  "slug": "ext-inferless",
+  "cards": [
+   "A100"
+  ]
+ },
+ "quotes": [
+  {
+   "source_layer": "gpueconomy",
+   "provider_id": "inferless",
+   "provider": "Inferless",
+   "gpu_id": "a10",
+   "gpu": "NVIDIA A10",
+   "market": "serverless",
+   "price_type": "on_demand",
+   "price_scope": "instance",
+   "risk": "medium",
+   "usd_per_gpu_hour": 1.22,
+   "listed_currency": "USD",
+   "fx_rate": null,
+   "gpu_count": 1,
+   "region": null,
+   "source_url": "https://www.inferless.com/pricing",
+   "scraped_at": "2026-11-03T12:48:20.451387+00:00",
+   "status": "live"
+  },
+  {
+   "source_layer": "gpueconomy",
+   "provider_id": "inferless",
+   "provider": "Inferless",
+   "gpu_id": "a100-80",
+   "gpu": "NVIDIA A100 80GB",
+   "market": "serverless",
+   "price_type": "on_demand",
+   "price_scope": "instance",
+   "risk": "medium",
+   "usd_per_gpu_hour": 5.36,
+   "listed_currency": "USD",
+   "fx_rate": null,
+   "gpu_count": 1,
+   "region": null,
+   "source_url": "https://www.inferless.com/pricing",
+   "scraped_at": "2026-11-03T12:48:20.451387+00:00",
+   "status": "live"
+  },
+  {
+   "source_layer": "gpueconomy",
+   "provider_id": "inferless",
+   "provider": "Inferless",
+   "gpu_id": "t4",
+   "gpu": "NVIDIA T4",
+   "market": "serverless",
+   "price_type": "on_demand",
+   "price_scope": "instance",
+   "risk": "medium",
+   "usd_per_gpu_hour": 0.66,
+   "listed_currency": "USD",
+   "fx_rate": null,
+   "gpu_count": 1,
+   "region": null,
+   "source_url": "https://www.inferless.com/pricing",
+   "scraped_at": "2026-11-03T12:48:20.451387+00:00",
+   "status": "live"
+  }
+ ]
+}

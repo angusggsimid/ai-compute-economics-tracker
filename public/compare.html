@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#f5f5f7">
+<title>Compare · AI Compute Economics</title>
+<meta name="description" content="选择 2–4 张 GPU，把各自周指数在共同起点重定基为 100，比较相对变化。">
+<link rel="icon" type="image/svg+xml" href="./favicon.svg">
+<link rel="stylesheet" href="./assets/site.css">
+</head>
+<body data-base=".">
+<a class="skip" href="#main">跳到正文</a>
+<header class="topbar"><div class="topbar-inner"><a class="brand" href="./index.html">AI Compute Economics</a><nav class="nav" aria-label="主导航"><a href="./index.html">总览</a><a href="./landscape.html">Landscape</a><a href="./providers.html">Providers</a><a href="./compare.html" class="active" aria-current="page">Compare</a><a href="./spread.html">Spread</a><a href="./cheapest.html">Cheapest</a></nav></div></header>
+<main class="shell" id="main">
+
+<section class="hero compact">
+  <p class="kicker">Compare · 周指数 · as of 2026-10-29</p>
+  <h1>把 2–4 张卡放在共同起点</h1>
+  <p class="lede">选择 2–4 张卡，用各自的周指数在共同起点重定基为 100，再看相对变化。周指数本身来自自有 provider 面板；外部数据不参与。</p>
+  <div class="kpi-grid">
+    <div class="kpi"><div class="label">可选卡</div><div class="value">11</div><div class="hint">6 个市场</div></div>
+    <div class="kpi"><div class="label">自有报价</div><div class="value">238</div><div class="hint">最新挂牌价，非成交价</div></div>
+    <div class="kpi"><div class="label">比较方式</div><div class="value">2–4</div><div class="hint">共同起点 = 100</div></div>
+  </div>
+  <p class="source">周指数来自 <a href="data/site-index.json">site-index.json</a> 对应的 <a href="data/cards/h100.json">cards/&lt;slug&gt;.json</a> 切片。指数是链式 base-100，不是价格水平；不同卡的价格不可直接相减。</p>
+</section>
+
+<section class="section">
+  <div class="section-head">
+    <div>
+      <h2>选择卡片</h2>
+      <p class="sub">选中 2–4 张卡后，图表和表格会自动更新。</p>
+    </div>
+    <p class="small muted" id="compare-count">未选择</p>
+  </div>
+  <div class="filters" id="compare-card-options" role="group" aria-label="选择卡片">
+    <label class="btn"><input type="checkbox" data-card-toggle value="H100"> H100 80GB<span class="small muted" style="margin-left:6px">24 家</span></label><label class="btn"><input type="checkbox" data-card-toggle value="H200"> H200 141GB<span class="small muted" style="margin-left:6px">16 家</span></label><label class="btn"><input type="checkbox" data-card-toggle value="B200"> B200 192GB<span class="small muted" style="margin-left:6px">12 家</span></label><label class="btn"><input type="checkbox" data-card-toggle value="B300"> B300 288GB<span class="small muted" style="margin-left:6px">12 家</span></label><label class="btn"><input type="checkbox" data-card-toggle value="A100"> A100 80GB<span class="small muted" style="margin-left:6px">15 家</span></label><label class="btn"><input type="checkbox" data-card-toggle value="L40S"> L40S 48GB<span class="small muted" style="margin-left:6px">12 家</span></label><label class="btn"><input type="checkbox" data-card-toggle value="RTX PRO 6000"> RTX PRO 6000 96GB<span class="small muted" style="margin-left:6px">11 家</span></label><label class="btn"><input type="checkbox" data-card-toggle value="RTX 4090"> RTX 4090 24GB<span class="small muted" style="margin-left:6px">4 家</span></label><label class="btn"><input type="checkbox" data-card-toggle value="RTX 5090"> RTX 5090 32GB<span class="small muted" style="margin-left:6px">4 家</span></label><label class="btn"><input type="checkbox" data-card-toggle value="MI300X"> MI300X 192GB<span class="small muted" style="margin-left:6px">5 家</span></label><label class="btn"><input type="checkbox" data-card-toggle value="GH200"> GH200 96GB<span class="small muted" style="margin-left:6px">3 家</span></label>
+  </div>
+  <p class="panel-note" id="compare-hint" role="status">请选择 2–4 张卡。</p>
+  <div class="chart" id="compare-chart" aria-live="polite">
+    <div class="empty" role="status">请选择 2–4 张卡，查看共同起点后的周指数。</div>
+  </div>
+  <div id="compare-table" style="margin-top:16px" aria-live="polite"></div>
+  <p class="panel-note">共同起点取所有选中卡都有非空周指数的最早周；Weeks &lt; 2 或末期比其他卡滞后 ≥ 14 天时标“覆盖不足，不可比较”，变化留空，不补零。周指数遇到样本不足会 withheld，这是数据质量信号。</p>
+</section>
+
+</main>
+<footer class="footer"><div class="footer-inner"><p>AI Compute Economics · 公开挂牌价，非成交价。</p><p>外部参考层：<a href="https://gpueconomy.com/data" target="_blank" rel="noopener">GPU Economy</a> · CC BY 4.0。自有中位数与指数不受外部数据改写 · <a href="./data/manifest.json">数据说明</a></p></div></footer>
+<script src="./assets/site.js"></script>
+<script>
+(function () {
+  "use strict";
+  var CC = window.CC;
+  if (!CC) { return; }
+  var CONTEXT = {"cards": [{"id": "H100", "slug": "h100", "name": "H100 80GB", "median": 3.63645, "provider_count": 24}, {"id": "H200", "slug": "h200", "name": "H200 141GB", "median": 4.97, "provider_count": 16}, {"id": "B200", "slug": "b200", "name": "B200 192GB", "median": 8.09, "provider_count": 12}, {"id": "B300", "slug": "b300", "name": "B300 288GB", "median": 9.245, "provider_count": 12}, {"id": "A100", "slug": "a100", "name": "A100 80GB", "median": 2.15, "provider_count": 15}, {"id": "L40S", "slug": "l40s", "name": "L40S 48GB", "median": 1.60325, "provider_count": 12}, {"id": "RTX PRO 6000", "slug": "rtx-pro-6000", "name": "RTX PRO 6000 96GB", "median": 2.35, "provider_count": 11}, {"id": "RTX 4090", "slug": "rtx-4090", "name": "RTX 4090 24GB", "median": 0.735, "provider_count": 4}, {"id": "RTX 5090", "slug": "rtx-5090", "name": "RTX 5090 32GB", "median": 0.935, "provider_count": 4}, {"id": "MI300X", "slug": "mi300x", "name": "MI300X 192GB", "median": 2.99, "provider_count": 5}, {"id": "GH200", "slug": "gh200", "name": "GH200 96GB", "median": 3.02, "provider_count": 3}], "cardOrder": {"H100": 0, "H200": 1, "B200": 2, "B300": 3, "A100": 4, "L40S": 5, "RTX PRO 6000": 6, "RTX 4090": 7, "RTX 5090": 8, "MI300X": 9, "GH200": 10}, "cardSlugs": {"H100": "h100", "H200": "h200", "B200": "b200", "B300": "b300", "A100": "a100", "L40S": "l40s", "RTX PRO 6000": "rtx-pro-6000", "RTX 4090": "rtx-4090", "RTX 5090": "rtx-5090", "MI300X": "mi300x", "GH200": "gh200"}, "marketLabels": {"on_demand": "正规 on-demand", "spot": "Spot", "reserved": "Reserved", "community": "Community", "marketplace": "Marketplace floor", "serverless": "Serverless"}, "marketOrder": ["on_demand", "spot", "reserved", "community", "marketplace", "serverless"], "marketViews": {"on_demand": {"ext_markets": ["on_demand"], "scope": null, "comparable": true, "note": "可比口径：market=on_demand、status=live、非 marketplace_floor、USD；每 provider 取最低价后取中位。"}, "spot": {"ext_markets": ["spot"], "scope": null, "comparable": true, "note": "可比口径与 on-demand 相同（live、非 floor、USD、每 provider 最低价）；spot 可被收回，不能当 on-demand。"}, "reserved": {"ext_markets": ["reserved", "reserved_1y", "reserved_3y"], "scope": null, "comparable": false, "note": "GPU Economy 把 reserved 拆成无期限/1y/3y；我方不保留期限，不能合成一个可比中位。"}, "community": {"ext_markets": ["community"], "scope": "instance", "comparable": false, "note": "GPU Economy 的 community 同时包含 marketplace floor 与实例供给；我方把 floor 单列为 marketplace，语义不等价。"}, "marketplace": {"ext_markets": ["community"], "scope": "marketplace_floor", "comparable": false, "note": "我方 marketplace 对应 GPU Economy community 中的 marketplace floor 子集；只是子集，不是等号。"}, "serverless": {"ext_markets": ["serverless"], "scope": null, "comparable": true, "note": "可比口径与 on-demand 相同；serverless 按秒/共享，不能与整租混读。"}}, "extCard": {"h100": "H100", "h200": "H200", "b200": "B200", "b300": "B300", "a100-80": "A100", "l40s": "L40S", "rtx-pro-6000": "RTX PRO 6000", "rtx-4090": "RTX 4090", "rtx-5090": "RTX 5090", "mi300x": "MI300X", "gh200": "GH200"}};
+  var CARDS = CONTEXT.cards || [];
+  var cardLookup = {};
+  CARDS.forEach(function (card) { cardLookup[card.id] = card; });
+
+  var options = document.getElementById("compare-card-options");
+  var chartHost = document.getElementById("compare-chart");
+  var tableHost = document.getElementById("compare-table");
+  var hint = document.getElementById("compare-hint");
+  var countEl = document.getElementById("compare-count");
+  if (!options || !chartHost || !tableHost) { return; }
+
+  var checks = Array.prototype.slice.call(
+    options.querySelectorAll("[data-card-toggle]")
+  );
+  var requestId = 0;
+
+  function selected() {
+    return checks.filter(function (input) { return input.checked; }).map(function (input) {
+      return cardLookup[input.value] || { id: input.value, slug: input.value.toLowerCase(), name: input.value };
+    });
+  }
+
+  function setCount(text) {
+    if (countEl) { countEl.textContent = text; }
+  }
+
+  function syncChecks() {
+    var picked = selected().length;
+    checks.forEach(function (input) {
+      input.disabled = !input.checked && picked >= 4;
+      var label = input.closest ? input.closest("label") : null;
+      if (label) { label.classList.toggle("primary", input.checked); }
+    });
+  }
+
+  function reset(message, status) {
+    requestId += 1;
+    chartHost.innerHTML = CC.empty(message);
+    tableHost.innerHTML = "";
+    if (hint) { hint.textContent = message; }
+    setCount(status || "未选择");
+  }
+
+  function fail(error) {
+    var message = "数据加载失败：" + (error && error.message ? error.message : error) +
+      "。请通过本地静态服务器打开页面。";
+    chartHost.innerHTML = CC.empty(message);
+    tableHost.innerHTML = "";
+    if (hint) { hint.textContent = message; }
+    setCount("加载失败");
+  }
+
+  function load() {
+    var picked = selected();
+    syncChecks();
+    if (!CARDS.length) {
+      reset("site-index 中没有可比较的卡片。", "0 / 4 张");
+      return;
+    }
+    if (picked.length === 0) {
+      reset("请选择 2–4 张卡，比较它们的周指数；共同起点统一重定基为 100。", "0 / 4 张");
+      return;
+    }
+    if (picked.length < 2) {
+      reset("再选至少 1 张卡。Compare 需要 2–4 张卡才能放在同一张图上。", picked.length + " / 4 张");
+      return;
+    }
+    if (picked.length > 4) {
+      reset("最多选择 4 张卡。", picked.length + " / 4 张");
+      return;
+    }
+
+    var token = ++requestId;
+    setCount(picked.length + " / 4 张");
+    if (hint) { hint.textContent = "正在加载所选卡片的周指数…"; }
+    chartHost.innerHTML = '<div class="empty" role="status">正在加载周指数…</div>';
+    tableHost.innerHTML = "";
+
+    Promise.all(picked.map(function (card) {
+      return CC.get("cards/" + encodeURIComponent(card.slug) + ".json");
+    })).then(function (docs) {
+      if (token !== requestId) { return; }
+      render(picked, docs);
+    }).catch(function (error) {
+      if (token !== requestId) { return; }
+      fail(error);
+    });
+  }
+
+  function render(cards, docs) {
+    var prepared = [];
+    var missing = [];
+    cards.forEach(function (card, index) {
+      var doc = docs[index] || {};
+      var weeks = (doc.weeks || []).filter(function (week) {
+        return week && week.weekStart &&
+          week.index !== null && week.index !== undefined &&
+          isFinite(Number(week.index));
+      }).sort(function (left, right) {
+        return String(left.weekStart).localeCompare(String(right.weekStart));
+      });
+      if (!weeks.length) {
+        missing.push(card.name || card.id);
+        return;
+      }
+      prepared.push({ card: card, weeks: weeks });
+    });
+
+    if (missing.length) {
+      reset("这些卡没有可用的周指数：" + missing.join("、") + "。换一张卡或稍后再试。", "不可比较");
+      return;
+    }
+    if (prepared.length < 2) {
+      reset("至少需要 2 张有周指数的卡。", "不可比较");
+      return;
+    }
+
+    var commonDates = prepared[0].weeks.filter(function (week) {
+      var date = String(week.weekStart);
+      return prepared.every(function (item) {
+        return item.weeks.some(function (other) {
+          return String(other.weekStart) === date;
+        });
+      });
+    }).map(function (week) { return String(week.weekStart); });
+
+    if (!commonDates.length) {
+      reset("所选卡片没有共同的有效周指数，无法在统一起点比较。", "不可比较");
+      return;
+    }
+    var commonStart = commonDates.sort()[0];
+
+    var series = [];
+    var rows = [];
+    var incomplete = [];
+    prepared.forEach(function (item) {
+      var windowWeeks = item.weeks.filter(function (week) {
+        return String(week.weekStart) >= commonStart;
+      });
+      if (!windowWeeks.length) {
+        incomplete.push(item.card.name || item.card.id);
+        return;
+      }
+      var base = Number(windowWeeks[0].index);
+      if (!isFinite(base) || base === 0) {
+        incomplete.push(item.card.name || item.card.id);
+        return;
+      }
+      var last = windowWeeks[windowWeeks.length - 1];
+      var end = Number(last.index) / base * 100;
+      series.push({
+        name: item.card.name || item.card.id,
+        points: windowWeeks.map(function (week) {
+          return {
+            date: week.weekStart,
+            value: Number(week.index) / base * 100
+          };
+        })
+      });
+      rows.push({
+        name: item.card.name || item.card.id,
+        slug: item.card.slug,
+        start_date: commonStart,
+        start_index: 100,
+        end_date: last.weekStart,
+        end_index: end,
+        change: end - 100,
+        median: item.card.median,
+        providers: item.card.provider_count,
+        weeks: windowWeeks.length,
+        last_status: last.status || ""
+      });
+    });
+
+    if (incomplete.length) {
+      reset("这些卡在共同起点之后没有周指数：" + incomplete.join("、") + "。", "不可比较");
+      return;
+    }
+
+    var maxEndDate = rows.map(function (row) {
+      return String(row.end_date || "");
+    }).sort().pop();
+
+    rows.forEach(function (row) {
+      var endStamp = Date.parse(String(row.end_date) + "T00:00:00Z");
+      var maxStamp = Date.parse(String(maxEndDate) + "T00:00:00Z");
+      var lagDays = isFinite(endStamp) && isFinite(maxStamp)
+        ? Math.round((maxStamp - endStamp) / 86400000) : 0;
+      row.lag_days = lagDays;
+      row.comparable = row.weeks >= 2 && lagDays < 14;
+      row.coverage_status = row.comparable ? "" : "覆盖不足";
+      row.coverage_reason = row.weeks < 2
+        ? "weeks=" + row.weeks
+        : "末期滞后 " + lagDays + " 天";
+    });
+
+    CC.lineChart(chartHost, series, {
+      kind: "index",
+      yLabel: "Index · 共同起点 = 100",
+      ariaLabel: "所选 GPU 的周指数，共同起点 100"
+    });
+
+    tableHost.innerHTML = CC.table([
+      {
+        label: "GPU", key: "name",
+        render: function (value, row) {
+          if (!row.slug) { return CC.esc(value); }
+          return CC.link(value, "gpu/" + encodeURIComponent(row.slug) + ".html");
+        }
+      },
+      { label: "起点周", key: "start_date", className: "nowrap" },
+      {
+        label: "起点 index", key: "start_index", num: true,
+        render: function (value) { return CC.num(value, 1); }
+      },
+      { label: "末期周", key: "end_date", className: "nowrap" },
+      {
+        label: "末期 index", key: "end_index", num: true,
+        render: function (value) { return CC.num(value, 1); }
+      },
+      {
+        label: "Weeks", key: "weeks", num: true,
+        render: function (value) { return CC.num(value, 0); }
+      },
+      {
+        label: "变化", key: "change", num: true,
+        render: function (value, row) {
+          if (!row.comparable) { return '<span class="muted">—</span>'; }
+          return CC.pct(value, 1);
+        }
+      },
+      {
+        label: "最新 median", key: "median", num: true,
+        render: function (value) { return CC.money(value, 2); }
+      },
+      {
+        label: "Providers", key: "providers", num: true,
+        render: function (value) { return CC.num(value, 0); }
+      },
+      {
+        label: "Status", key: "coverage_status",
+        render: function (value, row) {
+          if (!row.comparable) {
+            return '<span class="badge thin" title="' +
+              CC.esc(row.coverage_reason || "") +
+              '">' + CC.esc(value || "覆盖不足") + "，不可比较</span>";
+          }
+          return row.last_status
+            ? CC.badge(row.last_status, row.last_status === "published" ? "ok" : "thin")
+            : '<span class="badge ok">ok</span>';
+        }
+      }
+    ], rows, {
+      caption: "共同起点 " + commonStart + "；每张卡在该周重定基为 100。Weeks < 2 或末期滞后 ≥ 14 天标“覆盖不足，不可比较”，变化留空。"
+    });
+
+    if (hint) {
+      var limited = rows.filter(function (row) { return !row.comparable; })
+        .map(function (row) { return row.name; });
+      hint.textContent = "共同起点 " + commonStart + "；折线与表格均按该周 = 100 重定基。";
+      if (limited.length) {
+        hint.textContent += "覆盖不足，不可比较：" + limited.join("、") + "。";
+      }
+    }
+    setCount(rows.length + " / 4 张");
+  }
+
+  checks.forEach(function (input) {
+    input.addEventListener("change", load);
+  });
+  load();
+})();
+</script>
+</body>
+</html>

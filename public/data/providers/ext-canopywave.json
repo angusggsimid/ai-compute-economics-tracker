@@ -1,0 +1,75 @@
+{
+ "layer": "gpueconomy",
+ "external": {
+  "source": "gpueconomy",
+  "source_url": "https://gpueconomy.com/data",
+  "license": "CC BY 4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "attribution": "GPU Economy (https://gpueconomy.com)",
+  "methodology_version": "1.33.63",
+  "data_updated_at": "2026-11-03T12:48:20.451387+00:00",
+  "retrieved_at": "2026-11-04T09:12:14Z"
+ },
+ "provider": {
+  "id": "canopywave",
+  "name": "Canopy Wave",
+  "type": "specialist",
+  "website": "https://canopywave.com/",
+  "pricing_page": "https://canopywave.com/pricing",
+  "source_kind": "html",
+  "regions": null,
+  "scraped": true,
+  "models_tracked": 2,
+  "current_quotes": 2,
+  "summary": "The rate is per GPU, but the smallest machine has two GPUs (H200, H100) - a single card is not sold. Larger sizes cost the same per GPU.",
+  "notes": "Price/Hour/GPU, the same for 2x/4x/8x SXM5 sizes; one per-GPU quote per card, the smallest size named. Get Quote rows (B200, GB200, B300) carry no price.",
+  "page": "https://gpueconomy.com/providers/canopywave",
+  "referral_url": null,
+  "fees": [],
+  "slug": "ext-canopywave",
+  "cards": [
+   "H100",
+   "H200"
+  ]
+ },
+ "quotes": [
+  {
+   "source_layer": "gpueconomy",
+   "provider_id": "canopywave",
+   "provider": "Canopy Wave",
+   "gpu_id": "h100-sxm",
+   "gpu": "NVIDIA H100 SXM",
+   "market": "on_demand",
+   "price_type": "on_demand",
+   "price_scope": "instance",
+   "risk": "low",
+   "usd_per_gpu_hour": 3.25,
+   "listed_currency": "USD",
+   "fx_rate": null,
+   "gpu_count": 1,
+   "region": null,
+   "source_url": "https://canopywave.com/pricing",
+   "scraped_at": "2026-11-03T12:48:20.451387+00:00",
+   "status": "live"
+  },
+  {
+   "source_layer": "gpueconomy",
+   "provider_id": "canopywave",
+   "provider": "Canopy Wave",
+   "gpu_id": "h200",
+   "gpu": "NVIDIA H200",
+   "market": "on_demand",
+   "price_type": "on_demand",
+   "price_scope": "instance",
+   "risk": "low",
+   "usd_per_gpu_hour": 4.0,
+   "listed_currency": "USD",
+   "fx_rate": null,
+   "gpu_count": 1,
+   "region": null,
+   "source_url": "https://canopywave.com/pricing",
+   "scraped_at": "2026-11-03T12:48:20.451387+00:00",
+   "status": "live"
+  }
+ ]
+}

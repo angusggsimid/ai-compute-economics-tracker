@@ -1,0 +1,93 @@
+{
+ "layer": "gpueconomy",
+ "external": {
+  "source": "gpueconomy",
+  "source_url": "https://gpueconomy.com/data",
+  "license": "CC BY 4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "attribution": "GPU Economy (https://gpueconomy.com)",
+  "methodology_version": "1.33.63",
+  "data_updated_at": "2026-11-03T12:48:20.451387+00:00",
+  "retrieved_at": "2026-11-04T09:12:14Z"
+ },
+ "provider": {
+  "id": "cato",
+  "name": "Cato Digital",
+  "type": "specialist",
+  "website": "https://cato.digital/",
+  "pricing_page": "https://cato.digital/product/gpu/",
+  "source_kind": "html",
+  "regions": null,
+  "scraped": true,
+  "models_tracked": 3,
+  "current_quotes": 3,
+  "summary": "Rents whole bare-metal servers by the hour, eight GPUs each, priced per server; shown here per GPU. The monthly prices beside them assume a year paid in advance and are not listed. Its servers are \"fail in place\": a failed server is replaced, its storage is not.",
+  "notes": "Static HTML (no charset, read as UTF-8), \"GPU Servers\" table: Hourly row per server, per_node with gpu_count from the GPU row; one quote per card, the smallest server (g2.xlarge 16x V100 32GB not read). Monthly row = annual prepayment, not read. 8x V100 32GB -> v100-32, 8x V100 16GB -> v100, 8x A100 80GB -> a100-80 (form not stated). On-demand, scope instance, region null",
+  "page": "https://gpueconomy.com/providers/cato",
+  "referral_url": null,
+  "fees": [],
+  "slug": "ext-cato",
+  "cards": [
+   "A100"
+  ]
+ },
+ "quotes": [
+  {
+   "source_layer": "gpueconomy",
+   "provider_id": "cato",
+   "provider": "Cato Digital",
+   "gpu_id": "a100-80",
+   "gpu": "NVIDIA A100 80GB",
+   "market": "on_demand",
+   "price_type": "on_demand",
+   "price_scope": "instance",
+   "risk": "low",
+   "usd_per_gpu_hour": 1.5,
+   "listed_currency": "USD",
+   "fx_rate": null,
+   "gpu_count": 8,
+   "region": null,
+   "source_url": "https://cato.digital/product/gpu/",
+   "scraped_at": "2026-11-03T12:48:20.451387+00:00",
+   "status": "live"
+  },
+  {
+   "source_layer": "gpueconomy",
+   "provider_id": "cato",
+   "provider": "Cato Digital",
+   "gpu_id": "v100",
+   "gpu": "NVIDIA V100",
+   "market": "on_demand",
+   "price_type": "on_demand",
+   "price_scope": "instance",
+   "risk": "low",
+   "usd_per_gpu_hour": 0.8286,
+   "listed_currency": "USD",
+   "fx_rate": null,
+   "gpu_count": 8,
+   "region": null,
+   "source_url": "https://cato.digital/product/gpu/",
+   "scraped_at": "2026-11-03T12:48:20.451387+00:00",
+   "status": "live"
+  },
+  {
+   "source_layer": "gpueconomy",
+   "provider_id": "cato",
+   "provider": "Cato Digital",
+   "gpu_id": "v100-32",
+   "gpu": "NVIDIA V100 32GB",
+   "market": "on_demand",
+   "price_type": "on_demand",
+   "price_scope": "instance",
+   "risk": "low",
+   "usd_per_gpu_hour": 1.3999,
+   "listed_currency": "USD",
+   "fx_rate": null,
+   "gpu_count": 8,
+   "region": null,
+   "source_url": "https://cato.digital/product/gpu/",
+   "scraped_at": "2026-11-03T12:48:20.451387+00:00",
+   "status": "live"
+  }
+ ]
+}

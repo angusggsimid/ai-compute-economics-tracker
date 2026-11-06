@@ -1,0 +1,55 @@
+{
+ "layer": "gpueconomy",
+ "external": {
+  "source": "gpueconomy",
+  "source_url": "https://gpueconomy.com/data",
+  "license": "CC BY 4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "attribution": "GPU Economy (https://gpueconomy.com)",
+  "methodology_version": "1.33.63",
+  "data_updated_at": "2026-11-03T12:48:20.451387+00:00",
+  "retrieved_at": "2026-11-04T09:12:14Z"
+ },
+ "provider": {
+  "id": "ecohash",
+  "name": "EcoHash",
+  "type": "specialist",
+  "website": "https://ecohash.com/",
+  "pricing_page": "https://ecohash.com/pricing",
+  "source_kind": "html",
+  "regions": null,
+  "scraped": true,
+  "models_tracked": 1,
+  "current_quotes": 1,
+  "summary": "One GPU-hour rate for dedicated inference, workspace instances and clusters alike, billed per second of running time.",
+  "notes": "GPU Compute table, per GPU-hour, one card on 2026-09-26 (RTX Pro 6000); the rest of the page is per-token model pricing.",
+  "page": "https://gpueconomy.com/providers/ecohash",
+  "referral_url": null,
+  "fees": [],
+  "slug": "ext-ecohash",
+  "cards": [
+   "RTX PRO 6000"
+  ]
+ },
+ "quotes": [
+  {
+   "source_layer": "gpueconomy",
+   "provider_id": "ecohash",
+   "provider": "EcoHash",
+   "gpu_id": "rtx-pro-6000",
+   "gpu": "NVIDIA RTX PRO 6000 Blackwell",
+   "market": "on_demand",
+   "price_type": "on_demand",
+   "price_scope": "instance",
+   "risk": "low",
+   "usd_per_gpu_hour": 1.89,
+   "listed_currency": "USD",
+   "fx_rate": null,
+   "gpu_count": 1,
+   "region": null,
+   "source_url": "https://ecohash.com/pricing",
+   "scraped_at": "2026-11-03T12:48:20.451387+00:00",
+   "status": "live"
+  }
+ ]
+}

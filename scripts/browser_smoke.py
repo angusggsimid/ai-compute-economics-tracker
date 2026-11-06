@@ -19,6 +19,9 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 PORT = 8931
+sys.path.insert(0, str(ROOT / "html_dashboard"))
+
+from site_tools import _external_view_market  # noqa: E402
 
 
 def _event_toggle_works(page) -> bool:
@@ -495,6 +498,527 @@ def _event_tooltip_on_price_chart(page) -> bool:
     return bool(event_date) and event_date in tooltip
 
 
+def _site_pages_smoke(browser, base_url: str):
+    """Load the standalone data pages in fresh tabs and return their checks.
+
+    Each page is opened and closed independently so the existing dashboard
+    checks keep their own console/pageerror state.
+    """
+    checks: dict[str, bool] = {}
+    problems: list[str] = []
+    all_errors: list[str] = []
+
+    def open_page(path: str, width: int = 1280, height: int = 900):
+        page = browser.new_page(viewport={"width": width, "height": height})
+        errors: list[str] = []
+        page.on(
+            "console",
+            lambda msg, sink=errors: sink.append(f"console: {msg.text}")
+            if msg.type == "error" else None,
+        )
+        page.on("pageerror", lambda exc, sink=errors: sink.append(f"pageerror: {exc}"))
+        response = page.goto(base_url + path, wait_until="networkidle")
+        return page, response, errors
+
+    def record(name: str, ok: bool, detail: str = "") -> None:
+        checks[name] = bool(ok)
+        if not ok and detail:
+            problems.append(f"{name}: {detail}")
+
+    # Expected row/offer counts come from the committed slices, not a frozen
+    # snapshot.  Daily refreshes may legitimately change providers or offers.
+    site_check_names = [
+        "site_landscape_page",
+        "site_providers_page",
+        "site_card_page",
+        "site_provider_page",
+        "site_compare_page",
+        "site_spread_page",
+        "site_cheapest_page",
+        "site_mobile_no_overflow",
+        "site_pages_console_zero",
+    ]
+
+    def load_public_json(relative: str):
+        return json.loads((ROOT / "public" / relative).read_text(encoding="utf-8"))
+
+    try:
+        site_index = load_public_json("data/site-index.json")
+        crosscheck = load_public_json("data/crosscheck.json")
+        h100_slice = load_public_json("data/cards/h100.json")
+        external_prices = load_public_json("data/external/prices.json")
+        providers = site_index.get("providers") or {}
+        expected_landscape_rows = len(crosscheck.get("rows") or [])
+        crosscheck_pairs = {
+            (str(row.get("card_id")), str(row.get("market"))): row
+            for row in crosscheck.get("rows") or []
+        }
+        expected_provider_rows = len(providers.get("own") or []) + len(
+            providers.get("external") or []
+        )
+        expected_compare_cards = len(site_index.get("cards") or [])
+        h100_card = h100_slice.get("card") or {}
+        h100_markets = h100_card.get("markets") or {}
+        expected_h100_tabs = len(h100_markets)
+        expected_h100_offers = len(
+            ((h100_markets.get("on_demand") or {}).get("latest") or {}).get("offers")
+            or []
+        )
+        key_card_ids = {
+            str(row.get("match_id")) for row in crosscheck.get("rows") or []
+            if row.get("match_id")
+        }
+        extra_gpu_ids = set()
+        for row in external_prices.get("prices") or []:
+            if row.get("status") != "live":
+                continue
+            if row.get("listed_currency") != "USD":
+                continue
+            if not _external_view_market(row):
+                continue
+            gpu_id = str(row.get("gpu_id") or "")
+            if not gpu_id or gpu_id in key_card_ids:
+                continue
+            try:
+                float(row.get("usd_per_gpu_hour"))
+            except (TypeError, ValueError):
+                continue
+            extra_gpu_ids.add(gpu_id)
+        expected_extra_card_options = len(extra_gpu_ids)
+    except Exception as exc:  # noqa: BLE001 - missing data is a publish failure
+        message = f"site data unavailable: {exc}"
+        for name in site_check_names:
+            record(name, False, message)
+        return checks, [message]
+
+    # Landscape: one row per crosscheck card × market.
+    page = None
+    try:
+        page, response, errors = open_page("/landscape.html")
+        page.wait_for_function(
+            "() => document.querySelectorAll('#landscape-table tbody tr').length === "
+            f"{expected_landscape_rows}",
+            timeout=10000,
+        )
+        rows = page.locator("#landscape-table tbody tr").count()
+        record(
+            "site_landscape_page",
+            response is not None
+            and response.ok
+            and rows == expected_landscape_rows
+            and not errors,
+            f"status={getattr(response, 'status', None)} rows={rows} "
+            f"expected={expected_landscape_rows} errors={errors[:2]}",
+        )
+        all_errors.extend(f"landscape: {item}" for item in errors)
+    except Exception as exc:  # noqa: BLE001 - report as a smoke failure
+        record("site_landscape_page", False, str(exc))
+    finally:
+        if page is not None:
+            page.close()
+
+    # Providers: own + external summaries from site-index.
+    page = None
+    try:
+        page, response, errors = open_page("/providers.html")
+        page.wait_for_function(
+            "() => document.querySelectorAll('#providers-table tbody tr').length === "
+            f"{expected_provider_rows}",
+            timeout=10000,
+        )
+        rows = page.locator("#providers-table tbody tr").count()
+        record(
+            "site_providers_page",
+            response is not None
+            and response.ok
+            and rows == expected_provider_rows
+            and not errors,
+            f"status={getattr(response, 'status', None)} rows={rows} "
+            f"expected={expected_provider_rows} errors={errors[:2]}",
+        )
+        all_errors.extend(f"providers: {item}" for item in errors)
+    except Exception as exc:  # noqa: BLE001
+        record("site_providers_page", False, str(exc))
+    finally:
+        if page is not None:
+            page.close()
+
+    # H100 card: market tabs, KPIs and on-demand offers from the card slice.
+    page = None
+    try:
+        page, response, errors = open_page("/gpu/h100.html")
+        page.wait_for_function(
+            "() => document.querySelectorAll('#market-panel-on_demand [data-offers] tbody tr').length === "
+            f"{expected_h100_offers}",
+            timeout=10000,
+        )
+        offers = page.locator(
+            "#market-panel-on_demand [data-offers] tbody tr"
+        ).count()
+        kpis = page.locator(".kpi-grid .kpi").count()
+        tabs = page.locator("[data-market-tab]").count()
+        heading = page.locator("h1").inner_text()
+        record(
+            "site_card_page",
+            response is not None
+            and response.ok
+            and offers == expected_h100_offers
+            and expected_h100_offers > 0
+            and kpis >= 6
+            and tabs == expected_h100_tabs
+            and "H100" in heading
+            and not errors,
+            f"status={getattr(response, 'status', None)} offers={offers} "
+            f"expectedOffers={expected_h100_offers} kpis={kpis} tabs={tabs} "
+            f"expectedTabs={expected_h100_tabs} errors={errors[:2]}",
+        )
+        all_errors.extend(f"card: {item}" for item in errors)
+    except Exception as exc:  # noqa: BLE001
+        record("site_card_page", False, str(exc))
+    finally:
+        if page is not None:
+            page.close()
+
+    # External provider: attribution, license and quote rows.
+    page = None
+    try:
+        page, response, errors = open_page("/providers/ext-runpod.html")
+        page.wait_for_function(
+            "() => document.querySelectorAll('#quotes-host tbody tr').length > 0",
+            timeout=10000,
+        )
+        quotes = page.locator("#quotes-host tbody tr").count()
+        text = page.locator("body").inner_text()
+        license_links = page.locator('a[href*="creativecommons.org/licenses/by/4.0"]').count()
+        record(
+            "site_provider_page",
+            response is not None and response.ok
+            and "GPU Economy · CC BY 4.0" in text
+            and license_links >= 1 and quotes > 0 and not errors,
+            f"status={getattr(response, 'status', None)} quotes={quotes} "
+            f"licenseLinks={license_links} errors={errors[:2]}",
+        )
+        all_errors.extend(f"provider: {item}" for item in errors)
+    except Exception as exc:  # noqa: BLE001
+        record("site_provider_page", False, str(exc))
+    finally:
+        if page is not None:
+            page.close()
+
+    # Compare: selector, chart and table after picking two cards.
+    page = None
+    try:
+        page, response, errors = open_page("/compare.html")
+        selectors = page.locator("[data-card-toggle]").count()
+        page.locator("[data-card-toggle]").nth(0).check()
+        page.locator("[data-card-toggle]").nth(1).check()
+        page.wait_for_function(
+            "() => document.querySelectorAll('#compare-chart svg path').length >= 2"
+            " && document.querySelectorAll('#compare-table tbody tr').length === 2",
+            timeout=10000,
+        )
+        paths = page.locator("#compare-chart svg path").count()
+        rows = page.locator("#compare-table tbody tr").count()
+        hint = page.locator("#compare-hint").inner_text()
+
+        # B300 + GH200: GH200 has only one indexed week, so it must be marked
+        # as insufficient coverage instead of showing a 0.0% change.
+        for value in ("H100", "H200"):
+            toggle = page.locator(f'[data-card-toggle][value="{value}"]')
+            if toggle.is_checked():
+                toggle.uncheck()
+        page.locator('[data-card-toggle][value="B300"]').check()
+        page.locator('[data-card-toggle][value="GH200"]').check()
+        page.wait_for_function(
+            "() => document.querySelectorAll('#compare-table tbody tr').length === 2",
+            timeout=10000,
+        )
+        gh_row = page.locator("#compare-table tbody tr").filter(has_text="GH200").first
+        gh_text = gh_row.inner_text() if gh_row.count() else ""
+        coverage_ok = "覆盖不足" in gh_text and "0.0%" not in gh_text
+
+        record(
+            "site_compare_page",
+            response is not None
+            and response.ok
+            and selectors == expected_compare_cards
+            and paths >= 2
+            and rows == 2
+            and "共同起点" in hint
+            and coverage_ok
+            and not errors,
+            f"status={getattr(response, 'status', None)} selectors={selectors} "
+            f"expected={expected_compare_cards} paths={paths} rows={rows} "
+            f"gh200Coverage={coverage_ok} errors={errors[:2]}",
+        )
+        all_errors.extend(f"compare: {item}" for item in errors)
+    except Exception as exc:  # noqa: BLE001
+        record("site_compare_page", False, str(exc))
+    finally:
+        if page is not None:
+            page.close()
+
+    # Spread: grouped rows, filters and dynamically expanded card options.
+    page = None
+    try:
+        page, response, errors = open_page("/spread.html")
+        page.wait_for_function(
+            "() => document.querySelectorAll('#spread-table tbody tr').length > 0",
+            timeout=10000,
+        )
+        rows = page.locator("#spread-table tbody tr").count()
+        filters = page.locator("#spread-filters [data-filter]").count()
+        extra_cards = page.locator('#spread-card option[value^="gpu:"]').count()
+        filtered_rows = 0
+        if extra_cards:
+            extra_value = page.locator(
+                '#spread-card option[value^="gpu:"]'
+            ).first.get_attribute("value")
+            page.select_option("#spread-card", value=extra_value)
+            page.wait_for_timeout(200)
+            filtered_rows = page.locator("#spread-table tbody tr").count()
+
+        # Numeric contract: external medians must match crosscheck's
+        # one-cheapest-row-per-provider market view, not quote-row medians.
+        numeric_cases = [
+            ("A100", "on_demand"),
+            ("RTX 5090", "community"),
+            ("RTX 4090", "community"),
+            ("B300", "spot"),
+            ("A100", "marketplace"),
+        ]
+        numeric_ok = True
+        numeric_detail = {}
+        for card, market in numeric_cases:
+            expected = crosscheck_pairs.get((card, market)) or {}
+            expected_median = expected.get("ext_median")
+            expected_providers = expected.get("ext_providers")
+            page.select_option("#spread-card", value=card)
+            page.select_option("#spread-market", value=market)
+            page.select_option("#spread-layer", value="gpueconomy")
+            page.wait_for_timeout(120)
+            case_rows = page.locator("#spread-table tbody tr")
+            if case_rows.count() != 1 or expected_median is None:
+                numeric_ok = False
+                numeric_detail[f"{card}/{market}"] = "missing row or crosscheck median"
+                continue
+            row = case_rows.first
+            median_text = row.locator("td").nth(4).inner_text().strip()
+            provider_text = row.locator("td").nth(8).inner_text().strip()
+            try:
+                actual_median = float(median_text.replace("$", "").replace(",", ""))
+                actual_providers = int(provider_text.replace(",", "").strip())
+            except ValueError:
+                numeric_ok = False
+                numeric_detail[f"{card}/{market}"] = (
+                    f"unparsable median={median_text!r} providers={provider_text!r}"
+                )
+                continue
+            median_ok = abs(actual_median - float(expected_median)) <= 0.011
+            providers_ok = (
+                expected_providers is None
+                or actual_providers == int(expected_providers)
+            )
+            floor_ok = (
+                market != "marketplace"
+                or "floor，不是 rate card" in row.inner_text()
+            )
+            if not (median_ok and providers_ok and floor_ok):
+                numeric_ok = False
+            numeric_detail[f"{card}/{market}"] = (
+                f"{actual_median:.2f}/{float(expected_median):.3f} "
+                f"n={actual_providers}/{expected_providers} "
+                f"floor={floor_ok}"
+            )
+
+        record(
+            "site_spread_page",
+            response is not None
+            and response.ok
+            and rows > 0
+            and filters == 3
+            and extra_cards == expected_extra_card_options
+            and (extra_cards == 0 or filtered_rows > 0)
+            and numeric_ok
+            and not errors,
+            f"status={getattr(response, 'status', None)} rows={rows} "
+            f"filters={filters} extraCardOptions={extra_cards} "
+            f"expectedExtra={expected_extra_card_options} "
+            f"filteredRows={filtered_rows} numeric={numeric_detail} "
+            f"errors={errors[:2]}",
+        )
+        all_errors.extend(f"spread: {item}" for item in errors)
+    except Exception as exc:  # noqa: BLE001
+        record("site_spread_page", False, str(exc))
+    finally:
+        if page is not None:
+            page.close()
+
+    # Cheapest: grouped rows, provider/card links and dynamic card options.
+    page = None
+    try:
+        page, response, errors = open_page("/cheapest.html")
+        page.wait_for_function(
+            "() => document.querySelectorAll('#cheapest-table tbody tr').length > 0",
+            timeout=10000,
+        )
+        rows = page.locator("#cheapest-table tbody tr").count()
+        provider_links = page.locator('#cheapest-table a[href^="providers/"]').count()
+        card_links = page.locator('#cheapest-table a[href^="gpu/"]').count()
+        filters = page.locator("#cheapest-filters [data-filter]").count()
+        extra_cards = page.locator('#cheapest-card option[value^="gpu:"]').count()
+        filtered_rows = 0
+        if extra_cards:
+            extra_value = page.locator(
+                '#cheapest-card option[value^="gpu:"]'
+            ).first.get_attribute("value")
+            page.select_option("#cheapest-card", value=extra_value)
+            page.wait_for_timeout(200)
+            filtered_rows = page.locator("#cheapest-table tbody tr").count()
+        record(
+            "site_cheapest_page",
+            response is not None
+            and response.ok
+            and rows > 0
+            and provider_links > 0
+            and card_links > 0
+            and filters == 3
+            and extra_cards == expected_extra_card_options
+            and (extra_cards == 0 or filtered_rows > 0)
+            and not errors,
+            f"status={getattr(response, 'status', None)} rows={rows} "
+            f"providerLinks={provider_links} cardLinks={card_links} "
+            f"extraCardOptions={extra_cards} expectedExtra={expected_extra_card_options} "
+            f"filteredRows={filtered_rows} errors={errors[:2]}",
+        )
+        all_errors.extend(f"cheapest: {item}" for item in errors)
+    except Exception as exc:  # noqa: BLE001
+        record("site_cheapest_page", False, str(exc))
+    finally:
+        if page is not None:
+            page.close()
+
+    # 390px: element-level overflow audit across the generated site.
+    page = None
+    mobile_errors: list[str] = []
+    try:
+        page = browser.new_page(viewport={"width": 390, "height": 844})
+        page.on(
+            "console",
+            lambda msg, sink=mobile_errors: sink.append(f"console: {msg.text}")
+            if msg.type == "error" else None,
+        )
+        page.on(
+            "pageerror",
+            lambda exc, sink=mobile_errors: sink.append(f"pageerror: {exc}"),
+        )
+        audit_js = """() => {
+            const win = window.innerWidth;
+            const bad = [];
+            const containers = document.querySelectorAll(
+                'main, .shell, .panel, .hero, .section, .panel-head, .kpi, ' +
+                '.kpi-grid, .filters, .field, .chart, .topbar-inner, .nav, .footer-inner'
+            );
+            containers.forEach((el) => {
+                if (el.closest('.table-wrap')) { return; }
+                const rect = el.getBoundingClientRect();
+                if (!rect.width && !rect.height) { return; }
+                if (rect.right > win + 2 || rect.left < -2) {
+                    bad.push({
+                        tag: el.tagName.toLowerCase(),
+                        cls: String(el.className || ''),
+                        left: Math.round(rect.left),
+                        right: Math.round(rect.right)
+                    });
+                }
+            });
+            return {
+                doc: document.documentElement.scrollWidth,
+                body: document.body.scrollWidth,
+                win: win,
+                bad: bad.slice(0, 8)
+            };
+        }"""
+        dims = {}
+        for path in (
+            "/landscape.html",
+            "/providers.html",
+            "/gpu/h100.html",
+            "/providers/ext-runpod.html",
+            "/compare.html",
+            "/spread.html",
+            "/cheapest.html",
+        ):
+            page.goto(base_url + path, wait_until="networkidle")
+            if path == "/landscape.html":
+                page.wait_for_function(
+                    "() => document.querySelectorAll('#landscape-table tbody tr').length === "
+                    f"{expected_landscape_rows}",
+                    timeout=10000,
+                )
+            elif path == "/providers.html":
+                page.wait_for_function(
+                    "() => document.querySelectorAll('#providers-table tbody tr').length === "
+                    f"{expected_provider_rows}",
+                    timeout=10000,
+                )
+            elif path == "/gpu/h100.html":
+                page.wait_for_function(
+                    "() => document.querySelectorAll('#market-panel-on_demand [data-offers] tbody tr').length === "
+                    f"{expected_h100_offers}",
+                    timeout=10000,
+                )
+            elif path == "/providers/ext-runpod.html":
+                page.wait_for_function(
+                    "() => document.querySelectorAll('#quotes-host tbody tr').length > 0",
+                    timeout=10000,
+                )
+            elif path == "/compare.html":
+                page.locator("[data-card-toggle]").nth(0).check()
+                page.locator("[data-card-toggle]").nth(1).check()
+                page.wait_for_function(
+                    "() => document.querySelectorAll('#compare-table tbody tr').length === 2",
+                    timeout=10000,
+                )
+            elif path == "/spread.html":
+                page.wait_for_function(
+                    "() => document.querySelectorAll('#spread-table tbody tr').length > 0",
+                    timeout=10000,
+                )
+            elif path == "/cheapest.html":
+                page.wait_for_function(
+                    "() => document.querySelectorAll('#cheapest-table tbody tr').length > 0",
+                    timeout=10000,
+                )
+            page.wait_for_timeout(150)
+            dims[path] = page.evaluate(audit_js)
+        no_overflow = all(
+            item["doc"] <= item["win"] + 2
+            and item["body"] <= item["win"] + 2
+            and not item["bad"]
+            for item in dims.values()
+        )
+        record(
+            "site_mobile_no_overflow",
+            no_overflow and not mobile_errors,
+            json.dumps(
+                {"pages": dims, "errors": mobile_errors[:3]},
+                ensure_ascii=False,
+            ),
+        )
+        all_errors.extend(f"mobile: {item}" for item in mobile_errors)
+    except Exception as exc:  # noqa: BLE001
+        record("site_mobile_no_overflow", False, str(exc))
+    finally:
+        if page is not None:
+            page.close()
+
+    record("site_pages_console_zero", not all_errors, "; ".join(all_errors[:5]))
+    if problems:
+        all_errors.extend(problems)
+    return checks, all_errors[:20]
+
+
 def main() -> int:
     try:
         from playwright.sync_api import sync_playwright
@@ -639,11 +1163,16 @@ def main() -> int:
                 "mobile_price_chart_fits": _mobile_price_chart_fits(page),
                 "mobile_full_page_no_overflow": _mobile_full_page_no_overflow(page),
             }
+            site_checks, site_errors = _site_pages_smoke(
+                browser, f"http://127.0.0.1:{PORT}"
+            )
+            checks.update(site_checks)
             diagnostics = {
                 "errors": errors[:5],
                 "guidanceMismatches": consistency["mismatches"],
                 "duplicateLabels": duplicate_labels,
                 "labelColorMismatches": color_mismatch,
+                "siteErrors": site_errors[:5],
             }
             browser.close()
 

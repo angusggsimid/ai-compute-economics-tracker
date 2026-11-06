@@ -1,0 +1,55 @@
+{
+ "layer": "gpueconomy",
+ "external": {
+  "source": "gpueconomy",
+  "source_url": "https://gpueconomy.com/data",
+  "license": "CC BY 4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "attribution": "GPU Economy (https://gpueconomy.com)",
+  "methodology_version": "1.33.63",
+  "data_updated_at": "2026-11-03T12:48:20.451387+00:00",
+  "retrieved_at": "2026-11-04T09:12:14Z"
+ },
+ "provider": {
+  "id": "theai",
+  "name": "TheAI Cloud",
+  "type": "specialist",
+  "website": "https://cloud.theai.com/",
+  "pricing_page": "https://cloud.theai.com/pricing",
+  "source_kind": "html",
+  "regions": null,
+  "scraped": true,
+  "models_tracked": 1,
+  "current_quotes": 1,
+  "summary": "Sold only as whole 8-GPU B300 nodes on 24- or 36-month terms, take-or-pay with 30% at signing; the node is ready 4-6 weeks after the deposit and billing starts after acceptance benchmarks pass. The figure is the 36-month rate for the node, CPU, memory and storage included; the 24-month rate is not listed here.",
+  "notes": "reserved only: whole 8x B300 SXM 288GB node, Atlanta; 36-month row read as reserved_3y per node (8 GPUs); 24-month row not read (no market); on-demand \"planned\"; the comparison table of other providers' rates is never read",
+  "page": "https://gpueconomy.com/providers/theai",
+  "referral_url": null,
+  "fees": [],
+  "slug": "ext-theai",
+  "cards": [
+   "B300"
+  ]
+ },
+ "quotes": [
+  {
+   "source_layer": "gpueconomy",
+   "provider_id": "theai",
+   "provider": "TheAI Cloud",
+   "gpu_id": "b300",
+   "gpu": "NVIDIA B300",
+   "market": "reserved_3y",
+   "price_type": "reserved",
+   "price_scope": "instance",
+   "risk": "low",
+   "usd_per_gpu_hour": 4.7,
+   "listed_currency": "USD",
+   "fx_rate": null,
+   "gpu_count": 8,
+   "region": null,
+   "source_url": "https://cloud.theai.com/pricing",
+   "scraped_at": "2026-11-03T12:48:20.451387+00:00",
+   "status": "live"
+  }
+ ]
+}

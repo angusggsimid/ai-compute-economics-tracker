@@ -1,0 +1,55 @@
+{
+ "layer": "gpueconomy",
+ "external": {
+  "source": "gpueconomy",
+  "source_url": "https://gpueconomy.com/data",
+  "license": "CC BY 4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "attribution": "GPU Economy (https://gpueconomy.com)",
+  "methodology_version": "1.33.63",
+  "data_updated_at": "2026-11-03T12:48:20.451387+00:00",
+  "retrieved_at": "2026-11-04T09:12:14Z"
+ },
+ "provider": {
+  "id": "hotaisle",
+  "name": "Hot Aisle",
+  "type": "specialist",
+  "website": "https://hotaisle.xyz/",
+  "pricing_page": "https://hotaisle.xyz/pricing",
+  "source_kind": "html",
+  "regions": null,
+  "scraped": true,
+  "models_tracked": 1,
+  "current_quotes": 1,
+  "summary": "AMD only. The rate shown is the pay-as-you-go virtual machine, billed by the minute. A whole 8-GPU bare-metal node, priced higher with a one-month minimum, and the lower rate kept by existing customers are on the linked page, not in these tables.",
+  "notes": "MI300X per GPU: the VM rate as on-demand (billed by the minute). Not read: 8x bare metal (a one-month commitment priced above the VM, a different product) and the grandfathered rate for existing customers",
+  "page": "https://gpueconomy.com/providers/hotaisle",
+  "referral_url": null,
+  "fees": [],
+  "slug": "ext-hotaisle",
+  "cards": [
+   "MI300X"
+  ]
+ },
+ "quotes": [
+  {
+   "source_layer": "gpueconomy",
+   "provider_id": "hotaisle",
+   "provider": "Hot Aisle",
+   "gpu_id": "mi300x",
+   "gpu": "AMD Instinct MI300X",
+   "market": "on_demand",
+   "price_type": "on_demand",
+   "price_scope": "instance",
+   "risk": "low",
+   "usd_per_gpu_hour": 2.99,
+   "listed_currency": "USD",
+   "fx_rate": null,
+   "gpu_count": 1,
+   "region": null,
+   "source_url": "https://hotaisle.xyz/pricing",
+   "scraped_at": "2026-11-03T12:48:20.451387+00:00",
+   "status": "live"
+  }
+ ]
+}

@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#f5f5f7">
+<title>Providers · AI Compute Economics</title>
+<meta name="description" content="自有 37 家与 GPU Economy 外部 121 家 provider 的合并索引：layer、type、live 覆盖的卡、live 报价数与最低挂牌价。">
+<link rel="icon" type="image/svg+xml" href="./favicon.svg">
+<link rel="stylesheet" href="./assets/site.css">
+</head>
+<body data-base=".">
+<a class="skip" href="#main">跳到正文</a>
+<header class="topbar"><div class="topbar-inner"><a class="brand" href="./index.html">AI Compute Economics</a><nav class="nav" aria-label="主导航"><a href="./index.html">总览</a><a href="./landscape.html">Landscape</a><a href="./providers.html" class="active" aria-current="page">Providers</a><a href="./compare.html">Compare</a><a href="./spread.html">Spread</a><a href="./cheapest.html">Cheapest</a></nav></div></header>
+<main class="shell" id="main">
+
+<section class="hero">
+  <p class="kicker">Providers · as of 2026-10-29</p>
+  <h1>158 家 provider：自有 37 家 + 外部 121 家</h1>
+  <p class="lede">自有 provider 来自 AI Compute Economics 的最新挂牌面板；外部 provider 来自 GPU Economy 的当前报价快照。两层分开展示，外部数字不会并入自有中位数或周指数。</p>
+  <div class="kpi-grid">
+    <div class="kpi"><div class="label">Provider 总数</div><div class="value">158</div><div class="hint">37 自有 · 121 外部</div></div>
+    <div class="kpi"><div class="label">自有报价</div><div class="value">238</div><div class="hint">最新挂牌价，非成交价</div></div>
+    <div class="kpi"><div class="label">外部报价记录</div><div class="value">1,399</div><div class="hint">全量快照，含 stopped / 非 USD；live 见表格</div></div>
+    <div class="kpi"><div class="label">外部数据</div><div class="value">2026-11-03</div><div class="hint">CC BY 4.0 · 仅参考</div></div>
+  </div>
+  <p class="source">自有面板 as-of <strong>2026-10-29</strong> · 页面构建 2026-11-06。</p>
+  <p class="source">外部参考层：<a href="https://gpueconomy.com/data" target="_blank" rel="noopener">GPU Economy (https://gpueconomy.com)</a> · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a> · 外部数据 2026-11-03 · 外部数字只作覆盖参考，不进入自有中位数、P25/P75 或周指数。</p>
+</section>
+
+<section class="section" id="providers-detail">
+  <div class="section-head">
+    <div>
+      <h2>Provider 全表</h2>
+      <p class="sub">Live coverage 的单位随 layer 不同：自有是 <strong>key cards</strong>（11 卡覆盖数），外部是 <strong>GPU ids</strong>（live 报价的不同 GPU 型号数），两者不可直接比较。Live quotes 与 Cheapest：自有行取自有面板；外部行只统计 live + 非 marketplace floor + USD 的报价。Live quotes 下方的 raw 是 site-index 的 current_quotes 原始记录数。</p>
+    </div>
+    <p class="small muted" id="providers-count">加载中…</p>
+  </div>
+  <div class="filters" id="providers-filters" role="group" aria-label="Provider 筛选"><div class="field"><label for="providers-layer">Layer</label><select id="providers-layer" data-filter="layer"><option value="">全部</option><option value="own">own</option><option value="gpueconomy">gpueconomy</option></select></div><div class="field"><label for="providers-type">Type</label><select id="providers-type" data-filter="type"><option value="">全部</option><option value="own">own（自有）</option><option value="hyperscaler">hyperscaler</option><option value="marketplace">marketplace</option><option value="specialist">specialist</option></select></div><div class="field"><label for="providers-search">搜索 provider</label><input id="providers-search" type="search" data-filter="search" placeholder="名称或 ID，例如 RunPod" autocomplete="off"></div></div>
+  <div id="providers-table" aria-live="polite" aria-busy="true">
+    <div class="empty" role="status">正在加载 provider 数据…</div>
+  </div>
+  <p class="panel-note">外部 provider 统一标为 <span class="badge ext">gpueconomy</span>，来源为 <a href="https://gpueconomy.com/data" target="_blank" rel="noopener">GPU Economy</a> · CC BY 4.0；每行的 Source 链接指向 provider 自己的定价页。site-index 的 cards/current_quotes 可能包含 stopped 或历史覆盖，表格不把它们当作 live；外部 Live coverage 是 GPU id 数，不是 11 卡覆盖。有记录但 0 live 的行会标 <span class="badge none">0 live</span>。没有 current_quotes 记录的外部 provider 不会出现在这里。</p>
+</section>
+
+</main>
+<footer class="footer"><div class="footer-inner"><p>AI Compute Economics · 公开挂牌价，非成交价。</p><p>外部参考层：<a href="https://gpueconomy.com/data" target="_blank" rel="noopener">GPU Economy</a> · CC BY 4.0。自有中位数与指数不受外部数据改写 · <a href="./data/manifest.json">数据说明</a></p></div></footer>
+<script src="./assets/site.js"></script>
+<script>
+(function () {
+  "use strict";
+  var tableHost = document.getElementById("providers-table");
+  var countEl = document.getElementById("providers-count");
+  var filtersRoot = document.getElementById("providers-filters");
+  if (!tableHost) { return; }
+
+  var HEADERS = [
+    { label: "Provider", key: "name", render: function (_value, row) {
+        var html = CC.link(row.name, "providers/" + row.slug + ".html");
+        if (row.layer === "gpueconomy" && row.live_quotes === 0) {
+          html += " " + CC.badge("0 live", "none");
+        }
+        html += '<br><span class="small muted">' + CC.esc(row.id) + "</span>";
+        return html;
+      } },
+    { label: "Layer", key: "layer", render: function (value) {
+        if (value === "own") { return CC.badge("own", "own"); }
+        return CC.badge("gpueconomy", "ext");
+      } },
+    { label: "Type", key: "type", render: function (value, row) {
+        var html = CC.esc(value || "—");
+        if (row.source_kind) {
+          html += '<br><span class="small muted">' + CC.esc(row.source_kind) + "</span>";
+        }
+        return html;
+      } },
+    { label: "Live coverage", key: "live_coverage_count", title: "自有 = 11 卡 key cards；外部 = live 报价的不同 GPU id 数；单位不同，不可直接比较", render: function (value, row) {
+        var names = row.live_coverage_names || [];
+        var html = value ? CC.num(value) : '<span class="muted">0</span>';
+        html += ' <span class="small muted">' + CC.esc(row.live_coverage_unit || "") + "</span>";
+        if (names.length) {
+          var shown = names.slice(0, 2).join(", ");
+          if (names.length > 2) { shown += " +" + (names.length - 2); }
+          html += '<br><span class="small muted">' + CC.esc(shown) + "</span>";
+        }
+        var title = [];
+        if (row.layer === "own") {
+          title.push("自有：11 卡 key cards 覆盖数");
+        } else {
+          title.push("外部：live 报价的不同 GPU id 数，不是 11 卡覆盖");
+        }
+        if (names.length) { title.push("各型号: " + names.join(", ")); }
+        if (row.layer === "gpueconomy" && (row.cards || []).length) {
+          title.push("site-index 原始 key cards: " + (row.cards || []).join(", "));
+        }
+        if (title.length) {
+          html = '<span title="' + CC.esc(title.join(" | ")) + '">' + html + "</span>";
+        }
+        return html;
+      } },
+    { label: "Live quotes", key: "live_quotes", num: true, title: "外部仅 live + 非 marketplace floor + USD；raw 为 site-index 原始记录数", render: function (value, row) {
+        var html = CC.num(value);
+        if (row.layer === "gpueconomy" && row.current_quotes != null) {
+          html += '<br><span class="small muted">raw ' + CC.num(row.current_quotes) + "</span>";
+        }
+        return html;
+      } },
+    { label: "Cheapest", key: "cheapest", num: true, title: "外部仅 live + 非 marketplace floor + USD；自有取自有面板最低价", render: function (value, row) {
+        if (!value || !isFinite(Number(value.value))) {
+          return '<span class="muted">—</span>';
+        }
+        var html = CC.money(value.value, 2);
+        var hints = [value.card, value.market].filter(Boolean);
+        if (hints.length) {
+          html += '<br><span class="small muted">' + CC.esc(hints.join(" · ")) + "</span>";
+        }
+        return html;
+      } },
+    { label: "Source", key: "source_url", render: function (value, row) {
+        if (!value) { return '<span class="muted">—</span>'; }
+        var label = row.source_label || "来源";
+        return CC.link(label + " ↗", value, { target: "_blank", title: value });
+      } }
+  ];
+
+  var rows = [];
+  var ready = false;
+
+  function isEffectiveExternalQuote(quote) {
+    if (!quote) { return false; }
+    if (quote.status !== "live") { return false; }
+    if (quote.price_scope === "marketplace_floor") { return false; }
+    if (quote.listed_currency !== "USD") { return false; }
+    return true;
+  }
+
+  function buildRows(index, pricesDoc) {
+    var stats = {};
+    (pricesDoc.prices || []).forEach(function (quote) {
+      if (quote.source_layer && quote.source_layer !== "gpueconomy") { return; }
+      if (!isEffectiveExternalQuote(quote)) { return; }
+      var providerId = quote.provider_id;
+      if (!providerId) { return; }
+      var item = stats[providerId];
+      if (!item) {
+        item = stats[providerId] = {
+          live_quotes: 0,
+          gpus: {},
+          live_gpus: [],
+          cheapest: null
+        };
+      }
+      item.live_quotes += 1;
+      var gpuKey = quote.gpu_id || quote.gpu || "";
+      if (gpuKey && !item.gpus[gpuKey]) {
+        item.gpus[gpuKey] = true;
+        item.live_gpus.push(quote.gpu || quote.gpu_id || gpuKey);
+      }
+      var value = Number(quote.usd_per_gpu_hour);
+      if (isFinite(value) && (!item.cheapest || value < item.cheapest.value)) {
+        item.cheapest = {
+          value: value,
+          card: quote.gpu || quote.gpu_id,
+          market: quote.market,
+          scope: quote.price_scope,
+          source_url: quote.source_url
+        };
+      }
+    });
+
+    var output = [];
+    ((index.providers || {}).own || []).forEach(function (provider) {
+      var own = provider.cheapest || null;
+      output.push({
+        id: provider.id,
+        slug: provider.slug,
+        name: provider.name || provider.id,
+        layer: "own",
+        type: "own",
+        source_kind: "",
+        cards: provider.cards || [],
+        live_key_cards: (provider.cards || []).length,
+        live_gpu_ids: null,
+        live_coverage_count: (provider.cards || []).length,
+        live_coverage_unit: "key cards",
+        live_coverage_names: provider.cards || [],
+        live_quotes: provider.quotes || 0,
+        current_quotes: provider.quotes || 0,
+        cheapest: own ? {
+          value: own.usd_per_gpu_hour,
+          card: own.card,
+          market: own.market,
+          scope: null,
+          source_url: own.source_url
+        } : null,
+        source_url: own && own.source_url ? own.source_url : "",
+        source_label: "挂牌页",
+        search: [provider.name, provider.id, (provider.cards || []).join(" ")]
+          .join(" ").toLowerCase()
+      });
+    });
+    ((index.providers || {}).external || []).forEach(function (provider) {
+      var live = stats[provider.id] || { live_quotes: 0, live_gpus: [], cheapest: null };
+      output.push({
+        id: provider.id,
+        slug: provider.slug,
+        name: provider.name || provider.id,
+        layer: "gpueconomy",
+        type: provider.type || "external",
+        source_kind: provider.source_kind || "",
+        cards: provider.cards || [],
+        live_key_cards: null,
+        live_gpu_ids: live.live_gpus.length,
+        live_coverage_count: live.live_gpus.length,
+        live_coverage_unit: "GPU ids",
+        live_coverage_names: live.live_gpus,
+        live_quotes: live.live_quotes,
+        current_quotes: provider.current_quotes || 0,
+        cheapest: live.cheapest,
+        source_url: provider.pricing_page || provider.website || "",
+        source_label: provider.pricing_page ? "pricing page" : "website",
+        search: [
+          provider.name, provider.id, provider.type, (provider.cards || []).join(" "),
+          live.live_gpus.join(" ")
+        ].join(" ").toLowerCase()
+      });
+    });
+    return output;
+  }
+
+  function render() {
+    if (!ready) { return; }
+    var filters = CC.readFilters(filtersRoot);
+    var query = String(filters.search || "").trim().toLowerCase();
+    var visible = CC.filterRows(rows, {
+      layer: filters.layer,
+      type: filters.type,
+      search: function (value) {
+        return !query || String(value || "").toLowerCase().indexOf(query) >= 0;
+      }
+    }, { exact: ["layer", "type"] });
+
+    tableHost.innerHTML = CC.table(HEADERS, visible, {
+      empty: "没有匹配的 provider，请调整筛选。",
+      caption: "外部 provider 的报价来自 GPU Economy，仅作参考；自有与外部不会合并成同一家中位数。"
+    });
+    tableHost.setAttribute("aria-busy", "false");
+    if (countEl) { countEl.textContent = visible.length + " / " + rows.length + " 家"; }
+  }
+
+  function fail(error) {
+    tableHost.setAttribute("aria-busy", "false");
+    tableHost.innerHTML = CC.empty(
+      "数据加载失败：" + (error && error.message ? error.message : error) +
+      "。请通过本地静态服务器打开页面。"
+    );
+    if (countEl) { countEl.textContent = "加载失败"; }
+  }
+
+  CC.bindFilters(filtersRoot, render);
+  Promise.all([CC.get("site-index.json"), CC.get("external/prices.json")])
+    .then(function (documents) {
+      rows = buildRows(documents[0], documents[1]);
+      ready = true;
+      render();
+    })
+    .catch(fail);
+})();
+</script>
+</body>
+</html>

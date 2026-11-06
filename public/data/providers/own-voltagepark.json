@@ -1,0 +1,53 @@
+{
+ "layer": "own",
+ "as_of": "2026-10-29",
+ "provider": {
+  "id": "voltagepark",
+  "slug": "own-voltagepark",
+  "name": "Voltage Park",
+  "cards": [
+   "H100"
+  ],
+  "markets": [
+   "on_demand"
+  ],
+  "quotes": 1,
+  "cheapest": {
+   "card": "H100",
+   "market": "on_demand",
+   "usd_per_gpu_hour": 1.99,
+   "source_url": "https://support.voltagepark.com/article/example-deploying-gpt-oss-on-voltage-park"
+  }
+ },
+ "quotes": [
+  {
+   "provider": "Voltage Park",
+   "provider_id": "voltagepark",
+   "card": "H100 80GB",
+   "card_id": "H100",
+   "vram_gb": 80,
+   "market": "on_demand",
+   "market_label": "正规 on-demand",
+   "risk": "low",
+   "price_scope": "rate_card",
+   "usd_per_gpu_hour": 1.99,
+   "date": "2026-10-29",
+   "status": "live",
+   "source_url": "https://support.voltagepark.com/article/example-deploying-gpt-oss-on-voltage-park",
+   "quotes": 1,
+   "source_layer": "own",
+   "region": null,
+   "gpu_count": null,
+   "listed_price": null,
+   "listed_currency": "USD",
+   "fx_rate": 1.0,
+   "fx_date": null,
+   "listed_unit": "USD/GPU-hour",
+   "scraped_at": null,
+   "last_confirmed_at": "2026-10-29",
+   "listed_since": null,
+   "change_7d_pct": null,
+   "source_kind": null
+  }
+ ]
+}

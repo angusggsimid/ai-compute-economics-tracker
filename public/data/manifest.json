@@ -1,8 +1,8 @@
 {
  "name": "AI Compute Economics - public GPU supply data",
- "generated_at": "2026-11-05T17:19:23Z",
+ "generated_at": "2026-11-06T16:45:48Z",
  "data_as_of": "2026-10-29",
- "data_age_days": 7,
+ "data_age_days": 8,
  "methodology_version": "2026-11-04.1",
  "license": "Project data. Underlying neocloud rows are CC BY 4.0; see the dashboard source panel.",
  "attribution": "AI Compute Economics; underlying provider prices from the tracked provider pages.",
@@ -42,6 +42,26 @@
   {
    "path": "crosscheck.json",
    "description": "Own vs GPU Economy medians by card and market. diff_pct is a methodology/sample gap, not a transaction price spread."
+  },
+  {
+   "path": "site-index.json",
+   "description": "Card and provider summaries used by the standalone site: counts, markets, as-of, methodology and external metadata."
+  },
+  {
+   "path": "cards/{gpu}.json",
+   "description": "One key-card slice: markets, daily series, latest offers, monthly, weekly index, crosscheck and external reference (11 cards)."
+  },
+  {
+   "path": "providers/{layer}-{id}.json",
+   "description": "One provider slice: own-* or ext-* summary plus all current quotes; external providers retain GPU Economy attribution and fees."
+  },
+  {
+   "path": "external/prices.json",
+   "description": "GPU Economy current quotes (CC BY 4.0), including status and non-USD rows; tool pages apply the market-view filter client-side."
+  },
+  {
+   "path": "external/providers.json",
+   "description": "GPU Economy provider summaries (CC BY 4.0), including providers without current quotes and their fees/notes."
   }
  ],
  "field_availability": {

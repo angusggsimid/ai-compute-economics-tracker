@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#f5f5f7">
+<title>VESSL AI · GPU Economy 外部 provider · AI Compute Economics</title>
+<meta name="description" content="VESSL AI 的 GPU Economy 外部报价、费用与来源。GPU Economy · CC BY 4.0。">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body data-base="..">
+<a class="skip" href="#main">跳到正文</a>
+<header class="topbar"><div class="topbar-inner"><a class="brand" href="../index.html">AI Compute Economics</a><nav class="nav" aria-label="主导航"><a href="../index.html">总览</a><a href="../landscape.html">Landscape</a><a href="../providers.html" class="active" aria-current="page">Providers</a><a href="../compare.html">Compare</a><a href="../spread.html">Spread</a><a href="../cheapest.html">Cheapest</a></nav></div></header>
+<main class="shell" id="main">
+
+<section class="hero compact">
+  <p class="kicker">外部参考 · GPU Economy</p>
+  <h1>VESSL AI</h1>
+  <p class="lede">specialist · html · 3 live · Live cards 3 · raw 3 条记录（含 stopped） · scraped yes</p>
+  <div class="row-actions"><a class="btn" href="https://vessl.ai/en" target="_blank" rel="noopener">Website</a><a class="btn" href="https://vessl.ai/en/pricing" target="_blank" rel="noopener">Pricing page</a><a class="btn" href="../providers.html">← Providers</a></div>
+  <p class="source"><strong>GPU Economy · CC BY 4.0</strong> · <a href="https://gpueconomy.com/data" target="_blank" rel="noopener">数据源</a> · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">许可</a> · 外部参考层，仅作对照，不混入自有中位数。</p>
+</section>
+
+<section class="section">
+  <div class="section-head">
+    <h2>概览</h2>
+    <span class="muted small">外部层 · 不改写自有中位数</span>
+  </div>
+  <div class="kpi-grid"><div class="kpi"><div class="label">Type</div><div class="value">specialist</div></div><div class="kpi"><div class="label">Source kind</div><div class="value">html</div></div><div class="kpi"><div class="label">Live quotes</div><div class="value" id="ext-live-quotes">3</div><div class="hint">raw 3 条记录（含 stopped / 非 USD）</div></div><div class="kpi"><div class="label">Live cards</div><div class="value" id="ext-live-cards">3</div><div class="hint">不同 GPU id 数；历史覆盖 3 张关键卡（含 stopped）</div></div><div class="kpi"><div class="label">Raw records</div><div class="value">3</div><div class="hint">site-index current_quotes（含 stopped）</div></div><div class="kpi"><div class="label">Scraped</div><div class="value"><span class="badge live">scraped</span></div></div><div class="kpi"><div class="label">Models tracked</div><div class="value" id="ext-models">—</div><div class="hint">加载后更新</div></div><div class="kpi"><div class="label">Fees</div><div class="value" id="ext-fees">—</div><div class="hint">not published 表示未收录</div></div></div>
+  <p class="panel-note"><strong>Live quotes</strong> / <strong>Live cards</strong> 只统计 status=live、非 marketplace_floor、USD 的报价；raw 是 site-index 的 current_quotes 原始记录数，含 stopped。</p>
+</section>
+
+<section class="section">
+  <div class="section-head"><h2>Provider profile</h2></div>
+  <div class="js-host" id="profile-host"><div class="empty">加载中…</div></div>
+</section>
+
+<section class="section">
+  <div class="section-head">
+    <h2>Fees</h2>
+    <span class="muted small">未收录时显示 not published</span>
+  </div>
+  <div class="js-host" id="fees-host"><div class="empty">加载中…</div></div>
+</section>
+
+<section class="section">
+  <div class="section-head">
+    <h2>报价明细</h2>
+    <span class="muted small">含 stopped / 非 USD 原始记录</span>
+  </div>
+  <p class="panel-note">下表保留全部原始记录；当前可比较的 live 数见上方的 Live quotes / Live cards。</p>
+  <div class="js-host" id="quotes-host"><div class="empty">加载中…</div></div>
+</section>
+
+<section class="section">
+  <div class="section-head"><h2>来源与许可</h2></div>
+  <div class="js-host" id="attribution-host">
+    <p class="source"><strong>GPU Economy · CC BY 4.0</strong> · 外部参考层，仅作对照。</p>
+  </div>
+  <p class="source"><strong>GPU Economy · CC BY 4.0</strong> · <a href="https://gpueconomy.com/data" target="_blank" rel="noopener">数据源</a> · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">许可</a> · 外部参考层，仅作对照，不混入自有中位数。</p>
+</section>
+
+</main>
+<footer class="footer"><div class="footer-inner"><p>AI Compute Economics · 公开挂牌价，非成交价。</p><p>外部参考层：<a href="https://gpueconomy.com/data" target="_blank" rel="noopener">GPU Economy</a> · CC BY 4.0。自有中位数与指数不受外部数据改写 · <a href="../data/manifest.json">数据说明</a></p></div></footer>
+<script src="../assets/site.js"></script>
+<script>(function () {
+  var PROVIDER = {"slug": "ext-vessl", "name": "VESSL AI", "fetch": "providers/ext-vessl.json", "layer": "gpueconomy", "cards": {"H100": "h100", "H200": "h200", "B200": "b200", "B300": "b300", "A100": "a100", "L40S": "l40s", "RTX PRO 6000": "rtx-pro-6000", "RTX 4090": "rtx-4090", "RTX 5090": "rtx-5090", "MI300X": "mi300x", "GH200": "gh200"}};
+
+  var CC = window.CC;
+  if (!CC) { return; }
+
+  function price(value) {
+    var number = Number(value);
+    if (value === null || value === undefined || value === "" || !isFinite(number)) {
+      return "—";
+    }
+    return CC.money(number, Math.abs(number) < 1 ? 3 : 2);
+  }
+
+  function safeUrl(value) {
+    var text = String(value == null ? "" : value).trim();
+    return /^https?:\/\//i.test(text) ? text : "";
+  }
+
+  function externalLink(value, label) {
+    var href = safeUrl(value);
+    if (!href) { return '<span class="muted">—</span>'; }
+    return '<a href="' + CC.esc(href) + '" target="_blank" rel="noopener">' +
+      CC.esc(label || href) + "</a>";
+  }
+
+  function badge(value, tone) {
+    if (value === null || value === undefined || value === "") {
+      return '<span class="muted">—</span>';
+    }
+    return CC.badge(value, tone || "");
+  }
+
+  function statusTone(value) {
+    var key = String(value == null ? "" : value).toLowerCase();
+    if (key === "live" || key === "published" || key === "withheld" ||
+        key === "stopped" || key === "no_data") { return key; }
+    if (key === "thin" || key === "thin_market" || key === "unconfirmed") {
+      return "thin";
+    }
+    return "";
+  }
+
+  function statusBadge(value) { return badge(value, statusTone(value)); }
+
+  function riskBadge(value) {
+    var key = String(value == null ? "" : value).toLowerCase();
+    var tone = (key === "low" || key === "medium" || key === "high") ? key : "";
+    return badge(value, tone);
+  }
+
+  var COVERAGE = {
+    ok: { label: "ok", tone: "ok" },
+    mixed: { label: "mixed", tone: "mixed" },
+    thin: { label: "thin", tone: "thin" },
+    sku_mismatch: { label: "SKU mismatch", tone: "high sku_mismatch" },
+    none: { label: "none", tone: "none" },
+    stale: { label: "stale", tone: "thin" }
+  };
+
+  function coverageBadge(value) {
+    var key = String(value == null ? "" : value).toLowerCase();
+    var meta = COVERAGE[key] || { label: value || "—", tone: "none" };
+    return badge(meta.label, meta.tone);
+  }
+
+  function providerCell(row, links) {
+    var id = row.providerId || row.provider_id || "";
+    var name = row.provider || id || "—";
+    var slug = links && links[id];
+    if (!slug) { return CC.esc(name); }
+    return '<a href="../providers/' + CC.esc(slug) + '.html">' + CC.esc(name) + "</a>";
+  }
+
+  function factsTable(items) {
+    var rows = (items || []).filter(function (item) {
+      return item && item.value !== null && item.value !== undefined && item.value !== "";
+    }).map(function (item) {
+      return '<tr><th scope="row">' + CC.esc(item.label) + "</th><td>" +
+        item.value + "</td></tr>";
+    }).join("");
+    if (!rows) { return CC.empty("暂无资料"); }
+    return '<div class="table-wrap"><table class="data compact"><tbody>' +
+      rows + "</tbody></table></div>";
+  }
+
+  function showFailure(error) {
+    var message = "数据加载失败：" + (error && error.message ? error.message : "未知错误");
+    document.querySelectorAll(".js-host").forEach(function (host) {
+      host.innerHTML = CC.empty(message);
+    });
+  }
+
+  function renderOwn(doc) {
+    var quotes = doc.quotes || [];
+    var host = document.getElementById("quotes-host");
+    if (host) {
+      host.innerHTML = CC.table([
+        {
+          label: "Card",
+          render: function (_value, row) {
+            var slug = PROVIDER.cards[row.card_id];
+            var label = row.card || row.card_id || "—";
+            if (!slug) { return CC.esc(label); }
+            return '<a href="../gpu/' + CC.esc(slug) + '.html">' + CC.esc(label) + "</a>";
+          }
+        },
+        {
+          label: "Market",
+          render: function (_value, row) { return CC.esc(row.market_label || row.market || "—"); }
+        },
+        {
+          label: "Price", num: true,
+          render: function (_value, row) { return price(row.usd_per_gpu_hour); }
+        },
+        {
+          label: "Risk",
+          render: function (_value, row) { return riskBadge(row.risk); }
+        },
+        {
+          label: "Date",
+          render: function (_value, row) { return CC.esc(CC.date(row.date)); }
+        },
+        {
+          label: "Source",
+          render: function (_value, row) { return externalLink(row.source_url, "来源"); }
+        }
+      ], quotes, { empty: "该 provider 暂无公开报价" });
+    }
+    var count = document.getElementById("quote-count");
+    if (count) { count.textContent = CC.num(quotes.length, 0) + " 条"; }
+  }
+
+  function feeValue(row) {
+    if (row.value !== null && row.value !== undefined && row.value !== "") {
+      return CC.esc(row.value);
+    }
+    if (row.number === null || row.number === undefined) { return "—"; }
+    var number = Number(row.number);
+    var digits = isFinite(number) && number % 1 !== 0 ? 2 : 0;
+    return CC.esc(CC.num(number, digits) + (row.unit ? " " + row.unit : ""));
+  }
+
+  function isEffectiveLiveQuote(quote) {
+    return !!quote &&
+      quote.status === "live" &&
+      quote.price_scope !== "marketplace_floor" &&
+      quote.listed_currency === "USD";
+  }
+
+  function liveQuoteStats(quotes) {
+    var live = (quotes || []).filter(isEffectiveLiveQuote);
+    var ids = {};
+    live.forEach(function (quote) {
+      if (quote.gpu_id) { ids[quote.gpu_id] = true; }
+    });
+    return { live_quotes: live.length, live_cards: Object.keys(ids).length };
+  }
+
+  function renderExternal(doc) {
+    var provider = doc.provider || {};
+    var ext = doc.external || {};
+    var fees = Array.isArray(provider.fees) ? provider.fees : [];
+    var quotes = doc.quotes || [];
+    var live = liveQuoteStats(quotes);
+
+    var liveQuotes = document.getElementById("ext-live-quotes");
+    if (liveQuotes) { liveQuotes.textContent = CC.num(live.live_quotes, 0); }
+    var liveCards = document.getElementById("ext-live-cards");
+    if (liveCards) { liveCards.textContent = CC.num(live.live_cards, 0); }
+
+    var models = document.getElementById("ext-models");
+    if (models) { models.textContent = CC.num(provider.models_tracked, 0); }
+    var feesKpi = document.getElementById("ext-fees");
+    if (feesKpi) { feesKpi.textContent = fees.length ? "published" : "not published"; }
+
+    var profile = document.getElementById("profile-host");
+    if (profile) {
+      profile.innerHTML = factsTable([
+        { label: "Type", value: CC.esc(provider.type || "—") },
+        { label: "Source kind", value: CC.esc(provider.source_kind || "—") },
+        { label: "Website", value: externalLink(provider.website, "website") },
+        { label: "Pricing page", value: externalLink(provider.pricing_page, "pricing") },
+        {
+          label: "Scraped",
+          value: badge(provider.scraped ? "scraped" : "not scraped",
+            provider.scraped ? "live" : "")
+        },
+        { label: "Live quotes", value: CC.num(live.live_quotes, 0) },
+        { label: "Live cards", value: CC.num(live.live_cards, 0) },
+        {
+          label: "Raw records",
+          value: CC.num(provider.current_quotes, 0) +
+            ' <span class="muted">（含 stopped / 非 USD）</span>'
+        },
+        {
+          label: "Historical cards",
+          value: CC.num((provider.cards || []).length, 0) +
+            ' <span class="muted">（含 stopped 覆盖）</span>'
+        },
+        { label: "Models tracked", value: CC.num(provider.models_tracked, 0) },
+        {
+          label: "Regions",
+          value: CC.esc(Array.isArray(provider.regions) ? provider.regions.join(" · ") : (provider.regions || "—"))
+        },
+        { label: "Summary", value: CC.esc(provider.summary || "—") },
+        { label: "Notes", value: CC.esc(provider.notes || "—") },
+        { label: "GPU Economy page", value: externalLink(provider.page, "provider page") }
+      ]);
+    }
+
+    var feesHost = document.getElementById("fees-host");
+    if (feesHost) {
+      if (!fees.length) {
+        feesHost.innerHTML = CC.empty("not published") +
+          '<p class="panel-note">GPU Economy 未收录该 provider 的费用结构；这不等于零费用。</p>';
+      } else {
+        feesHost.innerHTML = CC.table([
+          { label: "Field", key: "field", render: function (value) { return CC.esc(value || "—"); } },
+          { label: "What", key: "what", render: function (value) { return CC.esc(value || "—"); } },
+          { label: "Value", render: function (_value, row) { return feeValue(row); } },
+          { label: "Confidence", key: "confidence", render: function (value) { return CC.esc(value || "—"); } },
+          { label: "Source", render: function (_value, row) { return externalLink(row.source_url, "来源"); } }
+        ], fees, { compact: true, empty: "not published" });
+      }
+    }
+
+    var quotesHost = document.getElementById("quotes-host");
+    if (quotesHost) {
+      quotesHost.innerHTML = CC.table([
+        { label: "GPU", render: function (_value, row) { return CC.esc(row.gpu || row.gpu_id || "—"); } },
+        { label: "Market", render: function (_value, row) { return CC.esc(row.market || "—"); } },
+        { label: "Price", num: true, render: function (_value, row) { return price(row.usd_per_gpu_hour); } },
+        { label: "Scope", render: function (_value, row) { return CC.esc(row.price_scope || "—"); } },
+        { label: "Region", render: function (_value, row) { return CC.esc(row.region || "—"); } },
+        { label: "Source", render: function (_value, row) { return externalLink(row.source_url, "来源"); } },
+        { label: "Scraped", render: function (_value, row) { return CC.esc(CC.date(row.scraped_at)); } },
+        { label: "Status", render: function (_value, row) { return statusBadge(row.status); } }
+      ], quotes, { compact: true, empty: "该 provider 暂无报价记录" });
+    }
+
+    var attribution = document.getElementById("attribution-host");
+    if (attribution) {
+      var bits = ["<strong>GPU Economy · CC BY 4.0</strong>"];
+      if (ext.attribution) { bits.push(CC.esc(ext.attribution)); }
+      bits.push(externalLink(ext.source_url, "数据源"));
+      bits.push(externalLink(ext.license_url, "许可"));
+      if (ext.data_updated_at) {
+        bits.push("数据更新 " + CC.esc(CC.date(ext.data_updated_at)));
+      }
+      if (ext.retrieved_at) {
+        bits.push("抓取 " + CC.esc(CC.date(ext.retrieved_at)));
+      }
+      attribution.innerHTML = '<p class="source">' + bits.join(" · ") + "</p>";
+    }
+  }
+
+  CC.get(PROVIDER.fetch).then(function (doc) {
+    if (PROVIDER.layer === "own") {
+      renderOwn(doc);
+    } else {
+      renderExternal(doc);
+    }
+  }).catch(showFailure);
+
+})();</script>
+</body>
+</html>

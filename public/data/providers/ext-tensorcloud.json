@@ -1,0 +1,55 @@
+{
+ "layer": "gpueconomy",
+ "external": {
+  "source": "gpueconomy",
+  "source_url": "https://gpueconomy.com/data",
+  "license": "CC BY 4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "attribution": "GPU Economy (https://gpueconomy.com)",
+  "methodology_version": "1.33.63",
+  "data_updated_at": "2026-11-03T12:48:20.451387+00:00",
+  "retrieved_at": "2026-11-04T09:12:14Z"
+ },
+ "provider": {
+  "id": "tensorcloud",
+  "name": "TensorCloud",
+  "type": "specialist",
+  "website": "https://tensordata.com/",
+  "pricing_page": "https://tensordata.com/",
+  "source_kind": "html",
+  "regions": null,
+  "scraped": true,
+  "models_tracked": 1,
+  "current_quotes": 1,
+  "summary": "Indian GPU cloud (Tensordata Global Private Limited) selling GPU notebooks, virtual machines and model deployments, with data kept in India. Its home page prints an hourly rupee price per GPU card; a card the page marks sold out is not listed here. The page does not say whether GST is included or added; the figure is shown as printed. The dollar figure uses the European Central Bank's reference rate of the day.",
+  "notes": "Static home page, section #pricing (\"Enterprise GPU Instances\"): one card per GPU - heading, availability badge, form badge, \"₹N /hr\", memory; a card marked \"Sold Out\" is skipped; key (heading, form, memory GB): NVIDIA A100 SXM4 80 = a100-80; per_gpu, instance scope, instance = heading + form; INR as printed (GST not stated); region null",
+  "page": "https://gpueconomy.com/providers/tensorcloud",
+  "referral_url": null,
+  "fees": [],
+  "slug": "ext-tensorcloud",
+  "cards": [
+   "A100"
+  ]
+ },
+ "quotes": [
+  {
+   "source_layer": "gpueconomy",
+   "provider_id": "tensorcloud",
+   "provider": "TensorCloud",
+   "gpu_id": "a100-80",
+   "gpu": "NVIDIA A100 80GB",
+   "market": "on_demand",
+   "price_type": "on_demand",
+   "price_scope": "instance",
+   "risk": "low",
+   "usd_per_gpu_hour": 1.3276,
+   "listed_currency": "INR",
+   "fx_rate": 0.010536,
+   "gpu_count": 1,
+   "region": null,
+   "source_url": "https://tensordata.com/",
+   "scraped_at": "2026-11-03T12:48:20.451387+00:00",
+   "status": "live"
+  }
+ ]
+}

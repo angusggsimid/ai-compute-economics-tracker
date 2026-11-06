@@ -1,0 +1,55 @@
+{
+ "layer": "gpueconomy",
+ "external": {
+  "source": "gpueconomy",
+  "source_url": "https://gpueconomy.com/data",
+  "license": "CC BY 4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "attribution": "GPU Economy (https://gpueconomy.com)",
+  "methodology_version": "1.33.63",
+  "data_updated_at": "2026-11-03T12:48:20.451387+00:00",
+  "retrieved_at": "2026-11-04T09:12:14Z"
+ },
+ "provider": {
+  "id": "mws",
+  "name": "MWS Cloud Platform",
+  "type": "specialist",
+  "website": "https://mws.ru/",
+  "pricing_page": "https://mws.ru/docs/cloud-platform/about/general/mws-cloud-platform-pricing.html",
+  "source_kind": "html",
+  "regions": null,
+  "scraped": true,
+  "models_tracked": 1,
+  "current_quotes": 1,
+  "summary": "Russian public cloud of MTS (MTS Web Services). Its tariff page bills a GPU virtual machine as separate lines - the graphics card, each vCPU and each gigabyte of memory - so the figure here is the card's line alone, and the processor and memory a machine needs are added on top. Prices are in roubles and include 22% VAT, as the table states; GPU machines are offered in the ru-central1 region only. The dollar figure uses the Bank of Russia's official rate of the day.",
+  "notes": "Static tariff page (docs); table Compute / Виртуальные машины; rows \"Видеокарта (GPU) <card> в регионе <region>\" only, gpu_only scope (vCPU and RAM for GPU VMs are separate lines); hourly column \"₽/час с НДС 22%\" (the monthly column is a 720-hour reference); RUB with VAT as printed; a row whose footnote or region start date is after today is skipped; NVIDIA A100 80GB = a100-80; instance = row label without the footnote mark; region = the row's own label (ru-central1)",
+  "page": "https://gpueconomy.com/providers/mws",
+  "referral_url": null,
+  "fees": [],
+  "slug": "ext-mws",
+  "cards": [
+   "A100"
+  ]
+ },
+ "quotes": [
+  {
+   "source_layer": "gpueconomy",
+   "provider_id": "mws",
+   "provider": "MWS Cloud Platform",
+   "gpu_id": "a100-80",
+   "gpu": "NVIDIA A100 80GB",
+   "market": "on_demand",
+   "price_type": "on_demand",
+   "price_scope": "gpu_only",
+   "risk": "low",
+   "usd_per_gpu_hour": 3.2548,
+   "listed_currency": "RUB",
+   "fx_rate": 0.01235,
+   "gpu_count": 1,
+   "region": "ru-central1",
+   "source_url": "https://mws.ru/docs/cloud-platform/about/general/mws-cloud-platform-pricing.html",
+   "scraped_at": "2026-11-03T12:48:20.451387+00:00",
+   "status": "live"
+  }
+ ]
+}

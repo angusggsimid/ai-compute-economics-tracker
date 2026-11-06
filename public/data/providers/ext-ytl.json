@@ -1,0 +1,53 @@
+{
+ "layer": "gpueconomy",
+ "external": {
+  "source": "gpueconomy",
+  "source_url": "https://gpueconomy.com/data",
+  "license": "CC BY 4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "attribution": "GPU Economy (https://gpueconomy.com)",
+  "methodology_version": "1.33.63",
+  "data_updated_at": "2026-11-03T12:48:20.451387+00:00",
+  "retrieved_at": "2026-11-04T09:12:14Z"
+ },
+ "provider": {
+  "id": "ytl",
+  "name": "YTL AI Cloud",
+  "type": "specialist",
+  "website": "https://www.ytlaicloud.com/",
+  "pricing_page": "https://www.ytlaicloud.com/gsc-pricing/",
+  "source_kind": "html",
+  "regions": null,
+  "scraped": true,
+  "models_tracked": 1,
+  "current_quotes": 1,
+  "summary": "Malaysian GPU cloud of YTL Power, hosted on sovereign infrastructure in Malaysia. Its price page lists one on-demand GPU, the NVIDIA GB200, by the hour in Malaysian ringgit; object storage is priced separately and is not included here. Discounts for committed use are sold through partners and carry no published figure. The dollar figure uses the ECB reference rate of the day.",
+  "notes": "Static \"On Demand GPU\" box (GPU Model, Memory/Bandwidth, Price (per hour)) of Bootstrap div rows; memory cell must start with the mapped card's 192GB; gpu_only (object storage is its own box); MYR via the ECB cross rate; the page says nothing about tax; on_demand, per_gpu, region null (hosted in Malaysia); committed-use discounts via partners print no figure",
+  "page": "https://gpueconomy.com/providers/ytl",
+  "referral_url": null,
+  "fees": [],
+  "slug": "ext-ytl",
+  "cards": []
+ },
+ "quotes": [
+  {
+   "source_layer": "gpueconomy",
+   "provider_id": "ytl",
+   "provider": "YTL AI Cloud",
+   "gpu_id": "gb200",
+   "gpu": "NVIDIA GB200 NVL72",
+   "market": "on_demand",
+   "price_type": "on_demand",
+   "price_scope": "gpu_only",
+   "risk": "low",
+   "usd_per_gpu_hour": 16.902,
+   "listed_currency": "MYR",
+   "fx_rate": 0.245669,
+   "gpu_count": 1,
+   "region": null,
+   "source_url": "https://www.ytlaicloud.com/gsc-pricing/",
+   "scraped_at": "2026-11-03T12:48:20.451387+00:00",
+   "status": "live"
+  }
+ ]
+}

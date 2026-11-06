@@ -6,6 +6,7 @@ from __future__ import annotations
 
 import json
 import re
+import shutil
 from collections import defaultdict
 from datetime import date, datetime, timedelta, timezone
 from html import escape
@@ -43,14 +44,18 @@ except ImportError:  # package import path
     )
 try:
     from index_freeze import INDEX_SNAPSHOT_DIR, apply_weekly_freezes, build_receipt_index
-    from gpu_external import write_external_data
+    from gpu_external import load_external, write_external_data
+    from site_build import write_site
+    from site_data import write_site_data
 except ImportError:  # package import path
     from .index_freeze import (  # type: ignore
         INDEX_SNAPSHOT_DIR,
         apply_weekly_freezes,
         build_receipt_index,
     )
-    from .gpu_external import write_external_data  # type: ignore
+    from .gpu_external import load_external, write_external_data  # type: ignore
+    from .site_build import write_site  # type: ignore
+    from .site_data import write_site_data  # type: ignore
 
 ROOT = Path(__file__).resolve().parents[1]
 COST_INDEX_PATH = ROOT / "tracker_data" / "backfills" / "openrouter_cost_index.json"
@@ -1520,6 +1525,12 @@ def write_public_data(
         path = index_dir / f"{index_slug(card_id)}.json"
         path.write_text(json.dumps(slice_payload, ensure_ascii=False, indent=1), encoding="utf-8")
         written[f"price-index/{path.name}"] = str(path)
+    expected_index_files = {
+        f"{index_slug(card_id)}.json" for card_id in index_payload["cards"]
+    }
+    for stale in index_dir.glob("*.json"):
+        if stale.name not in expected_index_files:
+            stale.unlink()
 
     receipts_dir = target / "receipts"
     receipts_dir.mkdir(parents=True, exist_ok=True)
@@ -1536,6 +1547,15 @@ def write_public_data(
     written["crosscheck.json"] = external_written["crosscheck"]
     crosscheck_payload = json.loads((target / "crosscheck.json").read_text(encoding="utf-8"))
 
+    # Standalone site slices live under a ``data/`` directory of the public
+    # root.  The normal build writes that root directly; a caller-supplied
+    # ``out_dir`` is already a data directory, so keep every generated file
+    # inside it instead of writing to its parent.  Loading the external
+    # snapshot again is intentional: ``write_external_data`` does not return
+    # its parsed payload.
+    site_public_dir = PUBLIC_DATA_DIR.parent if out_dir is None else target
+    written.update(write_site_data(site_public_dir, full, load_external()))
+
     manifest = public_manifest(full, str(snapshot.get("meta", {}).get("generatedAt") or ""))
     manifest["files"].extend(
         [
@@ -1550,6 +1570,26 @@ def write_public_data(
             {
                 "path": "crosscheck.json",
                 "description": "Own vs GPU Economy medians by card and market. diff_pct is a methodology/sample gap, not a transaction price spread.",
+            },
+            {
+                "path": "site-index.json",
+                "description": "Card and provider summaries used by the standalone site: counts, markets, as-of, methodology and external metadata.",
+            },
+            {
+                "path": "cards/{gpu}.json",
+                "description": "One key-card slice: markets, daily series, latest offers, monthly, weekly index, crosscheck and external reference (11 cards).",
+            },
+            {
+                "path": "providers/{layer}-{id}.json",
+                "description": "One provider slice: own-* or ext-* summary plus all current quotes; external providers retain GPU Economy attribution and fees.",
+            },
+            {
+                "path": "external/prices.json",
+                "description": "GPU Economy current quotes (CC BY 4.0), including status and non-USD rows; tool pages apply the market-view filter client-side.",
+            },
+            {
+                "path": "external/providers.json",
+                "description": "GPU Economy provider summaries (CC BY 4.0), including providers without current quotes and their fees/notes.",
             },
         ]
     )
@@ -1571,6 +1611,36 @@ def write_public_data(
     path = target / "manifest.json"
     path.write_text(json.dumps(manifest, ensure_ascii=False, indent=1), encoding="utf-8")
     written["manifest.json"] = str(path)
+
+    # Custom out_dir is a data directory while site slices live in out_dir/data.
+    # Mirror the runtime files the pages fetch/link so a staging build is
+    # actually loadable without copying the whole public tree.
+    if out_dir is not None:
+        site_data_dir = Path(site_public_dir) / "data"
+        runtime_files = (
+            "prices.json",
+            "gpus.json",
+            "providers.json",
+            "price-index.json",
+            "changelog.json",
+            "crosscheck.json",
+            "manifest.json",
+        )
+        for name in runtime_files:
+            source = target / name
+            if not source.is_file():
+                continue
+            destination = site_data_dir / name
+            shutil.copy2(source, destination)
+            written[f"data/{name}"] = str(destination)
+        for dirname in ("price-index", "receipts"):
+            source_dir = target / dirname
+            if source_dir.is_dir():
+                shutil.copytree(
+                    source_dir,
+                    site_data_dir / dirname,
+                    dirs_exist_ok=True,
+                )
     return written
 
 
@@ -1580,14 +1650,30 @@ def main() -> int:
     SNAPSHOT_PATH.write_text(json.dumps(snapshot, ensure_ascii=False, indent=2), encoding="utf-8")
     OUTPUT_PATH.write_text(build_html(snapshot), encoding="utf-8")
     data_files = write_public_data(snapshot, freeze=True)
-    print(json.dumps({"html": str(OUTPUT_PATH), "snapshot": str(SNAPSHOT_PATH), "data": data_files}, ensure_ascii=False))
+    site_files = write_site(PUBLIC_DATA_DIR.parent)
+    html_files = sum(1 for path in site_files if path.endswith(".html"))
+    print(
+        json.dumps(
+            {
+                "html": str(OUTPUT_PATH),
+                "snapshot": str(SNAPSHOT_PATH),
+                "data": data_files,
+                "site": {
+                    "count": len(site_files),
+                    "pages": html_files,
+                    "assets": len(site_files) - html_files,
+                },
+            },
+            ensure_ascii=False,
+        )
+    )
     return 0
 
 
 HTML = r'''<!doctype html>
-<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:,">
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>AI Compute Economics</title>
-<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/svg+xml" href="./favicon.svg">
 <meta name="description" content="AI Compute Economics——四时钟独立证据链追踪算力经济：GPU 租赁价格、订单簿深度、Token 用量与单位经济、云厂商 CAPEX。">
 <style>
 :root{--bg:#f5f5f7;--paper:#fff;--ink:#1d1d1f;--muted:#6e6e73;--line:#d2d2d7;--blue:#0071e3;--cyan:#00a6a6;--green:#248a3d;--orange:#d76b00;--red:#d70015;--purple:#8944ab;--radius:8px}
@@ -1737,8 +1823,8 @@ HTML = r'''<!doctype html>
 @media(max-width:820px){.grid.three{grid-template-columns:1fr}.chart.compact{min-height:190px}.chart.compact svg{height:190px}.detail-controls{align-items:flex-start;flex-direction:column}.detail-select{width:100%;max-width:none}}
 @media(max-width:820px){.key-stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
 </style></head><body><main class="shell">
-<header class="topbar"><div class="topbar-inner"><div class="brand">AI Compute Economics</div><nav class="nav"><a href="#clocks">四时钟</a><a href="#demand">需求与模型</a><a href="#landscape">供给全景</a><a href="#compute">GPU</a><a href="#sandbox">跨时钟</a><a href="#capex">CAPEX</a></nav></div></header>
-<nav class="mobile-nav" aria-label="章节导航"><a href="#clocks">时钟</a><a href="#demand">需求</a><a href="#landscape">供给</a><a href="#compute">GPU</a><a href="#sandbox">跨时钟</a><a href="#capex">CAPEX</a></nav>
+<header class="topbar"><div class="topbar-inner"><div class="brand">AI Compute Economics</div><nav class="nav"><a href="#clocks">四时钟</a><a href="#demand">需求与模型</a><a href="#landscape">供给全景</a><a href="#compute">GPU</a><a href="#sandbox">跨时钟</a><a href="#capex">CAPEX</a><a href="landscape.html">数据页</a></nav></div></header>
+<nav class="mobile-nav" aria-label="章节导航"><a href="#clocks">时钟</a><a href="#demand">需求</a><a href="#landscape">供给</a><a href="#compute">GPU</a><a href="#sandbox">跨时钟</a><a href="#capex">CAPEX</a><a href="landscape.html">数据页</a></nav>
 <section class="hero"><h1>AI Compute Economics</h1><p class="sub">GPU 租赁价格、Token 用量与结构、云厂商 CAPEX 与供给紧张度的时间序列 · 四时钟独立证据链</p><div class="hero-meta">__FRESH__</div><div class="controls"><div class="control"><label>开始日期</label><input id="start" type="date"></div><div class="control"><label>结束日期</label><input id="end" type="date"></div><div class="segments" id="presets"><button data-days="90">3M</button><button data-days="180">6M</button><button data-days="365">1Y</button><button data-days="0" class="active">全部</button></div><div class="toggle-control"><button id="toggle-events" class="toggle-btn active" type="button" aria-pressed="true" title="显示或隐藏产业事件标线"><span class="toggle-dot"></span>重大事件</button></div></div></section>
 
 __EXECUTIVE__
@@ -2481,7 +2567,7 @@ function initLandscape(){
 window.renderLandscape=renderLandscape;initLandscape();
 document.querySelectorAll('details.gpu-legacy').forEach(d=>d.addEventListener('toggle',()=>{if(!d.open)return;setTimeout(()=>{[...d.querySelectorAll('.chart')].forEach(h=>{const c=charts.find(x=>x.id===h.id);if(c)_renderCfg(c)})},60)}));
 document.querySelectorAll('details.model-detail').forEach(d=>d.addEventListener('toggle',()=>{if(!d.open)return;setTimeout(()=>{const c=charts.find(x=>x.id==='active-model-history');if(c)_renderCfg(c)},60)}));
-const _spyLinks=[...document.querySelectorAll('.nav a,.mobile-nav a')];
+const _spyLinks=[...document.querySelectorAll('.nav a,.mobile-nav a')].filter(a=>{const href=a.getAttribute('href')||'';return href.charAt(0)==='#'});
 const _spySections=_spyLinks.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
 function _updateSpy(){let cur='';_spySections.forEach(s=>{if(s.getBoundingClientRect().top<=140)cur=s.id});_spyLinks.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+cur))}
 window.addEventListener('scroll',_updateSpy,{passive:true});_updateSpy();

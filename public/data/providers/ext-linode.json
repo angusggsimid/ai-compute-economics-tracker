@@ -1,0 +1,72 @@
+{
+ "layer": "gpueconomy",
+ "external": {
+  "source": "gpueconomy",
+  "source_url": "https://gpueconomy.com/data",
+  "license": "CC BY 4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "attribution": "GPU Economy (https://gpueconomy.com)",
+  "methodology_version": "1.33.63",
+  "data_updated_at": "2026-11-03T12:48:20.451387+00:00",
+  "retrieved_at": "2026-11-04T09:12:14Z"
+ },
+ "provider": {
+  "id": "linode",
+  "name": "Akamai Cloud (Linode)",
+  "type": "specialist",
+  "website": "https://www.linode.com/",
+  "pricing_page": "https://www.akamai.com/cloud/pricing",
+  "source_kind": "api",
+  "regions": null,
+  "scraped": true,
+  "models_tracked": 2,
+  "current_quotes": 2,
+  "summary": "Prices are read from Linode's public plan API, the list its own tools use; each is the smallest GPU plan of the card, billed by the hour, with the CPU, memory and disk that plan includes.",
+  "notes": "GPU plans from api.linode.com/v4/linode/types (keyless): price.hourly per plan and its GPU count; cheapest plan per GPU kept per card, smallest on a tie. The pricing page returns 403 to our client and is not read. No regional GPU prices.",
+  "page": "https://gpueconomy.com/providers/linode",
+  "referral_url": null,
+  "fees": [],
+  "slug": "ext-linode",
+  "cards": []
+ },
+ "quotes": [
+  {
+   "source_layer": "gpueconomy",
+   "provider_id": "linode",
+   "provider": "Akamai Cloud (Linode)",
+   "gpu_id": "quadro-rtx-6000",
+   "gpu": "NVIDIA Quadro RTX 6000",
+   "market": "on_demand",
+   "price_type": "on_demand",
+   "price_scope": "instance",
+   "risk": "low",
+   "usd_per_gpu_hour": 1.5,
+   "listed_currency": "USD",
+   "fx_rate": null,
+   "gpu_count": 1,
+   "region": null,
+   "source_url": "https://www.akamai.com/cloud/pricing",
+   "scraped_at": "2026-11-03T12:48:20.451387+00:00",
+   "status": "live"
+  },
+  {
+   "source_layer": "gpueconomy",
+   "provider_id": "linode",
+   "provider": "Akamai Cloud (Linode)",
+   "gpu_id": "rtx-4000-ada",
+   "gpu": "NVIDIA RTX 4000 Ada",
+   "market": "on_demand",
+   "price_type": "on_demand",
+   "price_scope": "instance",
+   "risk": "low",
+   "usd_per_gpu_hour": 0.52,
+   "listed_currency": "USD",
+   "fx_rate": null,
+   "gpu_count": 1,
+   "region": null,
+   "source_url": "https://www.akamai.com/cloud/pricing",
+   "scraped_at": "2026-11-03T12:48:20.451387+00:00",
+   "status": "live"
+  }
+ ]
+}

@@ -1,0 +1,146 @@
+{
+ "layer": "gpueconomy",
+ "external": {
+  "source": "gpueconomy",
+  "source_url": "https://gpueconomy.com/data",
+  "license": "CC BY 4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "attribution": "GPU Economy (https://gpueconomy.com)",
+  "methodology_version": "1.33.63",
+  "data_updated_at": "2026-11-03T12:48:20.451387+00:00",
+  "retrieved_at": "2026-11-04T09:12:14Z"
+ },
+ "provider": {
+  "id": "cudo",
+  "name": "Cudo Compute",
+  "type": "specialist",
+  "website": "https://www.cudocompute.com/",
+  "pricing_page": "https://www.cudocompute.com/pricing",
+  "source_kind": "api",
+  "regions": null,
+  "scraped": true,
+  "models_tracked": 3,
+  "current_quotes": 3,
+  "summary": "On-demand rates per data center, named in each row, read from Cudo's open machine-types endpoint, rest.compute.cudo.org/v1/vms/machine-types, which anyone can open without a key and which each row links beside the provider name - Cudo's pricing page, where the name leads, prints \"Quote on request\" for every GPU and no rate (2 October 2026). The rate is the GPU alone - vCPU, memory and storage are billed on top, so a running machine costs more.",
+  "notes": "Public machine-types API. gpuPriceHr is the GPU component only - vCPU/RAM/storage billed separately, a runnable instance costs more.",
+  "page": "https://gpueconomy.com/providers/cudo",
+  "referral_url": null,
+  "fees": [
+   {
+    "field": "included",
+    "what": "In the rate",
+    "value": "GPU only. vCPU ($0.0049/vCPU-hr), RAM ($0.0049/GiB-hr), storage and IPv4 are billed separately (A100 machine type in the official API).",
+    "number": 0.0049,
+    "unit": "USD/vCPU-hour",
+    "confidence": "stated",
+    "source_url": "https://rest.compute.cudo.org/v1/vms/machine-types",
+    "checked_at": "2026-10-02"
+   },
+   {
+    "field": "egress",
+    "what": "Data out",
+    "value": "Not published. Checked the pricing page, the billing docs, the help FAQ and the full docs text.",
+    "number": null,
+    "unit": null,
+    "confidence": "not published",
+    "source_url": "https://docs.cudocompute.com/guides/billing-accounts",
+    "checked_at": "2026-10-02"
+   },
+   {
+    "field": "storage",
+    "what": "Storage",
+    "value": "VM disk storage is $0.00014/GiB-hr, about $0.10/GiB-month on Cudo's 730-hour month. The field is named minStorage, so it may be the lowest storage class.",
+    "number": 0.00014,
+    "unit": "USD/GiB-hour",
+    "confidence": "inferred",
+    "source_url": "https://rest.compute.cudo.org/v1/vms/machine-types",
+    "checked_at": "2026-10-02"
+   },
+   {
+    "field": "stopped",
+    "what": "While stopped",
+    "value": "A stopped VM keeps billing for all its resources. You must delete it to stop charges.",
+    "number": null,
+    "unit": null,
+    "confidence": "stated",
+    "source_url": "https://docs.cudocompute.com/help/general/am-i-charged-if-a-vm-is-stopped-powered-off",
+    "checked_at": "2026-10-02"
+   },
+   {
+    "field": "billing",
+    "what": "Billing step",
+    "value": "Usage is metered to the nearest second and recalculated hourly. A $10 minimum top-up is needed to deploy.",
+    "number": 10,
+    "unit": "USD minimum top-up",
+    "confidence": "stated",
+    "source_url": "https://docs.cudocompute.com/guides/billing-accounts",
+    "checked_at": "2026-10-02"
+   }
+  ],
+  "slug": "ext-cudo",
+  "cards": [
+   "A100",
+   "H100",
+   "L40S"
+  ]
+ },
+ "quotes": [
+  {
+   "source_layer": "gpueconomy",
+   "provider_id": "cudo",
+   "provider": "Cudo Compute",
+   "gpu_id": "a100-80",
+   "gpu": "NVIDIA A100 80GB",
+   "market": "on_demand",
+   "price_type": "on_demand",
+   "price_scope": "gpu_only",
+   "risk": "low",
+   "usd_per_gpu_hour": 1.5,
+   "listed_currency": "USD",
+   "fx_rate": null,
+   "gpu_count": 1,
+   "region": "no-kristiansand-1",
+   "source_url": "https://www.cudocompute.com/pricing",
+   "scraped_at": "2026-10-29T15:40:19.294945+00:00",
+   "status": "unconfirmed"
+  },
+  {
+   "source_layer": "gpueconomy",
+   "provider_id": "cudo",
+   "provider": "Cudo Compute",
+   "gpu_id": "h100-sxm",
+   "gpu": "NVIDIA H100 SXM",
+   "market": "on_demand",
+   "price_type": "on_demand",
+   "price_scope": "gpu_only",
+   "risk": "low",
+   "usd_per_gpu_hour": 1.79,
+   "listed_currency": "USD",
+   "fx_rate": null,
+   "gpu_count": 1,
+   "region": "no-kristiansand-1",
+   "source_url": "https://www.cudocompute.com/pricing",
+   "scraped_at": "2026-11-03T12:48:20.451387+00:00",
+   "status": "live"
+  },
+  {
+   "source_layer": "gpueconomy",
+   "provider_id": "cudo",
+   "provider": "Cudo Compute",
+   "gpu_id": "l40s",
+   "gpu": "NVIDIA L40S",
+   "market": "on_demand",
+   "price_type": "on_demand",
+   "price_scope": "gpu_only",
+   "risk": "low",
+   "usd_per_gpu_hour": 0.87,
+   "listed_currency": "USD",
+   "fx_rate": null,
+   "gpu_count": 1,
+   "region": "no-kristiansand-1",
+   "source_url": "https://www.cudocompute.com/pricing",
+   "scraped_at": "2026-11-03T12:48:20.451387+00:00",
+   "status": "live"
+  }
+ ]
+}

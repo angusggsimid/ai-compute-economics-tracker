@@ -1,0 +1,72 @@
+{
+ "layer": "gpueconomy",
+ "external": {
+  "source": "gpueconomy",
+  "source_url": "https://gpueconomy.com/data",
+  "license": "CC BY 4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "attribution": "GPU Economy (https://gpueconomy.com)",
+  "methodology_version": "1.33.63",
+  "data_updated_at": "2026-11-03T12:48:20.451387+00:00",
+  "retrieved_at": "2026-11-04T09:12:14Z"
+ },
+ "provider": {
+  "id": "vagon",
+  "name": "Vagon",
+  "type": "specialist",
+  "website": "https://vagon.io/",
+  "pricing_page": "https://vagon.io/cloud-computer/pricing",
+  "source_kind": "html",
+  "regions": null,
+  "scraped": true,
+  "models_tracked": 2,
+  "current_quotes": 2,
+  "summary": "Rents cloud computers - a Windows workstation streamed to the browser - billed by the minute from a prepaid balance. The figure is the whole computer, with its cores and RAM; for each card the option with the lowest price per GPU is listed. A storage plan, from $7.99 a month, keeps the computer's disk and is charged beside the hourly rate. The page prices in US dollars, says prices can vary by region without naming the region of the figures, and says nothing about VAT.",
+  "notes": "Static HTML (Framer, no charset; read as UTF-8): \"Pay per Use\" cloud computer options, A10G (Spark/Flame/Blaze 1x, Lava 4x 24 GB) and T4 (Planet/Star 1x, Galaxy 4x 16 GB), \"$X/hour\", billed by the minute. One quote per card: the lowest price per GPU (Spark, Planet). Scope instance, instance the option name, region null (the page says pricing can vary by region; region table not read). CPU-only options and the storage plan not read. No word on VAT",
+  "page": "https://gpueconomy.com/providers/vagon",
+  "referral_url": null,
+  "fees": [],
+  "slug": "ext-vagon",
+  "cards": []
+ },
+ "quotes": [
+  {
+   "source_layer": "gpueconomy",
+   "provider_id": "vagon",
+   "provider": "Vagon",
+   "gpu_id": "a10g",
+   "gpu": "NVIDIA A10G",
+   "market": "on_demand",
+   "price_type": "on_demand",
+   "price_scope": "instance",
+   "risk": "low",
+   "usd_per_gpu_hour": 1.67,
+   "listed_currency": "USD",
+   "fx_rate": null,
+   "gpu_count": 1,
+   "region": null,
+   "source_url": "https://vagon.io/cloud-computer/pricing",
+   "scraped_at": "2026-11-03T12:48:20.451387+00:00",
+   "status": "live"
+  },
+  {
+   "source_layer": "gpueconomy",
+   "provider_id": "vagon",
+   "provider": "Vagon",
+   "gpu_id": "t4",
+   "gpu": "NVIDIA T4",
+   "market": "on_demand",
+   "price_type": "on_demand",
+   "price_scope": "instance",
+   "risk": "low",
+   "usd_per_gpu_hour": 0.99,
+   "listed_currency": "USD",
+   "fx_rate": null,
+   "gpu_count": 1,
+   "region": null,
+   "source_url": "https://vagon.io/cloud-computer/pricing",
+   "scraped_at": "2026-11-03T12:48:20.451387+00:00",
+   "status": "live"
+  }
+ ]
+}

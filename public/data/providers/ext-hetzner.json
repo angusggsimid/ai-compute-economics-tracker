@@ -1,0 +1,55 @@
+{
+ "layer": "gpueconomy",
+ "external": {
+  "source": "gpueconomy",
+  "source_url": "https://gpueconomy.com/data",
+  "license": "CC BY 4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "attribution": "GPU Economy (https://gpueconomy.com)",
+  "methodology_version": "1.33.63",
+  "data_updated_at": "2026-11-03T12:48:20.451387+00:00",
+  "retrieved_at": "2026-11-04T09:12:14Z"
+ },
+ "provider": {
+  "id": "hetzner",
+  "name": "Hetzner",
+  "type": "specialist",
+  "website": "https://www.hetzner.com/",
+  "pricing_page": "https://www.hetzner.com/dedicated-rootserver/matrix-gpu/",
+  "source_kind": "api",
+  "regions": null,
+  "scraped": true,
+  "models_tracked": 1,
+  "current_quotes": 1,
+  "summary": "A dedicated server you rent whole, billed by the hour, in Hetzner's own data centres in Germany and Finland. The figure is the one the GPU matrix prints under the server - the server with the IPv4 address it is sold with - read from the price endpoint the page itself asks, in the dollars Hetzner publishes beside its euro price. It says \"starting from\" because the server comes in three types. A one-off setup fee of $699 is charged on top and is not part of this rate.",
+  "notes": "GPU matrix read for the products and their keys, Hetzner's own keyless price endpoint for the hourly figure under each; the composite product key is read from the page, never assembled, and the endpoint answers it as one product; all three datacenters (FSN1, NBG1, HEL1) carry the same figure, so one quote with no region; the one-off setup fee and the monthly price are not read; GEX45's RTX PRO 4000 Blackwell SFF Edition has no id on this site and stays unmapped",
+  "page": "https://gpueconomy.com/providers/hetzner",
+  "referral_url": null,
+  "fees": [],
+  "slug": "ext-hetzner",
+  "cards": [
+   "RTX PRO 6000"
+  ]
+ },
+ "quotes": [
+  {
+   "source_layer": "gpueconomy",
+   "provider_id": "hetzner",
+   "provider": "Hetzner",
+   "gpu_id": "rtx-pro-6000-max-q",
+   "gpu": "NVIDIA RTX PRO 6000 Blackwell Max-Q",
+   "market": "on_demand",
+   "price_type": "on_demand",
+   "price_scope": "instance",
+   "risk": "low",
+   "usd_per_gpu_hour": 1.9214,
+   "listed_currency": "USD",
+   "fx_rate": null,
+   "gpu_count": 1,
+   "region": null,
+   "source_url": "https://www.hetzner.com/dedicated-rootserver/matrix-gpu/",
+   "scraped_at": "2026-11-03T12:48:20.451387+00:00",
+   "status": "live"
+  }
+ ]
+}

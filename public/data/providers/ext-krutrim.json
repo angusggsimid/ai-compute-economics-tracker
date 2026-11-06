@@ -1,0 +1,75 @@
+{
+ "layer": "gpueconomy",
+ "external": {
+  "source": "gpueconomy",
+  "source_url": "https://gpueconomy.com/data",
+  "license": "CC BY 4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "attribution": "GPU Economy (https://gpueconomy.com)",
+  "methodology_version": "1.33.63",
+  "data_updated_at": "2026-11-03T12:48:20.451387+00:00",
+  "retrieved_at": "2026-11-04T09:12:14Z"
+ },
+ "provider": {
+  "id": "krutrim",
+  "name": "Krutrim Cloud",
+  "type": "specialist",
+  "website": "https://cloud.olakrutrim.com/",
+  "pricing_page": "https://docs.cloud.olakrutrim.com/basics/core-infrastructure/compute",
+  "source_kind": "html",
+  "regions": null,
+  "scraped": true,
+  "models_tracked": 2,
+  "current_quotes": 2,
+  "summary": "Indian AI cloud of Ola Krutrim. Its compute documentation prices GPU virtual machines by the hour in Indian rupees, each a whole VM with its vCPUs and memory; the figure is the on-demand rate. The page also lists one- and six-month reserved rates, which are not shown here, and says nothing about GST. The dollar figure uses the ECB reference rate of the day.",
+  "notes": "GitBook ARIA table \"GPU Flavor | GPU Type / Count | RAM | GPU Memory | vCPUs | Unit | On-Demand Price | Monthly Reserved | 6 Month Reserved\"; on-demand column only (1- and 6-month terms are no market of ours); AI Pods table not read; whole VM -> instance; cheapest per GPU, smaller flavour on a tie; A100 80GB -> a100-80, H100 (NVLink, 80 GB) -> h100; INR via ECB, the page says nothing about GST; region null",
+  "page": "https://gpueconomy.com/providers/krutrim",
+  "referral_url": null,
+  "fees": [],
+  "slug": "ext-krutrim",
+  "cards": [
+   "A100",
+   "H100"
+  ]
+ },
+ "quotes": [
+  {
+   "source_layer": "gpueconomy",
+   "provider_id": "krutrim",
+   "provider": "Krutrim Cloud",
+   "gpu_id": "a100-80",
+   "gpu": "NVIDIA A100 80GB",
+   "market": "on_demand",
+   "price_type": "on_demand",
+   "price_scope": "instance",
+   "risk": "low",
+   "usd_per_gpu_hour": 1.9914,
+   "listed_currency": "INR",
+   "fx_rate": 0.010536,
+   "gpu_count": 1,
+   "region": null,
+   "source_url": "https://www.olakrutrim.com/pricing",
+   "scraped_at": "2026-11-03T06:40:07.522365+00:00",
+   "status": "live"
+  },
+  {
+   "source_layer": "gpueconomy",
+   "provider_id": "krutrim",
+   "provider": "Krutrim Cloud",
+   "gpu_id": "h100",
+   "gpu": "NVIDIA H100 80GB (form factor not stated)",
+   "market": "on_demand",
+   "price_type": "on_demand",
+   "price_scope": "instance",
+   "risk": "low",
+   "usd_per_gpu_hour": 2.2442,
+   "listed_currency": "INR",
+   "fx_rate": 0.010536,
+   "gpu_count": 1,
+   "region": null,
+   "source_url": "https://www.olakrutrim.com/pricing",
+   "scraped_at": "2026-11-03T06:40:07.522365+00:00",
+   "status": "live"
+  }
+ ]
+}

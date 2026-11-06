@@ -1,0 +1,457 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#f5f5f7">
+<title>Cheapest · AI Compute Economics</title>
+<meta name="description" content="按 card、market、layer 过滤，列出每个组合的最低挂牌 provider、价格、来源、日期与风险。">
+<link rel="icon" type="image/svg+xml" href="./favicon.svg">
+<link rel="stylesheet" href="./assets/site.css">
+</head>
+<body data-base=".">
+<a class="skip" href="#main">跳到正文</a>
+<header class="topbar"><div class="topbar-inner"><a class="brand" href="./index.html">AI Compute Economics</a><nav class="nav" aria-label="主导航"><a href="./index.html">总览</a><a href="./landscape.html">Landscape</a><a href="./providers.html">Providers</a><a href="./compare.html">Compare</a><a href="./spread.html">Spread</a><a href="./cheapest.html" class="active" aria-current="page">Cheapest</a></nav></div></header>
+<main class="shell" id="main">
+
+<section class="hero compact">
+  <p class="kicker">Cheapest · 最低挂牌价 · as of 2026-10-29</p>
+  <h1>每个 card × market 的最低报价</h1>
+  <p class="lede">按卡、市场和 layer 过滤，列出每个组合的最低挂牌 provider、价格、来源、日期与风险。自有与 GPU Economy 分开；外部按 market view 对齐 crosscheck，先对每个 provider 取最低价。</p>
+  <div class="kpi-grid">
+    <div class="kpi"><div class="label">自有报价</div><div class="value">238</div><div class="hint">最新挂牌价，非成交价</div></div>
+    <div class="kpi"><div class="label">外部 live+USD 可映射</div><div class="value">1,082</div><div class="hint">可按 MARKET_VIEWS 映射；含 marketplace floor</div></div>
+    <div class="kpi"><div class="label">非 floor 可比</div><div class="value">962</div><div class="hint">全量 live+USD 非 floor 口径；表格再按 market view 筛选</div></div>
+    <div class="kpi"><div class="label">外部原始报价</div><div class="value">1,399</div><div class="hint">含 stopped / 非 USD / 不可映射 market</div></div>
+  </div>
+  <p class="source">最低价是公开挂牌价，不等于可成交价或可用容量；外部报价不改写自有中位数、周指数或 provider 计数。</p>
+</section>
+
+<section class="section">
+  <div class="section-head">
+    <div>
+      <h2>Cheapest 明细</h2>
+      <p class="sub">每一行是该 card × market × layer 的最低挂牌报价。</p>
+    </div>
+    <p class="small muted" id="cheapest-count">加载中…</p>
+  </div>
+  <div class="filters" id="cheapest-filters" role="group" aria-label="Cheapest 筛选"><div class="field"><label for="cheapest-card">卡</label><select id="cheapest-card" data-filter="card"><option value="">全部卡</option><option value="H100">H100 80GB</option><option value="H200">H200 141GB</option><option value="B200">B200 192GB</option><option value="B300">B300 288GB</option><option value="A100">A100 80GB</option><option value="L40S">L40S 48GB</option><option value="RTX PRO 6000">RTX PRO 6000 96GB</option><option value="RTX 4090">RTX 4090 24GB</option><option value="RTX 5090">RTX 5090 32GB</option><option value="MI300X">MI300X 192GB</option><option value="GH200">GH200 96GB</option></select></div><div class="field"><label for="cheapest-market">Market</label><select id="cheapest-market" data-filter="market"><option value="">全部 market</option><option value="on_demand">正规 on-demand</option><option value="spot">Spot</option><option value="reserved">Reserved</option><option value="community">Community</option><option value="marketplace">Marketplace floor</option><option value="serverless">Serverless</option></select></div><div class="field"><label for="cheapest-layer">Layer</label><select id="cheapest-layer" data-filter="layer"><option value="">全部 layer</option><option value="own">own（自有）</option><option value="gpueconomy">gpueconomy（外部）</option></select></div></div>
+  <div id="cheapest-table" aria-live="polite" aria-busy="true">
+    <div class="empty" role="status">正在加载自有与外部报价…</div>
+  </div>
+  <p class="panel-note">价格与来源仅代表公开挂牌信息；<strong>不是成交价</strong>。外部按 <span class="mono">MARKET_VIEWS</span> 对齐 crosscheck（live、USD、market scope、每个 provider 最低价），marketplace 使用 community 里的 floor 并标 “floor，不是 rate card”。stopped、非 USD、无法映射 market 的原始行会在浏览器端剔除，因此页面计数可能小于 <span class="mono">external/prices.json</span> 的 1,399 条。</p>
+</section>
+
+</main>
+<footer class="footer"><div class="footer-inner"><p>AI Compute Economics · 公开挂牌价，非成交价。</p><p>外部参考层：<a href="https://gpueconomy.com/data" target="_blank" rel="noopener">GPU Economy</a> · CC BY 4.0。自有中位数与指数不受外部数据改写 · <a href="./data/manifest.json">数据说明</a></p></div></footer>
+<script src="./assets/site.js"></script>
+<script>
+(function () {
+  "use strict";
+  var CC = window.CC;
+  if (!CC) { return; }
+  var CONTEXT = {"cards": [{"id": "H100", "slug": "h100", "name": "H100 80GB", "median": 3.63645, "provider_count": 24}, {"id": "H200", "slug": "h200", "name": "H200 141GB", "median": 4.97, "provider_count": 16}, {"id": "B200", "slug": "b200", "name": "B200 192GB", "median": 8.09, "provider_count": 12}, {"id": "B300", "slug": "b300", "name": "B300 288GB", "median": 9.245, "provider_count": 12}, {"id": "A100", "slug": "a100", "name": "A100 80GB", "median": 2.15, "provider_count": 15}, {"id": "L40S", "slug": "l40s", "name": "L40S 48GB", "median": 1.60325, "provider_count": 12}, {"id": "RTX PRO 6000", "slug": "rtx-pro-6000", "name": "RTX PRO 6000 96GB", "median": 2.35, "provider_count": 11}, {"id": "RTX 4090", "slug": "rtx-4090", "name": "RTX 4090 24GB", "median": 0.735, "provider_count": 4}, {"id": "RTX 5090", "slug": "rtx-5090", "name": "RTX 5090 32GB", "median": 0.935, "provider_count": 4}, {"id": "MI300X", "slug": "mi300x", "name": "MI300X 192GB", "median": 2.99, "provider_count": 5}, {"id": "GH200", "slug": "gh200", "name": "GH200 96GB", "median": 3.02, "provider_count": 3}], "cardOrder": {"H100": 0, "H200": 1, "B200": 2, "B300": 3, "A100": 4, "L40S": 5, "RTX PRO 6000": 6, "RTX 4090": 7, "RTX 5090": 8, "MI300X": 9, "GH200": 10}, "cardSlugs": {"H100": "h100", "H200": "h200", "B200": "b200", "B300": "b300", "A100": "a100", "L40S": "l40s", "RTX PRO 6000": "rtx-pro-6000", "RTX 4090": "rtx-4090", "RTX 5090": "rtx-5090", "MI300X": "mi300x", "GH200": "gh200"}, "marketLabels": {"on_demand": "正规 on-demand", "spot": "Spot", "reserved": "Reserved", "community": "Community", "marketplace": "Marketplace floor", "serverless": "Serverless"}, "marketOrder": ["on_demand", "spot", "reserved", "community", "marketplace", "serverless"], "marketViews": {"on_demand": {"ext_markets": ["on_demand"], "scope": null, "comparable": true, "note": "可比口径：market=on_demand、status=live、非 marketplace_floor、USD；每 provider 取最低价后取中位。"}, "spot": {"ext_markets": ["spot"], "scope": null, "comparable": true, "note": "可比口径与 on-demand 相同（live、非 floor、USD、每 provider 最低价）；spot 可被收回，不能当 on-demand。"}, "reserved": {"ext_markets": ["reserved", "reserved_1y", "reserved_3y"], "scope": null, "comparable": false, "note": "GPU Economy 把 reserved 拆成无期限/1y/3y；我方不保留期限，不能合成一个可比中位。"}, "community": {"ext_markets": ["community"], "scope": "instance", "comparable": false, "note": "GPU Economy 的 community 同时包含 marketplace floor 与实例供给；我方把 floor 单列为 marketplace，语义不等价。"}, "marketplace": {"ext_markets": ["community"], "scope": "marketplace_floor", "comparable": false, "note": "我方 marketplace 对应 GPU Economy community 中的 marketplace floor 子集；只是子集，不是等号。"}, "serverless": {"ext_markets": ["serverless"], "scope": null, "comparable": true, "note": "可比口径与 on-demand 相同；serverless 按秒/共享，不能与整租混读。"}}, "extCard": {"h100": "H100", "h200": "H200", "b200": "B200", "b300": "B300", "a100-80": "A100", "l40s": "L40S", "rtx-pro-6000": "RTX PRO 6000", "rtx-4090": "RTX 4090", "rtx-5090": "RTX 5090", "mi300x": "MI300X", "gh200": "GH200"}, "providerSlugs": {"own|spheron": "own-spheron", "own|runpod": "own-runpod", "own|lium": "own-lium", "own|coreweave": "own-coreweave", "own|daytona": "own-daytona", "own|modal": "own-modal", "own|datacrunch": "own-datacrunch", "own|cerebrium": "own-cerebrium", "own|crusoe": "own-crusoe", "own|hyperstack": "own-hyperstack", "own|koyeb": "own-koyeb", "own|nebius": "own-nebius", "own|digitalocean": "own-digitalocean", "own|gcp": "own-gcp", "own|massedcompute": "own-massedcompute", "own|fal": "own-fal", "own|aws": "own-aws", "own|fireworks": "own-fireworks", "own|impossiblecloud": "own-impossiblecloud", "own|lambda": "own-lambda", "own|ovh": "own-ovh", "own|primeintellect": "own-primeintellect", "own|replicate": "own-replicate", "own|together": "own-together", "own|vultr": "own-vultr", "own|baseten": "own-baseten", "own|gmicloud": "own-gmicloud", "own|hyperai": "own-hyperai", "own|latitude": "own-latitude", "own|scaleway": "own-scaleway", "own|tensordock": "own-tensordock", "own|azure": "own-azure", "own|salad": "own-salad", "own|synteq": "own-synteq", "own|thundercompute": "own-thundercompute", "own|hotaisle": "own-hotaisle", "own|voltagepark": "own-voltagepark", "gpueconomy|airgpu": "ext-airgpu", "gpueconomy|airon": "ext-airon", "gpueconomy|linode": "ext-linode", "gpueconomy|aws": "ext-aws", "gpueconomy|atlantic": "ext-atlantic", "gpueconomy|atlascloud": "ext-atlascloud", "gpueconomy|bamboozle": "ext-bamboozle", "gpueconomy|barrack": "ext-barrack", "gpueconomy|baseten": "ext-baseten", "gpueconomy|beam": "ext-beam", "gpueconomy|bentaus": "ext-bentaus", "gpueconomy|bitdeer": "ext-bitdeer", "gpueconomy|canopywave": "ext-canopywave", "gpueconomy|cato": "ext-cato", "gpueconomy|centron": "ext-centron", "gpueconomy|cerebrium": "ext-cerebrium", "gpueconomy|civo": "ext-civo", "gpueconomy|clore": "ext-clore", "gpueconomy|cloudru": "ext-cloudru", "gpueconomy|cloudgpu": "ext-cloudgpu", "gpueconomy|cloudrift": "ext-cloudrift", "gpueconomy|coreweave": "ext-coreweave", "gpueconomy|crusoe": "ext-crusoe", "gpueconomy|cudo": "ext-cudo", "gpueconomy|dataoorts": "ext-dataoorts", "gpueconomy|daytona": "ext-daytona", "gpueconomy|deepinfra": "ext-deepinfra", "gpueconomy|denvr": "ext-denvr", "gpueconomy|e2e": "ext-e2e", "gpueconomy|ecohash": "ext-ecohash", "gpueconomy|edgevana": "ext-edgevana", "gpueconomy|elice": "ext-elice", "gpueconomy|empiriolabs": "ext-empiriolabs", "gpueconomy|enverge": "ext-enverge", "gpueconomy|fal": "ext-fal", "gpueconomy|farmgpu": "ext-farmgpu", "gpueconomy|fireworks": "ext-fireworks", "gpueconomy|flexai": "ext-flexai", "gpueconomy|fluidcore": "ext-fluidcore", "gpueconomy|fpt": "ext-fpt", "gpueconomy|gcore": "ext-gcore", "gpueconomy|geodd": "ext-geodd", "gpueconomy|gmi-cloud": "ext-gmi-cloud", "gpueconomy|gcp": "ext-gcp", "gpueconomy|gpuai": "ext-gpuai", "gpueconomy|gpuwerk": "ext-gpuwerk", "gpueconomy|helios": "ext-helios", "gpueconomy|hetzner": "ext-hetzner", "gpueconomy|hexgrid": "ext-hexgrid", "gpueconomy|hikube": "ext-hikube", "gpueconomy|hivenet": "ext-hivenet", "gpueconomy|hostinger": "ext-hostinger", "gpueconomy|hotaisle": "ext-hotaisle", "gpueconomy|hpcai": "ext-hpcai", "gpueconomy|huggingface": "ext-huggingface", "gpueconomy|hyperbolic": "ext-hyperbolic", "gpueconomy|hyperstack": "ext-hyperstack", "gpueconomy|immers": "ext-immers", "gpueconomy|inferless": "ext-inferless", "gpueconomy|infomaniak": "ext-infomaniak", "gpueconomy|intelion": "ext-intelion", "gpueconomy|ionos": "ext-ionos", "gpueconomy|jarvislabs": "ext-jarvislabs", "gpueconomy|koyeb": "ext-koyeb", "gpueconomy|krutrim": "ext-krutrim", "gpueconomy|lambda": "ext-lambda", "gpueconomy|leafcloud": "ext-leafcloud", "gpueconomy|lightning": "ext-lightning", "gpueconomy|limestone": "ext-limestone", "gpueconomy|lium": "ext-lium", "gpueconomy|lyceum": "ext-lyceum", "gpueconomy|massed": "ext-massed", "gpueconomy|meshive": "ext-meshive", "gpueconomy|azure": "ext-azure", "gpueconomy|mimicpc": "ext-mimicpc", "gpueconomy|modal": "ext-modal", "gpueconomy|mws": "ext-mws", "gpueconomy|nebius": "ext-nebius", "gpueconomy|nebulablock": "ext-nebulablock", "gpueconomy|neysa": "ext-neysa", "gpueconomy|northflank": "ext-northflank", "gpueconomy|novacloud": "ext-novacloud", "gpueconomy|octa": "ext-octa", "gpueconomy|openrelay": "ext-openrelay", "gpueconomy|oracle": "ext-oracle", "gpueconomy|ovhcloud": "ext-ovhcloud", "gpueconomy|packet-ai": "ext-packet-ai", "gpueconomy|paperspace": "ext-paperspace", "gpueconomy|phala": "ext-phala", "gpueconomy|quantacloud": "ext-quantacloud", "gpueconomy|replicate": "ext-replicate", "gpueconomy|runcomfy": "ext-runcomfy", "gpueconomy|runpod": "ext-runpod", "gpueconomy|runware": "ext-runware", "gpueconomy|salad": "ext-salad", "gpueconomy|scaleway": "ext-scaleway", "gpueconomy|seeweb": "ext-seeweb", "gpueconomy|selectel": "ext-selectel", "gpueconomy|servercore": "ext-servercore", "gpueconomy|sesterce": "ext-sesterce", "gpueconomy|stackit": "ext-stackit", "gpueconomy|stn": "ext-stn", "gpueconomy|swissgpu": "ext-swissgpu", "gpueconomy|synpix": "ext-synpix", "gpueconomy|taiga": "ext-taiga", "gpueconomy|tata": "ext-tata", "gpueconomy|tensorcloud": "ext-tensorcloud", "gpueconomy|tensorpool": "ext-tensorpool", "gpueconomy|tensorwave": "ext-tensorwave", "gpueconomy|theai": "ext-theai", "gpueconomy|thunder": "ext-thunder", "gpueconomy|together": "ext-together", "gpueconomy|trooper": "ext-trooper", "gpueconomy|vagon": "ext-vagon", "gpueconomy|vast-ai": "ext-vast-ai", "gpueconomy|datacrunch": "ext-datacrunch", "gpueconomy|vessl": "ext-vessl", "gpueconomy|vultr": "ext-vultr", "gpueconomy|yandex": "ext-yandex", "gpueconomy|yottalabs": "ext-yottalabs", "gpueconomy|ytl": "ext-ytl"}};
+  var CARD_ORDER = CONTEXT.cardOrder || {};
+  var CARD_SLUGS = CONTEXT.cardSlugs || {};
+  var MARKET_LABELS = CONTEXT.marketLabels || {};
+  var MARKET_ORDER = CONTEXT.marketOrder || [];
+  var EXT_CARD = CONTEXT.extCard || {};
+  var PROVIDER_SLUGS = CONTEXT.providerSlugs || {};
+
+  function safeUrl(value) {
+    var text = String(value == null ? "" : value).trim();
+    return /^https?:\/\//i.test(text) ? text : "";
+  }
+
+  function sourceCell(value, label) {
+    var href = safeUrl(value);
+    if (!href) { return '<span class="muted">—</span>'; }
+    return '<a href="' + CC.esc(href) + '" target="_blank" rel="noopener">' +
+      CC.esc(label || "来源") + "</a>";
+  }
+
+  function marketLabel(id) {
+    return MARKET_LABELS[id] || String(id || "").replace(/_/g, " ").replace(/\b\w/g, function (ch) {
+      return ch.toUpperCase();
+    });
+  }
+
+  function cardLink(row) {
+    var label = row.card_label || row.card_id || "—";
+    if (row.card_slug) {
+      return CC.link(label, "gpu/" + encodeURIComponent(row.card_slug) + ".html");
+    }
+    return CC.esc(label);
+  }
+
+  function cardLabel(card) {
+    var id = String(card && card.id != null ? card.id : "");
+    var name = String(card && card.name != null ? card.name : id);
+    if (!id || name.indexOf(id) === 0) { return name || id; }
+    return id + " · " + name;
+  }
+
+  function populateCardOptions(root, rows, cards) {
+    var select = root ? root.querySelector('[data-filter="card"]') : null;
+    if (!select) { return; }
+    var seen = {};
+    var options = ['<option value="">全部卡</option>'];
+    (cards || []).forEach(function (card) {
+      var id = String(card && card.id != null ? card.id : "");
+      if (!id || seen[id]) { return; }
+      seen[id] = true;
+      options.push('<option value="' + CC.esc(id) + '">' +
+        CC.esc(cardLabel(card)) + "</option>");
+    });
+    var extras = [];
+    (rows || []).forEach(function (row) {
+      var key = String(row.card_key || "");
+      if (!key || seen[key]) { return; }
+      seen[key] = true;
+      if (row.card_id) { return; }
+      extras.push({
+        value: key,
+        label: String(row.card_label || key).replace(/\s+$/, "") + "（外部）"
+      });
+    });
+    extras.sort(function (left, right) {
+      return left.label.localeCompare(right.label);
+    });
+    extras.forEach(function (item) {
+      options.push('<option value="' + CC.esc(item.value) + '">' +
+        CC.esc(item.label) + "</option>");
+    });
+    var current = select.value;
+    select.innerHTML = options.join("");
+    if (current) {
+      var exists = Array.prototype.some.call(select.options, function (option) {
+        return option.value === current;
+      });
+      select.value = exists ? current : "";
+    }
+  }
+
+  function riskBadge(value) {
+    var key = String(value == null ? "" : value).toLowerCase();
+    var tone = (key === "low" || key === "medium" || key === "high") ? key : "";
+    return value ? CC.badge(value, tone) : '<span class="muted">—</span>';
+  }
+
+  function statusBadge(value) {
+    var key = String(value == null ? "" : value).toLowerCase();
+    var tone = key === "live" ? "live" : (key === "unconfirmed" || key === "thin_market" ? "thin" : (key === "stopped" ? "stopped" : ""));
+    return value ? CC.badge(value, tone) : '<span class="muted">—</span>';
+  }
+
+  function providerSlug(layer, providerId) {
+    var key = String(layer) + "|" + String(providerId);
+    if (PROVIDER_SLUGS[key]) { return PROVIDER_SLUGS[key]; }
+    var slug = String(providerId == null ? "" : providerId).toLowerCase()
+      .replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
+    if (!slug) { return ""; }
+    return (layer === "own" ? "own-" : "ext-") + slug;
+  }
+
+  function providerCell(row) {
+    var label = row.provider || row.provider_id || "—";
+    var slug = row.provider_id ? providerSlug(row.layer, row.provider_id) : "";
+    if (!slug) { return CC.esc(label); }
+    return CC.link(label, "providers/" + encodeURIComponent(slug) + ".html");
+  }
+
+  function round6(value) {
+    if (value == null || !isFinite(Number(value))) { return value; }
+    return Math.round(Number(value) * 1000000) / 1000000;
+  }
+
+  function median(values) {
+    if (!values.length) { return null; }
+    var sorted = values.slice().sort(function (a, b) { return a - b; });
+    var middle = Math.floor(sorted.length / 2);
+    if (sorted.length % 2) { return sorted[middle]; }
+    return (sorted[middle - 1] + sorted[middle]) / 2;
+  }
+
+  function quantile(values, q) {
+    if (!values.length) { return null; }
+    var position = (values.length - 1) * q;
+    var base = Math.floor(position);
+    var rest = position - base;
+    var lower = values[base];
+    var upper = values[Math.min(base + 1, values.length - 1)];
+    return lower + (upper - lower) * rest;
+  }
+
+  function fromOwn(row) {
+    var price = Number(row.usd_per_gpu_hour);
+    if (!isFinite(price)) { return null; }
+    return {
+      layer: "own",
+      card_id: row.card_id || "",
+      card_key: row.card_id || row.card || "",
+      card_label: row.card || row.card_id || "",
+      market: row.market || "",
+      provider_id: row.provider_id || "",
+      provider: row.provider || row.provider_id || "",
+      price: price,
+      date: row.date,
+      risk: row.risk,
+      status: row.status,
+      scope: row.price_scope,
+      source_url: row.source_url
+    };
+  }
+
+  function externalMarketView(row) {
+    var views = CONTEXT.marketViews || {};
+    var externalMarket = String(row.market || "");
+    var scope = String(row.price_scope || "");
+    var ids = Object.keys(views);
+    for (var i = 0; i < ids.length; i += 1) {
+      var marketId = ids[i];
+      var view = views[marketId] || {};
+      if ((view.ext_markets || []).indexOf(externalMarket) < 0) {
+        continue;
+      }
+      if (view.scope) {
+        if (scope !== view.scope) { continue; }
+      } else if (scope === "marketplace_floor") {
+        continue;
+      }
+      return marketId;
+    }
+    return "";
+  }
+
+  function fromExternal(row) {
+    if (row.status !== "live") { return null; }
+    if (row.listed_currency !== "USD") { return null; }
+    var market = externalMarketView(row);
+    if (!market) { return null; }
+    var price = Number(row.usd_per_gpu_hour);
+    if (!isFinite(price)) { return null; }
+    var cardId = EXT_CARD[row.gpu_id] || "";
+    return {
+      layer: "gpueconomy",
+      card_id: cardId,
+      card_key: cardId || ("gpu:" + String(row.gpu_id || row.gpu || "")),
+      card_label: row.gpu || row.gpu_id || "",
+      market: market,
+      external_market: row.market || "",
+      provider_id: row.provider_id || "",
+      provider: row.provider || row.provider_id || "",
+      price: price,
+      date: row.scraped_at,
+      risk: row.risk,
+      status: row.status,
+      scope: row.price_scope,
+      source_url: row.source_url
+    };
+  }
+
+  function effectiveExternalRows(externalDoc) {
+    var byProvider = {};
+    (externalDoc.prices || []).forEach(function (row) {
+      var item = fromExternal(row);
+      if (!item) { return; }
+      var key = [item.market, item.card_key, item.provider_id].join("|");
+      var current = byProvider[key];
+      if (!current || item.price < current.price) {
+        byProvider[key] = item;
+      }
+    });
+    return Object.keys(byProvider).map(function (key) {
+      return byProvider[key];
+    });
+  }
+
+  function cardSortValue(row) {
+    var index = CARD_ORDER[row.card_id];
+    return index === undefined ? 999 : index;
+  }
+
+  function marketSortValue(row) {
+    var index = MARKET_ORDER.indexOf(row.market);
+    return index < 0 ? 999 : index;
+  }
+
+  function layerSortValue(row) {
+    return row.layer === "own" ? 0 : 1;
+  }
+
+  function sortGroups(rows) {
+    return rows.sort(function (left, right) {
+      return layerSortValue(left) - layerSortValue(right) ||
+        cardSortValue(left) - cardSortValue(right) ||
+        String(left.card_label).localeCompare(String(right.card_label)) ||
+        marketSortValue(left) - marketSortValue(right) ||
+        String(left.market).localeCompare(String(right.market));
+    });
+  }
+
+  function normalizePrices(ownDoc, externalDoc) {
+    var rows = [];
+    (ownDoc.quotes || []).forEach(function (row) {
+      var item = fromOwn(row);
+      if (item) { rows.push(item); }
+    });
+    effectiveExternalRows(externalDoc).forEach(function (row) {
+      rows.push(row);
+    });
+    return rows;
+  }
+
+  var tableHost = document.getElementById("cheapest-table");
+  var countEl = document.getElementById("cheapest-count");
+  var filtersRoot = document.getElementById("cheapest-filters");
+  if (!tableHost) { return; }
+
+  var HEADERS = [
+    { label: "Layer", key: "layer", render: function (value) {
+        return value === "own" ? CC.badge("own", "own") : CC.badge("gpueconomy", "ext");
+      } },
+    { label: "Card", key: "card_label", render: function (_value, row) {
+        var html = cardLink(row);
+        if (row.card_id) {
+          html += '<br><span class="small muted">' + CC.esc(row.card_id) + "</span>";
+        } else {
+          html += '<br><span class="small muted">外部参考 · 无单卡页</span>';
+        }
+        return html;
+      } },
+    { label: "Market", key: "market", render: function (value) {
+        var html = "<strong>" + CC.esc(marketLabel(value)) + "</strong>" +
+          '<br><span class="small muted">' + CC.esc(value || "—") + "</span>";
+        if (value === "marketplace") {
+          html += '<br><span class="badge thin">floor，不是 rate card</span>';
+        }
+        return html;
+      } },
+    { label: "Cheapest provider", key: "provider", render: function (value, row) {
+        var html = providerCell(row);
+        if (row.provider_id) {
+          html += '<br><span class="small muted">' + CC.esc(row.provider_id) + "</span>";
+        }
+        return html;
+      } },
+    { label: "Price", key: "price", num: true, render: function (value) {
+        return CC.money(value, 2);
+      } },
+    { label: "Source", key: "source_url", render: function (value) {
+        return sourceCell(value, "来源");
+      } },
+    { label: "Date", key: "date", className: "nowrap", render: function (value) {
+        return CC.date(value);
+      } },
+    { label: "Risk", key: "risk", render: function (value) {
+        return riskBadge(value);
+      } },
+    { label: "Status", key: "status", render: function (value) {
+        return statusBadge(value);
+      } },
+    { label: "Scope", key: "scope", render: function (value) {
+        return value ? '<span class="small mono">' + CC.esc(value) + "</span>" : '<span class="muted">—</span>';
+      } }
+  ];
+
+  var rows = [];
+  var ready = false;
+
+  function buildCheapest(prices) {
+    var groups = {};
+    prices.forEach(function (row) {
+      var key = row.layer + "|" + row.card_key + "|" + row.market;
+      var group = groups[key];
+      if (!group) {
+        group = groups[key] = {
+          card: row.card_key,
+          layer: row.layer,
+          card_id: row.card_id,
+          card_key: row.card_key,
+          card_label: row.card_label,
+          card_slug: CARD_SLUGS[row.card_id] || "",
+          market: row.market,
+          providerRows: {}
+        };
+      }
+      var providerKey = row.provider_id || row.provider;
+      var current = group.providerRows[providerKey];
+      if (!current || row.price < current.price) {
+        group.providerRows[providerKey] = row;
+      }
+    });
+    return Object.keys(groups).map(function (key) {
+      var group = groups[key];
+      var cheapest = null;
+      Object.keys(group.providerRows).forEach(function (providerKey) {
+        var row = group.providerRows[providerKey];
+        if (!cheapest || row.price < cheapest.price) {
+          cheapest = row;
+        }
+      });
+      return {
+        card: group.card,
+        layer: group.layer,
+        card_id: group.card_id,
+        card_key: group.card_key,
+        card_label: group.card_label,
+        card_slug: group.card_slug,
+        market: group.market,
+        provider_id: cheapest.provider_id,
+        provider: cheapest.provider,
+        price: cheapest.price,
+        source_url: cheapest.source_url,
+        date: cheapest.date,
+        risk: cheapest.risk,
+        status: cheapest.status,
+        scope: cheapest.scope
+      };
+    }).sort(function (left, right) {
+      return layerSortValue(left) - layerSortValue(right) ||
+        cardSortValue(left) - cardSortValue(right) ||
+        String(left.card_label).localeCompare(String(right.card_label)) ||
+        marketSortValue(left) - marketSortValue(right) ||
+        String(left.market).localeCompare(String(right.market)) ||
+        left.price - right.price;
+    });
+  }
+
+  function render() {
+    if (!ready) { return; }
+    var filters = CC.readFilters(filtersRoot);
+    var visible = CC.filterRows(rows, {
+      card: filters.card,
+      market: filters.market,
+      layer: filters.layer
+    }, { exact: ["card", "market", "layer"] });
+    tableHost.innerHTML = CC.table(HEADERS, visible, {
+      empty: "没有匹配的 cheapest 行，请调整筛选。",
+      caption: "每个 card × market 只列最低挂牌报价；价格是 listed rate，不是成交价。"
+    });
+    tableHost.setAttribute("aria-busy", "false");
+    if (countEl) { countEl.textContent = visible.length + " / " + rows.length + " 组"; }
+  }
+
+  function fail(error) {
+    tableHost.setAttribute("aria-busy", "false");
+    tableHost.innerHTML = CC.empty(
+      "数据加载失败：" + (error && error.message ? error.message : error) +
+      "。请通过本地静态服务器打开页面。"
+    );
+    if (countEl) { countEl.textContent = "加载失败"; }
+  }
+
+  CC.bindFilters(filtersRoot, render);
+  Promise.all([CC.get("prices.json"), CC.get("external/prices.json")])
+    .then(function (documents) {
+      rows = buildCheapest(normalizePrices(documents[0], documents[1]));
+      populateCardOptions(filtersRoot, rows, CONTEXT.cards || []);
+      ready = true;
+      render();
+    })
+    .catch(fail);
+})();
+</script>
+</body>
+</html>

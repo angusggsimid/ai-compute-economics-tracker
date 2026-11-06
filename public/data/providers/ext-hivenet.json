@@ -1,0 +1,55 @@
+{
+ "layer": "gpueconomy",
+ "external": {
+  "source": "gpueconomy",
+  "source_url": "https://gpueconomy.com/data",
+  "license": "CC BY 4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "attribution": "GPU Economy (https://gpueconomy.com)",
+  "methodology_version": "1.33.63",
+  "data_updated_at": "2026-11-03T12:48:20.451387+00:00",
+  "retrieved_at": "2026-11-04T09:12:14Z"
+ },
+ "provider": {
+  "id": "hivenet",
+  "name": "Hivenet",
+  "type": "specialist",
+  "website": "https://www.hivenet.com/",
+  "pricing_page": "https://www.hivenet.com/subscribe",
+  "source_kind": "js_rendered",
+  "regions": null,
+  "scraped": true,
+  "models_tracked": 1,
+  "current_quotes": 1,
+  "summary": "French cloud that rents GPU instances billed per second from prepaid credits. Its pricing page lists an hourly price for each instance size; the figure here is the one-GPU instance as the page shows it, in euros before tax and converted to US dollars at the day's ECB rate. It is the whole instance - 8 vCPUs, 73 GB of memory and 125 GB of disk with one GPU - not the GPU alone. Larger sizes cost the same per GPU.",
+  "notes": "Rendered pricing page (cells served as \"-\", filled by a script from the presets API, which picks one preset per name across locations - france-2 for the RTX 5090); data-price=\"<n>x-<GPU>\" spans, vCPU rows skipped, only the 1 x row read (larger sizes same rate per GPU); scope instance (8 vCPU, 73 GB RAM, 125 GB disk included); on_demand, per_gpu, region null; EUR before tax (\"Applicable taxes may still be added\")",
+  "page": "https://gpueconomy.com/providers/hivenet",
+  "referral_url": null,
+  "fees": [],
+  "slug": "ext-hivenet",
+  "cards": [
+   "RTX 5090"
+  ]
+ },
+ "quotes": [
+  {
+   "source_layer": "gpueconomy",
+   "provider_id": "hivenet",
+   "provider": "Hivenet",
+   "gpu_id": "rtx-5090",
+   "gpu": "NVIDIA RTX 5090",
+   "market": "on_demand",
+   "price_type": "on_demand",
+   "price_scope": "instance",
+   "risk": "low",
+   "usd_per_gpu_hour": 0.8412,
+   "listed_currency": "EUR",
+   "fx_rate": 1.1216,
+   "gpu_count": 1,
+   "region": null,
+   "source_url": "https://www.hivenet.com/subscribe",
+   "scraped_at": "2026-11-03T12:48:20.451387+00:00",
+   "status": "live"
+  }
+ ]
+}

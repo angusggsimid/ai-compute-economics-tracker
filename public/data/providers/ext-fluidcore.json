@@ -1,0 +1,75 @@
+{
+ "layer": "gpueconomy",
+ "external": {
+  "source": "gpueconomy",
+  "source_url": "https://gpueconomy.com/data",
+  "license": "CC BY 4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "attribution": "GPU Economy (https://gpueconomy.com)",
+  "methodology_version": "1.33.63",
+  "data_updated_at": "2026-11-03T12:48:20.451387+00:00",
+  "retrieved_at": "2026-11-04T09:12:14Z"
+ },
+ "provider": {
+  "id": "fluidcore",
+  "name": "FluidCore",
+  "type": "specialist",
+  "website": "https://fluidcore.ai/",
+  "pricing_page": "https://fluidcore.ai/pricing/gpuspricing",
+  "source_kind": "html",
+  "regions": null,
+  "scraped": true,
+  "models_tracked": 2,
+  "current_quotes": 2,
+  "summary": "Rents whole multi-GPU bare-metal nodes in India, priced per node-hour in rupees, with NVLink, InfiniBand and NVMe storage included. The figure is the on-demand node rate divided by its GPUs; the page says nothing about GST.",
+  "notes": "multi-GPU nodes in INR; On-Demand HR column read per_node with its GPU count, lowest price per GPU kept per card (A100 4x and 8x); 1- and 3-month reserved columns not read; custom 16+ GPU cluster not read",
+  "page": "https://gpueconomy.com/providers/fluidcore",
+  "referral_url": null,
+  "fees": [],
+  "slug": "ext-fluidcore",
+  "cards": [
+   "A100",
+   "H100"
+  ]
+ },
+ "quotes": [
+  {
+   "source_layer": "gpueconomy",
+   "provider_id": "fluidcore",
+   "provider": "FluidCore",
+   "gpu_id": "a100-80",
+   "gpu": "NVIDIA A100 80GB",
+   "market": "on_demand",
+   "price_type": "on_demand",
+   "price_scope": "instance",
+   "risk": "low",
+   "usd_per_gpu_hour": 2.4365,
+   "listed_currency": "INR",
+   "fx_rate": 0.010536,
+   "gpu_count": 8,
+   "region": null,
+   "source_url": "https://fluidcore.ai/pricing/gpuspricing",
+   "scraped_at": "2026-11-03T12:48:20.451387+00:00",
+   "status": "live"
+  },
+  {
+   "source_layer": "gpueconomy",
+   "provider_id": "fluidcore",
+   "provider": "FluidCore",
+   "gpu_id": "h100-sxm",
+   "gpu": "NVIDIA H100 SXM",
+   "market": "on_demand",
+   "price_type": "on_demand",
+   "price_scope": "instance",
+   "risk": "low",
+   "usd_per_gpu_hour": 5.5316,
+   "listed_currency": "INR",
+   "fx_rate": 0.010536,
+   "gpu_count": 8,
+   "region": null,
+   "source_url": "https://fluidcore.ai/pricing/gpuspricing",
+   "scraped_at": "2026-11-03T12:48:20.451387+00:00",
+   "status": "live"
+  }
+ ]
+}

@@ -1,5 +1,14 @@
 # CONTEXT
 
+## 2026-11-06 独立静态页（P2-3）
+
+- 新增 174 个独立静态页（5 个根工具页 + 11 张关键卡 + 158 家 provider）与 172 个站点数据切片，统一由 `html_dashboard/site_shell.py` + `public/assets/site.{css,js}` 渲染；页面只 fetch `public/data/*`，`data-base` 相对路径支持 GitHub Pages 子路径，无 CDN、无后端。
+- 覆盖 11 张关键卡、37 家自有 provider、121 家外部有记录 provider（另有 127 家外部摘要）；外部非 11 卡 GPU（如 A40、MI325X）会出现在 spread/cheapest 和 104 个 ext provider 报价明细中，但单卡页仍只有 11 张，不生成这些 GPU 的卡页。外部报价两套口径：962 条是 live + 非 floor + USD（不要求可映射）；spread/cheapest KPI 的 1,082 条（标签“外部 live+USD 可映射”）是 live + USD + 可映射（含 131 条 floor，排除 11 条不可映射非 floor）。
+- 页面与切片由 build 重建：`write_site_data` 清理 `data/cards`、`data/providers` 的旧 JSON，`write_site` 清理 `gpu/*.html`、`providers/*.html` 的旧页面；生成物已写入工作区，待 commit。
+- Spread 的外部 median/P25–P75 先按 `MARKET_VIEWS` 对齐市场 scope（community 只 instance、marketplace 只 floor、reserved 含 1y/3y），再对每个 provider 取最低价去重，最后跨 provider 计算；own 与 external 分组独立。
+- Compare 只有共同窗口内 ≥2 周且末期滞后 <14 天才可比；覆盖不足显示“覆盖不足，不可比较”，变化留空，不把缺失写成 0.0%。
+- 自定义 `out_dir` 时，`write_public_data(out_dir)` 只写数据并补齐 `out_dir/data` 的 `prices.json`、`crosscheck.json`、`gpus.json`、`providers.json`、`site-index.json` 等运行切片；页面必须再调用 `write_site(out_dir)` 才会生成，之后可直接 fetch。生产仍写 `public/data`。
+
 ## 2026-11-04 P0/P1 收口 + GPU Economy P2（2026-11-06 Challenger R1 更新）
 
 - GPU Economy 只做二级参考层：自有报价 `source_layer="own"`，外部报价 `source_layer="gpueconomy"`；external 只参与覆盖与交叉校验，不改写自有中位、provider 数或指数。页面差值统一叫“口径差”，不叫价差。H100 因 80 SXM/80 PCIe/94 NVL 混合标 `coverage=mixed`，仍保留卡级 `-8.4%`，但不是 provider 级等价；A100 40/80GB 混标 `sku_mismatch`。

@@ -1,0 +1,75 @@
+{
+ "layer": "gpueconomy",
+ "external": {
+  "source": "gpueconomy",
+  "source_url": "https://gpueconomy.com/data",
+  "license": "CC BY 4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "attribution": "GPU Economy (https://gpueconomy.com)",
+  "methodology_version": "1.33.63",
+  "data_updated_at": "2026-11-03T12:48:20.451387+00:00",
+  "retrieved_at": "2026-11-04T09:12:14Z"
+ },
+ "provider": {
+  "id": "taiga",
+  "name": "Taiga Cloud (Northern Data Group)",
+  "type": "specialist",
+  "website": "https://northerndata.de/home",
+  "pricing_page": "https://northerndata.de/taiga-cloud-ai-pricing",
+  "source_kind": "html",
+  "regions": null,
+  "scraped": true,
+  "models_tracked": 2,
+  "current_quotes": 2,
+  "summary": "Both figures are printed as \"from\" on Taiga's own page, above the line \"Contact our team to unlock exclusive high-volume pricing\", so they are floors rather than the price of a stated configuration. The page prices each card twice, as bare metal and on demand; the cheaper of the two is shown here and the row says which table it came from. The column is dollars per GPU-hour, so the figure is one card, not the eight-card machine the row describes.",
+  "notes": "two GPU tables on one static page, bare metal and on demand, both per GPU-hour and both \"from\"; the cheaper row per card is published and the instance label names its table; vCPU, storage and support tables not read",
+  "page": "https://gpueconomy.com/providers/taiga",
+  "referral_url": null,
+  "fees": [],
+  "slug": "ext-taiga",
+  "cards": [
+   "H100",
+   "H200"
+  ]
+ },
+ "quotes": [
+  {
+   "source_layer": "gpueconomy",
+   "provider_id": "taiga",
+   "provider": "Taiga Cloud (Northern Data Group)",
+   "gpu_id": "h100-sxm",
+   "gpu": "NVIDIA H100 SXM",
+   "market": "on_demand",
+   "price_type": "on_demand",
+   "price_scope": "advertised_from",
+   "risk": "low",
+   "usd_per_gpu_hour": 2.7,
+   "listed_currency": "USD",
+   "fx_rate": null,
+   "gpu_count": 1,
+   "region": null,
+   "source_url": "https://northerndata.de/taiga-cloud-ai-pricing",
+   "scraped_at": "2026-11-03T12:48:20.451387+00:00",
+   "status": "live"
+  },
+  {
+   "source_layer": "gpueconomy",
+   "provider_id": "taiga",
+   "provider": "Taiga Cloud (Northern Data Group)",
+   "gpu_id": "h200",
+   "gpu": "NVIDIA H200",
+   "market": "on_demand",
+   "price_type": "on_demand",
+   "price_scope": "advertised_from",
+   "risk": "low",
+   "usd_per_gpu_hour": 3.2,
+   "listed_currency": "USD",
+   "fx_rate": null,
+   "gpu_count": 1,
+   "region": null,
+   "source_url": "https://northerndata.de/taiga-cloud-ai-pricing",
+   "scraped_at": "2026-11-03T12:48:20.451387+00:00",
+   "status": "live"
+  }
+ ]
+}

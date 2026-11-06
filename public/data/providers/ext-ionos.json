@@ -1,0 +1,55 @@
+{
+ "layer": "gpueconomy",
+ "external": {
+  "source": "gpueconomy",
+  "source_url": "https://gpueconomy.com/data",
+  "license": "CC BY 4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "attribution": "GPU Economy (https://gpueconomy.com)",
+  "methodology_version": "1.33.63",
+  "data_updated_at": "2026-11-03T12:48:20.451387+00:00",
+  "retrieved_at": "2026-11-04T09:12:14Z"
+ },
+ "provider": {
+  "id": "ionos",
+  "name": "IONOS Cloud",
+  "type": "specialist",
+  "website": "https://cloud.ionos.com/",
+  "pricing_page": "https://docs.ionos.com/support/general-information/price-list/ionos-cloud-eur-en",
+  "source_kind": "html",
+  "regions": null,
+  "scraped": true,
+  "models_tracked": 1,
+  "current_quotes": 1,
+  "summary": "German cloud provider. Prices come from its official euro price list and exclude VAT; each figure is a GPU VM template with its dedicated CPUs, memory and NVMe disk. The list is one for all its data centres.",
+  "notes": "EUR price list (v2026-09-15), Cloud GPU VM templates; smallest template per card read (the larger ones are exact multiples); \"H200 PCIe\" = h200-nvl; net of VAT; one list for every data centre, so region null",
+  "page": "https://gpueconomy.com/providers/ionos",
+  "referral_url": null,
+  "fees": [],
+  "slug": "ext-ionos",
+  "cards": [
+   "H200"
+  ]
+ },
+ "quotes": [
+  {
+   "source_layer": "gpueconomy",
+   "provider_id": "ionos",
+   "provider": "IONOS Cloud",
+   "gpu_id": "h200-nvl",
+   "gpu": "NVIDIA H200 NVL",
+   "market": "on_demand",
+   "price_type": "on_demand",
+   "price_scope": "instance",
+   "risk": "low",
+   "usd_per_gpu_hour": 3.3648,
+   "listed_currency": "EUR",
+   "fx_rate": 1.1216,
+   "gpu_count": 1,
+   "region": null,
+   "source_url": "https://docs.ionos.com/support/general-information/price-list/ionos-cloud-eur-en",
+   "scraped_at": "2026-11-03T12:48:20.451387+00:00",
+   "status": "live"
+  }
+ ]
+}

@@ -1,0 +1,4283 @@
+{
+ "generated_at": "2026-11-06",
+ "as_of": "2026-10-29",
+ "data_age_days": 8,
+ "methodology_version": "2026-11-04.1",
+ "external": {
+  "source": "gpueconomy",
+  "source_url": "https://gpueconomy.com/data",
+  "license": "CC BY 4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "attribution": "GPU Economy (https://gpueconomy.com)",
+  "methodology_version": "1.33.63",
+  "data_updated_at": "2026-11-03T12:48:20.451387+00:00",
+  "retrieved_at": "2026-11-04T09:12:14Z"
+ },
+ "counts": {
+  "cards": 11,
+  "own_providers": 37,
+  "external_providers": 121,
+  "own_quotes": 238,
+  "external_quotes": 1399
+ },
+ "markets": [
+  {
+   "id": "on_demand",
+   "label": "正规 on-demand",
+   "short": "On-demand",
+   "risk": "low",
+   "scope": "rate_card",
+   "note": "可长期持有的挂牌价；不含 community、spot、marketplace floor。"
+  },
+  {
+   "id": "spot",
+   "label": "Spot",
+   "short": "Spot",
+   "risk": "high",
+   "scope": "rate_card",
+   "note": "可被中途收回；价格低不等于可规划。"
+  },
+  {
+   "id": "reserved",
+   "label": "Reserved",
+   "short": "Reserved",
+   "risk": "low",
+   "scope": "rate_card",
+   "note": "承诺期价格；未运行也计费。"
+  },
+  {
+   "id": "community",
+   "label": "Community",
+   "short": "Community",
+   "risk": "high",
+   "scope": "rate_card",
+   "note": "第三方主机容量，可被收回；不进主中位数。"
+  },
+  {
+   "id": "marketplace",
+   "label": "Marketplace floor",
+   "short": "Marketplace",
+   "risk": "high",
+   "scope": "marketplace_floor",
+   "note": "市场最低报价，随供给移动；不是 rate card。"
+  },
+  {
+   "id": "serverless",
+   "label": "Serverless",
+   "short": "Serverless",
+   "risk": "medium",
+   "scope": "serverless",
+   "note": "按调用/秒计费，共享容量；与整租不可直接比。"
+  }
+ ],
+ "cards": [
+  {
+   "id": "H100",
+   "slug": "h100",
+   "name": "H100 80GB",
+   "vram_gb": 80,
+   "family": "Hopper",
+   "as_of": "2026-10-29",
+   "status": "live",
+   "median": 3.63645,
+   "p25": 2.8675,
+   "p75": 4.4775,
+   "cheapest": 1.8,
+   "cheapest_provider": "Hyper.ai",
+   "provider_count": 24,
+   "change_7d_pct": 6.85,
+   "weekly_index": {
+    "weekStart": "2026-10-26",
+    "isoWeek": "2026-W44",
+    "vintage": "provisional",
+    "status": "published",
+    "median": 3.63645,
+    "p25": 2.8675,
+    "p75": 4.4775,
+    "providerCount": 24,
+    "index": 111.667,
+    "linkPairs": 24,
+    "withheldReason": null,
+    "ageDays": 3
+   },
+   "markets": {
+    "on_demand": {
+     "label": "正规 on-demand",
+     "status": "live",
+     "risk": "low",
+     "price_scope": "rate_card",
+     "median": 3.63645,
+     "p25": 2.8675,
+     "p75": 4.4775,
+     "cheapest": 1.8,
+     "cheapest_provider": "Hyper.ai",
+     "provider_count": 24,
+     "thin": false,
+     "date": "2026-10-29",
+     "change_7d_pct": 6.85
+    },
+    "spot": {
+     "label": "Spot",
+     "status": "live",
+     "risk": "high",
+     "price_scope": "rate_card",
+     "median": 2.27,
+     "p25": 1.99,
+     "p75": 2.79,
+     "cheapest": 0.94,
+     "cheapest_provider": "Prime Intellect",
+     "provider_count": 11,
+     "thin": false,
+     "date": "2026-10-29",
+     "change_7d_pct": 6.97
+    },
+    "reserved": {
+     "label": "Reserved",
+     "status": "live",
+     "risk": "low",
+     "price_scope": "rate_card",
+     "median": 2.235,
+     "p25": null,
+     "p75": null,
+     "cheapest": 1.179452,
+     "cheapest_provider": "Latitude.sh",
+     "provider_count": 3,
+     "thin": true,
+     "date": "2026-10-29",
+     "change_7d_pct": 0.0
+    },
+    "community": {
+     "label": "Community",
+     "status": "live",
+     "risk": "high",
+     "price_scope": "rate_card",
+     "median": 2.59,
+     "p25": null,
+     "p75": null,
+     "cheapest": 1.99,
+     "cheapest_provider": "RunPod",
+     "provider_count": 1,
+     "thin": true,
+     "date": "2026-10-29",
+     "change_7d_pct": 0.0
+    },
+    "marketplace": {
+     "label": "Marketplace floor",
+     "status": "live",
+     "risk": "high",
+     "price_scope": "marketplace_floor",
+     "median": 3.375,
+     "p25": null,
+     "p75": null,
+     "cheapest": 3.0,
+     "cheapest_provider": "Lium",
+     "provider_count": 1,
+     "thin": true,
+     "date": "2026-10-29",
+     "change_7d_pct": 60.71
+    },
+    "serverless": {
+     "label": "Serverless",
+     "status": "live",
+     "risk": "medium",
+     "price_scope": "serverless",
+     "median": 4.645,
+     "p25": 3.5361,
+     "p75": 6.2475,
+     "cheapest": 2.5,
+     "cheapest_provider": "Koyeb",
+     "provider_count": 8,
+     "thin": false,
+     "date": "2026-10-29",
+     "change_7d_pct": 0.0
+    }
+   }
+  },
+  {
+   "id": "H200",
+   "slug": "h200",
+   "name": "H200 141GB",
+   "vram_gb": 141,
+   "family": "Hopper",
+   "as_of": "2026-10-29",
+   "status": "live",
+   "median": 4.97,
+   "p25": 4.065,
+   "p75": 6.19325,
+   "cheapest": 3.14,
+   "cheapest_provider": "Prime Intellect",
+   "provider_count": 16,
+   "change_7d_pct": 8.28,
+   "weekly_index": {
+    "weekStart": "2026-10-26",
+    "isoWeek": "2026-W44",
+    "vintage": "provisional",
+    "status": "published",
+    "median": 4.97,
+    "p25": 4.065,
+    "p75": 6.19325,
+    "providerCount": 16,
+    "index": 108.6051,
+    "linkPairs": 16,
+    "withheldReason": null,
+    "ageDays": 3
+   },
+   "markets": {
+    "on_demand": {
+     "label": "正规 on-demand",
+     "status": "live",
+     "risk": "low",
+     "price_scope": "rate_card",
+     "median": 4.97,
+     "p25": 4.065,
+     "p75": 6.19325,
+     "cheapest": 3.14,
+     "cheapest_provider": "Prime Intellect",
+     "provider_count": 16,
+     "thin": false,
+     "date": "2026-10-29",
+     "change_7d_pct": 8.28
+    },
+    "spot": {
+     "label": "Spot",
+     "status": "live",
+     "risk": "high",
+     "price_scope": "rate_card",
+     "median": 3.222,
+     "p25": 2.895,
+     "p75": 5.5065,
+     "cheapest": 2.61,
+     "cheapest_provider": "Daytona",
+     "provider_count": 6,
+     "thin": false,
+     "date": "2026-10-29",
+     "change_7d_pct": 1.64
+    },
+    "reserved": {
+     "label": "Reserved",
+     "status": "live",
+     "risk": "low",
+     "price_scope": "rate_card",
+     "median": 2.973947,
+     "p25": null,
+     "p75": null,
+     "cheapest": 2.79,
+     "cheapest_provider": "Hyperstack",
+     "provider_count": 2,
+     "thin": true,
+     "date": "2026-10-29",
+     "change_7d_pct": 0.9
+    },
+    "community": {
+     "label": "Community",
+     "status": "live",
+     "risk": "high",
+     "price_scope": "rate_card",
+     "median": 3.59,
+     "p25": null,
+     "p75": null,
+     "cheapest": 3.59,
+     "cheapest_provider": "RunPod",
+     "provider_count": 1,
+     "thin": true,
+     "date": "2026-10-29",
+     "change_7d_pct": 0.0
+    },
+    "marketplace": {
+     "label": "Marketplace floor",
+     "status": "live",
+     "risk": "high",
+     "price_scope": "marketplace_floor",
+     "median": 4.84,
+     "p25": null,
+     "p75": null,
+     "cheapest": 3.75,
+     "cheapest_provider": "Lium",
+     "provider_count": 1,
+     "thin": true,
+     "date": "2026-10-29",
+     "change_7d_pct": -1.22
+    },
+    "serverless": {
+     "label": "Serverless",
+     "status": "live",
+     "risk": "medium",
+     "price_scope": "serverless",
+     "median": 5.49,
+     "p25": 4.1976,
+     "p75": 6.0,
+     "cheapest": 3.0,
+     "cheapest_provider": "Koyeb",
+     "provider_count": 7,
+     "thin": false,
+     "date": "2026-10-29",
+     "change_7d_pct": 0.0
+    }
+   }
+  },
+  {
+   "id": "B200",
+   "slug": "b200",
+   "name": "B200 192GB",
+   "vram_gb": 192,
+   "family": "Blackwell",
+   "as_of": "2026-10-29",
+   "status": "live",
+   "median": 8.09,
+   "p25": 6.3125,
+   "p75": 8.73575,
+   "cheapest": 3.49,
+   "cheapest_provider": "Prime Intellect",
+   "provider_count": 12,
+   "change_7d_pct": -1.22,
+   "weekly_index": {
+    "weekStart": "2026-10-26",
+    "isoWeek": "2026-W44",
+    "vintage": "provisional",
+    "status": "published",
+    "median": 8.09,
+    "p25": 6.3125,
+    "p75": 8.73575,
+    "providerCount": 12,
+    "index": 109.017,
+    "linkPairs": 12,
+    "withheldReason": null,
+    "ageDays": 3
+   },
+   "markets": {
+    "on_demand": {
+     "label": "正规 on-demand",
+     "status": "live",
+     "risk": "low",
+     "price_scope": "rate_card",
+     "median": 8.09,
+     "p25": 6.3125,
+     "p75": 8.73575,
+     "cheapest": 3.49,
+     "cheapest_provider": "Prime Intellect",
+     "provider_count": 12,
+     "thin": false,
+     "date": "2026-10-29",
+     "change_7d_pct": -1.22
+    },
+    "spot": {
+     "label": "Spot",
+     "status": "live",
+     "risk": "high",
+     "price_scope": "rate_card",
+     "median": 4.2405,
+     "p25": 3.4925,
+     "p75": 5.10065,
+     "cheapest": 3.2,
+     "cheapest_provider": "Vultr",
+     "provider_count": 6,
+     "thin": false,
+     "date": "2026-10-29",
+     "change_7d_pct": 3.68
+    },
+    "reserved": {
+     "label": "Reserved",
+     "status": "live",
+     "risk": "low",
+     "price_scope": "rate_card",
+     "median": 4.865789,
+     "p25": null,
+     "p75": null,
+     "cheapest": 4.0,
+     "cheapest_provider": "Impossible Cloud",
+     "provider_count": 2,
+     "thin": true,
+     "date": "2026-10-29",
+     "change_7d_pct": -4.59
+    },
+    "community": {
+     "label": "Community",
+     "status": "live",
+     "risk": "high",
+     "price_scope": "rate_card",
+     "median": 5.98,
+     "p25": null,
+     "p75": null,
+     "cheapest": 5.98,
+     "cheapest_provider": "RunPod",
+     "provider_count": 1,
+     "thin": true,
+     "date": "2026-10-29",
+     "change_7d_pct": 0.0
+    },
+    "marketplace": {
+     "label": "Marketplace floor",
+     "status": "live",
+     "risk": "high",
+     "price_scope": "marketplace_floor",
+     "median": 6.05,
+     "p25": null,
+     "p75": null,
+     "cheapest": 5.9,
+     "cheapest_provider": "Lium",
+     "provider_count": 1,
+     "thin": true,
+     "date": "2026-10-29",
+     "change_7d_pct": 0.83
+    },
+    "serverless": {
+     "label": "Serverless",
+     "status": "live",
+     "risk": "medium",
+     "price_scope": "serverless",
+     "median": 8.64,
+     "p25": 6.012,
+     "p75": 9.98,
+     "cheapest": 5.5,
+     "cheapest_provider": "Koyeb",
+     "provider_count": 7,
+     "thin": false,
+     "date": "2026-10-29",
+     "change_7d_pct": 0.0
+    }
+   }
+  },
+  {
+   "id": "B300",
+   "slug": "b300",
+   "name": "B300 288GB",
+   "vram_gb": 288,
+   "family": "Blackwell",
+   "as_of": "2026-10-29",
+   "status": "live",
+   "median": 9.245,
+   "p25": 7.63745,
+   "p75": 11.86125,
+   "cheapest": 4.99,
+   "cheapest_provider": "Prime Intellect",
+   "provider_count": 12,
+   "change_7d_pct": -2.68,
+   "weekly_index": {
+    "weekStart": "2026-10-26",
+    "isoWeek": "2026-W44",
+    "vintage": "provisional",
+    "status": "published",
+    "median": 9.245,
+    "p25": 7.63745,
+    "p75": 11.86125,
+    "providerCount": 12,
+    "index": 126.0161,
+    "linkPairs": 12,
+    "withheldReason": null,
+    "ageDays": 3
+   },
+   "markets": {
+    "on_demand": {
+     "label": "正规 on-demand",
+     "status": "live",
+     "risk": "low",
+     "price_scope": "rate_card",
+     "median": 9.245,
+     "p25": 7.63745,
+     "p75": 11.86125,
+     "cheapest": 4.99,
+     "cheapest_provider": "Prime Intellect",
+     "provider_count": 12,
+     "thin": false,
+     "date": "2026-10-29",
+     "change_7d_pct": -2.68
+    },
+    "spot": {
+     "label": "Spot",
+     "status": "live",
+     "risk": "high",
+     "price_scope": "rate_card",
+     "median": 5.5,
+     "p25": 4.535,
+     "p75": 5.94075,
+     "cheapest": 4.0,
+     "cheapest_provider": "Lium",
+     "provider_count": 5,
+     "thin": false,
+     "date": "2026-10-29",
+     "change_7d_pct": -6.22
+    },
+    "reserved": {
+     "label": "Reserved",
+     "status": "live",
+     "risk": "low",
+     "price_scope": "rate_card",
+     "median": 6.239726,
+     "p25": null,
+     "p75": null,
+     "cheapest": 4.736842,
+     "cheapest_provider": "Impossible Cloud",
+     "provider_count": 3,
+     "thin": true,
+     "date": "2026-10-29",
+     "change_7d_pct": 0.0
+    },
+    "community": {
+     "label": "Community",
+     "status": "live",
+     "risk": "high",
+     "price_scope": "rate_card",
+     "median": 6.94,
+     "p25": null,
+     "p75": null,
+     "cheapest": 6.94,
+     "cheapest_provider": "RunPod",
+     "provider_count": 1,
+     "thin": true,
+     "date": "2026-10-29",
+     "change_7d_pct": 0.0
+    },
+    "marketplace": {
+     "label": "Marketplace floor",
+     "status": "live",
+     "risk": "high",
+     "price_scope": "marketplace_floor",
+     "median": 8.5,
+     "p25": null,
+     "p75": null,
+     "cheapest": 8.0,
+     "cheapest_provider": "Lium",
+     "provider_count": 1,
+     "thin": true,
+     "date": "2026-10-29",
+     "change_7d_pct": -8.11
+    },
+    "serverless": {
+     "label": "Serverless",
+     "status": "live",
+     "risk": "medium",
+     "price_scope": "serverless",
+     "median": 12.99,
+     "p25": null,
+     "p75": null,
+     "cheapest": 7.0992,
+     "cheapest_provider": "Modal",
+     "provider_count": 3,
+     "thin": true,
+     "date": "2026-10-29",
+     "change_7d_pct": 0.0
+    }
+   }
+  },
+  {
+   "id": "A100",
+   "slug": "a100",
+   "name": "A100 80GB",
+   "vram_gb": 80,
+   "family": "Ampere",
+   "as_of": "2026-10-29",
+   "status": "live",
+   "median": 2.15,
+   "p25": 1.48,
+   "p75": 3.07,
+   "cheapest": 1.09,
+   "cheapest_provider": "Thunder Compute",
+   "provider_count": 15,
+   "change_7d_pct": 8.14,
+   "weekly_index": {
+    "weekStart": "2026-10-26",
+    "isoWeek": "2026-W44",
+    "vintage": "provisional",
+    "status": "published",
+    "median": 2.15,
+    "p25": 1.48,
+    "p75": 3.07,
+    "providerCount": 15,
+    "index": 99.2987,
+    "linkPairs": 15,
+    "withheldReason": null,
+    "ageDays": 3
+   },
+   "markets": {
+    "on_demand": {
+     "label": "正规 on-demand",
+     "status": "live",
+     "risk": "low",
+     "price_scope": "rate_card",
+     "median": 2.15,
+     "p25": 1.48,
+     "p75": 3.07,
+     "cheapest": 1.09,
+     "cheapest_provider": "Thunder Compute",
+     "provider_count": 15,
+     "thin": false,
+     "date": "2026-10-29",
+     "change_7d_pct": 8.14
+    },
+    "spot": {
+     "label": "Spot",
+     "status": "live",
+     "risk": "high",
+     "price_scope": "rate_card",
+     "median": 1.19,
+     "p25": 0.846405,
+     "p75": 1.823944,
+     "cheapest": 0.67877,
+     "cheapest_provider": "Azure",
+     "provider_count": 5,
+     "thin": false,
+     "date": "2026-10-29",
+     "change_7d_pct": -15.7
+    },
+    "reserved": {
+     "label": "Reserved",
+     "status": "live",
+     "risk": "low",
+     "price_scope": "rate_card",
+     "median": 1.155,
+     "p25": null,
+     "p75": null,
+     "cheapest": 0.95,
+     "cheapest_provider": "Hyperstack",
+     "provider_count": 1,
+     "thin": true,
+     "date": "2026-10-29",
+     "change_7d_pct": 0.0
+    },
+    "community": {
+     "label": "Community",
+     "status": "live",
+     "risk": "high",
+     "price_scope": "rate_card",
+     "median": 1.19,
+     "p25": null,
+     "p75": null,
+     "cheapest": 1.0,
+     "cheapest_provider": "RunPod",
+     "provider_count": 1,
+     "thin": true,
+     "date": "2026-10-29",
+     "change_7d_pct": 0.0
+    },
+    "marketplace": {
+     "label": "Marketplace floor",
+     "status": "unconfirmed",
+     "risk": "high",
+     "price_scope": "marketplace_floor",
+     "median": 1.68,
+     "p25": null,
+     "p75": null,
+     "cheapest": 1.68,
+     "cheapest_provider": "Lium",
+     "provider_count": 1,
+     "thin": true,
+     "date": "2026-10-25",
+     "change_7d_pct": 44.21
+    },
+    "serverless": {
+     "label": "Serverless",
+     "status": "live",
+     "risk": "medium",
+     "price_scope": "serverless",
+     "median": 2.5093,
+     "p25": 2.00505,
+     "p75": 4.26,
+     "cheapest": 1.6,
+     "cheapest_provider": "Koyeb",
+     "provider_count": 6,
+     "thin": false,
+     "date": "2026-10-29",
+     "change_7d_pct": 0.0
+    }
+   }
+  },
+  {
+   "id": "L40S",
+   "slug": "l40s",
+   "name": "L40S 48GB",
+   "vram_gb": 48,
+   "family": "Ada",
+   "as_of": "2026-10-29",
+   "status": "live",
+   "median": 1.60325,
+   "p25": 1.155,
+   "p75": 1.8615,
+   "cheapest": 0.96,
+   "cheapest_provider": "Spheron",
+   "provider_count": 12,
+   "change_7d_pct": -0.46,
+   "weekly_index": {
+    "weekStart": "2026-10-26",
+    "isoWeek": "2026-W44",
+    "vintage": "provisional",
+    "status": "published",
+    "median": 1.60325,
+    "p25": 1.155,
+    "p75": 1.8615,
+    "providerCount": 12,
+    "index": 101.1696,
+    "linkPairs": 12,
+    "withheldReason": null,
+    "ageDays": 3
+   },
+   "markets": {
+    "on_demand": {
+     "label": "正规 on-demand",
+     "status": "live",
+     "risk": "low",
+     "price_scope": "rate_card",
+     "median": 1.60325,
+     "p25": 1.155,
+     "p75": 1.8615,
+     "cheapest": 0.96,
+     "cheapest_provider": "Spheron",
+     "provider_count": 12,
+     "thin": false,
+     "date": "2026-10-29",
+     "change_7d_pct": -0.46
+    },
+    "spot": {
+     "label": "Spot",
+     "status": "live",
+     "risk": "high",
+     "price_scope": "rate_card",
+     "median": 1.0605,
+     "p25": null,
+     "p75": null,
+     "cheapest": 0.941,
+     "cheapest_provider": "Verda",
+     "provider_count": 2,
+     "thin": true,
+     "date": "2026-10-29",
+     "change_7d_pct": 1.0
+    },
+    "reserved": {
+     "label": "Reserved",
+     "status": "no_data",
+     "risk": "low",
+     "price_scope": "rate_card",
+     "median": null,
+     "p25": null,
+     "p75": null,
+     "cheapest": null,
+     "cheapest_provider": null,
+     "provider_count": 0,
+     "thin": true,
+     "date": null,
+     "change_7d_pct": null
+    },
+    "community": {
+     "label": "Community",
+     "status": "live",
+     "risk": "high",
+     "price_scope": "rate_card",
+     "median": 0.79,
+     "p25": null,
+     "p75": null,
+     "cheapest": 0.79,
+     "cheapest_provider": "RunPod",
+     "provider_count": 1,
+     "thin": true,
+     "date": "2026-10-29",
+     "change_7d_pct": 0.0
+    },
+    "marketplace": {
+     "label": "Marketplace floor",
+     "status": "live",
+     "risk": "high",
+     "price_scope": "marketplace_floor",
+     "median": 0.38,
+     "p25": null,
+     "p75": null,
+     "cheapest": 0.38,
+     "cheapest_provider": "Lium",
+     "provider_count": 1,
+     "thin": true,
+     "date": "2026-10-28",
+     "change_7d_pct": 0.0
+    },
+    "serverless": {
+     "label": "Serverless",
+     "status": "live",
+     "risk": "medium",
+     "price_scope": "serverless",
+     "median": 1.9512,
+     "p25": 1.3878,
+     "p75": 3.1203,
+     "cheapest": 1.2,
+     "cheapest_provider": "Koyeb",
+     "provider_count": 4,
+     "thin": false,
+     "date": "2026-10-29",
+     "change_7d_pct": 0.0
+    }
+   }
+  },
+  {
+   "id": "RTX PRO 6000",
+   "slug": "rtx-pro-6000",
+   "name": "RTX PRO 6000 96GB",
+   "vram_gb": 96,
+   "family": "Blackwell",
+   "as_of": "2026-10-29",
+   "status": "live",
+   "median": 2.35,
+   "p25": 1.8,
+   "p75": 2.619,
+   "cheapest": 0.8,
+   "cheapest_provider": "Hyper.ai",
+   "provider_count": 11,
+   "change_7d_pct": 3.52,
+   "weekly_index": {
+    "weekStart": "2026-10-26",
+    "isoWeek": "2026-W44",
+    "vintage": "provisional",
+    "status": "published",
+    "median": 2.35,
+    "p25": 1.8,
+    "p75": 2.619,
+    "providerCount": 11,
+    "index": 107.3022,
+    "linkPairs": 11,
+    "withheldReason": null,
+    "ageDays": 3
+   },
+   "markets": {
+    "on_demand": {
+     "label": "正规 on-demand",
+     "status": "live",
+     "risk": "low",
+     "price_scope": "rate_card",
+     "median": 2.35,
+     "p25": 1.8,
+     "p75": 2.619,
+     "cheapest": 0.8,
+     "cheapest_provider": "Hyper.ai",
+     "provider_count": 11,
+     "thin": false,
+     "date": "2026-10-29",
+     "change_7d_pct": 3.52
+    },
+    "spot": {
+     "label": "Spot",
+     "status": "live",
+     "risk": "high",
+     "price_scope": "rate_card",
+     "median": 1.54,
+     "p25": 0.8689,
+     "p75": 1.865,
+     "cheapest": 0.4278,
+     "cheapest_provider": "Google Cloud",
+     "provider_count": 5,
+     "thin": false,
+     "date": "2026-10-29",
+     "change_7d_pct": 38.74
+    },
+    "reserved": {
+     "label": "Reserved",
+     "status": "live",
+     "risk": "low",
+     "price_scope": "rate_card",
+     "median": 1.3,
+     "p25": null,
+     "p75": null,
+     "cheapest": 1.212329,
+     "cheapest_provider": "Synteq",
+     "provider_count": 3,
+     "thin": true,
+     "date": "2026-10-29",
+     "change_7d_pct": 0.0
+    },
+    "community": {
+     "label": "Community",
+     "status": "live",
+     "risk": "high",
+     "price_scope": "rate_card",
+     "median": 1.665,
+     "p25": null,
+     "p75": null,
+     "cheapest": 1.64,
+     "cheapest_provider": "RunPod",
+     "provider_count": 1,
+     "thin": true,
+     "date": "2026-10-29",
+     "change_7d_pct": 0.0
+    },
+    "marketplace": {
+     "label": "Marketplace floor",
+     "status": "live",
+     "risk": "high",
+     "price_scope": "marketplace_floor",
+     "median": 1.995,
+     "p25": null,
+     "p75": null,
+     "cheapest": 1.99,
+     "cheapest_provider": "Lium",
+     "provider_count": 1,
+     "thin": true,
+     "date": "2026-10-29",
+     "change_7d_pct": -6.78
+    },
+    "serverless": {
+     "label": "Serverless",
+     "status": "live",
+     "risk": "medium",
+     "price_scope": "serverless",
+     "median": 3.0312,
+     "p25": 2.3492,
+     "p75": 3.745,
+     "cheapest": 2.2,
+     "cheapest_provider": "Koyeb",
+     "provider_count": 5,
+     "thin": false,
+     "date": "2026-10-29",
+     "change_7d_pct": 0.0
+    }
+   }
+  },
+  {
+   "id": "RTX 4090",
+   "slug": "rtx-4090",
+   "name": "RTX 4090 24GB",
+   "vram_gb": 24,
+   "family": "Ada",
+   "as_of": "2026-10-29",
+   "status": "live",
+   "median": 0.735,
+   "p25": 0.4075,
+   "p75": 0.965,
+   "cheapest": 0.35,
+   "cheapest_provider": "TensorDock",
+   "provider_count": 4,
+   "change_7d_pct": 0.0,
+   "weekly_index": {
+    "weekStart": "2026-10-26",
+    "isoWeek": "2026-W44",
+    "vintage": "provisional",
+    "status": "thin",
+    "median": 0.735,
+    "p25": 0.4075,
+    "p75": 0.965,
+    "providerCount": 4,
+    "index": 104.8448,
+    "linkPairs": 4,
+    "withheldReason": null,
+    "ageDays": 3
+   },
+   "markets": {
+    "on_demand": {
+     "label": "正规 on-demand",
+     "status": "live",
+     "risk": "low",
+     "price_scope": "rate_card",
+     "median": 0.735,
+     "p25": 0.4075,
+     "p75": 0.965,
+     "cheapest": 0.35,
+     "cheapest_provider": "TensorDock",
+     "provider_count": 4,
+     "thin": false,
+     "date": "2026-10-29",
+     "change_7d_pct": 0.0
+    },
+    "spot": {
+     "label": "Spot",
+     "status": "live",
+     "risk": "high",
+     "price_scope": "rate_card",
+     "median": 0.61,
+     "p25": null,
+     "p75": null,
+     "cheapest": 0.54,
+     "cheapest_provider": "Lium",
+     "provider_count": 2,
+     "thin": true,
+     "date": "2026-10-29",
+     "change_7d_pct": 7.02
+    },
+    "reserved": {
+     "label": "Reserved",
+     "status": "no_data",
+     "risk": "low",
+     "price_scope": "rate_card",
+     "median": null,
+     "p25": null,
+     "p75": null,
+     "cheapest": null,
+     "cheapest_provider": null,
+     "provider_count": 0,
+     "thin": true,
+     "date": null,
+     "change_7d_pct": null
+    },
+    "community": {
+     "label": "Community",
+     "status": "live",
+     "risk": "high",
+     "price_scope": "rate_card",
+     "median": 0.25,
+     "p25": null,
+     "p75": null,
+     "cheapest": 0.16,
+     "cheapest_provider": "Salad",
+     "provider_count": 2,
+     "thin": true,
+     "date": "2026-10-29",
+     "change_7d_pct": 0.0
+    },
+    "marketplace": {
+     "label": "Marketplace floor",
+     "status": "live",
+     "risk": "high",
+     "price_scope": "marketplace_floor",
+     "median": 0.675,
+     "p25": null,
+     "p75": null,
+     "cheapest": 0.45,
+     "cheapest_provider": "Lium",
+     "provider_count": 1,
+     "thin": true,
+     "date": "2026-10-29",
+     "change_7d_pct": -10.0
+    },
+    "serverless": {
+     "label": "Serverless",
+     "status": "live",
+     "risk": "medium",
+     "price_scope": "serverless",
+     "median": 1.1,
+     "p25": null,
+     "p75": null,
+     "cheapest": 1.1,
+     "cheapest_provider": "RunPod",
+     "provider_count": 1,
+     "thin": true,
+     "date": "2026-10-29",
+     "change_7d_pct": 0.0
+    }
+   }
+  },
+  {
+   "id": "RTX 5090",
+   "slug": "rtx-5090",
+   "name": "RTX 5090 32GB",
+   "vram_gb": 32,
+   "family": "Blackwell",
+   "as_of": "2026-10-29",
+   "status": "live",
+   "median": 0.935,
+   "p25": 0.4325,
+   "p75": 1.265,
+   "cheapest": 0.35,
+   "cheapest_provider": "Hyper.ai",
+   "provider_count": 4,
+   "change_7d_pct": 0.0,
+   "weekly_index": {
+    "weekStart": "2026-10-26",
+    "isoWeek": "2026-W44",
+    "vintage": "provisional",
+    "status": "thin",
+    "median": 0.935,
+    "p25": 0.4325,
+    "p75": 1.265,
+    "providerCount": 4,
+    "index": 96.6281,
+    "linkPairs": 4,
+    "withheldReason": null,
+    "ageDays": 3
+   },
+   "markets": {
+    "on_demand": {
+     "label": "正规 on-demand",
+     "status": "live",
+     "risk": "low",
+     "price_scope": "rate_card",
+     "median": 0.935,
+     "p25": 0.4325,
+     "p75": 1.265,
+     "cheapest": 0.35,
+     "cheapest_provider": "Hyper.ai",
+     "provider_count": 4,
+     "thin": false,
+     "date": "2026-10-29",
+     "change_7d_pct": 0.0
+    },
+    "spot": {
+     "label": "Spot",
+     "status": "live",
+     "risk": "high",
+     "price_scope": "rate_card",
+     "median": 0.795,
+     "p25": null,
+     "p75": null,
+     "cheapest": 0.69,
+     "cheapest_provider": "Lium",
+     "provider_count": 2,
+     "thin": true,
+     "date": "2026-10-29",
+     "change_7d_pct": 7.43
+    },
+    "reserved": {
+     "label": "Reserved",
+     "status": "no_data",
+     "risk": "low",
+     "price_scope": "rate_card",
+     "median": null,
+     "p25": null,
+     "p75": null,
+     "cheapest": null,
+     "cheapest_provider": null,
+     "provider_count": 0,
+     "thin": true,
+     "date": null,
+     "change_7d_pct": null
+    },
+    "community": {
+     "label": "Community",
+     "status": "live",
+     "risk": "high",
+     "price_scope": "rate_card",
+     "median": 0.4325,
+     "p25": null,
+     "p75": null,
+     "cheapest": 0.1,
+     "cheapest_provider": "Salad",
+     "provider_count": 2,
+     "thin": true,
+     "date": "2026-10-29",
+     "change_7d_pct": 0.0
+    },
+    "marketplace": {
+     "label": "Marketplace floor",
+     "status": "live",
+     "risk": "high",
+     "price_scope": "marketplace_floor",
+     "median": 0.85,
+     "p25": null,
+     "p75": null,
+     "cheapest": 0.75,
+     "cheapest_provider": "Lium",
+     "provider_count": 1,
+     "thin": true,
+     "date": "2026-10-29",
+     "change_7d_pct": -7.61
+    },
+    "serverless": {
+     "label": "Serverless",
+     "status": "live",
+     "risk": "medium",
+     "price_scope": "serverless",
+     "median": 1.58,
+     "p25": null,
+     "p75": null,
+     "cheapest": 1.58,
+     "cheapest_provider": "RunPod",
+     "provider_count": 1,
+     "thin": true,
+     "date": "2026-10-29",
+     "change_7d_pct": 0.0
+    }
+   }
+  },
+  {
+   "id": "MI300X",
+   "slug": "mi300x",
+   "name": "MI300X 192GB",
+   "vram_gb": 192,
+   "family": "CDNA 3",
+   "as_of": "2026-10-29",
+   "status": "live",
+   "median": 2.99,
+   "p25": 2.49,
+   "p75": 3.52,
+   "cheapest": 2.39,
+   "cheapest_provider": "RunPod",
+   "provider_count": 5,
+   "change_7d_pct": 0.0,
+   "weekly_index": {
+    "weekStart": "2026-10-26",
+    "isoWeek": "2026-W44",
+    "vintage": "provisional",
+    "status": "thin",
+    "median": 2.99,
+    "p25": 2.49,
+    "p75": 3.52,
+    "providerCount": 5,
+    "index": 106.8099,
+    "linkPairs": 5,
+    "withheldReason": null,
+    "ageDays": 3
+   },
+   "markets": {
+    "on_demand": {
+     "label": "正规 on-demand",
+     "status": "live",
+     "risk": "low",
+     "price_scope": "rate_card",
+     "median": 2.99,
+     "p25": 2.49,
+     "p75": 3.52,
+     "cheapest": 2.39,
+     "cheapest_provider": "RunPod",
+     "provider_count": 5,
+     "thin": false,
+     "date": "2026-10-29",
+     "change_7d_pct": 0.0
+    },
+    "spot": {
+     "label": "Spot",
+     "status": "no_data",
+     "risk": "high",
+     "price_scope": "rate_card",
+     "median": null,
+     "p25": null,
+     "p75": null,
+     "cheapest": null,
+     "cheapest_provider": null,
+     "provider_count": 0,
+     "thin": true,
+     "date": null,
+     "change_7d_pct": null
+    },
+    "reserved": {
+     "label": "Reserved",
+     "status": "no_data",
+     "risk": "low",
+     "price_scope": "rate_card",
+     "median": null,
+     "p25": null,
+     "p75": null,
+     "cheapest": null,
+     "cheapest_provider": null,
+     "provider_count": 0,
+     "thin": true,
+     "date": null,
+     "change_7d_pct": null
+    },
+    "community": {
+     "label": "Community",
+     "status": "no_data",
+     "risk": "high",
+     "price_scope": "rate_card",
+     "median": null,
+     "p25": null,
+     "p75": null,
+     "cheapest": null,
+     "cheapest_provider": null,
+     "provider_count": 0,
+     "thin": true,
+     "date": null,
+     "change_7d_pct": null
+    },
+    "marketplace": {
+     "label": "Marketplace floor",
+     "status": "no_data",
+     "risk": "high",
+     "price_scope": "marketplace_floor",
+     "median": null,
+     "p25": null,
+     "p75": null,
+     "cheapest": null,
+     "cheapest_provider": null,
+     "provider_count": 0,
+     "thin": true,
+     "date": null,
+     "change_7d_pct": null
+    },
+    "serverless": {
+     "label": "Serverless",
+     "status": "no_data",
+     "risk": "medium",
+     "price_scope": "serverless",
+     "median": null,
+     "p25": null,
+     "p75": null,
+     "cheapest": null,
+     "cheapest_provider": null,
+     "provider_count": 0,
+     "thin": true,
+     "date": null,
+     "change_7d_pct": null
+    }
+   }
+  },
+  {
+   "id": "GH200",
+   "slug": "gh200",
+   "name": "GH200 96GB",
+   "vram_gb": 96,
+   "family": "Hopper",
+   "as_of": "2026-10-29",
+   "status": "live",
+   "median": 3.02,
+   "p25": null,
+   "p75": null,
+   "cheapest": 2.29,
+   "cheapest_provider": "Lambda",
+   "provider_count": 3,
+   "change_7d_pct": 9.82,
+   "weekly_index": {
+    "weekStart": "2026-07-13",
+    "isoWeek": "2026-W29",
+    "vintage": "final",
+    "status": "thin",
+    "median": 2.14,
+    "p25": 1.9075,
+    "p75": 5.4475,
+    "providerCount": 4,
+    "index": 100.0,
+    "linkPairs": 4,
+    "withheldReason": null,
+    "ageDays": 108
+   },
+   "markets": {
+    "on_demand": {
+     "label": "正规 on-demand",
+     "status": "live",
+     "risk": "low",
+     "price_scope": "rate_card",
+     "median": 3.02,
+     "p25": null,
+     "p75": null,
+     "cheapest": 2.29,
+     "cheapest_provider": "Lambda",
+     "provider_count": 3,
+     "thin": true,
+     "date": "2026-10-29",
+     "change_7d_pct": 9.82
+    },
+    "spot": {
+     "label": "Spot",
+     "status": "no_data",
+     "risk": "high",
+     "price_scope": "rate_card",
+     "median": null,
+     "p25": null,
+     "p75": null,
+     "cheapest": null,
+     "cheapest_provider": null,
+     "provider_count": 0,
+     "thin": true,
+     "date": null,
+     "change_7d_pct": null
+    },
+    "reserved": {
+     "label": "Reserved",
+     "status": "no_data",
+     "risk": "low",
+     "price_scope": "rate_card",
+     "median": null,
+     "p25": null,
+     "p75": null,
+     "cheapest": null,
+     "cheapest_provider": null,
+     "provider_count": 0,
+     "thin": true,
+     "date": null,
+     "change_7d_pct": null
+    },
+    "community": {
+     "label": "Community",
+     "status": "no_data",
+     "risk": "high",
+     "price_scope": "rate_card",
+     "median": null,
+     "p25": null,
+     "p75": null,
+     "cheapest": null,
+     "cheapest_provider": null,
+     "provider_count": 0,
+     "thin": true,
+     "date": null,
+     "change_7d_pct": null
+    },
+    "marketplace": {
+     "label": "Marketplace floor",
+     "status": "no_data",
+     "risk": "high",
+     "price_scope": "marketplace_floor",
+     "median": null,
+     "p25": null,
+     "p75": null,
+     "cheapest": null,
+     "cheapest_provider": null,
+     "provider_count": 0,
+     "thin": true,
+     "date": null,
+     "change_7d_pct": null
+    },
+    "serverless": {
+     "label": "Serverless",
+     "status": "no_data",
+     "risk": "medium",
+     "price_scope": "serverless",
+     "median": null,
+     "p25": null,
+     "p75": null,
+     "cheapest": null,
+     "cheapest_provider": null,
+     "provider_count": 0,
+     "thin": true,
+     "date": null,
+     "change_7d_pct": null
+    }
+   }
+  }
+ ],
+ "providers": {
+  "own": [
+   {
+    "id": "spheron",
+    "slug": "own-spheron",
+    "name": "Spheron",
+    "cards": [
+     "A100",
+     "B200",
+     "B300",
+     "GH200",
+     "H100",
+     "H200",
+     "L40S",
+     "MI300X",
+     "RTX 4090",
+     "RTX 5090",
+     "RTX PRO 6000"
+    ],
+    "markets": [
+     "on_demand",
+     "spot"
+    ],
+    "quotes": 18,
+    "cheapest": {
+     "card": "RTX 4090",
+     "market": "on_demand",
+     "usd_per_gpu_hour": 0.58,
+     "source_url": "https://www.spheron.network/pricing/"
+    }
+   },
+   {
+    "id": "runpod",
+    "slug": "own-runpod",
+    "name": "RunPod",
+    "cards": [
+     "A100",
+     "B200",
+     "B300",
+     "H100",
+     "H200",
+     "L40S",
+     "MI300X",
+     "RTX 4090",
+     "RTX 5090",
+     "RTX PRO 6000"
+    ],
+    "markets": [
+     "community",
+     "on_demand",
+     "serverless"
+    ],
+    "quotes": 26,
+    "cheapest": {
+     "card": "RTX 4090",
+     "market": "community",
+     "usd_per_gpu_hour": 0.34,
+     "source_url": "https://www.runpod.io/pricing"
+    }
+   },
+   {
+    "id": "lium",
+    "slug": "own-lium",
+    "name": "Lium",
+    "cards": [
+     "A100",
+     "B200",
+     "B300",
+     "H100",
+     "H200",
+     "L40S",
+     "RTX 4090",
+     "RTX 5090",
+     "RTX PRO 6000"
+    ],
+    "markets": [
+     "marketplace",
+     "spot"
+    ],
+    "quotes": 15,
+    "cheapest": {
+     "card": "L40S",
+     "market": "marketplace",
+     "usd_per_gpu_hour": 0.38,
+     "source_url": "https://lium.io/api/public/v1/nodes"
+    }
+   },
+   {
+    "id": "coreweave",
+    "slug": "own-coreweave",
+    "name": "CoreWeave",
+    "cards": [
+     "A100",
+     "B200",
+     "GH200",
+     "H100",
+     "H200",
+     "L40S",
+     "RTX PRO 6000"
+    ],
+    "markets": [
+     "on_demand"
+    ],
+    "quotes": 7,
+    "cheapest": {
+     "card": "L40S",
+     "market": "on_demand",
+     "usd_per_gpu_hour": 2.25,
+     "source_url": "https://www.coreweave.com/pricing"
+    }
+   },
+   {
+    "id": "daytona",
+    "slug": "own-daytona",
+    "name": "Daytona",
+    "cards": [
+     "B200",
+     "B300",
+     "H100",
+     "H200",
+     "RTX 4090",
+     "RTX 5090",
+     "RTX PRO 6000"
+    ],
+    "markets": [
+     "on_demand",
+     "spot"
+    ],
+    "quotes": 14,
+    "cheapest": {
+     "card": "RTX 4090",
+     "market": "spot",
+     "usd_per_gpu_hour": 0.57,
+     "source_url": "https://billing.app.daytona.io/gpu-pricing"
+    }
+   },
+   {
+    "id": "modal",
+    "slug": "own-modal",
+    "name": "Modal",
+    "cards": [
+     "A100",
+     "B200",
+     "B300",
+     "H100",
+     "H200",
+     "L40S",
+     "RTX PRO 6000"
+    ],
+    "markets": [
+     "serverless"
+    ],
+    "quotes": 7,
+    "cheapest": {
+     "card": "L40S",
+     "market": "serverless",
+     "usd_per_gpu_hour": 1.9512,
+     "source_url": "https://modal.com/pricing"
+    }
+   },
+   {
+    "id": "datacrunch",
+    "slug": "own-datacrunch",
+    "name": "Verda",
+    "cards": [
+     "A100",
+     "B200",
+     "B300",
+     "H100",
+     "H200",
+     "L40S",
+     "RTX PRO 6000"
+    ],
+    "markets": [
+     "on_demand",
+     "spot"
+    ],
+    "quotes": 14,
+    "cheapest": {
+     "card": "L40S",
+     "market": "spot",
+     "usd_per_gpu_hour": 0.941,
+     "source_url": "https://datacrunch.io/pricing"
+    }
+   },
+   {
+    "id": "cerebrium",
+    "slug": "own-cerebrium",
+    "name": "Cerebrium",
+    "cards": [
+     "A100",
+     "B200",
+     "H100",
+     "H200",
+     "L40S",
+     "RTX PRO 6000"
+    ],
+    "markets": [
+     "serverless"
+    ],
+    "quotes": 6,
+    "cheapest": {
+     "card": "L40S",
+     "market": "serverless",
+     "usd_per_gpu_hour": 1.9512,
+     "source_url": "https://www.cerebrium.ai/pricing"
+    }
+   },
+   {
+    "id": "crusoe",
+    "slug": "own-crusoe",
+    "name": "Crusoe",
+    "cards": [
+     "A100",
+     "B300",
+     "H100",
+     "H200",
+     "L40S",
+     "MI300X"
+    ],
+    "markets": [
+     "on_demand"
+    ],
+    "quotes": 6,
+    "cheapest": {
+     "card": "L40S",
+     "market": "on_demand",
+     "usd_per_gpu_hour": 1.5,
+     "source_url": "https://www.crusoe.ai/cloud/pricing"
+    }
+   },
+   {
+    "id": "hyperstack",
+    "slug": "own-hyperstack",
+    "name": "Hyperstack",
+    "cards": [
+     "A100",
+     "B200",
+     "B300",
+     "H100",
+     "H200",
+     "RTX PRO 6000"
+    ],
+    "markets": [
+     "on_demand",
+     "reserved"
+    ],
+    "quotes": 11,
+    "cheapest": {
+     "card": "A100",
+     "market": "reserved",
+     "usd_per_gpu_hour": 0.95,
+     "source_url": "https://www.hyperstack.cloud/gpu-pricing"
+    }
+   },
+   {
+    "id": "koyeb",
+    "slug": "own-koyeb",
+    "name": "Koyeb",
+    "cards": [
+     "A100",
+     "B200",
+     "H100",
+     "H200",
+     "L40S",
+     "RTX PRO 6000"
+    ],
+    "markets": [
+     "serverless"
+    ],
+    "quotes": 6,
+    "cheapest": {
+     "card": "L40S",
+     "market": "serverless",
+     "usd_per_gpu_hour": 1.2,
+     "source_url": "https://www.koyeb.com/pricing"
+    }
+   },
+   {
+    "id": "nebius",
+    "slug": "own-nebius",
+    "name": "Nebius",
+    "cards": [
+     "B200",
+     "B300",
+     "H100",
+     "H200",
+     "L40S",
+     "RTX PRO 6000"
+    ],
+    "markets": [
+     "on_demand"
+    ],
+    "quotes": 6,
+    "cheapest": {
+     "card": "L40S",
+     "market": "on_demand",
+     "usd_per_gpu_hour": 1.35,
+     "source_url": "https://docs.nebius.com/compute/resources/pricing"
+    }
+   },
+   {
+    "id": "digitalocean",
+    "slug": "own-digitalocean",
+    "name": "DigitalOcean",
+    "cards": [
+     "B300",
+     "H100",
+     "H200",
+     "L40S",
+     "MI300X"
+    ],
+    "markets": [
+     "on_demand"
+    ],
+    "quotes": 5,
+    "cheapest": {
+     "card": "L40S",
+     "market": "on_demand",
+     "usd_per_gpu_hour": 1.57,
+     "source_url": "https://www.digitalocean.com/pricing/gpu-droplets"
+    }
+   },
+   {
+    "id": "gcp",
+    "slug": "own-gcp",
+    "name": "Google Cloud",
+    "cards": [
+     "A100",
+     "B200",
+     "H100",
+     "H200",
+     "RTX PRO 6000"
+    ],
+    "markets": [
+     "on_demand",
+     "spot"
+    ],
+    "quotes": 10,
+    "cheapest": {
+     "card": "RTX PRO 6000",
+     "market": "spot",
+     "usd_per_gpu_hour": 0.4278,
+     "source_url": "https://cloud.google.com/products/compute/gpus-pricing?hl=en"
+    }
+   },
+   {
+    "id": "massedcompute",
+    "slug": "own-massedcompute",
+    "name": "Massed Compute",
+    "cards": [
+     "A100",
+     "H100",
+     "H200",
+     "L40S",
+     "RTX PRO 6000"
+    ],
+    "markets": [
+     "on_demand"
+    ],
+    "quotes": 5,
+    "cheapest": {
+     "card": "L40S",
+     "market": "on_demand",
+     "usd_per_gpu_hour": 0.97,
+     "source_url": "https://massedcompute.com/pricing"
+    }
+   },
+   {
+    "id": "fal",
+    "slug": "own-fal",
+    "name": "fal",
+    "cards": [
+     "B200",
+     "B300",
+     "H100",
+     "H200",
+     "RTX PRO 6000"
+    ],
+    "markets": [
+     "serverless"
+    ],
+    "quotes": 5,
+    "cheapest": {
+     "card": "RTX PRO 6000",
+     "market": "serverless",
+     "usd_per_gpu_hour": 4.0,
+     "source_url": "https://fal.ai/pricing"
+    }
+   },
+   {
+    "id": "aws",
+    "slug": "own-aws",
+    "name": "AWS",
+    "cards": [
+     "A100",
+     "H100",
+     "H200",
+     "L40S"
+    ],
+    "markets": [
+     "on_demand",
+     "spot"
+    ],
+    "quotes": 6,
+    "cheapest": {
+     "card": "A100",
+     "market": "spot",
+     "usd_per_gpu_hour": 1.633338,
+     "source_url": "https://website.spot.ec2.aws.a2z.com/spot.js"
+    }
+   },
+   {
+    "id": "fireworks",
+    "slug": "own-fireworks",
+    "name": "Fireworks AI",
+    "cards": [
+     "B200",
+     "B300",
+     "H100",
+     "H200"
+    ],
+    "markets": [
+     "serverless"
+    ],
+    "quotes": 4,
+    "cheapest": {
+     "card": "H100",
+     "market": "serverless",
+     "usd_per_gpu_hour": 8.0,
+     "source_url": "https://fireworks.ai/pricing"
+    }
+   },
+   {
+    "id": "impossiblecloud",
+    "slug": "own-impossiblecloud",
+    "name": "Impossible Cloud",
+    "cards": [
+     "B200",
+     "B300",
+     "H100",
+     "H200"
+    ],
+    "markets": [
+     "reserved"
+    ],
+    "quotes": 4,
+    "cheapest": {
+     "card": "H200",
+     "market": "reserved",
+     "usd_per_gpu_hour": 3.157895,
+     "source_url": "https://www.impossiblecloud.com/en-us/baremetal"
+    }
+   },
+   {
+    "id": "lambda",
+    "slug": "own-lambda",
+    "name": "Lambda",
+    "cards": [
+     "A100",
+     "B200",
+     "GH200",
+     "H100"
+    ],
+    "markets": [
+     "on_demand"
+    ],
+    "quotes": 4,
+    "cheapest": {
+     "card": "GH200",
+     "market": "on_demand",
+     "usd_per_gpu_hour": 2.29,
+     "source_url": "https://lambda.ai/instances"
+    }
+   },
+   {
+    "id": "ovh",
+    "slug": "own-ovh",
+    "name": "OVHcloud",
+    "cards": [
+     "A100",
+     "H100",
+     "H200",
+     "L40S"
+    ],
+    "markets": [
+     "on_demand"
+    ],
+    "quotes": 4,
+    "cheapest": {
+     "card": "L40S",
+     "market": "on_demand",
+     "usd_per_gpu_hour": 1.8,
+     "source_url": "https://www.ovhcloud.com/en/public-cloud/prices/"
+    }
+   },
+   {
+    "id": "primeintellect",
+    "slug": "own-primeintellect",
+    "name": "Prime Intellect",
+    "cards": [
+     "B200",
+     "B300",
+     "H100",
+     "H200"
+    ],
+    "markets": [
+     "on_demand",
+     "spot"
+    ],
+    "quotes": 5,
+    "cheapest": {
+     "card": "H100",
+     "market": "spot",
+     "usd_per_gpu_hour": 0.94,
+     "source_url": "https://www.primeintellect.ai/"
+    }
+   },
+   {
+    "id": "replicate",
+    "slug": "own-replicate",
+    "name": "Replicate",
+    "cards": [
+     "A100",
+     "H100",
+     "H200",
+     "L40S"
+    ],
+    "markets": [
+     "serverless"
+    ],
+    "quotes": 4,
+    "cheapest": {
+     "card": "L40S",
+     "market": "serverless",
+     "usd_per_gpu_hour": 3.51,
+     "source_url": "https://replicate.com/pricing"
+    }
+   },
+   {
+    "id": "together",
+    "slug": "own-together",
+    "name": "Together AI",
+    "cards": [
+     "B200",
+     "B300",
+     "H100",
+     "H200"
+    ],
+    "markets": [
+     "on_demand",
+     "spot"
+    ],
+    "quotes": 8,
+    "cheapest": {
+     "card": "H100",
+     "market": "spot",
+     "usd_per_gpu_hour": 1.99,
+     "source_url": "https://www.together.ai/pricing"
+    }
+   },
+   {
+    "id": "vultr",
+    "slug": "own-vultr",
+    "name": "Vultr",
+    "cards": [
+     "A100",
+     "B200",
+     "H100",
+     "L40S"
+    ],
+    "markets": [
+     "on_demand",
+     "spot"
+    ],
+    "quotes": 4,
+    "cheapest": {
+     "card": "L40S",
+     "market": "on_demand",
+     "usd_per_gpu_hour": 1.671,
+     "source_url": "https://api.vultr.com/v2/plans?type=all&per_page=500"
+    }
+   },
+   {
+    "id": "baseten",
+    "slug": "own-baseten",
+    "name": "Baseten",
+    "cards": [
+     "A100",
+     "B200",
+     "H100"
+    ],
+    "markets": [
+     "serverless"
+    ],
+    "quotes": 3,
+    "cheapest": {
+     "card": "A100",
+     "market": "serverless",
+     "usd_per_gpu_hour": 4.0,
+     "source_url": "https://www.baseten.co/pricing/"
+    }
+   },
+   {
+    "id": "gmicloud",
+    "slug": "own-gmicloud",
+    "name": "GMI Cloud",
+    "cards": [
+     "B200",
+     "H100",
+     "H200"
+    ],
+    "markets": [
+     "on_demand"
+    ],
+    "quotes": 3,
+    "cheapest": {
+     "card": "H100",
+     "market": "on_demand",
+     "usd_per_gpu_hour": 2.6,
+     "source_url": "https://www.gmicloud.ai/en/pricing"
+    }
+   },
+   {
+    "id": "hyperai",
+    "slug": "own-hyperai",
+    "name": "Hyper.ai",
+    "cards": [
+     "H100",
+     "RTX 5090",
+     "RTX PRO 6000"
+    ],
+    "markets": [
+     "on_demand"
+    ],
+    "quotes": 3,
+    "cheapest": {
+     "card": "RTX 5090",
+     "market": "on_demand",
+     "usd_per_gpu_hour": 0.35,
+     "source_url": "https://hyper.ai/en/pricing"
+    }
+   },
+   {
+    "id": "latitude",
+    "slug": "own-latitude",
+    "name": "Latitude.sh",
+    "cards": [
+     "B300",
+     "H100",
+     "RTX PRO 6000"
+    ],
+    "markets": [
+     "on_demand",
+     "reserved"
+    ],
+    "quotes": 6,
+    "cheapest": {
+     "card": "H100",
+     "market": "reserved",
+     "usd_per_gpu_hour": 1.179452,
+     "source_url": "https://www.latitude.sh/pricing"
+    }
+   },
+   {
+    "id": "scaleway",
+    "slug": "own-scaleway",
+    "name": "Scaleway",
+    "cards": [
+     "B300",
+     "H100",
+     "L40S"
+    ],
+    "markets": [
+     "on_demand"
+    ],
+    "quotes": 3,
+    "cheapest": {
+     "card": "L40S",
+     "market": "on_demand",
+     "usd_per_gpu_hour": 1.6365,
+     "source_url": "https://www.scaleway.com/en/pricing/gpu/"
+    }
+   },
+   {
+    "id": "tensordock",
+    "slug": "own-tensordock",
+    "name": "TensorDock",
+    "cards": [
+     "A100",
+     "H100",
+     "RTX 4090"
+    ],
+    "markets": [
+     "on_demand",
+     "spot"
+    ],
+    "quotes": 4,
+    "cheapest": {
+     "card": "RTX 4090",
+     "market": "on_demand",
+     "usd_per_gpu_hour": 0.35,
+     "source_url": "https://www.tensordock.com/cloud-gpus.html"
+    }
+   },
+   {
+    "id": "azure",
+    "slug": "own-azure",
+    "name": "Azure",
+    "cards": [
+     "A100",
+     "H100"
+    ],
+    "markets": [
+     "on_demand",
+     "spot"
+    ],
+    "quotes": 4,
+    "cheapest": {
+     "card": "A100",
+     "market": "spot",
+     "usd_per_gpu_hour": 0.67877,
+     "source_url": "https://prices.azure.com/api/retail/prices"
+    }
+   },
+   {
+    "id": "salad",
+    "slug": "own-salad",
+    "name": "Salad",
+    "cards": [
+     "RTX 4090",
+     "RTX 5090"
+    ],
+    "markets": [
+     "community"
+    ],
+    "quotes": 2,
+    "cheapest": {
+     "card": "RTX 5090",
+     "market": "community",
+     "usd_per_gpu_hour": 0.1,
+     "source_url": "https://salad.com/pricing"
+    }
+   },
+   {
+    "id": "synteq",
+    "slug": "own-synteq",
+    "name": "Synteq",
+    "cards": [
+     "B300",
+     "RTX PRO 6000"
+    ],
+    "markets": [
+     "reserved"
+    ],
+    "quotes": 2,
+    "cheapest": {
+     "card": "RTX PRO 6000",
+     "market": "reserved",
+     "usd_per_gpu_hour": 1.212329,
+     "source_url": "https://synteq.com/api/catalog/vps"
+    }
+   },
+   {
+    "id": "thundercompute",
+    "slug": "own-thundercompute",
+    "name": "Thunder Compute",
+    "cards": [
+     "A100",
+     "H100"
+    ],
+    "markets": [
+     "on_demand"
+    ],
+    "quotes": 2,
+    "cheapest": {
+     "card": "A100",
+     "market": "on_demand",
+     "usd_per_gpu_hour": 1.09,
+     "source_url": "https://www.thundercompute.com/pricing"
+    }
+   },
+   {
+    "id": "hotaisle",
+    "slug": "own-hotaisle",
+    "name": "Hot Aisle",
+    "cards": [
+     "MI300X"
+    ],
+    "markets": [
+     "on_demand"
+    ],
+    "quotes": 1,
+    "cheapest": {
+     "card": "MI300X",
+     "market": "on_demand",
+     "usd_per_gpu_hour": 2.99,
+     "source_url": "https://hotaisle.xyz/pricing"
+    }
+   },
+   {
+    "id": "voltagepark",
+    "slug": "own-voltagepark",
+    "name": "Voltage Park",
+    "cards": [
+     "H100"
+    ],
+    "markets": [
+     "on_demand"
+    ],
+    "quotes": 1,
+    "cheapest": {
+     "card": "H100",
+     "market": "on_demand",
+     "usd_per_gpu_hour": 1.99,
+     "source_url": "https://support.voltagepark.com/article/example-deploying-gpt-oss-on-voltage-park"
+    }
+   }
+  ],
+  "external": [
+   {
+    "id": "airgpu",
+    "slug": "ext-airgpu",
+    "name": "airgpu",
+    "type": "specialist",
+    "source_kind": "html",
+    "scraped": true,
+    "current_quotes": 7,
+    "cards": [
+     "L40S"
+    ],
+    "website": "https://airgpu.com/",
+    "pricing_page": "https://airgpu.com/"
+   },
+   {
+    "id": "airon",
+    "slug": "ext-airon",
+    "name": "Airon",
+    "type": "specialist",
+    "source_kind": "html",
+    "scraped": true,
+    "current_quotes": 5,
+    "cards": [
+     "H100",
+     "H200",
+     "L40S"
+    ],
+    "website": "https://www.airon.ai/",
+    "pricing_page": "https://www.airon.ai/pricing"
+   },
+   {
+    "id": "linode",
+    "slug": "ext-linode",
+    "name": "Akamai Cloud (Linode)",
+    "type": "specialist",
+    "source_kind": "api",
+    "scraped": true,
+    "current_quotes": 2,
+    "cards": [],
+    "website": "https://www.linode.com/",
+    "pricing_page": "https://www.akamai.com/cloud/pricing"
+   },
+   {
+    "id": "aws",
+    "slug": "ext-aws",
+    "name": "Amazon Web Services",
+    "type": "hyperscaler",
+    "source_kind": "api",
+    "scraped": true,
+    "current_quotes": 13,
+    "cards": [
+     "A100",
+     "B200",
+     "B300",
+     "H100",
+     "H200",
+     "L40S",
+     "RTX PRO 6000"
+    ],
+    "website": "https://aws.amazon.com",
+    "pricing_page": "https://aws.amazon.com/ec2/pricing/on-demand/"
+   },
+   {
+    "id": "atlantic",
+    "slug": "ext-atlantic",
+    "name": "Atlantic.Net",
+    "type": "specialist",
+    "source_kind": "html",
+    "scraped": true,
+    "current_quotes": 6,
+    "cards": [
+     "H100",
+     "L40S"
+    ],
+    "website": "https://www.atlantic.net/",
+    "pricing_page": "https://www.atlantic.net/gpu-server-hosting/gpu-cloud-hosting/"
+   },
+   {
+    "id": "atlascloud",
+    "slug": "ext-atlascloud",
+    "name": "Atlas Cloud",
+    "type": "specialist",
+    "source_kind": "html",
+    "scraped": true,
+    "current_quotes": 2,
+    "cards": [
+     "H100",
+     "H200"
+    ],
+    "website": "https://www.atlascloud.ai/",
+    "pricing_page": "https://www.atlascloud.ai/pricing/gpu"
+   },
+   {
+    "id": "bamboozle",
+    "slug": "ext-bamboozle",
+    "name": "Bamboozle Web Services",
+    "type": "specialist",
+    "source_kind": "html",
+    "scraped": true,
+    "current_quotes": 3,
+    "cards": [
+     "A100",
+     "H100"
+    ],
+    "website": "https://bamboozle.me/",
+    "pricing_page": "https://bamboozle.me/compute/gpu/"
+   },
+   {
+    "id": "barrack",
+    "slug": "ext-barrack",
+    "name": "Barrack AI",
+    "type": "specialist",
+    "source_kind": "js_rendered",
+    "scraped": true,
+    "current_quotes": 8,
+    "cards": [
+     "A100",
+     "B200",
+     "B300",
+     "H100",
+     "H200"
+    ],
+    "website": "https://barrack.ai/",
+    "pricing_page": "https://barrack.ai/pricing"
+   },
+   {
+    "id": "baseten",
+    "slug": "ext-baseten",
+    "name": "Baseten",
+    "type": "specialist",
+    "source_kind": "html",
+    "scraped": true,
+    "current_quotes": 6,
+    "cards": [
+     "A100",
+     "B200",
+     "H100"
+    ],
+    "website": "https://www.baseten.co/",
+    "pricing_page": "https://www.baseten.co/pricing/"
+   },
+   {
+    "id": "beam",
+    "slug": "ext-beam",
+    "name": "Beam",
+    "type": "specialist",
+    "source_kind": "html",
+    "scraped": true,
+    "current_quotes": 12,
+    "cards": [
+     "A100",
+     "B200",
+     "H100",
+     "H200",
+     "L40S",
+     "RTX 4090",
+     "RTX 5090",
+     "RTX PRO 6000"
+    ],
+    "website": "https://www.beam.cloud/",
+    "pricing_page": "https://www.beam.cloud/pricing"
+   },
+   {
+    "id": "bentaus",
+    "slug": "ext-bentaus",
+    "name": "Bentaus",
+    "type": "specialist",
+    "source_kind": "html",
+    "scraped": true,
+    "current_quotes": 2,
+    "cards": [],
+    "website": "https://www.bentaus.com/",
+    "pricing_page": "https://www.bentaus.com/amd-mi325x"
+   },
+   {
+    "id": "bitdeer",
+    "slug": "ext-bitdeer",
+    "name": "Bitdeer AI",
+    "type": "specialist",
+    "source_kind": "html",
+    "scraped": true,
+    "current_quotes": 12,
+    "cards": [
+     "B200",
+     "H100",
+     "H200"
+    ],
+    "website": "https://www.bitdeer.ai/",
+    "pricing_page": "https://www.bitdeer.ai/en/pricing/gpu-compute"
+   },
+   {
+    "id": "canopywave",
+    "slug": "ext-canopywave",
+    "name": "Canopy Wave",
+    "type": "specialist",
+    "source_kind": "html",
+    "scraped": true,
+    "current_quotes": 2,
+    "cards": [
+     "H100",
+     "H200"
+    ],
+    "website": "https://canopywave.com/",
+    "pricing_page": "https://canopywave.com/pricing"
+   },
+   {
+    "id": "cato",
+    "slug": "ext-cato",
+    "name": "Cato Digital",
+    "type": "specialist",
+    "source_kind": "html",
+    "scraped": true,
+    "current_quotes": 3,
+    "cards": [
+     "A100"
+    ],
+    "website": "https://cato.digital/",
+    "pricing_page": "https://cato.digital/product/gpu/"
+   },
+   {
+    "id": "centron",
+    "slug": "ext-centron",
+    "name": "centron",
+    "type": "specialist",
+    "source_kind": "html",
+    "scraped": true,
+    "current_quotes": 5,
+    "cards": [
+     "A100"
+    ],
+    "website": "https://www.centron.de/",
+    "pricing_page": "https://www.centron.de/en/pricing/gpu"
+   },
+   {
+    "id": "cerebrium",
+    "slug": "ext-cerebrium",
+    "name": "Cerebrium",
+    "type": "specialist",
+    "source_kind": "html",
+    "scraped": true,
+    "current_quotes": 10,
+    "cards": [
+     "A100",
+     "B200",
+     "H100",
+     "H200",
+     "L40S",
+     "RTX PRO 6000"
+    ],
+    "website": "https://cerebrium.ai/",
+    "pricing_page": "https://cerebrium.ai/pricing"
+   },
+   {
+    "id": "civo",
+    "slug": "ext-civo",
+    "name": "Civo",
+    "type": "specialist",
+    "source_kind": "html",
+    "scraped": true,
+    "current_quotes": 20,
+    "cards": [
+     "A100",
+     "B200",
+     "B300",
+     "H100",
+     "H200",
+     "L40S"
+    ],
+    "website": "https://www.civo.com/",
+    "pricing_page": "https://www.civo.com/pricing"
+   },
+   {
+    "id": "clore",
+    "slug": "ext-clore",
+    "name": "Clore.ai",
+    "type": "marketplace",
+    "source_kind": "api",
+    "scraped": true,
+    "current_quotes": 48,
+    "cards": [
+     "RTX 4090",
+     "RTX 5090",
+     "RTX PRO 6000"
+    ],
+    "website": "https://clore.ai",
+    "pricing_page": "https://clore.ai/marketplace"
+   },
+   {
+    "id": "cloudru",
+    "slug": "ext-cloudru",
+    "name": "Cloud.ru Evolution",
+    "type": "specialist",
+    "source_kind": "html",
+    "scraped": true,
+    "current_quotes": 6,
+    "cards": [
+     "A100",
+     "H100"
+    ],
+    "website": "https://cloud.ru/",
+    "pricing_page": "https://cloud.ru/documents/tariffs/evolution/evolution-compute-gpu"
+   },
+   {
+    "id": "cloudgpu",
+    "slug": "ext-cloudgpu",
+    "name": "CloudGPU",
+    "type": "specialist",
+    "source_kind": "html",
+    "scraped": true,
+    "current_quotes": 10,
+    "cards": [
+     "A100",
+     "RTX 4090",
+     "RTX 5090",
+     "RTX PRO 6000"
+    ],
+    "website": "https://cloudgpu.app/",
+    "pricing_page": "https://cloudgpu.app/pricing"
+   },
+   {
+    "id": "cloudrift",
+    "slug": "ext-cloudrift",
+    "name": "CloudRift",
+    "type": "specialist",
+    "source_kind": "html",
+    "scraped": true,
+    "current_quotes": 18,
+    "cards": [
+     "A100",
+     "H100",
+     "H200",
+     "L40S",
+     "RTX 4090",
+     "RTX 5090",
+     "RTX PRO 6000"
+    ],
+    "website": "https://www.cloudrift.ai/",
+    "pricing_page": "https://www.cloudrift.ai/pricing"
+   },
+   {
+    "id": "coreweave",
+    "slug": "ext-coreweave",
+    "name": "CoreWeave",
+    "type": "specialist",
+    "source_kind": "html",
+    "scraped": true,
+    "current_quotes": 22,
+    "cards": [
+     "A100",
+     "B200",
+     "B300",
+     "GH200",
+     "H100",
+     "H200",
+     "L40S",
+     "RTX PRO 6000"
+    ],
+    "website": "https://coreweave.com",
+    "pricing_page": "https://coreweave.com/pricing"
+   },
+   {
+    "id": "crusoe",
+    "slug": "ext-crusoe",
+    "name": "Crusoe",
+    "type": "specialist",
+    "source_kind": "html",
+    "scraped": true,
+    "current_quotes": 7,
+    "cards": [
+     "A100",
+     "B200",
+     "B300",
+     "H100",
+     "H200",
+     "L40S",
+     "MI300X"
+    ],
+    "website": "https://www.crusoe.ai/",
+    "pricing_page": "https://www.crusoe.ai/cloud/pricing"
+   },
+   {
+    "id": "cudo",
+    "slug": "ext-cudo",
+    "name": "Cudo Compute",
+    "type": "specialist",
+    "source_kind": "api",
+    "scraped": true,
+    "current_quotes": 3,
+    "cards": [
+     "A100",
+     "H100",
+     "L40S"
+    ],
+    "website": "https://www.cudocompute.com/",
+    "pricing_page": "https://www.cudocompute.com/pricing"
+   },
+   {
+    "id": "dataoorts",
+    "slug": "ext-dataoorts",
+    "name": "Dataoorts",
+    "type": "specialist",
+    "source_kind": "html",
+    "scraped": true,
+    "current_quotes": 6,
+    "cards": [
+     "B200",
+     "H200",
+     "RTX 4090",
+     "RTX 5090",
+     "RTX PRO 6000"
+    ],
+    "website": "https://dataoorts.com/",
+    "pricing_page": "https://dataoorts.com/pricing/"
+   },
+   {
+    "id": "daytona",
+    "slug": "ext-daytona",
+    "name": "Daytona",
+    "type": "specialist",
+    "source_kind": "html",
+    "scraped": true,
+    "current_quotes": 16,
+    "cards": [
+     "B200",
+     "B300",
+     "H100",
+     "H200",
+     "RTX 4090",
+     "RTX 5090",
+     "RTX PRO 6000"
+    ],
+    "website": "https://www.daytona.io/",
+    "pricing_page": "https://www.daytona.io/pricing"
+   },
+   {
+    "id": "deepinfra",
+    "slug": "ext-deepinfra",
+    "name": "Deep Infra",
+    "type": "specialist",
+    "source_kind": "html",
+    "scraped": true,
+    "current_quotes": 5,
+    "cards": [
+     "A100",
+     "B200",
+     "B300",
+     "H100",
+     "H200"
+    ],
+    "website": "https://deepinfra.com/",
+    "pricing_page": "https://deepinfra.com/pricing"
+   },
+   {
+    "id": "denvr",
+    "slug": "ext-denvr",
+    "name": "Denvr Dataworks",
+    "type": "specialist",
+    "source_kind": "html",
+    "scraped": true,
+    "current_quotes": 6,
+    "cards": [
+     "A100",
+     "GH200",
+     "H100"
+    ],
+    "website": "https://www.denvr.com/",
+    "pricing_page": "https://www.denvr.com/pricing"
+   },
+   {
+    "id": "e2e",
+    "slug": "ext-e2e",
+    "name": "E2E Networks",
+    "type": "specialist",
+    "source_kind": "html",
+    "scraped": true,
+    "current_quotes": 12,
+    "cards": [
+     "A100",
+     "B200",
+     "H100",
+     "H200",
+     "L40S",
+     "RTX PRO 6000"
+    ],
+    "website": "https://www.e2enetworks.com/",
+    "pricing_page": "https://www.e2enetworks.com/pricing"
+   },
+   {
+    "id": "ecohash",
+    "slug": "ext-ecohash",
+    "name": "EcoHash",
+    "type": "specialist",
+    "source_kind": "html",
+    "scraped": true,
+    "current_quotes": 1,
+    "cards": [
+     "RTX PRO 6000"
+    ],
+    "website": "https://ecohash.com/",
+    "pricing_page": "https://ecohash.com/pricing"
+   },
+   {
+    "id": "edgevana",
+    "slug": "ext-edgevana",
+    "name": "Edgevana",
+    "type": "specialist",
+    "source_kind": "html",
+    "scraped": true,
+    "current_quotes": 51,
+    "cards": [
+     "B200",
+     "H200",
+     "L40S",
+     "RTX 4090",
+     "RTX 5090"
+    ],
+    "website": "https://edgevana.com/",
+    "pricing_page": "https://nodes.edgevana.com/gpu-servers"
+   },
+   {
+    "id": "elice",
+    "slug": "ext-elice",
+    "name": "Elice Cloud",
+    "type": "specialist",
+    "source_kind": "js_rendered",
+    "scraped": true,
+    "current_quotes": 6,
+    "cards": [
+     "A100",
+     "B200",
+     "H100"
+    ],
+    "website": "https://elice.io/en/cloud",
+    "pricing_page": "https://elice.io/en/cloud/pricing/eci"
+   },
+   {
+    "id": "empiriolabs",
+    "slug": "ext-empiriolabs",
+    "name": "EmpirioLabs",
+    "type": "specialist",
+    "source_kind": "html",
+    "scraped": true,
+    "current_quotes": 29,
+    "cards": [
+     "A100",
+     "B200",
+     "B300",
+     "H100",
+     "H200",
+     "L40S",
+     "RTX 4090",
+     "RTX 5090",
+     "RTX PRO 6000"
+    ],
+    "website": "https://empiriolabs.ai/",
+    "pricing_page": "https://empiriolabs.ai/gpu-cloud"
+   },
+   {
+    "id": "enverge",
+    "slug": "ext-enverge",
+    "name": "Enverge",
+    "type": "specialist",
+    "source_kind": "html",
+    "scraped": true,
+    "current_quotes": 3,
+    "cards": [
+     "B300",
+     "RTX PRO 6000"
+    ],
+    "website": "https://enverge.ai/",
+    "pricing_page": "https://enverge.ai/"
+   },
+   {
+    "id": "fal",
+    "slug": "ext-fal",
+    "name": "fal",
+    "type": "specialist",
+    "source_kind": "html",
+    "scraped": true,
+    "current_quotes": 5,
+    "cards": [
+     "B200",
+     "B300",
+     "H100",
+     "H200",
+     "RTX PRO 6000"
+    ],
+    "website": "https://fal.ai/",
+    "pricing_page": "https://fal.ai/pricing"
+   },
+   {
+    "id": "farmgpu",
+    "slug": "ext-farmgpu",
+    "name": "FarmGPU",
+    "type": "specialist",
+    "source_kind": "html",
+    "scraped": true,
+    "current_quotes": 4,
+    "cards": [
+     "B200",
+     "B300",
+     "H100",
+     "H200"
+    ],
+    "website": "https://farmgpu.com/",
+    "pricing_page": "https://farmgpu.com/pricing"
+   },
+   {
+    "id": "fireworks",
+    "slug": "ext-fireworks",
+    "name": "Fireworks AI",
+    "type": "specialist",
+    "source_kind": "html",
+    "scraped": true,
+    "current_quotes": 5,
+    "cards": [
+     "B200",
+     "B300",
+     "H100",
+     "H200"
+    ],
+    "website": "https://fireworks.ai/",
+    "pricing_page": "https://fireworks.ai/pricing"
+   },
+   {
+    "id": "flexai",
+    "slug": "ext-flexai",
+    "name": "FlexAI",
+    "type": "specialist",
+    "source_kind": "html",
+    "scraped": true,
+    "current_quotes": 3,
+    "cards": [
+     "B200",
+     "H100",
+     "H200"
+    ],
+    "website": "https://flex.ai/",
+    "pricing_page": "https://flex.ai/pricing"
+   },
+   {
+    "id": "fluidcore",
+    "slug": "ext-fluidcore",
+    "name": "FluidCore",
+    "type": "specialist",
+    "source_kind": "html",
+    "scraped": true,
+    "current_quotes": 2,
+    "cards": [
+     "A100",
+     "H100"
+    ],
+    "website": "https://fluidcore.ai/",
+    "pricing_page": "https://fluidcore.ai/pricing/gpuspricing"
+   },
+   {
+    "id": "fpt",
+    "slug": "ext-fpt",
+    "name": "FPT AI Factory",
+    "type": "specialist",
+    "source_kind": "html",
+    "scraped": true,
+    "current_quotes": 5,
+    "cards": [
+     "B300",
+     "H100",
+     "H200",
+     "RTX PRO 6000"
+    ],
+    "website": "https://factory.fpt.ai/",
+    "pricing_page": "https://factory.fpt.ai/pricing"
+   },
+   {
+    "id": "gcore",
+    "slug": "ext-gcore",
+    "name": "Gcore",
+    "type": "specialist",
+    "source_kind": "html",
+    "scraped": true,
+    "current_quotes": 9,
+    "cards": [
+     "A100",
+     "B300",
+     "H100",
+     "H200",
+     "L40S"
+    ],
+    "website": "https://gcore.com/",
+    "pricing_page": "https://gcore.com/pricing/ai"
+   },
+   {
+    "id": "geodd",
+    "slug": "ext-geodd",
+    "name": "Geodd",
+    "type": "specialist",
+    "source_kind": "html",
+    "scraped": true,
+    "current_quotes": 7,
+    "cards": [
+     "A100",
+     "H100",
+     "H200",
+     "L40S",
+     "RTX PRO 6000"
+    ],
+    "website": "https://geodd.io/",
+    "pricing_page": "https://geodd.io/pricing"
+   },
+   {
+    "id": "gmi-cloud",
+    "slug": "ext-gmi-cloud",
+    "name": "GMI Cloud",
+    "type": "specialist",
+    "source_kind": "html",
+    "scraped": true,
+    "current_quotes": 4,
+    "cards": [
+     "B200",
+     "H100",
+     "H200"
+    ],
+    "website": "https://www.gmicloud.ai/en",
+    "pricing_page": "https://www.gmicloud.ai/en/pricing"
+   },
+   {
+    "id": "gcp",
+    "slug": "ext-gcp",
+    "name": "Google Cloud",
+    "type": "hyperscaler",
+    "source_kind": "api",
+    "scraped": true,
+    "current_quotes": 30,
+    "cards": [
+     "A100",
+     "B200",
+     "H100",
+     "H200"
+    ],
+    "website": "https://cloud.google.com",
+    "pricing_page": "https://cloud.google.com/products/compute/pricing/accelerator-optimized"
+   },
+   {
+    "id": "gpuai",
+    "slug": "ext-gpuai",
+    "name": "GPU.ai",
+    "type": "specialist",
+    "source_kind": "js_rendered",
+    "scraped": true,
+    "current_quotes": 49,
+    "cards": [
+     "A100",
+     "B200",
+     "B300",
+     "H100",
+     "H200",
+     "L40S",
+     "RTX 4090",
+     "RTX 5090",
+     "RTX PRO 6000"
+    ],
+    "website": "https://gpu.ai/",
+    "pricing_page": "https://gpu.ai/pricing"
+   },
+   {
+    "id": "gpuwerk",
+    "slug": "ext-gpuwerk",
+    "name": "GPUwerk",
+    "type": "specialist",
+    "source_kind": "html",
+    "scraped": true,
+    "current_quotes": 2,
+    "cards": [
+     "RTX 5090"
+    ],
+    "website": "https://gpuwerk.com/",
+    "pricing_page": "https://gpuwerk.com/pricing/"
+   },
+   {
+    "id": "helios",
+    "slug": "ext-helios",
+    "name": "Helios Cloud",
+    "type": "specialist",
+    "source_kind": "html",
+    "scraped": true,
+    "current_quotes": 6,
+    "cards": [
+     "B300",
+     "RTX PRO 6000"
+    ],
+    "website": "https://www.helios.co/",
+    "pricing_page": "https://www.helios.co/pricing"
+   },
+   {
+    "id": "hetzner",
+    "slug": "ext-hetzner",
+    "name": "Hetzner",
+    "type": "specialist",
+    "source_kind": "api",
+    "scraped": true,
+    "current_quotes": 1,
+    "cards": [
+     "RTX PRO 6000"
+    ],
+    "website": "https://www.hetzner.com/",
+    "pricing_page": "https://www.hetzner.com/dedicated-rootserver/matrix-gpu/"
+   },
+   {
+    "id": "hexgrid",
+    "slug": "ext-hexgrid",
+    "name": "HexGrid",
+    "type": "specialist",
+    "source_kind": "html",
+    "scraped": true,
+    "current_quotes": 12,
+    "cards": [
+     "A100",
+     "B200",
+     "H100",
+     "H200",
+     "L40S",
+     "RTX 4090",
+     "RTX 5090",
+     "RTX PRO 6000"
+    ],
+    "website": "https://hexgrid.cloud/",
+    "pricing_page": "https://hexgrid.cloud/gpus"
+   },
+   {
+    "id": "hikube",
+    "slug": "ext-hikube",
+    "name": "Hikube",
+    "type": "specialist",
+    "source_kind": "html",
+    "scraped": true,
+    "current_quotes": 6,
+    "cards": [
+     "A100",
+     "H100",
+     "H200",
+     "L40S",
+     "RTX PRO 6000"
+    ],
+    "website": "https://hikube.cloud/",
+    "pricing_page": "https://hikube.cloud/en/pricing"
+   },
+   {
+    "id": "hivenet",
+    "slug": "ext-hivenet",
+    "name": "Hivenet",
+    "type": "specialist",
+    "source_kind": "js_rendered",
+    "scraped": true,
+    "current_quotes": 1,
+    "cards": [
+     "RTX 5090"
+    ],
+    "website": "https://www.hivenet.com/",
+    "pricing_page": "https://www.hivenet.com/subscribe"
+   },
+   {
+    "id": "hostinger",
+    "slug": "ext-hostinger",
+    "name": "Hostinger",
+    "type": "specialist",
+    "source_kind": "html",
+    "scraped": true,
+    "current_quotes": 7,
+    "cards": [
+     "A100",
+     "B200",
+     "L40S",
+     "RTX 4090",
+     "RTX 5090",
+     "RTX PRO 6000"
+    ],
+    "website": "https://www.hostinger.com/",
+    "pricing_page": "https://www.hostinger.com/gpu-hosting"
+   },
+   {
+    "id": "hotaisle",
+    "slug": "ext-hotaisle",
+    "name": "Hot Aisle",
+    "type": "specialist",
+    "source_kind": "html",
+    "scraped": true,
+    "current_quotes": 1,
+    "cards": [
+     "MI300X"
+    ],
+    "website": "https://hotaisle.xyz/",
+    "pricing_page": "https://hotaisle.xyz/pricing"
+   },
+   {
+    "id": "hpcai",
+    "slug": "ext-hpcai",
+    "name": "HPC-AI.COM",
+    "type": "specialist",
+    "source_kind": "html",
+    "scraped": true,
+    "current_quotes": 4,
+    "cards": [
+     "B200",
+     "H100",
+     "H200",
+     "RTX 5090"
+    ],
+    "website": "https://www.hpc-ai.com/",
+    "pricing_page": "https://www.hpc-ai.com/pricing"
+   },
+   {
+    "id": "huggingface",
+    "slug": "ext-huggingface",
+    "name": "Hugging Face",
+    "type": "specialist",
+    "source_kind": "html",
+    "scraped": true,
+    "current_quotes": 10,
+    "cards": [
+     "A100",
+     "B200",
+     "H100",
+     "H200",
+     "L40S",
+     "RTX PRO 6000"
+    ],
+    "website": "https://huggingface.co/",
+    "pricing_page": "https://huggingface.co/pricing"
+   },
+   {
+    "id": "hyperbolic",
+    "slug": "ext-hyperbolic",
+    "name": "Hyperbolic",
+    "type": "specialist",
+    "source_kind": "html",
+    "scraped": true,
+    "current_quotes": 3,
+    "cards": [
+     "B200",
+     "H100",
+     "H200"
+    ],
+    "website": "https://www.hyperbolic.ai/",
+    "pricing_page": "https://www.hyperbolic.ai/marketplace"
+   },
+   {
+    "id": "hyperstack",
+    "slug": "ext-hyperstack",
+    "name": "Hyperstack",
+    "type": "specialist",
+    "source_kind": "html",
+    "scraped": true,
+    "current_quotes": 24,
+    "cards": [
+     "A100",
+     "B200",
+     "B300",
+     "H100",
+     "H200",
+     "RTX PRO 6000"
+    ],
+    "website": "https://www.hyperstack.cloud/",
+    "pricing_page": "https://www.hyperstack.cloud/gpu-pricing"
+   },
+   {
+    "id": "immers",
+    "slug": "ext-immers",
+    "name": "immers.cloud",
+    "type": "specialist",
+    "source_kind": "html",
+    "scraped": true,
+    "current_quotes": 13,
+    "cards": [
+     "A100",
+     "H100",
+     "H200",
+     "RTX 4090",
+     "RTX 5090"
+    ],
+    "website": "https://immers.cloud/",
+    "pricing_page": "https://immers.cloud/gpu/"
+   },
+   {
+    "id": "inferless",
+    "slug": "ext-inferless",
+    "name": "Inferless",
+    "type": "specialist",
+    "source_kind": "html",
+    "scraped": true,
+    "current_quotes": 3,
+    "cards": [
+     "A100"
+    ],
+    "website": "https://www.inferless.com/",
+    "pricing_page": "https://www.inferless.com/pricing"
+   },
+   {
+    "id": "infomaniak",
+    "slug": "ext-infomaniak",
+    "name": "Infomaniak",
+    "type": "specialist",
+    "source_kind": "html",
+    "scraped": true,
+    "current_quotes": 4,
+    "cards": [
+     "L40S"
+    ],
+    "website": "https://www.infomaniak.com/",
+    "pricing_page": "https://www.infomaniak.com/en/hosting/public-cloud/prices"
+   },
+   {
+    "id": "intelion",
+    "slug": "ext-intelion",
+    "name": "Intelion Cloud",
+    "type": "specialist",
+    "source_kind": "html",
+    "scraped": true,
+    "current_quotes": 4,
+    "cards": [
+     "A100"
+    ],
+    "website": "https://intelion.cloud/",
+    "pricing_page": "https://intelion.cloud/gpu_server_configurator/"
+   },
+   {
+    "id": "ionos",
+    "slug": "ext-ionos",
+    "name": "IONOS Cloud",
+    "type": "specialist",
+    "source_kind": "html",
+    "scraped": true,
+    "current_quotes": 1,
+    "cards": [
+     "H200"
+    ],
+    "website": "https://cloud.ionos.com/",
+    "pricing_page": "https://docs.ionos.com/support/general-information/price-list/ionos-cloud-eur-en"
+   },
+   {
+    "id": "jarvislabs",
+    "slug": "ext-jarvislabs",
+    "name": "Jarvislabs",
+    "type": "specialist",
+    "source_kind": "html",
+    "scraped": true,
+    "current_quotes": 7,
+    "cards": [
+     "A100",
+     "H100",
+     "H200",
+     "RTX PRO 6000"
+    ],
+    "website": "https://jarvislabs.ai",
+    "pricing_page": "https://jarvislabs.ai/pricing"
+   },
+   {
+    "id": "koyeb",
+    "slug": "ext-koyeb",
+    "name": "Koyeb",
+    "type": "specialist",
+    "source_kind": "html",
+    "scraped": true,
+    "current_quotes": 9,
+    "cards": [
+     "A100",
+     "B200",
+     "H100",
+     "H200",
+     "L40S",
+     "RTX PRO 6000"
+    ],
+    "website": "https://www.koyeb.com/",
+    "pricing_page": "https://www.koyeb.com/pricing"
+   },
+   {
+    "id": "krutrim",
+    "slug": "ext-krutrim",
+    "name": "Krutrim Cloud",
+    "type": "specialist",
+    "source_kind": "html",
+    "scraped": true,
+    "current_quotes": 2,
+    "cards": [
+     "A100",
+     "H100"
+    ],
+    "website": "https://cloud.olakrutrim.com/",
+    "pricing_page": "https://docs.cloud.olakrutrim.com/basics/core-infrastructure/compute"
+   },
+   {
+    "id": "lambda",
+    "slug": "ext-lambda",
+    "name": "Lambda",
+    "type": "specialist",
+    "source_kind": "html",
+    "scraped": true,
+    "current_quotes": 10,
+    "cards": [
+     "A100",
+     "B200",
+     "GH200",
+     "H100"
+    ],
+    "website": "https://lambda.ai",
+    "pricing_page": "https://lambda.ai/pricing"
+   },
+   {
+    "id": "leafcloud",
+    "slug": "ext-leafcloud",
+    "name": "Leafcloud",
+    "type": "specialist",
+    "source_kind": "html",
+    "scraped": true,
+    "current_quotes": 4,
+    "cards": [
+     "A100",
+     "H100",
+     "RTX PRO 6000"
+    ],
+    "website": "https://leaf.cloud/",
+    "pricing_page": "https://leaf.cloud/pricing/"
+   },
+   {
+    "id": "lightning",
+    "slug": "ext-lightning",
+    "name": "Lightning AI",
+    "type": "specialist",
+    "source_kind": "html",
+    "scraped": true,
+    "current_quotes": 7,
+    "cards": [
+     "A100",
+     "H100",
+     "H200",
+     "L40S"
+    ],
+    "website": "https://lightning.ai/",
+    "pricing_page": "https://lightning.ai/pricing/"
+   },
+   {
+    "id": "limestone",
+    "slug": "ext-limestone",
+    "name": "Limestone Networks",
+    "type": "specialist",
+    "source_kind": "html",
+    "scraped": true,
+    "current_quotes": 5,
+    "cards": [
+     "A100",
+     "B300",
+     "H100",
+     "RTX 5090",
+     "RTX PRO 6000"
+    ],
+    "website": "https://limestonenetworks.com/",
+    "pricing_page": "https://limestonenetworks.com/pricing"
+   },
+   {
+    "id": "lium",
+    "slug": "ext-lium",
+    "name": "Lium",
+    "type": "marketplace",
+    "source_kind": "api",
+    "scraped": true,
+    "current_quotes": 27,
+    "cards": [
+     "A100",
+     "B200",
+     "B300",
+     "H100",
+     "H200",
+     "L40S",
+     "RTX 4090",
+     "RTX 5090",
+     "RTX PRO 6000"
+    ],
+    "website": "https://lium.io",
+    "pricing_page": "https://lium.io/pricing"
+   },
+   {
+    "id": "lyceum",
+    "slug": "ext-lyceum",
+    "name": "Lyceum",
+    "type": "specialist",
+    "source_kind": "html",
+    "scraped": true,
+    "current_quotes": 12,
+    "cards": [
+     "A100",
+     "B200",
+     "B300",
+     "H100",
+     "H200",
+     "L40S"
+    ],
+    "website": "https://lyceum.technology/",
+    "pricing_page": "https://lyceum.technology/resources/pricing/"
+   },
+   {
+    "id": "massed",
+    "slug": "ext-massed",
+    "name": "Massed Compute",
+    "type": "specialist",
+    "source_kind": "html",
+    "scraped": true,
+    "current_quotes": 13,
+    "cards": [
+     "A100",
+     "H100",
+     "H200",
+     "L40S",
+     "RTX PRO 6000"
+    ],
+    "website": "https://massedcompute.com",
+    "pricing_page": "https://vm.massedcompute.com/pricing"
+   },
+   {
+    "id": "meshive",
+    "slug": "ext-meshive",
+    "name": "Meshive",
+    "type": "specialist",
+    "source_kind": "html",
+    "scraped": true,
+    "current_quotes": 84,
+    "cards": [
+     "A100",
+     "B200",
+     "H100",
+     "H200",
+     "L40S",
+     "RTX 4090",
+     "RTX 5090",
+     "RTX PRO 6000"
+    ],
+    "website": "https://meshive.ai/",
+    "pricing_page": "https://meshive.ai/pricing"
+   },
+   {
+    "id": "azure",
+    "slug": "ext-azure",
+    "name": "Microsoft Azure",
+    "type": "hyperscaler",
+    "source_kind": "api",
+    "scraped": true,
+    "current_quotes": 50,
+    "cards": [
+     "A100",
+     "H100",
+     "H200",
+     "MI300X",
+     "RTX PRO 6000"
+    ],
+    "website": "https://azure.microsoft.com/en-us",
+    "pricing_page": "https://azure.microsoft.com/en-us/pricing/details/virtual-machines/linux/"
+   },
+   {
+    "id": "mimicpc",
+    "slug": "ext-mimicpc",
+    "name": "MimicPC",
+    "type": "specialist",
+    "source_kind": "html",
+    "scraped": true,
+    "current_quotes": 4,
+    "cards": [
+     "L40S"
+    ],
+    "website": "https://www.mimicpc.com/",
+    "pricing_page": "https://www.mimicpc.com/pricing"
+   },
+   {
+    "id": "modal",
+    "slug": "ext-modal",
+    "name": "Modal",
+    "type": "specialist",
+    "source_kind": "html",
+    "scraped": true,
+    "current_quotes": 11,
+    "cards": [
+     "A100",
+     "B200",
+     "B300",
+     "H100",
+     "H200",
+     "L40S",
+     "RTX PRO 6000"
+    ],
+    "website": "https://modal.com",
+    "pricing_page": "https://modal.com/pricing"
+   },
+   {
+    "id": "mws",
+    "slug": "ext-mws",
+    "name": "MWS Cloud Platform",
+    "type": "specialist",
+    "source_kind": "html",
+    "scraped": true,
+    "current_quotes": 1,
+    "cards": [
+     "A100"
+    ],
+    "website": "https://mws.ru/",
+    "pricing_page": "https://mws.ru/docs/cloud-platform/about/general/mws-cloud-platform-pricing.html"
+   },
+   {
+    "id": "nebius",
+    "slug": "ext-nebius",
+    "name": "Nebius",
+    "type": "specialist",
+    "source_kind": "html",
+    "scraped": true,
+    "current_quotes": 12,
+    "cards": [
+     "B200",
+     "B300",
+     "H100",
+     "H200",
+     "L40S",
+     "RTX PRO 6000"
+    ],
+    "website": "https://nebius.com",
+    "pricing_page": "https://nebius.com/prices"
+   },
+   {
+    "id": "nebulablock",
+    "slug": "ext-nebulablock",
+    "name": "Nebula Block",
+    "type": "specialist",
+    "source_kind": "js_rendered",
+    "scraped": true,
+    "current_quotes": 7,
+    "cards": [
+     "A100",
+     "B200",
+     "L40S",
+     "RTX 5090"
+    ],
+    "website": "https://www.nebulablock.com/",
+    "pricing_page": "https://www.nebulablock.com/pricing/gpu-instances"
+   },
+   {
+    "id": "neysa",
+    "slug": "ext-neysa",
+    "name": "Neysa",
+    "type": "specialist",
+    "source_kind": "html",
+    "scraped": true,
+    "current_quotes": 4,
+    "cards": [
+     "H100",
+     "H200",
+     "L40S"
+    ],
+    "website": "https://neysa.ai/",
+    "pricing_page": "https://neysa.ai/pricing/"
+   },
+   {
+    "id": "northflank",
+    "slug": "ext-northflank",
+    "name": "Northflank",
+    "type": "specialist",
+    "source_kind": "html",
+    "scraped": true,
+    "current_quotes": 7,
+    "cards": [
+     "A100",
+     "B200",
+     "H100",
+     "H200",
+     "RTX PRO 6000"
+    ],
+    "website": "https://northflank.com/",
+    "pricing_page": "https://northflank.com/pricing"
+   },
+   {
+    "id": "novacloud",
+    "slug": "ext-novacloud",
+    "name": "Nova Cloud",
+    "type": "specialist",
+    "source_kind": "html",
+    "scraped": true,
+    "current_quotes": 3,
+    "cards": [
+     "RTX 4090",
+     "RTX 5090",
+     "RTX PRO 6000"
+    ],
+    "website": "https://nova-cloud.ai/",
+    "pricing_page": "https://nova-cloud.ai/pricing"
+   },
+   {
+    "id": "octa",
+    "slug": "ext-octa",
+    "name": "Octa.space",
+    "type": "marketplace",
+    "source_kind": "html",
+    "scraped": true,
+    "current_quotes": 11,
+    "cards": [
+     "RTX 4090",
+     "RTX 5090"
+    ],
+    "website": "https://octa.space/",
+    "pricing_page": "https://cube.octa.computer/marketplace/compute"
+   },
+   {
+    "id": "openrelay",
+    "slug": "ext-openrelay",
+    "name": "OpenRelay",
+    "type": "specialist",
+    "source_kind": "html",
+    "scraped": true,
+    "current_quotes": 9,
+    "cards": [
+     "A100",
+     "B200",
+     "B300",
+     "H100",
+     "RTX 4090",
+     "RTX 5090",
+     "RTX PRO 6000"
+    ],
+    "website": "https://openrelay.inc/",
+    "pricing_page": "https://openrelay.inc/gpus"
+   },
+   {
+    "id": "oracle",
+    "slug": "ext-oracle",
+    "name": "Oracle Cloud (OCI)",
+    "type": "hyperscaler",
+    "source_kind": "api",
+    "scraped": true,
+    "current_quotes": 14,
+    "cards": [
+     "A100",
+     "B200",
+     "B300",
+     "H100",
+     "H200",
+     "L40S",
+     "MI300X",
+     "RTX PRO 6000"
+    ],
+    "website": "https://www.oracle.com/cloud/",
+    "pricing_page": "https://www.oracle.com/cloud/price-list/#pricing-compute"
+   },
+   {
+    "id": "ovhcloud",
+    "slug": "ext-ovhcloud",
+    "name": "OVHcloud",
+    "type": "specialist",
+    "source_kind": "api",
+    "scraped": true,
+    "current_quotes": 5,
+    "cards": [
+     "A100",
+     "H100",
+     "H200",
+     "L40S"
+    ],
+    "website": "https://us.ovhcloud.com/",
+    "pricing_page": "https://us.ovhcloud.com/public-cloud/gpu/"
+   },
+   {
+    "id": "packet-ai",
+    "slug": "ext-packet-ai",
+    "name": "packet.ai",
+    "type": "specialist",
+    "source_kind": "html",
+    "scraped": true,
+    "current_quotes": 7,
+    "cards": [
+     "A100",
+     "B200",
+     "L40S",
+     "RTX 4090",
+     "RTX PRO 6000"
+    ],
+    "website": "https://packet.ai/",
+    "pricing_page": "https://packet.ai/pricing"
+   },
+   {
+    "id": "paperspace",
+    "slug": "ext-paperspace",
+    "name": "Paperspace",
+    "type": "specialist",
+    "source_kind": "html",
+    "scraped": true,
+    "current_quotes": 24,
+    "cards": [
+     "A100",
+     "B300",
+     "H100",
+     "H200",
+     "MI300X"
+    ],
+    "website": "https://www.paperspace.com/",
+    "pricing_page": "https://docs.digitalocean.com/products/paperspace/pricing/"
+   },
+   {
+    "id": "phala",
+    "slug": "ext-phala",
+    "name": "Phala Cloud",
+    "type": "specialist",
+    "source_kind": "js_rendered",
+    "scraped": true,
+    "current_quotes": 3,
+    "cards": [
+     "B300",
+     "H100",
+     "H200"
+    ],
+    "website": "https://phala.com/",
+    "pricing_page": "https://phala.com/gpu-tee"
+   },
+   {
+    "id": "quantacloud",
+    "slug": "ext-quantacloud",
+    "name": "QuantaCloud",
+    "type": "specialist",
+    "source_kind": "html",
+    "scraped": true,
+    "current_quotes": 16,
+    "cards": [
+     "A100",
+     "H100",
+     "L40S",
+     "RTX PRO 6000"
+    ],
+    "website": "https://quantacloud.net",
+    "pricing_page": "https://quantacloud.net/pricing"
+   },
+   {
+    "id": "replicate",
+    "slug": "ext-replicate",
+    "name": "Replicate",
+    "type": "specialist",
+    "source_kind": "html",
+    "scraped": true,
+    "current_quotes": 4,
+    "cards": [
+     "A100",
+     "H100",
+     "L40S"
+    ],
+    "website": "https://replicate.com/",
+    "pricing_page": "https://replicate.com/pricing"
+   },
+   {
+    "id": "runcomfy",
+    "slug": "ext-runcomfy",
+    "name": "RunComfy",
+    "type": "specialist",
+    "source_kind": "html",
+    "scraped": true,
+    "current_quotes": 4,
+    "cards": [
+     "A100",
+     "H100",
+     "H200"
+    ],
+    "website": "https://www.runcomfy.com/",
+    "pricing_page": "https://www.runcomfy.com/pricing"
+   },
+   {
+    "id": "runpod",
+    "slug": "ext-runpod",
+    "name": "RunPod",
+    "type": "specialist",
+    "source_kind": "api",
+    "scraped": true,
+    "current_quotes": 65,
+    "cards": [
+     "A100",
+     "B200",
+     "B300",
+     "H100",
+     "H200",
+     "L40S",
+     "MI300X",
+     "RTX 4090",
+     "RTX 5090",
+     "RTX PRO 6000"
+    ],
+    "website": "https://www.runpod.io/",
+    "pricing_page": "https://www.runpod.io/pricing"
+   },
+   {
+    "id": "runware",
+    "slug": "ext-runware",
+    "name": "Runware",
+    "type": "specialist",
+    "source_kind": "html",
+    "scraped": true,
+    "current_quotes": 6,
+    "cards": [
+     "B200",
+     "B300",
+     "H100",
+     "H200",
+     "L40S",
+     "RTX PRO 6000"
+    ],
+    "website": "https://runware.ai/",
+    "pricing_page": "https://runware.ai/pricing"
+   },
+   {
+    "id": "salad",
+    "slug": "ext-salad",
+    "name": "Salad",
+    "type": "specialist",
+    "source_kind": "html",
+    "scraped": true,
+    "current_quotes": 64,
+    "cards": [
+     "RTX 4090",
+     "RTX 5090"
+    ],
+    "website": "https://salad.com",
+    "pricing_page": "https://salad.com/pricing/"
+   },
+   {
+    "id": "scaleway",
+    "slug": "ext-scaleway",
+    "name": "Scaleway",
+    "type": "specialist",
+    "source_kind": "html",
+    "scraped": true,
+    "current_quotes": 9,
+    "cards": [
+     "B300",
+     "H100",
+     "L40S"
+    ],
+    "website": "https://www.scaleway.com/en/",
+    "pricing_page": "https://www.scaleway.com/en/pricing/gpu/"
+   },
+   {
+    "id": "seeweb",
+    "slug": "ext-seeweb",
+    "name": "Seeweb",
+    "type": "specialist",
+    "source_kind": "html",
+    "scraped": true,
+    "current_quotes": 20,
+    "cards": [
+     "A100",
+     "H100",
+     "H200",
+     "L40S",
+     "MI300X",
+     "RTX PRO 6000"
+    ],
+    "website": "https://www.seeweb.it/en",
+    "pricing_page": "https://www.seeweb.it/en/products/cloud-server-gpu"
+   },
+   {
+    "id": "selectel",
+    "slug": "ext-selectel",
+    "name": "Selectel",
+    "type": "specialist",
+    "source_kind": "html",
+    "scraped": true,
+    "current_quotes": 3,
+    "cards": [
+     "H200",
+     "RTX PRO 6000"
+    ],
+    "website": "https://selectel.ru/",
+    "pricing_page": "https://selectel.ru/services/gpu/"
+   },
+   {
+    "id": "servercore",
+    "slug": "ext-servercore",
+    "name": "Servercore",
+    "type": "specialist",
+    "source_kind": "html",
+    "scraped": true,
+    "current_quotes": 4,
+    "cards": [
+     "A100",
+     "H200",
+     "RTX PRO 6000"
+    ],
+    "website": "https://servercore.com/",
+    "pricing_page": "https://servercore.com/services/cloud-based-gpu-servers/"
+   },
+   {
+    "id": "sesterce",
+    "slug": "ext-sesterce",
+    "name": "Sesterce",
+    "type": "specialist",
+    "source_kind": "html",
+    "scraped": true,
+    "current_quotes": 23,
+    "cards": [
+     "A100",
+     "B200",
+     "B300",
+     "GH200",
+     "H100",
+     "H200",
+     "L40S",
+     "RTX 4090",
+     "RTX 5090",
+     "RTX PRO 6000"
+    ],
+    "website": "https://www.sesterce.com/",
+    "pricing_page": "https://www.sesterce.com/"
+   },
+   {
+    "id": "stackit",
+    "slug": "ext-stackit",
+    "name": "STACKIT",
+    "type": "specialist",
+    "source_kind": "pdf",
+    "scraped": true,
+    "current_quotes": 3,
+    "cards": [
+     "A100",
+     "H100",
+     "L40S"
+    ],
+    "website": "https://stackit.com/en",
+    "pricing_page": "https://stackit.com/en/asset/download/37788/file/STACKIT_price_list.pdf"
+   },
+   {
+    "id": "stn",
+    "slug": "ext-stn",
+    "name": "STN",
+    "type": "specialist",
+    "source_kind": "html",
+    "scraped": true,
+    "current_quotes": 3,
+    "cards": [
+     "B200",
+     "B300"
+    ],
+    "website": "https://www.stninc.com/",
+    "pricing_page": "https://www.stninc.com/pricing"
+   },
+   {
+    "id": "swissgpu",
+    "slug": "ext-swissgpu",
+    "name": "SwissGPU",
+    "type": "specialist",
+    "source_kind": "html",
+    "scraped": true,
+    "current_quotes": 7,
+    "cards": [
+     "RTX 4090",
+     "RTX 5090",
+     "RTX PRO 6000"
+    ],
+    "website": "https://www.swissgpu.ch/",
+    "pricing_page": "https://www.swissgpu.ch/pricing"
+   },
+   {
+    "id": "synpix",
+    "slug": "ext-synpix",
+    "name": "SynpixCloud",
+    "type": "specialist",
+    "source_kind": "js_rendered",
+    "scraped": true,
+    "current_quotes": 13,
+    "cards": [
+     "A100",
+     "RTX 4090",
+     "RTX 5090"
+    ],
+    "website": "https://www.synpixcloud.com/",
+    "pricing_page": "https://www.synpixcloud.com/market"
+   },
+   {
+    "id": "taiga",
+    "slug": "ext-taiga",
+    "name": "Taiga Cloud (Northern Data Group)",
+    "type": "specialist",
+    "source_kind": "html",
+    "scraped": true,
+    "current_quotes": 2,
+    "cards": [
+     "H100",
+     "H200"
+    ],
+    "website": "https://northerndata.de/home",
+    "pricing_page": "https://northerndata.de/taiga-cloud-ai-pricing"
+   },
+   {
+    "id": "tata",
+    "slug": "ext-tata",
+    "name": "Tata Communications",
+    "type": "specialist",
+    "source_kind": "html",
+    "scraped": true,
+    "current_quotes": 5,
+    "cards": [
+     "H100",
+     "H200",
+     "L40S"
+    ],
+    "website": "https://www.tatacommunications.com/",
+    "pricing_page": "https://www.tatacommunications.com/cloud/cloud-ai/gpu"
+   },
+   {
+    "id": "tensorcloud",
+    "slug": "ext-tensorcloud",
+    "name": "TensorCloud",
+    "type": "specialist",
+    "source_kind": "html",
+    "scraped": true,
+    "current_quotes": 1,
+    "cards": [
+     "A100"
+    ],
+    "website": "https://tensordata.com/",
+    "pricing_page": "https://tensordata.com/"
+   },
+   {
+    "id": "tensorpool",
+    "slug": "ext-tensorpool",
+    "name": "TensorPool",
+    "type": "specialist",
+    "source_kind": "html",
+    "scraped": true,
+    "current_quotes": 5,
+    "cards": [
+     "B200",
+     "B300",
+     "H100",
+     "H200",
+     "L40S"
+    ],
+    "website": "https://tensorpool.dev/",
+    "pricing_page": "https://tensorpool.dev/pricing"
+   },
+   {
+    "id": "tensorwave",
+    "slug": "ext-tensorwave",
+    "name": "TensorWave",
+    "type": "specialist",
+    "source_kind": "html",
+    "scraped": true,
+    "current_quotes": 3,
+    "cards": [
+     "MI300X"
+    ],
+    "website": "https://tensorwave.com/",
+    "pricing_page": "https://tensorwave.com/products/accelerators/amd-mi325x"
+   },
+   {
+    "id": "theai",
+    "slug": "ext-theai",
+    "name": "TheAI Cloud",
+    "type": "specialist",
+    "source_kind": "html",
+    "scraped": true,
+    "current_quotes": 1,
+    "cards": [
+     "B300"
+    ],
+    "website": "https://cloud.theai.com/",
+    "pricing_page": "https://cloud.theai.com/pricing"
+   },
+   {
+    "id": "thunder",
+    "slug": "ext-thunder",
+    "name": "Thunder Compute",
+    "type": "specialist",
+    "source_kind": "html",
+    "scraped": true,
+    "current_quotes": 4,
+    "cards": [
+     "A100",
+     "H100"
+    ],
+    "website": "https://www.thundercompute.com/",
+    "pricing_page": "https://www.thundercompute.com/pricing"
+   },
+   {
+    "id": "together",
+    "slug": "ext-together",
+    "name": "Together AI",
+    "type": "specialist",
+    "source_kind": "html",
+    "scraped": true,
+    "current_quotes": 7,
+    "cards": [
+     "B200",
+     "B300",
+     "H100",
+     "H200"
+    ],
+    "website": "https://www.together.ai/",
+    "pricing_page": "https://www.together.ai/gpu-clusters"
+   },
+   {
+    "id": "trooper",
+    "slug": "ext-trooper",
+    "name": "Trooper.AI",
+    "type": "specialist",
+    "source_kind": "html",
+    "scraped": true,
+    "current_quotes": 11,
+    "cards": [
+     "RTX 4090",
+     "RTX 5090",
+     "RTX PRO 6000"
+    ],
+    "website": "https://www.trooper.ai/",
+    "pricing_page": "https://www.trooper.ai/prices"
+   },
+   {
+    "id": "vagon",
+    "slug": "ext-vagon",
+    "name": "Vagon",
+    "type": "specialist",
+    "source_kind": "html",
+    "scraped": true,
+    "current_quotes": 2,
+    "cards": [],
+    "website": "https://vagon.io/",
+    "pricing_page": "https://vagon.io/cloud-computer/pricing"
+   },
+   {
+    "id": "vast-ai",
+    "slug": "ext-vast-ai",
+    "name": "Vast.ai",
+    "type": "marketplace",
+    "source_kind": "api",
+    "scraped": true,
+    "current_quotes": 111,
+    "cards": [
+     "A100",
+     "B200",
+     "H100",
+     "H200",
+     "L40S",
+     "RTX 4090",
+     "RTX 5090",
+     "RTX PRO 6000"
+    ],
+    "website": "https://vast.ai",
+    "pricing_page": "https://cloud.vast.ai"
+   },
+   {
+    "id": "datacrunch",
+    "slug": "ext-datacrunch",
+    "name": "Verda",
+    "type": "specialist",
+    "source_kind": "api",
+    "scraped": true,
+    "current_quotes": 24,
+    "cards": [
+     "A100",
+     "B200",
+     "B300",
+     "H100",
+     "H200",
+     "L40S",
+     "RTX PRO 6000"
+    ],
+    "website": "https://verda.com",
+    "pricing_page": "https://verda.com/pricing"
+   },
+   {
+    "id": "vessl",
+    "slug": "ext-vessl",
+    "name": "VESSL AI",
+    "type": "specialist",
+    "source_kind": "html",
+    "scraped": true,
+    "current_quotes": 3,
+    "cards": [
+     "A100",
+     "H100",
+     "L40S"
+    ],
+    "website": "https://vessl.ai/en",
+    "pricing_page": "https://vessl.ai/en/pricing"
+   },
+   {
+    "id": "vultr",
+    "slug": "ext-vultr",
+    "name": "Vultr",
+    "type": "specialist",
+    "source_kind": "api",
+    "scraped": true,
+    "current_quotes": 7,
+    "cards": [
+     "A100",
+     "B200",
+     "H100",
+     "L40S",
+     "MI300X"
+    ],
+    "website": "https://www.vultr.com/",
+    "pricing_page": "https://www.vultr.com/pricing/"
+   },
+   {
+    "id": "yandex",
+    "slug": "ext-yandex",
+    "name": "Yandex Cloud",
+    "type": "specialist",
+    "source_kind": "js_rendered",
+    "scraped": true,
+    "current_quotes": 6,
+    "cards": [
+     "A100"
+    ],
+    "website": "https://yandex.cloud/",
+    "pricing_page": "https://yandex.cloud/ru/price-list?services=dn28okfvqh19eiue6l2m"
+   },
+   {
+    "id": "yottalabs",
+    "slug": "ext-yottalabs",
+    "name": "Yotta Labs",
+    "type": "specialist",
+    "source_kind": "html",
+    "scraped": true,
+    "current_quotes": 18,
+    "cards": [
+     "A100",
+     "B200",
+     "B300",
+     "H100",
+     "H200",
+     "RTX 4090",
+     "RTX 5090",
+     "RTX PRO 6000"
+    ],
+    "website": "https://www.yottalabs.ai/",
+    "pricing_page": "https://www.yottalabs.ai/pricing"
+   },
+   {
+    "id": "ytl",
+    "slug": "ext-ytl",
+    "name": "YTL AI Cloud",
+    "type": "specialist",
+    "source_kind": "html",
+    "scraped": true,
+    "current_quotes": 1,
+    "cards": [],
+    "website": "https://www.ytlaicloud.com/",
+    "pricing_page": "https://www.ytlaicloud.com/gsc-pricing/"
+   }
+  ]
+ }
+}
