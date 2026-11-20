@@ -1,5 +1,11 @@
 # 数据源替代调研 2026-11-20
 
+> **落地状态（2026-11-21）**：按第 4 节的第 1、2 步执行完毕——GrabGPU 已成为供给端三图主源
+> （`scripts/backfill_grabgpu_market.py` → `tracker_data/backfills/gpu_market_stock.json`，每日 1 次请求），
+> GPU Finder 降为「availability 周更 + history/catalog 月度」的保底源，`snapshot` 轨道停用；
+> 月预算从 ~55/60 降到 ~17/60。历史回补（第 3 步）尚未接入。实施细节与验证见
+> `docs/FIX_LOG_2026-11-21.md`。
+
 目标：解决 `gpufinder_market` 的 429（上次成功 `2026-10-31`），给「市场紧张度」三张图找可替换的真实来源。
 
 所有候选都在本机实测过端点（2026-11-20 15:05–15:25 UTC），不是只看文档。
