@@ -110,6 +110,7 @@ def test_deploy_validator_accepts_current_quarterly_capex():
             {"source": "gpu_markets_fixings", "status": "fresh", "publishable": True},
             {"source": "throughput_benchmarks", "status": "fresh", "publishable": True},
             {"source": "gpufinder_market", "status": "fresh", "publishable": True},
+            {"source": "grabgpu_market", "status": "fresh", "publishable": True},
         ],
     }
 
@@ -141,6 +142,7 @@ def test_deploy_validator_accepts_weekly_cadence_skip_for_gpufinder():
             {"source": "gpu_markets_fixings", "status": "fresh", "publishable": True},
             {"source": "throughput_benchmarks", "status": "fresh", "publishable": True},
             {"source": "gpufinder_market", "status": "current_for_frequency", "publishable": True},
+            {"source": "grabgpu_market", "status": "fresh", "publishable": True},
         ],
     }
 
@@ -171,6 +173,7 @@ def test_deploy_validator_rejects_false_freshness():
             {"source": "gpu_markets_fixings", "status": "fresh", "publishable": True},
             {"source": "throughput_benchmarks", "status": "fresh", "publishable": True},
             {"source": "gpufinder_market", "status": "fresh", "publishable": True},
+            {"source": "grabgpu_market", "status": "fresh", "publishable": True},
         ],
     }
 
@@ -202,6 +205,7 @@ def test_foundry_stale_last_good_within_grace_passes():
             {"source": "gpu_markets_fixings", "status": "fresh", "publishable": True},
             {"source": "throughput_benchmarks", "status": "fresh", "publishable": True},
             {"source": "gpufinder_market", "status": "fresh", "publishable": True},
+            {"source": "grabgpu_market", "status": "fresh", "publishable": True},
         ],
     }
 
@@ -232,6 +236,7 @@ def test_neocloud_stale_last_good_within_grace_passes():
             {"source": "gpu_markets_fixings", "status": "fresh", "publishable": True},
             {"source": "throughput_benchmarks", "status": "fresh", "publishable": True},
             {"source": "gpufinder_market", "status": "fresh", "publishable": True},
+            {"source": "grabgpu_market", "status": "fresh", "publishable": True},
         ],
     }
 

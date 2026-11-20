@@ -152,15 +152,31 @@ def test_merge_daily_explicit_none_wins_and_stale_gap_removed():
 
 
 def test_due_tracks_per_track_cadence():
-    """轨道各按自己的间隔到期：availability 4 天、snapshot 2.5 天、history/catalog 低频。"""
-    now = datetime(2026, 10, 16, 6, 0, tzinfo=timezone.utc)
-    cadence = {"availability": "2026-10-15T06:00:00Z", "snapshot": "2026-10-13T06:00:00Z",
-               "history": "2026-09-16T06:00:00Z", "catalog": "2026-09-15T06:00:00Z"}
+    """轨道各按自己的间隔到期：availability 每周、history/catalog 月度；snapshot 已移交 GrabGPU。"""
+    now = datetime(2026, 11, 21, 6, 0, tzinfo=timezone.utc)
+    cadence = {"availability": "2026-11-20T06:00:00Z", "snapshot": "2026-11-20T06:00:00Z",
+               "history": "2026-10-01T06:00:00Z", "catalog": "2026-10-01T06:00:00Z"}
     due = _due_tracks(cadence, now)
-    assert "availability" not in due, "1 天前采过可用率不应该再采"
-    assert "snapshot" in due and "history" in due and "catalog" in due
+    assert "availability" not in due, "1 天前采过可用率，周更未到不采"
+    assert "snapshot" not in due, "snapshot 已停用：价差改由 GrabGPU 每日产出"
+    assert "history" in due and "catalog" in due
+    assert set(TRACK_DUE_DAYS) == {"availability", "history", "catalog"}
     assert _due_tracks({}, now) == list(TRACK_DUE_DAYS), "没有任何节奏记录时全部视为到期"
     assert _due_tracks(cadence, now, force=True) == list(TRACK_DUE_DAYS)
+
+
+def test_monthly_call_budget_fits_free_tier():
+    """免费档 60 次/月：按各轨道间隔折算的月调用量必须留出重试余量。
+
+    2026-11-08 的 429 就是这个预算被吃到 55/60、一次重试即越界导致的。
+    """
+    gpus = 3  # H100 / H200 / B200
+    per_month = (
+        gpus * (30.0 / TRACK_DUE_DAYS["availability"])   # availability 每轮 3 次
+        + gpus * (30.0 / TRACK_DUE_DAYS["history"])      # history 每轮 3 次
+        + 1 * (30.0 / TRACK_DUE_DAYS["catalog"])         # catalog 每轮 1 次
+    )
+    assert per_month <= 30, f"月调用量 {per_month:.0f} 次过于接近 60 次免费额度"
 
 
 def test_committed_artifact_shape_is_sane():

@@ -32,7 +32,7 @@
 
 三张图分别读 `availabilityPct`（稀缺度）、`listedAvailableGapPct`（虚低度）、`_breadth_value()`（广度 = 当日有在架库存的 provider 数）。
 
-失败链：额度耗尽 → `/snapshot` 与 `/availability` 全部 429 → 只保留 `availabilityPct` 的最后一次成功值（`2026-10-31`）→ `listed_gap` 序列因此**一个点都没有**（`time_series_snapshot.json` 里 `listed_gap` 点数 0），等于三张图里有一张一直是空的。这不是本次告警的起因，但属于同一根因。
+失败链：额度耗尽 → `/snapshot` 与 `/availability` 全部 429 → 各自停在最后一次成功值（`availabilityPct` 停在 `2026-10-31`、`listedAvailableGapPct` 停在 `2026-10-29`）。**更正**：本节初稿曾写「`listed_gap` 序列一个点都没有、三张图里有一张一直是空的」，那是查错键名的误判——`time_series_snapshot.json` 里实际键名是 `listedGap`，提交版本含 21 个点（`2026-10-11`→`10-29`）。真实情况是「价差序列在 10-29 之后断更」，不是空图。这不是本次告警的起因，但属于同一根因。
 
 ## 2. 候选源实测
 

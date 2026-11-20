@@ -71,6 +71,8 @@ PROVIDER_DISPLAY = {
 FOUNDRY_HISTORY_PATH = ROOT / "tracker_data" / "backfills" / "foundry_signals_gpu_history.json"
 NEOCLOUD_PATH = ROOT / "tracker_data" / "backfills" / "neocloud_provider_price_history.json"
 GPUFINDER_PATH = ROOT / "tracker_data" / "backfills" / "gpufinder_market.json"
+# 2026-11-21 起：市场库存/价差/广度的主源（GrabGPU 单次全市场快照）；GPU Finder 降为切换前的历史
+GPU_STOCK_PATH = ROOT / "tracker_data" / "backfills" / "gpu_market_stock.json"
 OPENROUTER_ACTIVE_PRICE_PATH = ROOT / "tracker_data" / "backfills" / "openrouter_active_price_history.json"
 CAPEX_HISTORY_PATH = ROOT / "tracker_data" / "backfills" / "capex_official_history.json"
 REFERENCE_PATH = ROOT / "tracker_data" / "backfills" / "reference_index_history.json"
@@ -710,6 +712,7 @@ def build_snapshot(freeze: bool = False, snapshot_dir: Path | None = None) -> di
     orderbook_raw = json.loads(ORDERBOOK_PATH.read_text(encoding="utf-8")) if ORDERBOOK_PATH.exists() else {}
     neocloud_raw = json.loads(NEOCLOUD_PATH.read_text(encoding="utf-8")) if NEOCLOUD_PATH.exists() else {}
     gpufinder_raw = json.loads(GPUFINDER_PATH.read_text(encoding="utf-8")) if GPUFINDER_PATH.exists() else {}
+    gpu_stock_raw = json.loads(GPU_STOCK_PATH.read_text(encoding="utf-8")) if GPU_STOCK_PATH.exists() else {}
     capex_raw = json.loads(CAPEX_HISTORY_PATH.read_text(encoding="utf-8"))
     openrouter = _openrouter_extract(_openrouter_rows(openrouter_raw))
     active_prices = _active_model_price_extract(openrouter["raw"], active_price_raw)
@@ -728,18 +731,33 @@ def build_snapshot(freeze: bool = False, snapshot_dir: Path | None = None) -> di
             landscape_full,
             snapshot_dir=snapshot_dir if snapshot_dir is not None else INDEX_SNAPSHOT_DIR,
         )
+    # 供给端三图：GrabGPU（provider 在库口径）为主源，GPU Finder（实例数加权口径）只补切换日之前的历史。
+    # 两种口径不拼在同一天之后：切换日由新源第一天决定，旧源遇到 >= 切换日的行一律不再使用。
+    stock_dates = sorted(
+        str(r.get("date") or "") for r in gpu_stock_raw.get("rows") or [] if len(str(r.get("date") or "")) == 10
+    )
+    stock_start = stock_dates[0] if stock_dates else None
     scarcity, listed_gap, breadth = [], [], []
-    for row in gpufinder_raw.get("rows") or []:
-        day, gpu_name = str(row.get("date") or ""), str(row.get("gpu") or "")
-        if len(day) != 10 or gpu_name not in ("H100", "H200", "B200"):
-            continue
-        if isinstance(row.get("availabilityPct"), (int, float)):
-            scarcity.append({"date": day, "series": gpu_name, "value": row["availabilityPct"]})
-        if isinstance(row.get("listedAvailableGapPct"), (int, float)):
-            listed_gap.append({"date": day, "series": gpu_name, "value": row["listedAvailableGapPct"]})
-        breadth_value = _breadth_value(row)
-        if breadth_value:
-            breadth.append({"date": day, "series": gpu_name, "value": breadth_value})
+    feed_switch = stock_start
+    for source_rows in (
+        [r for r in gpu_stock_raw.get("rows") or [] if str(r.get("gpu") or "") in ("H100", "H200", "B200")],
+        [
+            r
+            for r in gpufinder_raw.get("rows") or []
+            if not (feed_switch and str(r.get("date") or "") >= feed_switch)
+        ],
+    ):
+        for row in source_rows:
+            day, gpu_name = str(row.get("date") or ""), str(row.get("gpu") or "")
+            if len(day) != 10 or gpu_name not in ("H100", "H200", "B200"):
+                continue
+            if isinstance(row.get("availabilityPct"), (int, float)):
+                scarcity.append({"date": day, "series": gpu_name, "value": row["availabilityPct"]})
+            if isinstance(row.get("listedAvailableGapPct"), (int, float)):
+                listed_gap.append({"date": day, "series": gpu_name, "value": row["listedAvailableGapPct"]})
+            breadth_value = _breadth_value(row)
+            if breadth_value:
+                breadth.append({"date": day, "series": gpu_name, "value": breadth_value})
     capex = [_capex_display(row) for row in sorted(capex_raw.get("rows") or [], key=lambda r: (r["date"], r["company"]), reverse=True)]
 
     generated_at = datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
@@ -773,6 +791,9 @@ def build_snapshot(freeze: bool = False, snapshot_dir: Path | None = None) -> di
     _gf = gpufinder_raw.get("sources") or {}
     GFINDER_URLS = [str(v.get("url")) for v in _gf.values() if isinstance(v, dict) and v.get("url")]
     GFINDER_SHA = " ".join(str(v.get("sha256")) for v in _gf.values() if isinstance(v, dict) and v.get("sha256"))
+    STOCK_URLS = [u for u in [str(gpu_stock_raw.get("sourceUrl") or "")] if u]
+    STOCK_SHA = str(gpu_stock_raw.get("sourceSha256") or "")
+    STOCK_CAPTURED = str(gpu_stock_raw.get("capturedAt") or "")[:16].replace("T", " ")
 
     # CAPEX：每行自带一手披露链接，来源区必须能点开
     capex_urls = [r["source_url"] for r in (capex_raw.get("rows") or []) if r.get("source_url")]
@@ -867,19 +888,23 @@ def build_snapshot(freeze: bool = False, snapshot_dir: Path | None = None) -> di
                 "definition": "Rolling 30-day median of H200/H100 and B200/H100 daily rental-price ratios. A value above 1 means a premium to H100.",
             },
             "scarcity": {
-                "label": "GPU Finder 市场可用性（gpufinder.dev）",
-                **_links(GFINDER_URLS, GFINDER_SHA),
-                "definition": "Σavailable/Σtotal 全市场可租卡占比（7 天滚动窗口，每日快照向前积累）。连续稀缺度指标，替代 Foundry 的二元可用率。",
+                "label": f"GrabGPU 逐日在库快照（grabgpu.com）· 最近抓取 {STOCK_CAPTURED} UTC",
+                **_links(STOCK_URLS, STOCK_SHA),
+                "definition": (
+                    f"有报价的 provider 中，当前报告有库存的占比（分母只算状态已知的 provider）；"
+                    f"{feed_switch or '接入日'} 起替代 GPU Finder 的实例数加权口径。"
+                    "GPU Finder 版为 Σavailable/Σtotal（7 天滚动窗口），两者不是同一指标，切换前的点只作历史参考，不与新段连线比较。"
+                ),
             },
             "listedGap": {
-                "label": "GPU Finder 报价 vs 在库价差",
-                **_links(GFINDER_URLS, GFINDER_SHA),
-                "definition": "最低在库价 ÷ 最低报价 − 1。衡量‘报价虚低程度’：市场越紧，最低报价越可能是没有库存的虚价，该差值越大。",
+                "label": "GrabGPU 报价 vs 在库价差",
+                **_links(STOCK_URLS, STOCK_SHA),
+                "definition": f"最低在库价 ÷ 最低报价 − 1（与 GPU Finder 同名指标公式一致，{feed_switch or '接入日'} 起改由 GrabGPU 每日产出）。市场越紧，最低报价越可能是没有库存的虚价，该差值越大。",
             },
             "breadth": {
-                "label": "GPU Finder 供应商广度",
-                **_links(GFINDER_URLS, GFINDER_SHA),
-                "definition": "报告在架库存的供应商数随时间变化（由 7 天可用率窗口逐日推导；来源池为有库存信号的供应商）——价格上行+家数增加=供给在响应；价格上行+家数减少=实质性紧缩。2026-10-11 起与原目录挂牌家数口径切换（旧口径无逐日数据且会被窗口回写覆盖）。",
+                "label": "GrabGPU 供应商广度（切换前为 GPU Finder）",
+                **_links(STOCK_URLS, STOCK_SHA),
+                "definition": f"报告在库库存的 provider 家数（同一 provider 多条报价只算一次）。2026-10-11 起放弃‘目录挂牌家数’，{feed_switch or '接入日'} 起统一为‘有库存的 provider 数’——价格上行+家数增加=供给在响应；价格上行+家数减少=实质性紧缩。",
             },
             "capex": {
                 "label": "SEC companyfacts + 各公司官方业绩披露（原始单位，不插值）",
@@ -910,6 +935,13 @@ def build_snapshot(freeze: bool = False, snapshot_dir: Path | None = None) -> di
         snapshot["meta"]["volumePartialWeekDropped"] = _dropped
     snapshot["meta"]["scarcityValidDays"] = len({r["date"] for r in scarcity})
     snapshot["meta"]["gapValidDays"] = len({r["date"] for r in listed_gap})
+    snapshot["meta"]["supplySwitch"] = feed_switch or ""
+    snapshot["meta"]["supplyPointsSinceSwitch"] = len(
+        {r["date"] for r in scarcity if feed_switch and r["date"] >= feed_switch}
+    )
+    snapshot["meta"]["supplyFeed"] = (
+        f"GrabGPU provider 在库占比（{feed_switch} 起）" if feed_switch else "GPU Finder 实例数加权（历史）"
+    )
     snapshot["events"] = _load_industry_events()
     snapshot["gpuLandscape"] = trim_landscape(landscape_full)
     snapshot["meta"]["landscapeAsOf"] = landscape_full["asOf"]
@@ -1219,7 +1251,8 @@ SOURCE_IMPACT = {
     "fred_cost_anchors": "CPI 平减与电价锚",
     "gpu_markets_fixings": "Spot/On-demand/Reserved 定盘",
     "throughput_benchmarks": "吞吐基准（单位经济）",
-    "gpufinder_market": "市场紧张度三图（稀缺度/虚低度/广度）",
+    "gpufinder_market": "供给端保底：实例数加权可用率 + 月度历史（snapshot 轨道已停用）",
+    "grabgpu_market": "市场紧张度三图主源（provider 在库占比 / 报价-在库价差 / 广度）",
 }
 
 
@@ -1239,13 +1272,18 @@ def _breadth_value(row: dict[str, Any]) -> int | None:
     旧口径取目录挂牌家数（/gpus providerCount）：只在运行日才有值，且会被滚动窗口回写覆盖，
     每个提交里都只剩最后一天（2026-10-11 复盘确认后切换口径；图注已同步更新）。
     """
+    explicit = row.get("breadthProviders")
+    if isinstance(explicit, int) and explicit > 0:
+        return explicit
     providers = row.get("availabilityByProvider")
     if not isinstance(providers, dict):
         return None
+    # 取 value[0]（可用数）而不是 value[1]（在架总数）：面板说的是「报告在架库存的供应商数」，
+    # 按 total>0 会把当天全部缺货的家数也算进去（2026-11-21 复核后改成有库存才算）。
     active = sum(
         1
         for value in providers.values()
-        if isinstance(value, (list, tuple)) and len(value) > 1 and (value[1] or 0) > 0
+        if isinstance(value, (list, tuple)) and len(value) > 0 and (value[0] or 0) > 0
     )
     return active or None
 
@@ -1831,7 +1869,7 @@ __EXECUTIVE__
 __CLOCKS__<section class="section" id="demand"><div class="section-head"><h2>需求与活跃模型结构</h2><span class="section-kicker">OpenRouter · 52周</span></div><div class="grid"><article class="panel full" data-source="openrouter"><h3>OpenRouter 模型 Token 总量</h3><p class="panel-note">每周 token 总量与 4 周均线 · 含未具名模型的汇总</p><div id="or-volume" class="chart"></div><div id="or-volume-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel full" data-source="openrouterComposition"><h3>OpenRouter 活跃模型组合更替</h3><p class="panel-note">每周 Top-9 模型的用量占比 · 灰色为未具名模型 · 悬停查看明细</p><div id="or-composition" class="chart"></div><div id="composition-legend" class="legend"></div><div id="composition-badge" class="badge-line"></div><div id="composition-latest" class="key-stats"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel full" data-source="top5Share"><h3>Top-5 模型份额走势</h3><p class="panel-note">最新周 Top-5 模型各自的用量占比 · 末端标模型名 · 与堆叠图配合看"头部换得勤、没人坐稳"</p><div id="top5-share" class="chart"></div><div id="top5-share-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel full" data-source="activePrice"><h3>活跃模型 Output 价格层级迁移</h3><p class="panel-note">按用量加权的输出价格分档 · 灰色=未匹配到价格的用量</p><div id="active-price-tier" class="chart"></div><div id="active-price-tier-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel" data-source="activePrice"><h3>活跃模型组合 Input 牌价</h3><p class="panel-note">按公开Token量加权 · 美元 / 100万 input tokens</p><div id="active-input-basket" class="chart compact"></div><div id="active-input-basket-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel" data-source="activePrice"><h3>活跃模型组合 Output 牌价</h3><p class="panel-note">按公开Token量加权 · 美元 / 100万 output tokens</p><div id="active-output-basket" class="chart compact"></div><div id="active-output-basket-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel" data-source="otpi"><h3>OTPI 已实现 Token 价（积累中）</h3><p class="panel-note" id="otpi-note">各实验室按实际成交加权的 token 价格 · 免费层 1 个月滚动窗口，每日快照累积</p><div id="otpi-price" class="chart compact"></div><div id="otpi-price-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel" data-source="priceChanges"><h3>近期活跃模型 · 调价点</h3><p class="panel-note" id="price-change-note">头部模型牌价近 4 周被改了几次——高频调价 = 定价试探与竞争响应</p><div id="price-change-bars"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><details class="model-detail"><summary>查看近期活跃模型与单模型价格历史</summary><div class="detail-controls"><select id="active-model-select" class="detail-select" aria-label="活跃模型"></select><span id="active-model-meta" class="detail-meta"></span></div><div id="active-model-history" class="chart compact"></div><div id="active-model-history-legend" class="legend"></div><div class="table-wrap"><table><thead><tr><th>近期活跃模型</th><th>4周Token</th><th>总量占比</th><th>Input（$/百万）</th><th>Output（$/百万）</th><th>调价点</th></tr></thead><tbody id="active-model-body"></tbody></table></div></details></div></section>
 
 <section class="section" id="landscape"><div class="section-head"><h2>GPU 供给全景</h2><span class="section-kicker">关键卡 · 市场分层 · 点选切换</span></div><article class="panel full landscape-panel"><div class="landscape-toolbar"><div class="landscape-field landscape-field-card"><label for="landscape-card">GPU</label><select id="landscape-card" class="detail-select" aria-label="选择 GPU"></select></div><div class="landscape-field landscape-field-market"><label>市场</label><div class="segments landscape-markets" id="landscape-market"></div></div></div><div class="landscape-kpis" id="landscape-kpis" aria-live="polite"></div><div class="landscape-layout"><div class="landscape-main"><div class="chart" id="landscape-chart"></div><div class="legend" id="landscape-legend"></div><div class="landscape-evidence" id="landscape-evidence"></div><div id="landscape-crosscheck-selected" class="landscape-crosscheck-selected"></div><details class="landscape-offers" id="landscape-offers"><summary>逐条报价 · 当前卡/市场</summary><div class="table-wrap"><table><thead><tr><th>Provider</th><th>价格</th><th>quotes</th><th>日期</th><th>市场</th><th>市场风险</th><th>来源</th></tr></thead><tbody id="landscape-offers-body"></tbody></table></div><p class="panel-note" id="landscape-offers-note">只列当前卡、当前市场最新一天的逐条报价；价格是 provider 当日中位，不是成交价。日期与市场风险为市场级，offer 没有逐条时间/风险。</p></details></div><aside class="landscape-side"><div class="landscape-side-head"><h3>市场分层</h3><span class="mini-kicker" id="landscape-market-kicker">同一张卡</span></div><table class="mini-table" id="landscape-market-table"></table><p class="panel-note">不同 market 的风险、计费单位和可持有性不同；单家市场的变化只是该 provider 自身读数，不要把社区价或 spot 价当成长租价。</p></aside></div><details class="landscape-monthly" id="landscape-monthly"><summary>月度固定 panel · 当前卡</summary><div class="table-wrap"><table><thead><tr><th>月份</th><th>月值</th><th>Panel</th><th>有效日/月天数</th><th>覆盖率</th><th>状态</th><th>阶段</th><th>withheld 原因</th></tr></thead><tbody id="landscape-monthly-body"></tbody></table></div><p class="panel-note">月初前固定 panel；月值 = panel 内 provider 日 median 的月度均值。日频近似，非 gpueconomy 的 hourly panel。历史月会随底表回填重算，不是不可变快照；只有周指数有 final 冻结。</p></details><details class="landscape-crosscheck" id="landscape-crosscheck"><summary>外部交叉校验 · GPU Economy（CC BY 4.0）</summary><div id="landscape-crosscheck-meta" class="landscape-crosscheck-meta"></div><div class="table-wrap"><table><thead><tr><th>GPU</th><th>我方中位</th><th>GPU Economy 中位</th><th>SXM 基准</th><th>口径差</th><th>我方/外部</th><th>重叠</th><th>coverage</th><th>备注</th></tr></thead><tbody id="landscape-crosscheck-body"></tbody></table></div><p class="panel-note" id="landscape-crosscheck-note">GPU Economy 是二级参考层，不参与我方中位/指数计算。口径差 = 我方中位 ÷ 外部中位 − 1，是样本与口径差异，不是价差或成交价差。外部数据：GPU Economy · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a> · methodology — · data — · <a href="https://gpueconomy.com/data" target="_blank" rel="noopener">gpueconomy.com/data</a>。默认只列 on_demand；A100 因我方混 40/80GB 标 sku_mismatch，不给差值。</p></details><details class="landscape-all" open><summary>全部关键卡 · 正规 on-demand 横向比较（按中位价升序）<span id="landscape-all-stale" class="stale-inline"></span></summary><div class="table-wrap"><table><thead><tr><th>GPU</th><th>VRAM</th><th>中位 ↓</th><th>P25–P75</th><th>最低</th><th>家数</th><th>7日</th><th>状态</th></tr></thead><tbody id="landscape-all-body"></tbody></table></div></details><details class="landscape-method"><summary>口径、状态与证据</summary><div class="method-grid"><div><b>价格单位</b><p>USD / GPU / hour。底表已按单卡归一化；节点价 ÷ 卡数未逐行保留，这是本版的已知限制。</p></div><div><b>市场分层</b><p>正规 on-demand = on-demand + secure；community、spot、reserved、marketplace floor、serverless 分开统计，不混入主中位。risk：low=on-demand/reserved，medium=serverless，high=spot/community/marketplace。price_scope=rate_card 表示已归一化的单卡挂牌价，不代表 instance/GPU-only 已拆分。</p></div><div><b>中位与四分位</b><p>每家 provider 先取当日中位，再跨 provider 取中位；少于 4 家时 P25/P75 留空并标“样本偏薄”，不拿全距冒充。</p></div><div><b>周指数</b><p>每周最新一天、48 小时内确认，provider 一次；≥8 家 published，4–7 家 thin，&lt;4 家 withheld；链式 base-100 只取两周都在的 provider。当前周 provisional，收盘后 final。公开回执只保留最新周。</p></div><div><b>状态</b><p>相对数据最新日：live ≤2 天、unconfirmed ≤7 天、stopped &gt;7 天。stopped 保留最后读数，仍进入日频中位/最低价；周指数只取 48 小时内确认的读数，因此 stopped 不参与新周指数。</p></div><div><b>局限</b><p>listed rates，不是成交价或可用容量；没有 negotiated/enterprise 折扣；CAPEX 的手工补丁与官方 actual 分开记录。</p></div></div><div class="data-links"><span>机器可读：</span><a href="data/prices.json" download>prices.json</a><a href="data/gpus.json" download>gpus.json</a><a href="data/providers.json" download>providers.json</a><a href="data/price-index.json" download>price-index.json（全卡周指数）</a><a href="data/changelog.json" download>changelog.json</a><a href="data/receipts/index.json" download>receipts/index.json（可复算周索引）</a><a href="data/crosscheck.json" download>crosscheck.json（外部交叉校验）</a><a href="data/external/gpueconomy.json" download>external/gpueconomy.json（GPU Economy 参考层）</a><a href="data/manifest.json" download>manifest.json</a></div></details></article></section>
-<section class="section" id="compute"><div class="section-head"><h2>GPU市场</h2><span class="section-kicker">多源聚合 · 供应商数据集 · 窗口 ~12 周（2026-09-27 起价格源切换为 gpurentalprices，与更早口径不连续）</span></div>__STALENOTE__<div class="grid three"><details class="gpu-legacy"><summary>三张主力卡连续图（H100 / H200 / B200）· 展开查看</summary><div class="grid three"><article class="panel full" data-source="gpuPrice"><h3>H100 租赁价格</h3><p class="panel-note">上半：中位价走势（y 轴聚焦中位范围）· 下半窄条：P25–P75 价差（市场分化度，越厚越分散）· 均为正规 on-demand 挂牌价（不含 community/spot/serverless）</p><div id="gpu-price-h100" class="chart compact"></div><div class="legend"><span class="legend-item"><i class="swatch" style="background:#0071e3"></i>中位价</span><span class="legend-item"><i class="swatch" style="background:#1d1d1f"></i>30日均线</span><span class="legend-item"><i class="swatch band" style="background:#0071e3"></i>P25–P75 价差（见下方窄条）</span></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel full" data-source="gpuPrice"><h3>H200 租赁价格</h3><p class="panel-note">上半：中位价走势（y 轴聚焦中位范围）· 下半窄条：P25–P75 价差（市场分化度，越厚越分散）· 均为正规 on-demand 挂牌价（不含 community/spot/serverless）</p><div id="gpu-price-h200" class="chart compact"></div><div class="legend"><span class="legend-item"><i class="swatch" style="background:#0071e3"></i>中位价</span><span class="legend-item"><i class="swatch" style="background:#1d1d1f"></i>30日均线</span><span class="legend-item"><i class="swatch band" style="background:#0071e3"></i>P25–P75 价差（见下方窄条）</span></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel full" data-source="gpuPrice"><h3>B200 租赁价格</h3><p class="panel-note">上半：中位价走势（y 轴聚焦中位范围）· 下半窄条：P25–P75 价差（市场分化度，越厚越分散）· 均为正规 on-demand 挂牌价（不含 community/spot/serverless）</p><div id="gpu-price-b200" class="chart compact"></div><div class="legend"><span class="legend-item"><i class="swatch" style="background:#0071e3"></i>中位价</span><span class="legend-item"><i class="swatch" style="background:#1d1d1f"></i>30日均线</span><span class="legend-item"><i class="swatch band" style="background:#0071e3"></i>P25–P75 价差（见下方窄条）</span></div><details class="source"><summary>来源与口径</summary><p></p></details></article></div></details><article class="panel full" data-source="gpuPremium"><h3>GPU 代际租赁溢价</h3><p class="panel-note">相对H100的30日中位价格倍数 · 1.0x表示无溢价</p><div id="gpu-premium" class="chart"></div><div id="gpu-premium-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><h3 class="subsection-title">跨来源交叉验证 · 报价 × 成交 × 合约</h3><article class="panel" data-source="basisH100"><h3>H100：报价 vs 成交指数</h3><p class="panel-note">Neocloud 挂牌 × SemiAnalysis 综合 × Ornn 成交 · 统一起点=100，只看相对变化是否同步</p><div id="basis-h100" class="chart compact"></div><div id="basis-h100-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel" data-source="basisH200"><h3>H200：报价 vs 成交指数</h3><p class="panel-note">Neocloud 挂牌 × Ornn 成交（SemiAnalysis 无 H200 公开指数）· 起点=100，扇形开口=分歧扩大</p><div id="basis-h200" class="chart compact"></div><div id="basis-h200-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel" data-source="basisB200"><h3>B200：报价 vs 成交指数</h3><p class="panel-note">Neocloud 挂牌 × SemiAnalysis 综合 × Ornn 成交 · 起点=100，扇形开口=分歧扩大</p><div id="basis-b200" class="chart compact"></div><div id="basis-b200-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel full" data-source="panelIndex"><h3>固定供应商面板指数</h3><p class="panel-note" id="panel-index-note">固定同一批供应商的整租价均值 · 起点=100（灰虚线）· 橙色虚线=成员个体调价造成的台阶 · 有人缺报价当天断开</p><div id="panel-index-chart" class="chart"></div><div id="panel-index-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel wide" data-source="contractBand"><h3>H100 一年期合约价区间</h3><p class="panel-note">SemiAnalysis 公开调查区间（P25–P75）· 阶梯图不与日线混轴</p><div id="contract-band" class="chart compact"></div><div id="contract-band-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><h3 class="subsection-title">市场紧张度 · 供给端（GPU Finder 每日积累）</h3><article class="panel" data-source="scarcity"><h3>市场稀缺度：可租卡占比</h3><p class="panel-note" id="scarcity-note">能租到的卡数 ÷ 在架总卡数 · 越低越紧张 · 每日快照（7 天滚动窗口）</p><div id="scarcity-chart" class="chart compact"></div><div id="scarcity-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel" data-source="listedGap"><h3>报价虚低度：在库 ÷ 报价</h3><p class="panel-note" id="gap-note">最低在库价 ÷ 最低报价 − 1 · 越紧的型号，挂出来的低价越可能是空头支票</p><div id="gap-chart" class="chart compact"></div><div id="gap-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel" data-source="breadth"><h3>供应商广度</h3><p class="panel-note" id="breadth-note">报告在架库存的供应商数（21 家库存信号源池）· 涨价时家数还在增，说明供给在跟进</p><div id="breadth-chart" class="chart compact"></div><div id="breadth-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel full" data-source="orderbookDepth"><h3>供给深度：订单簿观测（积累中）</h3><p class="panel-note" id="orderbook-note">三个平台各自的在架报价条数（分开计，不混算）· 少于 10 个有效日只画点</p><div class="grid three"><div><div id="ob-gpuperhour" class="chart compact"></div><div id="ob-gpuperhour-legend" class="legend"></div></div><div><div id="ob-vast" class="chart compact"></div><div id="ob-vast-legend" class="legend"></div></div><div><div id="ob-runpod" class="chart compact"></div><div id="ob-runpod-legend" class="legend"></div></div></div><details class="source"><summary>来源与口径</summary><p></p></details></article></div></section>
+<section class="section" id="compute"><div class="section-head"><h2>GPU市场</h2><span class="section-kicker">多源聚合 · 供应商数据集 · 窗口 ~12 周（2026-09-27 起价格源切换为 gpurentalprices，与更早口径不连续）</span></div>__STALENOTE__<div class="grid three"><details class="gpu-legacy"><summary>三张主力卡连续图（H100 / H200 / B200）· 展开查看</summary><div class="grid three"><article class="panel full" data-source="gpuPrice"><h3>H100 租赁价格</h3><p class="panel-note">上半：中位价走势（y 轴聚焦中位范围）· 下半窄条：P25–P75 价差（市场分化度，越厚越分散）· 均为正规 on-demand 挂牌价（不含 community/spot/serverless）</p><div id="gpu-price-h100" class="chart compact"></div><div class="legend"><span class="legend-item"><i class="swatch" style="background:#0071e3"></i>中位价</span><span class="legend-item"><i class="swatch" style="background:#1d1d1f"></i>30日均线</span><span class="legend-item"><i class="swatch band" style="background:#0071e3"></i>P25–P75 价差（见下方窄条）</span></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel full" data-source="gpuPrice"><h3>H200 租赁价格</h3><p class="panel-note">上半：中位价走势（y 轴聚焦中位范围）· 下半窄条：P25–P75 价差（市场分化度，越厚越分散）· 均为正规 on-demand 挂牌价（不含 community/spot/serverless）</p><div id="gpu-price-h200" class="chart compact"></div><div class="legend"><span class="legend-item"><i class="swatch" style="background:#0071e3"></i>中位价</span><span class="legend-item"><i class="swatch" style="background:#1d1d1f"></i>30日均线</span><span class="legend-item"><i class="swatch band" style="background:#0071e3"></i>P25–P75 价差（见下方窄条）</span></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel full" data-source="gpuPrice"><h3>B200 租赁价格</h3><p class="panel-note">上半：中位价走势（y 轴聚焦中位范围）· 下半窄条：P25–P75 价差（市场分化度，越厚越分散）· 均为正规 on-demand 挂牌价（不含 community/spot/serverless）</p><div id="gpu-price-b200" class="chart compact"></div><div class="legend"><span class="legend-item"><i class="swatch" style="background:#0071e3"></i>中位价</span><span class="legend-item"><i class="swatch" style="background:#1d1d1f"></i>30日均线</span><span class="legend-item"><i class="swatch band" style="background:#0071e3"></i>P25–P75 价差（见下方窄条）</span></div><details class="source"><summary>来源与口径</summary><p></p></details></article></div></details><article class="panel full" data-source="gpuPremium"><h3>GPU 代际租赁溢价</h3><p class="panel-note">相对H100的30日中位价格倍数 · 1.0x表示无溢价</p><div id="gpu-premium" class="chart"></div><div id="gpu-premium-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><h3 class="subsection-title">跨来源交叉验证 · 报价 × 成交 × 合约</h3><article class="panel" data-source="basisH100"><h3>H100：报价 vs 成交指数</h3><p class="panel-note">Neocloud 挂牌 × SemiAnalysis 综合 × Ornn 成交 · 统一起点=100，只看相对变化是否同步</p><div id="basis-h100" class="chart compact"></div><div id="basis-h100-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel" data-source="basisH200"><h3>H200：报价 vs 成交指数</h3><p class="panel-note">Neocloud 挂牌 × Ornn 成交（SemiAnalysis 无 H200 公开指数）· 起点=100，扇形开口=分歧扩大</p><div id="basis-h200" class="chart compact"></div><div id="basis-h200-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel" data-source="basisB200"><h3>B200：报价 vs 成交指数</h3><p class="panel-note">Neocloud 挂牌 × SemiAnalysis 综合 × Ornn 成交 · 起点=100，扇形开口=分歧扩大</p><div id="basis-b200" class="chart compact"></div><div id="basis-b200-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel full" data-source="panelIndex"><h3>固定供应商面板指数</h3><p class="panel-note" id="panel-index-note">固定同一批供应商的整租价均值 · 起点=100（灰虚线）· 橙色虚线=成员个体调价造成的台阶 · 有人缺报价当天断开</p><div id="panel-index-chart" class="chart"></div><div id="panel-index-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel wide" data-source="contractBand"><h3>H100 一年期合约价区间</h3><p class="panel-note">SemiAnalysis 公开调查区间（P25–P75）· 阶梯图不与日线混轴</p><div id="contract-band" class="chart compact"></div><div id="contract-band-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><h3 class="subsection-title">市场紧张度 · 供给端（GrabGPU 每日库存快照 · GPU Finder 历史保底）</h3><article class="panel" data-source="scarcity"><h3>市场稀缺度：可租卡占比</h3><p class="panel-note" id="scarcity-note">有报价的供应商中当前有库存的占比 · 越低越紧张 · 每日快照</p><div id="scarcity-chart" class="chart compact"></div><div id="scarcity-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel" data-source="listedGap"><h3>报价虚低度：在库 ÷ 报价</h3><p class="panel-note" id="gap-note">最低在库价 ÷ 最低报价 − 1 · 越紧的型号，挂出来的低价越可能是空头支票</p><div id="gap-chart" class="chart compact"></div><div id="gap-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel" data-source="breadth"><h3>供应商广度</h3><p class="panel-note" id="breadth-note">报告在库库存的供应商家数 · 涨价时家数还在增，说明供给在跟进</p><div id="breadth-chart" class="chart compact"></div><div id="breadth-legend" class="legend"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel full" data-source="orderbookDepth"><h3>供给深度：订单簿观测（积累中）</h3><p class="panel-note" id="orderbook-note">三个平台各自的在架报价条数（分开计，不混算）· 少于 10 个有效日只画点</p><div class="grid three"><div><div id="ob-gpuperhour" class="chart compact"></div><div id="ob-gpuperhour-legend" class="legend"></div></div><div><div id="ob-vast" class="chart compact"></div><div id="ob-vast-legend" class="legend"></div></div><div><div id="ob-runpod" class="chart compact"></div><div id="ob-runpod-legend" class="legend"></div></div></div><details class="source"><summary>来源与口径</summary><p></p></details></article></div></section>
 
 <section class="section" id="sandbox"><div class="section-head"><h2>跨时钟对照</h2><span class="section-kicker">两条序列同屏 · 不合成总分</span></div><article class="panel full"><div class="sandbox-controls"><div class="sandbox-field"><label>序列 A</label><select id="sandbox-series-a" class="detail-select"></select></div><div class="sandbox-field"><label>序列 B</label><select id="sandbox-series-b" class="detail-select"></select></div><div class="sandbox-field"><label>对齐</label><div class="segments" id="sandbox-mode"><button type="button" data-mode="index" class="active">起点=100</button><button type="button" data-mode="dual">各自原轴</button></div></div><div class="sandbox-metric-chip" id="sandbox-correlation">相关系数：等待选择</div></div><div id="sandbox-chart" class="chart"></div><div id="sandbox-legend" class="legend"></div><p class="panel-note" id="sandbox-note">周频和日频点数不同。相关系数以较短的那条为锚（等长时按内容固定），在另一条上找 7 天内最近点。左右对调不改变配对。相关不是因果。</p></article></section>
 <section class="section" id="capex"><div class="section-head"><h2>CAPEX与官方承诺</h2><span class="section-kicker">季度与事件 · 原始频率不插值</span></div><article class="panel full" data-source="capexQuarterly"><h3>五大厂季度 CapEx 轨迹</h3><p class="panel-note">各公司单季资本开支（十亿美元，按日历季对齐各公司财政季）· 悬停看数值 · 中国厂商人民币口径见下表</p><div id="capex-quarterly" class="chart"></div><div id="capex-quarterly-legend" class="legend"></div><div id="guidance-strip" class="badge-line"></div><details class="source"><summary>来源与口径</summary><p></p></details></article><article class="panel full" data-source="capex"><div class="table-wrap"><table><thead><tr><th>日期</th><th>公司</th><th>指标</th><th>期间</th><th>单位</th><th>数值</th></tr></thead><tbody id="capex-body"></tbody></table></div><details class="source"><summary>来源与口径</summary><p></p></details></article></section>
@@ -2037,8 +2075,8 @@ lineChart('active-input-basket','active-input-basket-legend',DATA.datasets.activ
 lineChart('active-output-basket','active-output-basket-legend',DATA.datasets.activeOutputBasket,{title:'Active model output basket listed rate',kind:'usd',yTitle:'USD / 1M output',zero:true,weekStart:true,labels:{'Weekly weighted rate':'周加权费率','4W average':'4 周均线'}});
 ['H100','H200','B200'].forEach(g=>rangeChart('gpu-price-'+g.toLowerCase(),DATA.datasets.gpuPrice.filter(r=>r.series===g),DATA.datasets.gpuPriceAnnotations[g],g==='H100'?{eventLabels:true}:{}));
 lineChart('gpu-premium','gpu-premium-legend',DATA.datasets.gpuPremium,{title:'GPU generation rental premium',kind:'multiple',yTitle:'Price ratio to H100',zero:false,reference:1,endLabels:true});
-const _sd=DATA.meta.scarcityValidDays||0,_gd=DATA.meta.gapValidDays||0;
-document.getElementById('scarcity-note').textContent=`能租到的卡数 ÷ 在架总卡数 · ${_sd>=10?`已积累 ${_sd} 天`:`已积累 ${_sd}/10 天，先画观测点`}`;
+const _sd=DATA.meta.scarcityValidDays||0,_gd=DATA.meta.gapValidDays||0,_sw=DATA.meta.supplySwitch||'',_sn=DATA.meta.supplyPointsSinceSwitch||0;
+document.getElementById('scarcity-note').textContent=`有报价的供应商中当前有库存的占比 · ${_sd>=10?`已积累 ${_sd} 天`:`已积累 ${_sd}/10 天，先画观测点`}${_sw?` · ${_sw} 起为 GrabGPU provider 口径（新段 ${_sn} 天），此前为 GPU Finder 实例数加权，两段不作同口径对比`:''}`;
 if(document.getElementById('scarcity-chart'))lineChart('scarcity-chart','scarcity-legend',DATA.datasets.scarcity||[],{title:'Market availability pct',kind:'pct',yTitle:'% available',zero:true,gapDays:3,pointOnly:_sd<10});
 document.getElementById('gap-note').textContent=`最低在库价 ÷ 最低报价 − 1 · 已积累 ${_gd}/10 天${_gd>=10?'，已连线':'，先画观测点'}`;
 if(document.getElementById('gap-chart'))lineChart('gap-chart','gap-legend',DATA.datasets.listedGap||[],{title:'Listed vs in-stock gap',kind:'pct',yTitle:'Gap %',zero:false,gapDays:3,pointOnly:_gd<10});

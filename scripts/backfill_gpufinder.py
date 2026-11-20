@@ -1,18 +1,20 @@
 #!/usr/bin/env python3
-"""GPU Finder (gpufinder.dev) 市场采集：价格广度 × 可用率 × 报价-在库价差。
+"""GPU Finder (gpufinder.dev) 市场采集：保底可用率 + 月度历史。
 
-上游 2026-10-09 起要求 Bearer API Key（免费额度 60 次/月）。为守住额度，采集按**轨道**到期触发：
-- availability（≤4 天一轮，2026-10-27 起）：/availability 每次返回 **7 天滚动窗口的逐日 cells**，
-  低频轮询即可保证"市场稀缺度/广度"日序列零丢失——单次跨度大，正是不缺额度的取数方式；
-- snapshot（~2.5 天一轮）：/snapshot 只有"当下"，没有历史可回补，密度=采集频率（额度内最优）；
+上游 2026-10-09 起要求 Bearer API Key（免费额度 60 次/月）。2026-11-08 起因额度耗尽，
+`/snapshot` 长期 429、`listed_gap` 序列整段缺失，故 2026-11-21 起改变分工：
+
+- availability（每周 1 轮）：/availability 返回 **7 天滚动窗口的逐日 cells**，周更仍覆盖逐日；
+  它是目前唯一公开「Σavailable/Σtotal 实例数加权」口径的来源，降频保留作保底与口径锚点。
+- snapshot：**已停用**，`listedAvailableGapPct` 改由 GrabGPU（`backfill_grabgpu_market.py`，每日 1 次
+  请求拿全市场）产出，公式相同。
 - history（~28 天）、catalog（~30 天）：月度/目录数据，低频即可。
 未到期日零请求跳过；`GPUFINDER_API_KEY` 未配置时匿名请求并如实降级。
 手动验证：本地 `--force`/`--dry-run`，云端 workflow_dispatch 的 force_gpufinder 输入。
 
-为价格层提供第 6 个独立源：
-1. 市场可用率 = Σavailable/Σtotal（稀缺度连续指标，替代 Foundry 的二元可用率）
-2. 报价-在库价差 = cheapestAvailable / cheapestListed - 1（"报价虚低程度"）
-3. 供应商/实例数广度（市场参与度）+ 月度历史回补
+它为价格层提供：
+1. 市场可用率 = Σavailable/Σtotal（实例数加权，与 GrabGPU 的 provider 在库占比不是同一指标）
+2. 供应商/实例数广度 + 月度历史回补
 
 定位：非阻塞信息源。上游为 7 天滚动窗口，可用率历史从接入日起向前积累。
 """
@@ -35,12 +37,13 @@ BASE = "https://gpufinder.dev/api/v1"
 USER_AGENT = "AIComputeEconomicsTracker/1.0"
 ATTRIBUTION = "Data by GPU Finder (gpufinder.dev), public read-only API; attribution required."
 FRONTIER = ("H100", "H200", "B200")
-# 免费额度 60 次/月。每轮成本：availability/snapshot/history 各 3 次（3 个 GPU），catalog 1 次。
-# 预算：availability ~7 轮×3≈21 + snapshot 10 轮×3=30 + history 3 + catalog 1 ≈ 55 次/月，其余为重试余量。
+# 免费额度 60 次/月。2026-11-21 起因 snapshot 让位给 GrabGPU（1 次请求拿全市场、含在库状态），
+# 本脚本降级为「保底 + 只有它有的口径」，预算：availability ≈4 轮×3=13 + history 3 + catalog 1 ≈ 17 次/月，
+# 留出 40+ 次余量给重试，不再出现一次重试就整月 429 的结构性欠额。
 TRACK_DUE_DAYS = {
-    "availability": 4.0,   # 7 天滚动窗口：≤4 天一轮逐日零丢失，最新点滞后从 6 天压到 4 天（2026-10-27 起）
-    "snapshot": 2.5,       # 无历史可回补：密度=频率，额度内最优节奏
-    "history": 28.0,       # 月度地板价
+    "availability": 7.0,   # 7 天滚动窗口：周更仍覆盖逐日，最新点滞后 ≤7 天；用于守住实例数加权口径
+    # snapshot 已停用：`listedAvailableGapPct` 改由 GrabGPU 每日产出（公式相同、可日更）。
+    "history": 28.0,       # 月度地板价（外部参照）
     "catalog": 30.0,       # 目录字段（providerCount/价格区间等）
 }
 
@@ -326,6 +329,8 @@ def main() -> int:
     for t in tracks:
         if ok.get(t):
             cadence[t] = fetched_at
+    # 已停用的轨道（snapshot）不再保留在 cadence 里，避免状态里出现永不触发的幽灵轨道
+    cadence = {t: v for t, v in cadence.items() if t in TRACK_DUE_DAYS}
 
     # 断供时沿用上一次成功的时间与来源元数据（面板仍展示累积数据，URL/sha 不能丢）
     last_success_at = fetched_at if status in ("fresh", "partial") else (prev_meta.get("lastSuccessAt") or prev_meta.get("fetchedAt"))
@@ -345,8 +350,8 @@ def main() -> int:
         "blocking": False,
         "notes": [
             "availabilityPct = Σavailable/Σtotal（最新一日，7 天滚动窗口，向前积累）。",
-            "listedAvailableGapPct = cheapestAvailable/cheapestListed - 1，衡量报价虚低程度。",
-            "轨道化到期采集（免费额度 60 次/月）：availability ≤4 天一轮（7 天窗口→逐日零丢失）、snapshot ~2.5 天、history ~28 天、catalog ~30 天；未到期日零请求跳过。",
+            "listedAvailableGapPct 自 2026-11-21 起由 GrabGPU 每日产出；本文件仅保留历史值，snapshot 轨道停用。",
+            "轨道化到期采集（免费额度 60 次/月）：availability 每周 1 轮（7 天窗口仍覆盖逐日）、history ~28 天、catalog ~30 天；未到期日零请求跳过，预算约 17 次/月。",
         ],
     }
     OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)

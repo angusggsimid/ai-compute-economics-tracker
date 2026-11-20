@@ -1,8 +1,8 @@
 {
   "meta": {
-    "generatedAt": "2026-11-20T15:18:32Z",
+    "generatedAt": "2026-11-20T16:13:21Z",
     "minDate": "2025-11-24",
-    "maxDate": "2026-11-19",
+    "maxDate": "2026-11-20",
     "basisCommonStart": {
       "H100": "2026-07-05",
       "H200": "2026-07-05",
@@ -116,12 +116,15 @@
     "providerUniverse": 43,
     "volumeYoYLabel": "自首个完整周（2025-11-24起）×29",
     "volumePartialWeekDropped": "2025-11-17",
-    "scarcityValidDays": 40,
-    "gapValidDays": 7,
+    "scarcityValidDays": 41,
+    "gapValidDays": 8,
+    "supplySwitch": "2026-11-20",
+    "supplyPointsSinceSwitch": 1,
+    "supplyFeed": "GrabGPU provider 在库占比（2026-11-20 起）",
     "landscapeAsOf": "2026-11-19",
     "methodologyVersion": "2026-11-04.1",
     "executiveSummary": {
-      "generatedAt": "2026-11-20T15:18:32Z",
+      "generatedAt": "2026-11-20T16:13:21Z",
       "macroStance": "现货偏紧，但资本开支指引不是单边上修",
       "stanceLevel": "intensifying",
       "coreNarrative": "供给价格长窗口仍偏紧。指引里同时有上移和下移，不能写成两套时钟同向上修。",
@@ -136,7 +139,7 @@
           "clock": "Capacity",
           "title": "在库与挂牌水分",
           "badge": "Trend · 订单簿 71 日",
-          "text": "报价虚低度：H100 38.8%，H200 42.9%，B200 0.0%。快照日期：2026-10-29。这是快照，不是趋势；虚低度高表示最低挂牌价和最低在库价分开。"
+          "text": "报价虚低度：H100 1.8%，H200 11.9%，B200 33.7%。快照日期：2026-11-20。这是快照，不是趋势；虚低度高表示最低挂牌价和最低在库价分开。"
         },
         {
           "clock": "Demand",
@@ -20320,6 +20323,21 @@
         "date": "2026-10-31",
         "series": "H200",
         "value": 25.09
+      },
+      {
+        "date": "2026-11-20",
+        "series": "B200",
+        "value": 57.14
+      },
+      {
+        "date": "2026-11-20",
+        "series": "H100",
+        "value": 33.33
+      },
+      {
+        "date": "2026-11-20",
+        "series": "H200",
+        "value": 57.14
       }
     ],
     "listedGap": [
@@ -20427,608 +20445,638 @@
         "date": "2026-10-29",
         "series": "H200",
         "value": 42.86
+      },
+      {
+        "date": "2026-11-20",
+        "series": "B200",
+        "value": 33.69
+      },
+      {
+        "date": "2026-11-20",
+        "series": "H100",
+        "value": 1.81
+      },
+      {
+        "date": "2026-11-20",
+        "series": "H200",
+        "value": 11.89
       }
     ],
     "breadth": [
       {
         "date": "2026-09-22",
         "series": "B200",
-        "value": 9
+        "value": 4
       },
       {
         "date": "2026-09-22",
         "series": "H100",
-        "value": 13
+        "value": 9
       },
       {
         "date": "2026-09-22",
         "series": "H200",
-        "value": 8
+        "value": 5
       },
       {
         "date": "2026-09-23",
         "series": "B200",
-        "value": 9
+        "value": 4
       },
       {
         "date": "2026-09-23",
         "series": "H100",
-        "value": 13
+        "value": 9
       },
       {
         "date": "2026-09-23",
         "series": "H200",
-        "value": 8
+        "value": 5
       },
       {
         "date": "2026-09-24",
         "series": "B200",
-        "value": 9
+        "value": 4
       },
       {
         "date": "2026-09-24",
         "series": "H100",
-        "value": 13
+        "value": 9
       },
       {
         "date": "2026-09-24",
         "series": "H200",
-        "value": 8
+        "value": 5
       },
       {
         "date": "2026-09-25",
         "series": "B200",
-        "value": 9
+        "value": 4
       },
       {
         "date": "2026-09-25",
         "series": "H100",
-        "value": 13
+        "value": 7
       },
       {
         "date": "2026-09-25",
         "series": "H200",
-        "value": 8
+        "value": 5
       },
       {
         "date": "2026-09-26",
         "series": "B200",
-        "value": 9
+        "value": 4
       },
       {
         "date": "2026-09-26",
         "series": "H100",
-        "value": 13
-      },
-      {
-        "date": "2026-09-26",
-        "series": "H200",
-        "value": 8
-      },
-      {
-        "date": "2026-09-27",
-        "series": "B200",
-        "value": 9
-      },
-      {
-        "date": "2026-09-27",
-        "series": "H100",
-        "value": 13
-      },
-      {
-        "date": "2026-09-27",
-        "series": "H200",
-        "value": 8
-      },
-      {
-        "date": "2026-09-28",
-        "series": "B200",
-        "value": 9
-      },
-      {
-        "date": "2026-09-28",
-        "series": "H100",
-        "value": 13
-      },
-      {
-        "date": "2026-09-28",
-        "series": "H200",
-        "value": 8
-      },
-      {
-        "date": "2026-09-29",
-        "series": "B200",
-        "value": 9
-      },
-      {
-        "date": "2026-09-29",
-        "series": "H100",
-        "value": 13
-      },
-      {
-        "date": "2026-09-29",
-        "series": "H200",
-        "value": 8
-      },
-      {
-        "date": "2026-09-30",
-        "series": "B200",
-        "value": 9
-      },
-      {
-        "date": "2026-09-30",
-        "series": "H100",
-        "value": 13
-      },
-      {
-        "date": "2026-09-30",
-        "series": "H200",
-        "value": 8
-      },
-      {
-        "date": "2026-10-01",
-        "series": "B200",
-        "value": 9
-      },
-      {
-        "date": "2026-10-01",
-        "series": "H100",
-        "value": 13
-      },
-      {
-        "date": "2026-10-01",
-        "series": "H200",
-        "value": 8
-      },
-      {
-        "date": "2026-10-02",
-        "series": "B200",
-        "value": 9
-      },
-      {
-        "date": "2026-10-02",
-        "series": "H100",
-        "value": 13
-      },
-      {
-        "date": "2026-10-02",
-        "series": "H200",
-        "value": 8
-      },
-      {
-        "date": "2026-10-03",
-        "series": "B200",
-        "value": 9
-      },
-      {
-        "date": "2026-10-03",
-        "series": "H100",
-        "value": 13
-      },
-      {
-        "date": "2026-10-03",
-        "series": "H200",
-        "value": 8
-      },
-      {
-        "date": "2026-10-04",
-        "series": "B200",
-        "value": 9
-      },
-      {
-        "date": "2026-10-04",
-        "series": "H100",
-        "value": 13
-      },
-      {
-        "date": "2026-10-04",
-        "series": "H200",
-        "value": 8
-      },
-      {
-        "date": "2026-10-05",
-        "series": "B200",
-        "value": 9
-      },
-      {
-        "date": "2026-10-05",
-        "series": "H100",
-        "value": 13
-      },
-      {
-        "date": "2026-10-05",
-        "series": "H200",
-        "value": 8
-      },
-      {
-        "date": "2026-10-06",
-        "series": "B200",
-        "value": 9
-      },
-      {
-        "date": "2026-10-06",
-        "series": "H100",
-        "value": 13
-      },
-      {
-        "date": "2026-10-06",
-        "series": "H200",
-        "value": 8
-      },
-      {
-        "date": "2026-10-07",
-        "series": "B200",
-        "value": 9
-      },
-      {
-        "date": "2026-10-07",
-        "series": "H100",
-        "value": 13
-      },
-      {
-        "date": "2026-10-07",
-        "series": "H200",
-        "value": 8
-      },
-      {
-        "date": "2026-10-08",
-        "series": "B200",
-        "value": 9
-      },
-      {
-        "date": "2026-10-08",
-        "series": "H100",
-        "value": 13
-      },
-      {
-        "date": "2026-10-08",
-        "series": "H200",
-        "value": 8
-      },
-      {
-        "date": "2026-10-09",
-        "series": "B200",
         "value": 10
       },
       {
+        "date": "2026-09-26",
+        "series": "H200",
+        "value": 6
+      },
+      {
+        "date": "2026-09-27",
+        "series": "B200",
+        "value": 4
+      },
+      {
+        "date": "2026-09-27",
+        "series": "H100",
+        "value": 10
+      },
+      {
+        "date": "2026-09-27",
+        "series": "H200",
+        "value": 5
+      },
+      {
+        "date": "2026-09-28",
+        "series": "B200",
+        "value": 4
+      },
+      {
+        "date": "2026-09-28",
+        "series": "H100",
+        "value": 9
+      },
+      {
+        "date": "2026-09-28",
+        "series": "H200",
+        "value": 5
+      },
+      {
+        "date": "2026-09-29",
+        "series": "B200",
+        "value": 4
+      },
+      {
+        "date": "2026-09-29",
+        "series": "H100",
+        "value": 8
+      },
+      {
+        "date": "2026-09-29",
+        "series": "H200",
+        "value": 5
+      },
+      {
+        "date": "2026-09-30",
+        "series": "B200",
+        "value": 4
+      },
+      {
+        "date": "2026-09-30",
+        "series": "H100",
+        "value": 9
+      },
+      {
+        "date": "2026-09-30",
+        "series": "H200",
+        "value": 5
+      },
+      {
+        "date": "2026-10-01",
+        "series": "B200",
+        "value": 2
+      },
+      {
+        "date": "2026-10-01",
+        "series": "H100",
+        "value": 9
+      },
+      {
+        "date": "2026-10-01",
+        "series": "H200",
+        "value": 4
+      },
+      {
+        "date": "2026-10-02",
+        "series": "B200",
+        "value": 2
+      },
+      {
+        "date": "2026-10-02",
+        "series": "H100",
+        "value": 9
+      },
+      {
+        "date": "2026-10-02",
+        "series": "H200",
+        "value": 4
+      },
+      {
+        "date": "2026-10-03",
+        "series": "B200",
+        "value": 2
+      },
+      {
+        "date": "2026-10-03",
+        "series": "H100",
+        "value": 8
+      },
+      {
+        "date": "2026-10-03",
+        "series": "H200",
+        "value": 4
+      },
+      {
+        "date": "2026-10-04",
+        "series": "B200",
+        "value": 3
+      },
+      {
+        "date": "2026-10-04",
+        "series": "H100",
+        "value": 8
+      },
+      {
+        "date": "2026-10-04",
+        "series": "H200",
+        "value": 3
+      },
+      {
+        "date": "2026-10-05",
+        "series": "B200",
+        "value": 3
+      },
+      {
+        "date": "2026-10-05",
+        "series": "H100",
+        "value": 8
+      },
+      {
+        "date": "2026-10-05",
+        "series": "H200",
+        "value": 3
+      },
+      {
+        "date": "2026-10-06",
+        "series": "B200",
+        "value": 3
+      },
+      {
+        "date": "2026-10-06",
+        "series": "H100",
+        "value": 9
+      },
+      {
+        "date": "2026-10-06",
+        "series": "H200",
+        "value": 3
+      },
+      {
+        "date": "2026-10-07",
+        "series": "B200",
+        "value": 3
+      },
+      {
+        "date": "2026-10-07",
+        "series": "H100",
+        "value": 8
+      },
+      {
+        "date": "2026-10-07",
+        "series": "H200",
+        "value": 4
+      },
+      {
+        "date": "2026-10-08",
+        "series": "B200",
+        "value": 3
+      },
+      {
+        "date": "2026-10-08",
+        "series": "H100",
+        "value": 8
+      },
+      {
+        "date": "2026-10-08",
+        "series": "H200",
+        "value": 5
+      },
+      {
         "date": "2026-10-09",
+        "series": "B200",
+        "value": 4
+      },
+      {
+        "date": "2026-10-09",
+        "series": "H100",
+        "value": 8
+      },
+      {
+        "date": "2026-10-09",
+        "series": "H200",
+        "value": 6
+      },
+      {
+        "date": "2026-10-10",
+        "series": "B200",
+        "value": 4
+      },
+      {
+        "date": "2026-10-10",
+        "series": "H100",
+        "value": 11
+      },
+      {
+        "date": "2026-10-10",
+        "series": "H200",
+        "value": 8
+      },
+      {
+        "date": "2026-10-11",
+        "series": "B200",
+        "value": 1
+      },
+      {
+        "date": "2026-10-11",
+        "series": "H100",
+        "value": 10
+      },
+      {
+        "date": "2026-10-11",
+        "series": "H200",
+        "value": 8
+      },
+      {
+        "date": "2026-10-12",
+        "series": "B200",
+        "value": 2
+      },
+      {
+        "date": "2026-10-12",
+        "series": "H100",
+        "value": 11
+      },
+      {
+        "date": "2026-10-12",
+        "series": "H200",
+        "value": 8
+      },
+      {
+        "date": "2026-10-13",
+        "series": "B200",
+        "value": 1
+      },
+      {
+        "date": "2026-10-13",
+        "series": "H100",
+        "value": 9
+      },
+      {
+        "date": "2026-10-13",
+        "series": "H200",
+        "value": 8
+      },
+      {
+        "date": "2026-10-14",
+        "series": "B200",
+        "value": 3
+      },
+      {
+        "date": "2026-10-14",
+        "series": "H100",
+        "value": 11
+      },
+      {
+        "date": "2026-10-14",
+        "series": "H200",
+        "value": 8
+      },
+      {
+        "date": "2026-10-15",
+        "series": "B200",
+        "value": 3
+      },
+      {
+        "date": "2026-10-15",
+        "series": "H100",
+        "value": 11
+      },
+      {
+        "date": "2026-10-15",
+        "series": "H200",
+        "value": 7
+      },
+      {
+        "date": "2026-10-16",
+        "series": "B200",
+        "value": 3
+      },
+      {
+        "date": "2026-10-16",
+        "series": "H100",
+        "value": 11
+      },
+      {
+        "date": "2026-10-16",
+        "series": "H200",
+        "value": 7
+      },
+      {
+        "date": "2026-10-17",
+        "series": "B200",
+        "value": 5
+      },
+      {
+        "date": "2026-10-17",
+        "series": "H100",
+        "value": 11
+      },
+      {
+        "date": "2026-10-17",
+        "series": "H200",
+        "value": 8
+      },
+      {
+        "date": "2026-10-18",
+        "series": "B200",
+        "value": 4
+      },
+      {
+        "date": "2026-10-18",
+        "series": "H100",
+        "value": 11
+      },
+      {
+        "date": "2026-10-18",
+        "series": "H200",
+        "value": 9
+      },
+      {
+        "date": "2026-10-19",
+        "series": "B200",
+        "value": 5
+      },
+      {
+        "date": "2026-10-19",
+        "series": "H100",
+        "value": 11
+      },
+      {
+        "date": "2026-10-19",
+        "series": "H200",
+        "value": 9
+      },
+      {
+        "date": "2026-10-20",
+        "series": "B200",
+        "value": 5
+      },
+      {
+        "date": "2026-10-20",
+        "series": "H100",
+        "value": 13
+      },
+      {
+        "date": "2026-10-20",
+        "series": "H200",
+        "value": 9
+      },
+      {
+        "date": "2026-10-21",
+        "series": "B200",
+        "value": 5
+      },
+      {
+        "date": "2026-10-21",
+        "series": "H100",
+        "value": 12
+      },
+      {
+        "date": "2026-10-21",
+        "series": "H200",
+        "value": 9
+      },
+      {
+        "date": "2026-10-22",
+        "series": "B200",
+        "value": 3
+      },
+      {
+        "date": "2026-10-22",
+        "series": "H100",
+        "value": 11
+      },
+      {
+        "date": "2026-10-22",
+        "series": "H200",
+        "value": 9
+      },
+      {
+        "date": "2026-10-23",
+        "series": "B200",
+        "value": 5
+      },
+      {
+        "date": "2026-10-23",
+        "series": "H100",
+        "value": 11
+      },
+      {
+        "date": "2026-10-23",
+        "series": "H200",
+        "value": 9
+      },
+      {
+        "date": "2026-10-24",
+        "series": "B200",
+        "value": 7
+      },
+      {
+        "date": "2026-10-24",
+        "series": "H100",
+        "value": 12
+      },
+      {
+        "date": "2026-10-24",
+        "series": "H200",
+        "value": 10
+      },
+      {
+        "date": "2026-10-25",
+        "series": "B200",
+        "value": 5
+      },
+      {
+        "date": "2026-10-25",
+        "series": "H100",
+        "value": 11
+      },
+      {
+        "date": "2026-10-25",
+        "series": "H200",
+        "value": 8
+      },
+      {
+        "date": "2026-10-26",
+        "series": "B200",
+        "value": 5
+      },
+      {
+        "date": "2026-10-26",
+        "series": "H100",
+        "value": 11
+      },
+      {
+        "date": "2026-10-26",
+        "series": "H200",
+        "value": 8
+      },
+      {
+        "date": "2026-10-27",
+        "series": "B200",
+        "value": 4
+      },
+      {
+        "date": "2026-10-27",
+        "series": "H100",
+        "value": 11
+      },
+      {
+        "date": "2026-10-27",
+        "series": "H200",
+        "value": 8
+      },
+      {
+        "date": "2026-10-28",
+        "series": "B200",
+        "value": 4
+      },
+      {
+        "date": "2026-10-28",
+        "series": "H100",
+        "value": 10
+      },
+      {
+        "date": "2026-10-28",
+        "series": "H200",
+        "value": 8
+      },
+      {
+        "date": "2026-10-29",
+        "series": "B200",
+        "value": 5
+      },
+      {
+        "date": "2026-10-29",
+        "series": "H100",
+        "value": 13
+      },
+      {
+        "date": "2026-10-29",
+        "series": "H200",
+        "value": 8
+      },
+      {
+        "date": "2026-10-30",
+        "series": "B200",
+        "value": 5
+      },
+      {
+        "date": "2026-10-30",
         "series": "H100",
         "value": 14
       },
       {
-        "date": "2026-10-09",
-        "series": "H200",
-        "value": 9
-      },
-      {
-        "date": "2026-10-10",
-        "series": "B200",
-        "value": 10
-      },
-      {
-        "date": "2026-10-10",
-        "series": "H100",
-        "value": 16
-      },
-      {
-        "date": "2026-10-10",
-        "series": "H200",
-        "value": 10
-      },
-      {
-        "date": "2026-10-11",
-        "series": "B200",
-        "value": 10
-      },
-      {
-        "date": "2026-10-11",
-        "series": "H100",
-        "value": 17
-      },
-      {
-        "date": "2026-10-11",
-        "series": "H200",
-        "value": 11
-      },
-      {
-        "date": "2026-10-12",
-        "series": "B200",
-        "value": 10
-      },
-      {
-        "date": "2026-10-12",
-        "series": "H100",
-        "value": 17
-      },
-      {
-        "date": "2026-10-12",
-        "series": "H200",
-        "value": 11
-      },
-      {
-        "date": "2026-10-13",
-        "series": "B200",
-        "value": 10
-      },
-      {
-        "date": "2026-10-13",
-        "series": "H100",
-        "value": 17
-      },
-      {
-        "date": "2026-10-13",
-        "series": "H200",
-        "value": 11
-      },
-      {
-        "date": "2026-10-14",
-        "series": "B200",
-        "value": 10
-      },
-      {
-        "date": "2026-10-14",
-        "series": "H100",
-        "value": 17
-      },
-      {
-        "date": "2026-10-14",
-        "series": "H200",
-        "value": 11
-      },
-      {
-        "date": "2026-10-15",
-        "series": "B200",
-        "value": 10
-      },
-      {
-        "date": "2026-10-15",
-        "series": "H100",
-        "value": 17
-      },
-      {
-        "date": "2026-10-15",
-        "series": "H200",
-        "value": 11
-      },
-      {
-        "date": "2026-10-16",
-        "series": "B200",
-        "value": 10
-      },
-      {
-        "date": "2026-10-16",
-        "series": "H100",
-        "value": 17
-      },
-      {
-        "date": "2026-10-16",
-        "series": "H200",
-        "value": 11
-      },
-      {
-        "date": "2026-10-17",
-        "series": "B200",
-        "value": 10
-      },
-      {
-        "date": "2026-10-17",
-        "series": "H100",
-        "value": 18
-      },
-      {
-        "date": "2026-10-17",
-        "series": "H200",
-        "value": 12
-      },
-      {
-        "date": "2026-10-18",
-        "series": "B200",
-        "value": 10
-      },
-      {
-        "date": "2026-10-18",
-        "series": "H100",
-        "value": 18
-      },
-      {
-        "date": "2026-10-18",
-        "series": "H200",
-        "value": 13
-      },
-      {
-        "date": "2026-10-19",
-        "series": "B200",
-        "value": 10
-      },
-      {
-        "date": "2026-10-19",
-        "series": "H100",
-        "value": 18
-      },
-      {
-        "date": "2026-10-19",
-        "series": "H200",
-        "value": 13
-      },
-      {
-        "date": "2026-10-20",
-        "series": "B200",
-        "value": 11
-      },
-      {
-        "date": "2026-10-20",
-        "series": "H100",
-        "value": 18
-      },
-      {
-        "date": "2026-10-20",
-        "series": "H200",
-        "value": 13
-      },
-      {
-        "date": "2026-10-21",
-        "series": "B200",
-        "value": 12
-      },
-      {
-        "date": "2026-10-21",
-        "series": "H100",
-        "value": 19
-      },
-      {
-        "date": "2026-10-21",
-        "series": "H200",
-        "value": 13
-      },
-      {
-        "date": "2026-10-22",
-        "series": "B200",
-        "value": 12
-      },
-      {
-        "date": "2026-10-22",
-        "series": "H100",
-        "value": 19
-      },
-      {
-        "date": "2026-10-22",
-        "series": "H200",
-        "value": 13
-      },
-      {
-        "date": "2026-10-23",
-        "series": "B200",
-        "value": 13
-      },
-      {
-        "date": "2026-10-23",
-        "series": "H100",
-        "value": 19
-      },
-      {
-        "date": "2026-10-23",
-        "series": "H200",
-        "value": 13
-      },
-      {
-        "date": "2026-10-24",
-        "series": "B200",
-        "value": 13
-      },
-      {
-        "date": "2026-10-24",
-        "series": "H100",
-        "value": 19
-      },
-      {
-        "date": "2026-10-24",
-        "series": "H200",
-        "value": 13
-      },
-      {
-        "date": "2026-10-25",
-        "series": "B200",
-        "value": 12
-      },
-      {
-        "date": "2026-10-25",
-        "series": "H100",
-        "value": 18
-      },
-      {
-        "date": "2026-10-25",
-        "series": "H200",
-        "value": 12
-      },
-      {
-        "date": "2026-10-26",
-        "series": "B200",
-        "value": 12
-      },
-      {
-        "date": "2026-10-26",
-        "series": "H100",
-        "value": 18
-      },
-      {
-        "date": "2026-10-26",
-        "series": "H200",
-        "value": 12
-      },
-      {
-        "date": "2026-10-27",
-        "series": "B200",
-        "value": 12
-      },
-      {
-        "date": "2026-10-27",
-        "series": "H100",
-        "value": 18
-      },
-      {
-        "date": "2026-10-27",
-        "series": "H200",
-        "value": 12
-      },
-      {
-        "date": "2026-10-28",
-        "series": "B200",
-        "value": 12
-      },
-      {
-        "date": "2026-10-28",
-        "series": "H100",
-        "value": 18
-      },
-      {
-        "date": "2026-10-28",
-        "series": "H200",
-        "value": 12
-      },
-      {
-        "date": "2026-10-29",
-        "series": "B200",
-        "value": 13
-      },
-      {
-        "date": "2026-10-29",
-        "series": "H100",
-        "value": 19
-      },
-      {
-        "date": "2026-10-29",
-        "series": "H200",
-        "value": 13
-      },
-      {
-        "date": "2026-10-30",
-        "series": "B200",
-        "value": 13
-      },
-      {
-        "date": "2026-10-30",
-        "series": "H100",
-        "value": 19
-      },
-      {
         "date": "2026-10-30",
         "series": "H200",
-        "value": 13
+        "value": 8
       },
       {
         "date": "2026-10-31",
         "series": "B200",
-        "value": 13
+        "value": 3
       },
       {
         "date": "2026-10-31",
         "series": "H100",
-        "value": 19
+        "value": 13
       },
       {
         "date": "2026-10-31",
         "series": "H200",
-        "value": 13
+        "value": 8
+      },
+      {
+        "date": "2026-11-20",
+        "series": "B200",
+        "value": 4
+      },
+      {
+        "date": "2026-11-20",
+        "series": "H100",
+        "value": 5
+      },
+      {
+        "date": "2026-11-20",
+        "series": "H200",
+        "value": 4
       }
     ],
     "priceChangeCounts": [
@@ -30913,40 +30961,31 @@
       "definition": "Rolling 30-day median of H200/H100 and B200/H100 daily rental-price ratios. A value above 1 means a premium to H100."
     },
     "scarcity": {
-      "label": "GPU Finder 市场可用性（gpufinder.dev）",
+      "label": "GrabGPU 逐日在库快照（grabgpu.com）· 最近抓取 2026-11-20 15:11 UTC",
       "urls": [
-        "https://gpufinder.dev/api/v1/availability?gpu=h100",
-        "https://gpufinder.dev/api/v1/gpus",
-        "https://gpufinder.dev/api/v1/history?gpu=h100",
-        "https://gpufinder.dev/api/v1/snapshot?gpu=h100"
+        "https://grabgpu.com/api/offers.json"
       ],
-      "url": "https://gpufinder.dev/api/v1/availability?gpu=h100",
-      "sha256": "sha256:9e178ab9703d814b4af8cd592f991863db128803989c82f0700995a3a6bd10e2 sha256:3203674da771b388da9804eec03044c617ec99b1a2d16c59c60c15b92623a76b sha256:cf17bf8fd284fc750b3d65cf8d2dfda941e67b9891c49028c33bfdc860aa6ca2 sha256:a83308914de9987d7c68086ebdb60d7f1a916b40c94d8c96281769c381d2f01a",
-      "definition": "Σavailable/Σtotal 全市场可租卡占比（7 天滚动窗口，每日快照向前积累）。连续稀缺度指标，替代 Foundry 的二元可用率。"
+      "url": "https://grabgpu.com/api/offers.json",
+      "sha256": "sha256:a1e93dc83846a6550649050b575f8b1345fc8cfe37edc237eb946cb67b69bb52",
+      "definition": "有报价的 provider 中，当前报告有库存的占比（分母只算状态已知的 provider）；2026-11-20 起替代 GPU Finder 的实例数加权口径。GPU Finder 版为 Σavailable/Σtotal（7 天滚动窗口），两者不是同一指标，切换前的点只作历史参考，不与新段连线比较。"
     },
     "listedGap": {
-      "label": "GPU Finder 报价 vs 在库价差",
+      "label": "GrabGPU 报价 vs 在库价差",
       "urls": [
-        "https://gpufinder.dev/api/v1/availability?gpu=h100",
-        "https://gpufinder.dev/api/v1/gpus",
-        "https://gpufinder.dev/api/v1/history?gpu=h100",
-        "https://gpufinder.dev/api/v1/snapshot?gpu=h100"
+        "https://grabgpu.com/api/offers.json"
       ],
-      "url": "https://gpufinder.dev/api/v1/availability?gpu=h100",
-      "sha256": "sha256:9e178ab9703d814b4af8cd592f991863db128803989c82f0700995a3a6bd10e2 sha256:3203674da771b388da9804eec03044c617ec99b1a2d16c59c60c15b92623a76b sha256:cf17bf8fd284fc750b3d65cf8d2dfda941e67b9891c49028c33bfdc860aa6ca2 sha256:a83308914de9987d7c68086ebdb60d7f1a916b40c94d8c96281769c381d2f01a",
-      "definition": "最低在库价 ÷ 最低报价 − 1。衡量‘报价虚低程度’：市场越紧，最低报价越可能是没有库存的虚价，该差值越大。"
+      "url": "https://grabgpu.com/api/offers.json",
+      "sha256": "sha256:a1e93dc83846a6550649050b575f8b1345fc8cfe37edc237eb946cb67b69bb52",
+      "definition": "最低在库价 ÷ 最低报价 − 1（与 GPU Finder 同名指标公式一致，2026-11-20 起改由 GrabGPU 每日产出）。市场越紧，最低报价越可能是没有库存的虚价，该差值越大。"
     },
     "breadth": {
-      "label": "GPU Finder 供应商广度",
+      "label": "GrabGPU 供应商广度（切换前为 GPU Finder）",
       "urls": [
-        "https://gpufinder.dev/api/v1/availability?gpu=h100",
-        "https://gpufinder.dev/api/v1/gpus",
-        "https://gpufinder.dev/api/v1/history?gpu=h100",
-        "https://gpufinder.dev/api/v1/snapshot?gpu=h100"
+        "https://grabgpu.com/api/offers.json"
       ],
-      "url": "https://gpufinder.dev/api/v1/availability?gpu=h100",
-      "sha256": "sha256:9e178ab9703d814b4af8cd592f991863db128803989c82f0700995a3a6bd10e2 sha256:3203674da771b388da9804eec03044c617ec99b1a2d16c59c60c15b92623a76b sha256:cf17bf8fd284fc750b3d65cf8d2dfda941e67b9891c49028c33bfdc860aa6ca2 sha256:a83308914de9987d7c68086ebdb60d7f1a916b40c94d8c96281769c381d2f01a",
-      "definition": "报告在架库存的供应商数随时间变化（由 7 天可用率窗口逐日推导；来源池为有库存信号的供应商）——价格上行+家数增加=供给在响应；价格上行+家数减少=实质性紧缩。2026-10-11 起与原目录挂牌家数口径切换（旧口径无逐日数据且会被窗口回写覆盖）。"
+      "url": "https://grabgpu.com/api/offers.json",
+      "sha256": "sha256:a1e93dc83846a6550649050b575f8b1345fc8cfe37edc237eb946cb67b69bb52",
+      "definition": "报告在库库存的 provider 家数（同一 provider 多条报价只算一次）。2026-10-11 起放弃‘目录挂牌家数’，2026-11-20 起统一为‘有库存的 provider 数’——价格上行+家数增加=供给在响应；价格上行+家数减少=实质性紧缩。"
     },
     "capex": {
       "label": "SEC companyfacts + 各公司官方业绩披露（原始单位，不插值）",

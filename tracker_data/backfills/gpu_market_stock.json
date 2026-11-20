@@ -1,0 +1,206 @@
+{
+  "fetchedAt": "2026-11-20T16:06:13Z",
+  "lastSuccessAt": "2026-11-20T16:06:13Z",
+  "refreshStatus": "fresh",
+  "publishable": true,
+  "blocking": false,
+  "attribution": "Data by GrabGPU (grabgpu.com), indexed from public provider APIs; attribution + link required.",
+  "licenseNote": "GrabGPU 公开索引：引用需署名并链接 grabgpu.com；生产级嵌入/转售需与其另行约定。",
+  "sourceUrl": "https://grabgpu.com/api/offers.json",
+  "sourceSha256": "sha256:a1e93dc83846a6550649050b575f8b1345fc8cfe37edc237eb946cb67b69bb52",
+  "capturedAt": "2026-11-20T15:11:50.728207Z",
+  "rowSchema": [
+    "date",
+    "gpu",
+    "capturedAt",
+    "providers",
+    "providersInStock",
+    "providersKnown",
+    "providersOutOfStock",
+    "availabilityPct",
+    "breadthProviders",
+    "cheapestListed",
+    "cheapestInStock",
+    "listedAvailableGapPct",
+    "availabilityByProvider"
+  ],
+  "definition": {
+    "availabilityPct": "有报价的 provider 中，报告有库存的占比（分母只算状态已知的 provider）。2026-11-21 起替代 GPU Finder 的实例数加权口径。",
+    "listedAvailableGapPct": "最低在库价 ÷ 最低挂牌价 − 1，衡量报价虚低程度；与 GPU Finder 同名指标公式一致。",
+    "breadthProviders": "报告在库库存的 provider 家数（同一 provider 多条报价只算一次）。",
+    "dedup": "库存按 provider 去重（任一报价在库即算在库）；价格取 provider 级最低挂牌与最低在库挂牌。",
+    "unknown": "availability=unknown 的报价不计入分母，但仍参与最低挂牌价。"
+  },
+  "coverage": {
+    "providers": 29,
+    "models": 73,
+    "offers": 296
+  },
+  "rows": [
+    {
+      "date": "2026-11-20",
+      "gpu": "B200",
+      "capturedAt": "2026-11-20T15:11:50.728207Z",
+      "providers": 9,
+      "providersInStock": 4,
+      "providersKnown": 7,
+      "providersOutOfStock": 3,
+      "availabilityPct": 57.14,
+      "breadthProviders": 4,
+      "cheapestListed": 3.74,
+      "cheapestInStock": 5.0,
+      "listedAvailableGapPct": 33.69,
+      "availabilityByProvider": {
+        "avian": [
+          1,
+          1
+        ],
+        "boostrun": [
+          0,
+          1
+        ],
+        "excesssupply": [
+          0,
+          1
+        ],
+        "lambda-labs": [
+          0,
+          1
+        ],
+        "lium": [
+          1,
+          1
+        ],
+        "runpod": [
+          1,
+          1
+        ],
+        "vast-ai": [
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "date": "2026-11-20",
+      "gpu": "H100",
+      "capturedAt": "2026-11-20T15:11:50.728207Z",
+      "providers": 17,
+      "providersInStock": 5,
+      "providersKnown": 15,
+      "providersOutOfStock": 10,
+      "availabilityPct": 33.33,
+      "breadthProviders": 5,
+      "cheapestListed": 1.66,
+      "cheapestInStock": 1.69,
+      "listedAvailableGapPct": 1.81,
+      "availabilityByProvider": {
+        "denvr": [
+          0,
+          1
+        ],
+        "digitalocean": [
+          0,
+          1
+        ],
+        "excesssupply": [
+          0,
+          1
+        ],
+        "horizon": [
+          0,
+          1
+        ],
+        "hyperstack": [
+          1,
+          1
+        ],
+        "imwt": [
+          0,
+          1
+        ],
+        "lambda-labs": [
+          0,
+          1
+        ],
+        "latitude-sh": [
+          0,
+          1
+        ],
+        "lium": [
+          1,
+          1
+        ],
+        "massed-compute": [
+          0,
+          1
+        ],
+        "paperspace": [
+          1,
+          1
+        ],
+        "runpod": [
+          1,
+          1
+        ],
+        "scaleway": [
+          0,
+          1
+        ],
+        "vast-ai": [
+          1,
+          1
+        ],
+        "voltagepark": [
+          0,
+          1
+        ]
+      }
+    },
+    {
+      "date": "2026-11-20",
+      "gpu": "H200",
+      "capturedAt": "2026-11-20T15:11:50.728207Z",
+      "providers": 9,
+      "providersInStock": 4,
+      "providersKnown": 7,
+      "providersOutOfStock": 3,
+      "availabilityPct": 57.14,
+      "breadthProviders": 4,
+      "cheapestListed": 3.0,
+      "cheapestInStock": 3.3567,
+      "listedAvailableGapPct": 11.89,
+      "availabilityByProvider": {
+        "boostrun": [
+          0,
+          1
+        ],
+        "digitalocean": [
+          0,
+          1
+        ],
+        "excesssupply": [
+          1,
+          1
+        ],
+        "horizon": [
+          0,
+          1
+        ],
+        "lium": [
+          1,
+          1
+        ],
+        "runpod": [
+          1,
+          1
+        ],
+        "vast-ai": [
+          1,
+          1
+        ]
+      }
+    }
+  ],
+  "quality": []
+}
