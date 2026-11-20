@@ -65,7 +65,7 @@ def test_fiscal_quarter_excludes_cumulative_and_annual_rows():
     quarterly, _ = _capex_quarterly(rows)
     meta = {r["group"]: r["value"] for r in quarterly if r["series"] == "Meta"}
     assert meta == {"26Q1": 19.0, "26Q2": 30.1}, "累计行或重复财季污染了单季序列"
-    assert not [r for r in quarterly if r["series"] == "Oracle and value" == 55.7]
+    assert not [r for r in quarterly if r["series"] == "Oracle" and r["value"] == 55.7]
 
 
 def test_quarter_count_ignores_filing_date_double_report():
