@@ -1,10 +1,11 @@
 {
-  "generatedAt": "2026-11-20T15:18:32Z",
+  "generatedAt": "2026-11-20T16:16:30Z",
   "inputs": [
     "capex_official_history.json",
     "epoch_chip_sales.json",
     "foundry_signals_gpu_history.json",
     "fred_cost_anchors.json",
+    "gpu_market_stock.json",
     "gpu_markets_fixings.json",
     "gpu_orderbook_history.json",
     "gpufinder_market.json",
@@ -113,25 +114,25 @@
             "change90dPct": 43.82
           },
           "neocloud:B200": {
-            "days": 114,
+            "days": 115,
             "change30dPct": 6.74,
-            "change90dPct": 14.71
+            "change90dPct": 17.75
           },
           "neocloud:H100": {
-            "days": 114,
-            "change30dPct": 1.68,
-            "change90dPct": 16.62
+            "days": 115,
+            "change30dPct": 4.63,
+            "change90dPct": 20.93
           },
           "neocloud:H200": {
-            "days": 114,
-            "change30dPct": -1.51,
-            "change90dPct": 16.55
+            "days": 115,
+            "change30dPct": -4.35,
+            "change90dPct": 13.2
           }
         },
         "depth": {
           "depthValidDates": 71,
-          "depthLatestTotalOffers": 269,
-          "depthGrowthPct": -5.11,
+          "depthLatestTotalOffers": 260,
+          "depthGrowthPct": -5.2,
           "depthWindowDays": 60
         },
         "h100Contract1yBands": [
@@ -171,7 +172,7 @@
     },
     {
       "clock_id": "capacity",
-      "stateBasis": "订单簿已积累 71 个有效日（≥10 达标，趋势可判）；最新 offers 269",
+      "stateBasis": "订单簿已积累 71 个有效日（≥10 达标，趋势可判）；最新 offers 260",
       "title": "Capacity & Utilization",
       "natural_frequency": "daily",
       "state": "Trend",
@@ -208,10 +209,10 @@
       },
       "metrics": {
         "depthValidDates": 71,
-        "latestTotalOffers": 269,
-        "depthGrowthPct": -5.11,
-        "latestGpuCapacity": 9893,
-        "providerSnapshotRows": 35006,
+        "latestTotalOffers": 260,
+        "depthGrowthPct": -5.2,
+        "latestGpuCapacity": 9861,
+        "providerSnapshotRows": 35532,
         "providersCovered": 43
       },
       "blockers": [],

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-20T15:18:31Z",
+  "generatedAt": "2026-11-20T16:16:30Z",
   "status": "ready",
   "publishable": true,
   "sources": [
@@ -36,7 +36,7 @@
       "status": "current_for_frequency",
       "publishable": true,
       "returnCode": 0,
-      "stdout": "{\"output\": \"/home/runner/work/ai-compute-economics-tracker/ai-compute-economics-tracker/tracker_data/backfills/capex_official_history.json\", \"rows\": 58, \"failedSources\": 5, \"fetchedCount\": 0, \"fetchedAt\": \"2026-09-28T15:39:12Z\", \"runAt\": \"2026-11-20T15:18:13Z\", \"refreshStatus\": \"current_for_frequency\", \"publishable\": true, \"cacheCoverage\": {\"MSFT\": {\"latestDate\": \"2026-09-30\", \"ageDays\": 51, \"current\": true}, \"AMZN\": {\"latestDate\": \"2026-09-30\", \"ageDays\": 51, \"current\": true}, \"GOOGL\": {\"latestDate\": \"2026-09-30\", \"ageDays\": 51, \"current\": true}, \"META\": {\"latestDate\": \"2026-09-30\", \"ageDays\": 51, \"current\": true}, \"ORCL\": {\"latestDate\": \"2026-08-31\", \"ageDays\": 81, \"current\": true}}}\n",
+      "stdout": "{\"output\": \"/home/runner/work/ai-compute-economics-tracker/ai-compute-economics-tracker/tracker_data/backfills/capex_official_history.json\", \"rows\": 58, \"failedSources\": 5, \"fetchedCount\": 0, \"fetchedAt\": \"2026-09-28T15:39:12Z\", \"runAt\": \"2026-11-20T16:16:15Z\", \"refreshStatus\": \"current_for_frequency\", \"publishable\": true, \"cacheCoverage\": {\"MSFT\": {\"latestDate\": \"2026-09-30\", \"ageDays\": 51, \"current\": true}, \"AMZN\": {\"latestDate\": \"2026-09-30\", \"ageDays\": 51, \"current\": true}, \"GOOGL\": {\"latestDate\": \"2026-09-30\", \"ageDays\": 51, \"current\": true}, \"META\": {\"latestDate\": \"2026-09-30\", \"ageDays\": 51, \"current\": true}, \"ORCL\": {\"latestDate\": \"2026-08-31\", \"ageDays\": 81, \"current\": true}}}\n",
       "stderr": "",
       "output": "tracker_data/backfills/capex_official_history.json",
       "qualityWarnings": 5,
@@ -73,7 +73,7 @@
       "status": "fresh",
       "publishable": true,
       "returnCode": 0,
-      "stdout": "{\"output\": \"/home/runner/work/ai-compute-economics-tracker/ai-compute-economics-tracker/tracker_data/backfills/gpu_orderbook_history.json\", \"refreshStatus\": \"fresh\", \"publishable\": true, \"rowsTotal\": 1748, \"todayRows\": 25, \"failedSources\": [], \"blocking\": false}\n",
+      "stdout": "{\"output\": \"/home/runner/work/ai-compute-economics-tracker/ai-compute-economics-tracker/tracker_data/backfills/gpu_orderbook_history.json\", \"refreshStatus\": \"fresh\", \"publishable\": true, \"rowsTotal\": 1747, \"todayRows\": 24, \"failedSources\": [], \"blocking\": false}\n",
       "stderr": "",
       "output": "tracker_data/backfills/gpu_orderbook_history.json",
       "qualityWarnings": [],
@@ -95,7 +95,7 @@
       "status": "fresh",
       "publishable": true,
       "returnCode": 0,
-      "stdout": "{\"output\": \"/home/runner/work/ai-compute-economics-tracker/ai-compute-economics-tracker/tracker_data/backfills/neocloud_provider_price_history.json\", \"refreshStatus\": \"fresh\", \"publishable\": true, \"date\": \"2026-11-19\", \"todayRows\": 508, \"providers\": 37, \"rowsTotal\": 35006, \"blocking\": false}\n",
+      "stdout": "{\"output\": \"/home/runner/work/ai-compute-economics-tracker/ai-compute-economics-tracker/tracker_data/backfills/neocloud_provider_price_history.json\", \"refreshStatus\": \"fresh\", \"publishable\": true, \"date\": \"2026-11-20\", \"todayRows\": 526, \"providers\": 37, \"rowsTotal\": 35532, \"blocking\": false}\n",
       "stderr": "",
       "output": "tracker_data/backfills/neocloud_provider_price_history.json"
     },
@@ -148,17 +148,12 @@
       "status": "failed",
       "publishable": true,
       "returnCode": 0,
-      "stdout": "{\"output\": \"/home/runner/work/ai-compute-economics-tracker/ai-compute-economics-tracker/tracker_data/backfills/gpufinder_market.json\", \"refreshStatus\": \"failed\", \"publishable\": true, \"fetchedTracks\": [\"availability\", \"catalog\", \"history\", \"snapshot\"], \"failedTracks\": [\"availability\", \"catalog\", \"history\", \"snapshot\"], \"monthlyRows\": 185, \"failedSources\": [{\"source\": \"gpufinder:/gpus\", \"status\": \"failed\", \"message\": \"HTTP Error 429: Too Many Requests\"}, {\"source\": \"gpufinder:/snapshot?gpu=h100\", \"status\": \"failed\", \"message\": \"HTTP Error 429: Too Many Requests\"}, {\"source\": \"gpufinder:/availability?gpu=h100\", \"status\": \"failed\", \"message\": \"HTTP Error 429: Too Many Requests\"}, {\"source\": \"gpufinder:/history?gpu=h100\", \"status\": \"failed\", \"message\": \"HTTP Error 429: Too Many Requests\"}, {\"source\": \"gpufinder:/snapshot?gpu=h200\", \"status\": \"failed\", \"message\": \"HTTP Error 429: Too Many Requests\"}, {\"source\": \"gpufinder:/availability?gpu=h200\", \"status\": \"failed\", \"message\": \"HTTP Error 429: Too Many Requests\"}, {\"source\": \"gpufinder:/history?gpu=h200\", \"status\": \"failed\", \"message\": \"HTTP Error 429: Too Many Requests\"}, {\"source\": \"gpufinder:/snapshot?gpu=b200\", \"status\": \"failed\", \"message\": \"HTTP Error 429: Too Many Requests\"}, {\"source\": \"gpufinder:/availability?gpu=b200\", \"status\": \"failed\", \"message\": \"HTTP Error 429: Too Many Requests\"}, {\"source\": \"gpufinder:/history?gpu=b200\", \"status\": \"failed\", \"message\": \"HTTP Error 429: Too Many Requests\"}], \"blocking\": false}\n",
+      "stdout": "{\"output\": \"/home/runner/work/ai-compute-economics-tracker/ai-compute-economics-tracker/tracker_data/backfills/gpufinder_market.json\", \"refreshStatus\": \"failed\", \"publishable\": true, \"fetchedTracks\": [\"availability\", \"catalog\", \"history\"], \"failedTracks\": [\"availability\", \"catalog\", \"history\"], \"monthlyRows\": 185, \"failedSources\": [{\"source\": \"gpufinder:/gpus\", \"status\": \"failed\", \"message\": \"HTTP Error 429: Too Many Requests\"}, {\"source\": \"gpufinder:/availability?gpu=h100\", \"status\": \"failed\", \"message\": \"HTTP Error 429: Too Many Requests\"}, {\"source\": \"gpufinder:/history?gpu=h100\", \"status\": \"failed\", \"message\": \"HTTP Error 429: Too Many Requests\"}, {\"source\": \"gpufinder:/availability?gpu=h200\", \"status\": \"failed\", \"message\": \"HTTP Error 429: Too Many Requests\"}, {\"source\": \"gpufinder:/history?gpu=h200\", \"status\": \"failed\", \"message\": \"HTTP Error 429: Too Many Requests\"}, {\"source\": \"gpufinder:/availability?gpu=b200\", \"status\": \"failed\", \"message\": \"HTTP Error 429: Too Many Requests\"}, {\"source\": \"gpufinder:/history?gpu=b200\", \"status\": \"failed\", \"message\": \"HTTP Error 429: Too Many Requests\"}], \"blocking\": false}\n",
       "stderr": "",
       "output": "tracker_data/backfills/gpufinder_market.json",
       "qualityWarnings": [
         {
           "source": "gpufinder:/gpus",
-          "status": "failed",
-          "message": "HTTP Error 429: Too Many Requests"
-        },
-        {
-          "source": "gpufinder:/snapshot?gpu=h100",
           "status": "failed",
           "message": "HTTP Error 429: Too Many Requests"
         },
@@ -173,22 +168,12 @@
           "message": "HTTP Error 429: Too Many Requests"
         },
         {
-          "source": "gpufinder:/snapshot?gpu=h200",
-          "status": "failed",
-          "message": "HTTP Error 429: Too Many Requests"
-        },
-        {
           "source": "gpufinder:/availability?gpu=h200",
           "status": "failed",
           "message": "HTTP Error 429: Too Many Requests"
         },
         {
           "source": "gpufinder:/history?gpu=h200",
-          "status": "failed",
-          "message": "HTTP Error 429: Too Many Requests"
-        },
-        {
-          "source": "gpufinder:/snapshot?gpu=b200",
           "status": "failed",
           "message": "HTTP Error 429: Too Many Requests"
         },
@@ -203,6 +188,17 @@
           "message": "HTTP Error 429: Too Many Requests"
         }
       ],
+      "blocking": false
+    },
+    {
+      "source": "grabgpu_market",
+      "status": "fresh",
+      "publishable": true,
+      "returnCode": 0,
+      "stdout": "{\"output\": \"/home/runner/work/ai-compute-economics-tracker/ai-compute-economics-tracker/tracker_data/backfills/gpu_market_stock.json\", \"refreshStatus\": \"fresh\", \"publishable\": true, \"capturedAt\": \"2026-11-20T16:11:52.311688Z\", \"rowsTotal\": 3, \"todayRows\": 3, \"offers\": 292, \"failedSources\": [], \"blocking\": false}\n",
+      "stderr": "",
+      "output": "tracker_data/backfills/gpu_market_stock.json",
+      "qualityWarnings": [],
       "blocking": false
     }
   ],

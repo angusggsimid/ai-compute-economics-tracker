@@ -1,37 +1,37 @@
 {
  "id": "H100",
  "slug": "h100",
- "as_of": "2026-11-19",
+ "as_of": "2026-11-20",
  "methodology_version": "2026-11-04.1",
  "card": {
   "id": "H100",
   "name": "H100 80GB",
   "vramGb": 80,
   "family": "Hopper",
-  "asOf": "2026-11-19",
+  "asOf": "2026-11-20",
   "status": "live",
-  "median": 3.49,
-  "p25": 2.95,
-  "p75": 5.0445,
+  "median": 3.9,
+  "p25": 2.955,
+  "p75": 5.3015,
   "cheapest": 1.8,
   "cheapestProvider": "Hyper.ai",
   "providerCount": 25,
-  "change7dPct": -4.03,
+  "change7dPct": 7.25,
   "weeklyIndex": {
    "weekStart": "2026-11-16",
    "isoWeek": "2026-W47",
    "vintage": "provisional",
    "status": "published",
    "methodologyVersion": "2026-11-04.1",
-   "median": 3.49,
-   "p25": 2.95,
-   "p75": 5.0445,
+   "median": 3.9,
+   "p25": 2.955,
+   "p75": 5.3015,
    "providerCount": 25,
-   "index": 111.5955,
+   "index": 114.4685,
    "linkPairs": 22,
    "withheldReason": null,
    "receipt": "2026-W47",
-   "ageDays": 3
+   "ageDays": 4
   },
   "monthly": [
    {
@@ -1660,14 +1660,27 @@
       "cheapestProvider": "Hyper.ai",
       "cheapestProviderId": "hyperai",
       "cheapestSourceUrl": "https://hyper.ai/en/pricing"
+     },
+     {
+      "date": "2026-11-20",
+      "value": 3.9,
+      "p25": 2.955,
+      "p75": 5.3015,
+      "providerCount": 25,
+      "quoteCount": 37,
+      "thin": false,
+      "cheapestValue": 1.8,
+      "cheapestProvider": "Hyper.ai",
+      "cheapestProviderId": "hyperai",
+      "cheapestSourceUrl": "https://hyper.ai/en/pricing"
      }
     ],
     "latest": {
-     "date": "2026-11-19",
+     "date": "2026-11-20",
      "series": "on_demand",
-     "value": 3.49,
-     "p25": 2.95,
-     "p75": 5.0445,
+     "value": 3.9,
+     "p25": 2.955,
+     "p75": 5.3015,
      "low": 1.8,
      "high": 12.29,
      "providerCount": 25,
@@ -1678,7 +1691,7 @@
      "cheapestProviderId": "hyperai",
      "cheapestValue": 1.8,
      "cheapestSourceUrl": "https://hyper.ai/en/pricing",
-     "movingAverage30d": 3.386981,
+     "movingAverage30d": 3.410314,
      "offers": [
       {
        "provider": "Hyper.ai",
@@ -1723,13 +1736,6 @@
        "quotes": 3
       },
       {
-       "provider": "Spheron",
-       "providerId": "spheron",
-       "value": 2.98,
-       "sourceUrl": "https://www.spheron.network/pricing/",
-       "quotes": 1
-      },
-      {
        "provider": "OVHcloud",
        "providerId": "ovh",
        "value": 2.99,
@@ -1753,7 +1759,7 @@
       {
        "provider": "Scaleway",
        "providerId": "scaleway",
-       "value": 3.30845,
+       "value": 3.3157,
        "sourceUrl": "https://www.scaleway.com/en/pricing/gpu/",
        "quotes": 2
       },
@@ -1776,13 +1782,6 @@
        "providerId": "crusoe",
        "value": 3.9,
        "sourceUrl": "https://www.crusoe.ai/cloud/pricing",
-       "quotes": 1
-      },
-      {
-       "provider": "Runcrate",
-       "providerId": "runcrate",
-       "value": 3.91,
-       "sourceUrl": "https://www.runcrate.ai/pricing",
        "quotes": 1
       },
       {
@@ -1814,9 +1813,23 @@
        "quotes": 5
       },
       {
+       "provider": "Runcrate",
+       "providerId": "runcrate",
+       "value": 4.72,
+       "sourceUrl": "https://www.runcrate.ai/pricing",
+       "quotes": 1
+      },
+      {
+       "provider": "Spheron",
+       "providerId": "spheron",
+       "value": 5.15,
+       "sourceUrl": "https://www.spheron.network/pricing/",
+       "quotes": 1
+      },
+      {
        "provider": "Verda",
        "providerId": "datacrunch",
-       "value": 5.399,
+       "value": 5.453,
        "sourceUrl": "https://datacrunch.io/pricing",
        "quotes": 1
       },
@@ -1857,10 +1870,10 @@
       }
      ]
     },
-    "change7dPct": -4.03,
+    "change7dPct": 7.25,
     "change7dBaseDate": "2026-10-29",
-    "coverageDays": 114,
-    "quoteRows": 3544
+    "coverageDays": 115,
+    "quoteRows": 3581
    },
    "spot": {
     "label": "Spot",
@@ -3325,14 +3338,27 @@
       "cheapestProvider": "Azure",
       "cheapestProviderId": "azure",
       "cheapestSourceUrl": "https://prices.azure.com/api/retail/prices"
+     },
+     {
+      "date": "2026-11-20",
+      "value": 2.3,
+      "p25": 1.977037,
+      "p75": 4.0039,
+      "providerCount": 9,
+      "quoteCount": 12,
+      "thin": false,
+      "cheapestValue": 1.418336,
+      "cheapestProvider": "Azure",
+      "cheapestProviderId": "azure",
+      "cheapestSourceUrl": "https://prices.azure.com/api/retail/prices"
      }
     ],
     "latest": {
-     "date": "2026-11-19",
+     "date": "2026-11-20",
      "series": "spot",
      "value": 2.3,
      "p25": 1.977037,
-     "p75": 3.9904,
+     "p75": 4.0039,
      "low": 1.418336,
      "high": 7.220225,
      "providerCount": 9,
@@ -3343,12 +3369,12 @@
      "cheapestProviderId": "azure",
      "cheapestValue": 1.418336,
      "cheapestSourceUrl": "https://prices.azure.com/api/retail/prices",
-     "movingAverage30d": 2.201438,
+     "movingAverage30d": 2.209605,
      "offers": [
       {
        "provider": "Lium",
        "providerId": "lium",
-       "value": 1.825,
+       "value": 1.72,
        "sourceUrl": "https://lium.io/api/public/v1/nodes",
        "quotes": 2
       },
@@ -3390,7 +3416,7 @@
       {
        "provider": "Verda",
        "providerId": "datacrunch",
-       "value": 2.7,
+       "value": 2.727,
        "sourceUrl": "https://datacrunch.io/pricing",
        "quotes": 1
       },
@@ -3412,8 +3438,8 @@
     },
     "change7dPct": 1.32,
     "change7dBaseDate": "2026-10-29",
-    "coverageDays": 112,
-    "quoteRows": 1001
+    "coverageDays": 113,
+    "quoteRows": 1013
    },
    "reserved": {
     "label": "Reserved",
@@ -3734,10 +3760,23 @@
       "cheapestProvider": "Latitude.sh",
       "cheapestProviderId": "latitude",
       "cheapestSourceUrl": "https://www.latitude.sh/pricing"
+     },
+     {
+      "date": "2026-11-20",
+      "value": 1.839446,
+      "p25": null,
+      "p75": null,
+      "providerCount": 2,
+      "quoteCount": 4,
+      "thin": true,
+      "cheapestValue": 1.179452,
+      "cheapestProvider": "Latitude.sh",
+      "cheapestProviderId": "latitude",
+      "cheapestSourceUrl": "https://www.latitude.sh/pricing"
      }
     ],
     "latest": {
-     "date": "2026-11-19",
+     "date": "2026-11-20",
      "series": "reserved",
      "value": 1.839446,
      "p25": null,
@@ -3752,7 +3791,7 @@
      "cheapestProviderId": "latitude",
      "cheapestValue": 1.179452,
      "cheapestSourceUrl": "https://www.latitude.sh/pricing",
-     "movingAverage30d": 2.185556,
+     "movingAverage30d": 2.171711,
      "offers": [
       {
        "provider": "Latitude.sh",
@@ -3772,8 +3811,8 @@
     },
     "change7dPct": -17.7,
     "change7dBaseDate": "2026-10-29",
-    "coverageDays": 24,
-    "quoteRows": 266
+    "coverageDays": 25,
+    "quoteRows": 270
    },
    "community": {
     "label": "Community",
@@ -5264,10 +5303,23 @@
       "cheapestProvider": "RunPod",
       "cheapestProviderId": "runpod",
       "cheapestSourceUrl": "https://www.runpod.io/pricing"
+     },
+     {
+      "date": "2026-11-20",
+      "value": 2.59,
+      "p25": null,
+      "p75": null,
+      "providerCount": 1,
+      "quoteCount": 3,
+      "thin": true,
+      "cheapestValue": 1.99,
+      "cheapestProvider": "RunPod",
+      "cheapestProviderId": "runpod",
+      "cheapestSourceUrl": "https://www.runpod.io/pricing"
      }
     ],
     "latest": {
-     "date": "2026-11-19",
+     "date": "2026-11-20",
      "series": "community",
      "value": 2.59,
      "p25": null,
@@ -5295,8 +5347,8 @@
     },
     "change7dPct": 0.0,
     "change7dBaseDate": "2026-10-29",
-    "coverageDays": 114,
-    "quoteRows": 342
+    "coverageDays": 115,
+    "quoteRows": 345
    },
    "marketplace": {
     "label": "Marketplace floor",
@@ -7049,10 +7101,23 @@
       "cheapestProvider": "Koyeb",
       "cheapestProviderId": "koyeb",
       "cheapestSourceUrl": "https://www.koyeb.com/pricing"
+     },
+     {
+      "date": "2026-11-20",
+      "value": 4.2246,
+      "p25": 3.1738,
+      "p75": 5.59,
+      "providerCount": 6,
+      "quoteCount": 6,
+      "thin": false,
+      "cheapestValue": 2.5,
+      "cheapestProvider": "Koyeb",
+      "cheapestProviderId": "koyeb",
+      "cheapestSourceUrl": "https://www.koyeb.com/pricing"
      }
     ],
     "latest": {
-     "date": "2026-11-19",
+     "date": "2026-11-20",
      "series": "serverless",
      "value": 4.2246,
      "p25": 3.1738,
@@ -7067,7 +7132,7 @@
      "cheapestProviderId": "koyeb",
      "cheapestValue": 2.5,
      "cheapestSourceUrl": "https://www.koyeb.com/pricing",
-     "movingAverage30d": 4.601987,
+     "movingAverage30d": 4.592807,
      "offers": [
       {
        "provider": "Koyeb",
@@ -7115,8 +7180,8 @@
     },
     "change7dPct": -9.05,
     "change7dBaseDate": "2026-10-29",
-    "coverageDays": 112,
-    "quoteRows": 743
+    "coverageDays": 113,
+    "quoteRows": 749
    }
   }
  },
@@ -7360,11 +7425,11 @@
    "weekStart": "2026-11-16",
    "vintage": "provisional",
    "status": "published",
-   "median": 3.49,
-   "p25": 2.95,
-   "p75": 5.0445,
+   "median": 3.9,
+   "p25": 2.955,
+   "p75": 5.3015,
    "providerCount": 25,
-   "index": 111.5955,
+   "index": 114.4685,
    "linkPairs": 22,
    "withheldReason": null
   }
@@ -7379,7 +7444,7 @@
     "h100-pcie",
     "h100-nvl"
    ],
-   "own_median": 3.49,
+   "own_median": 3.9,
    "own_providers": 25,
    "own_thin": false,
    "ext_median": 3.97,
@@ -7390,7 +7455,7 @@
    "ext_benchmark_median": 3.29,
    "ext_benchmark_id": "h100-sxm",
    "mixed_sku": true,
-   "diff_pct": -12.09,
+   "diff_pct": -1.76,
    "overlap_count": 17,
    "overlap_count_match": 3,
    "overlap_scope": "h100+h100-sxm+h100-pcie",
@@ -7415,9 +7480,9 @@
    ],
    "coverage": "mixed",
    "comparable": true,
-   "as_of": "2026-11-19",
+   "as_of": "2026-11-20",
    "ext_as_of": "2026-11-03",
-   "note": "我方 H100 同日混 80GB SXM、80GB PCIe 与 94GB NVL；ext 用 h100（形态未标注），h100-sxm 只作独立基准，不合并。 external 数据比我方旧（2026-11-03 vs 2026-11-19）。"
+   "note": "我方 H100 同日混 80GB SXM、80GB PCIe 与 94GB NVL；ext 用 h100（形态未标注），h100-sxm 只作独立基准，不合并。 external 数据比我方旧（2026-11-03 vs 2026-11-20）。"
   },
   {
    "card_id": "H100",
@@ -7452,9 +7517,9 @@
    ],
    "coverage": "mixed",
    "comparable": true,
-   "as_of": "2026-11-19",
+   "as_of": "2026-11-20",
    "ext_as_of": "2026-11-03",
-   "note": "我方 H100 同日混 80GB SXM、80GB PCIe 与 94GB NVL；ext 用 h100（形态未标注），h100-sxm 只作独立基准，不合并。 可比口径与 on-demand 相同（live、非 floor、USD、每 provider 最低价）；spot 可被收回，不能当 on-demand。 external 数据比我方旧（2026-11-03 vs 2026-11-19）。"
+   "note": "我方 H100 同日混 80GB SXM、80GB PCIe 与 94GB NVL；ext 用 h100（形态未标注），h100-sxm 只作独立基准，不合并。 可比口径与 on-demand 相同（live、非 floor、USD、每 provider 最低价）；spot 可被收回，不能当 on-demand。 external 数据比我方旧（2026-11-03 vs 2026-11-20）。"
   },
   {
    "card_id": "H100",
@@ -7485,9 +7550,9 @@
    ],
    "coverage": "thin",
    "comparable": false,
-   "as_of": "2026-11-19",
+   "as_of": "2026-11-20",
    "ext_as_of": "2026-11-03",
-   "note": "我方 H100 同日混 80GB SXM、80GB PCIe 与 94GB NVL；ext 用 h100（形态未标注），h100-sxm 只作独立基准，不合并。 GPU Economy 把 reserved 拆成无期限/1y/3y；我方不保留期限，不能合成一个可比中位。 external 覆盖偏薄（ext 1 家，重叠 1 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-19）。"
+   "note": "我方 H100 同日混 80GB SXM、80GB PCIe 与 94GB NVL；ext 用 h100（形态未标注），h100-sxm 只作独立基准，不合并。 GPU Economy 把 reserved 拆成无期限/1y/3y；我方不保留期限，不能合成一个可比中位。 external 覆盖偏薄（ext 1 家，重叠 1 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-20）。"
   },
   {
    "card_id": "H100",
@@ -7518,9 +7583,9 @@
    ],
    "coverage": "none",
    "comparable": false,
-   "as_of": "2026-11-19",
+   "as_of": "2026-11-20",
    "ext_as_of": "2026-11-03",
-   "note": "我方 H100 同日混 80GB SXM、80GB PCIe 与 94GB NVL；ext 用 h100（形态未标注），h100-sxm 只作独立基准，不合并。 GPU Economy 的 community 同时包含 marketplace floor 与实例供给；我方把 floor 单列为 marketplace，语义不等价。 该 market 没有可比 external 报价。 external 数据比我方旧（2026-11-03 vs 2026-11-19）。"
+   "note": "我方 H100 同日混 80GB SXM、80GB PCIe 与 94GB NVL；ext 用 h100（形态未标注），h100-sxm 只作独立基准，不合并。 GPU Economy 的 community 同时包含 marketplace floor 与实例供给；我方把 floor 单列为 marketplace，语义不等价。 该 market 没有可比 external 报价。 external 数据比我方旧（2026-11-03 vs 2026-11-20）。"
   },
   {
    "card_id": "H100",
@@ -7585,9 +7650,9 @@
    ],
    "coverage": "thin",
    "comparable": false,
-   "as_of": "2026-11-19",
+   "as_of": "2026-11-20",
    "ext_as_of": "2026-11-03",
-   "note": "我方 H100 同日混 80GB SXM、80GB PCIe 与 94GB NVL；ext 用 h100（形态未标注），h100-sxm 只作独立基准，不合并。 可比口径与 on-demand 相同；serverless 按秒/共享，不能与整租混读。 external 数据比我方旧（2026-11-03 vs 2026-11-19）。"
+   "note": "我方 H100 同日混 80GB SXM、80GB PCIe 与 94GB NVL；ext 用 h100（形态未标注），h100-sxm 只作独立基准，不合并。 可比口径与 on-demand 相同；serverless 按秒/共享，不能与整租混读。 external 数据比我方旧（2026-11-03 vs 2026-11-20）。"
   }
  ],
  "external": {
@@ -7601,7 +7666,7 @@
   "methodology_version": "1.33.63",
   "data_updated_at": "2026-11-03T12:48:20.451387+00:00",
   "retrieved_at": "2026-11-04T09:12:14Z",
-  "as_of": "2026-11-19",
+  "as_of": "2026-11-20",
   "ext_as_of": "2026-11-03",
   "markets": {
    "on_demand": {
@@ -7612,11 +7677,11 @@
     "ext_median_published": 3.7415,
     "ext_benchmark_id": "h100-sxm",
     "ext_benchmark_median": 3.29,
-    "diff_pct": -12.09,
+    "diff_pct": -1.76,
     "overlap_count": 17,
     "coverage": "mixed",
     "comparable": true,
-    "note": "我方 H100 同日混 80GB SXM、80GB PCIe 与 94GB NVL；ext 用 h100（形态未标注），h100-sxm 只作独立基准，不合并。 external 数据比我方旧（2026-11-03 vs 2026-11-19）。"
+    "note": "我方 H100 同日混 80GB SXM、80GB PCIe 与 94GB NVL；ext 用 h100（形态未标注），h100-sxm 只作独立基准，不合并。 external 数据比我方旧（2026-11-03 vs 2026-11-20）。"
    },
    "spot": {
     "ext_gpu_id": "h100",
@@ -7630,7 +7695,7 @@
     "overlap_count": 5,
     "coverage": "mixed",
     "comparable": true,
-    "note": "我方 H100 同日混 80GB SXM、80GB PCIe 与 94GB NVL；ext 用 h100（形态未标注），h100-sxm 只作独立基准，不合并。 可比口径与 on-demand 相同（live、非 floor、USD、每 provider 最低价）；spot 可被收回，不能当 on-demand。 external 数据比我方旧（2026-11-03 vs 2026-11-19）。"
+    "note": "我方 H100 同日混 80GB SXM、80GB PCIe 与 94GB NVL；ext 用 h100（形态未标注），h100-sxm 只作独立基准，不合并。 可比口径与 on-demand 相同（live、非 floor、USD、每 provider 最低价）；spot 可被收回，不能当 on-demand。 external 数据比我方旧（2026-11-03 vs 2026-11-20）。"
    },
    "reserved": {
     "ext_gpu_id": "h100",
@@ -7644,7 +7709,7 @@
     "overlap_count": 1,
     "coverage": "thin",
     "comparable": false,
-    "note": "我方 H100 同日混 80GB SXM、80GB PCIe 与 94GB NVL；ext 用 h100（形态未标注），h100-sxm 只作独立基准，不合并。 GPU Economy 把 reserved 拆成无期限/1y/3y；我方不保留期限，不能合成一个可比中位。 external 覆盖偏薄（ext 1 家，重叠 1 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-19）。"
+    "note": "我方 H100 同日混 80GB SXM、80GB PCIe 与 94GB NVL；ext 用 h100（形态未标注），h100-sxm 只作独立基准，不合并。 GPU Economy 把 reserved 拆成无期限/1y/3y；我方不保留期限，不能合成一个可比中位。 external 覆盖偏薄（ext 1 家，重叠 1 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-20）。"
    },
    "community": {
     "ext_gpu_id": "h100",
@@ -7658,7 +7723,7 @@
     "overlap_count": 1,
     "coverage": "none",
     "comparable": false,
-    "note": "我方 H100 同日混 80GB SXM、80GB PCIe 与 94GB NVL；ext 用 h100（形态未标注），h100-sxm 只作独立基准，不合并。 GPU Economy 的 community 同时包含 marketplace floor 与实例供给；我方把 floor 单列为 marketplace，语义不等价。 该 market 没有可比 external 报价。 external 数据比我方旧（2026-11-03 vs 2026-11-19）。"
+    "note": "我方 H100 同日混 80GB SXM、80GB PCIe 与 94GB NVL；ext 用 h100（形态未标注），h100-sxm 只作独立基准，不合并。 GPU Economy 的 community 同时包含 marketplace floor 与实例供给；我方把 floor 单列为 marketplace，语义不等价。 该 market 没有可比 external 报价。 external 数据比我方旧（2026-11-03 vs 2026-11-20）。"
    },
    "marketplace": {
     "ext_gpu_id": "h100",
@@ -7686,7 +7751,7 @@
     "overlap_count": 4,
     "coverage": "thin",
     "comparable": false,
-    "note": "我方 H100 同日混 80GB SXM、80GB PCIe 与 94GB NVL；ext 用 h100（形态未标注），h100-sxm 只作独立基准，不合并。 可比口径与 on-demand 相同；serverless 按秒/共享，不能与整租混读。 external 数据比我方旧（2026-11-03 vs 2026-11-19）。"
+    "note": "我方 H100 同日混 80GB SXM、80GB PCIe 与 94GB NVL；ext 用 h100（形态未标注），h100-sxm 只作独立基准，不合并。 可比口径与 on-demand 相同；serverless 按秒/共享，不能与整租混读。 external 数据比我方旧（2026-11-03 vs 2026-11-20）。"
    }
   }
  }

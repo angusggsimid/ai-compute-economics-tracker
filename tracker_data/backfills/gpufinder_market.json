@@ -1,5 +1,5 @@
 {
-  "fetchedAt": "2026-11-20T15:18:28Z",
+  "fetchedAt": "2026-11-20T16:16:27Z",
   "lastSuccessAt": "2026-10-31T05:38:00Z",
   "refreshStatus": "failed",
   "publishable": true,
@@ -29,8 +29,7 @@
   "cadence": {
     "availability": "2026-10-31T05:38:00Z",
     "catalog": "2026-10-11T01:44:16Z",
-    "history": "2026-10-11T01:44:16Z",
-    "snapshot": "2026-10-29T05:45:30Z"
+    "history": "2026-10-11T01:44:16Z"
   },
   "rows": [
     {
@@ -8136,11 +8135,6 @@
       "message": "HTTP Error 429: Too Many Requests"
     },
     {
-      "source": "gpufinder:/snapshot?gpu=h100",
-      "status": "failed",
-      "message": "HTTP Error 429: Too Many Requests"
-    },
-    {
       "source": "gpufinder:/availability?gpu=h100",
       "status": "failed",
       "message": "HTTP Error 429: Too Many Requests"
@@ -8151,22 +8145,12 @@
       "message": "HTTP Error 429: Too Many Requests"
     },
     {
-      "source": "gpufinder:/snapshot?gpu=h200",
-      "status": "failed",
-      "message": "HTTP Error 429: Too Many Requests"
-    },
-    {
       "source": "gpufinder:/availability?gpu=h200",
       "status": "failed",
       "message": "HTTP Error 429: Too Many Requests"
     },
     {
       "source": "gpufinder:/history?gpu=h200",
-      "status": "failed",
-      "message": "HTTP Error 429: Too Many Requests"
-    },
-    {
-      "source": "gpufinder:/snapshot?gpu=b200",
       "status": "failed",
       "message": "HTTP Error 429: Too Many Requests"
     },
@@ -8184,7 +8168,7 @@
   "blocking": false,
   "notes": [
     "availabilityPct = Σavailable/Σtotal（最新一日，7 天滚动窗口，向前积累）。",
-    "listedAvailableGapPct = cheapestAvailable/cheapestListed - 1，衡量报价虚低程度。",
-    "轨道化到期采集（免费额度 60 次/月）：availability ≤4 天一轮（7 天窗口→逐日零丢失）、snapshot ~2.5 天、history ~28 天、catalog ~30 天；未到期日零请求跳过。"
+    "listedAvailableGapPct 自 2026-11-21 起由 GrabGPU 每日产出；本文件仅保留历史值，snapshot 轨道停用。",
+    "轨道化到期采集（免费额度 60 次/月）：availability 每周 1 轮（7 天窗口仍覆盖逐日）、history ~28 天、catalog ~30 天；未到期日零请求跳过，预算约 17 次/月。"
   ]
 }

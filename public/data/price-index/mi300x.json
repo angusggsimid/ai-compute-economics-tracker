@@ -2,7 +2,7 @@
  "name": "AI Compute Economics - weekly GPU supply index",
  "description": "Weekly on-demand median per card, chain-linked base-100 over providers present in both weeks; one provider once per week. Weeks below the provider guard are withheld, not backfilled. Public receipts retain the latest published week only. Monthly values use a fixed pre-committed provider panel and a daily-frequency approximation; see monthly_method.",
  "unit": "USD per GPU per hour; base-100 index",
- "as_of": "2026-11-19",
+ "as_of": "2026-11-20",
  "methodology_version": "2026-11-04.1",
  "index_min_providers": 4,
  "index_publish_min": 8,
@@ -12,7 +12,7 @@
  "cards": {
   "MI300X": {
    "name": "MI300X 192GB",
-   "as_of": "2026-11-19",
+   "as_of": "2026-11-20",
    "min_providers": 4,
    "latest": {
     "weekStart": "2026-11-16",
@@ -28,7 +28,7 @@
     "linkPairs": 5,
     "withheldReason": null,
     "receipt": "2026-W47",
-    "ageDays": 3
+    "ageDays": 4
    },
    "weeks": [
     {
@@ -297,7 +297,7 @@
      "linkPairs": 5,
      "withheldReason": null,
      "receipt": "2026-W47",
-     "ageDays": 3
+     "ageDays": 4
     }
    ],
    "receipts": {
@@ -320,7 +320,7 @@
        "provider": "RunPod",
        "providerId": "runpod",
        "value": 2.39,
-       "date": "2026-11-19",
+       "date": "2026-11-20",
        "sourceUrl": "https://www.runpod.io/pricing",
        "quotes": 1
       },
@@ -328,7 +328,7 @@
        "provider": "DigitalOcean",
        "providerId": "digitalocean",
        "value": 2.59,
-       "date": "2026-11-19",
+       "date": "2026-11-20",
        "sourceUrl": "https://www.digitalocean.com/pricing/gpu-droplets",
        "quotes": 1
       },
@@ -336,7 +336,7 @@
        "provider": "Hot Aisle",
        "providerId": "hotaisle",
        "value": 2.99,
-       "date": "2026-11-19",
+       "date": "2026-11-20",
        "sourceUrl": "https://hotaisle.xyz/pricing",
        "quotes": 1
       },
@@ -344,7 +344,7 @@
        "provider": "Crusoe",
        "providerId": "crusoe",
        "value": 3.45,
-       "date": "2026-11-19",
+       "date": "2026-11-20",
        "sourceUrl": "https://www.crusoe.ai/cloud/pricing",
        "quotes": 1
       },
@@ -352,7 +352,7 @@
        "provider": "Spheron",
        "providerId": "spheron",
        "value": 3.59,
-       "date": "2026-11-19",
+       "date": "2026-11-20",
        "sourceUrl": "https://www.spheron.network/pricing/",
        "quotes": 1
       },
@@ -360,7 +360,7 @@
        "provider": "Oracle Cloud",
        "providerId": "oracle",
        "value": 6.0,
-       "date": "2026-11-19",
+       "date": "2026-11-20",
        "sourceUrl": "https://apexapps.oracle.com/pls/apex/cetools/api/v1/products/?currencyCode=USD",
        "quotes": 1
       }

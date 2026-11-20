@@ -1,14 +1,14 @@
 {
  "id": "A100",
  "slug": "a100",
- "as_of": "2026-11-19",
+ "as_of": "2026-11-20",
  "methodology_version": "2026-11-04.1",
  "card": {
   "id": "A100",
   "name": "A100 80GB",
   "vramGb": 80,
   "family": "Ampere",
-  "asOf": "2026-11-19",
+  "asOf": "2026-11-20",
   "status": "live",
   "median": 2.145,
   "p25": 1.46375,
@@ -27,11 +27,11 @@
    "p25": 1.46375,
    "p75": 3.074448,
    "providerCount": 18,
-   "index": 101.3649,
+   "index": 101.4038,
    "linkPairs": 15,
    "withheldReason": null,
    "receipt": "2026-W47",
-   "ageDays": 3
+   "ageDays": 4
   },
   "monthly": [
    {
@@ -1644,10 +1644,23 @@
       "cheapestProvider": "JarvisLabs",
       "cheapestProviderId": "jarvislabs",
       "cheapestSourceUrl": "https://jarvislabs.ai/pricing"
+     },
+     {
+      "date": "2026-11-20",
+      "value": 2.145,
+      "p25": 1.46375,
+      "p75": 3.074448,
+      "providerCount": 18,
+      "quoteCount": 30,
+      "thin": false,
+      "cheapestValue": 0.89,
+      "cheapestProvider": "JarvisLabs",
+      "cheapestProviderId": "jarvislabs",
+      "cheapestSourceUrl": "https://jarvislabs.ai/pricing"
      }
     ],
     "latest": {
-     "date": "2026-11-19",
+     "date": "2026-11-20",
      "series": "on_demand",
      "value": 2.145,
      "p25": 1.46375,
@@ -1662,7 +1675,7 @@
      "cheapestProviderId": "jarvislabs",
      "cheapestValue": 0.89,
      "cheapestSourceUrl": "https://jarvislabs.ai/pricing",
-     "movingAverage30d": 1.944383,
+     "movingAverage30d": 1.95255,
      "offers": [
       {
        "provider": "Thunder Compute",
@@ -1716,7 +1729,7 @@
       {
        "provider": "Verda",
        "providerId": "datacrunch",
-       "value": 2.0775,
+       "value": 2.0895,
        "sourceUrl": "https://datacrunch.io/pricing",
        "quotes": 2
       },
@@ -1794,8 +1807,8 @@
     },
     "change7dPct": -0.23,
     "change7dBaseDate": "2026-10-29",
-    "coverageDays": 114,
-    "quoteRows": 3039
+    "coverageDays": 115,
+    "quoteRows": 3069
    },
    "spot": {
     "label": "Spot",
@@ -3260,13 +3273,26 @@
       "cheapestProvider": "Azure",
       "cheapestProviderId": "azure",
       "cheapestSourceUrl": "https://prices.azure.com/api/retail/prices"
+     },
+     {
+      "date": "2026-11-20",
+      "value": 1.19,
+      "p25": 0.891405,
+      "p75": 1.820919,
+      "providerCount": 5,
+      "quoteCount": 11,
+      "thin": false,
+      "cheapestValue": 0.67877,
+      "cheapestProvider": "Azure",
+      "cheapestProviderId": "azure",
+      "cheapestSourceUrl": "https://prices.azure.com/api/retail/prices"
      }
     ],
     "latest": {
-     "date": "2026-11-19",
+     "date": "2026-11-20",
      "series": "spot",
      "value": 1.19,
-     "p25": 0.888405,
+     "p25": 0.891405,
      "p75": 1.820919,
      "low": 0.67877,
      "high": 2.3568,
@@ -3278,7 +3304,7 @@
      "cheapestProviderId": "azure",
      "cheapestValue": 0.67877,
      "cheapestSourceUrl": "https://prices.azure.com/api/retail/prices",
-     "movingAverage30d": 1.405498,
+     "movingAverage30d": 1.399109,
      "offers": [
       {
        "provider": "Azure",
@@ -3290,7 +3316,7 @@
       {
        "provider": "Verda",
        "providerId": "datacrunch",
-       "value": 1.03875,
+       "value": 1.04475,
        "sourceUrl": "https://datacrunch.io/pricing",
        "quotes": 2
       },
@@ -3319,8 +3345,8 @@
     },
     "change7dPct": 0.0,
     "change7dBaseDate": "2026-10-29",
-    "coverageDays": 112,
-    "quoteRows": 794
+    "coverageDays": 113,
+    "quoteRows": 805
    },
    "reserved": {
     "label": "Reserved",
@@ -3641,10 +3667,23 @@
       "cheapestProvider": "Hyperstack",
       "cheapestProviderId": "hyperstack",
       "cheapestSourceUrl": "https://www.hyperstack.cloud/gpu-pricing"
+     },
+     {
+      "date": "2026-11-20",
+      "value": 1.155,
+      "p25": null,
+      "p75": null,
+      "providerCount": 1,
+      "quoteCount": 2,
+      "thin": true,
+      "cheapestValue": 0.95,
+      "cheapestProvider": "Hyperstack",
+      "cheapestProviderId": "hyperstack",
+      "cheapestSourceUrl": "https://www.hyperstack.cloud/gpu-pricing"
      }
     ],
     "latest": {
-     "date": "2026-11-19",
+     "date": "2026-11-20",
      "series": "reserved",
      "value": 1.155,
      "p25": null,
@@ -3672,8 +3711,8 @@
     },
     "change7dPct": 0.0,
     "change7dBaseDate": "2026-10-29",
-    "coverageDays": 24,
-    "quoteRows": 48
+    "coverageDays": 25,
+    "quoteRows": 50
    },
    "community": {
     "label": "Community",
@@ -5164,10 +5203,23 @@
       "cheapestProvider": "RunPod",
       "cheapestProviderId": "runpod",
       "cheapestSourceUrl": "https://www.runpod.io/pricing"
+     },
+     {
+      "date": "2026-11-20",
+      "value": 1.19,
+      "p25": null,
+      "p75": null,
+      "providerCount": 1,
+      "quoteCount": 3,
+      "thin": true,
+      "cheapestValue": 1.0,
+      "cheapestProvider": "RunPod",
+      "cheapestProviderId": "runpod",
+      "cheapestSourceUrl": "https://www.runpod.io/pricing"
      }
     ],
     "latest": {
-     "date": "2026-11-19",
+     "date": "2026-11-20",
      "series": "community",
      "value": 1.19,
      "p25": null,
@@ -5195,8 +5247,8 @@
     },
     "change7dPct": 0.0,
     "change7dBaseDate": "2026-10-29",
-    "coverageDays": 114,
-    "quoteRows": 342
+    "coverageDays": 115,
+    "quoteRows": 345
    },
    "marketplace": {
     "label": "Marketplace floor",
@@ -6832,10 +6884,23 @@
       "cheapestProvider": "Koyeb",
       "cheapestProviderId": "koyeb",
       "cheapestSourceUrl": "https://www.koyeb.com/pricing"
+     },
+     {
+      "date": "2026-11-20",
+      "value": 2.2986,
+      "p25": 1.9617,
+      "p75": 4.015,
+      "providerCount": 5,
+      "quoteCount": 8,
+      "thin": false,
+      "cheapestValue": 1.6,
+      "cheapestProvider": "Koyeb",
+      "cheapestProviderId": "koyeb",
+      "cheapestSourceUrl": "https://www.koyeb.com/pricing"
      }
     ],
     "latest": {
-     "date": "2026-11-19",
+     "date": "2026-11-20",
      "series": "serverless",
      "value": 2.2986,
      "p25": 1.9617,
@@ -6891,8 +6956,8 @@
     },
     "change7dPct": -8.4,
     "change7dBaseDate": "2026-10-29",
-    "coverageDays": 112,
-    "quoteRows": 842
+    "coverageDays": 113,
+    "quoteRows": 850
    }
   }
  },
@@ -7140,7 +7205,7 @@
    "p25": 1.46375,
    "p75": 3.074448,
    "providerCount": 18,
-   "index": 101.3649,
+   "index": 101.4038,
    "linkPairs": 15,
    "withheldReason": null
   }
@@ -7185,9 +7250,9 @@
    ],
    "coverage": "sku_mismatch",
    "comparable": false,
-   "as_of": "2026-11-19",
+   "as_of": "2026-11-20",
    "ext_as_of": "2026-11-03",
-   "note": "我方 A100 同日混 40GB 与 80GB，ext 只取 a100-80；型号不一致，仅做覆盖参考，不给差值。 external 数据比我方旧（2026-11-03 vs 2026-11-19）。"
+   "note": "我方 A100 同日混 40GB 与 80GB，ext 只取 a100-80；型号不一致，仅做覆盖参考，不给差值。 external 数据比我方旧（2026-11-03 vs 2026-11-20）。"
   },
   {
    "card_id": "A100",
@@ -7217,9 +7282,9 @@
    ],
    "coverage": "thin",
    "comparable": false,
-   "as_of": "2026-11-19",
+   "as_of": "2026-11-20",
    "ext_as_of": "2026-11-03",
-   "note": "我方 A100 同日混 40GB 与 80GB，ext 只取 a100-80；型号不一致，仅做覆盖参考，不给差值。 可比口径与 on-demand 相同（live、非 floor、USD、每 provider 最低价）；spot 可被收回，不能当 on-demand。 external 数据比我方旧（2026-11-03 vs 2026-11-19）。"
+   "note": "我方 A100 同日混 40GB 与 80GB，ext 只取 a100-80；型号不一致，仅做覆盖参考，不给差值。 可比口径与 on-demand 相同（live、非 floor、USD、每 provider 最低价）；spot 可被收回，不能当 on-demand。 external 数据比我方旧（2026-11-03 vs 2026-11-20）。"
   },
   {
    "card_id": "A100",
@@ -7247,9 +7312,9 @@
    ],
    "coverage": "thin",
    "comparable": false,
-   "as_of": "2026-11-19",
+   "as_of": "2026-11-20",
    "ext_as_of": "2026-11-03",
-   "note": "我方 A100 同日混 40GB 与 80GB，ext 只取 a100-80；型号不一致，仅做覆盖参考，不给差值。 GPU Economy 把 reserved 拆成无期限/1y/3y；我方不保留期限，不能合成一个可比中位。 external 覆盖偏薄（ext 4 家，重叠 1 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-19）。"
+   "note": "我方 A100 同日混 40GB 与 80GB，ext 只取 a100-80；型号不一致，仅做覆盖参考，不给差值。 GPU Economy 把 reserved 拆成无期限/1y/3y；我方不保留期限，不能合成一个可比中位。 external 覆盖偏薄（ext 4 家，重叠 1 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-20）。"
   },
   {
    "card_id": "A100",
@@ -7277,9 +7342,9 @@
    ],
    "coverage": "thin",
    "comparable": false,
-   "as_of": "2026-11-19",
+   "as_of": "2026-11-20",
    "ext_as_of": "2026-11-03",
-   "note": "我方 A100 同日混 40GB 与 80GB，ext 只取 a100-80；型号不一致，仅做覆盖参考，不给差值。 GPU Economy 的 community 同时包含 marketplace floor 与实例供给；我方把 floor 单列为 marketplace，语义不等价。 external 覆盖偏薄（ext 1 家，重叠 1 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-19）。"
+   "note": "我方 A100 同日混 40GB 与 80GB，ext 只取 a100-80；型号不一致，仅做覆盖参考，不给差值。 GPU Economy 的 community 同时包含 marketplace floor 与实例供给；我方把 floor 单列为 marketplace，语义不等价。 external 覆盖偏薄（ext 1 家，重叠 1 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-20）。"
   },
   {
    "card_id": "A100",
@@ -7337,9 +7402,9 @@
    ],
    "coverage": "thin",
    "comparable": false,
-   "as_of": "2026-11-19",
+   "as_of": "2026-11-20",
    "ext_as_of": "2026-11-03",
-   "note": "我方 A100 同日混 40GB 与 80GB，ext 只取 a100-80；型号不一致，仅做覆盖参考，不给差值。 可比口径与 on-demand 相同；serverless 按秒/共享，不能与整租混读。 external 数据比我方旧（2026-11-03 vs 2026-11-19）。"
+   "note": "我方 A100 同日混 40GB 与 80GB，ext 只取 a100-80；型号不一致，仅做覆盖参考，不给差值。 可比口径与 on-demand 相同；serverless 按秒/共享，不能与整租混读。 external 数据比我方旧（2026-11-03 vs 2026-11-20）。"
   }
  ],
  "external": {
@@ -7353,7 +7418,7 @@
   "methodology_version": "1.33.63",
   "data_updated_at": "2026-11-03T12:48:20.451387+00:00",
   "retrieved_at": "2026-11-04T09:12:14Z",
-  "as_of": "2026-11-19",
+  "as_of": "2026-11-20",
   "ext_as_of": "2026-11-03",
   "markets": {
    "on_demand": {
@@ -7368,7 +7433,7 @@
     "overlap_count": 14,
     "coverage": "sku_mismatch",
     "comparable": false,
-    "note": "我方 A100 同日混 40GB 与 80GB，ext 只取 a100-80；型号不一致，仅做覆盖参考，不给差值。 external 数据比我方旧（2026-11-03 vs 2026-11-19）。"
+    "note": "我方 A100 同日混 40GB 与 80GB，ext 只取 a100-80；型号不一致，仅做覆盖参考，不给差值。 external 数据比我方旧（2026-11-03 vs 2026-11-20）。"
    },
    "spot": {
     "ext_gpu_id": "a100-80",
@@ -7382,7 +7447,7 @@
     "overlap_count": 3,
     "coverage": "thin",
     "comparable": false,
-    "note": "我方 A100 同日混 40GB 与 80GB，ext 只取 a100-80；型号不一致，仅做覆盖参考，不给差值。 可比口径与 on-demand 相同（live、非 floor、USD、每 provider 最低价）；spot 可被收回，不能当 on-demand。 external 数据比我方旧（2026-11-03 vs 2026-11-19）。"
+    "note": "我方 A100 同日混 40GB 与 80GB，ext 只取 a100-80；型号不一致，仅做覆盖参考，不给差值。 可比口径与 on-demand 相同（live、非 floor、USD、每 provider 最低价）；spot 可被收回，不能当 on-demand。 external 数据比我方旧（2026-11-03 vs 2026-11-20）。"
    },
    "reserved": {
     "ext_gpu_id": "a100-80",
@@ -7396,7 +7461,7 @@
     "overlap_count": 1,
     "coverage": "thin",
     "comparable": false,
-    "note": "我方 A100 同日混 40GB 与 80GB，ext 只取 a100-80；型号不一致，仅做覆盖参考，不给差值。 GPU Economy 把 reserved 拆成无期限/1y/3y；我方不保留期限，不能合成一个可比中位。 external 覆盖偏薄（ext 4 家，重叠 1 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-19）。"
+    "note": "我方 A100 同日混 40GB 与 80GB，ext 只取 a100-80；型号不一致，仅做覆盖参考，不给差值。 GPU Economy 把 reserved 拆成无期限/1y/3y；我方不保留期限，不能合成一个可比中位。 external 覆盖偏薄（ext 4 家，重叠 1 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-20）。"
    },
    "community": {
     "ext_gpu_id": "a100-80",
@@ -7410,7 +7475,7 @@
     "overlap_count": 1,
     "coverage": "thin",
     "comparable": false,
-    "note": "我方 A100 同日混 40GB 与 80GB，ext 只取 a100-80；型号不一致，仅做覆盖参考，不给差值。 GPU Economy 的 community 同时包含 marketplace floor 与实例供给；我方把 floor 单列为 marketplace，语义不等价。 external 覆盖偏薄（ext 1 家，重叠 1 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-19）。"
+    "note": "我方 A100 同日混 40GB 与 80GB，ext 只取 a100-80；型号不一致，仅做覆盖参考，不给差值。 GPU Economy 的 community 同时包含 marketplace floor 与实例供给；我方把 floor 单列为 marketplace，语义不等价。 external 覆盖偏薄（ext 1 家，重叠 1 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-20）。"
    },
    "marketplace": {
     "ext_gpu_id": "a100-80",
@@ -7438,7 +7503,7 @@
     "overlap_count": 3,
     "coverage": "thin",
     "comparable": false,
-    "note": "我方 A100 同日混 40GB 与 80GB，ext 只取 a100-80；型号不一致，仅做覆盖参考，不给差值。 可比口径与 on-demand 相同；serverless 按秒/共享，不能与整租混读。 external 数据比我方旧（2026-11-03 vs 2026-11-19）。"
+    "note": "我方 A100 同日混 40GB 与 80GB，ext 只取 a100-80；型号不一致，仅做覆盖参考，不给差值。 可比口径与 on-demand 相同；serverless 按秒/共享，不能与整租混读。 external 数据比我方旧（2026-11-03 vs 2026-11-20）。"
    }
   }
  }

@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-11-20T16:13:21Z",
+    "generatedAt": "2026-11-20T16:16:31Z",
     "minDate": "2025-11-24",
     "maxDate": "2026-11-20",
     "basisCommonStart": {
@@ -31,7 +31,7 @@
           "voltagepark"
         ],
         "windowStart": "2026-07-07",
-        "windowDays": 112
+        "windowDays": 113
       },
       "B200": {
         "members": [
@@ -44,7 +44,7 @@
           "together"
         ],
         "windowStart": "2026-07-07",
-        "windowDays": 112
+        "windowDays": 113
       }
     },
     "panelAnnotations": {
@@ -121,10 +121,10 @@
     "supplySwitch": "2026-11-20",
     "supplyPointsSinceSwitch": 1,
     "supplyFeed": "GrabGPU provider 在库占比（2026-11-20 起）",
-    "landscapeAsOf": "2026-11-19",
+    "landscapeAsOf": "2026-11-20",
     "methodologyVersion": "2026-11-04.1",
     "executiveSummary": {
-      "generatedAt": "2026-11-20T16:13:21Z",
+      "generatedAt": "2026-11-20T16:16:31Z",
       "macroStance": "现货偏紧，但资本开支指引不是单边上修",
       "stanceLevel": "intensifying",
       "coreNarrative": "供给价格长窗口仍偏紧。指引里同时有上移和下移，不能写成两套时钟同向上修。",
@@ -133,13 +133,13 @@
           "clock": "Supply Price",
           "title": "现货价格",
           "badge": "Confirmed · intensifying",
-          "text": "90 日面板：B200 +12.9% 至 +48.9%（3 源）；H100 -4.5% 至 +16.6%（3 源）；H200 +16.6% 至 +43.8%（2 源）。这些是时钟用来确认的面板读数（成交、综合、正规 on-demand 挂牌），不是单一挂牌价。哪一代没进确认名单，就不能写成同涨。"
+          "text": "90 日面板：B200 +12.9% 至 +48.9%（3 源）；H100 -4.5% 至 +20.9%（3 源）；H200 +13.2% 至 +43.8%（2 源）。这些是时钟用来确认的面板读数（成交、综合、正规 on-demand 挂牌），不是单一挂牌价。哪一代没进确认名单，就不能写成同涨。"
         },
         {
           "clock": "Capacity",
           "title": "在库与挂牌水分",
           "badge": "Trend · 订单簿 71 日",
-          "text": "报价虚低度：H100 1.8%，H200 11.9%，B200 33.7%。快照日期：2026-11-20。这是快照，不是趋势；虚低度高表示最低挂牌价和最低在库价分开。"
+          "text": "报价虚低度：H100 0.0%，H200 11.9%，B200 33.7%。快照日期：2026-11-20。这是快照，不是趋势；虚低度高表示最低挂牌价和最低在库价分开。"
         },
         {
           "clock": "Demand",
@@ -18367,6 +18367,104 @@
           "spheron": 5.52
         },
         "movingAverage30d": 4.6949
+      },
+      {
+        "date": "2026-11-20",
+        "series": "B200",
+        "value": 8.5,
+        "p25": 7.49,
+        "p75": 10.25,
+        "low": 6.0,
+        "high": 16.11,
+        "average": 9.4615,
+        "providerCount": 11,
+        "medianSynthetic": false,
+        "providerPrices": {
+          "coreweave": 8.6,
+          "datacrunch": 9.796,
+          "daytona": 7.49,
+          "gcp": 16.11,
+          "gmicloud": 6.5,
+          "hyperstack": 6.0,
+          "lambda": 7.84,
+          "nebius": 8.5,
+          "oracle": 15.0,
+          "runpod": 7.99,
+          "spheron": 10.25
+        },
+        "movingAverage30d": 7.6129
+      },
+      {
+        "date": "2026-11-20",
+        "series": "H100",
+        "value": 3.9,
+        "p25": 2.955,
+        "p75": 5.3015,
+        "low": 1.8,
+        "high": 11.061,
+        "average": 4.5989,
+        "providerCount": 25,
+        "medianSynthetic": false,
+        "providerPrices": {
+          "aws": 6.88,
+          "azure": 11.061,
+          "coreweave": 6.155,
+          "crusoe": 3.9,
+          "datacrunch": 5.453,
+          "daytona": 4.29,
+          "digitalocean": 4.41,
+          "gcp": 9.7966,
+          "gmicloud": 2.6,
+          "hyperai": 1.8,
+          "hyperstack": 2.85,
+          "jarvislabs": 3.49,
+          "lambda": 4.69,
+          "latitude": 3.37,
+          "massedcompute": 2.92,
+          "nebius": 4.5,
+          "oracle": 10.0,
+          "ovh": 2.99,
+          "runcrate": 4.72,
+          "runpod": 3.19,
+          "scaleway": 3.3157,
+          "spheron": 5.15,
+          "tensordock": 2.25,
+          "thundercompute": 3.2,
+          "voltagepark": 1.99
+        },
+        "movingAverage30d": 3.4103
+      },
+      {
+        "date": "2026-11-20",
+        "series": "H200",
+        "value": 4.99,
+        "p25": 4.38,
+        "p75": 6.639,
+        "low": 3.2,
+        "high": 10.0,
+        "average": 5.6304,
+        "providerCount": 17,
+        "medianSynthetic": false,
+        "providerPrices": {
+          "aws": 7.912,
+          "coreweave": 6.305,
+          "crusoe": 4.29,
+          "datacrunch": 6.973,
+          "daytona": 4.99,
+          "digitalocean": 4.47,
+          "gcp": 9.3117,
+          "gmicloud": 3.2,
+          "hyperstack": 3.99,
+          "jarvislabs": 4.59,
+          "massedcompute": 3.62,
+          "nebius": 5.4,
+          "oracle": 10.0,
+          "ovh": 6.195,
+          "runcrate": 5.13,
+          "runpod": 4.54,
+          "spheron": 4.8
+        },
+        "movingAverage30d": 4.7152
       }
     ],
     "gpuPriceAnnotations": {
@@ -19153,6 +19251,11 @@
         "value": 1.36875
       },
       {
+        "date": "2026-11-20",
+        "series": "H200 / H100",
+        "value": 1.36875
+      },
+      {
         "date": "2026-07-05",
         "series": "B200 / H100",
         "value": 1.8418740849194728
@@ -19719,6 +19822,11 @@
       },
       {
         "date": "2026-11-19",
+        "series": "B200 / H100",
+        "value": 2.2483660130718954
+      },
+      {
+        "date": "2026-11-20",
         "series": "B200 / H100",
         "value": 2.2483660130718954
       }
@@ -20327,12 +20435,12 @@
       {
         "date": "2026-11-20",
         "series": "B200",
-        "value": 57.14
+        "value": 50.0
       },
       {
         "date": "2026-11-20",
         "series": "H100",
-        "value": 33.33
+        "value": 53.33
       },
       {
         "date": "2026-11-20",
@@ -20454,7 +20562,7 @@
       {
         "date": "2026-11-20",
         "series": "H100",
-        "value": 1.81
+        "value": 0.0
       },
       {
         "date": "2026-11-20",
@@ -21066,12 +21174,12 @@
       {
         "date": "2026-11-20",
         "series": "B200",
-        "value": 4
+        "value": 3
       },
       {
         "date": "2026-11-20",
         "series": "H100",
-        "value": 5
+        "value": 8
       },
       {
         "date": "2026-11-20",
@@ -25048,6 +25156,11 @@
       },
       {
         "date": "2026-11-20",
+        "series": "Neocloud 报价中位",
+        "value": 114.2
+      },
+      {
+        "date": "2026-11-20",
         "series": "SemiAnalysis 综合指数",
         "value": 111.65
       }
@@ -26312,6 +26425,11 @@
         "date": "2026-11-19",
         "series": "Ornn 成交指数",
         "value": 158.81
+      },
+      {
+        "date": "2026-11-20",
+        "series": "Neocloud 报价中位",
+        "value": 122.0
       }
     ],
     "basisB200": [
@@ -28264,6 +28382,11 @@
         "date": "2026-11-19",
         "series": "SemiAnalysis 综合指数",
         "value": 129.58
+      },
+      {
+        "date": "2026-11-20",
+        "series": "Neocloud 报价中位",
+        "value": 135.14
       },
       {
         "date": "2026-11-20",
@@ -30899,7 +31022,7 @@
       {
         "date": "2026-11-20",
         "series": "gpuperhour",
-        "value": 225
+        "value": 221
       },
       {
         "date": "2026-11-20",
@@ -30909,7 +31032,7 @@
       {
         "date": "2026-11-20",
         "series": "vast",
-        "value": 30
+        "value": 25
       }
     ]
   },
@@ -30920,7 +31043,7 @@
         "https://openrouter.ai/api/frontend/v1/rankings/model-rankings-chart"
       ],
       "url": "https://openrouter.ai/api/frontend/v1/rankings/model-rankings-chart",
-      "sha256": "sha256:a3a83b76801727474ead9e207cf43b2e27b6b9c3b7f21830e69ed118c753d625",
+      "sha256": "sha256:f259930202748a087824e7085ac2ca0b1bc1b69f8a4a7ef7834c418b5fc2b824",
       "definition": "Sum of source-provided named model rows and Others for each OpenRouter chart week."
     },
     "openrouterComposition": {
@@ -30929,7 +31052,7 @@
         "https://openrouter.ai/api/frontend/v1/rankings/model-rankings-chart"
       ],
       "url": "https://openrouter.ai/api/frontend/v1/rankings/model-rankings-chart",
-      "sha256": "sha256:a3a83b76801727474ead9e207cf43b2e27b6b9c3b7f21830e69ed118c753d625",
+      "sha256": "sha256:f259930202748a087824e7085ac2ca0b1bc1b69f8a4a7ef7834c418b5fc2b824",
       "definition": "Each weekly column independently stacks every model disclosed by the public chart plus Others. Segment height is share of that week's total token volume. Columns are not connected, so a model missing from another week is never treated as zero usage."
     },
     "activePrice": {
@@ -30948,7 +31071,7 @@
         "https://raw.githubusercontent.com/adriannutiu/gpu-rental-prices/main/data/latest.json"
       ],
       "url": "https://raw.githubusercontent.com/adriannutiu/gpu-rental-prices/main/data/latest.json",
-      "sha256": "sha256:93afe600114a6549eb6f854e6e59a2e4e9825d1dd494fe9fe47b1b801e79481b",
+      "sha256": "sha256:6ae4035ce9286a4b6863599ca20bb5774c0f01701598c5a26527d04c01fe89c7",
       "definition": "正规 on-demand 挂牌价（on-demand/secure，剔除 community/spot/serverless）。聚合顺序：先对每家供应商当日多条报价取中位（每家一票），再对各家取中位，因此中位数恒等于一家真实供应商的报价；家数为偶数时中位是两家均值（页面上标 ⚠）。最新参与家数：B200 11 家、H100 25 家、H200 17 家。含 min–max 区间与 30 日均线。2026-09-27 起替代 Foundry Signals（口径断点）。"
     },
     "gpuPremium": {
@@ -30957,16 +31080,16 @@
         "https://raw.githubusercontent.com/adriannutiu/gpu-rental-prices/main/data/latest.json"
       ],
       "url": "https://raw.githubusercontent.com/adriannutiu/gpu-rental-prices/main/data/latest.json",
-      "sha256": "sha256:93afe600114a6549eb6f854e6e59a2e4e9825d1dd494fe9fe47b1b801e79481b",
+      "sha256": "sha256:6ae4035ce9286a4b6863599ca20bb5774c0f01701598c5a26527d04c01fe89c7",
       "definition": "Rolling 30-day median of H200/H100 and B200/H100 daily rental-price ratios. A value above 1 means a premium to H100."
     },
     "scarcity": {
-      "label": "GrabGPU 逐日在库快照（grabgpu.com）· 最近抓取 2026-11-20 15:11 UTC",
+      "label": "GrabGPU 逐日在库快照（grabgpu.com）· 最近抓取 2026-11-20 16:11 UTC",
       "urls": [
         "https://grabgpu.com/api/offers.json"
       ],
       "url": "https://grabgpu.com/api/offers.json",
-      "sha256": "sha256:a1e93dc83846a6550649050b575f8b1345fc8cfe37edc237eb946cb67b69bb52",
+      "sha256": "sha256:892f5a62334526ca1cda130852ae22e6879c330cb7d6bfc0a625e3b251d003b0",
       "definition": "有报价的 provider 中，当前报告有库存的占比（分母只算状态已知的 provider）；2026-11-20 起替代 GPU Finder 的实例数加权口径。GPU Finder 版为 Σavailable/Σtotal（7 天滚动窗口），两者不是同一指标，切换前的点只作历史参考，不与新段连线比较。"
     },
     "listedGap": {
@@ -30975,7 +31098,7 @@
         "https://grabgpu.com/api/offers.json"
       ],
       "url": "https://grabgpu.com/api/offers.json",
-      "sha256": "sha256:a1e93dc83846a6550649050b575f8b1345fc8cfe37edc237eb946cb67b69bb52",
+      "sha256": "sha256:892f5a62334526ca1cda130852ae22e6879c330cb7d6bfc0a625e3b251d003b0",
       "definition": "最低在库价 ÷ 最低报价 − 1（与 GPU Finder 同名指标公式一致，2026-11-20 起改由 GrabGPU 每日产出）。市场越紧，最低报价越可能是没有库存的虚价，该差值越大。"
     },
     "breadth": {
@@ -30984,7 +31107,7 @@
         "https://grabgpu.com/api/offers.json"
       ],
       "url": "https://grabgpu.com/api/offers.json",
-      "sha256": "sha256:a1e93dc83846a6550649050b575f8b1345fc8cfe37edc237eb946cb67b69bb52",
+      "sha256": "sha256:892f5a62334526ca1cda130852ae22e6879c330cb7d6bfc0a625e3b251d003b0",
       "definition": "报告在库库存的 provider 家数（同一 provider 多条报价只算一次）。2026-10-11 起放弃‘目录挂牌家数’，2026-11-20 起统一为‘有库存的 provider 数’——价格上行+家数增加=供给在响应；价格上行+家数减少=实质性紧缩。"
     },
     "capex": {
@@ -31025,7 +31148,7 @@
         "https://raw.githubusercontent.com/adriannutiu/gpu-rental-prices/main/data/latest.json"
       ],
       "url": "https://gpu-index.semianalysis.com/api/public-data",
-      "sha256": "sha256:28ddbc0470ae54480c1fec3d9810e16a7e3953c6275f0839104d5f8a07cfe021 sha256:42612464dac194e4237473742af40954fb75c734e2b34d31b2c7c8fcbcfad997 sha256:93afe600114a6549eb6f854e6e59a2e4e9825d1dd494fe9fe47b1b801e79481b",
+      "sha256": "sha256:28ddbc0470ae54480c1fec3d9810e16a7e3953c6275f0839104d5f8a07cfe021 sha256:42612464dac194e4237473742af40954fb75c734e2b34d31b2c7c8fcbcfad997 sha256:6ae4035ce9286a4b6863599ca20bb5774c0f01701598c5a26527d04c01fe89c7",
       "label": "H100 三源价格对照",
       "definition": "同一 GPU 家族下三种口径并列：供应商报价中位、综合现货-合约指数、成交加权指数。口径不同，仅作交叉对照，不构成同质序列。"
     },
@@ -31036,7 +31159,7 @@
         "https://raw.githubusercontent.com/adriannutiu/gpu-rental-prices/main/data/latest.json"
       ],
       "url": "https://gpu-index.semianalysis.com/api/public-data",
-      "sha256": "sha256:28ddbc0470ae54480c1fec3d9810e16a7e3953c6275f0839104d5f8a07cfe021 sha256:42612464dac194e4237473742af40954fb75c734e2b34d31b2c7c8fcbcfad997 sha256:93afe600114a6549eb6f854e6e59a2e4e9825d1dd494fe9fe47b1b801e79481b",
+      "sha256": "sha256:28ddbc0470ae54480c1fec3d9810e16a7e3953c6275f0839104d5f8a07cfe021 sha256:42612464dac194e4237473742af40954fb75c734e2b34d31b2c7c8fcbcfad997 sha256:6ae4035ce9286a4b6863599ca20bb5774c0f01701598c5a26527d04c01fe89c7",
       "label": "H200 两源价格对照（SemiAnalysis 无公开 H200 指数）",
       "definition": "口径同上（H200 无 SemiAnalysis 公开指数，为两源对照）。Neocloud 与 Ornn 可能方向分歧，分歧本身是证据而非噪声。"
     },
@@ -31047,7 +31170,7 @@
         "https://raw.githubusercontent.com/adriannutiu/gpu-rental-prices/main/data/latest.json"
       ],
       "url": "https://gpu-index.semianalysis.com/api/public-data",
-      "sha256": "sha256:28ddbc0470ae54480c1fec3d9810e16a7e3953c6275f0839104d5f8a07cfe021 sha256:42612464dac194e4237473742af40954fb75c734e2b34d31b2c7c8fcbcfad997 sha256:93afe600114a6549eb6f854e6e59a2e4e9825d1dd494fe9fe47b1b801e79481b",
+      "sha256": "sha256:28ddbc0470ae54480c1fec3d9810e16a7e3953c6275f0839104d5f8a07cfe021 sha256:42612464dac194e4237473742af40954fb75c734e2b34d31b2c7c8fcbcfad997 sha256:6ae4035ce9286a4b6863599ca20bb5774c0f01701598c5a26527d04c01fe89c7",
       "label": "B200 三源价格对照",
       "definition": "口径同上。"
     },
@@ -31067,7 +31190,7 @@
         "https://api.runpod.io/graphql"
       ],
       "url": "https://api.gpuindexes.com/api/offers",
-      "sha256": "sha256:75e73274bf08ed42e996b099a9c7cc19f1c627056ba7dfb95922bc8b17c49d2c sha256:4f0466b658bd12870500de1866df226f676adbe1bc551f36c3aa86bc6dc14bc1 sha256:760ffbc89c46558e20c9cfbe1cda573acc0b91de6f12801abf2d18e6b94c21c6",
+      "sha256": "sha256:9e9666ecf78132f63c8110e9f61ec146372e852275c8afc549463a85b0637dd8 sha256:3321a88994bda07e56bec4820703d470c855274f42fe17b186cce50051b0f33d sha256:0931725d0862c054c94a1c78ff12d6437343e35ee87d64450e478d1a68d925b7",
       "label": "GPU 订单簿逐源观测",
       "definition": "gpuperhour/vast 为逐条报价 offers、runpod 为型号挂牌 types，单位语义不同故分序列展示不合并。时点观测，<10 有效日只画点不连线。"
     },
@@ -31085,7 +31208,7 @@
         "https://openrouter.ai/api/frontend/v1/rankings/model-rankings-chart"
       ],
       "url": "https://openrouter.ai/api/frontend/v1/rankings/model-rankings-chart",
-      "sha256": "sha256:a3a83b76801727474ead9e207cf43b2e27b6b9c3b7f21830e69ed118c753d625",
+      "sha256": "sha256:f259930202748a087824e7085ac2ca0b1bc1b69f8a4a7ef7834c418b5fc2b824",
       "label": "OpenRouter 公开周榜（Top-5 派生）",
       "definition": "每周公开榜单里最新 Top-5 模型各自的用量占比走势。看的是排名与份额的稳定性：曲线频繁交叉=头部不稳。"
     },
@@ -31103,7 +31226,7 @@
         "https://raw.githubusercontent.com/adriannutiu/gpu-rental-prices/main/data/latest.json"
       ],
       "url": "https://raw.githubusercontent.com/adriannutiu/gpu-rental-prices/main/data/latest.json",
-      "sha256": "sha256:93afe600114a6549eb6f854e6e59a2e4e9825d1dd494fe9fe47b1b801e79481b",
+      "sha256": "sha256:6ae4035ce9286a4b6863599ca20bb5774c0f01701598c5a26527d04c01fe89c7",
       "label": "固定供应商面板指数",
       "definition": "从 34 家供应商数据集取窗口内持续在架成员（覆盖率≥90%），按非中断性租赁价计算成员均值，起点=100；成员当日缺价即断点。消除供应商构成漂移，是供给价格的首选趋势证据。橙色虚线标注 = 固定成员里当日环比跳变最大的那一家（如「Together AI −50%」，同规格单家调价，非市场整体事件）；台阶来自成员个体动作，判断趋势请看均线。 当前成员：H100（15 家）：AWS、Azure、CoreWeave、Crusoe、DataCrunch、HyperStack、JarvisLabs、Lambda、Massed Compute、Nebius、OVH、RunPod、Spheron、Together AI、Voltage Park；B200（7 家）：CoreWeave、DataCrunch、HyperStack、Lambda、Nebius、RunPod、Together AI"
     }
@@ -31151,9 +31274,9 @@
     }
   ],
   "gpuLandscape": {
-    "asOf": "2026-11-19",
+    "asOf": "2026-11-20",
     "builtAt": "2026-11-20",
-    "dataAgeDays": 1,
+    "dataAgeDays": 0,
     "dataFreshness": "current",
     "methodologyVersion": "2026-11-04.1",
     "minProviders": 4,
@@ -31166,30 +31289,30 @@
         "name": "H100 80GB",
         "vramGb": 80,
         "family": "Hopper",
-        "asOf": "2026-11-19",
+        "asOf": "2026-11-20",
         "status": "live",
-        "median": 3.49,
-        "p25": 2.95,
-        "p75": 5.0445,
+        "median": 3.9,
+        "p25": 2.955,
+        "p75": 5.3015,
         "cheapest": 1.8,
         "cheapestProvider": "Hyper.ai",
         "providerCount": 25,
-        "change7dPct": -4.03,
+        "change7dPct": 7.25,
         "weeklyIndex": {
           "weekStart": "2026-11-16",
           "isoWeek": "2026-W47",
           "vintage": "provisional",
           "status": "published",
           "methodologyVersion": "2026-11-04.1",
-          "median": 3.49,
-          "p25": 2.95,
-          "p75": 5.0445,
+          "median": 3.9,
+          "p25": 2.955,
+          "p75": 5.3015,
           "providerCount": 25,
-          "index": 111.5955,
+          "index": 114.4685,
           "linkPairs": 22,
           "withheldReason": null,
           "receipt": "2026-W47",
-          "ageDays": 3
+          "ageDays": 4
         },
         "monthly": [
           {
@@ -33387,7 +33510,25 @@
                 "cheapestProviderId": "hyperai",
                 "cheapestValue": 1.8,
                 "cheapestSourceUrl": "https://hyper.ai/en/pricing",
-                "movingAverage30d": 3.386981,
+                "movingAverage30d": 3.386981
+              },
+              {
+                "date": "2026-11-20",
+                "series": "on_demand",
+                "value": 3.9,
+                "p25": 2.955,
+                "p75": 5.3015,
+                "low": 1.8,
+                "high": 12.29,
+                "providerCount": 25,
+                "quoteCount": 37,
+                "thin": false,
+                "medianSynthetic": false,
+                "cheapestProvider": "Hyper.ai",
+                "cheapestProviderId": "hyperai",
+                "cheapestValue": 1.8,
+                "cheapestSourceUrl": "https://hyper.ai/en/pricing",
+                "movingAverage30d": 3.410314,
                 "providers": [
                   {
                     "provider": "Hyper.ai",
@@ -33432,13 +33573,6 @@
                     "quotes": 3
                   },
                   {
-                    "provider": "Spheron",
-                    "providerId": "spheron",
-                    "value": 2.98,
-                    "sourceUrl": "https://www.spheron.network/pricing/",
-                    "quotes": 1
-                  },
-                  {
                     "provider": "OVHcloud",
                     "providerId": "ovh",
                     "value": 2.99,
@@ -33462,7 +33596,7 @@
                   {
                     "provider": "Scaleway",
                     "providerId": "scaleway",
-                    "value": 3.30845,
+                    "value": 3.3157,
                     "sourceUrl": "https://www.scaleway.com/en/pricing/gpu/",
                     "quotes": 2
                   },
@@ -33485,13 +33619,6 @@
                     "providerId": "crusoe",
                     "value": 3.9,
                     "sourceUrl": "https://www.crusoe.ai/cloud/pricing",
-                    "quotes": 1
-                  },
-                  {
-                    "provider": "Runcrate",
-                    "providerId": "runcrate",
-                    "value": 3.91,
-                    "sourceUrl": "https://www.runcrate.ai/pricing",
                     "quotes": 1
                   },
                   {
@@ -33523,9 +33650,23 @@
                     "quotes": 5
                   },
                   {
+                    "provider": "Runcrate",
+                    "providerId": "runcrate",
+                    "value": 4.72,
+                    "sourceUrl": "https://www.runcrate.ai/pricing",
+                    "quotes": 1
+                  },
+                  {
+                    "provider": "Spheron",
+                    "providerId": "spheron",
+                    "value": 5.15,
+                    "sourceUrl": "https://www.spheron.network/pricing/",
+                    "quotes": 1
+                  },
+                  {
                     "provider": "Verda",
                     "providerId": "datacrunch",
-                    "value": 5.399,
+                    "value": 5.453,
                     "sourceUrl": "https://datacrunch.io/pricing",
                     "quotes": 1
                   },
@@ -33568,11 +33709,11 @@
               }
             ],
             "latest": {
-              "date": "2026-11-19",
+              "date": "2026-11-20",
               "series": "on_demand",
-              "value": 3.49,
-              "p25": 2.95,
-              "p75": 5.0445,
+              "value": 3.9,
+              "p25": 2.955,
+              "p75": 5.3015,
               "low": 1.8,
               "high": 12.29,
               "providerCount": 25,
@@ -33583,7 +33724,7 @@
               "cheapestProviderId": "hyperai",
               "cheapestValue": 1.8,
               "cheapestSourceUrl": "https://hyper.ai/en/pricing",
-              "movingAverage30d": 3.386981,
+              "movingAverage30d": 3.410314,
               "offers": [
                 {
                   "provider": "Hyper.ai",
@@ -33628,13 +33769,6 @@
                   "quotes": 3
                 },
                 {
-                  "provider": "Spheron",
-                  "providerId": "spheron",
-                  "value": 2.98,
-                  "sourceUrl": "https://www.spheron.network/pricing/",
-                  "quotes": 1
-                },
-                {
                   "provider": "OVHcloud",
                   "providerId": "ovh",
                   "value": 2.99,
@@ -33658,7 +33792,7 @@
                 {
                   "provider": "Scaleway",
                   "providerId": "scaleway",
-                  "value": 3.30845,
+                  "value": 3.3157,
                   "sourceUrl": "https://www.scaleway.com/en/pricing/gpu/",
                   "quotes": 2
                 },
@@ -33681,13 +33815,6 @@
                   "providerId": "crusoe",
                   "value": 3.9,
                   "sourceUrl": "https://www.crusoe.ai/cloud/pricing",
-                  "quotes": 1
-                },
-                {
-                  "provider": "Runcrate",
-                  "providerId": "runcrate",
-                  "value": 3.91,
-                  "sourceUrl": "https://www.runcrate.ai/pricing",
                   "quotes": 1
                 },
                 {
@@ -33719,9 +33846,23 @@
                   "quotes": 5
                 },
                 {
+                  "provider": "Runcrate",
+                  "providerId": "runcrate",
+                  "value": 4.72,
+                  "sourceUrl": "https://www.runcrate.ai/pricing",
+                  "quotes": 1
+                },
+                {
+                  "provider": "Spheron",
+                  "providerId": "spheron",
+                  "value": 5.15,
+                  "sourceUrl": "https://www.spheron.network/pricing/",
+                  "quotes": 1
+                },
+                {
                   "provider": "Verda",
                   "providerId": "datacrunch",
-                  "value": 5.399,
+                  "value": 5.453,
                   "sourceUrl": "https://datacrunch.io/pricing",
                   "quotes": 1
                 },
@@ -33762,10 +33903,10 @@
                 }
               ]
             },
-            "change7dPct": -4.03,
+            "change7dPct": 7.25,
             "change7dBaseDate": "2026-10-29",
-            "coverageDays": 114,
-            "quoteRows": 3544
+            "coverageDays": 115,
+            "quoteRows": 3581
           },
           "spot": {
             "label": "Spot",
@@ -35789,12 +35930,30 @@
                 "cheapestProviderId": "azure",
                 "cheapestValue": 1.418336,
                 "cheapestSourceUrl": "https://prices.azure.com/api/retail/prices",
-                "movingAverage30d": 2.201438,
+                "movingAverage30d": 2.201438
+              },
+              {
+                "date": "2026-11-20",
+                "series": "spot",
+                "value": 2.3,
+                "p25": 1.977037,
+                "p75": 4.0039,
+                "low": 1.418336,
+                "high": 7.220225,
+                "providerCount": 9,
+                "quoteCount": 12,
+                "thin": false,
+                "medianSynthetic": false,
+                "cheapestProvider": "Azure",
+                "cheapestProviderId": "azure",
+                "cheapestValue": 1.418336,
+                "cheapestSourceUrl": "https://prices.azure.com/api/retail/prices",
+                "movingAverage30d": 2.209605,
                 "providers": [
                   {
                     "provider": "Lium",
                     "providerId": "lium",
-                    "value": 1.825,
+                    "value": 1.72,
                     "sourceUrl": "https://lium.io/api/public/v1/nodes",
                     "quotes": 2
                   },
@@ -35836,7 +35995,7 @@
                   {
                     "provider": "Verda",
                     "providerId": "datacrunch",
-                    "value": 2.7,
+                    "value": 2.727,
                     "sourceUrl": "https://datacrunch.io/pricing",
                     "quotes": 1
                   },
@@ -35858,11 +36017,11 @@
               }
             ],
             "latest": {
-              "date": "2026-11-19",
+              "date": "2026-11-20",
               "series": "spot",
               "value": 2.3,
               "p25": 1.977037,
-              "p75": 3.9904,
+              "p75": 4.0039,
               "low": 1.418336,
               "high": 7.220225,
               "providerCount": 9,
@@ -35873,12 +36032,12 @@
               "cheapestProviderId": "azure",
               "cheapestValue": 1.418336,
               "cheapestSourceUrl": "https://prices.azure.com/api/retail/prices",
-              "movingAverage30d": 2.201438,
+              "movingAverage30d": 2.209605,
               "offers": [
                 {
                   "provider": "Lium",
                   "providerId": "lium",
-                  "value": 1.825,
+                  "value": 1.72,
                   "sourceUrl": "https://lium.io/api/public/v1/nodes",
                   "quotes": 2
                 },
@@ -35920,7 +36079,7 @@
                 {
                   "provider": "Verda",
                   "providerId": "datacrunch",
-                  "value": 2.7,
+                  "value": 2.727,
                   "sourceUrl": "https://datacrunch.io/pricing",
                   "quotes": 1
                 },
@@ -35942,8 +36101,8 @@
             },
             "change7dPct": 1.32,
             "change7dBaseDate": "2026-10-29",
-            "coverageDays": 112,
-            "quoteRows": 1001
+            "coverageDays": 113,
+            "quoteRows": 1013
           },
           "reserved": {
             "label": "Reserved",
@@ -36383,7 +36542,25 @@
                 "cheapestProviderId": "latitude",
                 "cheapestValue": 1.179452,
                 "cheapestSourceUrl": "https://www.latitude.sh/pricing",
-                "movingAverage30d": 2.185556,
+                "movingAverage30d": 2.185556
+              },
+              {
+                "date": "2026-11-20",
+                "series": "reserved",
+                "value": 1.839446,
+                "p25": null,
+                "p75": null,
+                "low": 1.179452,
+                "high": 2.72,
+                "providerCount": 2,
+                "quoteCount": 4,
+                "thin": true,
+                "medianSynthetic": true,
+                "cheapestProvider": "Latitude.sh",
+                "cheapestProviderId": "latitude",
+                "cheapestValue": 1.179452,
+                "cheapestSourceUrl": "https://www.latitude.sh/pricing",
+                "movingAverage30d": 2.171711,
                 "providers": [
                   {
                     "provider": "Latitude.sh",
@@ -36403,7 +36580,7 @@
               }
             ],
             "latest": {
-              "date": "2026-11-19",
+              "date": "2026-11-20",
               "series": "reserved",
               "value": 1.839446,
               "p25": null,
@@ -36418,7 +36595,7 @@
               "cheapestProviderId": "latitude",
               "cheapestValue": 1.179452,
               "cheapestSourceUrl": "https://www.latitude.sh/pricing",
-              "movingAverage30d": 2.185556,
+              "movingAverage30d": 2.171711,
               "offers": [
                 {
                   "provider": "Latitude.sh",
@@ -36438,8 +36615,8 @@
             },
             "change7dPct": -17.7,
             "change7dBaseDate": "2026-10-29",
-            "coverageDays": 24,
-            "quoteRows": 266
+            "coverageDays": 25,
+            "quoteRows": 270
           },
           "community": {
             "label": "Community",
@@ -38499,6 +38676,24 @@
                 "cheapestProviderId": "runpod",
                 "cheapestValue": 1.99,
                 "cheapestSourceUrl": "https://www.runpod.io/pricing",
+                "movingAverage30d": 2.59
+              },
+              {
+                "date": "2026-11-20",
+                "series": "community",
+                "value": 2.59,
+                "p25": null,
+                "p75": null,
+                "low": 1.99,
+                "high": 2.69,
+                "providerCount": 1,
+                "quoteCount": 3,
+                "thin": true,
+                "medianSynthetic": false,
+                "cheapestProvider": "RunPod",
+                "cheapestProviderId": "runpod",
+                "cheapestValue": 1.99,
+                "cheapestSourceUrl": "https://www.runpod.io/pricing",
                 "movingAverage30d": 2.59,
                 "providers": [
                   {
@@ -38512,7 +38707,7 @@
               }
             ],
             "latest": {
-              "date": "2026-11-19",
+              "date": "2026-11-20",
               "series": "community",
               "value": 2.59,
               "p25": null,
@@ -38540,8 +38735,8 @@
             },
             "change7dPct": 0.0,
             "change7dBaseDate": "2026-10-29",
-            "coverageDays": 114,
-            "quoteRows": 342
+            "coverageDays": 115,
+            "quoteRows": 345
           },
           "marketplace": {
             "label": "Marketplace floor",
@@ -40957,7 +41152,25 @@
                 "cheapestProviderId": "koyeb",
                 "cheapestValue": 2.5,
                 "cheapestSourceUrl": "https://www.koyeb.com/pricing",
-                "movingAverage30d": 4.601987,
+                "movingAverage30d": 4.601987
+              },
+              {
+                "date": "2026-11-20",
+                "series": "serverless",
+                "value": 4.2246,
+                "p25": 3.1738,
+                "p75": 5.59,
+                "low": 2.5,
+                "high": 5.89,
+                "providerCount": 6,
+                "quoteCount": 6,
+                "thin": false,
+                "medianSynthetic": true,
+                "cheapestProvider": "Koyeb",
+                "cheapestProviderId": "koyeb",
+                "cheapestValue": 2.5,
+                "cheapestSourceUrl": "https://www.koyeb.com/pricing",
+                "movingAverage30d": 4.592807,
                 "providers": [
                   {
                     "provider": "Koyeb",
@@ -41005,7 +41218,7 @@
               }
             ],
             "latest": {
-              "date": "2026-11-19",
+              "date": "2026-11-20",
               "series": "serverless",
               "value": 4.2246,
               "p25": 3.1738,
@@ -41020,7 +41233,7 @@
               "cheapestProviderId": "koyeb",
               "cheapestValue": 2.5,
               "cheapestSourceUrl": "https://www.koyeb.com/pricing",
-              "movingAverage30d": 4.601987,
+              "movingAverage30d": 4.592807,
               "offers": [
                 {
                   "provider": "Koyeb",
@@ -41068,8 +41281,8 @@
             },
             "change7dPct": -9.05,
             "change7dBaseDate": "2026-10-29",
-            "coverageDays": 112,
-            "quoteRows": 743
+            "coverageDays": 113,
+            "quoteRows": 749
           }
         }
       },
@@ -41078,30 +41291,30 @@
         "name": "H200 141GB",
         "vramGb": 141,
         "family": "Hopper",
-        "asOf": "2026-11-19",
+        "asOf": "2026-11-20",
         "status": "live",
-        "median": 5.13,
+        "median": 4.99,
         "p25": 4.38,
-        "p75": 6.6045,
+        "p75": 6.639,
         "cheapest": 3.2,
         "cheapestProvider": "GMI Cloud",
         "providerCount": 17,
-        "change7dPct": 3.22,
+        "change7dPct": 0.4,
         "weeklyIndex": {
           "weekStart": "2026-11-16",
           "isoWeek": "2026-W47",
           "vintage": "provisional",
           "status": "published",
           "methodologyVersion": "2026-11-04.1",
-          "median": 5.13,
+          "median": 4.99,
           "p25": 4.38,
-          "p75": 6.6045,
+          "p75": 6.639,
           "providerCount": 17,
-          "index": 110.1707,
+          "index": 109.1539,
           "linkPairs": 14,
           "withheldReason": null,
           "receipt": "2026-W47",
-          "ageDays": 3
+          "ageDays": 4
         },
         "monthly": [
           {
@@ -43281,7 +43494,25 @@
                 "cheapestProviderId": "gmicloud",
                 "cheapestValue": 3.2,
                 "cheapestSourceUrl": "https://www.gmicloud.ai/en/pricing",
-                "movingAverage30d": 4.694867,
+                "movingAverage30d": 4.694867
+              },
+              {
+                "date": "2026-11-20",
+                "series": "on_demand",
+                "value": 4.99,
+                "p25": 4.38,
+                "p75": 6.639,
+                "low": 3.2,
+                "high": 10.0,
+                "providerCount": 17,
+                "quoteCount": 18,
+                "thin": false,
+                "medianSynthetic": false,
+                "cheapestProvider": "GMI Cloud",
+                "cheapestProviderId": "gmicloud",
+                "cheapestValue": 3.2,
+                "cheapestSourceUrl": "https://www.gmicloud.ai/en/pricing",
+                "movingAverage30d": 4.7152,
                 "providers": [
                   {
                     "provider": "GMI Cloud",
@@ -43333,6 +43564,13 @@
                     "quotes": 1
                   },
                   {
+                    "provider": "Spheron",
+                    "providerId": "spheron",
+                    "value": 4.8,
+                    "sourceUrl": "https://www.spheron.network/pricing/",
+                    "quotes": 1
+                  },
+                  {
                     "provider": "Daytona",
                     "providerId": "daytona",
                     "value": 4.99,
@@ -43354,13 +43592,6 @@
                     "quotes": 1
                   },
                   {
-                    "provider": "Spheron",
-                    "providerId": "spheron",
-                    "value": 5.52,
-                    "sourceUrl": "https://www.spheron.network/pricing/",
-                    "quotes": 1
-                  },
-                  {
                     "provider": "OVHcloud",
                     "providerId": "ovh",
                     "value": 6.195,
@@ -43377,7 +43608,7 @@
                   {
                     "provider": "Verda",
                     "providerId": "datacrunch",
-                    "value": 6.904,
+                    "value": 6.973,
                     "sourceUrl": "https://datacrunch.io/pricing",
                     "quotes": 1
                   },
@@ -43406,11 +43637,11 @@
               }
             ],
             "latest": {
-              "date": "2026-11-19",
+              "date": "2026-11-20",
               "series": "on_demand",
-              "value": 5.13,
+              "value": 4.99,
               "p25": 4.38,
-              "p75": 6.6045,
+              "p75": 6.639,
               "low": 3.2,
               "high": 10.0,
               "providerCount": 17,
@@ -43421,7 +43652,7 @@
               "cheapestProviderId": "gmicloud",
               "cheapestValue": 3.2,
               "cheapestSourceUrl": "https://www.gmicloud.ai/en/pricing",
-              "movingAverage30d": 4.694867,
+              "movingAverage30d": 4.7152,
               "offers": [
                 {
                   "provider": "GMI Cloud",
@@ -43473,6 +43704,13 @@
                   "quotes": 1
                 },
                 {
+                  "provider": "Spheron",
+                  "providerId": "spheron",
+                  "value": 4.8,
+                  "sourceUrl": "https://www.spheron.network/pricing/",
+                  "quotes": 1
+                },
+                {
                   "provider": "Daytona",
                   "providerId": "daytona",
                   "value": 4.99,
@@ -43494,13 +43732,6 @@
                   "quotes": 1
                 },
                 {
-                  "provider": "Spheron",
-                  "providerId": "spheron",
-                  "value": 5.52,
-                  "sourceUrl": "https://www.spheron.network/pricing/",
-                  "quotes": 1
-                },
-                {
                   "provider": "OVHcloud",
                   "providerId": "ovh",
                   "value": 6.195,
@@ -43517,7 +43748,7 @@
                 {
                   "provider": "Verda",
                   "providerId": "datacrunch",
-                  "value": 6.904,
+                  "value": 6.973,
                   "sourceUrl": "https://datacrunch.io/pricing",
                   "quotes": 1
                 },
@@ -43544,10 +43775,10 @@
                 }
               ]
             },
-            "change7dPct": 3.22,
+            "change7dPct": 0.4,
             "change7dBaseDate": "2026-10-29",
-            "coverageDays": 114,
-            "quoteRows": 1887
+            "coverageDays": 115,
+            "quoteRows": 1905
           },
           "spot": {
             "label": "Spot",
@@ -45355,7 +45586,25 @@
                 "cheapestProviderId": "daytona",
                 "cheapestValue": 2.87,
                 "cheapestSourceUrl": "https://billing.app.daytona.io/gpu-pricing",
-                "movingAverage30d": 3.43675,
+                "movingAverage30d": 3.43675
+              },
+              {
+                "date": "2026-11-20",
+                "series": "spot",
+                "value": 3.4035,
+                "p25": 2.9825,
+                "p75": 5.06125,
+                "low": 2.87,
+                "high": 5.586,
+                "providerCount": 4,
+                "quoteCount": 4,
+                "thin": false,
+                "medianSynthetic": true,
+                "cheapestProvider": "Daytona",
+                "cheapestProviderId": "daytona",
+                "cheapestValue": 2.87,
+                "cheapestSourceUrl": "https://billing.app.daytona.io/gpu-pricing",
+                "movingAverage30d": 3.4091,
                 "providers": [
                   {
                     "provider": "Daytona",
@@ -45374,7 +45623,7 @@
                   {
                     "provider": "Verda",
                     "providerId": "datacrunch",
-                    "value": 3.452,
+                    "value": 3.487,
                     "sourceUrl": "https://datacrunch.io/pricing",
                     "quotes": 1
                   },
@@ -45389,11 +45638,11 @@
               }
             ],
             "latest": {
-              "date": "2026-11-19",
+              "date": "2026-11-20",
               "series": "spot",
-              "value": 3.386,
+              "value": 3.4035,
               "p25": 2.9825,
-              "p75": 5.0525,
+              "p75": 5.06125,
               "low": 2.87,
               "high": 5.586,
               "providerCount": 4,
@@ -45404,7 +45653,7 @@
               "cheapestProviderId": "daytona",
               "cheapestValue": 2.87,
               "cheapestSourceUrl": "https://billing.app.daytona.io/gpu-pricing",
-              "movingAverage30d": 3.43675,
+              "movingAverage30d": 3.4091,
               "offers": [
                 {
                   "provider": "Daytona",
@@ -45423,7 +45672,7 @@
                 {
                   "provider": "Verda",
                   "providerId": "datacrunch",
-                  "value": 3.452,
+                  "value": 3.487,
                   "sourceUrl": "https://datacrunch.io/pricing",
                   "quotes": 1
                 },
@@ -45436,10 +45685,10 @@
                 }
               ]
             },
-            "change7dPct": 5.09,
+            "change7dPct": 5.63,
             "change7dBaseDate": "2026-10-29",
-            "coverageDays": 100,
-            "quoteRows": 279
+            "coverageDays": 101,
+            "quoteRows": 283
           },
           "reserved": {
             "label": "Reserved",
@@ -45879,7 +46128,25 @@
                 "cheapestProviderId": "hyperstack",
                 "cheapestValue": 2.79,
                 "cheapestSourceUrl": "https://www.hyperstack.cloud/gpu-pricing",
-                "movingAverage30d": 2.934145,
+                "movingAverage30d": 2.934145
+              },
+              {
+                "date": "2026-11-20",
+                "series": "reserved",
+                "value": 2.79,
+                "p25": null,
+                "p75": null,
+                "low": 2.79,
+                "high": 2.79,
+                "providerCount": 1,
+                "quoteCount": 1,
+                "thin": true,
+                "medianSynthetic": false,
+                "cheapestProvider": "Hyperstack",
+                "cheapestProviderId": "hyperstack",
+                "cheapestValue": 2.79,
+                "cheapestSourceUrl": "https://www.hyperstack.cloud/gpu-pricing",
+                "movingAverage30d": 2.928379,
                 "providers": [
                   {
                     "provider": "Hyperstack",
@@ -45892,7 +46159,7 @@
               }
             ],
             "latest": {
-              "date": "2026-11-19",
+              "date": "2026-11-20",
               "series": "reserved",
               "value": 2.79,
               "p25": null,
@@ -45907,7 +46174,7 @@
               "cheapestProviderId": "hyperstack",
               "cheapestValue": 2.79,
               "cheapestSourceUrl": "https://www.hyperstack.cloud/gpu-pricing",
-              "movingAverage30d": 2.934145,
+              "movingAverage30d": 2.928379,
               "offers": [
                 {
                   "provider": "Hyperstack",
@@ -45920,8 +46187,8 @@
             },
             "change7dPct": -6.19,
             "change7dBaseDate": "2026-10-29",
-            "coverageDays": 24,
-            "quoteRows": 63
+            "coverageDays": 25,
+            "quoteRows": 64
           },
           "community": {
             "label": "Community",
@@ -47981,6 +48248,24 @@
                 "cheapestProviderId": "runpod",
                 "cheapestValue": 3.59,
                 "cheapestSourceUrl": "https://www.runpod.io/pricing",
+                "movingAverage30d": 3.59
+              },
+              {
+                "date": "2026-11-20",
+                "series": "community",
+                "value": 3.59,
+                "p25": null,
+                "p75": null,
+                "low": 3.59,
+                "high": 3.59,
+                "providerCount": 1,
+                "quoteCount": 1,
+                "thin": true,
+                "medianSynthetic": false,
+                "cheapestProvider": "RunPod",
+                "cheapestProviderId": "runpod",
+                "cheapestValue": 3.59,
+                "cheapestSourceUrl": "https://www.runpod.io/pricing",
                 "movingAverage30d": 3.59,
                 "providers": [
                   {
@@ -47994,7 +48279,7 @@
               }
             ],
             "latest": {
-              "date": "2026-11-19",
+              "date": "2026-11-20",
               "series": "community",
               "value": 3.59,
               "p25": null,
@@ -48022,8 +48307,8 @@
             },
             "change7dPct": 0.0,
             "change7dBaseDate": "2026-10-29",
-            "coverageDays": 114,
-            "quoteRows": 114
+            "coverageDays": 115,
+            "quoteRows": 115
           },
           "marketplace": {
             "label": "Marketplace floor",
@@ -48355,49 +48640,67 @@
                 "cheapestProviderId": "lium",
                 "cheapestValue": 3.8,
                 "cheapestSourceUrl": "https://lium.io/api/public/v1/nodes",
-                "movingAverage30d": 5.166667,
+                "movingAverage30d": 5.166667
+              },
+              {
+                "date": "2026-11-20",
+                "series": "marketplace",
+                "value": 4.4,
+                "p25": null,
+                "p75": null,
+                "low": 3.6,
+                "high": 6.0,
+                "providerCount": 1,
+                "quoteCount": 8,
+                "thin": true,
+                "medianSynthetic": false,
+                "cheapestProvider": "Lium",
+                "cheapestProviderId": "lium",
+                "cheapestValue": 3.6,
+                "cheapestSourceUrl": "https://lium.io/api/public/v1/nodes",
+                "movingAverage30d": 5.126316,
                 "providers": [
                   {
                     "provider": "Lium",
                     "providerId": "lium",
-                    "value": 4.375,
+                    "value": 4.4,
                     "sourceUrl": "https://lium.io/api/public/v1/nodes",
-                    "quotes": 6
+                    "quotes": 8
                   }
                 ]
               }
             ],
             "latest": {
-              "date": "2026-11-19",
+              "date": "2026-11-20",
               "series": "marketplace",
-              "value": 4.375,
+              "value": 4.4,
               "p25": null,
               "p75": null,
-              "low": 3.8,
-              "high": 5.38,
+              "low": 3.6,
+              "high": 6.0,
               "providerCount": 1,
-              "quoteCount": 6,
+              "quoteCount": 8,
               "thin": true,
               "medianSynthetic": false,
               "cheapestProvider": "Lium",
               "cheapestProviderId": "lium",
-              "cheapestValue": 3.8,
+              "cheapestValue": 3.6,
               "cheapestSourceUrl": "https://lium.io/api/public/v1/nodes",
-              "movingAverage30d": 5.166667,
+              "movingAverage30d": 5.126316,
               "offers": [
                 {
                   "provider": "Lium",
                   "providerId": "lium",
-                  "value": 4.375,
+                  "value": 4.4,
                   "sourceUrl": "https://lium.io/api/public/v1/nodes",
-                  "quotes": 6
+                  "quotes": 8
                 }
               ]
             },
-            "change7dPct": -9.61,
+            "change7dPct": -9.09,
             "change7dBaseDate": "2026-10-29",
-            "coverageDays": 18,
-            "quoteRows": 61
+            "coverageDays": 19,
+            "quoteRows": 69
           },
           "serverless": {
             "label": "Serverless",
@@ -50421,7 +50724,25 @@
                 "cheapestProviderId": "koyeb",
                 "cheapestValue": 3.0,
                 "cheapestSourceUrl": "https://www.koyeb.com/pricing",
-                "movingAverage30d": 5.29662,
+                "movingAverage30d": 5.29662
+              },
+              {
+                "date": "2026-11-20",
+                "series": "serverless",
+                "value": 5.0148,
+                "p25": 3.8982,
+                "p75": 6.2475,
+                "low": 3.0,
+                "high": 6.99,
+                "providerCount": 6,
+                "quoteCount": 6,
+                "thin": false,
+                "medianSynthetic": true,
+                "cheapestProvider": "Koyeb",
+                "cheapestProviderId": "koyeb",
+                "cheapestValue": 3.0,
+                "cheapestSourceUrl": "https://www.koyeb.com/pricing",
+                "movingAverage30d": 5.31312,
                 "providers": [
                   {
                     "provider": "Koyeb",
@@ -50469,7 +50790,7 @@
               }
             ],
             "latest": {
-              "date": "2026-11-19",
+              "date": "2026-11-20",
               "series": "serverless",
               "value": 5.0148,
               "p25": 3.8982,
@@ -50484,7 +50805,7 @@
               "cheapestProviderId": "koyeb",
               "cheapestValue": 3.0,
               "cheapestSourceUrl": "https://www.koyeb.com/pricing",
-              "movingAverage30d": 5.29662,
+              "movingAverage30d": 5.31312,
               "offers": [
                 {
                   "provider": "Koyeb",
@@ -50532,8 +50853,8 @@
             },
             "change7dPct": -8.66,
             "change7dBaseDate": "2026-10-29",
-            "coverageDays": 112,
-            "quoteRows": 625
+            "coverageDays": 113,
+            "quoteRows": 631
           }
         }
       },
@@ -50542,7 +50863,7 @@
         "name": "B200 192GB",
         "vramGb": 192,
         "family": "Blackwell",
-        "asOf": "2026-11-19",
+        "asOf": "2026-11-20",
         "status": "live",
         "median": 8.5,
         "p25": 7.49,
@@ -50565,7 +50886,7 @@
           "linkPairs": 10,
           "withheldReason": null,
           "receipt": "2026-W47",
-          "ageDays": 3
+          "ageDays": 4
         },
         "monthly": [
           {
@@ -52728,7 +53049,25 @@
                 "cheapestProviderId": "gmicloud",
                 "cheapestValue": 5.0,
                 "cheapestSourceUrl": "https://www.gmicloud.ai/en/pricing",
-                "movingAverage30d": 7.555867,
+                "movingAverage30d": 7.555867
+              },
+              {
+                "date": "2026-11-20",
+                "series": "on_demand",
+                "value": 8.5,
+                "p25": 7.49,
+                "p75": 10.25,
+                "low": 5.0,
+                "high": 16.11,
+                "providerCount": 11,
+                "quoteCount": 16,
+                "thin": false,
+                "medianSynthetic": false,
+                "cheapestProvider": "GMI Cloud",
+                "cheapestProviderId": "gmicloud",
+                "cheapestValue": 5.0,
+                "cheapestSourceUrl": "https://www.gmicloud.ai/en/pricing",
+                "movingAverage30d": 7.612867,
                 "providers": [
                   {
                     "provider": "Hyperstack",
@@ -52811,7 +53150,7 @@
               }
             ],
             "latest": {
-              "date": "2026-11-19",
+              "date": "2026-11-20",
               "series": "on_demand",
               "value": 8.5,
               "p25": 7.49,
@@ -52826,7 +53165,7 @@
               "cheapestProviderId": "gmicloud",
               "cheapestValue": 5.0,
               "cheapestSourceUrl": "https://www.gmicloud.ai/en/pricing",
-              "movingAverage30d": 7.555867,
+              "movingAverage30d": 7.612867,
               "offers": [
                 {
                   "provider": "Hyperstack",
@@ -52909,8 +53248,8 @@
             },
             "change7dPct": 5.07,
             "change7dBaseDate": "2026-10-29",
-            "coverageDays": 114,
-            "quoteRows": 1399
+            "coverageDays": 115,
+            "quoteRows": 1415
           },
           "spot": {
             "label": "Spot",
@@ -54718,7 +55057,25 @@
                 "cheapestProviderId": "vultr",
                 "cheapestValue": 3.2,
                 "cheapestSourceUrl": "https://api.vultr.com/v2/plans?type=all&per_page=500",
-                "movingAverage30d": 4.23561,
+                "movingAverage30d": 4.23561
+              },
+              {
+                "date": "2026-11-20",
+                "series": "spot",
+                "value": 5.059,
+                "p25": 4.025,
+                "p75": 5.4872,
+                "low": 3.2,
+                "high": 5.6,
+                "providerCount": 6,
+                "quoteCount": 6,
+                "thin": false,
+                "medianSynthetic": true,
+                "cheapestProvider": "Vultr",
+                "cheapestProviderId": "vultr",
+                "cheapestValue": 3.2,
+                "cheapestSourceUrl": "https://api.vultr.com/v2/plans?type=all&per_page=500",
+                "movingAverage30d": 4.25991,
                 "providers": [
                   {
                     "provider": "Vultr",
@@ -54754,27 +55111,34 @@
                     "value": 5.4496,
                     "sourceUrl": "https://cloud.google.com/products/compute/gpus-pricing?hl=en",
                     "quotes": 1
+                  },
+                  {
+                    "provider": "Lium",
+                    "providerId": "lium",
+                    "value": 5.6,
+                    "sourceUrl": "https://lium.io/api/public/v1/nodes",
+                    "quotes": 1
                   }
                 ]
               }
             ],
             "latest": {
-              "date": "2026-11-19",
+              "date": "2026-11-20",
               "series": "spot",
-              "value": 4.898,
-              "p25": 3.75,
-              "p75": 5.3348,
+              "value": 5.059,
+              "p25": 4.025,
+              "p75": 5.4872,
               "low": 3.2,
-              "high": 5.4496,
-              "providerCount": 5,
-              "quoteCount": 5,
+              "high": 5.6,
+              "providerCount": 6,
+              "quoteCount": 6,
               "thin": false,
-              "medianSynthetic": false,
+              "medianSynthetic": true,
               "cheapestProvider": "Vultr",
               "cheapestProviderId": "vultr",
               "cheapestValue": 3.2,
               "cheapestSourceUrl": "https://api.vultr.com/v2/plans?type=all&per_page=500",
-              "movingAverage30d": 4.23561,
+              "movingAverage30d": 4.25991,
               "offers": [
                 {
                   "provider": "Vultr",
@@ -54810,13 +55174,20 @@
                   "value": 5.4496,
                   "sourceUrl": "https://cloud.google.com/products/compute/gpus-pricing?hl=en",
                   "quotes": 1
+                },
+                {
+                  "provider": "Lium",
+                  "providerId": "lium",
+                  "value": 5.6,
+                  "sourceUrl": "https://lium.io/api/public/v1/nodes",
+                  "quotes": 1
                 }
               ]
             },
-            "change7dPct": 15.51,
+            "change7dPct": 19.3,
             "change7dBaseDate": "2026-10-29",
-            "coverageDays": 100,
-            "quoteRows": 352
+            "coverageDays": 101,
+            "quoteRows": 358
           },
           "reserved": {
             "label": "Reserved",
@@ -55256,7 +55627,25 @@
                 "cheapestProviderId": "hyperstack",
                 "cheapestValue": 5.1,
                 "cheapestSourceUrl": "https://www.hyperstack.cloud/gpu-pricing",
-                "movingAverage30d": 5.21932,
+                "movingAverage30d": 5.21932
+              },
+              {
+                "date": "2026-11-20",
+                "series": "reserved",
+                "value": 5.1,
+                "p25": null,
+                "p75": null,
+                "low": 5.1,
+                "high": 5.1,
+                "providerCount": 1,
+                "quoteCount": 1,
+                "thin": true,
+                "medianSynthetic": false,
+                "cheapestProvider": "Hyperstack",
+                "cheapestProviderId": "hyperstack",
+                "cheapestValue": 5.1,
+                "cheapestSourceUrl": "https://www.hyperstack.cloud/gpu-pricing",
+                "movingAverage30d": 5.214547,
                 "providers": [
                   {
                     "provider": "Hyperstack",
@@ -55269,7 +55658,7 @@
               }
             ],
             "latest": {
-              "date": "2026-11-19",
+              "date": "2026-11-20",
               "series": "reserved",
               "value": 5.1,
               "p25": null,
@@ -55284,7 +55673,7 @@
               "cheapestProviderId": "hyperstack",
               "cheapestValue": 5.1,
               "cheapestSourceUrl": "https://www.hyperstack.cloud/gpu-pricing",
-              "movingAverage30d": 5.21932,
+              "movingAverage30d": 5.214547,
               "offers": [
                 {
                   "provider": "Hyperstack",
@@ -55297,8 +55686,8 @@
             },
             "change7dPct": 4.81,
             "change7dBaseDate": "2026-10-29",
-            "coverageDays": 24,
-            "quoteRows": 45
+            "coverageDays": 25,
+            "quoteRows": 46
           },
           "community": {
             "label": "Community",
@@ -57358,6 +57747,24 @@
                 "cheapestProviderId": "runpod",
                 "cheapestValue": 5.98,
                 "cheapestSourceUrl": "https://www.runpod.io/pricing",
+                "movingAverage30d": 5.98
+              },
+              {
+                "date": "2026-11-20",
+                "series": "community",
+                "value": 5.98,
+                "p25": null,
+                "p75": null,
+                "low": 5.98,
+                "high": 5.98,
+                "providerCount": 1,
+                "quoteCount": 1,
+                "thin": true,
+                "medianSynthetic": false,
+                "cheapestProvider": "RunPod",
+                "cheapestProviderId": "runpod",
+                "cheapestValue": 5.98,
+                "cheapestSourceUrl": "https://www.runpod.io/pricing",
                 "movingAverage30d": 5.98,
                 "providers": [
                   {
@@ -57371,7 +57778,7 @@
               }
             ],
             "latest": {
-              "date": "2026-11-19",
+              "date": "2026-11-20",
               "series": "community",
               "value": 5.98,
               "p25": null,
@@ -57399,8 +57806,8 @@
             },
             "change7dPct": 0.0,
             "change7dBaseDate": "2026-10-29",
-            "coverageDays": 114,
-            "quoteRows": 114
+            "coverageDays": 115,
+            "quoteRows": 115
           },
           "marketplace": {
             "label": "Marketplace floor",
@@ -57408,7 +57815,7 @@
             "risk": "high",
             "scope": "marketplace_floor",
             "note": "市场最低报价，随供给移动；不是 rate card。",
-            "status": "stopped",
+            "status": "live",
             "series": [
               {
                 "date": "2026-10-08",
@@ -57732,49 +58139,67 @@
                 "cheapestProviderId": "lium",
                 "cheapestValue": 5.9,
                 "cheapestSourceUrl": "https://lium.io/api/public/v1/nodes",
-                "movingAverage30d": 6.498778,
+                "movingAverage30d": 6.498778
+              },
+              {
+                "date": "2026-11-20",
+                "series": "marketplace",
+                "value": 6.99,
+                "p25": null,
+                "p75": null,
+                "low": 6.45,
+                "high": 7.0,
+                "providerCount": 1,
+                "quoteCount": 3,
+                "thin": true,
+                "medianSynthetic": false,
+                "cheapestProvider": "Lium",
+                "cheapestProviderId": "lium",
+                "cheapestValue": 6.45,
+                "cheapestSourceUrl": "https://lium.io/api/public/v1/nodes",
+                "movingAverage30d": 6.524632,
                 "providers": [
                   {
                     "provider": "Lium",
                     "providerId": "lium",
-                    "value": 6.05,
+                    "value": 6.99,
                     "sourceUrl": "https://lium.io/api/public/v1/nodes",
-                    "quotes": 5
+                    "quotes": 3
                   }
                 ]
               }
             ],
             "latest": {
-              "date": "2026-10-29",
+              "date": "2026-11-20",
               "series": "marketplace",
-              "value": 6.05,
+              "value": 6.99,
               "p25": null,
               "p75": null,
-              "low": 5.9,
-              "high": 6.5,
+              "low": 6.45,
+              "high": 7.0,
               "providerCount": 1,
-              "quoteCount": 5,
+              "quoteCount": 3,
               "thin": true,
               "medianSynthetic": false,
               "cheapestProvider": "Lium",
               "cheapestProviderId": "lium",
-              "cheapestValue": 5.9,
+              "cheapestValue": 6.45,
               "cheapestSourceUrl": "https://lium.io/api/public/v1/nodes",
-              "movingAverage30d": 6.498778,
+              "movingAverage30d": 6.524632,
               "offers": [
                 {
                   "provider": "Lium",
                   "providerId": "lium",
-                  "value": 6.05,
+                  "value": 6.99,
                   "sourceUrl": "https://lium.io/api/public/v1/nodes",
-                  "quotes": 5
+                  "quotes": 3
                 }
               ]
             },
-            "change7dPct": 0.0,
+            "change7dPct": 15.54,
             "change7dBaseDate": "2026-10-29",
-            "coverageDays": 18,
-            "quoteRows": 53
+            "coverageDays": 19,
+            "quoteRows": 56
           },
           "serverless": {
             "label": "Serverless",
@@ -59798,7 +60223,25 @@
                 "cheapestProviderId": "koyeb",
                 "cheapestValue": 5.5,
                 "cheapestSourceUrl": "https://www.koyeb.com/pricing",
-                "movingAverage30d": 8.127947,
+                "movingAverage30d": 8.127947
+              },
+              {
+                "date": "2026-11-20",
+                "series": "serverless",
+                "value": 6.2496,
+                "p25": 5.756,
+                "p75": 9.89,
+                "low": 5.5,
+                "high": 10.79,
+                "providerCount": 5,
+                "quoteCount": 6,
+                "thin": false,
+                "medianSynthetic": false,
+                "cheapestProvider": "Koyeb",
+                "cheapestProviderId": "koyeb",
+                "cheapestValue": 5.5,
+                "cheapestSourceUrl": "https://www.koyeb.com/pricing",
+                "movingAverage30d": 8.12794,
                 "providers": [
                   {
                     "provider": "Koyeb",
@@ -59839,7 +60282,7 @@
               }
             ],
             "latest": {
-              "date": "2026-11-19",
+              "date": "2026-11-20",
               "series": "serverless",
               "value": 6.2496,
               "p25": 5.756,
@@ -59854,7 +60297,7 @@
               "cheapestProviderId": "koyeb",
               "cheapestValue": 5.5,
               "cheapestSourceUrl": "https://www.koyeb.com/pricing",
-              "movingAverage30d": 8.127947,
+              "movingAverage30d": 8.12794,
               "offers": [
                 {
                   "provider": "Koyeb",
@@ -59895,8 +60338,8 @@
             },
             "change7dPct": -27.67,
             "change7dBaseDate": "2026-10-29",
-            "coverageDays": 112,
-            "quoteRows": 668
+            "coverageDays": 113,
+            "quoteRows": 674
           }
         }
       },
@@ -59905,30 +60348,30 @@
         "name": "B300 288GB",
         "vramGb": 288,
         "family": "Blackwell",
-        "asOf": "2026-11-19",
+        "asOf": "2026-11-20",
         "status": "live",
-        "median": 10.345,
-        "p25": 8.9675,
-        "p75": 15.4375,
+        "median": 11.19,
+        "p25": 8.975,
+        "p75": 14.945,
         "cheapest": 7.4,
         "cheapestProvider": "Hyperstack",
-        "providerCount": 12,
-        "change7dPct": 11.9,
+        "providerCount": 13,
+        "change7dPct": 21.04,
         "weeklyIndex": {
           "weekStart": "2026-11-16",
           "isoWeek": "2026-W47",
           "vintage": "provisional",
           "status": "published",
           "methodologyVersion": "2026-11-04.1",
-          "median": 10.345,
-          "p25": 8.9675,
-          "p75": 15.4375,
-          "providerCount": 12,
-          "index": 131.0155,
-          "linkPairs": 9,
+          "median": 11.19,
+          "p25": 8.975,
+          "p75": 14.945,
+          "providerCount": 13,
+          "index": 129.632,
+          "linkPairs": 10,
           "withheldReason": null,
           "receipt": "2026-W47",
-          "ageDays": 3
+          "ageDays": 4
         },
         "monthly": [
           {
@@ -61832,7 +62275,25 @@
                 "cheapestProviderId": "hyperstack",
                 "cheapestValue": 7.4,
                 "cheapestSourceUrl": "https://www.hyperstack.cloud/gpu-pricing",
-                "movingAverage30d": 9.180387,
+                "movingAverage30d": 9.180387
+              },
+              {
+                "date": "2026-11-20",
+                "series": "on_demand",
+                "value": 11.19,
+                "p25": 8.975,
+                "p75": 14.945,
+                "low": 7.4,
+                "high": 18.0,
+                "providerCount": 13,
+                "quoteCount": 15,
+                "thin": false,
+                "medianSynthetic": false,
+                "cheapestProvider": "Hyperstack",
+                "cheapestProviderId": "hyperstack",
+                "cheapestValue": 7.4,
+                "cheapestSourceUrl": "https://www.hyperstack.cloud/gpu-pricing",
+                "movingAverage30d": 9.279348,
                 "providers": [
                   {
                     "provider": "Hyperstack",
@@ -61844,7 +62305,7 @@
                   {
                     "provider": "Scaleway",
                     "providerId": "scaleway",
-                    "value": 8.226,
+                    "value": 8.244,
                     "sourceUrl": "https://www.scaleway.com/en/pricing/gpu/",
                     "quotes": 1
                   },
@@ -61884,6 +62345,13 @@
                     "quotes": 1
                   },
                   {
+                    "provider": "Spheron",
+                    "providerId": "spheron",
+                    "value": 11.47,
+                    "sourceUrl": "https://www.spheron.network/pricing/",
+                    "quotes": 1
+                  },
+                  {
                     "provider": "OVHcloud",
                     "providerId": "ovh",
                     "value": 12.4125,
@@ -61893,7 +62361,7 @@
                   {
                     "provider": "Verda",
                     "providerId": "datacrunch",
-                    "value": 13.75,
+                    "value": 13.89,
                     "sourceUrl": "https://datacrunch.io/pricing",
                     "quotes": 2
                   },
@@ -61922,22 +62390,22 @@
               }
             ],
             "latest": {
-              "date": "2026-11-19",
+              "date": "2026-11-20",
               "series": "on_demand",
-              "value": 10.345,
-              "p25": 8.9675,
-              "p75": 15.4375,
+              "value": 11.19,
+              "p25": 8.975,
+              "p75": 14.945,
               "low": 7.4,
               "high": 18.0,
-              "providerCount": 12,
-              "quoteCount": 14,
+              "providerCount": 13,
+              "quoteCount": 15,
               "thin": false,
-              "medianSynthetic": true,
+              "medianSynthetic": false,
               "cheapestProvider": "Hyperstack",
               "cheapestProviderId": "hyperstack",
               "cheapestValue": 7.4,
               "cheapestSourceUrl": "https://www.hyperstack.cloud/gpu-pricing",
-              "movingAverage30d": 9.180387,
+              "movingAverage30d": 9.279348,
               "offers": [
                 {
                   "provider": "Hyperstack",
@@ -61949,7 +62417,7 @@
                 {
                   "provider": "Scaleway",
                   "providerId": "scaleway",
-                  "value": 8.226,
+                  "value": 8.244,
                   "sourceUrl": "https://www.scaleway.com/en/pricing/gpu/",
                   "quotes": 1
                 },
@@ -61989,6 +62457,13 @@
                   "quotes": 1
                 },
                 {
+                  "provider": "Spheron",
+                  "providerId": "spheron",
+                  "value": 11.47,
+                  "sourceUrl": "https://www.spheron.network/pricing/",
+                  "quotes": 1
+                },
+                {
                   "provider": "OVHcloud",
                   "providerId": "ovh",
                   "value": 12.4125,
@@ -61998,7 +62473,7 @@
                 {
                   "provider": "Verda",
                   "providerId": "datacrunch",
-                  "value": 13.75,
+                  "value": 13.89,
                   "sourceUrl": "https://datacrunch.io/pricing",
                   "quotes": 2
                 },
@@ -62025,10 +62500,10 @@
                 }
               ]
             },
-            "change7dPct": 11.9,
+            "change7dPct": 21.04,
             "change7dBaseDate": "2026-10-29",
-            "coverageDays": 100,
-            "quoteRows": 1011
+            "coverageDays": 101,
+            "quoteRows": 1026
           },
           "spot": {
             "label": "Spot",
@@ -63710,7 +64185,25 @@
                 "cheapestProviderId": "daytona",
                 "cheapestValue": 5.17,
                 "cheapestSourceUrl": "https://billing.app.daytona.io/gpu-pricing",
-                "movingAverage30d": 5.416967,
+                "movingAverage30d": 5.416967
+              },
+              {
+                "date": "2026-11-20",
+                "series": "spot",
+                "value": 6.96725,
+                "p25": 5.613625,
+                "p75": 7.8075,
+                "low": 5.17,
+                "high": 8.08,
+                "providerCount": 4,
+                "quoteCount": 7,
+                "thin": false,
+                "medianSynthetic": true,
+                "cheapestProvider": "Daytona",
+                "cheapestProviderId": "daytona",
+                "cheapestValue": 5.17,
+                "cheapestSourceUrl": "https://billing.app.daytona.io/gpu-pricing",
+                "movingAverage30d": 5.472542,
                 "providers": [
                   {
                     "provider": "Daytona",
@@ -63722,21 +64215,21 @@
                   {
                     "provider": "Verda",
                     "providerId": "datacrunch",
-                    "value": 6.8745,
+                    "value": 6.9445,
                     "sourceUrl": "https://datacrunch.io/pricing",
                     "quotes": 2
                   },
                   {
                     "provider": "Lium",
                     "providerId": "lium",
-                    "value": 7.0,
+                    "value": 6.99,
                     "sourceUrl": "https://lium.io/api/public/v1/nodes",
-                    "quotes": 1
+                    "quotes": 3
                   },
                   {
                     "provider": "Spheron",
                     "providerId": "spheron",
-                    "value": 10.4,
+                    "value": 8.08,
                     "sourceUrl": "https://www.spheron.network/pricing/",
                     "quotes": 1
                   }
@@ -63744,22 +64237,22 @@
               }
             ],
             "latest": {
-              "date": "2026-11-19",
+              "date": "2026-11-20",
               "series": "spot",
-              "value": 6.93725,
-              "p25": 5.596125,
-              "p75": 9.55,
+              "value": 6.96725,
+              "p25": 5.613625,
+              "p75": 7.8075,
               "low": 5.17,
-              "high": 10.4,
+              "high": 8.08,
               "providerCount": 4,
-              "quoteCount": 5,
+              "quoteCount": 7,
               "thin": false,
               "medianSynthetic": true,
               "cheapestProvider": "Daytona",
               "cheapestProviderId": "daytona",
               "cheapestValue": 5.17,
               "cheapestSourceUrl": "https://billing.app.daytona.io/gpu-pricing",
-              "movingAverage30d": 5.416967,
+              "movingAverage30d": 5.472542,
               "offers": [
                 {
                   "provider": "Daytona",
@@ -63771,30 +64264,30 @@
                 {
                   "provider": "Verda",
                   "providerId": "datacrunch",
-                  "value": 6.8745,
+                  "value": 6.9445,
                   "sourceUrl": "https://datacrunch.io/pricing",
                   "quotes": 2
                 },
                 {
                   "provider": "Lium",
                   "providerId": "lium",
-                  "value": 7.0,
+                  "value": 6.99,
                   "sourceUrl": "https://lium.io/api/public/v1/nodes",
-                  "quotes": 1
+                  "quotes": 3
                 },
                 {
                   "provider": "Spheron",
                   "providerId": "spheron",
-                  "value": 10.4,
+                  "value": 8.08,
                   "sourceUrl": "https://www.spheron.network/pricing/",
                   "quotes": 1
                 }
               ]
             },
-            "change7dPct": 26.13,
+            "change7dPct": 26.68,
             "change7dBaseDate": "2026-10-29",
-            "coverageDays": 93,
-            "quoteRows": 184
+            "coverageDays": 94,
+            "quoteRows": 191
           },
           "reserved": {
             "label": "Reserved",
@@ -64234,7 +64727,25 @@
                 "cheapestProviderId": "latitude",
                 "cheapestValue": 5.6,
                 "cheapestSourceUrl": "https://www.latitude.sh/pricing",
-                "movingAverage30d": 6.303875,
+                "movingAverage30d": 6.303875
+              },
+              {
+                "date": "2026-11-20",
+                "series": "reserved",
+                "value": 6.54764,
+                "p25": null,
+                "p75": null,
+                "low": 5.6,
+                "high": 8.111111,
+                "providerCount": 2,
+                "quoteCount": 3,
+                "thin": true,
+                "medianSynthetic": true,
+                "cheapestProvider": "Latitude.sh",
+                "cheapestProviderId": "latitude",
+                "cheapestValue": 5.6,
+                "cheapestSourceUrl": "https://www.latitude.sh/pricing",
+                "movingAverage30d": 6.313625,
                 "providers": [
                   {
                     "provider": "Synteq",
@@ -64254,7 +64765,7 @@
               }
             ],
             "latest": {
-              "date": "2026-11-19",
+              "date": "2026-11-20",
               "series": "reserved",
               "value": 6.54764,
               "p25": null,
@@ -64269,7 +64780,7 @@
               "cheapestProviderId": "latitude",
               "cheapestValue": 5.6,
               "cheapestSourceUrl": "https://www.latitude.sh/pricing",
-              "movingAverage30d": 6.303875,
+              "movingAverage30d": 6.313625,
               "offers": [
                 {
                   "provider": "Synteq",
@@ -64289,8 +64800,8 @@
             },
             "change7dPct": 4.93,
             "change7dBaseDate": "2026-10-29",
-            "coverageDays": 24,
-            "quoteRows": 333
+            "coverageDays": 25,
+            "quoteRows": 336
           },
           "community": {
             "label": "Community",
@@ -66098,6 +66609,24 @@
                 "cheapestProviderId": "runpod",
                 "cheapestValue": 6.94,
                 "cheapestSourceUrl": "https://www.runpod.io/pricing",
+                "movingAverage30d": 6.94
+              },
+              {
+                "date": "2026-11-20",
+                "series": "community",
+                "value": 6.94,
+                "p25": null,
+                "p75": null,
+                "low": 6.94,
+                "high": 6.94,
+                "providerCount": 1,
+                "quoteCount": 1,
+                "thin": true,
+                "medianSynthetic": false,
+                "cheapestProvider": "RunPod",
+                "cheapestProviderId": "runpod",
+                "cheapestValue": 6.94,
+                "cheapestSourceUrl": "https://www.runpod.io/pricing",
                 "movingAverage30d": 6.94,
                 "providers": [
                   {
@@ -66111,7 +66640,7 @@
               }
             ],
             "latest": {
-              "date": "2026-11-19",
+              "date": "2026-11-20",
               "series": "community",
               "value": 6.94,
               "p25": null,
@@ -66139,8 +66668,8 @@
             },
             "change7dPct": 0.0,
             "change7dBaseDate": "2026-10-29",
-            "coverageDays": 100,
-            "quoteRows": 100
+            "coverageDays": 101,
+            "quoteRows": 101
           },
           "marketplace": {
             "label": "Marketplace floor",
@@ -66472,7 +67001,25 @@
                 "cheapestProviderId": "lium",
                 "cheapestValue": 11.9,
                 "cheapestSourceUrl": "https://lium.io/api/public/v1/nodes",
-                "movingAverage30d": 9.772222,
+                "movingAverage30d": 9.772222
+              },
+              {
+                "date": "2026-11-20",
+                "series": "marketplace",
+                "value": 11.9,
+                "p25": null,
+                "p75": null,
+                "low": 11.9,
+                "high": 11.9,
+                "providerCount": 1,
+                "quoteCount": 1,
+                "thin": true,
+                "medianSynthetic": false,
+                "cheapestProvider": "Lium",
+                "cheapestProviderId": "lium",
+                "cheapestValue": 11.9,
+                "cheapestSourceUrl": "https://lium.io/api/public/v1/nodes",
+                "movingAverage30d": 9.884211,
                 "providers": [
                   {
                     "provider": "Lium",
@@ -66485,7 +67032,7 @@
               }
             ],
             "latest": {
-              "date": "2026-11-19",
+              "date": "2026-11-20",
               "series": "marketplace",
               "value": 11.9,
               "p25": null,
@@ -66500,7 +67047,7 @@
               "cheapestProviderId": "lium",
               "cheapestValue": 11.9,
               "cheapestSourceUrl": "https://lium.io/api/public/v1/nodes",
-              "movingAverage30d": 9.772222,
+              "movingAverage30d": 9.884211,
               "offers": [
                 {
                   "provider": "Lium",
@@ -66513,8 +67060,8 @@
             },
             "change7dPct": 40.0,
             "change7dBaseDate": "2026-10-29",
-            "coverageDays": 18,
-            "quoteRows": 44
+            "coverageDays": 19,
+            "quoteRows": 45
           },
           "serverless": {
             "label": "Serverless",
@@ -68322,7 +68869,25 @@
                 "cheapestProviderId": "modal",
                 "cheapestValue": 7.0992,
                 "cheapestSourceUrl": "https://modal.com/pricing",
-                "movingAverage30d": 12.208333,
+                "movingAverage30d": 12.208333
+              },
+              {
+                "date": "2026-11-20",
+                "series": "serverless",
+                "value": 11.99,
+                "p25": null,
+                "p75": null,
+                "low": 7.0992,
+                "high": 12.99,
+                "providerCount": 3,
+                "quoteCount": 3,
+                "thin": true,
+                "medianSynthetic": false,
+                "cheapestProvider": "Modal",
+                "cheapestProviderId": "modal",
+                "cheapestValue": 7.0992,
+                "cheapestSourceUrl": "https://modal.com/pricing",
+                "movingAverage30d": 12.324667,
                 "providers": [
                   {
                     "provider": "Modal",
@@ -68349,7 +68914,7 @@
               }
             ],
             "latest": {
-              "date": "2026-11-19",
+              "date": "2026-11-20",
               "series": "serverless",
               "value": 11.99,
               "p25": null,
@@ -68364,7 +68929,7 @@
               "cheapestProviderId": "modal",
               "cheapestValue": 7.0992,
               "cheapestSourceUrl": "https://modal.com/pricing",
-              "movingAverage30d": 12.208333,
+              "movingAverage30d": 12.324667,
               "offers": [
                 {
                   "provider": "Modal",
@@ -68391,8 +68956,8 @@
             },
             "change7dPct": -7.7,
             "change7dBaseDate": "2026-10-29",
-            "coverageDays": 100,
-            "quoteRows": 378
+            "coverageDays": 101,
+            "quoteRows": 381
           }
         }
       },
@@ -68401,7 +68966,7 @@
         "name": "A100 80GB",
         "vramGb": 80,
         "family": "Ampere",
-        "asOf": "2026-11-19",
+        "asOf": "2026-11-20",
         "status": "live",
         "median": 2.145,
         "p25": 1.46375,
@@ -68420,11 +68985,11 @@
           "p25": 1.46375,
           "p75": 3.074448,
           "providerCount": 18,
-          "index": 101.3649,
+          "index": 101.4038,
           "linkPairs": 15,
           "withheldReason": null,
           "receipt": "2026-W47",
-          "ageDays": 3
+          "ageDays": 4
         },
         "monthly": [
           {
@@ -70606,7 +71171,25 @@
                 "cheapestProviderId": "jarvislabs",
                 "cheapestValue": 0.89,
                 "cheapestSourceUrl": "https://jarvislabs.ai/pricing",
-                "movingAverage30d": 1.944383,
+                "movingAverage30d": 1.944383
+              },
+              {
+                "date": "2026-11-20",
+                "series": "on_demand",
+                "value": 2.145,
+                "p25": 1.46375,
+                "p75": 3.074448,
+                "low": 0.89,
+                "high": 4.09625,
+                "providerCount": 18,
+                "quoteCount": 30,
+                "thin": false,
+                "medianSynthetic": true,
+                "cheapestProvider": "JarvisLabs",
+                "cheapestProviderId": "jarvislabs",
+                "cheapestValue": 0.89,
+                "cheapestSourceUrl": "https://jarvislabs.ai/pricing",
+                "movingAverage30d": 1.95255,
                 "providers": [
                   {
                     "provider": "Thunder Compute",
@@ -70660,7 +71243,7 @@
                   {
                     "provider": "Verda",
                     "providerId": "datacrunch",
-                    "value": 2.0775,
+                    "value": 2.0895,
                     "sourceUrl": "https://datacrunch.io/pricing",
                     "quotes": 2
                   },
@@ -70738,7 +71321,7 @@
               }
             ],
             "latest": {
-              "date": "2026-11-19",
+              "date": "2026-11-20",
               "series": "on_demand",
               "value": 2.145,
               "p25": 1.46375,
@@ -70753,7 +71336,7 @@
               "cheapestProviderId": "jarvislabs",
               "cheapestValue": 0.89,
               "cheapestSourceUrl": "https://jarvislabs.ai/pricing",
-              "movingAverage30d": 1.944383,
+              "movingAverage30d": 1.95255,
               "offers": [
                 {
                   "provider": "Thunder Compute",
@@ -70807,7 +71390,7 @@
                 {
                   "provider": "Verda",
                   "providerId": "datacrunch",
-                  "value": 2.0775,
+                  "value": 2.0895,
                   "sourceUrl": "https://datacrunch.io/pricing",
                   "quotes": 2
                 },
@@ -70885,8 +71468,8 @@
             },
             "change7dPct": -0.23,
             "change7dBaseDate": "2026-10-29",
-            "coverageDays": 114,
-            "quoteRows": 3039
+            "coverageDays": 115,
+            "quoteRows": 3069
           },
           "spot": {
             "label": "Spot",
@@ -72910,7 +73493,25 @@
                 "cheapestProviderId": "azure",
                 "cheapestValue": 0.67877,
                 "cheapestSourceUrl": "https://prices.azure.com/api/retail/prices",
-                "movingAverage30d": 1.405498,
+                "movingAverage30d": 1.405498
+              },
+              {
+                "date": "2026-11-20",
+                "series": "spot",
+                "value": 1.19,
+                "p25": 0.891405,
+                "p75": 1.820919,
+                "low": 0.67877,
+                "high": 2.3568,
+                "providerCount": 5,
+                "quoteCount": 11,
+                "thin": false,
+                "medianSynthetic": false,
+                "cheapestProvider": "Azure",
+                "cheapestProviderId": "azure",
+                "cheapestValue": 0.67877,
+                "cheapestSourceUrl": "https://prices.azure.com/api/retail/prices",
+                "movingAverage30d": 1.399109,
                 "providers": [
                   {
                     "provider": "Azure",
@@ -72922,7 +73523,7 @@
                   {
                     "provider": "Verda",
                     "providerId": "datacrunch",
-                    "value": 1.03875,
+                    "value": 1.04475,
                     "sourceUrl": "https://datacrunch.io/pricing",
                     "quotes": 2
                   },
@@ -72951,10 +73552,10 @@
               }
             ],
             "latest": {
-              "date": "2026-11-19",
+              "date": "2026-11-20",
               "series": "spot",
               "value": 1.19,
-              "p25": 0.888405,
+              "p25": 0.891405,
               "p75": 1.820919,
               "low": 0.67877,
               "high": 2.3568,
@@ -72966,7 +73567,7 @@
               "cheapestProviderId": "azure",
               "cheapestValue": 0.67877,
               "cheapestSourceUrl": "https://prices.azure.com/api/retail/prices",
-              "movingAverage30d": 1.405498,
+              "movingAverage30d": 1.399109,
               "offers": [
                 {
                   "provider": "Azure",
@@ -72978,7 +73579,7 @@
                 {
                   "provider": "Verda",
                   "providerId": "datacrunch",
-                  "value": 1.03875,
+                  "value": 1.04475,
                   "sourceUrl": "https://datacrunch.io/pricing",
                   "quotes": 2
                 },
@@ -73007,8 +73608,8 @@
             },
             "change7dPct": 0.0,
             "change7dBaseDate": "2026-10-29",
-            "coverageDays": 112,
-            "quoteRows": 794
+            "coverageDays": 113,
+            "quoteRows": 805
           },
           "reserved": {
             "label": "Reserved",
@@ -73448,6 +74049,24 @@
                 "cheapestProviderId": "hyperstack",
                 "cheapestValue": 0.95,
                 "cheapestSourceUrl": "https://www.hyperstack.cloud/gpu-pricing",
+                "movingAverage30d": 1.155
+              },
+              {
+                "date": "2026-11-20",
+                "series": "reserved",
+                "value": 1.155,
+                "p25": null,
+                "p75": null,
+                "low": 0.95,
+                "high": 1.36,
+                "providerCount": 1,
+                "quoteCount": 2,
+                "thin": true,
+                "medianSynthetic": false,
+                "cheapestProvider": "Hyperstack",
+                "cheapestProviderId": "hyperstack",
+                "cheapestValue": 0.95,
+                "cheapestSourceUrl": "https://www.hyperstack.cloud/gpu-pricing",
                 "movingAverage30d": 1.155,
                 "providers": [
                   {
@@ -73461,7 +74080,7 @@
               }
             ],
             "latest": {
-              "date": "2026-11-19",
+              "date": "2026-11-20",
               "series": "reserved",
               "value": 1.155,
               "p25": null,
@@ -73489,8 +74108,8 @@
             },
             "change7dPct": 0.0,
             "change7dBaseDate": "2026-10-29",
-            "coverageDays": 24,
-            "quoteRows": 48
+            "coverageDays": 25,
+            "quoteRows": 50
           },
           "community": {
             "label": "Community",
@@ -75550,6 +76169,24 @@
                 "cheapestProviderId": "runpod",
                 "cheapestValue": 1.0,
                 "cheapestSourceUrl": "https://www.runpod.io/pricing",
+                "movingAverage30d": 1.19
+              },
+              {
+                "date": "2026-11-20",
+                "series": "community",
+                "value": 1.19,
+                "p25": null,
+                "p75": null,
+                "low": 1.0,
+                "high": 1.39,
+                "providerCount": 1,
+                "quoteCount": 3,
+                "thin": true,
+                "medianSynthetic": false,
+                "cheapestProvider": "RunPod",
+                "cheapestProviderId": "runpod",
+                "cheapestValue": 1.0,
+                "cheapestSourceUrl": "https://www.runpod.io/pricing",
                 "movingAverage30d": 1.19,
                 "providers": [
                   {
@@ -75563,7 +76200,7 @@
               }
             ],
             "latest": {
-              "date": "2026-11-19",
+              "date": "2026-11-20",
               "series": "community",
               "value": 1.19,
               "p25": null,
@@ -75591,8 +76228,8 @@
             },
             "change7dPct": 0.0,
             "change7dBaseDate": "2026-10-29",
-            "coverageDays": 114,
-            "quoteRows": 342
+            "coverageDays": 115,
+            "quoteRows": 345
           },
           "marketplace": {
             "label": "Marketplace floor",
@@ -77846,6 +78483,24 @@
                 "cheapestProviderId": "koyeb",
                 "cheapestValue": 1.6,
                 "cheapestSourceUrl": "https://www.koyeb.com/pricing",
+                "movingAverage30d": 2.460137
+              },
+              {
+                "date": "2026-11-20",
+                "series": "serverless",
+                "value": 2.2986,
+                "p25": 1.9617,
+                "p75": 4.015,
+                "low": 1.6,
+                "high": 5.04,
+                "providerCount": 5,
+                "quoteCount": 8,
+                "thin": false,
+                "medianSynthetic": false,
+                "cheapestProvider": "Koyeb",
+                "cheapestProviderId": "koyeb",
+                "cheapestValue": 1.6,
+                "cheapestSourceUrl": "https://www.koyeb.com/pricing",
                 "movingAverage30d": 2.460137,
                 "providers": [
                   {
@@ -77887,7 +78542,7 @@
               }
             ],
             "latest": {
-              "date": "2026-11-19",
+              "date": "2026-11-20",
               "series": "serverless",
               "value": 2.2986,
               "p25": 1.9617,
@@ -77943,8 +78598,8 @@
             },
             "change7dPct": -8.4,
             "change7dBaseDate": "2026-10-29",
-            "coverageDays": 112,
-            "quoteRows": 842
+            "coverageDays": 113,
+            "quoteRows": 850
           }
         }
       },
@@ -77953,30 +78608,30 @@
         "name": "L40S 48GB",
         "vramGb": 48,
         "family": "Ada",
-        "asOf": "2026-11-19",
+        "asOf": "2026-11-20",
         "status": "live",
-        "median": 1.5911,
+        "median": 1.59285,
         "p25": 1.015,
         "p75": 2.05675,
-        "cheapest": 0.55,
-        "cheapestProvider": "Runcrate",
+        "cheapest": 0.96,
+        "cheapestProvider": "Spheron",
         "providerCount": 16,
-        "change7dPct": -0.76,
+        "change7dPct": -0.65,
         "weeklyIndex": {
           "weekStart": "2026-11-16",
           "isoWeek": "2026-W47",
           "vintage": "provisional",
           "status": "published",
           "methodologyVersion": "2026-11-04.1",
-          "median": 1.5911,
+          "median": 1.59285,
           "p25": 1.015,
           "p75": 2.05675,
           "providerCount": 16,
-          "index": 101.8853,
+          "index": 101.9037,
           "linkPairs": 12,
           "withheldReason": null,
           "receipt": "2026-W47",
-          "ageDays": 3
+          "ageDays": 4
         },
         "monthly": [
           {
@@ -80146,15 +80801,26 @@
                 "cheapestProviderId": "runcrate",
                 "cheapestValue": 0.55,
                 "cheapestSourceUrl": "https://www.runcrate.ai/pricing",
-                "movingAverage30d": 1.589788,
+                "movingAverage30d": 1.589788
+              },
+              {
+                "date": "2026-11-20",
+                "series": "on_demand",
+                "value": 1.59285,
+                "p25": 1.015,
+                "p75": 2.05675,
+                "low": 0.96,
+                "high": 3.766398,
+                "providerCount": 16,
+                "quoteCount": 17,
+                "thin": false,
+                "medianSynthetic": true,
+                "cheapestProvider": "Spheron",
+                "cheapestProviderId": "spheron",
+                "cheapestValue": 0.96,
+                "cheapestSourceUrl": "https://www.spheron.network/pricing/",
+                "movingAverage30d": 1.59125,
                 "providers": [
-                  {
-                    "provider": "Runcrate",
-                    "providerId": "runcrate",
-                    "value": 0.55,
-                    "sourceUrl": "https://www.runcrate.ai/pricing",
-                    "quotes": 1
-                  },
                   {
                     "provider": "Spheron",
                     "providerId": "spheron",
@@ -80174,6 +80840,13 @@
                     "providerId": "gpuwerk",
                     "value": 0.99,
                     "sourceUrl": "https://gpuwerk.com/availability.txt",
+                    "quotes": 1
+                  },
+                  {
+                    "provider": "Runcrate",
+                    "providerId": "runcrate",
+                    "value": 0.99,
+                    "sourceUrl": "https://www.runcrate.ai/pricing",
                     "quotes": 1
                   },
                   {
@@ -80207,7 +80880,7 @@
                   {
                     "provider": "Scaleway",
                     "providerId": "scaleway",
-                    "value": 1.6122,
+                    "value": 1.6157,
                     "sourceUrl": "https://www.scaleway.com/en/pricing/gpu/",
                     "quotes": 1
                   },
@@ -80264,30 +80937,23 @@
               }
             ],
             "latest": {
-              "date": "2026-11-19",
+              "date": "2026-11-20",
               "series": "on_demand",
-              "value": 1.5911,
+              "value": 1.59285,
               "p25": 1.015,
               "p75": 2.05675,
-              "low": 0.55,
+              "low": 0.96,
               "high": 3.766398,
               "providerCount": 16,
               "quoteCount": 17,
               "thin": false,
               "medianSynthetic": true,
-              "cheapestProvider": "Runcrate",
-              "cheapestProviderId": "runcrate",
-              "cheapestValue": 0.55,
-              "cheapestSourceUrl": "https://www.runcrate.ai/pricing",
-              "movingAverage30d": 1.589788,
+              "cheapestProvider": "Spheron",
+              "cheapestProviderId": "spheron",
+              "cheapestValue": 0.96,
+              "cheapestSourceUrl": "https://www.spheron.network/pricing/",
+              "movingAverage30d": 1.59125,
               "offers": [
-                {
-                  "provider": "Runcrate",
-                  "providerId": "runcrate",
-                  "value": 0.55,
-                  "sourceUrl": "https://www.runcrate.ai/pricing",
-                  "quotes": 1
-                },
                 {
                   "provider": "Spheron",
                   "providerId": "spheron",
@@ -80307,6 +80973,13 @@
                   "providerId": "gpuwerk",
                   "value": 0.99,
                   "sourceUrl": "https://gpuwerk.com/availability.txt",
+                  "quotes": 1
+                },
+                {
+                  "provider": "Runcrate",
+                  "providerId": "runcrate",
+                  "value": 0.99,
+                  "sourceUrl": "https://www.runcrate.ai/pricing",
                   "quotes": 1
                 },
                 {
@@ -80340,7 +81013,7 @@
                 {
                   "provider": "Scaleway",
                   "providerId": "scaleway",
-                  "value": 1.6122,
+                  "value": 1.6157,
                   "sourceUrl": "https://www.scaleway.com/en/pricing/gpu/",
                   "quotes": 1
                 },
@@ -80395,10 +81068,10 @@
                 }
               ]
             },
-            "change7dPct": -0.76,
+            "change7dPct": -0.65,
             "change7dBaseDate": "2026-10-29",
-            "coverageDays": 114,
-            "quoteRows": 1427
+            "coverageDays": 115,
+            "quoteRows": 1444
           },
           "spot": {
             "label": "Spot",
@@ -82206,8 +82879,33 @@
                 "cheapestProviderId": "datacrunch",
                 "cheapestValue": 1.04,
                 "cheapestSourceUrl": "https://datacrunch.io/pricing",
-                "movingAverage30d": 1.049925,
+                "movingAverage30d": 1.049925
+              },
+              {
+                "date": "2026-11-20",
+                "series": "spot",
+                "value": 1.09,
+                "p25": 0.60125,
+                "p75": 1.2675,
+                "low": 0.38,
+                "high": 1.31,
+                "providerCount": 4,
+                "quoteCount": 5,
+                "thin": false,
+                "medianSynthetic": true,
+                "cheapestProvider": "Lium",
+                "cheapestProviderId": "lium",
+                "cheapestValue": 0.38,
+                "cheapestSourceUrl": "https://lium.io/api/public/v1/nodes",
+                "movingAverage30d": 1.050592,
                 "providers": [
+                  {
+                    "provider": "Lium",
+                    "providerId": "lium",
+                    "value": 0.455,
+                    "sourceUrl": "https://lium.io/api/public/v1/nodes",
+                    "quotes": 2
+                  },
                   {
                     "provider": "Verda",
                     "providerId": "datacrunch",
@@ -82225,7 +82923,7 @@
                   {
                     "provider": "Spheron",
                     "providerId": "spheron",
-                    "value": 1.24,
+                    "value": 1.31,
                     "sourceUrl": "https://www.spheron.network/pricing/",
                     "quotes": 1
                   }
@@ -82233,23 +82931,30 @@
               }
             ],
             "latest": {
-              "date": "2026-11-19",
+              "date": "2026-11-20",
               "series": "spot",
-              "value": 1.14,
-              "p25": null,
-              "p75": null,
-              "low": 1.04,
-              "high": 1.24,
-              "providerCount": 3,
-              "quoteCount": 3,
-              "thin": true,
-              "medianSynthetic": false,
-              "cheapestProvider": "Verda",
-              "cheapestProviderId": "datacrunch",
-              "cheapestValue": 1.04,
-              "cheapestSourceUrl": "https://datacrunch.io/pricing",
-              "movingAverage30d": 1.049925,
+              "value": 1.09,
+              "p25": 0.60125,
+              "p75": 1.2675,
+              "low": 0.38,
+              "high": 1.31,
+              "providerCount": 4,
+              "quoteCount": 5,
+              "thin": false,
+              "medianSynthetic": true,
+              "cheapestProvider": "Lium",
+              "cheapestProviderId": "lium",
+              "cheapestValue": 0.38,
+              "cheapestSourceUrl": "https://lium.io/api/public/v1/nodes",
+              "movingAverage30d": 1.050592,
               "offers": [
+                {
+                  "provider": "Lium",
+                  "providerId": "lium",
+                  "value": 0.455,
+                  "sourceUrl": "https://lium.io/api/public/v1/nodes",
+                  "quotes": 2
+                },
                 {
                   "provider": "Verda",
                   "providerId": "datacrunch",
@@ -82267,16 +82972,16 @@
                 {
                   "provider": "Spheron",
                   "providerId": "spheron",
-                  "value": 1.24,
+                  "value": 1.31,
                   "sourceUrl": "https://www.spheron.network/pricing/",
                   "quotes": 1
                 }
               ]
             },
-            "change7dPct": 7.5,
+            "change7dPct": 2.78,
             "change7dBaseDate": "2026-10-29",
-            "coverageDays": 100,
-            "quoteRows": 106
+            "coverageDays": 101,
+            "quoteRows": 111
           },
           "reserved": {
             "label": "Reserved",
@@ -84350,6 +85055,24 @@
                 "cheapestProviderId": "runpod",
                 "cheapestValue": 0.79,
                 "cheapestSourceUrl": "https://www.runpod.io/pricing",
+                "movingAverage30d": 0.79
+              },
+              {
+                "date": "2026-11-20",
+                "series": "community",
+                "value": 0.79,
+                "p25": null,
+                "p75": null,
+                "low": 0.79,
+                "high": 0.79,
+                "providerCount": 1,
+                "quoteCount": 1,
+                "thin": true,
+                "medianSynthetic": false,
+                "cheapestProvider": "RunPod",
+                "cheapestProviderId": "runpod",
+                "cheapestValue": 0.79,
+                "cheapestSourceUrl": "https://www.runpod.io/pricing",
                 "movingAverage30d": 0.79,
                 "providers": [
                   {
@@ -84363,7 +85086,7 @@
               }
             ],
             "latest": {
-              "date": "2026-11-19",
+              "date": "2026-11-20",
               "series": "community",
               "value": 0.79,
               "p25": null,
@@ -84391,8 +85114,8 @@
             },
             "change7dPct": 0.0,
             "change7dBaseDate": "2026-10-29",
-            "coverageDays": 114,
-            "quoteRows": 114
+            "coverageDays": 115,
+            "quoteRows": 115
           },
           "marketplace": {
             "label": "Marketplace floor",
@@ -84508,49 +85231,67 @@
                 "cheapestProviderId": "lium",
                 "cheapestValue": 0.38,
                 "cheapestSourceUrl": "https://lium.io/api/public/v1/nodes",
-                "movingAverage30d": 0.409167,
+                "movingAverage30d": 0.409167
+              },
+              {
+                "date": "2026-11-20",
+                "series": "marketplace",
+                "value": 0.65,
+                "p25": null,
+                "p75": null,
+                "low": 0.65,
+                "high": 0.65,
+                "providerCount": 1,
+                "quoteCount": 1,
+                "thin": true,
+                "medianSynthetic": false,
+                "cheapestProvider": "Lium",
+                "cheapestProviderId": "lium",
+                "cheapestValue": 0.65,
+                "cheapestSourceUrl": "https://lium.io/api/public/v1/nodes",
+                "movingAverage30d": 0.443571,
                 "providers": [
                   {
                     "provider": "Lium",
                     "providerId": "lium",
-                    "value": 0.55,
+                    "value": 0.65,
                     "sourceUrl": "https://lium.io/api/public/v1/nodes",
-                    "quotes": 2
+                    "quotes": 1
                   }
                 ]
               }
             ],
             "latest": {
-              "date": "2026-11-19",
+              "date": "2026-11-20",
               "series": "marketplace",
-              "value": 0.55,
+              "value": 0.65,
               "p25": null,
               "p75": null,
-              "low": 0.38,
-              "high": 0.72,
+              "low": 0.65,
+              "high": 0.65,
               "providerCount": 1,
-              "quoteCount": 2,
+              "quoteCount": 1,
               "thin": true,
               "medianSynthetic": false,
               "cheapestProvider": "Lium",
               "cheapestProviderId": "lium",
-              "cheapestValue": 0.38,
+              "cheapestValue": 0.65,
               "cheapestSourceUrl": "https://lium.io/api/public/v1/nodes",
-              "movingAverage30d": 0.409167,
+              "movingAverage30d": 0.443571,
               "offers": [
                 {
                   "provider": "Lium",
                   "providerId": "lium",
-                  "value": 0.55,
+                  "value": 0.65,
                   "sourceUrl": "https://lium.io/api/public/v1/nodes",
-                  "quotes": 2
+                  "quotes": 1
                 }
               ]
             },
-            "change7dPct": 44.74,
+            "change7dPct": 71.05,
             "change7dBaseDate": "2026-10-28",
-            "coverageDays": 6,
-            "quoteRows": 9
+            "coverageDays": 7,
+            "quoteRows": 10
           },
           "serverless": {
             "label": "Serverless",
@@ -86574,6 +87315,24 @@
                 "cheapestProviderId": "koyeb",
                 "cheapestValue": 1.2,
                 "cheapestSourceUrl": "https://www.koyeb.com/pricing",
+                "movingAverage30d": 1.9512
+              },
+              {
+                "date": "2026-11-20",
+                "series": "serverless",
+                "value": 1.9512,
+                "p25": 1.3878,
+                "p75": 3.1203,
+                "low": 1.2,
+                "high": 3.51,
+                "providerCount": 4,
+                "quoteCount": 4,
+                "thin": false,
+                "medianSynthetic": true,
+                "cheapestProvider": "Koyeb",
+                "cheapestProviderId": "koyeb",
+                "cheapestValue": 1.2,
+                "cheapestSourceUrl": "https://www.koyeb.com/pricing",
                 "movingAverage30d": 1.9512,
                 "providers": [
                   {
@@ -86608,7 +87367,7 @@
               }
             ],
             "latest": {
-              "date": "2026-11-19",
+              "date": "2026-11-20",
               "series": "serverless",
               "value": 1.9512,
               "p25": 1.3878,
@@ -86657,8 +87416,8 @@
             },
             "change7dPct": 0.0,
             "change7dBaseDate": "2026-10-29",
-            "coverageDays": 112,
-            "quoteRows": 410
+            "coverageDays": 113,
+            "quoteRows": 414
           }
         }
       },
@@ -86667,11 +87426,11 @@
         "name": "RTX PRO 6000 96GB",
         "vramGb": 96,
         "family": "Blackwell",
-        "asOf": "2026-11-19",
+        "asOf": "2026-11-20",
         "status": "live",
         "median": 2.4,
         "p25": 1.8375,
-        "p75": 3.039,
+        "p75": 3.06075,
         "cheapest": 0.8,
         "cheapestProvider": "Hyper.ai",
         "providerCount": 14,
@@ -86684,13 +87443,13 @@
           "methodologyVersion": "2026-11-04.1",
           "median": 2.4,
           "p25": 1.8375,
-          "p75": 3.039,
+          "p75": 3.06075,
           "providerCount": 14,
-          "index": 110.4135,
+          "index": 110.5127,
           "linkPairs": 11,
           "withheldReason": null,
           "receipt": "2026-W47",
-          "ageDays": 3
+          "ageDays": 4
         },
         "monthly": [
           {
@@ -88853,7 +89612,25 @@
                 "cheapestProviderId": "hyperai",
                 "cheapestValue": 0.8,
                 "cheapestSourceUrl": "https://hyper.ai/en/pricing",
-                "movingAverage30d": 2.207933,
+                "movingAverage30d": 2.207933
+              },
+              {
+                "date": "2026-11-20",
+                "series": "on_demand",
+                "value": 2.4,
+                "p25": 1.8375,
+                "p75": 3.06075,
+                "low": 0.8,
+                "high": 6.0,
+                "providerCount": 14,
+                "quoteCount": 15,
+                "thin": false,
+                "medianSynthetic": true,
+                "cheapestProvider": "Hyper.ai",
+                "cheapestProviderId": "hyperai",
+                "cheapestValue": 0.8,
+                "cheapestSourceUrl": "https://hyper.ai/en/pricing",
+                "movingAverage30d": 2.21985,
                 "providers": [
                   {
                     "provider": "Hyper.ai",
@@ -88928,7 +89705,7 @@
                   {
                     "provider": "Verda",
                     "providerId": "datacrunch",
-                    "value": 2.922,
+                    "value": 2.951,
                     "sourceUrl": "https://datacrunch.io/pricing",
                     "quotes": 1
                   },
@@ -88957,11 +89734,11 @@
               }
             ],
             "latest": {
-              "date": "2026-11-19",
+              "date": "2026-11-20",
               "series": "on_demand",
               "value": 2.4,
               "p25": 1.8375,
-              "p75": 3.039,
+              "p75": 3.06075,
               "low": 0.8,
               "high": 6.0,
               "providerCount": 14,
@@ -88972,7 +89749,7 @@
               "cheapestProviderId": "hyperai",
               "cheapestValue": 0.8,
               "cheapestSourceUrl": "https://hyper.ai/en/pricing",
-              "movingAverage30d": 2.207933,
+              "movingAverage30d": 2.21985,
               "offers": [
                 {
                   "provider": "Hyper.ai",
@@ -89047,7 +89824,7 @@
                 {
                   "provider": "Verda",
                   "providerId": "datacrunch",
-                  "value": 2.922,
+                  "value": 2.951,
                   "sourceUrl": "https://datacrunch.io/pricing",
                   "quotes": 1
                 },
@@ -89076,8 +89853,8 @@
             },
             "change7dPct": 2.13,
             "change7dBaseDate": "2026-10-29",
-            "coverageDays": 114,
-            "quoteRows": 1222
+            "coverageDays": 115,
+            "quoteRows": 1237
           },
           "spot": {
             "label": "Spot",
@@ -90885,7 +91662,25 @@
                 "cheapestProviderId": "gcp",
                 "cheapestValue": 0.4247,
                 "cheapestSourceUrl": "https://cloud.google.com/products/compute/gpus-pricing?hl=en",
-                "movingAverage30d": 1.162413,
+                "movingAverage30d": 1.162413
+              },
+              {
+                "date": "2026-11-20",
+                "series": "spot",
+                "value": 1.85,
+                "p25": 0.95035,
+                "p75": 1.91,
+                "low": 0.4247,
+                "high": 1.95,
+                "providerCount": 5,
+                "quoteCount": 9,
+                "thin": false,
+                "medianSynthetic": false,
+                "cheapestProvider": "Google Cloud",
+                "cheapestProviderId": "gcp",
+                "cheapestValue": 0.4247,
+                "cheapestSourceUrl": "https://cloud.google.com/products/compute/gpus-pricing?hl=en",
+                "movingAverage30d": 1.194533,
                 "providers": [
                   {
                     "provider": "Google Cloud",
@@ -90897,23 +91692,23 @@
                   {
                     "provider": "Verda",
                     "providerId": "datacrunch",
-                    "value": 1.461,
+                    "value": 1.476,
                     "sourceUrl": "https://datacrunch.io/pricing",
                     "quotes": 1
                   },
                   {
                     "provider": "Spheron",
                     "providerId": "spheron",
-                    "value": 1.53,
+                    "value": 1.85,
                     "sourceUrl": "https://www.spheron.network/pricing/",
                     "quotes": 1
                   },
                   {
                     "provider": "Lium",
                     "providerId": "lium",
-                    "value": 1.875,
+                    "value": 1.87,
                     "sourceUrl": "https://lium.io/api/public/v1/nodes",
-                    "quotes": 4
+                    "quotes": 5
                   },
                   {
                     "provider": "Daytona",
@@ -90926,22 +91721,22 @@
               }
             ],
             "latest": {
-              "date": "2026-11-19",
+              "date": "2026-11-20",
               "series": "spot",
-              "value": 1.53,
-              "p25": 0.94285,
-              "p75": 1.9125,
+              "value": 1.85,
+              "p25": 0.95035,
+              "p75": 1.91,
               "low": 0.4247,
               "high": 1.95,
               "providerCount": 5,
-              "quoteCount": 8,
+              "quoteCount": 9,
               "thin": false,
               "medianSynthetic": false,
               "cheapestProvider": "Google Cloud",
               "cheapestProviderId": "gcp",
               "cheapestValue": 0.4247,
               "cheapestSourceUrl": "https://cloud.google.com/products/compute/gpus-pricing?hl=en",
-              "movingAverage30d": 1.162413,
+              "movingAverage30d": 1.194533,
               "offers": [
                 {
                   "provider": "Google Cloud",
@@ -90953,23 +91748,23 @@
                 {
                   "provider": "Verda",
                   "providerId": "datacrunch",
-                  "value": 1.461,
+                  "value": 1.476,
                   "sourceUrl": "https://datacrunch.io/pricing",
                   "quotes": 1
                 },
                 {
                   "provider": "Spheron",
                   "providerId": "spheron",
-                  "value": 1.53,
+                  "value": 1.85,
                   "sourceUrl": "https://www.spheron.network/pricing/",
                   "quotes": 1
                 },
                 {
                   "provider": "Lium",
                   "providerId": "lium",
-                  "value": 1.875,
+                  "value": 1.87,
                   "sourceUrl": "https://lium.io/api/public/v1/nodes",
-                  "quotes": 4
+                  "quotes": 5
                 },
                 {
                   "provider": "Daytona",
@@ -90980,10 +91775,10 @@
                 }
               ]
             },
-            "change7dPct": -0.65,
+            "change7dPct": 20.13,
             "change7dBaseDate": "2026-10-29",
-            "coverageDays": 100,
-            "quoteRows": 235
+            "coverageDays": 101,
+            "quoteRows": 244
           },
           "reserved": {
             "label": "Reserved",
@@ -91423,7 +92218,25 @@
                 "cheapestProviderId": "synteq",
                 "cheapestValue": 1.212329,
                 "cheapestSourceUrl": "https://synteq.com/api/catalog/vps",
-                "movingAverage30d": 1.360087,
+                "movingAverage30d": 1.360087
+              },
+              {
+                "date": "2026-11-20",
+                "series": "reserved",
+                "value": 1.47125,
+                "p25": 1.234247,
+                "p75": 2.33875,
+                "low": 1.212329,
+                "high": 3.041667,
+                "providerCount": 4,
+                "quoteCount": 7,
+                "thin": false,
+                "medianSynthetic": true,
+                "cheapestProvider": "Synteq",
+                "cheapestProviderId": "synteq",
+                "cheapestValue": 1.212329,
+                "cheapestSourceUrl": "https://synteq.com/api/catalog/vps",
+                "movingAverage30d": 1.364533,
                 "providers": [
                   {
                     "provider": "Synteq",
@@ -91457,7 +92270,7 @@
               }
             ],
             "latest": {
-              "date": "2026-11-19",
+              "date": "2026-11-20",
               "series": "reserved",
               "value": 1.47125,
               "p25": 1.234247,
@@ -91472,7 +92285,7 @@
               "cheapestProviderId": "synteq",
               "cheapestValue": 1.212329,
               "cheapestSourceUrl": "https://synteq.com/api/catalog/vps",
-              "movingAverage30d": 1.360087,
+              "movingAverage30d": 1.364533,
               "offers": [
                 {
                   "provider": "Synteq",
@@ -91506,8 +92319,8 @@
             },
             "change7dPct": 13.17,
             "change7dBaseDate": "2026-10-29",
-            "coverageDays": 24,
-            "quoteRows": 97
+            "coverageDays": 25,
+            "quoteRows": 104
           },
           "community": {
             "label": "Community",
@@ -93567,6 +94380,24 @@
                 "cheapestProviderId": "runpod",
                 "cheapestValue": 1.64,
                 "cheapestSourceUrl": "https://www.runpod.io/pricing",
+                "movingAverage30d": 1.665
+              },
+              {
+                "date": "2026-11-20",
+                "series": "community",
+                "value": 1.665,
+                "p25": null,
+                "p75": null,
+                "low": 1.64,
+                "high": 1.69,
+                "providerCount": 1,
+                "quoteCount": 2,
+                "thin": true,
+                "medianSynthetic": false,
+                "cheapestProvider": "RunPod",
+                "cheapestProviderId": "runpod",
+                "cheapestValue": 1.64,
+                "cheapestSourceUrl": "https://www.runpod.io/pricing",
                 "movingAverage30d": 1.665,
                 "providers": [
                   {
@@ -93580,7 +94411,7 @@
               }
             ],
             "latest": {
-              "date": "2026-11-19",
+              "date": "2026-11-20",
               "series": "community",
               "value": 1.665,
               "p25": null,
@@ -93608,8 +94439,8 @@
             },
             "change7dPct": 0.0,
             "change7dBaseDate": "2026-10-29",
-            "coverageDays": 114,
-            "quoteRows": 230
+            "coverageDays": 115,
+            "quoteRows": 232
           },
           "marketplace": {
             "label": "Marketplace floor",
@@ -93869,49 +94700,67 @@
                 "cheapestProviderId": "lium",
                 "cheapestValue": 1.7,
                 "cheapestSourceUrl": "https://lium.io/api/public/v1/nodes",
-                "movingAverage30d": 1.676786,
+                "movingAverage30d": 1.676786
+              },
+              {
+                "date": "2026-11-20",
+                "series": "marketplace",
+                "value": 1.75,
+                "p25": null,
+                "p75": null,
+                "low": 1.49,
+                "high": 1.9,
+                "providerCount": 1,
+                "quoteCount": 9,
+                "thin": true,
+                "medianSynthetic": false,
+                "cheapestProvider": "Lium",
+                "cheapestProviderId": "lium",
+                "cheapestValue": 1.49,
+                "cheapestSourceUrl": "https://lium.io/api/public/v1/nodes",
+                "movingAverage30d": 1.681667,
                 "providers": [
                   {
                     "provider": "Lium",
                     "providerId": "lium",
-                    "value": 1.82,
+                    "value": 1.75,
                     "sourceUrl": "https://lium.io/api/public/v1/nodes",
-                    "quotes": 6
+                    "quotes": 9
                   }
                 ]
               }
             ],
             "latest": {
-              "date": "2026-11-19",
+              "date": "2026-11-20",
               "series": "marketplace",
-              "value": 1.82,
+              "value": 1.75,
               "p25": null,
               "p75": null,
-              "low": 1.7,
+              "low": 1.49,
               "high": 1.9,
               "providerCount": 1,
-              "quoteCount": 6,
+              "quoteCount": 9,
               "thin": true,
               "medianSynthetic": false,
               "cheapestProvider": "Lium",
               "cheapestProviderId": "lium",
-              "cheapestValue": 1.7,
+              "cheapestValue": 1.49,
               "cheapestSourceUrl": "https://lium.io/api/public/v1/nodes",
-              "movingAverage30d": 1.676786,
+              "movingAverage30d": 1.681667,
               "offers": [
                 {
                   "provider": "Lium",
                   "providerId": "lium",
-                  "value": 1.82,
+                  "value": 1.75,
                   "sourceUrl": "https://lium.io/api/public/v1/nodes",
-                  "quotes": 6
+                  "quotes": 9
                 }
               ]
             },
-            "change7dPct": -8.77,
+            "change7dPct": -12.28,
             "change7dBaseDate": "2026-10-29",
-            "coverageDays": 14,
-            "quoteRows": 35
+            "coverageDays": 15,
+            "quoteRows": 44
           },
           "serverless": {
             "label": "Serverless",
@@ -95935,7 +96784,25 @@
                 "cheapestProviderId": "koyeb",
                 "cheapestValue": 2.2,
                 "cheapestSourceUrl": "https://www.koyeb.com/pricing",
-                "movingAverage30d": 2.974487,
+                "movingAverage30d": 2.974487
+              },
+              {
+                "date": "2026-11-20",
+                "series": "serverless",
+                "value": 3.0312,
+                "p25": 2.3492,
+                "p75": 3.845,
+                "low": 2.2,
+                "high": 4.0,
+                "providerCount": 5,
+                "quoteCount": 5,
+                "thin": false,
+                "medianSynthetic": false,
+                "cheapestProvider": "Koyeb",
+                "cheapestProviderId": "koyeb",
+                "cheapestValue": 2.2,
+                "cheapestSourceUrl": "https://www.koyeb.com/pricing",
+                "movingAverage30d": 2.984053,
                 "providers": [
                   {
                     "provider": "Koyeb",
@@ -95976,7 +96843,7 @@
               }
             ],
             "latest": {
-              "date": "2026-11-19",
+              "date": "2026-11-20",
               "series": "serverless",
               "value": 3.0312,
               "p25": 2.3492,
@@ -95991,7 +96858,7 @@
               "cheapestProviderId": "koyeb",
               "cheapestValue": 2.2,
               "cheapestSourceUrl": "https://www.koyeb.com/pricing",
-              "movingAverage30d": 2.974487,
+              "movingAverage30d": 2.984053,
               "offers": [
                 {
                   "provider": "Koyeb",
@@ -96032,8 +96899,8 @@
             },
             "change7dPct": 0.0,
             "change7dBaseDate": "2026-10-29",
-            "coverageDays": 112,
-            "quoteRows": 446
+            "coverageDays": 113,
+            "quoteRows": 451
           }
         }
       },
@@ -96042,7 +96909,7 @@
         "name": "RTX 4090 24GB",
         "vramGb": 24,
         "family": "Ada",
-        "asOf": "2026-11-19",
+        "asOf": "2026-11-20",
         "status": "live",
         "median": 0.52,
         "p25": 0.415,
@@ -96065,7 +96932,7 @@
           "linkPairs": 4,
           "withheldReason": null,
           "receipt": "2026-W47",
-          "ageDays": 3
+          "ageDays": 4
         },
         "monthly": [
           {
@@ -98210,7 +99077,25 @@
                 "cheapestProviderId": "tensordock",
                 "cheapestValue": 0.35,
                 "cheapestSourceUrl": "https://www.tensordock.com/cloud-gpus.html",
-                "movingAverage30d": 0.664667,
+                "movingAverage30d": 0.664667
+              },
+              {
+                "date": "2026-11-20",
+                "series": "on_demand",
+                "value": 0.52,
+                "p25": 0.415,
+                "p75": 0.94,
+                "low": 0.35,
+                "high": 0.99,
+                "providerCount": 5,
+                "quoteCount": 5,
+                "thin": false,
+                "medianSynthetic": false,
+                "cheapestProvider": "TensorDock",
+                "cheapestProviderId": "tensordock",
+                "cheapestValue": 0.35,
+                "cheapestSourceUrl": "https://www.tensordock.com/cloud-gpus.html",
+                "movingAverage30d": 0.666,
                 "providers": [
                   {
                     "provider": "TensorDock",
@@ -98251,7 +99136,7 @@
               }
             ],
             "latest": {
-              "date": "2026-11-19",
+              "date": "2026-11-20",
               "series": "on_demand",
               "value": 0.52,
               "p25": 0.415,
@@ -98266,7 +99151,7 @@
               "cheapestProviderId": "tensordock",
               "cheapestValue": 0.35,
               "cheapestSourceUrl": "https://www.tensordock.com/cloud-gpus.html",
-              "movingAverage30d": 0.664667,
+              "movingAverage30d": 0.666,
               "offers": [
                 {
                   "provider": "TensorDock",
@@ -98307,8 +99192,8 @@
             },
             "change7dPct": -29.25,
             "change7dBaseDate": "2026-10-29",
-            "coverageDays": 114,
-            "quoteRows": 355
+            "coverageDays": 115,
+            "quoteRows": 360
           },
           "spot": {
             "label": "Spot",
@@ -98712,14 +99597,32 @@
                 "cheapestProviderId": "lium",
                 "cheapestValue": 0.38,
                 "cheapestSourceUrl": "https://lium.io/api/public/v1/nodes",
-                "movingAverage30d": 0.589773,
+                "movingAverage30d": 0.589773
+              },
+              {
+                "date": "2026-11-20",
+                "series": "spot",
+                "value": 0.505,
+                "p25": null,
+                "p75": null,
+                "low": 0.4,
+                "high": 0.57,
+                "providerCount": 2,
+                "quoteCount": 4,
+                "thin": true,
+                "medianSynthetic": true,
+                "cheapestProvider": "Lium",
+                "cheapestProviderId": "lium",
+                "cheapestValue": 0.4,
+                "cheapestSourceUrl": "https://lium.io/api/public/v1/nodes",
+                "movingAverage30d": 0.586087,
                 "providers": [
                   {
                     "provider": "Lium",
                     "providerId": "lium",
-                    "value": 0.465,
+                    "value": 0.44,
                     "sourceUrl": "https://lium.io/api/public/v1/nodes",
-                    "quotes": 2
+                    "quotes": 3
                   },
                   {
                     "provider": "Daytona",
@@ -98732,29 +99635,29 @@
               }
             ],
             "latest": {
-              "date": "2026-11-19",
+              "date": "2026-11-20",
               "series": "spot",
-              "value": 0.5175,
+              "value": 0.505,
               "p25": null,
               "p75": null,
-              "low": 0.38,
+              "low": 0.4,
               "high": 0.57,
               "providerCount": 2,
-              "quoteCount": 3,
+              "quoteCount": 4,
               "thin": true,
               "medianSynthetic": true,
               "cheapestProvider": "Lium",
               "cheapestProviderId": "lium",
-              "cheapestValue": 0.38,
+              "cheapestValue": 0.4,
               "cheapestSourceUrl": "https://lium.io/api/public/v1/nodes",
-              "movingAverage30d": 0.589773,
+              "movingAverage30d": 0.586087,
               "offers": [
                 {
                   "provider": "Lium",
                   "providerId": "lium",
-                  "value": 0.465,
+                  "value": 0.44,
                   "sourceUrl": "https://lium.io/api/public/v1/nodes",
-                  "quotes": 2
+                  "quotes": 3
                 },
                 {
                   "provider": "Daytona",
@@ -98765,10 +99668,10 @@
                 }
               ]
             },
-            "change7dPct": -15.16,
+            "change7dPct": -17.21,
             "change7dBaseDate": "2026-10-29",
-            "coverageDays": 22,
-            "quoteRows": 47
+            "coverageDays": 23,
+            "quoteRows": 51
           },
           "reserved": {
             "label": "Reserved",
@@ -100842,6 +101745,24 @@
                 "cheapestProviderId": "salad",
                 "cheapestValue": 0.16,
                 "cheapestSourceUrl": "https://salad.com/pricing",
+                "movingAverage30d": 0.25
+              },
+              {
+                "date": "2026-11-20",
+                "series": "community",
+                "value": 0.25,
+                "p25": null,
+                "p75": null,
+                "low": 0.16,
+                "high": 0.34,
+                "providerCount": 2,
+                "quoteCount": 2,
+                "thin": true,
+                "medianSynthetic": true,
+                "cheapestProvider": "Salad",
+                "cheapestProviderId": "salad",
+                "cheapestValue": 0.16,
+                "cheapestSourceUrl": "https://salad.com/pricing",
                 "movingAverage30d": 0.25,
                 "providers": [
                   {
@@ -100862,7 +101783,7 @@
               }
             ],
             "latest": {
-              "date": "2026-11-19",
+              "date": "2026-11-20",
               "series": "community",
               "value": 0.25,
               "p25": null,
@@ -100897,8 +101818,8 @@
             },
             "change7dPct": 0.0,
             "change7dBaseDate": "2026-10-29",
-            "coverageDays": 114,
-            "quoteRows": 214
+            "coverageDays": 115,
+            "quoteRows": 216
           },
           "marketplace": {
             "label": "Marketplace floor",
@@ -101176,12 +102097,30 @@
                 "cheapestProviderId": "lium",
                 "cheapestValue": 0.35,
                 "cheapestSourceUrl": "https://lium.io/api/public/v1/nodes",
-                "movingAverage30d": 0.595333,
+                "movingAverage30d": 0.595333
+              },
+              {
+                "date": "2026-11-20",
+                "series": "marketplace",
+                "value": 0.425,
+                "p25": null,
+                "p75": null,
+                "low": 0.35,
+                "high": 0.52,
+                "providerCount": 1,
+                "quoteCount": 8,
+                "thin": true,
+                "medianSynthetic": false,
+                "cheapestProvider": "Lium",
+                "cheapestProviderId": "lium",
+                "cheapestValue": 0.35,
+                "cheapestSourceUrl": "https://lium.io/api/public/v1/nodes",
+                "movingAverage30d": 0.584688,
                 "providers": [
                   {
                     "provider": "Lium",
                     "providerId": "lium",
-                    "value": 0.435,
+                    "value": 0.425,
                     "sourceUrl": "https://lium.io/api/public/v1/nodes",
                     "quotes": 8
                   }
@@ -101189,13 +102128,13 @@
               }
             ],
             "latest": {
-              "date": "2026-11-19",
+              "date": "2026-11-20",
               "series": "marketplace",
-              "value": 0.435,
+              "value": 0.425,
               "p25": null,
               "p75": null,
               "low": 0.35,
-              "high": 0.55,
+              "high": 0.52,
               "providerCount": 1,
               "quoteCount": 8,
               "thin": true,
@@ -101204,21 +102143,21 @@
               "cheapestProviderId": "lium",
               "cheapestValue": 0.35,
               "cheapestSourceUrl": "https://lium.io/api/public/v1/nodes",
-              "movingAverage30d": 0.595333,
+              "movingAverage30d": 0.584688,
               "offers": [
                 {
                   "provider": "Lium",
                   "providerId": "lium",
-                  "value": 0.435,
+                  "value": 0.425,
                   "sourceUrl": "https://lium.io/api/public/v1/nodes",
                   "quotes": 8
                 }
               ]
             },
-            "change7dPct": -35.56,
+            "change7dPct": -37.04,
             "change7dBaseDate": "2026-10-29",
-            "coverageDays": 15,
-            "quoteRows": 56
+            "coverageDays": 16,
+            "quoteRows": 64
           },
           "serverless": {
             "label": "Serverless",
@@ -101658,7 +102597,25 @@
                 "cheapestProviderId": "runpod",
                 "cheapestValue": 1.34,
                 "cheapestSourceUrl": "https://www.runpod.io/pricing",
-                "movingAverage30d": 1.11,
+                "movingAverage30d": 1.11
+              },
+              {
+                "date": "2026-11-20",
+                "series": "serverless",
+                "value": 1.34,
+                "p25": null,
+                "p75": null,
+                "low": 1.34,
+                "high": 1.34,
+                "providerCount": 1,
+                "quoteCount": 1,
+                "thin": true,
+                "medianSynthetic": false,
+                "cheapestProvider": "RunPod",
+                "cheapestProviderId": "runpod",
+                "cheapestValue": 1.34,
+                "cheapestSourceUrl": "https://www.runpod.io/pricing",
+                "movingAverage30d": 1.1192,
                 "providers": [
                   {
                     "provider": "RunPod",
@@ -101671,7 +102628,7 @@
               }
             ],
             "latest": {
-              "date": "2026-11-19",
+              "date": "2026-11-20",
               "series": "serverless",
               "value": 1.34,
               "p25": null,
@@ -101686,7 +102643,7 @@
               "cheapestProviderId": "runpod",
               "cheapestValue": 1.34,
               "cheapestSourceUrl": "https://www.runpod.io/pricing",
-              "movingAverage30d": 1.11,
+              "movingAverage30d": 1.1192,
               "offers": [
                 {
                   "provider": "RunPod",
@@ -101699,8 +102656,8 @@
             },
             "change7dPct": 21.82,
             "change7dBaseDate": "2026-10-29",
-            "coverageDays": 24,
-            "quoteRows": 24
+            "coverageDays": 25,
+            "quoteRows": 25
           }
         }
       },
@@ -101709,30 +102666,30 @@
         "name": "RTX 5090 32GB",
         "vramGb": 32,
         "family": "Blackwell",
-        "asOf": "2026-11-19",
+        "asOf": "2026-11-20",
         "status": "live",
-        "median": 1.09,
+        "median": 0.835,
         "p25": 0.6275,
-        "p75": 1.51,
+        "p75": 1.315,
         "cheapest": 0.35,
         "cheapestProvider": "Hyper.ai",
         "providerCount": 6,
-        "change7dPct": 16.58,
+        "change7dPct": -10.7,
         "weeklyIndex": {
           "weekStart": "2026-11-16",
           "isoWeek": "2026-W47",
           "vintage": "provisional",
           "status": "thin",
           "methodologyVersion": "2026-11-04.1",
-          "median": 1.09,
+          "median": 0.835,
           "p25": 0.6275,
-          "p75": 1.51,
+          "p75": 1.315,
           "providerCount": 6,
-          "index": 129.3611,
+          "index": 103.9601,
           "linkPairs": 4,
           "withheldReason": null,
           "receipt": "2026-W47",
-          "ageDays": 3
+          "ageDays": 4
         },
         "monthly": [
           {
@@ -103874,7 +104831,25 @@
                 "cheapestProviderId": "hyperai",
                 "cheapestValue": 0.35,
                 "cheapestSourceUrl": "https://hyper.ai/en/pricing",
-                "movingAverage30d": 0.985,
+                "movingAverage30d": 0.985
+              },
+              {
+                "date": "2026-11-20",
+                "series": "on_demand",
+                "value": 0.835,
+                "p25": 0.6275,
+                "p75": 1.315,
+                "low": 0.35,
+                "high": 1.39,
+                "providerCount": 6,
+                "quoteCount": 6,
+                "thin": false,
+                "medianSynthetic": true,
+                "cheapestProvider": "Hyper.ai",
+                "cheapestProviderId": "hyperai",
+                "cheapestValue": 0.35,
+                "cheapestSourceUrl": "https://hyper.ai/en/pricing",
+                "movingAverage30d": 0.983333,
                 "providers": [
                   {
                     "provider": "Hyper.ai",
@@ -103888,6 +104863,13 @@
                     "providerId": "runcrate",
                     "value": 0.72,
                     "sourceUrl": "https://www.runcrate.ai/pricing",
+                    "quotes": 1
+                  },
+                  {
+                    "provider": "Spheron",
+                    "providerId": "spheron",
+                    "value": 0.78,
+                    "sourceUrl": "https://www.spheron.network/pricing/",
                     "quotes": 1
                   },
                   {
@@ -103910,25 +104892,18 @@
                     "value": 1.39,
                     "sourceUrl": "https://www.runpod.io/pricing",
                     "quotes": 1
-                  },
-                  {
-                    "provider": "Spheron",
-                    "providerId": "spheron",
-                    "value": 1.87,
-                    "sourceUrl": "https://www.spheron.network/pricing/",
-                    "quotes": 1
                   }
                 ]
               }
             ],
             "latest": {
-              "date": "2026-11-19",
+              "date": "2026-11-20",
               "series": "on_demand",
-              "value": 1.09,
+              "value": 0.835,
               "p25": 0.6275,
-              "p75": 1.51,
+              "p75": 1.315,
               "low": 0.35,
-              "high": 1.87,
+              "high": 1.39,
               "providerCount": 6,
               "quoteCount": 6,
               "thin": false,
@@ -103937,7 +104912,7 @@
               "cheapestProviderId": "hyperai",
               "cheapestValue": 0.35,
               "cheapestSourceUrl": "https://hyper.ai/en/pricing",
-              "movingAverage30d": 0.985,
+              "movingAverage30d": 0.983333,
               "offers": [
                 {
                   "provider": "Hyper.ai",
@@ -103951,6 +104926,13 @@
                   "providerId": "runcrate",
                   "value": 0.72,
                   "sourceUrl": "https://www.runcrate.ai/pricing",
+                  "quotes": 1
+                },
+                {
+                  "provider": "Spheron",
+                  "providerId": "spheron",
+                  "value": 0.78,
+                  "sourceUrl": "https://www.spheron.network/pricing/",
                   "quotes": 1
                 },
                 {
@@ -103973,20 +104955,13 @@
                   "value": 1.39,
                   "sourceUrl": "https://www.runpod.io/pricing",
                   "quotes": 1
-                },
-                {
-                  "provider": "Spheron",
-                  "providerId": "spheron",
-                  "value": 1.87,
-                  "sourceUrl": "https://www.spheron.network/pricing/",
-                  "quotes": 1
                 }
               ]
             },
-            "change7dPct": 16.58,
+            "change7dPct": -10.7,
             "change7dBaseDate": "2026-10-29",
-            "coverageDays": 114,
-            "quoteRows": 278
+            "coverageDays": 115,
+            "quoteRows": 284
           },
           "spot": {
             "label": "Spot",
@@ -104390,14 +105365,32 @@
                 "cheapestProviderId": "lium",
                 "cheapestValue": 0.5,
                 "cheapestSourceUrl": "https://lium.io/api/public/v1/nodes",
-                "movingAverage30d": 0.784432,
+                "movingAverage30d": 0.784432
+              },
+              {
+                "date": "2026-11-20",
+                "series": "spot",
+                "value": 0.705,
+                "p25": null,
+                "p75": null,
+                "low": 0.45,
+                "high": 0.75,
+                "providerCount": 2,
+                "quoteCount": 10,
+                "thin": true,
+                "medianSynthetic": true,
+                "cheapestProvider": "Lium",
+                "cheapestProviderId": "lium",
+                "cheapestValue": 0.45,
+                "cheapestSourceUrl": "https://lium.io/api/public/v1/nodes",
+                "movingAverage30d": 0.780978,
                 "providers": [
                   {
                     "provider": "Lium",
                     "providerId": "lium",
-                    "value": 0.675,
+                    "value": 0.67,
                     "sourceUrl": "https://lium.io/api/public/v1/nodes",
-                    "quotes": 8
+                    "quotes": 9
                   },
                   {
                     "provider": "Daytona",
@@ -104410,29 +105403,29 @@
               }
             ],
             "latest": {
-              "date": "2026-11-19",
+              "date": "2026-11-20",
               "series": "spot",
-              "value": 0.7075,
+              "value": 0.705,
               "p25": null,
               "p75": null,
-              "low": 0.5,
+              "low": 0.45,
               "high": 0.75,
               "providerCount": 2,
-              "quoteCount": 9,
+              "quoteCount": 10,
               "thin": true,
               "medianSynthetic": true,
               "cheapestProvider": "Lium",
               "cheapestProviderId": "lium",
-              "cheapestValue": 0.5,
+              "cheapestValue": 0.45,
               "cheapestSourceUrl": "https://lium.io/api/public/v1/nodes",
-              "movingAverage30d": 0.784432,
+              "movingAverage30d": 0.780978,
               "offers": [
                 {
                   "provider": "Lium",
                   "providerId": "lium",
-                  "value": 0.675,
+                  "value": 0.67,
                   "sourceUrl": "https://lium.io/api/public/v1/nodes",
-                  "quotes": 8
+                  "quotes": 9
                 },
                 {
                   "provider": "Daytona",
@@ -104443,10 +105436,10 @@
                 }
               ]
             },
-            "change7dPct": -11.01,
+            "change7dPct": -11.32,
             "change7dBaseDate": "2026-10-29",
-            "coverageDays": 22,
-            "quoteRows": 72
+            "coverageDays": 23,
+            "quoteRows": 82
           },
           "reserved": {
             "label": "Reserved",
@@ -106520,6 +107513,24 @@
                 "cheapestProviderId": "salad",
                 "cheapestValue": 0.1,
                 "cheapestSourceUrl": "https://salad.com/pricing",
+                "movingAverage30d": 0.4325
+              },
+              {
+                "date": "2026-11-20",
+                "series": "community",
+                "value": 0.4325,
+                "p25": null,
+                "p75": null,
+                "low": 0.1,
+                "high": 0.69,
+                "providerCount": 2,
+                "quoteCount": 3,
+                "thin": true,
+                "medianSynthetic": true,
+                "cheapestProvider": "Salad",
+                "cheapestProviderId": "salad",
+                "cheapestValue": 0.1,
+                "cheapestSourceUrl": "https://salad.com/pricing",
                 "movingAverage30d": 0.4325,
                 "providers": [
                   {
@@ -106540,7 +107551,7 @@
               }
             ],
             "latest": {
-              "date": "2026-11-19",
+              "date": "2026-11-20",
               "series": "community",
               "value": 0.4325,
               "p25": null,
@@ -106575,8 +107586,8 @@
             },
             "change7dPct": 0.0,
             "change7dBaseDate": "2026-10-29",
-            "coverageDays": 114,
-            "quoteRows": 257
+            "coverageDays": 115,
+            "quoteRows": 260
           },
           "marketplace": {
             "label": "Marketplace floor",
@@ -106890,12 +107901,30 @@
                 "cheapestProviderId": "lium",
                 "cheapestValue": 0.5,
                 "cheapestSourceUrl": "https://lium.io/api/public/v1/nodes",
-                "movingAverage30d": 0.853824,
+                "movingAverage30d": 0.853824
+              },
+              {
+                "date": "2026-11-20",
+                "series": "marketplace",
+                "value": 0.7,
+                "p25": null,
+                "p75": null,
+                "low": 0.5,
+                "high": 0.94,
+                "providerCount": 1,
+                "quoteCount": 9,
+                "thin": true,
+                "medianSynthetic": false,
+                "cheapestProvider": "Lium",
+                "cheapestProviderId": "lium",
+                "cheapestValue": 0.5,
+                "cheapestSourceUrl": "https://lium.io/api/public/v1/nodes",
+                "movingAverage30d": 0.845278,
                 "providers": [
                   {
                     "provider": "Lium",
                     "providerId": "lium",
-                    "value": 0.69,
+                    "value": 0.7,
                     "sourceUrl": "https://lium.io/api/public/v1/nodes",
                     "quotes": 9
                   }
@@ -106903,13 +107932,13 @@
               }
             ],
             "latest": {
-              "date": "2026-11-19",
+              "date": "2026-11-20",
               "series": "marketplace",
-              "value": 0.69,
+              "value": 0.7,
               "p25": null,
               "p75": null,
               "low": 0.5,
-              "high": 0.85,
+              "high": 0.94,
               "providerCount": 1,
               "quoteCount": 9,
               "thin": true,
@@ -106918,21 +107947,21 @@
               "cheapestProviderId": "lium",
               "cheapestValue": 0.5,
               "cheapestSourceUrl": "https://lium.io/api/public/v1/nodes",
-              "movingAverage30d": 0.853824,
+              "movingAverage30d": 0.845278,
               "offers": [
                 {
                   "provider": "Lium",
                   "providerId": "lium",
-                  "value": 0.69,
+                  "value": 0.7,
                   "sourceUrl": "https://lium.io/api/public/v1/nodes",
                   "quotes": 9
                 }
               ]
             },
-            "change7dPct": -18.82,
+            "change7dPct": -17.65,
             "change7dBaseDate": "2026-10-29",
-            "coverageDays": 17,
-            "quoteRows": 79
+            "coverageDays": 18,
+            "quoteRows": 88
           },
           "serverless": {
             "label": "Serverless",
@@ -107372,7 +108401,25 @@
                 "cheapestProviderId": "runpod",
                 "cheapestValue": 1.89,
                 "cheapestSourceUrl": "https://www.runpod.io/pricing",
-                "movingAverage30d": 1.592917,
+                "movingAverage30d": 1.592917
+              },
+              {
+                "date": "2026-11-20",
+                "series": "serverless",
+                "value": 1.89,
+                "p25": null,
+                "p75": null,
+                "low": 1.89,
+                "high": 1.89,
+                "providerCount": 1,
+                "quoteCount": 1,
+                "thin": true,
+                "medianSynthetic": false,
+                "cheapestProvider": "RunPod",
+                "cheapestProviderId": "runpod",
+                "cheapestValue": 1.89,
+                "cheapestSourceUrl": "https://www.runpod.io/pricing",
+                "movingAverage30d": 1.6048,
                 "providers": [
                   {
                     "provider": "RunPod",
@@ -107385,7 +108432,7 @@
               }
             ],
             "latest": {
-              "date": "2026-11-19",
+              "date": "2026-11-20",
               "series": "serverless",
               "value": 1.89,
               "p25": null,
@@ -107400,7 +108447,7 @@
               "cheapestProviderId": "runpod",
               "cheapestValue": 1.89,
               "cheapestSourceUrl": "https://www.runpod.io/pricing",
-              "movingAverage30d": 1.592917,
+              "movingAverage30d": 1.6048,
               "offers": [
                 {
                   "provider": "RunPod",
@@ -107413,8 +108460,8 @@
             },
             "change7dPct": 19.62,
             "change7dBaseDate": "2026-10-29",
-            "coverageDays": 24,
-            "quoteRows": 24
+            "coverageDays": 25,
+            "quoteRows": 25
           }
         }
       },
@@ -107423,7 +108470,7 @@
         "name": "MI300X 192GB",
         "vramGb": 192,
         "family": "CDNA 3",
-        "asOf": "2026-11-19",
+        "asOf": "2026-11-20",
         "status": "live",
         "median": 3.22,
         "p25": 2.54,
@@ -107446,7 +108493,7 @@
           "linkPairs": 5,
           "withheldReason": null,
           "receipt": "2026-W47",
-          "ageDays": 3
+          "ageDays": 4
         },
         "monthly": [
           {
@@ -109593,7 +110640,25 @@
                 "cheapestProviderId": "runpod",
                 "cheapestValue": 2.39,
                 "cheapestSourceUrl": "https://www.runpod.io/pricing",
-                "movingAverage30d": 2.997667,
+                "movingAverage30d": 2.997667
+              },
+              {
+                "date": "2026-11-20",
+                "series": "on_demand",
+                "value": 3.22,
+                "p25": 2.54,
+                "p75": 4.1925,
+                "low": 2.39,
+                "high": 6.0,
+                "providerCount": 6,
+                "quoteCount": 6,
+                "thin": false,
+                "medianSynthetic": true,
+                "cheapestProvider": "RunPod",
+                "cheapestProviderId": "runpod",
+                "cheapestValue": 2.39,
+                "cheapestSourceUrl": "https://www.runpod.io/pricing",
+                "movingAverage30d": 3.005333,
                 "providers": [
                   {
                     "provider": "RunPod",
@@ -109641,7 +110706,7 @@
               }
             ],
             "latest": {
-              "date": "2026-11-19",
+              "date": "2026-11-20",
               "series": "on_demand",
               "value": 3.22,
               "p25": 2.54,
@@ -109656,7 +110721,7 @@
               "cheapestProviderId": "runpod",
               "cheapestValue": 2.39,
               "cheapestSourceUrl": "https://www.runpod.io/pricing",
-              "movingAverage30d": 2.997667,
+              "movingAverage30d": 3.005333,
               "offers": [
                 {
                   "provider": "RunPod",
@@ -109704,8 +110769,8 @@
             },
             "change7dPct": 7.69,
             "change7dBaseDate": "2026-10-29",
-            "coverageDays": 114,
-            "quoteRows": 465
+            "coverageDays": 115,
+            "quoteRows": 471
           },
           "spot": {
             "label": "Spot",
@@ -109784,7 +110849,7 @@
         "name": "GH200 96GB",
         "vramGb": 96,
         "family": "Hopper",
-        "asOf": "2026-11-19",
+        "asOf": "2026-11-20",
         "status": "live",
         "median": 3.02,
         "p25": null,
@@ -109807,7 +110872,7 @@
           "linkPairs": 4,
           "withheldReason": null,
           "receipt": "2026-W29",
-          "ageDays": 129
+          "ageDays": 130
         },
         "monthly": [
           {
@@ -111950,6 +113015,24 @@
                 "cheapestProviderId": "lambda",
                 "cheapestValue": 2.59,
                 "cheapestSourceUrl": "https://lambda.ai/instances",
+                "movingAverage30d": 2.993
+              },
+              {
+                "date": "2026-11-20",
+                "series": "on_demand",
+                "value": 3.02,
+                "p25": null,
+                "p75": null,
+                "low": 2.59,
+                "high": 6.5,
+                "providerCount": 3,
+                "quoteCount": 3,
+                "thin": true,
+                "medianSynthetic": false,
+                "cheapestProvider": "Lambda",
+                "cheapestProviderId": "lambda",
+                "cheapestValue": 2.59,
+                "cheapestSourceUrl": "https://lambda.ai/instances",
                 "movingAverage30d": 2.993,
                 "providers": [
                   {
@@ -111977,7 +113060,7 @@
               }
             ],
             "latest": {
-              "date": "2026-11-19",
+              "date": "2026-11-20",
               "series": "on_demand",
               "value": 3.02,
               "p25": null,
@@ -112019,8 +113102,8 @@
             },
             "change7dPct": 0.0,
             "change7dBaseDate": "2026-10-29",
-            "coverageDays": 114,
-            "quoteRows": 339
+            "coverageDays": 115,
+            "quoteRows": 342
           },
           "spot": {
             "label": "Spot",
