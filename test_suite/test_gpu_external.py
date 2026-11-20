@@ -94,6 +94,17 @@ def _official_rate_card_median(prices, gpu_id):
     return (len(values), median(values)) if values else (0, None)
 
 
+def _expected_diff_pct(row):
+    """diff_pct 的唯一定义：own_median / ext_median - 1（与 build_crosscheck 同一条口径）。
+
+    own median 每天随采集变动，所以测试只能锁这条恒等式，不能锁某天的结果值；
+    把 -8.4% 这类历史数字写进断言，等于给自己埋一颗随行情引爆的定时炸弹。
+    """
+    if not row["comparable"] or row["own_median"] is None or not row["ext_median"]:
+        return None
+    return round((float(row["own_median"]) / float(row["ext_median"]) - 1) * 100, 2)
+
+
 def test_snapshot_metadata_checksums_and_counts():
     metadata = json.loads((SNAPSHOT_DIR / "metadata.json").read_text(encoding="utf-8"))
     assert metadata["source"] == "gpueconomy"
@@ -244,18 +255,27 @@ def test_crosscheck_h100_and_a100_rules(full, external):
     assert h100["ext_benchmark_median"] == pytest.approx(3.29, abs=5e-4)
     assert h100["ext_median"] != h100["ext_benchmark_median"]
     assert h100["ext_median_published"] == pytest.approx(3.7415, abs=5e-4)
-    assert h100["overlap_count_match"] == 3
+    assert 1 <= h100["overlap_count_match"] <= h100["overlap_count"]
     assert h100["coverage"] == "mixed"
     assert h100["coverage"] != "ok"
     assert h100["mixed_sku"] is True
-    assert h100["comparable"] is True
-    assert h100["diff_pct"] == pytest.approx(-8.4, abs=0.01)
+    assert h100["comparable"] is True, f"H100 on-demand own 样本跌破门槛：{h100}"
+    # diff 不能写死：own median 每天随采集变化（2026-11-04 是 -8.4%，
+    # 2026-11-08 变成 -6.93%，2026-11-20 变成 -12.09%）。只校验口径本身：
+    # 用 ext_median，而不是只作审计的 rate_card_median。
+    assert h100["diff_pct"] == pytest.approx(_expected_diff_pct(h100), abs=1e-9)
+    published_basis = round(
+        (float(h100["own_median"]) / float(h100["ext_median_published"]) - 1) * 100, 2
+    )
+    if published_basis != h100["diff_pct"]:
+        assert h100["diff_pct"] != pytest.approx(published_basis, abs=1e-9)
     assert h100["ext_source_url"].endswith("/prices.json")
     assert h100["ext_scraped_at"].startswith("2026-11-03")
 
     spot = next(row for row in rows if row["card_id"] == "H100" and row["market"] == "spot")
-    assert spot["comparable"] is True
+    assert spot["comparable"] is True, f"H100 spot own 样本跌破门槛：{spot}"
     assert spot["diff_pct"] is not None
+    assert spot["diff_pct"] == pytest.approx(_expected_diff_pct(spot), abs=1e-9)
     assert spot["ext_benchmark_median"] is None
     assert spot["ext_benchmark_id"] is None
     assert spot["benchmark_id"] is None
@@ -284,21 +304,64 @@ def test_crosscheck_h100_and_a100_rules(full, external):
     assert "型号" in (a100["note"] or "")
 
     gh200 = next(row for row in rows if row["card_id"] == "GH200" and row["market"] == "on_demand")
-    assert gh200["own_providers"] == 3
+    # 只锁"样本薄 → 不给差值"的规则，不锁具体家数：provider 进出不该让 CI 挂。
+    assert 0 < gh200["own_providers"] < CROSSCHECK_MIN_OWN_PROVIDERS
     assert gh200["own_thin"] is True
     assert gh200["coverage"] == "thin"
     assert gh200["diff_pct"] is None
     assert gh200["comparable"] is False
 
-    for card_id, own_count in (("RTX 4090", 4), ("RTX 5090", 4)):
+    for card_id in ("RTX 4090", "RTX 5090"):
         row = next(
             item for item in rows if item["card_id"] == card_id and item["market"] == "on_demand"
         )
-        assert row["own_providers"] == own_count
+        assert 0 < row["own_providers"] < CROSSCHECK_MIN_OWN_PROVIDERS
         assert row["own_thin"] is True
         assert row["coverage"] == "thin"
         assert row["diff_pct"] is None
         assert row["comparable"] is False
+
+
+def test_crosscheck_rows_are_price_drift_safe(full, external):
+    """全量 66 行的口径恒等式：行情怎么走都应该成立。
+
+    定时任务先刷新真实价格再跑测试，own median/家数每天都会变。这里只锁
+    "口径之间不许自相矛盾"的部分，把某一天的数字留给 FIX_LOG 记录。
+    """
+    rows = build_crosscheck(full, external)["rows"]
+    assert len(rows) == 66
+    assert len({(row["card_id"], row["market"]) for row in rows}) == 66
+
+    for row in rows:
+        label = f'{row["card_id"]}/{row["market"]}'
+        own = int(row["own_providers"] or 0)
+        ext = int(row["ext_providers"] or 0)
+
+        # thin 闸门与 comparable 派生关系
+        assert row["own_thin"] is (own < CROSSCHECK_MIN_OWN_PROVIDERS), label
+        if row["comparable"]:
+            assert own >= CROSSCHECK_MIN_OWN_PROVIDERS, label
+            assert row["coverage"] in ("ok", "mixed"), label
+            assert row["diff_pct"] is not None, label
+        else:
+            assert row["diff_pct"] is None, label
+        if own < CROSSCHECK_MIN_OWN_PROVIDERS and ext > 0:
+            assert row["coverage"] == "thin", label
+
+        # diff 只能来自 ext_median 口径
+        assert row["diff_pct"] == _expected_diff_pct(row), label
+        if row["diff_pct"] is not None:
+            assert row["own_median"] > 0 and row["ext_median"] > 0, label
+
+        # overlap 结构
+        assert row["overlap_count_match"] <= row["overlap_count"], label
+        assert row["overlap_count"] == len(row["overlap_providers"]), label
+        assert row["overlap_providers"] == sorted(set(row["overlap_providers"])), label
+
+        # benchmark 字段只在 on_demand 上存在
+        if row["market"] != "on_demand":
+            assert row["benchmark_id"] is None, label
+            assert row["ext_benchmark_median"] is None, label
 
 
 def test_coverage_priority_puts_own_thin_first():
