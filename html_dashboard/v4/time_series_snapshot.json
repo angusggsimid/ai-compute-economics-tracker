@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-11-20T15:13:00Z",
+    "generatedAt": "2026-11-20T15:18:32Z",
     "minDate": "2025-11-24",
     "maxDate": "2026-11-19",
     "basisCommonStart": {
@@ -121,7 +121,7 @@
     "landscapeAsOf": "2026-11-19",
     "methodologyVersion": "2026-11-04.1",
     "executiveSummary": {
-      "generatedAt": "2026-11-20T15:13:00Z",
+      "generatedAt": "2026-11-20T15:18:32Z",
       "macroStance": "现货偏紧，但资本开支指引不是单边上修",
       "stanceLevel": "intensifying",
       "coreNarrative": "供给价格长窗口仍偏紧。指引里同时有上移和下移，不能写成两套时钟同向上修。",
@@ -30851,7 +30851,7 @@
       {
         "date": "2026-11-20",
         "series": "gpuperhour",
-        "value": 222
+        "value": 225
       },
       {
         "date": "2026-11-20",
@@ -30861,7 +30861,7 @@
       {
         "date": "2026-11-20",
         "series": "vast",
-        "value": 32
+        "value": 30
       }
     ]
   },
@@ -31028,7 +31028,7 @@
         "https://api.runpod.io/graphql"
       ],
       "url": "https://api.gpuindexes.com/api/offers",
-      "sha256": "sha256:54e9b319b8d55207a5f320a2eed99bcb1405cbbd313d55ede279d8581ebe8465 sha256:0e8ff5e35e08d77a2400cbe4d9aa35bc7884f1859ffd00dfb57ac27912e9220c sha256:2da4af26ea7294af765046cdfc3a6e8de77d6f8192aee1fff46bced39b83b688",
+      "sha256": "sha256:75e73274bf08ed42e996b099a9c7cc19f1c627056ba7dfb95922bc8b17c49d2c sha256:4f0466b658bd12870500de1866df226f676adbe1bc551f36c3aa86bc6dc14bc1 sha256:760ffbc89c46558e20c9cfbe1cda573acc0b91de6f12801abf2d18e6b94c21c6",
       "label": "GPU 订单簿逐源观测",
       "definition": "gpuperhour/vast 为逐条报价 offers、runpod 为型号挂牌 types，单位语义不同故分序列展示不合并。时点观测，<10 有效日只画点不连线。"
     },
