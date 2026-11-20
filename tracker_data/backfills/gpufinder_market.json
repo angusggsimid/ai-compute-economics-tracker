@@ -1,13 +1,14 @@
 {
-  "fetchedAt": "2026-10-31T05:38:00Z",
+  "fetchedAt": "2026-11-20T15:12:55Z",
   "lastSuccessAt": "2026-10-31T05:38:00Z",
-  "refreshStatus": "fresh",
+  "refreshStatus": "failed",
   "publishable": true,
   "attribution": "Data by GPU Finder (gpufinder.dev), public read-only API; attribution required.",
   "sources": {
     "/availability": {
       "url": "https://gpufinder.dev/api/v1/availability?gpu=h100",
-      "sha256": "sha256:9e178ab9703d814b4af8cd592f991863db128803989c82f0700995a3a6bd10e2"
+      "sha256": "sha256:9e178ab9703d814b4af8cd592f991863db128803989c82f0700995a3a6bd10e2",
+      "carriedFrom": "2026-10-31T05:38:00Z"
     },
     "/gpus": {
       "url": "https://gpufinder.dev/api/v1/gpus",
@@ -6811,6 +6812,24 @@
           39.436615555555555
         ]
       }
+    },
+    {
+      "date": "2026-11-20",
+      "gpu": "B200",
+      "snapshotError": "HTTP Error 429: Too Many Requests",
+      "availabilityError": "HTTP Error 429: Too Many Requests"
+    },
+    {
+      "date": "2026-11-20",
+      "gpu": "H100",
+      "snapshotError": "HTTP Error 429: Too Many Requests",
+      "availabilityError": "HTTP Error 429: Too Many Requests"
+    },
+    {
+      "date": "2026-11-20",
+      "gpu": "H200",
+      "snapshotError": "HTTP Error 429: Too Many Requests",
+      "availabilityError": "HTTP Error 429: Too Many Requests"
     }
   ],
   "monthlyHistory": [
@@ -8110,7 +8129,58 @@
       "spotPrice": null
     }
   ],
-  "quality": [],
+  "quality": [
+    {
+      "source": "gpufinder:/gpus",
+      "status": "failed",
+      "message": "HTTP Error 429: Too Many Requests"
+    },
+    {
+      "source": "gpufinder:/snapshot?gpu=h100",
+      "status": "failed",
+      "message": "HTTP Error 429: Too Many Requests"
+    },
+    {
+      "source": "gpufinder:/availability?gpu=h100",
+      "status": "failed",
+      "message": "HTTP Error 429: Too Many Requests"
+    },
+    {
+      "source": "gpufinder:/history?gpu=h100",
+      "status": "failed",
+      "message": "HTTP Error 429: Too Many Requests"
+    },
+    {
+      "source": "gpufinder:/snapshot?gpu=h200",
+      "status": "failed",
+      "message": "HTTP Error 429: Too Many Requests"
+    },
+    {
+      "source": "gpufinder:/availability?gpu=h200",
+      "status": "failed",
+      "message": "HTTP Error 429: Too Many Requests"
+    },
+    {
+      "source": "gpufinder:/history?gpu=h200",
+      "status": "failed",
+      "message": "HTTP Error 429: Too Many Requests"
+    },
+    {
+      "source": "gpufinder:/snapshot?gpu=b200",
+      "status": "failed",
+      "message": "HTTP Error 429: Too Many Requests"
+    },
+    {
+      "source": "gpufinder:/availability?gpu=b200",
+      "status": "failed",
+      "message": "HTTP Error 429: Too Many Requests"
+    },
+    {
+      "source": "gpufinder:/history?gpu=b200",
+      "status": "failed",
+      "message": "HTTP Error 429: Too Many Requests"
+    }
+  ],
   "blocking": false,
   "notes": [
     "availabilityPct = Σavailable/Σtotal（最新一日，7 天滚动窗口，向前积累）。",

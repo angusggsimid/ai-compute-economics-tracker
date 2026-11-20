@@ -1,7 +1,7 @@
 {
- "generated_at": "2026-11-06",
- "as_of": "2026-10-29",
- "data_age_days": 8,
+ "generated_at": "2026-11-20",
+ "as_of": "2026-11-19",
+ "data_age_days": 1,
  "methodology_version": "2026-11-04.1",
  "external": {
   "source": "gpueconomy",
@@ -17,7 +17,7 @@
   "cards": 11,
   "own_providers": 37,
   "external_providers": 121,
-  "own_quotes": 238,
+  "own_quotes": 239,
   "external_quotes": 1399
  },
  "markets": [
@@ -77,26 +77,26 @@
    "name": "H100 80GB",
    "vram_gb": 80,
    "family": "Hopper",
-   "as_of": "2026-10-29",
+   "as_of": "2026-11-19",
    "status": "live",
-   "median": 3.63645,
-   "p25": 2.8675,
-   "p75": 4.4775,
+   "median": 3.49,
+   "p25": 2.95,
+   "p75": 5.0445,
    "cheapest": 1.8,
    "cheapest_provider": "Hyper.ai",
-   "provider_count": 24,
-   "change_7d_pct": 6.85,
+   "provider_count": 25,
+   "change_7d_pct": -4.03,
    "weekly_index": {
-    "weekStart": "2026-10-26",
-    "isoWeek": "2026-W44",
+    "weekStart": "2026-11-16",
+    "isoWeek": "2026-W47",
     "vintage": "provisional",
     "status": "published",
-    "median": 3.63645,
-    "p25": 2.8675,
-    "p75": 4.4775,
-    "providerCount": 24,
-    "index": 111.667,
-    "linkPairs": 24,
+    "median": 3.49,
+    "p25": 2.95,
+    "p75": 5.0445,
+    "providerCount": 25,
+    "index": 111.5955,
+    "linkPairs": 22,
     "withheldReason": null,
     "ageDays": 3
    },
@@ -106,45 +106,45 @@
      "status": "live",
      "risk": "low",
      "price_scope": "rate_card",
-     "median": 3.63645,
-     "p25": 2.8675,
-     "p75": 4.4775,
+     "median": 3.49,
+     "p25": 2.95,
+     "p75": 5.0445,
      "cheapest": 1.8,
      "cheapest_provider": "Hyper.ai",
-     "provider_count": 24,
+     "provider_count": 25,
      "thin": false,
-     "date": "2026-10-29",
-     "change_7d_pct": 6.85
+     "date": "2026-11-19",
+     "change_7d_pct": -4.03
     },
     "spot": {
      "label": "Spot",
      "status": "live",
      "risk": "high",
      "price_scope": "rate_card",
-     "median": 2.27,
-     "p25": 1.99,
-     "p75": 2.79,
-     "cheapest": 0.94,
-     "cheapest_provider": "Prime Intellect",
-     "provider_count": 11,
+     "median": 2.3,
+     "p25": 1.977037,
+     "p75": 3.9904,
+     "cheapest": 1.418336,
+     "cheapest_provider": "Azure",
+     "provider_count": 9,
      "thin": false,
-     "date": "2026-10-29",
-     "change_7d_pct": 6.97
+     "date": "2026-11-19",
+     "change_7d_pct": 1.32
     },
     "reserved": {
      "label": "Reserved",
      "status": "live",
      "risk": "low",
      "price_scope": "rate_card",
-     "median": 2.235,
+     "median": 1.839446,
      "p25": null,
      "p75": null,
      "cheapest": 1.179452,
      "cheapest_provider": "Latitude.sh",
-     "provider_count": 3,
+     "provider_count": 2,
      "thin": true,
-     "date": "2026-10-29",
-     "change_7d_pct": 0.0
+     "date": "2026-11-19",
+     "change_7d_pct": -17.7
     },
     "community": {
      "label": "Community",
@@ -158,7 +158,7 @@
      "cheapest_provider": "RunPod",
      "provider_count": 1,
      "thin": true,
-     "date": "2026-10-29",
+     "date": "2026-11-19",
      "change_7d_pct": 0.0
     },
     "marketplace": {
@@ -166,30 +166,30 @@
      "status": "live",
      "risk": "high",
      "price_scope": "marketplace_floor",
-     "median": 3.375,
+     "median": 1.9,
      "p25": null,
      "p75": null,
-     "cheapest": 3.0,
+     "cheapest": 1.9,
      "cheapest_provider": "Lium",
      "provider_count": 1,
      "thin": true,
-     "date": "2026-10-29",
-     "change_7d_pct": 60.71
+     "date": "2026-11-19",
+     "change_7d_pct": -43.7
     },
     "serverless": {
      "label": "Serverless",
      "status": "live",
      "risk": "medium",
      "price_scope": "serverless",
-     "median": 4.645,
-     "p25": 3.5361,
-     "p75": 6.2475,
+     "median": 4.2246,
+     "p25": 3.1738,
+     "p75": 5.59,
      "cheapest": 2.5,
      "cheapest_provider": "Koyeb",
-     "provider_count": 8,
+     "provider_count": 6,
      "thin": false,
-     "date": "2026-10-29",
-     "change_7d_pct": 0.0
+     "date": "2026-11-19",
+     "change_7d_pct": -9.05
     }
    }
   },
@@ -199,26 +199,26 @@
    "name": "H200 141GB",
    "vram_gb": 141,
    "family": "Hopper",
-   "as_of": "2026-10-29",
+   "as_of": "2026-11-19",
    "status": "live",
-   "median": 4.97,
-   "p25": 4.065,
-   "p75": 6.19325,
-   "cheapest": 3.14,
-   "cheapest_provider": "Prime Intellect",
-   "provider_count": 16,
-   "change_7d_pct": 8.28,
+   "median": 5.13,
+   "p25": 4.38,
+   "p75": 6.6045,
+   "cheapest": 3.2,
+   "cheapest_provider": "GMI Cloud",
+   "provider_count": 17,
+   "change_7d_pct": 3.22,
    "weekly_index": {
-    "weekStart": "2026-10-26",
-    "isoWeek": "2026-W44",
+    "weekStart": "2026-11-16",
+    "isoWeek": "2026-W47",
     "vintage": "provisional",
     "status": "published",
-    "median": 4.97,
-    "p25": 4.065,
-    "p75": 6.19325,
-    "providerCount": 16,
-    "index": 108.6051,
-    "linkPairs": 16,
+    "median": 5.13,
+    "p25": 4.38,
+    "p75": 6.6045,
+    "providerCount": 17,
+    "index": 110.1707,
+    "linkPairs": 14,
     "withheldReason": null,
     "ageDays": 3
    },
@@ -228,45 +228,45 @@
      "status": "live",
      "risk": "low",
      "price_scope": "rate_card",
-     "median": 4.97,
-     "p25": 4.065,
-     "p75": 6.19325,
-     "cheapest": 3.14,
-     "cheapest_provider": "Prime Intellect",
-     "provider_count": 16,
+     "median": 5.13,
+     "p25": 4.38,
+     "p75": 6.6045,
+     "cheapest": 3.2,
+     "cheapest_provider": "GMI Cloud",
+     "provider_count": 17,
      "thin": false,
-     "date": "2026-10-29",
-     "change_7d_pct": 8.28
+     "date": "2026-11-19",
+     "change_7d_pct": 3.22
     },
     "spot": {
      "label": "Spot",
      "status": "live",
      "risk": "high",
      "price_scope": "rate_card",
-     "median": 3.222,
-     "p25": 2.895,
-     "p75": 5.5065,
-     "cheapest": 2.61,
+     "median": 3.386,
+     "p25": 2.9825,
+     "p75": 5.0525,
+     "cheapest": 2.87,
      "cheapest_provider": "Daytona",
-     "provider_count": 6,
+     "provider_count": 4,
      "thin": false,
-     "date": "2026-10-29",
-     "change_7d_pct": 1.64
+     "date": "2026-11-19",
+     "change_7d_pct": 5.09
     },
     "reserved": {
      "label": "Reserved",
      "status": "live",
      "risk": "low",
      "price_scope": "rate_card",
-     "median": 2.973947,
+     "median": 2.79,
      "p25": null,
      "p75": null,
      "cheapest": 2.79,
      "cheapest_provider": "Hyperstack",
-     "provider_count": 2,
+     "provider_count": 1,
      "thin": true,
-     "date": "2026-10-29",
-     "change_7d_pct": 0.9
+     "date": "2026-11-19",
+     "change_7d_pct": -6.19
     },
     "community": {
      "label": "Community",
@@ -280,7 +280,7 @@
      "cheapest_provider": "RunPod",
      "provider_count": 1,
      "thin": true,
-     "date": "2026-10-29",
+     "date": "2026-11-19",
      "change_7d_pct": 0.0
     },
     "marketplace": {
@@ -288,30 +288,30 @@
      "status": "live",
      "risk": "high",
      "price_scope": "marketplace_floor",
-     "median": 4.84,
+     "median": 4.375,
      "p25": null,
      "p75": null,
-     "cheapest": 3.75,
+     "cheapest": 3.8,
      "cheapest_provider": "Lium",
      "provider_count": 1,
      "thin": true,
-     "date": "2026-10-29",
-     "change_7d_pct": -1.22
+     "date": "2026-11-19",
+     "change_7d_pct": -9.61
     },
     "serverless": {
      "label": "Serverless",
      "status": "live",
      "risk": "medium",
      "price_scope": "serverless",
-     "median": 5.49,
-     "p25": 4.1976,
-     "p75": 6.0,
+     "median": 5.0148,
+     "p25": 3.8982,
+     "p75": 6.2475,
      "cheapest": 3.0,
      "cheapest_provider": "Koyeb",
-     "provider_count": 7,
+     "provider_count": 6,
      "thin": false,
-     "date": "2026-10-29",
-     "change_7d_pct": 0.0
+     "date": "2026-11-19",
+     "change_7d_pct": -8.66
     }
    }
   },
@@ -321,26 +321,26 @@
    "name": "B200 192GB",
    "vram_gb": 192,
    "family": "Blackwell",
-   "as_of": "2026-10-29",
+   "as_of": "2026-11-19",
    "status": "live",
-   "median": 8.09,
-   "p25": 6.3125,
-   "p75": 8.73575,
-   "cheapest": 3.49,
-   "cheapest_provider": "Prime Intellect",
-   "provider_count": 12,
-   "change_7d_pct": -1.22,
+   "median": 8.5,
+   "p25": 7.49,
+   "p75": 10.25,
+   "cheapest": 5.0,
+   "cheapest_provider": "GMI Cloud",
+   "provider_count": 11,
+   "change_7d_pct": 5.07,
    "weekly_index": {
-    "weekStart": "2026-10-26",
-    "isoWeek": "2026-W44",
+    "weekStart": "2026-11-16",
+    "isoWeek": "2026-W47",
     "vintage": "provisional",
     "status": "published",
-    "median": 8.09,
-    "p25": 6.3125,
-    "p75": 8.73575,
-    "providerCount": 12,
-    "index": 109.017,
-    "linkPairs": 12,
+    "median": 8.5,
+    "p25": 7.49,
+    "p75": 10.25,
+    "providerCount": 11,
+    "index": 112.8477,
+    "linkPairs": 10,
     "withheldReason": null,
     "ageDays": 3
    },
@@ -350,45 +350,45 @@
      "status": "live",
      "risk": "low",
      "price_scope": "rate_card",
-     "median": 8.09,
-     "p25": 6.3125,
-     "p75": 8.73575,
-     "cheapest": 3.49,
-     "cheapest_provider": "Prime Intellect",
-     "provider_count": 12,
+     "median": 8.5,
+     "p25": 7.49,
+     "p75": 10.25,
+     "cheapest": 5.0,
+     "cheapest_provider": "GMI Cloud",
+     "provider_count": 11,
      "thin": false,
-     "date": "2026-10-29",
-     "change_7d_pct": -1.22
+     "date": "2026-11-19",
+     "change_7d_pct": 5.07
     },
     "spot": {
      "label": "Spot",
      "status": "live",
      "risk": "high",
      "price_scope": "rate_card",
-     "median": 4.2405,
-     "p25": 3.4925,
-     "p75": 5.10065,
+     "median": 4.898,
+     "p25": 3.75,
+     "p75": 5.3348,
      "cheapest": 3.2,
      "cheapest_provider": "Vultr",
-     "provider_count": 6,
+     "provider_count": 5,
      "thin": false,
-     "date": "2026-10-29",
-     "change_7d_pct": 3.68
+     "date": "2026-11-19",
+     "change_7d_pct": 15.51
     },
     "reserved": {
      "label": "Reserved",
      "status": "live",
      "risk": "low",
      "price_scope": "rate_card",
-     "median": 4.865789,
+     "median": 5.1,
      "p25": null,
      "p75": null,
-     "cheapest": 4.0,
-     "cheapest_provider": "Impossible Cloud",
-     "provider_count": 2,
+     "cheapest": 5.1,
+     "cheapest_provider": "Hyperstack",
+     "provider_count": 1,
      "thin": true,
-     "date": "2026-10-29",
-     "change_7d_pct": -4.59
+     "date": "2026-11-19",
+     "change_7d_pct": 4.81
     },
     "community": {
      "label": "Community",
@@ -402,12 +402,12 @@
      "cheapest_provider": "RunPod",
      "provider_count": 1,
      "thin": true,
-     "date": "2026-10-29",
+     "date": "2026-11-19",
      "change_7d_pct": 0.0
     },
     "marketplace": {
      "label": "Marketplace floor",
-     "status": "live",
+     "status": "stopped",
      "risk": "high",
      "price_scope": "marketplace_floor",
      "median": 6.05,
@@ -418,22 +418,22 @@
      "provider_count": 1,
      "thin": true,
      "date": "2026-10-29",
-     "change_7d_pct": 0.83
+     "change_7d_pct": 0.0
     },
     "serverless": {
      "label": "Serverless",
      "status": "live",
      "risk": "medium",
      "price_scope": "serverless",
-     "median": 8.64,
-     "p25": 6.012,
-     "p75": 9.98,
+     "median": 6.2496,
+     "p25": 5.756,
+     "p75": 9.89,
      "cheapest": 5.5,
      "cheapest_provider": "Koyeb",
-     "provider_count": 7,
+     "provider_count": 5,
      "thin": false,
-     "date": "2026-10-29",
-     "change_7d_pct": 0.0
+     "date": "2026-11-19",
+     "change_7d_pct": -27.67
     }
    }
   },
@@ -443,26 +443,26 @@
    "name": "B300 288GB",
    "vram_gb": 288,
    "family": "Blackwell",
-   "as_of": "2026-10-29",
+   "as_of": "2026-11-19",
    "status": "live",
-   "median": 9.245,
-   "p25": 7.63745,
-   "p75": 11.86125,
-   "cheapest": 4.99,
-   "cheapest_provider": "Prime Intellect",
+   "median": 10.345,
+   "p25": 8.9675,
+   "p75": 15.4375,
+   "cheapest": 7.4,
+   "cheapest_provider": "Hyperstack",
    "provider_count": 12,
-   "change_7d_pct": -2.68,
+   "change_7d_pct": 11.9,
    "weekly_index": {
-    "weekStart": "2026-10-26",
-    "isoWeek": "2026-W44",
+    "weekStart": "2026-11-16",
+    "isoWeek": "2026-W47",
     "vintage": "provisional",
     "status": "published",
-    "median": 9.245,
-    "p25": 7.63745,
-    "p75": 11.86125,
+    "median": 10.345,
+    "p25": 8.9675,
+    "p75": 15.4375,
     "providerCount": 12,
-    "index": 126.0161,
-    "linkPairs": 12,
+    "index": 131.0155,
+    "linkPairs": 9,
     "withheldReason": null,
     "ageDays": 3
    },
@@ -472,45 +472,45 @@
      "status": "live",
      "risk": "low",
      "price_scope": "rate_card",
-     "median": 9.245,
-     "p25": 7.63745,
-     "p75": 11.86125,
-     "cheapest": 4.99,
-     "cheapest_provider": "Prime Intellect",
+     "median": 10.345,
+     "p25": 8.9675,
+     "p75": 15.4375,
+     "cheapest": 7.4,
+     "cheapest_provider": "Hyperstack",
      "provider_count": 12,
      "thin": false,
-     "date": "2026-10-29",
-     "change_7d_pct": -2.68
+     "date": "2026-11-19",
+     "change_7d_pct": 11.9
     },
     "spot": {
      "label": "Spot",
      "status": "live",
      "risk": "high",
      "price_scope": "rate_card",
-     "median": 5.5,
-     "p25": 4.535,
-     "p75": 5.94075,
-     "cheapest": 4.0,
-     "cheapest_provider": "Lium",
-     "provider_count": 5,
+     "median": 6.93725,
+     "p25": 5.596125,
+     "p75": 9.55,
+     "cheapest": 5.17,
+     "cheapest_provider": "Daytona",
+     "provider_count": 4,
      "thin": false,
-     "date": "2026-10-29",
-     "change_7d_pct": -6.22
+     "date": "2026-11-19",
+     "change_7d_pct": 26.13
     },
     "reserved": {
      "label": "Reserved",
      "status": "live",
      "risk": "low",
      "price_scope": "rate_card",
-     "median": 6.239726,
+     "median": 6.54764,
      "p25": null,
      "p75": null,
-     "cheapest": 4.736842,
-     "cheapest_provider": "Impossible Cloud",
-     "provider_count": 3,
+     "cheapest": 5.6,
+     "cheapest_provider": "Latitude.sh",
+     "provider_count": 2,
      "thin": true,
-     "date": "2026-10-29",
-     "change_7d_pct": 0.0
+     "date": "2026-11-19",
+     "change_7d_pct": 4.93
     },
     "community": {
      "label": "Community",
@@ -524,7 +524,7 @@
      "cheapest_provider": "RunPod",
      "provider_count": 1,
      "thin": true,
-     "date": "2026-10-29",
+     "date": "2026-11-19",
      "change_7d_pct": 0.0
     },
     "marketplace": {
@@ -532,30 +532,30 @@
      "status": "live",
      "risk": "high",
      "price_scope": "marketplace_floor",
-     "median": 8.5,
+     "median": 11.9,
      "p25": null,
      "p75": null,
-     "cheapest": 8.0,
+     "cheapest": 11.9,
      "cheapest_provider": "Lium",
      "provider_count": 1,
      "thin": true,
-     "date": "2026-10-29",
-     "change_7d_pct": -8.11
+     "date": "2026-11-19",
+     "change_7d_pct": 40.0
     },
     "serverless": {
      "label": "Serverless",
      "status": "live",
      "risk": "medium",
      "price_scope": "serverless",
-     "median": 12.99,
+     "median": 11.99,
      "p25": null,
      "p75": null,
      "cheapest": 7.0992,
      "cheapest_provider": "Modal",
      "provider_count": 3,
      "thin": true,
-     "date": "2026-10-29",
-     "change_7d_pct": 0.0
+     "date": "2026-11-19",
+     "change_7d_pct": -7.7
     }
    }
   },
@@ -565,25 +565,25 @@
    "name": "A100 80GB",
    "vram_gb": 80,
    "family": "Ampere",
-   "as_of": "2026-10-29",
+   "as_of": "2026-11-19",
    "status": "live",
-   "median": 2.15,
-   "p25": 1.48,
-   "p75": 3.07,
-   "cheapest": 1.09,
-   "cheapest_provider": "Thunder Compute",
-   "provider_count": 15,
-   "change_7d_pct": 8.14,
+   "median": 2.145,
+   "p25": 1.46375,
+   "p75": 3.074448,
+   "cheapest": 0.89,
+   "cheapest_provider": "JarvisLabs",
+   "provider_count": 18,
+   "change_7d_pct": -0.23,
    "weekly_index": {
-    "weekStart": "2026-10-26",
-    "isoWeek": "2026-W44",
+    "weekStart": "2026-11-16",
+    "isoWeek": "2026-W47",
     "vintage": "provisional",
     "status": "published",
-    "median": 2.15,
-    "p25": 1.48,
-    "p75": 3.07,
-    "providerCount": 15,
-    "index": 99.2987,
+    "median": 2.145,
+    "p25": 1.46375,
+    "p75": 3.074448,
+    "providerCount": 18,
+    "index": 101.3649,
     "linkPairs": 15,
     "withheldReason": null,
     "ageDays": 3
@@ -594,15 +594,15 @@
      "status": "live",
      "risk": "low",
      "price_scope": "rate_card",
-     "median": 2.15,
-     "p25": 1.48,
-     "p75": 3.07,
-     "cheapest": 1.09,
-     "cheapest_provider": "Thunder Compute",
-     "provider_count": 15,
+     "median": 2.145,
+     "p25": 1.46375,
+     "p75": 3.074448,
+     "cheapest": 0.89,
+     "cheapest_provider": "JarvisLabs",
+     "provider_count": 18,
      "thin": false,
-     "date": "2026-10-29",
-     "change_7d_pct": 8.14
+     "date": "2026-11-19",
+     "change_7d_pct": -0.23
     },
     "spot": {
      "label": "Spot",
@@ -610,14 +610,14 @@
      "risk": "high",
      "price_scope": "rate_card",
      "median": 1.19,
-     "p25": 0.846405,
-     "p75": 1.823944,
+     "p25": 0.888405,
+     "p75": 1.820919,
      "cheapest": 0.67877,
      "cheapest_provider": "Azure",
      "provider_count": 5,
      "thin": false,
-     "date": "2026-10-29",
-     "change_7d_pct": -15.7
+     "date": "2026-11-19",
+     "change_7d_pct": 0.0
     },
     "reserved": {
      "label": "Reserved",
@@ -631,7 +631,7 @@
      "cheapest_provider": "Hyperstack",
      "provider_count": 1,
      "thin": true,
-     "date": "2026-10-29",
+     "date": "2026-11-19",
      "change_7d_pct": 0.0
     },
     "community": {
@@ -646,12 +646,12 @@
      "cheapest_provider": "RunPod",
      "provider_count": 1,
      "thin": true,
-     "date": "2026-10-29",
+     "date": "2026-11-19",
      "change_7d_pct": 0.0
     },
     "marketplace": {
      "label": "Marketplace floor",
-     "status": "unconfirmed",
+     "status": "stopped",
      "risk": "high",
      "price_scope": "marketplace_floor",
      "median": 1.68,
@@ -662,22 +662,22 @@
      "provider_count": 1,
      "thin": true,
      "date": "2026-10-25",
-     "change_7d_pct": 44.21
+     "change_7d_pct": 0.0
     },
     "serverless": {
      "label": "Serverless",
      "status": "live",
      "risk": "medium",
      "price_scope": "serverless",
-     "median": 2.5093,
-     "p25": 2.00505,
-     "p75": 4.26,
+     "median": 2.2986,
+     "p25": 1.9617,
+     "p75": 4.015,
      "cheapest": 1.6,
      "cheapest_provider": "Koyeb",
-     "provider_count": 6,
+     "provider_count": 5,
      "thin": false,
-     "date": "2026-10-29",
-     "change_7d_pct": 0.0
+     "date": "2026-11-19",
+     "change_7d_pct": -8.4
     }
    }
   },
@@ -687,25 +687,25 @@
    "name": "L40S 48GB",
    "vram_gb": 48,
    "family": "Ada",
-   "as_of": "2026-10-29",
+   "as_of": "2026-11-19",
    "status": "live",
-   "median": 1.60325,
-   "p25": 1.155,
-   "p75": 1.8615,
-   "cheapest": 0.96,
-   "cheapest_provider": "Spheron",
-   "provider_count": 12,
-   "change_7d_pct": -0.46,
+   "median": 1.5911,
+   "p25": 1.015,
+   "p75": 2.05675,
+   "cheapest": 0.55,
+   "cheapest_provider": "Runcrate",
+   "provider_count": 16,
+   "change_7d_pct": -0.76,
    "weekly_index": {
-    "weekStart": "2026-10-26",
-    "isoWeek": "2026-W44",
+    "weekStart": "2026-11-16",
+    "isoWeek": "2026-W47",
     "vintage": "provisional",
     "status": "published",
-    "median": 1.60325,
-    "p25": 1.155,
-    "p75": 1.8615,
-    "providerCount": 12,
-    "index": 101.1696,
+    "median": 1.5911,
+    "p25": 1.015,
+    "p75": 2.05675,
+    "providerCount": 16,
+    "index": 101.8853,
     "linkPairs": 12,
     "withheldReason": null,
     "ageDays": 3
@@ -716,30 +716,30 @@
      "status": "live",
      "risk": "low",
      "price_scope": "rate_card",
-     "median": 1.60325,
-     "p25": 1.155,
-     "p75": 1.8615,
-     "cheapest": 0.96,
-     "cheapest_provider": "Spheron",
-     "provider_count": 12,
+     "median": 1.5911,
+     "p25": 1.015,
+     "p75": 2.05675,
+     "cheapest": 0.55,
+     "cheapest_provider": "Runcrate",
+     "provider_count": 16,
      "thin": false,
-     "date": "2026-10-29",
-     "change_7d_pct": -0.46
+     "date": "2026-11-19",
+     "change_7d_pct": -0.76
     },
     "spot": {
      "label": "Spot",
      "status": "live",
      "risk": "high",
      "price_scope": "rate_card",
-     "median": 1.0605,
+     "median": 1.14,
      "p25": null,
      "p75": null,
-     "cheapest": 0.941,
+     "cheapest": 1.04,
      "cheapest_provider": "Verda",
-     "provider_count": 2,
+     "provider_count": 3,
      "thin": true,
-     "date": "2026-10-29",
-     "change_7d_pct": 1.0
+     "date": "2026-11-19",
+     "change_7d_pct": 7.5
     },
     "reserved": {
      "label": "Reserved",
@@ -768,7 +768,7 @@
      "cheapest_provider": "RunPod",
      "provider_count": 1,
      "thin": true,
-     "date": "2026-10-29",
+     "date": "2026-11-19",
      "change_7d_pct": 0.0
     },
     "marketplace": {
@@ -776,15 +776,15 @@
      "status": "live",
      "risk": "high",
      "price_scope": "marketplace_floor",
-     "median": 0.38,
+     "median": 0.55,
      "p25": null,
      "p75": null,
      "cheapest": 0.38,
      "cheapest_provider": "Lium",
      "provider_count": 1,
      "thin": true,
-     "date": "2026-10-28",
-     "change_7d_pct": 0.0
+     "date": "2026-11-19",
+     "change_7d_pct": 44.74
     },
     "serverless": {
      "label": "Serverless",
@@ -798,7 +798,7 @@
      "cheapest_provider": "Koyeb",
      "provider_count": 4,
      "thin": false,
-     "date": "2026-10-29",
+     "date": "2026-11-19",
      "change_7d_pct": 0.0
     }
    }
@@ -809,25 +809,25 @@
    "name": "RTX PRO 6000 96GB",
    "vram_gb": 96,
    "family": "Blackwell",
-   "as_of": "2026-10-29",
+   "as_of": "2026-11-19",
    "status": "live",
-   "median": 2.35,
-   "p25": 1.8,
-   "p75": 2.619,
+   "median": 2.4,
+   "p25": 1.8375,
+   "p75": 3.039,
    "cheapest": 0.8,
    "cheapest_provider": "Hyper.ai",
-   "provider_count": 11,
-   "change_7d_pct": 3.52,
+   "provider_count": 14,
+   "change_7d_pct": 2.13,
    "weekly_index": {
-    "weekStart": "2026-10-26",
-    "isoWeek": "2026-W44",
+    "weekStart": "2026-11-16",
+    "isoWeek": "2026-W47",
     "vintage": "provisional",
     "status": "published",
-    "median": 2.35,
-    "p25": 1.8,
-    "p75": 2.619,
-    "providerCount": 11,
-    "index": 107.3022,
+    "median": 2.4,
+    "p25": 1.8375,
+    "p75": 3.039,
+    "providerCount": 14,
+    "index": 110.4135,
     "linkPairs": 11,
     "withheldReason": null,
     "ageDays": 3
@@ -838,45 +838,45 @@
      "status": "live",
      "risk": "low",
      "price_scope": "rate_card",
-     "median": 2.35,
-     "p25": 1.8,
-     "p75": 2.619,
+     "median": 2.4,
+     "p25": 1.8375,
+     "p75": 3.039,
      "cheapest": 0.8,
      "cheapest_provider": "Hyper.ai",
-     "provider_count": 11,
+     "provider_count": 14,
      "thin": false,
-     "date": "2026-10-29",
-     "change_7d_pct": 3.52
+     "date": "2026-11-19",
+     "change_7d_pct": 2.13
     },
     "spot": {
      "label": "Spot",
      "status": "live",
      "risk": "high",
      "price_scope": "rate_card",
-     "median": 1.54,
-     "p25": 0.8689,
-     "p75": 1.865,
-     "cheapest": 0.4278,
+     "median": 1.53,
+     "p25": 0.94285,
+     "p75": 1.9125,
+     "cheapest": 0.4247,
      "cheapest_provider": "Google Cloud",
      "provider_count": 5,
      "thin": false,
-     "date": "2026-10-29",
-     "change_7d_pct": 38.74
+     "date": "2026-11-19",
+     "change_7d_pct": -0.65
     },
     "reserved": {
      "label": "Reserved",
      "status": "live",
      "risk": "low",
      "price_scope": "rate_card",
-     "median": 1.3,
-     "p25": null,
-     "p75": null,
+     "median": 1.47125,
+     "p25": 1.234247,
+     "p75": 2.33875,
      "cheapest": 1.212329,
      "cheapest_provider": "Synteq",
-     "provider_count": 3,
-     "thin": true,
-     "date": "2026-10-29",
-     "change_7d_pct": 0.0
+     "provider_count": 4,
+     "thin": false,
+     "date": "2026-11-19",
+     "change_7d_pct": 13.17
     },
     "community": {
      "label": "Community",
@@ -890,7 +890,7 @@
      "cheapest_provider": "RunPod",
      "provider_count": 1,
      "thin": true,
-     "date": "2026-10-29",
+     "date": "2026-11-19",
      "change_7d_pct": 0.0
     },
     "marketplace": {
@@ -898,15 +898,15 @@
      "status": "live",
      "risk": "high",
      "price_scope": "marketplace_floor",
-     "median": 1.995,
+     "median": 1.82,
      "p25": null,
      "p75": null,
-     "cheapest": 1.99,
+     "cheapest": 1.7,
      "cheapest_provider": "Lium",
      "provider_count": 1,
      "thin": true,
-     "date": "2026-10-29",
-     "change_7d_pct": -6.78
+     "date": "2026-11-19",
+     "change_7d_pct": -8.77
     },
     "serverless": {
      "label": "Serverless",
@@ -915,12 +915,12 @@
      "price_scope": "serverless",
      "median": 3.0312,
      "p25": 2.3492,
-     "p75": 3.745,
+     "p75": 3.845,
      "cheapest": 2.2,
      "cheapest_provider": "Koyeb",
      "provider_count": 5,
      "thin": false,
-     "date": "2026-10-29",
+     "date": "2026-11-19",
      "change_7d_pct": 0.0
     }
    }
@@ -931,25 +931,25 @@
    "name": "RTX 4090 24GB",
    "vram_gb": 24,
    "family": "Ada",
-   "as_of": "2026-10-29",
+   "as_of": "2026-11-19",
    "status": "live",
-   "median": 0.735,
-   "p25": 0.4075,
-   "p75": 0.965,
+   "median": 0.52,
+   "p25": 0.415,
+   "p75": 0.94,
    "cheapest": 0.35,
    "cheapest_provider": "TensorDock",
-   "provider_count": 4,
-   "change_7d_pct": 0.0,
+   "provider_count": 5,
+   "change_7d_pct": -29.25,
    "weekly_index": {
-    "weekStart": "2026-10-26",
-    "isoWeek": "2026-W44",
+    "weekStart": "2026-11-16",
+    "isoWeek": "2026-W47",
     "vintage": "provisional",
     "status": "thin",
-    "median": 0.735,
-    "p25": 0.4075,
-    "p75": 0.965,
-    "providerCount": 4,
-    "index": 104.8448,
+    "median": 0.52,
+    "p25": 0.415,
+    "p75": 0.94,
+    "providerCount": 5,
+    "index": 100.0,
     "linkPairs": 4,
     "withheldReason": null,
     "ageDays": 3
@@ -960,30 +960,30 @@
      "status": "live",
      "risk": "low",
      "price_scope": "rate_card",
-     "median": 0.735,
-     "p25": 0.4075,
-     "p75": 0.965,
+     "median": 0.52,
+     "p25": 0.415,
+     "p75": 0.94,
      "cheapest": 0.35,
      "cheapest_provider": "TensorDock",
-     "provider_count": 4,
+     "provider_count": 5,
      "thin": false,
-     "date": "2026-10-29",
-     "change_7d_pct": 0.0
+     "date": "2026-11-19",
+     "change_7d_pct": -29.25
     },
     "spot": {
      "label": "Spot",
      "status": "live",
      "risk": "high",
      "price_scope": "rate_card",
-     "median": 0.61,
+     "median": 0.5175,
      "p25": null,
      "p75": null,
-     "cheapest": 0.54,
+     "cheapest": 0.38,
      "cheapest_provider": "Lium",
      "provider_count": 2,
      "thin": true,
-     "date": "2026-10-29",
-     "change_7d_pct": 7.02
+     "date": "2026-11-19",
+     "change_7d_pct": -15.16
     },
     "reserved": {
      "label": "Reserved",
@@ -1012,7 +1012,7 @@
      "cheapest_provider": "Salad",
      "provider_count": 2,
      "thin": true,
-     "date": "2026-10-29",
+     "date": "2026-11-19",
      "change_7d_pct": 0.0
     },
     "marketplace": {
@@ -1020,30 +1020,30 @@
      "status": "live",
      "risk": "high",
      "price_scope": "marketplace_floor",
-     "median": 0.675,
+     "median": 0.435,
      "p25": null,
      "p75": null,
-     "cheapest": 0.45,
+     "cheapest": 0.35,
      "cheapest_provider": "Lium",
      "provider_count": 1,
      "thin": true,
-     "date": "2026-10-29",
-     "change_7d_pct": -10.0
+     "date": "2026-11-19",
+     "change_7d_pct": -35.56
     },
     "serverless": {
      "label": "Serverless",
      "status": "live",
      "risk": "medium",
      "price_scope": "serverless",
-     "median": 1.1,
+     "median": 1.34,
      "p25": null,
      "p75": null,
-     "cheapest": 1.1,
+     "cheapest": 1.34,
      "cheapest_provider": "RunPod",
      "provider_count": 1,
      "thin": true,
-     "date": "2026-10-29",
-     "change_7d_pct": 0.0
+     "date": "2026-11-19",
+     "change_7d_pct": 21.82
     }
    }
   },
@@ -1053,25 +1053,25 @@
    "name": "RTX 5090 32GB",
    "vram_gb": 32,
    "family": "Blackwell",
-   "as_of": "2026-10-29",
+   "as_of": "2026-11-19",
    "status": "live",
-   "median": 0.935,
-   "p25": 0.4325,
-   "p75": 1.265,
+   "median": 1.09,
+   "p25": 0.6275,
+   "p75": 1.51,
    "cheapest": 0.35,
    "cheapest_provider": "Hyper.ai",
-   "provider_count": 4,
-   "change_7d_pct": 0.0,
+   "provider_count": 6,
+   "change_7d_pct": 16.58,
    "weekly_index": {
-    "weekStart": "2026-10-26",
-    "isoWeek": "2026-W44",
+    "weekStart": "2026-11-16",
+    "isoWeek": "2026-W47",
     "vintage": "provisional",
     "status": "thin",
-    "median": 0.935,
-    "p25": 0.4325,
-    "p75": 1.265,
-    "providerCount": 4,
-    "index": 96.6281,
+    "median": 1.09,
+    "p25": 0.6275,
+    "p75": 1.51,
+    "providerCount": 6,
+    "index": 129.3611,
     "linkPairs": 4,
     "withheldReason": null,
     "ageDays": 3
@@ -1082,30 +1082,30 @@
      "status": "live",
      "risk": "low",
      "price_scope": "rate_card",
-     "median": 0.935,
-     "p25": 0.4325,
-     "p75": 1.265,
+     "median": 1.09,
+     "p25": 0.6275,
+     "p75": 1.51,
      "cheapest": 0.35,
      "cheapest_provider": "Hyper.ai",
-     "provider_count": 4,
+     "provider_count": 6,
      "thin": false,
-     "date": "2026-10-29",
-     "change_7d_pct": 0.0
+     "date": "2026-11-19",
+     "change_7d_pct": 16.58
     },
     "spot": {
      "label": "Spot",
      "status": "live",
      "risk": "high",
      "price_scope": "rate_card",
-     "median": 0.795,
+     "median": 0.7075,
      "p25": null,
      "p75": null,
-     "cheapest": 0.69,
+     "cheapest": 0.5,
      "cheapest_provider": "Lium",
      "provider_count": 2,
      "thin": true,
-     "date": "2026-10-29",
-     "change_7d_pct": 7.43
+     "date": "2026-11-19",
+     "change_7d_pct": -11.01
     },
     "reserved": {
      "label": "Reserved",
@@ -1134,7 +1134,7 @@
      "cheapest_provider": "Salad",
      "provider_count": 2,
      "thin": true,
-     "date": "2026-10-29",
+     "date": "2026-11-19",
      "change_7d_pct": 0.0
     },
     "marketplace": {
@@ -1142,30 +1142,30 @@
      "status": "live",
      "risk": "high",
      "price_scope": "marketplace_floor",
-     "median": 0.85,
+     "median": 0.69,
      "p25": null,
      "p75": null,
-     "cheapest": 0.75,
+     "cheapest": 0.5,
      "cheapest_provider": "Lium",
      "provider_count": 1,
      "thin": true,
-     "date": "2026-10-29",
-     "change_7d_pct": -7.61
+     "date": "2026-11-19",
+     "change_7d_pct": -18.82
     },
     "serverless": {
      "label": "Serverless",
      "status": "live",
      "risk": "medium",
      "price_scope": "serverless",
-     "median": 1.58,
+     "median": 1.89,
      "p25": null,
      "p75": null,
-     "cheapest": 1.58,
+     "cheapest": 1.89,
      "cheapest_provider": "RunPod",
      "provider_count": 1,
      "thin": true,
-     "date": "2026-10-29",
-     "change_7d_pct": 0.0
+     "date": "2026-11-19",
+     "change_7d_pct": 19.62
     }
    }
   },
@@ -1175,24 +1175,24 @@
    "name": "MI300X 192GB",
    "vram_gb": 192,
    "family": "CDNA 3",
-   "as_of": "2026-10-29",
+   "as_of": "2026-11-19",
    "status": "live",
-   "median": 2.99,
-   "p25": 2.49,
-   "p75": 3.52,
+   "median": 3.22,
+   "p25": 2.54,
+   "p75": 4.1925,
    "cheapest": 2.39,
    "cheapest_provider": "RunPod",
-   "provider_count": 5,
-   "change_7d_pct": 0.0,
+   "provider_count": 6,
+   "change_7d_pct": 7.69,
    "weekly_index": {
-    "weekStart": "2026-10-26",
-    "isoWeek": "2026-W44",
+    "weekStart": "2026-11-16",
+    "isoWeek": "2026-W47",
     "vintage": "provisional",
     "status": "thin",
-    "median": 2.99,
-    "p25": 2.49,
-    "p75": 3.52,
-    "providerCount": 5,
+    "median": 3.22,
+    "p25": 2.54,
+    "p75": 4.1925,
+    "providerCount": 6,
     "index": 106.8099,
     "linkPairs": 5,
     "withheldReason": null,
@@ -1204,15 +1204,15 @@
      "status": "live",
      "risk": "low",
      "price_scope": "rate_card",
-     "median": 2.99,
-     "p25": 2.49,
-     "p75": 3.52,
+     "median": 3.22,
+     "p25": 2.54,
+     "p75": 4.1925,
      "cheapest": 2.39,
      "cheapest_provider": "RunPod",
-     "provider_count": 5,
+     "provider_count": 6,
      "thin": false,
-     "date": "2026-10-29",
-     "change_7d_pct": 0.0
+     "date": "2026-11-19",
+     "change_7d_pct": 7.69
     },
     "spot": {
      "label": "Spot",
@@ -1297,15 +1297,15 @@
    "name": "GH200 96GB",
    "vram_gb": 96,
    "family": "Hopper",
-   "as_of": "2026-10-29",
+   "as_of": "2026-11-19",
    "status": "live",
    "median": 3.02,
    "p25": null,
    "p75": null,
-   "cheapest": 2.29,
+   "cheapest": 2.59,
    "cheapest_provider": "Lambda",
    "provider_count": 3,
-   "change_7d_pct": 9.82,
+   "change_7d_pct": 0.0,
    "weekly_index": {
     "weekStart": "2026-07-13",
     "isoWeek": "2026-W29",
@@ -1318,7 +1318,7 @@
     "index": 100.0,
     "linkPairs": 4,
     "withheldReason": null,
-    "ageDays": 108
+    "ageDays": 129
    },
    "markets": {
     "on_demand": {
@@ -1329,12 +1329,12 @@
      "median": 3.02,
      "p25": null,
      "p75": null,
-     "cheapest": 2.29,
+     "cheapest": 2.59,
      "cheapest_provider": "Lambda",
      "provider_count": 3,
      "thin": true,
-     "date": "2026-10-29",
-     "change_7d_pct": 9.82
+     "date": "2026-11-19",
+     "change_7d_pct": 0.0
     },
     "spot": {
      "label": "Spot",
@@ -1437,11 +1437,11 @@
      "on_demand",
      "spot"
     ],
-    "quotes": 18,
+    "quotes": 17,
     "cheapest": {
      "card": "RTX 4090",
      "market": "on_demand",
-     "usd_per_gpu_hour": 0.58,
+     "usd_per_gpu_hour": 0.48,
      "source_url": "https://www.spheron.network/pricing/"
     }
    },
@@ -1466,7 +1466,7 @@
      "on_demand",
      "serverless"
     ],
-    "quotes": 26,
+    "quotes": 27,
     "cheapest": {
      "card": "RTX 4090",
      "market": "community",
@@ -1493,12 +1493,88 @@
      "marketplace",
      "spot"
     ],
-    "quotes": 15,
+    "quotes": 14,
+    "cheapest": {
+     "card": "RTX 4090",
+     "market": "marketplace",
+     "usd_per_gpu_hour": 0.35,
+     "source_url": "https://lium.io/api/public/v1/nodes"
+    }
+   },
+   {
+    "id": "daytona",
+    "slug": "own-daytona",
+    "name": "Daytona",
+    "cards": [
+     "B200",
+     "B300",
+     "H100",
+     "H200",
+     "L40S",
+     "RTX 4090",
+     "RTX 5090",
+     "RTX PRO 6000"
+    ],
+    "markets": [
+     "on_demand",
+     "spot"
+    ],
+    "quotes": 16,
+    "cheapest": {
+     "card": "RTX 4090",
+     "market": "spot",
+     "usd_per_gpu_hour": 0.57,
+     "source_url": "https://billing.app.daytona.io/gpu-pricing"
+    }
+   },
+   {
+    "id": "oracle",
+    "slug": "own-oracle",
+    "name": "Oracle Cloud",
+    "cards": [
+     "A100",
+     "B200",
+     "B300",
+     "H100",
+     "H200",
+     "L40S",
+     "MI300X",
+     "RTX PRO 6000"
+    ],
+    "markets": [
+     "on_demand"
+    ],
+    "quotes": 8,
     "cheapest": {
      "card": "L40S",
-     "market": "marketplace",
-     "usd_per_gpu_hour": 0.38,
-     "source_url": "https://lium.io/api/public/v1/nodes"
+     "market": "on_demand",
+     "usd_per_gpu_hour": 3.5,
+     "source_url": "https://apexapps.oracle.com/pls/apex/cetools/api/v1/products/?currencyCode=USD"
+    }
+   },
+   {
+    "id": "runcrate",
+    "slug": "own-runcrate",
+    "name": "Runcrate",
+    "cards": [
+     "A100",
+     "B300",
+     "H100",
+     "H200",
+     "L40S",
+     "RTX 4090",
+     "RTX 5090",
+     "RTX PRO 6000"
+    ],
+    "markets": [
+     "on_demand"
+    ],
+    "quotes": 8,
+    "cheapest": {
+     "card": "RTX 4090",
+     "market": "on_demand",
+     "usd_per_gpu_hour": 0.52,
+     "source_url": "https://www.runcrate.ai/pricing"
     }
    },
    {
@@ -1523,31 +1599,6 @@
      "market": "on_demand",
      "usd_per_gpu_hour": 2.25,
      "source_url": "https://www.coreweave.com/pricing"
-    }
-   },
-   {
-    "id": "daytona",
-    "slug": "own-daytona",
-    "name": "Daytona",
-    "cards": [
-     "B200",
-     "B300",
-     "H100",
-     "H200",
-     "RTX 4090",
-     "RTX 5090",
-     "RTX PRO 6000"
-    ],
-    "markets": [
-     "on_demand",
-     "spot"
-    ],
-    "quotes": 14,
-    "cheapest": {
-     "card": "RTX 4090",
-     "market": "spot",
-     "usd_per_gpu_hour": 0.57,
-     "source_url": "https://billing.app.daytona.io/gpu-pricing"
     }
    },
    {
@@ -1593,9 +1644,9 @@
     ],
     "quotes": 14,
     "cheapest": {
-     "card": "L40S",
+     "card": "A100",
      "market": "spot",
-     "usd_per_gpu_hour": 0.941,
+     "usd_per_gpu_hour": 1.03875,
      "source_url": "https://datacrunch.io/pricing"
     }
    },
@@ -1756,7 +1807,7 @@
     "cheapest": {
      "card": "RTX PRO 6000",
      "market": "spot",
-     "usd_per_gpu_hour": 0.4278,
+     "usd_per_gpu_hour": 0.4247,
      "source_url": "https://cloud.google.com/products/compute/gpus-pricing?hl=en"
     }
    },
@@ -1780,6 +1831,28 @@
      "market": "on_demand",
      "usd_per_gpu_hour": 0.97,
      "source_url": "https://massedcompute.com/pricing"
+    }
+   },
+   {
+    "id": "ovh",
+    "slug": "own-ovh",
+    "name": "OVHcloud",
+    "cards": [
+     "A100",
+     "B300",
+     "H100",
+     "H200",
+     "L40S"
+    ],
+    "markets": [
+     "on_demand"
+    ],
+    "quotes": 5,
+    "cheapest": {
+     "card": "L40S",
+     "market": "on_demand",
+     "usd_per_gpu_hour": 1.8,
+     "source_url": "https://www.ovhcloud.com/en/public-cloud/prices/"
     }
    },
    {
@@ -1827,45 +1900,24 @@
     }
    },
    {
-    "id": "fireworks",
-    "slug": "own-fireworks",
-    "name": "Fireworks AI",
+    "id": "jarvislabs",
+    "slug": "own-jarvislabs",
+    "name": "JarvisLabs",
     "cards": [
-     "B200",
-     "B300",
+     "A100",
      "H100",
-     "H200"
+     "H200",
+     "RTX PRO 6000"
     ],
     "markets": [
-     "serverless"
+     "on_demand"
     ],
     "quotes": 4,
     "cheapest": {
-     "card": "H100",
-     "market": "serverless",
-     "usd_per_gpu_hour": 8.0,
-     "source_url": "https://fireworks.ai/pricing"
-    }
-   },
-   {
-    "id": "impossiblecloud",
-    "slug": "own-impossiblecloud",
-    "name": "Impossible Cloud",
-    "cards": [
-     "B200",
-     "B300",
-     "H100",
-     "H200"
-    ],
-    "markets": [
-     "reserved"
-    ],
-    "quotes": 4,
-    "cheapest": {
-     "card": "H200",
-     "market": "reserved",
-     "usd_per_gpu_hour": 3.157895,
-     "source_url": "https://www.impossiblecloud.com/en-us/baremetal"
+     "card": "A100",
+     "market": "on_demand",
+     "usd_per_gpu_hour": 0.89,
+     "source_url": "https://jarvislabs.ai/pricing"
     }
    },
    {
@@ -1883,53 +1935,10 @@
     ],
     "quotes": 4,
     "cheapest": {
-     "card": "GH200",
+     "card": "A100",
      "market": "on_demand",
-     "usd_per_gpu_hour": 2.29,
+     "usd_per_gpu_hour": 2.59,
      "source_url": "https://lambda.ai/instances"
-    }
-   },
-   {
-    "id": "ovh",
-    "slug": "own-ovh",
-    "name": "OVHcloud",
-    "cards": [
-     "A100",
-     "H100",
-     "H200",
-     "L40S"
-    ],
-    "markets": [
-     "on_demand"
-    ],
-    "quotes": 4,
-    "cheapest": {
-     "card": "L40S",
-     "market": "on_demand",
-     "usd_per_gpu_hour": 1.8,
-     "source_url": "https://www.ovhcloud.com/en/public-cloud/prices/"
-    }
-   },
-   {
-    "id": "primeintellect",
-    "slug": "own-primeintellect",
-    "name": "Prime Intellect",
-    "cards": [
-     "B200",
-     "B300",
-     "H100",
-     "H200"
-    ],
-    "markets": [
-     "on_demand",
-     "spot"
-    ],
-    "quotes": 5,
-    "cheapest": {
-     "card": "H100",
-     "market": "spot",
-     "usd_per_gpu_hour": 0.94,
-     "source_url": "https://www.primeintellect.ai/"
     }
    },
    {
@@ -1954,28 +1963,6 @@
     }
    },
    {
-    "id": "together",
-    "slug": "own-together",
-    "name": "Together AI",
-    "cards": [
-     "B200",
-     "B300",
-     "H100",
-     "H200"
-    ],
-    "markets": [
-     "on_demand",
-     "spot"
-    ],
-    "quotes": 8,
-    "cheapest": {
-     "card": "H100",
-     "market": "spot",
-     "usd_per_gpu_hour": 1.99,
-     "source_url": "https://www.together.ai/pricing"
-    }
-   },
-   {
     "id": "vultr",
     "slug": "own-vultr",
     "name": "Vultr",
@@ -1995,26 +1982,6 @@
      "market": "on_demand",
      "usd_per_gpu_hour": 1.671,
      "source_url": "https://api.vultr.com/v2/plans?type=all&per_page=500"
-    }
-   },
-   {
-    "id": "baseten",
-    "slug": "own-baseten",
-    "name": "Baseten",
-    "cards": [
-     "A100",
-     "B200",
-     "H100"
-    ],
-    "markets": [
-     "serverless"
-    ],
-    "quotes": 3,
-    "cheapest": {
-     "card": "A100",
-     "market": "serverless",
-     "usd_per_gpu_hour": 4.0,
-     "source_url": "https://www.baseten.co/pricing/"
     }
    },
    {
@@ -2094,7 +2061,7 @@
     "cheapest": {
      "card": "L40S",
      "market": "on_demand",
-     "usd_per_gpu_hour": 1.6365,
+     "usd_per_gpu_hour": 1.6122,
      "source_url": "https://www.scaleway.com/en/pricing/gpu/"
     }
    },
@@ -2137,6 +2104,25 @@
      "market": "spot",
      "usd_per_gpu_hour": 0.67877,
      "source_url": "https://prices.azure.com/api/retail/prices"
+    }
+   },
+   {
+    "id": "gpuwerk",
+    "slug": "own-gpuwerk",
+    "name": "Gpuwerk",
+    "cards": [
+     "L40S",
+     "RTX 5090"
+    ],
+    "markets": [
+     "on_demand"
+    ],
+    "quotes": 2,
+    "cheapest": {
+     "card": "RTX 5090",
+     "market": "on_demand",
+     "usd_per_gpu_hour": 0.89,
+     "source_url": "https://gpuwerk.com/availability.txt"
     }
    },
    {
@@ -2194,6 +2180,24 @@
      "market": "on_demand",
      "usd_per_gpu_hour": 1.09,
      "source_url": "https://www.thundercompute.com/pricing"
+    }
+   },
+   {
+    "id": "hetzner",
+    "slug": "own-hetzner",
+    "name": "Hetzner",
+    "cards": [
+     "RTX PRO 6000"
+    ],
+    "markets": [
+     "reserved"
+    ],
+    "quotes": 1,
+    "cheapest": {
+     "card": "RTX PRO 6000",
+     "market": "reserved",
+     "usd_per_gpu_hour": 1.6425,
+     "source_url": "https://www.hetzner.com/dedicated-rootserver/matrix-gpu/"
     }
    },
    {

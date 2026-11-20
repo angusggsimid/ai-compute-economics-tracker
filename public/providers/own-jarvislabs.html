@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="color-scheme" content="light">
 <meta name="theme-color" content="#f5f5f7">
-<title>Together AI · 自有 provider 报价 · AI Compute Economics</title>
-<meta name="description" content="Together AI 的自有面板挂牌报价、覆盖卡与市场。">
+<title>JarvisLabs · 自有 provider 报价 · AI Compute Economics</title>
+<meta name="description" content="JarvisLabs 的自有面板挂牌报价、覆盖卡与市场。">
 <link rel="icon" type="image/svg+xml" href="../favicon.svg">
 <link rel="stylesheet" href="../assets/site.css">
 </head>
@@ -17,24 +17,24 @@
 
 <section class="hero compact">
   <p class="kicker">自有供给 · Own panel</p>
-  <h1>Together AI</h1>
-  <p class="lede">8 条挂牌报价 · 4 张卡 · 2 个市场 · as of 2026-10-29</p>
+  <h1>JarvisLabs</h1>
+  <p class="lede">4 条挂牌报价 · 4 张卡 · 1 个市场 · as of 2026-11-19</p>
   <div class="row-actions">
     <a class="btn" href="../providers.html">← Providers</a>
     <a class="btn" href="../landscape.html">Landscape</a>
-    <a class="btn" href="../gpu/b200.html">B200</a><a class="btn" href="../gpu/b300.html">B300</a><a class="btn" href="../gpu/h100.html">H100</a><a class="btn" href="../gpu/h200.html">H200</a>
+    <a class="btn" href="../gpu/a100.html">A100</a><a class="btn" href="../gpu/h100.html">H100</a><a class="btn" href="../gpu/h200.html">H200</a><a class="btn" href="../gpu/rtx-pro-6000.html">RTX PRO 6000</a>
   </div>
 </section>
 
 <section class="section">
   <div class="section-head">
     <h2>摘要</h2>
-    <span class="muted small">as of 2026-10-29 · 公开挂牌价，非成交价</span>
+    <span class="muted small">as of 2026-11-19 · 公开挂牌价，非成交价</span>
   </div>
-  <div class="kpi-grid"><div class="kpi"><div class="label">Quotes</div><div class="value">8</div><div class="hint">条公开挂牌报价</div></div><div class="kpi"><div class="label">Cards</div><div class="value">4</div><div class="hint">覆盖卡数</div></div><div class="kpi"><div class="label">Markets</div><div class="value">2</div><div class="hint">覆盖市场数</div></div><div class="kpi"><div class="label">Cheapest</div><div class="value"><a href="https://www.together.ai/pricing" target="_blank" rel="noopener">$1.99</a></div><div class="hint">H100 · spot</div></div></div>
+  <div class="kpi-grid"><div class="kpi"><div class="label">Quotes</div><div class="value">4</div><div class="hint">条公开挂牌报价</div></div><div class="kpi"><div class="label">Cards</div><div class="value">4</div><div class="hint">覆盖卡数</div></div><div class="kpi"><div class="label">Markets</div><div class="value">1</div><div class="hint">覆盖市场数</div></div><div class="kpi"><div class="label">Cheapest</div><div class="value"><a href="https://jarvislabs.ai/pricing" target="_blank" rel="noopener">$0.890</a></div><div class="hint">A100 · on_demand</div></div></div>
   <p class="panel-note">自有面板报价，按 card × market 汇总；报价可能包含多个配置。</p>
-  <div class="row-actions"><span class="badge">On-demand</span><span class="badge">Spot</span></div>
-  <p class="source">自有面板 · as of 2026-10-29 · 公开挂牌价，非成交价。</p>
+  <div class="row-actions"><span class="badge">On-demand</span></div>
+  <p class="source">自有面板 · as of 2026-11-19 · 公开挂牌价，非成交价。</p>
 </section>
 
 <section class="section">
@@ -49,7 +49,7 @@
 <footer class="footer"><div class="footer-inner"><p>AI Compute Economics · 公开挂牌价，非成交价。</p><p>外部参考层：<a href="https://gpueconomy.com/data" target="_blank" rel="noopener">GPU Economy</a> · CC BY 4.0。自有中位数与指数不受外部数据改写 · <a href="../data/manifest.json">数据说明</a></p></div></footer>
 <script src="../assets/site.js"></script>
 <script>(function () {
-  var PROVIDER = {"slug": "own-together", "name": "Together AI", "fetch": "providers/own-together.json", "layer": "own", "cards": {"H100": "h100", "H200": "h200", "B200": "b200", "B300": "b300", "A100": "a100", "L40S": "l40s", "RTX PRO 6000": "rtx-pro-6000", "RTX 4090": "rtx-4090", "RTX 5090": "rtx-5090", "MI300X": "mi300x", "GH200": "gh200"}};
+  var PROVIDER = {"slug": "own-jarvislabs", "name": "JarvisLabs", "fetch": "providers/own-jarvislabs.json", "layer": "own", "cards": {"H100": "h100", "H200": "h200", "B200": "b200", "B300": "b300", "A100": "a100", "L40S": "l40s", "RTX PRO 6000": "rtx-pro-6000", "RTX 4090": "rtx-4090", "RTX 5090": "rtx-5090", "MI300X": "mi300x", "GH200": "gh200"}};
 
   var CC = window.CC;
   if (!CC) { return; }

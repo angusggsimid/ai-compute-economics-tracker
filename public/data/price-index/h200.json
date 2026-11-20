@@ -2,7 +2,7 @@
  "name": "AI Compute Economics - weekly GPU supply index",
  "description": "Weekly on-demand median per card, chain-linked base-100 over providers present in both weeks; one provider once per week. Weeks below the provider guard are withheld, not backfilled. Public receipts retain the latest published week only. Monthly values use a fixed pre-committed provider panel and a daily-frequency approximation; see monthly_method.",
  "unit": "USD per GPU per hour; base-100 index",
- "as_of": "2026-10-29",
+ "as_of": "2026-11-19",
  "methodology_version": "2026-11-04.1",
  "index_min_providers": 4,
  "index_publish_min": 8,
@@ -12,22 +12,22 @@
  "cards": {
   "H200": {
    "name": "H200 141GB",
-   "as_of": "2026-10-29",
+   "as_of": "2026-11-19",
    "min_providers": 4,
    "latest": {
-    "weekStart": "2026-10-26",
-    "isoWeek": "2026-W44",
+    "weekStart": "2026-11-16",
+    "isoWeek": "2026-W47",
     "vintage": "provisional",
     "status": "published",
     "methodologyVersion": "2026-11-04.1",
-    "median": 4.97,
-    "p25": 4.065,
-    "p75": 6.19325,
-    "providerCount": 16,
-    "index": 108.6051,
-    "linkPairs": 16,
+    "median": 5.13,
+    "p25": 4.38,
+    "p75": 6.6045,
+    "providerCount": 17,
+    "index": 110.1707,
+    "linkPairs": 14,
     "withheldReason": null,
-    "receipt": "2026-W44",
+    "receipt": "2026-W47",
     "ageDays": 3
    },
    "weeks": [
@@ -272,7 +272,7 @@
     {
      "weekStart": "2026-10-26",
      "isoWeek": "2026-W44",
-     "vintage": "provisional",
+     "vintage": "final",
      "status": "published",
      "methodologyVersion": "2026-11-04.1",
      "median": 4.97,
@@ -281,40 +281,46 @@
      "providerCount": 16,
      "index": 108.6051,
      "linkPairs": 16,
+     "withheldReason": null
+    },
+    {
+     "weekStart": "2026-11-16",
+     "isoWeek": "2026-W47",
+     "vintage": "provisional",
+     "status": "published",
+     "methodologyVersion": "2026-11-04.1",
+     "median": 5.13,
+     "p25": 4.38,
+     "p75": 6.6045,
+     "providerCount": 17,
+     "index": 110.1707,
+     "linkPairs": 14,
      "withheldReason": null,
-     "receipt": "2026-W44",
+     "receipt": "2026-W47",
      "ageDays": 3
     }
    ],
    "receipts": {
-    "2026-W44": {
-     "weekStart": "2026-10-26",
-     "weekEnd": "2026-11-01",
+    "2026-W47": {
+     "weekStart": "2026-11-16",
+     "weekEnd": "2026-11-22",
      "vintage": "provisional",
      "status": "published",
      "methodologyVersion": "2026-11-04.1",
-     "median": 4.97,
-     "p25": 4.065,
-     "p75": 6.19325,
-     "providerCount": 16,
-     "index": 108.6051,
-     "linkPairs": 16,
+     "median": 5.13,
+     "p25": 4.38,
+     "p75": 6.6045,
+     "providerCount": 17,
+     "index": 110.1707,
+     "linkPairs": 14,
      "withheldReason": null,
-     "notConfirmed48h": 1,
+     "notConfirmed48h": 0,
      "included": [
-      {
-       "provider": "Prime Intellect",
-       "providerId": "primeintellect",
-       "value": 3.14,
-       "date": "2026-10-29",
-       "sourceUrl": "https://www.primeintellect.ai/",
-       "quotes": 1
-      },
       {
        "provider": "GMI Cloud",
        "providerId": "gmicloud",
        "value": 3.2,
-       "date": "2026-10-29",
+       "date": "2026-11-19",
        "sourceUrl": "https://www.gmicloud.ai/en/pricing",
        "quotes": 1
       },
@@ -322,7 +328,7 @@
        "provider": "Massed Compute",
        "providerId": "massedcompute",
        "value": 3.62,
-       "date": "2026-10-29",
+       "date": "2026-11-19",
        "sourceUrl": "https://massedcompute.com/pricing",
        "quotes": 1
       },
@@ -330,7 +336,7 @@
        "provider": "Hyperstack",
        "providerId": "hyperstack",
        "value": 3.99,
-       "date": "2026-10-29",
+       "date": "2026-11-19",
        "sourceUrl": "https://www.hyperstack.cloud/gpu-pricing",
        "quotes": 1
       },
@@ -338,7 +344,7 @@
        "provider": "Crusoe",
        "providerId": "crusoe",
        "value": 4.29,
-       "date": "2026-10-29",
+       "date": "2026-11-19",
        "sourceUrl": "https://www.crusoe.ai/cloud/pricing",
        "quotes": 1
       },
@@ -346,63 +352,63 @@
        "provider": "DigitalOcean",
        "providerId": "digitalocean",
        "value": 4.47,
-       "date": "2026-10-29",
+       "date": "2026-11-19",
        "sourceUrl": "https://www.digitalocean.com/pricing/gpu-droplets",
-       "quotes": 1
-      },
-      {
-       "provider": "Daytona",
-       "providerId": "daytona",
-       "value": 4.54,
-       "date": "2026-10-29",
-       "sourceUrl": "https://billing.app.daytona.io/gpu-pricing",
        "quotes": 1
       },
       {
        "provider": "RunPod",
        "providerId": "runpod",
        "value": 4.54,
-       "date": "2026-10-29",
+       "date": "2026-11-19",
        "sourceUrl": "https://www.runpod.io/pricing",
        "quotes": 2
+      },
+      {
+       "provider": "JarvisLabs",
+       "providerId": "jarvislabs",
+       "value": 4.59,
+       "date": "2026-11-19",
+       "sourceUrl": "https://jarvislabs.ai/pricing",
+       "quotes": 1
+      },
+      {
+       "provider": "Daytona",
+       "providerId": "daytona",
+       "value": 4.99,
+       "date": "2026-11-19",
+       "sourceUrl": "https://billing.app.daytona.io/gpu-pricing",
+       "quotes": 1
+      },
+      {
+       "provider": "Runcrate",
+       "providerId": "runcrate",
+       "value": 5.13,
+       "date": "2026-11-19",
+       "sourceUrl": "https://www.runcrate.ai/pricing",
+       "quotes": 1
       },
       {
        "provider": "Nebius",
        "providerId": "nebius",
        "value": 5.4,
-       "date": "2026-10-29",
+       "date": "2026-11-19",
        "sourceUrl": "https://docs.nebius.com/compute/resources/pricing",
        "quotes": 1
       },
       {
        "provider": "Spheron",
        "providerId": "spheron",
-       "value": 5.54,
-       "date": "2026-10-29",
+       "value": 5.52,
+       "date": "2026-11-19",
        "sourceUrl": "https://www.spheron.network/pricing/",
-       "quotes": 1
-      },
-      {
-       "provider": "Together AI",
-       "providerId": "together",
-       "value": 5.99,
-       "date": "2026-10-29",
-       "sourceUrl": "https://www.together.ai/pricing",
-       "quotes": 1
-      },
-      {
-       "provider": "Verda",
-       "providerId": "datacrunch",
-       "value": 6.188,
-       "date": "2026-10-29",
-       "sourceUrl": "https://datacrunch.io/pricing",
        "quotes": 1
       },
       {
        "provider": "OVHcloud",
        "providerId": "ovh",
        "value": 6.195,
-       "date": "2026-10-29",
+       "date": "2026-11-19",
        "sourceUrl": "https://www.ovhcloud.com/en/public-cloud/prices/",
        "quotes": 1
       },
@@ -410,15 +416,23 @@
        "provider": "CoreWeave",
        "providerId": "coreweave",
        "value": 6.305,
-       "date": "2026-10-29",
+       "date": "2026-11-19",
        "sourceUrl": "https://www.coreweave.com/pricing",
+       "quotes": 1
+      },
+      {
+       "provider": "Verda",
+       "providerId": "datacrunch",
+       "value": 6.904,
+       "date": "2026-11-19",
+       "sourceUrl": "https://datacrunch.io/pricing",
        "quotes": 1
       },
       {
        "provider": "AWS",
        "providerId": "aws",
        "value": 7.912,
-       "date": "2026-10-29",
+       "date": "2026-11-19",
        "sourceUrl": "https://b0.p.awsstatic.com/pricing/2.0/meteredUnitMaps/ec2/USD/current/ec2-ondemand-without-sec-sel/US%20East%20(N.%20Virginia)/Linux/index.json",
        "quotes": 1
       },
@@ -426,8 +440,16 @@
        "provider": "Google Cloud",
        "providerId": "gcp",
        "value": 9.31174,
-       "date": "2026-10-29",
+       "date": "2026-11-19",
        "sourceUrl": "https://cloud.google.com/products/compute/gpus-pricing?hl=en",
+       "quotes": 1
+      },
+      {
+       "provider": "Oracle Cloud",
+       "providerId": "oracle",
+       "value": 10.0,
+       "date": "2026-11-19",
+       "sourceUrl": "https://apexapps.oracle.com/pls/apex/cetools/api/v1/products/?currencyCode=USD",
        "quotes": 1
       }
      ],
@@ -437,7 +459,7 @@
        "providerId": "cerebrium",
        "market": "serverless",
        "value": 4.1976,
-       "date": "2026-10-26",
+       "date": "2026-11-19",
        "sourceUrl": "https://www.cerebrium.ai/pricing",
        "rule": "market_not_on_demand"
       },
@@ -445,8 +467,8 @@
        "provider": "Verda",
        "providerId": "datacrunch",
        "market": "spot",
-       "value": 3.003,
-       "date": "2026-10-26",
+       "value": 3.452,
+       "date": "2026-11-19",
        "sourceUrl": "https://datacrunch.io/pricing",
        "rule": "market_not_on_demand"
       },
@@ -454,8 +476,8 @@
        "provider": "Daytona",
        "providerId": "daytona",
        "market": "spot",
-       "value": 2.61,
-       "date": "2026-10-26",
+       "value": 2.87,
+       "date": "2026-11-19",
        "sourceUrl": "https://billing.app.daytona.io/gpu-pricing",
        "rule": "market_not_on_demand"
       },
@@ -464,17 +486,8 @@
        "providerId": "fal",
        "market": "serverless",
        "value": 6.0,
-       "date": "2026-10-26",
+       "date": "2026-11-19",
        "sourceUrl": "https://fal.ai/pricing",
-       "rule": "market_not_on_demand"
-      },
-      {
-       "provider": "Fireworks AI",
-       "providerId": "fireworks",
-       "market": "serverless",
-       "value": 8.0,
-       "date": "2026-10-26",
-       "sourceUrl": "https://fireworks.ai/pricing",
        "rule": "market_not_on_demand"
       },
       {
@@ -482,7 +495,7 @@
        "providerId": "gcp",
        "market": "spot",
        "value": 5.586,
-       "date": "2026-10-26",
+       "date": "2026-11-19",
        "sourceUrl": "https://cloud.google.com/products/compute/gpus-pricing?hl=en",
        "rule": "market_not_on_demand"
       },
@@ -491,34 +504,16 @@
        "providerId": "hyperstack",
        "market": "reserved",
        "value": 2.79,
-       "date": "2026-10-26",
+       "date": "2026-11-19",
        "sourceUrl": "https://www.hyperstack.cloud/gpu-pricing",
        "rule": "market_not_on_demand"
-      },
-      {
-       "provider": "Impossible Cloud",
-       "providerId": "impossiblecloud",
-       "market": "reserved",
-       "value": 3.052632,
-       "date": "2026-10-26",
-       "sourceUrl": "https://www.impossiblecloud.com/en-us/baremetal",
-       "rule": "market_not_on_demand"
-      },
-      {
-       "provider": "JarvisLabs",
-       "providerId": "jarvislabs",
-       "market": "on_demand",
-       "value": 4.59,
-       "date": "2026-10-26",
-       "sourceUrl": "https://jarvislabs.ai/pricing",
-       "rule": "not_confirmed_48h"
       },
       {
        "provider": "Koyeb",
        "providerId": "koyeb",
        "market": "serverless",
        "value": 3.0,
-       "date": "2026-10-26",
+       "date": "2026-11-19",
        "sourceUrl": "https://www.koyeb.com/pricing",
        "rule": "market_not_on_demand"
       },
@@ -526,8 +521,8 @@
        "provider": "Lium",
        "providerId": "lium",
        "market": "marketplace",
-       "value": 3.9,
-       "date": "2026-10-26",
+       "value": 3.8,
+       "date": "2026-11-19",
        "sourceUrl": "https://lium.io/api/public/v1/nodes",
        "rule": "market_not_on_demand"
       },
@@ -535,8 +530,8 @@
        "provider": "Lium",
        "providerId": "lium",
        "market": "marketplace",
-       "value": 5.12,
-       "date": "2026-10-26",
+       "value": 4.3,
+       "date": "2026-11-19",
        "sourceUrl": "https://lium.io/api/public/v1/nodes",
        "rule": "market_not_on_demand"
       },
@@ -544,8 +539,8 @@
        "provider": "Lium",
        "providerId": "lium",
        "market": "marketplace",
-       "value": 5.28,
-       "date": "2026-10-26",
+       "value": 4.35,
+       "date": "2026-11-19",
        "sourceUrl": "https://lium.io/api/public/v1/nodes",
        "rule": "market_not_on_demand"
       },
@@ -553,53 +548,26 @@
        "provider": "Lium",
        "providerId": "lium",
        "market": "marketplace",
-       "value": 5.3,
-       "date": "2026-10-26",
+       "value": 4.4,
+       "date": "2026-11-19",
        "sourceUrl": "https://lium.io/api/public/v1/nodes",
        "rule": "market_not_on_demand"
       },
       {
        "provider": "Lium",
        "providerId": "lium",
-       "market": "spot",
-       "value": 2.8,
-       "date": "2026-10-26",
+       "market": "marketplace",
+       "value": 5.26,
+       "date": "2026-11-19",
        "sourceUrl": "https://lium.io/api/public/v1/nodes",
        "rule": "market_not_on_demand"
       },
       {
        "provider": "Lium",
        "providerId": "lium",
-       "market": "spot",
-       "value": 3.85,
-       "date": "2026-10-26",
-       "sourceUrl": "https://lium.io/api/public/v1/nodes",
-       "rule": "market_not_on_demand"
-      },
-      {
-       "provider": "Lium",
-       "providerId": "lium",
-       "market": "spot",
-       "value": 3.9,
-       "date": "2026-10-26",
-       "sourceUrl": "https://lium.io/api/public/v1/nodes",
-       "rule": "market_not_on_demand"
-      },
-      {
-       "provider": "Lium",
-       "providerId": "lium",
-       "market": "spot",
-       "value": 4.0,
-       "date": "2026-10-26",
-       "sourceUrl": "https://lium.io/api/public/v1/nodes",
-       "rule": "market_not_on_demand"
-      },
-      {
-       "provider": "Lium",
-       "providerId": "lium",
-       "market": "spot",
-       "value": 5.4,
-       "date": "2026-10-26",
+       "market": "marketplace",
+       "value": 5.38,
+       "date": "2026-11-19",
        "sourceUrl": "https://lium.io/api/public/v1/nodes",
        "rule": "market_not_on_demand"
       },
@@ -608,7 +576,7 @@
        "providerId": "modal",
        "market": "serverless",
        "value": 4.5396,
-       "date": "2026-10-26",
+       "date": "2026-11-19",
        "sourceUrl": "https://modal.com/pricing",
        "rule": "market_not_on_demand"
       },
@@ -617,7 +585,7 @@
        "providerId": "replicate",
        "market": "serverless",
        "value": 5.49,
-       "date": "2026-10-26",
+       "date": "2026-11-19",
        "sourceUrl": "https://replicate.com/pricing",
        "rule": "market_not_on_demand"
       },
@@ -626,7 +594,7 @@
        "providerId": "runpod",
        "market": "community",
        "value": 3.59,
-       "date": "2026-10-26",
+       "date": "2026-11-19",
        "sourceUrl": "https://www.runpod.io/pricing",
        "rule": "market_not_on_demand"
       },
@@ -634,8 +602,8 @@
        "provider": "RunPod",
        "providerId": "runpod",
        "market": "serverless",
-       "value": 5.93,
-       "date": "2026-10-26",
+       "value": 6.99,
+       "date": "2026-11-19",
        "sourceUrl": "https://www.runpod.io/pricing",
        "rule": "market_not_on_demand"
       },
@@ -643,738 +611,18 @@
        "provider": "Spheron",
        "providerId": "spheron",
        "market": "spot",
-       "value": 3.35,
-       "date": "2026-10-26",
+       "value": 3.32,
+       "date": "2026-11-19",
        "sourceUrl": "https://www.spheron.network/pricing/",
-       "rule": "market_not_on_demand"
-      },
-      {
-       "provider": "Together AI",
-       "providerId": "together",
-       "market": "spot",
-       "value": 2.99,
-       "date": "2026-10-26",
-       "sourceUrl": "https://www.together.ai/pricing",
-       "rule": "market_not_on_demand"
-      },
-      {
-       "provider": "Cerebrium",
-       "providerId": "cerebrium",
-       "market": "serverless",
-       "value": 4.1976,
-       "date": "2026-10-27",
-       "sourceUrl": "https://www.cerebrium.ai/pricing",
-       "rule": "market_not_on_demand"
-      },
-      {
-       "provider": "Verda",
-       "providerId": "datacrunch",
-       "market": "spot",
-       "value": 3.033,
-       "date": "2026-10-27",
-       "sourceUrl": "https://datacrunch.io/pricing",
-       "rule": "market_not_on_demand"
-      },
-      {
-       "provider": "Daytona",
-       "providerId": "daytona",
-       "market": "spot",
-       "value": 2.61,
-       "date": "2026-10-27",
-       "sourceUrl": "https://billing.app.daytona.io/gpu-pricing",
-       "rule": "market_not_on_demand"
-      },
-      {
-       "provider": "fal",
-       "providerId": "fal",
-       "market": "serverless",
-       "value": 6.0,
-       "date": "2026-10-27",
-       "sourceUrl": "https://fal.ai/pricing",
-       "rule": "market_not_on_demand"
-      },
-      {
-       "provider": "Fireworks AI",
-       "providerId": "fireworks",
-       "market": "serverless",
-       "value": 8.0,
-       "date": "2026-10-27",
-       "sourceUrl": "https://fireworks.ai/pricing",
-       "rule": "market_not_on_demand"
-      },
-      {
-       "provider": "Google Cloud",
-       "providerId": "gcp",
-       "market": "spot",
-       "value": 5.586,
-       "date": "2026-10-27",
-       "sourceUrl": "https://cloud.google.com/products/compute/gpus-pricing?hl=en",
-       "rule": "market_not_on_demand"
-      },
-      {
-       "provider": "Hyperstack",
-       "providerId": "hyperstack",
-       "market": "reserved",
-       "value": 2.79,
-       "date": "2026-10-27",
-       "sourceUrl": "https://www.hyperstack.cloud/gpu-pricing",
-       "rule": "market_not_on_demand"
-      },
-      {
-       "provider": "Impossible Cloud",
-       "providerId": "impossiblecloud",
-       "market": "reserved",
-       "value": 3.052632,
-       "date": "2026-10-27",
-       "sourceUrl": "https://www.impossiblecloud.com/en-us/baremetal",
-       "rule": "market_not_on_demand"
-      },
-      {
-       "provider": "Impossible Cloud",
-       "providerId": "impossiblecloud",
-       "market": "reserved",
-       "value": 3.157895,
-       "date": "2026-10-27",
-       "sourceUrl": "https://www.impossiblecloud.com/en-us/baremetal",
-       "rule": "market_not_on_demand"
-      },
-      {
-       "provider": "Impossible Cloud",
-       "providerId": "impossiblecloud",
-       "market": "reserved",
-       "value": 5.252632,
-       "date": "2026-10-27",
-       "sourceUrl": "https://www.impossiblecloud.com/en-us/baremetal",
-       "rule": "market_not_on_demand"
-      },
-      {
-       "provider": "Koyeb",
-       "providerId": "koyeb",
-       "market": "serverless",
-       "value": 3.0,
-       "date": "2026-10-27",
-       "sourceUrl": "https://www.koyeb.com/pricing",
-       "rule": "market_not_on_demand"
-      },
-      {
-       "provider": "Lium",
-       "providerId": "lium",
-       "market": "marketplace",
-       "value": 3.75,
-       "date": "2026-10-27",
-       "sourceUrl": "https://lium.io/api/public/v1/nodes",
-       "rule": "market_not_on_demand"
-      },
-      {
-       "provider": "Lium",
-       "providerId": "lium",
-       "market": "marketplace",
-       "value": 3.85,
-       "date": "2026-10-27",
-       "sourceUrl": "https://lium.io/api/public/v1/nodes",
-       "rule": "market_not_on_demand"
-      },
-      {
-       "provider": "Lium",
-       "providerId": "lium",
-       "market": "marketplace",
-       "value": 4.75,
-       "date": "2026-10-27",
-       "sourceUrl": "https://lium.io/api/public/v1/nodes",
-       "rule": "market_not_on_demand"
-      },
-      {
-       "provider": "Lium",
-       "providerId": "lium",
-       "market": "marketplace",
-       "value": 5.04,
-       "date": "2026-10-27",
-       "sourceUrl": "https://lium.io/api/public/v1/nodes",
-       "rule": "market_not_on_demand"
-      },
-      {
-       "provider": "Lium",
-       "providerId": "lium",
-       "market": "marketplace",
-       "value": 5.18,
-       "date": "2026-10-27",
-       "sourceUrl": "https://lium.io/api/public/v1/nodes",
-       "rule": "market_not_on_demand"
-      },
-      {
-       "provider": "Lium",
-       "providerId": "lium",
-       "market": "marketplace",
-       "value": 5.7,
-       "date": "2026-10-27",
-       "sourceUrl": "https://lium.io/api/public/v1/nodes",
-       "rule": "market_not_on_demand"
-      },
-      {
-       "provider": "Lium",
-       "providerId": "lium",
-       "market": "spot",
-       "value": 3.9,
-       "date": "2026-10-27",
-       "sourceUrl": "https://lium.io/api/public/v1/nodes",
-       "rule": "market_not_on_demand"
-      },
-      {
-       "provider": "Lium",
-       "providerId": "lium",
-       "market": "spot",
-       "value": 4.0,
-       "date": "2026-10-27",
-       "sourceUrl": "https://lium.io/api/public/v1/nodes",
-       "rule": "market_not_on_demand"
-      },
-      {
-       "provider": "Lium",
-       "providerId": "lium",
-       "market": "spot",
-       "value": 5.68,
-       "date": "2026-10-27",
-       "sourceUrl": "https://lium.io/api/public/v1/nodes",
-       "rule": "market_not_on_demand"
-      },
-      {
-       "provider": "Modal",
-       "providerId": "modal",
-       "market": "serverless",
-       "value": 4.5396,
-       "date": "2026-10-27",
-       "sourceUrl": "https://modal.com/pricing",
-       "rule": "market_not_on_demand"
-      },
-      {
-       "provider": "Replicate",
-       "providerId": "replicate",
-       "market": "serverless",
-       "value": 5.49,
-       "date": "2026-10-27",
-       "sourceUrl": "https://replicate.com/pricing",
-       "rule": "market_not_on_demand"
-      },
-      {
-       "provider": "RunPod",
-       "providerId": "runpod",
-       "market": "community",
-       "value": 3.59,
-       "date": "2026-10-27",
-       "sourceUrl": "https://www.runpod.io/pricing",
-       "rule": "market_not_on_demand"
-      },
-      {
-       "provider": "RunPod",
-       "providerId": "runpod",
-       "market": "serverless",
-       "value": 5.93,
-       "date": "2026-10-27",
-       "sourceUrl": "https://www.runpod.io/pricing",
-       "rule": "market_not_on_demand"
-      },
-      {
-       "provider": "Together AI",
-       "providerId": "together",
-       "market": "spot",
-       "value": 2.99,
-       "date": "2026-10-27",
-       "sourceUrl": "https://www.together.ai/pricing",
-       "rule": "market_not_on_demand"
-      },
-      {
-       "provider": "Cerebrium",
-       "providerId": "cerebrium",
-       "market": "serverless",
-       "value": 4.1976,
-       "date": "2026-10-28",
-       "sourceUrl": "https://www.cerebrium.ai/pricing",
-       "rule": "market_not_on_demand"
-      },
-      {
-       "provider": "Verda",
-       "providerId": "datacrunch",
-       "market": "spot",
-       "value": 3.064,
-       "date": "2026-10-28",
-       "sourceUrl": "https://datacrunch.io/pricing",
-       "rule": "market_not_on_demand"
-      },
-      {
-       "provider": "Daytona",
-       "providerId": "daytona",
-       "market": "spot",
-       "value": 2.61,
-       "date": "2026-10-28",
-       "sourceUrl": "https://billing.app.daytona.io/gpu-pricing",
-       "rule": "market_not_on_demand"
-      },
-      {
-       "provider": "fal",
-       "providerId": "fal",
-       "market": "serverless",
-       "value": 6.0,
-       "date": "2026-10-28",
-       "sourceUrl": "https://fal.ai/pricing",
-       "rule": "market_not_on_demand"
-      },
-      {
-       "provider": "Fireworks AI",
-       "providerId": "fireworks",
-       "market": "serverless",
-       "value": 8.0,
-       "date": "2026-10-28",
-       "sourceUrl": "https://fireworks.ai/pricing",
-       "rule": "market_not_on_demand"
-      },
-      {
-       "provider": "Google Cloud",
-       "providerId": "gcp",
-       "market": "spot",
-       "value": 5.586,
-       "date": "2026-10-28",
-       "sourceUrl": "https://cloud.google.com/products/compute/gpus-pricing?hl=en",
-       "rule": "market_not_on_demand"
-      },
-      {
-       "provider": "Hyperstack",
-       "providerId": "hyperstack",
-       "market": "reserved",
-       "value": 2.79,
-       "date": "2026-10-28",
-       "sourceUrl": "https://www.hyperstack.cloud/gpu-pricing",
-       "rule": "market_not_on_demand"
-      },
-      {
-       "provider": "Impossible Cloud",
-       "providerId": "impossiblecloud",
-       "market": "reserved",
-       "value": 3.052632,
-       "date": "2026-10-28",
-       "sourceUrl": "https://www.impossiblecloud.com/en-us/baremetal",
-       "rule": "market_not_on_demand"
-      },
-      {
-       "provider": "Impossible Cloud",
-       "providerId": "impossiblecloud",
-       "market": "reserved",
-       "value": 3.157895,
-       "date": "2026-10-28",
-       "sourceUrl": "https://www.impossiblecloud.com/en-us/baremetal",
-       "rule": "market_not_on_demand"
-      },
-      {
-       "provider": "Impossible Cloud",
-       "providerId": "impossiblecloud",
-       "market": "reserved",
-       "value": 5.252632,
-       "date": "2026-10-28",
-       "sourceUrl": "https://www.impossiblecloud.com/en-us/baremetal",
-       "rule": "market_not_on_demand"
-      },
-      {
-       "provider": "Koyeb",
-       "providerId": "koyeb",
-       "market": "serverless",
-       "value": 3.0,
-       "date": "2026-10-28",
-       "sourceUrl": "https://www.koyeb.com/pricing",
-       "rule": "market_not_on_demand"
-      },
-      {
-       "provider": "Lium",
-       "providerId": "lium",
-       "market": "marketplace",
-       "value": 3.5,
-       "date": "2026-10-28",
-       "sourceUrl": "https://lium.io/api/public/v1/nodes",
-       "rule": "market_not_on_demand"
-      },
-      {
-       "provider": "Lium",
-       "providerId": "lium",
-       "market": "marketplace",
-       "value": 3.75,
-       "date": "2026-10-28",
-       "sourceUrl": "https://lium.io/api/public/v1/nodes",
-       "rule": "market_not_on_demand"
-      },
-      {
-       "provider": "Lium",
-       "providerId": "lium",
-       "market": "marketplace",
-       "value": 4.0,
-       "date": "2026-10-28",
-       "sourceUrl": "https://lium.io/api/public/v1/nodes",
-       "rule": "market_not_on_demand"
-      },
-      {
-       "provider": "Lium",
-       "providerId": "lium",
-       "market": "marketplace",
-       "value": 4.75,
-       "date": "2026-10-28",
-       "sourceUrl": "https://lium.io/api/public/v1/nodes",
-       "rule": "market_not_on_demand"
-      },
-      {
-       "provider": "Lium",
-       "providerId": "lium",
-       "market": "marketplace",
-       "value": 4.92,
-       "date": "2026-10-28",
-       "sourceUrl": "https://lium.io/api/public/v1/nodes",
-       "rule": "market_not_on_demand"
-      },
-      {
-       "provider": "Lium",
-       "providerId": "lium",
-       "market": "marketplace",
-       "value": 5.06,
-       "date": "2026-10-28",
-       "sourceUrl": "https://lium.io/api/public/v1/nodes",
-       "rule": "market_not_on_demand"
-      },
-      {
-       "provider": "Lium",
-       "providerId": "lium",
-       "market": "marketplace",
-       "value": 5.7,
-       "date": "2026-10-28",
-       "sourceUrl": "https://lium.io/api/public/v1/nodes",
-       "rule": "market_not_on_demand"
-      },
-      {
-       "provider": "Lium",
-       "providerId": "lium",
-       "market": "spot",
-       "value": 3.39,
-       "date": "2026-10-28",
-       "sourceUrl": "https://lium.io/api/public/v1/nodes",
-       "rule": "market_not_on_demand"
-      },
-      {
-       "provider": "Lium",
-       "providerId": "lium",
-       "market": "spot",
-       "value": 3.9,
-       "date": "2026-10-28",
-       "sourceUrl": "https://lium.io/api/public/v1/nodes",
-       "rule": "market_not_on_demand"
-      },
-      {
-       "provider": "Lium",
-       "providerId": "lium",
-       "market": "spot",
-       "value": 4.0,
-       "date": "2026-10-28",
-       "sourceUrl": "https://lium.io/api/public/v1/nodes",
-       "rule": "market_not_on_demand"
-      },
-      {
-       "provider": "Lium",
-       "providerId": "lium",
-       "market": "spot",
-       "value": 5.5,
-       "date": "2026-10-28",
-       "sourceUrl": "https://lium.io/api/public/v1/nodes",
-       "rule": "market_not_on_demand"
-      },
-      {
-       "provider": "Lium",
-       "providerId": "lium",
-       "market": "spot",
-       "value": 5.58,
-       "date": "2026-10-28",
-       "sourceUrl": "https://lium.io/api/public/v1/nodes",
-       "rule": "market_not_on_demand"
-      },
-      {
-       "provider": "Modal",
-       "providerId": "modal",
-       "market": "serverless",
-       "value": 4.5396,
-       "date": "2026-10-28",
-       "sourceUrl": "https://modal.com/pricing",
-       "rule": "market_not_on_demand"
-      },
-      {
-       "provider": "Replicate",
-       "providerId": "replicate",
-       "market": "serverless",
-       "value": 5.49,
-       "date": "2026-10-28",
-       "sourceUrl": "https://replicate.com/pricing",
-       "rule": "market_not_on_demand"
-      },
-      {
-       "provider": "RunPod",
-       "providerId": "runpod",
-       "market": "community",
-       "value": 3.59,
-       "date": "2026-10-28",
-       "sourceUrl": "https://www.runpod.io/pricing",
-       "rule": "market_not_on_demand"
-      },
-      {
-       "provider": "RunPod",
-       "providerId": "runpod",
-       "market": "serverless",
-       "value": 5.93,
-       "date": "2026-10-28",
-       "sourceUrl": "https://www.runpod.io/pricing",
-       "rule": "market_not_on_demand"
-      },
-      {
-       "provider": "Spheron",
-       "providerId": "spheron",
-       "market": "spot",
-       "value": 3.35,
-       "date": "2026-10-28",
-       "sourceUrl": "https://www.spheron.network/pricing/",
-       "rule": "market_not_on_demand"
-      },
-      {
-       "provider": "Together AI",
-       "providerId": "together",
-       "market": "spot",
-       "value": 2.99,
-       "date": "2026-10-28",
-       "sourceUrl": "https://www.together.ai/pricing",
-       "rule": "market_not_on_demand"
-      },
-      {
-       "provider": "Cerebrium",
-       "providerId": "cerebrium",
-       "market": "serverless",
-       "value": 4.1976,
-       "date": "2026-10-29",
-       "sourceUrl": "https://www.cerebrium.ai/pricing",
-       "rule": "market_not_on_demand"
-      },
-      {
-       "provider": "Verda",
-       "providerId": "datacrunch",
-       "market": "spot",
-       "value": 3.094,
-       "date": "2026-10-29",
-       "sourceUrl": "https://datacrunch.io/pricing",
-       "rule": "market_not_on_demand"
-      },
-      {
-       "provider": "Daytona",
-       "providerId": "daytona",
-       "market": "spot",
-       "value": 2.61,
-       "date": "2026-10-29",
-       "sourceUrl": "https://billing.app.daytona.io/gpu-pricing",
-       "rule": "market_not_on_demand"
-      },
-      {
-       "provider": "fal",
-       "providerId": "fal",
-       "market": "serverless",
-       "value": 6.0,
-       "date": "2026-10-29",
-       "sourceUrl": "https://fal.ai/pricing",
-       "rule": "market_not_on_demand"
-      },
-      {
-       "provider": "Fireworks AI",
-       "providerId": "fireworks",
-       "market": "serverless",
-       "value": 8.0,
-       "date": "2026-10-29",
-       "sourceUrl": "https://fireworks.ai/pricing",
-       "rule": "market_not_on_demand"
-      },
-      {
-       "provider": "Google Cloud",
-       "providerId": "gcp",
-       "market": "spot",
-       "value": 5.586,
-       "date": "2026-10-29",
-       "sourceUrl": "https://cloud.google.com/products/compute/gpus-pricing?hl=en",
-       "rule": "market_not_on_demand"
-      },
-      {
-       "provider": "Hyperstack",
-       "providerId": "hyperstack",
-       "market": "reserved",
-       "value": 2.79,
-       "date": "2026-10-29",
-       "sourceUrl": "https://www.hyperstack.cloud/gpu-pricing",
-       "rule": "market_not_on_demand"
-      },
-      {
-       "provider": "Impossible Cloud",
-       "providerId": "impossiblecloud",
-       "market": "reserved",
-       "value": 3.052632,
-       "date": "2026-10-29",
-       "sourceUrl": "https://www.impossiblecloud.com/en-us/baremetal",
-       "rule": "market_not_on_demand"
-      },
-      {
-       "provider": "Impossible Cloud",
-       "providerId": "impossiblecloud",
-       "market": "reserved",
-       "value": 3.157895,
-       "date": "2026-10-29",
-       "sourceUrl": "https://www.impossiblecloud.com/en-us/baremetal",
-       "rule": "market_not_on_demand"
-      },
-      {
-       "provider": "Impossible Cloud",
-       "providerId": "impossiblecloud",
-       "market": "reserved",
-       "value": 5.252632,
-       "date": "2026-10-29",
-       "sourceUrl": "https://www.impossiblecloud.com/en-us/baremetal",
-       "rule": "market_not_on_demand"
-      },
-      {
-       "provider": "Koyeb",
-       "providerId": "koyeb",
-       "market": "serverless",
-       "value": 3.0,
-       "date": "2026-10-29",
-       "sourceUrl": "https://www.koyeb.com/pricing",
-       "rule": "market_not_on_demand"
-      },
-      {
-       "provider": "Lium",
-       "providerId": "lium",
-       "market": "marketplace",
-       "value": 3.75,
-       "date": "2026-10-29",
-       "sourceUrl": "https://lium.io/api/public/v1/nodes",
-       "rule": "market_not_on_demand"
-      },
-      {
-       "provider": "Lium",
-       "providerId": "lium",
-       "market": "marketplace",
-       "value": 3.9,
-       "date": "2026-10-29",
-       "sourceUrl": "https://lium.io/api/public/v1/nodes",
-       "rule": "market_not_on_demand"
-      },
-      {
-       "provider": "Lium",
-       "providerId": "lium",
-       "market": "marketplace",
-       "value": 4.0,
-       "date": "2026-10-29",
-       "sourceUrl": "https://lium.io/api/public/v1/nodes",
-       "rule": "market_not_on_demand"
-      },
-      {
-       "provider": "Lium",
-       "providerId": "lium",
-       "market": "marketplace",
-       "value": 4.84,
-       "date": "2026-10-29",
-       "sourceUrl": "https://lium.io/api/public/v1/nodes",
-       "rule": "market_not_on_demand"
-      },
-      {
-       "provider": "Lium",
-       "providerId": "lium",
-       "market": "marketplace",
-       "value": 4.94,
-       "date": "2026-10-29",
-       "sourceUrl": "https://lium.io/api/public/v1/nodes",
-       "rule": "market_not_on_demand"
-      },
-      {
-       "provider": "Lium",
-       "providerId": "lium",
-       "market": "marketplace",
-       "value": 4.96,
-       "date": "2026-10-29",
-       "sourceUrl": "https://lium.io/api/public/v1/nodes",
-       "rule": "market_not_on_demand"
-      },
-      {
-       "provider": "Lium",
-       "providerId": "lium",
-       "market": "marketplace",
-       "value": 5.7,
-       "date": "2026-10-29",
-       "sourceUrl": "https://lium.io/api/public/v1/nodes",
-       "rule": "market_not_on_demand"
-      },
-      {
-       "provider": "Lium",
-       "providerId": "lium",
-       "market": "spot",
-       "value": 5.48,
-       "date": "2026-10-29",
-       "sourceUrl": "https://lium.io/api/public/v1/nodes",
-       "rule": "market_not_on_demand"
-      },
-      {
-       "provider": "Modal",
-       "providerId": "modal",
-       "market": "serverless",
-       "value": 4.5396,
-       "date": "2026-10-29",
-       "sourceUrl": "https://modal.com/pricing",
-       "rule": "market_not_on_demand"
-      },
-      {
-       "provider": "Replicate",
-       "providerId": "replicate",
-       "market": "serverless",
-       "value": 5.49,
-       "date": "2026-10-29",
-       "sourceUrl": "https://replicate.com/pricing",
-       "rule": "market_not_on_demand"
-      },
-      {
-       "provider": "RunPod",
-       "providerId": "runpod",
-       "market": "community",
-       "value": 3.59,
-       "date": "2026-10-29",
-       "sourceUrl": "https://www.runpod.io/pricing",
-       "rule": "market_not_on_demand"
-      },
-      {
-       "provider": "RunPod",
-       "providerId": "runpod",
-       "market": "serverless",
-       "value": 5.93,
-       "date": "2026-10-29",
-       "sourceUrl": "https://www.runpod.io/pricing",
-       "rule": "market_not_on_demand"
-      },
-      {
-       "provider": "Spheron",
-       "providerId": "spheron",
-       "market": "spot",
-       "value": 3.35,
-       "date": "2026-10-29",
-       "sourceUrl": "https://www.spheron.network/pricing/",
-       "rule": "market_not_on_demand"
-      },
-      {
-       "provider": "Together AI",
-       "providerId": "together",
-       "market": "spot",
-       "value": 2.99,
-       "date": "2026-10-29",
-       "sourceUrl": "https://www.together.ai/pricing",
        "rule": "market_not_on_demand"
       }
      ],
      "excludedQuoteRowsByMarket": {
-      "serverless": 28,
-      "spot": 33,
-      "reserved": 14,
-      "marketplace": 24,
-      "community": 4
+      "serverless": 6,
+      "spot": 4,
+      "reserved": 1,
+      "marketplace": 6,
+      "community": 1
      }
     }
    },
@@ -1459,8 +707,8 @@
      "daysInMonth": 31,
      "coveragePct": 80.6,
      "status": "published",
-     "vintage": "provisional",
-     "isComplete": false,
+     "vintage": "final",
+     "isComplete": true,
      "withheldReason": null,
      "methodologyVersion": "2026-11-04.1",
      "panel": [
@@ -1481,6 +729,20 @@
       "spheron",
       "together"
      ]
+    },
+    {
+     "month": "2026-11",
+     "value": null,
+     "panelCount": 0,
+     "coverageDays": 0,
+     "daysInMonth": 30,
+     "coveragePct": 0.0,
+     "status": "withheld",
+     "vintage": "provisional",
+     "isComplete": false,
+     "withheldReason": "no provider met the 13/14-day panel test in 2026-10-18..2026-10-31",
+     "methodologyVersion": "2026-11-04.1",
+     "panel": []
     }
    ]
   }
