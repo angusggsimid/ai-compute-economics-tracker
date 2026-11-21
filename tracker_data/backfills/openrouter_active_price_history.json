@@ -1,8 +1,10 @@
 {
-  "fetchedAt": "2026-11-20T16:16:15Z",
+  "fetchedAt": "2026-11-21T02:48:09Z",
   "data": {
     "asOf": "2026-11-20",
     "aliases": {
+      "radixark/daisyrose-27b": "radixark/daisyrose-27b",
+      "radixark/daisyrose-27b-20261120": "radixark/daisyrose-27b",
       "mistralai/pixtral-large-2502": "mistralai/pixtral-large-2502",
       "google/gemini-4-neon": "google/gemini-4-neon",
       "google/gemini-4-neon-20261118": "google/gemini-4-neon:batch",
@@ -408,8 +410,6 @@
       "deepseek/deepseek-v4-pro-20260423": "deepseek/deepseek-v4-pro",
       "deepseek/deepseek-v4-flash": "deepseek/deepseek-v4-flash",
       "deepseek/deepseek-v4-flash-20260423": "deepseek/deepseek-v4-flash",
-      "tencent/hy3-preview": "tencent/hy3-preview",
-      "tencent/hy3-preview-20260421": "tencent/hy3-preview",
       "xiaomi/mimo-v2.5-pro": "xiaomi/mimo-v2.5-pro",
       "xiaomi/mimo-v2.5-pro-20260422": "xiaomi/mimo-v2.5-pro",
       "xiaomi/mimo-v2.5": "xiaomi/mimo-v2.5",
@@ -734,6 +734,12 @@
       "openrouter/bodybuilder": "openrouter/bodybuilder"
     },
     "currentModels": {
+      "radixark/daisyrose-27b": {
+        "name": "RadixArk: DaisyRose 27B",
+        "canonicalSlug": "radixark/daisyrose-27b-20261120",
+        "inputUsdPer1m": 0.15,
+        "outputUsdPer1m": 1.875
+      },
       "mistralai/pixtral-large-2502": {
         "name": "Mistral: Pixtral Large 2502",
         "canonicalSlug": "mistralai/pixtral-large-2502",
@@ -995,8 +1001,8 @@
       "minimax/minimax-m3.1-flash": {
         "name": "MiniMax: MiniMax M3.1 Flash",
         "canonicalSlug": "minimax/minimax-m3.1-flash-20261019",
-        "inputUsdPer1m": 0.075,
-        "outputUsdPer1m": 0.3
+        "inputUsdPer1m": 0.15,
+        "outputUsdPer1m": 0.6
       },
       "deepseek/deepseek-v4.1-flash-1017": {
         "name": "DeepSeek: DeepSeek V4.1 Flash 1017",
@@ -1050,7 +1056,7 @@
         "name": "NVIDIA: Nemotron 3.5 Super VL",
         "canonicalSlug": "nvidia/nemotron-3.5-super-vl-20261015",
         "inputUsdPer1m": 0.15,
-        "outputUsdPer1m": 0.5
+        "outputUsdPer1m": 0.47
       },
       "nvidia/nemotron-3.5-super-vl:free": {
         "name": "NVIDIA: Nemotron 3.5 Super VL (free)",
@@ -1349,7 +1355,7 @@
       "~deepseek/deepseek-pro-latest": {
         "name": "DeepSeek: DeepSeek Pro Latest",
         "canonicalSlug": "~deepseek/deepseek-pro-latest",
-        "inputUsdPer1m": 0.1188,
+        "inputUsdPer1m": 0.0999,
         "outputUsdPer1m": 8.0
       },
       "~deepseek/deepseek-flash-latest": {
@@ -1415,8 +1421,8 @@
       "deepseek/deepseek-v4.1-flash": {
         "name": "DeepSeek: DeepSeek V4.1 Flash",
         "canonicalSlug": "deepseek/deepseek-v4.1-flash-20260910",
-        "inputUsdPer1m": 0.3,
-        "outputUsdPer1m": 1.2
+        "inputUsdPer1m": 0.050699999999999995,
+        "outputUsdPer1m": 0.20279999999999998
       },
       "deepseek/deepseek-v4.1-flash:batch": {
         "name": "DeepSeek: DeepSeek V4.1 Flash (batch)",
@@ -1517,8 +1523,8 @@
       "tencent/hy4-preview": {
         "name": "Tencent: Hy4 preview",
         "canonicalSlug": "tencent/hy4-preview-20260827",
-        "inputUsdPer1m": 0.7505999999999999,
-        "outputUsdPer1m": 2.2509
+        "inputUsdPer1m": 0.834,
+        "outputUsdPer1m": 2.501
       },
       "~z-ai/glm-flash-latest": {
         "name": "Z.ai: GLM Flash Latest",
@@ -1553,8 +1559,8 @@
       "deepseek/deepseek-v4-flash-vision-exp": {
         "name": "DeepSeek: DeepSeek V4 Flash Vision Exp",
         "canonicalSlug": "deepseek/deepseek-v4-flash-vision-exp-20260821",
-        "inputUsdPer1m": 0.44,
-        "outputUsdPer1m": 1.32
+        "inputUsdPer1m": 0.21559999999999999,
+        "outputUsdPer1m": 0.6468
       },
       "tencent/hy-mt2-1.8b": {
         "name": "Tencent: Hy-MT2-1.8B",
@@ -1907,8 +1913,8 @@
       "tencent/hy3": {
         "name": "Tencent: Hy3",
         "canonicalSlug": "tencent/hy3-20260706",
-        "inputUsdPer1m": 0.0825,
-        "outputUsdPer1m": 0.33
+        "inputUsdPer1m": 0.13199999999999998,
+        "outputUsdPer1m": 0.5279999999999999
       },
       "anthropic/claude-sonnet-5": {
         "name": "Anthropic: Claude Sonnet 5",
@@ -2210,12 +2216,6 @@
         "inputUsdPer1m": 0.09,
         "outputUsdPer1m": 0.18
       },
-      "tencent/hy3-preview": {
-        "name": "Tencent: Hy3 preview",
-        "canonicalSlug": "tencent/hy3-preview-20260421",
-        "inputUsdPer1m": 0.18,
-        "outputUsdPer1m": 0.6
-      },
       "xiaomi/mimo-v2.5-pro": {
         "name": "Xiaomi: MiMo-V2.5-Pro",
         "canonicalSlug": "xiaomi/mimo-v2.5-pro-20260422",
@@ -2267,8 +2267,8 @@
       "google/gemma-4-26b-a4b-it": {
         "name": "Google: Gemma 4 26B A4B ",
         "canonicalSlug": "google/gemma-4-26b-a4b-it-20260403",
-        "inputUsdPer1m": 0.09,
-        "outputUsdPer1m": 0.3
+        "inputUsdPer1m": 0.0675,
+        "outputUsdPer1m": 0.22499999999999998
       },
       "google/gemma-4-26b-a4b-it:free": {
         "name": "Google: Gemma 4 26B A4B  (free)",
@@ -2333,8 +2333,8 @@
       "minimax/minimax-m2.7": {
         "name": "MiniMax: MiniMax M2.7",
         "canonicalSlug": "minimax/minimax-m2.7-20260318",
-        "inputUsdPer1m": 0.21,
-        "outputUsdPer1m": 0.84
+        "inputUsdPer1m": 0.6,
+        "outputUsdPer1m": 1.7999999999999998
       },
       "openai/gpt-5.4-nano": {
         "name": "OpenAI: GPT-5.4 Nano",
@@ -2513,8 +2513,8 @@
       "minimax/minimax-m2.5": {
         "name": "MiniMax: MiniMax M2.5",
         "canonicalSlug": "minimax/minimax-m2.5-20260211",
-        "inputUsdPer1m": 0.295,
-        "outputUsdPer1m": 1.2
+        "inputUsdPer1m": 0.27,
+        "outputUsdPer1m": 0.95
       },
       "z-ai/glm-5": {
         "name": "Z.ai: GLM 5",
@@ -2957,8 +2957,8 @@
       "openai/gpt-oss-20b": {
         "name": "OpenAI: gpt-oss-20b",
         "canonicalSlug": "openai/gpt-oss-20b",
-        "inputUsdPer1m": 0.018,
-        "outputUsdPer1m": 0.09
+        "inputUsdPer1m": 0.017,
+        "outputUsdPer1m": 0.08499999999999999
       },
       "openai/gpt-oss-20b:batch": {
         "name": "OpenAI: gpt-oss-20b (batch)",
@@ -2987,8 +2987,8 @@
       "qwen/qwen3-coder-30b-a3b-instruct": {
         "name": "Qwen: Qwen3 Coder 30B A3B Instruct",
         "canonicalSlug": "qwen/qwen3-coder-30b-a3b-instruct",
-        "inputUsdPer1m": 0.15,
-        "outputUsdPer1m": 0.6
+        "inputUsdPer1m": 0.07,
+        "outputUsdPer1m": 0.28
       },
       "qwen/qwen3-30b-a3b-instruct-2507": {
         "name": "Qwen: Qwen3 30B A3B Instruct 2507",
@@ -3209,8 +3209,8 @@
       "deepseek/deepseek-chat-v3-0324": {
         "name": "DeepSeek: DeepSeek V3 0324",
         "canonicalSlug": "deepseek/deepseek-chat-v3-0324",
-        "inputUsdPer1m": 0.29,
-        "outputUsdPer1m": 1.1400000000000001
+        "inputUsdPer1m": 0.25,
+        "outputUsdPer1m": 1.0
       },
       "mistralai/mistral-small-3.1-24b-instruct": {
         "name": "Mistral: Mistral Small 3.1 24B",
@@ -3246,7 +3246,7 @@
         "name": "Google: Gemma 3 27B",
         "canonicalSlug": "google/gemma-3-27b-it",
         "inputUsdPer1m": 0.08,
-        "outputUsdPer1m": 0.16
+        "outputUsdPer1m": 0.44999999999999996
       },
       "thedrummer/skyfall-36b-v2": {
         "name": "TheDrummer: Skyfall 36B V2",
@@ -11325,6 +11325,11 @@
             "2026-11-19",
             0.08,
             0.16
+          ],
+          [
+            "2026-11-20",
+            0.08,
+            0.45
           ]
         ]
       },
@@ -11799,6 +11804,11 @@
             "2026-10-05",
             0.29,
             1.14
+          ],
+          [
+            "2026-11-20",
+            0.25,
+            1.0
           ]
         ]
       },
@@ -21656,6 +21666,11 @@
             "2026-11-20",
             0.26,
             2.6
+          ],
+          [
+            "2026-11-20",
+            0.195,
+            1.56
           ]
         ]
       },
@@ -22302,6 +22317,11 @@
             "2026-11-05",
             0.21,
             0.84
+          ],
+          [
+            "2026-11-20",
+            0.6,
+            1.8
           ]
         ]
       },
@@ -23199,6 +23219,11 @@
             "2026-11-20",
             0.09,
             0.3
+          ],
+          [
+            "2026-11-20",
+            0.0675,
+            0.225
           ]
         ]
       },
@@ -26610,7 +26635,7 @@
         "name": "Tencent: Hy3 preview",
         "firstSeen": "2026-05-09",
         "lastSeen": "2026-11-20",
-        "presentNow": true,
+        "presentNow": false,
         "points": [
           [
             "2026-05-09",
@@ -28772,6 +28797,11 @@
             "2026-11-20",
             0.132,
             0.528
+          ],
+          [
+            "2026-11-20",
+            0.0825,
+            0.33
           ]
         ]
       },
@@ -30360,6 +30390,11 @@
             "2026-11-20",
             0.047,
             0.3
+          ],
+          [
+            "2026-11-20",
+            0.0443,
+            0.3
           ]
         ]
       },
@@ -31046,6 +31081,11 @@
             "2026-11-20",
             0.047,
             0.3
+          ],
+          [
+            "2026-11-20",
+            0.044,
+            0.132
           ]
         ]
       },
@@ -32471,6 +32511,11 @@
             "2026-11-18",
             0.06,
             2.2
+          ],
+          [
+            "2026-11-20",
+            0.06,
+            1.96
           ]
         ]
       },
@@ -33230,6 +33275,11 @@
             "2026-11-06",
             0.44,
             1.32
+          ],
+          [
+            "2026-11-20",
+            0.2156,
+            0.6468
           ]
         ]
       },
@@ -34135,6 +34185,11 @@
             "2026-11-20",
             0.834,
             2.501
+          ],
+          [
+            "2026-11-20",
+            0.7506,
+            2.2509
           ]
         ]
       },
@@ -36186,6 +36241,11 @@
             "2026-11-20",
             0.2565,
             8.0
+          ],
+          [
+            "2026-11-20",
+            0.0999,
+            8.0
           ]
         ]
       },
@@ -37168,6 +37228,11 @@
             "2026-11-07",
             0.045,
             0.135
+          ],
+          [
+            "2026-11-20",
+            0.06,
+            0.18
           ]
         ]
       },
@@ -37683,6 +37748,11 @@
             "2026-11-20",
             0.3,
             1.2
+          ],
+          [
+            "2026-11-20",
+            0.036,
+            0.5
           ]
         ]
       },
@@ -37958,6 +38028,11 @@
             "2026-11-20",
             0.15,
             0.6
+          ],
+          [
+            "2026-11-20",
+            0.075,
+            0.3
           ]
         ]
       },
@@ -38815,12 +38890,12 @@
     "models": {
       "url": "https://openrouter.ai/api/v1/models",
       "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "snapshotPath": "tracker_snapshots/market_facts/20261120t161615z-openrouter-models-active-prices.json"
+      "snapshotPath": "tracker_snapshots/market_facts/20261121t024809z-openrouter-models-active-prices.json"
     },
     "history": {
       "url": "https://raw.githubusercontent.com/jvrck/openrouterlist/main/data/history/prices.json",
       "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "snapshotPath": "tracker_snapshots/market_facts/20261120t161615z-openrouterlist-price-history.json",
+      "snapshotPath": "tracker_snapshots/market_facts/20261121t024809z-openrouterlist-price-history.json",
       "licenseCaveat": "Repository labels MIT, but its LICENSE retains placeholder copyright fields and has no separate data license."
     }
   }
