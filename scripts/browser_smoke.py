@@ -735,7 +735,12 @@ def _site_pages_smoke(browser, base_url: str):
         )
         gh_row = page.locator("#compare-table tbody tr").filter(has_text="GH200").first
         gh_text = gh_row.inner_text() if gh_row.count() else ""
-        coverage_ok = "覆盖不足" in gh_text and "0.0%" not in gh_text
+        # 规则断言，不锁某一天的数据状态（2026-11-21：GH200 补齐到两周后，"覆盖不足"不再是
+        # 必然结果，旧断言把数据成熟当成了回归）。要求二选一且互相排斥：
+        #   可比较 → 必须给变化百分比；不可比较 → 必须标"覆盖不足"且不给任何百分比。
+        insufficient = "覆盖不足" in gh_text
+        has_pct = "%" in gh_text
+        coverage_ok = (insufficient and not has_pct) or (not insufficient and has_pct)
 
         record(
             "site_compare_page",
