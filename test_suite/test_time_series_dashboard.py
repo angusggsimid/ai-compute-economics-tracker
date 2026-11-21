@@ -85,8 +85,11 @@ def test_supply_tension_panels_accumulate_and_stay_point_only_until_threshold():
         assert {row["series"] for row in rows} == {"H100", "H200", "B200"}, name
     html = build_html(snapshot)
     assert "scarcity-chart" in html and "gap-chart" in html and "breadth-chart" in html
-    # GPU Finder 为 7 天滚动窗口：少于 10 个有效日前只画观测点
-    assert "pointOnly:_sd<10" in html
+    # 2026-11-21 起供给端有"历史段 + 新段"可读，门槛从 10 天降到 4 天：不再整块退化成 KPI 卡
+    assert "pointOnly:_sd<4" in html
+    assert "pointOnly:_gd<4" in html
+    # 缺口只画虚线桥，后端不补点
+    assert html.count("bridgeGaps:true") >= 4
     assert "gpu-availability" not in html
 
 

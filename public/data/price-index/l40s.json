@@ -24,8 +24,8 @@
     "p25": 1.015,
     "p75": 2.05675,
     "providerCount": 16,
-    "index": 101.9037,
-    "linkPairs": 12,
+    "index": 105.8699,
+    "linkPairs": 16,
     "withheldReason": null,
     "receipt": "2026-W47",
     "ageDays": 4
@@ -284,6 +284,34 @@
      "withheldReason": null
     },
     {
+     "weekStart": "2026-11-02",
+     "isoWeek": "2026-W45",
+     "vintage": "final",
+     "status": "published",
+     "methodologyVersion": "2026-11-04.1",
+     "median": 1.6411,
+     "p25": 1.09,
+     "p75": 1.99,
+     "providerCount": 15,
+     "index": 101.4452,
+     "linkPairs": 12,
+     "withheldReason": null
+    },
+    {
+     "weekStart": "2026-11-09",
+     "isoWeek": "2026-W46",
+     "vintage": "final",
+     "status": "published",
+     "methodologyVersion": "2026-11-04.1",
+     "median": 1.59725,
+     "p25": 1.015,
+     "p75": 2.011,
+     "providerCount": 16,
+     "index": 105.7089,
+     "linkPairs": 15,
+     "withheldReason": null
+    },
+    {
      "weekStart": "2026-11-16",
      "isoWeek": "2026-W47",
      "vintage": "provisional",
@@ -293,8 +321,8 @@
      "p25": 1.015,
      "p75": 2.05675,
      "providerCount": 16,
-     "index": 101.9037,
-     "linkPairs": 12,
+     "index": 105.8699,
+     "linkPairs": 16,
      "withheldReason": null,
      "receipt": "2026-W47",
      "ageDays": 4
@@ -311,8 +339,8 @@
      "p25": 1.015,
      "p75": 2.05675,
      "providerCount": 16,
-     "index": 101.9037,
-     "linkPairs": 12,
+     "index": 105.8699,
+     "linkPairs": 16,
      "withheldReason": null,
      "notConfirmed48h": 0,
      "included": [
@@ -446,6 +474,249 @@
       }
      ],
      "excluded": [
+      {
+       "provider": "Cerebrium",
+       "providerId": "cerebrium",
+       "market": "serverless",
+       "value": 1.9512,
+       "date": "2026-11-16",
+       "sourceUrl": "https://www.cerebrium.ai/pricing",
+       "rule": "market_not_on_demand"
+      },
+      {
+       "provider": "Verda",
+       "providerId": "datacrunch",
+       "market": "spot",
+       "value": 1.019,
+       "date": "2026-11-16",
+       "sourceUrl": "https://datacrunch.io/pricing",
+       "rule": "market_not_on_demand"
+      },
+      {
+       "provider": "Daytona",
+       "providerId": "daytona",
+       "market": "spot",
+       "value": 1.14,
+       "date": "2026-11-16",
+       "sourceUrl": "https://billing.app.daytona.io/gpu-pricing",
+       "rule": "market_not_on_demand"
+      },
+      {
+       "provider": "Koyeb",
+       "providerId": "koyeb",
+       "market": "serverless",
+       "value": 1.2,
+       "date": "2026-11-16",
+       "sourceUrl": "https://www.koyeb.com/pricing",
+       "rule": "market_not_on_demand"
+      },
+      {
+       "provider": "Modal",
+       "providerId": "modal",
+       "market": "serverless",
+       "value": 1.9512,
+       "date": "2026-11-16",
+       "sourceUrl": "https://modal.com/pricing",
+       "rule": "market_not_on_demand"
+      },
+      {
+       "provider": "Replicate",
+       "providerId": "replicate",
+       "market": "serverless",
+       "value": 3.51,
+       "date": "2026-11-16",
+       "sourceUrl": "https://replicate.com/pricing",
+       "rule": "market_not_on_demand"
+      },
+      {
+       "provider": "RunPod",
+       "providerId": "runpod",
+       "market": "community",
+       "value": 0.79,
+       "date": "2026-11-16",
+       "sourceUrl": "https://www.runpod.io/pricing",
+       "rule": "market_not_on_demand"
+      },
+      {
+       "provider": "Spheron",
+       "providerId": "spheron",
+       "market": "spot",
+       "value": 1.24,
+       "date": "2026-11-16",
+       "sourceUrl": "https://www.spheron.network/pricing/",
+       "rule": "market_not_on_demand"
+      },
+      {
+       "provider": "Cerebrium",
+       "providerId": "cerebrium",
+       "market": "serverless",
+       "value": 1.9512,
+       "date": "2026-11-17",
+       "sourceUrl": "https://www.cerebrium.ai/pricing",
+       "rule": "market_not_on_demand"
+      },
+      {
+       "provider": "Verda",
+       "providerId": "datacrunch",
+       "market": "spot",
+       "value": 1.019,
+       "date": "2026-11-17",
+       "sourceUrl": "https://datacrunch.io/pricing",
+       "rule": "market_not_on_demand"
+      },
+      {
+       "provider": "Daytona",
+       "providerId": "daytona",
+       "market": "spot",
+       "value": 1.14,
+       "date": "2026-11-17",
+       "sourceUrl": "https://billing.app.daytona.io/gpu-pricing",
+       "rule": "market_not_on_demand"
+      },
+      {
+       "provider": "Koyeb",
+       "providerId": "koyeb",
+       "market": "serverless",
+       "value": 1.2,
+       "date": "2026-11-17",
+       "sourceUrl": "https://www.koyeb.com/pricing",
+       "rule": "market_not_on_demand"
+      },
+      {
+       "provider": "Modal",
+       "providerId": "modal",
+       "market": "serverless",
+       "value": 1.9512,
+       "date": "2026-11-17",
+       "sourceUrl": "https://modal.com/pricing",
+       "rule": "market_not_on_demand"
+      },
+      {
+       "provider": "Replicate",
+       "providerId": "replicate",
+       "market": "serverless",
+       "value": 3.51,
+       "date": "2026-11-17",
+       "sourceUrl": "https://replicate.com/pricing",
+       "rule": "market_not_on_demand"
+      },
+      {
+       "provider": "RunPod",
+       "providerId": "runpod",
+       "market": "community",
+       "value": 0.79,
+       "date": "2026-11-17",
+       "sourceUrl": "https://www.runpod.io/pricing",
+       "rule": "market_not_on_demand"
+      },
+      {
+       "provider": "Spheron",
+       "providerId": "spheron",
+       "market": "spot",
+       "value": 1.52,
+       "date": "2026-11-17",
+       "sourceUrl": "https://www.spheron.network/pricing/",
+       "rule": "market_not_on_demand"
+      },
+      {
+       "provider": "Cerebrium",
+       "providerId": "cerebrium",
+       "market": "serverless",
+       "value": 1.9512,
+       "date": "2026-11-18",
+       "sourceUrl": "https://www.cerebrium.ai/pricing",
+       "rule": "market_not_on_demand"
+      },
+      {
+       "provider": "Verda",
+       "providerId": "datacrunch",
+       "market": "spot",
+       "value": 1.029,
+       "date": "2026-11-18",
+       "sourceUrl": "https://datacrunch.io/pricing",
+       "rule": "market_not_on_demand"
+      },
+      {
+       "provider": "Daytona",
+       "providerId": "daytona",
+       "market": "spot",
+       "value": 1.14,
+       "date": "2026-11-18",
+       "sourceUrl": "https://billing.app.daytona.io/gpu-pricing",
+       "rule": "market_not_on_demand"
+      },
+      {
+       "provider": "Koyeb",
+       "providerId": "koyeb",
+       "market": "serverless",
+       "value": 1.2,
+       "date": "2026-11-18",
+       "sourceUrl": "https://www.koyeb.com/pricing",
+       "rule": "market_not_on_demand"
+      },
+      {
+       "provider": "Lium",
+       "providerId": "lium",
+       "market": "marketplace",
+       "value": 0.38,
+       "date": "2026-11-18",
+       "sourceUrl": "https://lium.io/api/public/v1/nodes",
+       "rule": "market_not_on_demand"
+      },
+      {
+       "provider": "Lium",
+       "providerId": "lium",
+       "market": "marketplace",
+       "value": 0.59,
+       "date": "2026-11-18",
+       "sourceUrl": "https://lium.io/api/public/v1/nodes",
+       "rule": "market_not_on_demand"
+      },
+      {
+       "provider": "Lium",
+       "providerId": "lium",
+       "market": "marketplace",
+       "value": 0.74,
+       "date": "2026-11-18",
+       "sourceUrl": "https://lium.io/api/public/v1/nodes",
+       "rule": "market_not_on_demand"
+      },
+      {
+       "provider": "Modal",
+       "providerId": "modal",
+       "market": "serverless",
+       "value": 1.9512,
+       "date": "2026-11-18",
+       "sourceUrl": "https://modal.com/pricing",
+       "rule": "market_not_on_demand"
+      },
+      {
+       "provider": "Replicate",
+       "providerId": "replicate",
+       "market": "serverless",
+       "value": 3.51,
+       "date": "2026-11-18",
+       "sourceUrl": "https://replicate.com/pricing",
+       "rule": "market_not_on_demand"
+      },
+      {
+       "provider": "RunPod",
+       "providerId": "runpod",
+       "market": "community",
+       "value": 0.79,
+       "date": "2026-11-18",
+       "sourceUrl": "https://www.runpod.io/pricing",
+       "rule": "market_not_on_demand"
+      },
+      {
+       "provider": "Spheron",
+       "providerId": "spheron",
+       "market": "spot",
+       "value": 1.29,
+       "date": "2026-11-18",
+       "sourceUrl": "https://www.spheron.network/pricing/",
+       "rule": "market_not_on_demand"
+      },
       {
        "provider": "Cerebrium",
        "providerId": "cerebrium",
@@ -637,10 +908,10 @@
       }
      ],
      "excludedQuoteRowsByMarket": {
-      "serverless": 8,
-      "spot": 8,
-      "marketplace": 3,
-      "community": 2
+      "serverless": 20,
+      "spot": 17,
+      "community": 5,
+      "marketplace": 6
      }
     }
    },
@@ -713,11 +984,11 @@
     },
     {
      "month": "2026-10",
-     "value": 1.595362,
+     "value": 1.594387,
      "panelCount": 12,
-     "coverageDays": 25,
+     "coverageDays": 26,
      "daysInMonth": 31,
-     "coveragePct": 80.6,
+     "coveragePct": 83.9,
      "status": "published",
      "vintage": "final",
      "isComplete": true,

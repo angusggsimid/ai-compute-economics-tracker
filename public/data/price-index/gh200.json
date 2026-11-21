@@ -15,20 +15,20 @@
    "as_of": "2026-11-20",
    "min_providers": 4,
    "latest": {
-    "weekStart": "2026-07-13",
-    "isoWeek": "2026-W29",
+    "weekStart": "2026-11-09",
+    "isoWeek": "2026-W46",
     "vintage": "final",
     "status": "thin",
     "methodologyVersion": "2026-11-04.1",
-    "median": 2.14,
-    "p25": 1.9075,
-    "p75": 5.4475,
+    "median": 3.015,
+    "p25": 2.63,
+    "p75": 5.695,
     "providerCount": 4,
-    "index": 100.0,
-    "linkPairs": 4,
+    "index": 118.2714,
+    "linkPairs": 3,
     "withheldReason": null,
-    "receipt": "2026-W29",
-    "ageDays": 130
+    "receipt": "2026-W46",
+    "ageDays": 11
    },
    "weeks": [
     {
@@ -72,7 +72,6 @@
      "index": 100.0,
      "linkPairs": 4,
      "withheldReason": null,
-     "receipt": "2026-W29",
      "ageDays": 108
     },
     {
@@ -286,6 +285,36 @@
      "withheldReason": "only 3 confirmed providers (needs >=4)"
     },
     {
+     "weekStart": "2026-11-02",
+     "isoWeek": "2026-W45",
+     "vintage": "final",
+     "status": "withheld",
+     "methodologyVersion": "2026-11-04.1",
+     "median": 2.75,
+     "p25": null,
+     "p75": null,
+     "providerCount": 3,
+     "index": null,
+     "linkPairs": 0,
+     "withheldReason": "only 3 confirmed providers (needs >=4)"
+    },
+    {
+     "weekStart": "2026-11-09",
+     "isoWeek": "2026-W46",
+     "vintage": "final",
+     "status": "thin",
+     "methodologyVersion": "2026-11-04.1",
+     "median": 3.015,
+     "p25": 2.63,
+     "p75": 5.695,
+     "providerCount": 4,
+     "index": 118.2714,
+     "linkPairs": 3,
+     "withheldReason": null,
+     "receipt": "2026-W46",
+     "ageDays": 11
+    },
+    {
      "weekStart": "2026-11-16",
      "isoWeek": "2026-W47",
      "vintage": "provisional",
@@ -301,50 +330,50 @@
     }
    ],
    "receipts": {
-    "2026-W29": {
-     "weekStart": "2026-07-13",
-     "weekEnd": "2026-07-19",
+    "2026-W46": {
+     "weekStart": "2026-11-09",
+     "weekEnd": "2026-11-15",
      "vintage": "final",
      "status": "thin",
      "methodologyVersion": "2026-11-04.1",
-     "median": 2.14,
-     "p25": 1.9075,
-     "p75": 5.4475,
+     "median": 3.015,
+     "p25": 2.63,
+     "p75": 5.695,
      "providerCount": 4,
-     "index": 100.0,
-     "linkPairs": 4,
+     "index": 118.2714,
+     "linkPairs": 3,
      "withheldReason": null,
      "notConfirmed48h": 0,
      "included": [
       {
+       "provider": "Lambda",
+       "providerId": "lambda",
+       "value": 2.59,
+       "date": "2026-11-15",
+       "sourceUrl": "https://lambda.ai/instances",
+       "quotes": 1
+      },
+      {
        "provider": "Spheron",
        "providerId": "spheron",
-       "value": 1.88,
-       "date": "2026-07-19",
+       "value": 2.75,
+       "date": "2026-11-15",
        "sourceUrl": "https://www.spheron.network/pricing/",
        "quotes": 1
       },
       {
-       "provider": "Vultr",
-       "providerId": "vultr",
-       "value": 1.99,
-       "date": "2026-07-18",
-       "sourceUrl": "https://www.vultr.com/pricing/",
-       "quotes": 1
-      },
-      {
-       "provider": "Lambda",
-       "providerId": "lambda",
-       "value": 2.29,
-       "date": "2026-07-19",
-       "sourceUrl": "https://lambda.ai/service/gpu-cloud",
+       "provider": "Runcrate",
+       "providerId": "runcrate",
+       "value": 3.28,
+       "date": "2026-11-15",
+       "sourceUrl": "https://www.runcrate.ai/pricing",
        "quotes": 1
       },
       {
        "provider": "CoreWeave",
        "providerId": "coreweave",
        "value": 6.5,
-       "date": "2026-07-19",
+       "date": "2026-11-15",
        "sourceUrl": "https://www.coreweave.com/pricing",
        "quotes": 1
       }

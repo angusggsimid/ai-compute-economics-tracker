@@ -19,6 +19,7 @@ EXPECTED_SOURCES = {
     "gpu_orderbook",
     "reference_indices",
     "neocloud_provider_prices",
+    "neocloud_gap_backfill",
     "epoch_supply",
     "fred_cost_anchors",
     "gpu_markets_fixings",
@@ -27,7 +28,7 @@ EXPECTED_SOURCES = {
     "grabgpu_market",
 }
 CAPEX_READY_STATUSES = {"fresh", "current_for_frequency"}
-INFORMATIONAL_SOURCES = {"gpu_orderbook", "reference_indices", "epoch_supply", "fred_cost_anchors", "gpu_markets_fixings", "throughput_benchmarks", "gpufinder_market", "foundry_signals", "grabgpu_market"}
+INFORMATIONAL_SOURCES = {"gpu_orderbook", "reference_indices", "epoch_supply", "fred_cost_anchors", "gpu_markets_fixings", "throughput_benchmarks", "gpufinder_market", "foundry_signals", "grabgpu_market", "neocloud_gap_backfill"}
 INFORMATIONAL_STATUSES = {"fresh", "partial", "failed", "stale_last_good", "failed_using_last_good", "current_for_frequency"}
 
 

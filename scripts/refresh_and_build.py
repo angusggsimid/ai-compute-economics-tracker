@@ -96,6 +96,12 @@ def main() -> int:
             ROOT / "tracker_data" / "backfills" / "neocloud_provider_price_history.json",
         ),
         (
+            # 只补"上游有逐日快照、我们漏采"的日期；非阻塞，稳态下 0 次请求
+            "neocloud_gap_backfill",
+            [python, "scripts/backfill_neocloud_gaps.py"],
+            ROOT / "tracker_data" / "backfills" / "neocloud_provider_price_history.json",
+        ),
+        (
             "epoch_supply",
             [python, "scripts/backfill_epoch_supply.py"],
             ROOT / "tracker_data" / "backfills" / "epoch_chip_sales.json",
@@ -127,7 +133,7 @@ def main() -> int:
         ),
     ]
     results = [_run(*job) for job in jobs]
-    INFORMATIONAL_SOURCES = {"gpu_orderbook", "reference_indices", "epoch_supply", "fred_cost_anchors", "gpu_markets_fixings", "throughput_benchmarks", "gpufinder_market", "foundry_signals", "grabgpu_market"}
+    INFORMATIONAL_SOURCES = {"gpu_orderbook", "reference_indices", "epoch_supply", "fred_cost_anchors", "gpu_markets_fixings", "throughput_benchmarks", "gpufinder_market", "foundry_signals", "grabgpu_market", "neocloud_gap_backfill"}
     for row in results:
         if row["source"] in INFORMATIONAL_SOURCES:
             # 积累型信息源（时点观测/外部滚动窗口）：失败必须暴露在状态里，
