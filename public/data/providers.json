@@ -1,8 +1,8 @@
 {
  "name": "AI Compute Economics - provider coverage",
- "as_of": "2026-11-20",
+ "as_of": "2026-11-21",
  "methodology_version": "2026-11-04.1",
- "count": 37,
+ "count": 41,
  "providers": [
   {
    "id": "spheron",
@@ -78,7 +78,7 @@
     "marketplace",
     "spot"
    ],
-   "quotes": 16,
+   "quotes": 15,
    "cheapest": {
     "card": "RTX 4090",
     "market": "marketplace",
@@ -136,30 +136,6 @@
    }
   },
   {
-   "id": "runcrate",
-   "name": "Runcrate",
-   "cards": [
-    "A100",
-    "B300",
-    "H100",
-    "H200",
-    "L40S",
-    "RTX 4090",
-    "RTX 5090",
-    "RTX PRO 6000"
-   ],
-   "markets": [
-    "on_demand"
-   ],
-   "quotes": 8,
-   "cheapest": {
-    "card": "RTX 4090",
-    "market": "on_demand",
-    "usd_per_gpu_hour": 0.52,
-    "source_url": "https://www.runcrate.ai/pricing"
-   }
-  },
-  {
    "id": "coreweave",
    "name": "CoreWeave",
    "cards": [
@@ -203,6 +179,29 @@
     "market": "serverless",
     "usd_per_gpu_hour": 1.9512,
     "source_url": "https://modal.com/pricing"
+   }
+  },
+  {
+   "id": "runcrate",
+   "name": "Runcrate",
+   "cards": [
+    "A100",
+    "H100",
+    "H200",
+    "L40S",
+    "RTX 4090",
+    "RTX 5090",
+    "RTX PRO 6000"
+   ],
+   "markets": [
+    "on_demand"
+   ],
+   "quotes": 7,
+   "cheapest": {
+    "card": "RTX 4090",
+    "market": "on_demand",
+    "usd_per_gpu_hour": 0.52,
+    "source_url": "https://www.runcrate.ai/pricing"
    }
   },
   {
@@ -468,6 +467,26 @@
    }
   },
   {
+   "id": "fireworks",
+   "name": "Fireworks AI",
+   "cards": [
+    "B200",
+    "B300",
+    "H100",
+    "H200"
+   ],
+   "markets": [
+    "serverless"
+   ],
+   "quotes": 4,
+   "cheapest": {
+    "card": "H100",
+    "market": "serverless",
+    "usd_per_gpu_hour": 8.0,
+    "source_url": "https://fireworks.ai/pricing"
+   }
+  },
+  {
    "id": "jarvislabs",
    "name": "JarvisLabs",
    "cards": [
@@ -528,6 +547,27 @@
    }
   },
   {
+   "id": "together",
+   "name": "Together AI",
+   "cards": [
+    "B200",
+    "B300",
+    "H100",
+    "H200"
+   ],
+   "markets": [
+    "on_demand",
+    "spot"
+   ],
+   "quotes": 8,
+   "cheapest": {
+    "card": "H100",
+    "market": "spot",
+    "usd_per_gpu_hour": 1.99,
+    "source_url": "https://www.together.ai/pricing"
+   }
+  },
+  {
    "id": "vultr",
    "name": "Vultr",
    "cards": [
@@ -546,6 +586,25 @@
     "market": "on_demand",
     "usd_per_gpu_hour": 1.671,
     "source_url": "https://api.vultr.com/v2/plans?type=all&per_page=500"
+   }
+  },
+  {
+   "id": "baseten",
+   "name": "Baseten",
+   "cards": [
+    "A100",
+    "B200",
+    "H100"
+   ],
+   "markets": [
+    "serverless"
+   ],
+   "quotes": 3,
+   "cheapest": {
+    "card": "A100",
+    "market": "serverless",
+    "usd_per_gpu_hour": 4.0,
+    "source_url": "https://www.baseten.co/pricing/"
    }
   },
   {
@@ -621,7 +680,7 @@
    "cheapest": {
     "card": "L40S",
     "market": "on_demand",
-    "usd_per_gpu_hour": 1.6157,
+    "usd_per_gpu_hour": 1.6154,
     "source_url": "https://www.scaleway.com/en/pricing/gpu/"
    }
   },
@@ -665,21 +724,21 @@
    }
   },
   {
-   "id": "gpuwerk",
-   "name": "Gpuwerk",
+   "id": "impossiblecloud",
+   "name": "Impossible Cloud",
    "cards": [
-    "L40S",
-    "RTX 5090"
+    "B200",
+    "B300"
    ],
    "markets": [
-    "on_demand"
+    "reserved"
    ],
    "quotes": 2,
    "cheapest": {
-    "card": "RTX 5090",
-    "market": "on_demand",
-    "usd_per_gpu_hour": 0.89,
-    "source_url": "https://gpuwerk.com/availability.txt"
+    "card": "B300",
+    "market": "reserved",
+    "usd_per_gpu_hour": 4.23,
+    "source_url": "https://www.impossiblecloud.com/en-us/baremetal"
    }
   },
   {
@@ -734,6 +793,23 @@
     "market": "on_demand",
     "usd_per_gpu_hour": 1.09,
     "source_url": "https://www.thundercompute.com/pricing"
+   }
+  },
+  {
+   "id": "gpuwerk",
+   "name": "Gpuwerk",
+   "cards": [
+    "RTX 5090"
+   ],
+   "markets": [
+    "on_demand"
+   ],
+   "quotes": 1,
+   "cheapest": {
+    "card": "RTX 5090",
+    "market": "on_demand",
+    "usd_per_gpu_hour": 0.69,
+    "source_url": "https://gpuwerk.com/availability.txt"
    }
   },
   {

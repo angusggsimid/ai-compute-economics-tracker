@@ -1,14 +1,14 @@
 {
-  "fetchedAt": "2026-11-21T07:03:17Z",
-  "lastSuccessAt": "2026-11-21T07:03:17Z",
+  "fetchedAt": "2026-11-22T06:44:05Z",
+  "lastSuccessAt": "2026-11-22T06:44:05Z",
   "refreshStatus": "fresh",
   "publishable": true,
   "blocking": false,
   "attribution": "Data by GrabGPU (grabgpu.com), indexed from public provider APIs; attribution + link required.",
   "licenseNote": "GrabGPU 公开索引：引用需署名并链接 grabgpu.com；生产级嵌入/转售需与其另行约定。",
   "sourceUrl": "https://grabgpu.com/api/offers.json",
-  "sourceSha256": "sha256:72598a7018f566a2fa4d2f4830ac5e9784f4a3f80fc74515c19e7f4e76f0cb2d",
-  "capturedAt": "2026-11-21T06:11:48.687401Z",
+  "sourceSha256": "sha256:770c228e132370ff99989283f7f2652203214cc51a83390d9500395eb8abf6f8",
+  "capturedAt": "2026-11-22T06:11:52.140252Z",
   "rowSchema": [
     "date",
     "gpu",
@@ -32,9 +32,9 @@
     "unknown": "availability=unknown 的报价不计入分母，但仍参与最低挂牌价。"
   },
   "coverage": {
-    "providers": 29,
-    "models": 74,
-    "offers": 300
+    "providers": 28,
+    "models": 73,
+    "offers": 276
   },
   "rows": [
     {
@@ -330,6 +330,170 @@
       "cheapestListed": 3.0,
       "cheapestInStock": 3.356,
       "listedAvailableGapPct": 11.87,
+      "availabilityByProvider": {
+        "boostrun": [
+          0,
+          1
+        ],
+        "digitalocean": [
+          0,
+          1
+        ],
+        "excesssupply": [
+          1,
+          1
+        ],
+        "horizon": [
+          0,
+          1
+        ],
+        "lium": [
+          1,
+          1
+        ],
+        "runpod": [
+          1,
+          1
+        ],
+        "vast-ai": [
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "date": "2026-11-22",
+      "gpu": "B200",
+      "capturedAt": "2026-11-22T06:11:52.140252Z",
+      "providers": 9,
+      "providersInStock": 4,
+      "providersKnown": 7,
+      "providersOutOfStock": 3,
+      "availabilityPct": 57.14,
+      "breadthProviders": 4,
+      "cheapestListed": 3.74,
+      "cheapestInStock": 4.8,
+      "listedAvailableGapPct": 28.34,
+      "availabilityByProvider": {
+        "avian": [
+          1,
+          1
+        ],
+        "boostrun": [
+          0,
+          1
+        ],
+        "excesssupply": [
+          0,
+          1
+        ],
+        "lambda-labs": [
+          0,
+          1
+        ],
+        "lium": [
+          1,
+          1
+        ],
+        "runpod": [
+          1,
+          1
+        ],
+        "vast-ai": [
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "date": "2026-11-22",
+      "gpu": "H100",
+      "capturedAt": "2026-11-22T06:11:52.140252Z",
+      "providers": 17,
+      "providersInStock": 6,
+      "providersKnown": 15,
+      "providersOutOfStock": 9,
+      "availabilityPct": 40.0,
+      "breadthProviders": 6,
+      "cheapestListed": 1.66,
+      "cheapestInStock": 1.7344,
+      "listedAvailableGapPct": 4.48,
+      "availabilityByProvider": {
+        "denvr": [
+          0,
+          1
+        ],
+        "digitalocean": [
+          0,
+          1
+        ],
+        "excesssupply": [
+          0,
+          1
+        ],
+        "horizon": [
+          0,
+          1
+        ],
+        "hyperstack": [
+          1,
+          1
+        ],
+        "imwt": [
+          0,
+          1
+        ],
+        "lambda-labs": [
+          0,
+          1
+        ],
+        "latitude-sh": [
+          0,
+          1
+        ],
+        "lium": [
+          1,
+          1
+        ],
+        "massed-compute": [
+          0,
+          1
+        ],
+        "paperspace": [
+          1,
+          1
+        ],
+        "runpod": [
+          1,
+          1
+        ],
+        "scaleway": [
+          1,
+          1
+        ],
+        "vast-ai": [
+          1,
+          1
+        ],
+        "voltagepark": [
+          0,
+          1
+        ]
+      }
+    },
+    {
+      "date": "2026-11-22",
+      "gpu": "H200",
+      "capturedAt": "2026-11-22T06:11:52.140252Z",
+      "providers": 9,
+      "providersInStock": 4,
+      "providersKnown": 7,
+      "providersOutOfStock": 3,
+      "availabilityPct": 57.14,
+      "breadthProviders": 4,
+      "cheapestListed": 1.826,
+      "cheapestInStock": 1.826,
+      "listedAvailableGapPct": 0.0,
       "availabilityByProvider": {
         "boostrun": [
           0,

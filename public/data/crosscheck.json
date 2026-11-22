@@ -13,7 +13,7 @@
  "citation": "GPU Economy (https://gpueconomy.com) · CC BY 4.0 · methodology 1.33.63 · data 2026-11-03",
  "prices_source_url": "https://gpueconomy.com/prices.json",
  "published_source_url": "https://gpueconomy.com/gpus.json",
- "as_of": "2026-11-20",
+ "as_of": "2026-11-21",
  "ext_as_of": "2026-11-03",
  "rules": {
   "comparable": "on_demand 是主口径；spot/serverless 按同一 live/非 floor/USD/每 provider min 规则可计算差值，但不能与整租 on-demand 混读；reserved/community/marketplace 因期限或 floor 语义不可比。",
@@ -35,8 +35,8 @@
     "h100-pcie",
     "h100-nvl"
    ],
-   "own_median": 3.9,
-   "own_providers": 25,
+   "own_median": 3.43,
+   "own_providers": 26,
    "own_thin": false,
    "ext_median": 3.97,
    "ext_providers": 18,
@@ -46,8 +46,8 @@
    "ext_benchmark_median": 3.29,
    "ext_benchmark_id": "h100-sxm",
    "mixed_sku": true,
-   "diff_pct": -1.76,
-   "overlap_count": 17,
+   "diff_pct": -13.6,
+   "overlap_count": 18,
    "overlap_count_match": 3,
    "overlap_scope": "h100+h100-sxm+h100-pcie",
    "overlap_providers": [
@@ -67,13 +67,14 @@
     "nebius",
     "oracle",
     "runpod",
-    "thundercompute"
+    "thundercompute",
+    "together"
    ],
    "coverage": "mixed",
    "comparable": true,
-   "as_of": "2026-11-20",
+   "as_of": "2026-11-21",
    "ext_as_of": "2026-11-03",
-   "note": "我方 H100 同日混 80GB SXM、80GB PCIe 与 94GB NVL；ext 用 h100（形态未标注），h100-sxm 只作独立基准，不合并。 external 数据比我方旧（2026-11-03 vs 2026-11-20）。"
+   "note": "我方 H100 同日混 80GB SXM、80GB PCIe 与 94GB NVL；ext 用 h100（形态未标注），h100-sxm 只作独立基准，不合并。 external 数据比我方旧（2026-11-03 vs 2026-11-21）。"
   },
   {
    "card_id": "H100",
@@ -84,8 +85,8 @@
     "h100-pcie",
     "h100-nvl"
    ],
-   "own_median": 2.3,
-   "own_providers": 9,
+   "own_median": 2.25,
+   "own_providers": 10,
    "own_thin": false,
    "ext_median": 2.285,
    "ext_providers": 4,
@@ -95,7 +96,7 @@
    "ext_benchmark_median": null,
    "ext_benchmark_id": null,
    "mixed_sku": true,
-   "diff_pct": 0.66,
+   "diff_pct": -1.53,
    "overlap_count": 5,
    "overlap_count_match": 2,
    "overlap_scope": "h100+h100-sxm+h100-pcie",
@@ -108,9 +109,9 @@
    ],
    "coverage": "mixed",
    "comparable": true,
-   "as_of": "2026-11-20",
+   "as_of": "2026-11-21",
    "ext_as_of": "2026-11-03",
-   "note": "我方 H100 同日混 80GB SXM、80GB PCIe 与 94GB NVL；ext 用 h100（形态未标注），h100-sxm 只作独立基准，不合并。 可比口径与 on-demand 相同（live、非 floor、USD、每 provider 最低价）；spot 可被收回，不能当 on-demand。 external 数据比我方旧（2026-11-03 vs 2026-11-20）。"
+   "note": "我方 H100 同日混 80GB SXM、80GB PCIe 与 94GB NVL；ext 用 h100（形态未标注），h100-sxm 只作独立基准，不合并。 可比口径与 on-demand 相同（live、非 floor、USD、每 provider 最低价）；spot 可被收回，不能当 on-demand。 external 数据比我方旧（2026-11-03 vs 2026-11-21）。"
   },
   {
    "card_id": "H100",
@@ -141,9 +142,9 @@
    ],
    "coverage": "thin",
    "comparable": false,
-   "as_of": "2026-11-20",
+   "as_of": "2026-11-21",
    "ext_as_of": "2026-11-03",
-   "note": "我方 H100 同日混 80GB SXM、80GB PCIe 与 94GB NVL；ext 用 h100（形态未标注），h100-sxm 只作独立基准，不合并。 GPU Economy 把 reserved 拆成无期限/1y/3y；我方不保留期限，不能合成一个可比中位。 external 覆盖偏薄（ext 1 家，重叠 1 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-20）。"
+   "note": "我方 H100 同日混 80GB SXM、80GB PCIe 与 94GB NVL；ext 用 h100（形态未标注），h100-sxm 只作独立基准，不合并。 GPU Economy 把 reserved 拆成无期限/1y/3y；我方不保留期限，不能合成一个可比中位。 external 覆盖偏薄（ext 1 家，重叠 1 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-21）。"
   },
   {
    "card_id": "H100",
@@ -174,9 +175,9 @@
    ],
    "coverage": "none",
    "comparable": false,
-   "as_of": "2026-11-20",
+   "as_of": "2026-11-21",
    "ext_as_of": "2026-11-03",
-   "note": "我方 H100 同日混 80GB SXM、80GB PCIe 与 94GB NVL；ext 用 h100（形态未标注），h100-sxm 只作独立基准，不合并。 GPU Economy 的 community 同时包含 marketplace floor 与实例供给；我方把 floor 单列为 marketplace，语义不等价。 该 market 没有可比 external 报价。 external 数据比我方旧（2026-11-03 vs 2026-11-20）。"
+   "note": "我方 H100 同日混 80GB SXM、80GB PCIe 与 94GB NVL；ext 用 h100（形态未标注），h100-sxm 只作独立基准，不合并。 GPU Economy 的 community 同时包含 marketplace floor 与实例供给；我方把 floor 单列为 marketplace，语义不等价。 该 market 没有可比 external 报价。 external 数据比我方旧（2026-11-03 vs 2026-11-21）。"
   },
   {
    "card_id": "H100",
@@ -187,7 +188,7 @@
     "h100-pcie",
     "h100-nvl"
    ],
-   "own_median": 1.9,
+   "own_median": 2.7,
    "own_providers": 1,
    "own_thin": true,
    "ext_median": null,
@@ -205,9 +206,9 @@
    "overlap_providers": [],
    "coverage": "none",
    "comparable": false,
-   "as_of": "2026-11-19",
+   "as_of": "2026-11-21",
    "ext_as_of": "2026-11-03",
-   "note": "我方 H100 同日混 80GB SXM、80GB PCIe 与 94GB NVL；ext 用 h100（形态未标注），h100-sxm 只作独立基准，不合并。 我方 marketplace 对应 GPU Economy community 中的 marketplace floor 子集；只是子集，不是等号。 该 market 没有可比 external 报价。 external 数据比我方旧（2026-11-03 vs 2026-11-19）。"
+   "note": "我方 H100 同日混 80GB SXM、80GB PCIe 与 94GB NVL；ext 用 h100（形态未标注），h100-sxm 只作独立基准，不合并。 我方 marketplace 对应 GPU Economy community 中的 marketplace floor 子集；只是子集，不是等号。 该 market 没有可比 external 报价。 external 数据比我方旧（2026-11-03 vs 2026-11-21）。"
   },
   {
    "card_id": "H100",
@@ -218,9 +219,9 @@
     "h100-pcie",
     "h100-nvl"
    ],
-   "own_median": 4.2246,
-   "own_providers": 6,
-   "own_thin": true,
+   "own_median": 4.995,
+   "own_providers": 8,
+   "own_thin": false,
    "ext_median": 3.6742,
    "ext_providers": 4,
    "ext_source_url": "https://gpueconomy.com/prices.json",
@@ -229,7 +230,7 @@
    "ext_benchmark_median": null,
    "ext_benchmark_id": null,
    "mixed_sku": true,
-   "diff_pct": null,
+   "diff_pct": 35.95,
    "overlap_count": 4,
    "overlap_count_match": 3,
    "overlap_scope": "h100+h100-sxm+h100-pcie",
@@ -239,11 +240,11 @@
     "koyeb",
     "modal"
    ],
-   "coverage": "thin",
-   "comparable": false,
-   "as_of": "2026-11-20",
+   "coverage": "mixed",
+   "comparable": true,
+   "as_of": "2026-11-21",
    "ext_as_of": "2026-11-03",
-   "note": "我方 H100 同日混 80GB SXM、80GB PCIe 与 94GB NVL；ext 用 h100（形态未标注），h100-sxm 只作独立基准，不合并。 可比口径与 on-demand 相同；serverless 按秒/共享，不能与整租混读。 external 数据比我方旧（2026-11-03 vs 2026-11-20）。"
+   "note": "我方 H100 同日混 80GB SXM、80GB PCIe 与 94GB NVL；ext 用 h100（形态未标注），h100-sxm 只作独立基准，不合并。 可比口径与 on-demand 相同；serverless 按秒/共享，不能与整租混读。 external 数据比我方旧（2026-11-03 vs 2026-11-21）。"
   },
   {
    "card_id": "H200",
@@ -253,8 +254,8 @@
    "context_ids": [
     "h200-nvl"
    ],
-   "own_median": 4.99,
-   "own_providers": 17,
+   "own_median": 5.06,
+   "own_providers": 18,
    "own_thin": false,
    "ext_median": 4.54,
    "ext_providers": 47,
@@ -265,8 +266,8 @@
    "ext_benchmark_id": null,
    "mixed_sku": false,
    "diff_pct": null,
-   "overlap_count": 13,
-   "overlap_count_match": 13,
+   "overlap_count": 14,
+   "overlap_count_match": 14,
    "overlap_scope": "h200",
    "overlap_providers": [
     "aws",
@@ -281,13 +282,14 @@
     "jarvislabs",
     "nebius",
     "oracle",
-    "runpod"
+    "runpod",
+    "together"
    ],
    "coverage": "stale",
    "comparable": false,
-   "as_of": "2026-11-20",
+   "as_of": "2026-11-21",
    "ext_as_of": "2026-11-03",
-   "note": "我方 H200 含 141GB SXM 与部分 143GB NVL；ext h200-nvl 只作上下文，不并入主口径。 external 数据比我方旧（2026-11-03 vs 2026-11-20）。"
+   "note": "我方 H200 含 141GB SXM 与部分 143GB NVL；ext h200-nvl 只作上下文，不并入主口径。 external 数据比我方旧（2026-11-03 vs 2026-11-21）。"
   },
   {
    "card_id": "H200",
@@ -297,8 +299,8 @@
    "context_ids": [
     "h200-nvl"
    ],
-   "own_median": 3.4035,
-   "own_providers": 4,
+   "own_median": 3.35,
+   "own_providers": 5,
    "own_thin": true,
    "ext_median": 2.85,
    "ext_providers": 8,
@@ -319,9 +321,9 @@
    ],
    "coverage": "thin",
    "comparable": false,
-   "as_of": "2026-11-20",
+   "as_of": "2026-11-21",
    "ext_as_of": "2026-11-03",
-   "note": "我方 H200 含 141GB SXM 与部分 143GB NVL；ext h200-nvl 只作上下文，不并入主口径。 可比口径与 on-demand 相同（live、非 floor、USD、每 provider 最低价）；spot 可被收回，不能当 on-demand。 external 数据比我方旧（2026-11-03 vs 2026-11-20）。"
+   "note": "我方 H200 含 141GB SXM 与部分 143GB NVL；ext h200-nvl 只作上下文，不并入主口径。 可比口径与 on-demand 相同（live、非 floor、USD、每 provider 最低价）；spot 可被收回，不能当 on-demand。 external 数据比我方旧（2026-11-03 vs 2026-11-21）。"
   },
   {
    "card_id": "H200",
@@ -351,9 +353,9 @@
    ],
    "coverage": "thin",
    "comparable": false,
-   "as_of": "2026-11-20",
+   "as_of": "2026-11-21",
    "ext_as_of": "2026-11-03",
-   "note": "我方 H200 含 141GB SXM 与部分 143GB NVL；ext h200-nvl 只作上下文，不并入主口径。 GPU Economy 把 reserved 拆成无期限/1y/3y；我方不保留期限，不能合成一个可比中位。 external 覆盖偏薄（ext 8 家，重叠 1 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-20）。"
+   "note": "我方 H200 含 141GB SXM 与部分 143GB NVL；ext h200-nvl 只作上下文，不并入主口径。 GPU Economy 把 reserved 拆成无期限/1y/3y；我方不保留期限，不能合成一个可比中位。 external 覆盖偏薄（ext 8 家，重叠 1 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-21）。"
   },
   {
    "card_id": "H200",
@@ -383,9 +385,9 @@
    ],
    "coverage": "thin",
    "comparable": false,
-   "as_of": "2026-11-20",
+   "as_of": "2026-11-21",
    "ext_as_of": "2026-11-03",
-   "note": "我方 H200 含 141GB SXM 与部分 143GB NVL；ext h200-nvl 只作上下文，不并入主口径。 GPU Economy 的 community 同时包含 marketplace floor 与实例供给；我方把 floor 单列为 marketplace，语义不等价。 external 覆盖偏薄（ext 1 家，重叠 1 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-20）。"
+   "note": "我方 H200 含 141GB SXM 与部分 143GB NVL；ext h200-nvl 只作上下文，不并入主口径。 GPU Economy 的 community 同时包含 marketplace floor 与实例供给；我方把 floor 单列为 marketplace，语义不等价。 external 覆盖偏薄（ext 1 家，重叠 1 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-21）。"
   },
   {
    "card_id": "H200",
@@ -395,7 +397,7 @@
    "context_ids": [
     "h200-nvl"
    ],
-   "own_median": 4.4,
+   "own_median": 4.35,
    "own_providers": 1,
    "own_thin": true,
    "ext_median": 5.41315,
@@ -415,9 +417,9 @@
    ],
    "coverage": "thin",
    "comparable": false,
-   "as_of": "2026-11-20",
+   "as_of": "2026-11-21",
    "ext_as_of": "2026-11-03",
-   "note": "我方 H200 含 141GB SXM 与部分 143GB NVL；ext h200-nvl 只作上下文，不并入主口径。 我方 marketplace 对应 GPU Economy community 中的 marketplace floor 子集；只是子集，不是等号。 external 覆盖偏薄（ext 2 家，重叠 1 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-20）。"
+   "note": "我方 H200 含 141GB SXM 与部分 143GB NVL；ext h200-nvl 只作上下文，不并入主口径。 我方 marketplace 对应 GPU Economy community 中的 marketplace floor 子集；只是子集，不是等号。 external 覆盖偏薄（ext 2 家，重叠 1 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-21）。"
   },
   {
    "card_id": "H200",
@@ -427,8 +429,8 @@
    "context_ids": [
     "h200-nvl"
    ],
-   "own_median": 5.0148,
-   "own_providers": 6,
+   "own_median": 5.49,
+   "own_providers": 7,
    "own_thin": true,
    "ext_median": 4.5,
    "ext_providers": 5,
@@ -450,9 +452,9 @@
    ],
    "coverage": "thin",
    "comparable": false,
-   "as_of": "2026-11-20",
+   "as_of": "2026-11-21",
    "ext_as_of": "2026-11-03",
-   "note": "我方 H200 含 141GB SXM 与部分 143GB NVL；ext h200-nvl 只作上下文，不并入主口径。 可比口径与 on-demand 相同；serverless 按秒/共享，不能与整租混读。 external 数据比我方旧（2026-11-03 vs 2026-11-20）。"
+   "note": "我方 H200 含 141GB SXM 与部分 143GB NVL；ext h200-nvl 只作上下文，不并入主口径。 可比口径与 on-demand 相同；serverless 按秒/共享，不能与整租混读。 external 数据比我方旧（2026-11-03 vs 2026-11-21）。"
   },
   {
    "card_id": "B200",
@@ -460,8 +462,8 @@
    "match_id": "b200",
    "benchmark_id": null,
    "context_ids": [],
-   "own_median": 8.5,
-   "own_providers": 11,
+   "own_median": 8.55,
+   "own_providers": 12,
    "own_thin": false,
    "ext_median": 6.99,
    "ext_providers": 37,
@@ -472,8 +474,8 @@
    "ext_benchmark_id": null,
    "mixed_sku": false,
    "diff_pct": null,
-   "overlap_count": 10,
-   "overlap_count_match": 10,
+   "overlap_count": 11,
+   "overlap_count_match": 11,
    "overlap_scope": "b200",
    "overlap_providers": [
     "coreweave",
@@ -485,13 +487,14 @@
     "lambda",
     "nebius",
     "oracle",
-    "runpod"
+    "runpod",
+    "together"
    ],
    "coverage": "stale",
    "comparable": false,
-   "as_of": "2026-11-20",
+   "as_of": "2026-11-21",
    "ext_as_of": "2026-11-03",
-   "note": "B200 名义 192GB，实际实例有 180/186/192GB 变体；仅作卡级参考。 external 数据比我方旧（2026-11-03 vs 2026-11-20）。"
+   "note": "B200 名义 192GB，实际实例有 180/186/192GB 变体；仅作卡级参考。 external 数据比我方旧（2026-11-03 vs 2026-11-21）。"
   },
   {
    "card_id": "B200",
@@ -499,8 +502,8 @@
    "match_id": "b200",
    "benchmark_id": null,
    "context_ids": [],
-   "own_median": 5.059,
-   "own_providers": 6,
+   "own_median": 4.874,
+   "own_providers": 7,
    "own_thin": true,
    "ext_median": 4.3713,
    "ext_providers": 10,
@@ -522,9 +525,9 @@
    ],
    "coverage": "thin",
    "comparable": false,
-   "as_of": "2026-11-20",
+   "as_of": "2026-11-21",
    "ext_as_of": "2026-11-03",
-   "note": "B200 名义 192GB，实际实例有 180/186/192GB 变体；仅作卡级参考。 可比口径与 on-demand 相同（live、非 floor、USD、每 provider 最低价）；spot 可被收回，不能当 on-demand。 external 数据比我方旧（2026-11-03 vs 2026-11-20）。"
+   "note": "B200 名义 192GB，实际实例有 180/186/192GB 变体；仅作卡级参考。 可比口径与 on-demand 相同（live、非 floor、USD、每 provider 最低价）；spot 可被收回，不能当 on-demand。 external 数据比我方旧（2026-11-03 vs 2026-11-21）。"
   },
   {
    "card_id": "B200",
@@ -532,8 +535,8 @@
    "match_id": "b200",
    "benchmark_id": null,
    "context_ids": [],
-   "own_median": 5.1,
-   "own_providers": 1,
+   "own_median": 5.665,
+   "own_providers": 2,
    "own_thin": true,
    "ext_median": 5.1,
    "ext_providers": 6,
@@ -552,9 +555,9 @@
    ],
    "coverage": "thin",
    "comparable": false,
-   "as_of": "2026-11-20",
+   "as_of": "2026-11-21",
    "ext_as_of": "2026-11-03",
-   "note": "B200 名义 192GB，实际实例有 180/186/192GB 变体；仅作卡级参考。 GPU Economy 把 reserved 拆成无期限/1y/3y；我方不保留期限，不能合成一个可比中位。 external 覆盖偏薄（ext 6 家，重叠 1 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-20）。"
+   "note": "B200 名义 192GB，实际实例有 180/186/192GB 变体；仅作卡级参考。 GPU Economy 把 reserved 拆成无期限/1y/3y；我方不保留期限，不能合成一个可比中位。 external 覆盖偏薄（ext 6 家，重叠 1 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-21）。"
   },
   {
    "card_id": "B200",
@@ -582,9 +585,9 @@
    ],
    "coverage": "thin",
    "comparable": false,
-   "as_of": "2026-11-20",
+   "as_of": "2026-11-21",
    "ext_as_of": "2026-11-03",
-   "note": "B200 名义 192GB，实际实例有 180/186/192GB 变体；仅作卡级参考。 GPU Economy 的 community 同时包含 marketplace floor 与实例供给；我方把 floor 单列为 marketplace，语义不等价。 external 覆盖偏薄（ext 1 家，重叠 1 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-20）。"
+   "note": "B200 名义 192GB，实际实例有 180/186/192GB 变体；仅作卡级参考。 GPU Economy 的 community 同时包含 marketplace floor 与实例供给；我方把 floor 单列为 marketplace，语义不等价。 external 覆盖偏薄（ext 1 家，重叠 1 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-21）。"
   },
   {
    "card_id": "B200",
@@ -592,7 +595,7 @@
    "match_id": "b200",
    "benchmark_id": null,
    "context_ids": [],
-   "own_median": 6.99,
+   "own_median": 7.39,
    "own_providers": 1,
    "own_thin": true,
    "ext_median": null,
@@ -610,9 +613,9 @@
    "overlap_providers": [],
    "coverage": "none",
    "comparable": false,
-   "as_of": "2026-11-20",
+   "as_of": "2026-11-21",
    "ext_as_of": "2026-11-03",
-   "note": "B200 名义 192GB，实际实例有 180/186/192GB 变体；仅作卡级参考。 我方 marketplace 对应 GPU Economy community 中的 marketplace floor 子集；只是子集，不是等号。 该 market 没有可比 external 报价。 external 数据比我方旧（2026-11-03 vs 2026-11-20）。"
+   "note": "B200 名义 192GB，实际实例有 180/186/192GB 变体；仅作卡级参考。 我方 marketplace 对应 GPU Economy community 中的 marketplace floor 子集；只是子集，不是等号。 该 market 没有可比 external 报价。 external 数据比我方旧（2026-11-03 vs 2026-11-21）。"
   },
   {
    "card_id": "B200",
@@ -620,8 +623,8 @@
    "match_id": "b200",
    "benchmark_id": null,
    "context_ids": [],
-   "own_median": 6.2496,
-   "own_providers": 5,
+   "own_median": 8.99,
+   "own_providers": 7,
    "own_thin": true,
    "ext_median": 6.012,
    "ext_providers": 5,
@@ -643,9 +646,9 @@
    ],
    "coverage": "thin",
    "comparable": false,
-   "as_of": "2026-11-20",
+   "as_of": "2026-11-21",
    "ext_as_of": "2026-11-03",
-   "note": "B200 名义 192GB，实际实例有 180/186/192GB 变体；仅作卡级参考。 可比口径与 on-demand 相同；serverless 按秒/共享，不能与整租混读。 external 数据比我方旧（2026-11-03 vs 2026-11-20）。"
+   "note": "B200 名义 192GB，实际实例有 180/186/192GB 变体；仅作卡级参考。 可比口径与 on-demand 相同；serverless 按秒/共享，不能与整租混读。 external 数据比我方旧（2026-11-03 vs 2026-11-21）。"
   },
   {
    "card_id": "B300",
@@ -665,8 +668,8 @@
    "ext_benchmark_id": null,
    "mixed_sku": false,
    "diff_pct": null,
-   "overlap_count": 8,
-   "overlap_count_match": 8,
+   "overlap_count": 9,
+   "overlap_count_match": 9,
    "overlap_scope": "b300",
    "overlap_providers": [
     "crusoe",
@@ -676,13 +679,14 @@
     "hyperstack",
     "nebius",
     "oracle",
-    "runpod"
+    "runpod",
+    "together"
    ],
    "coverage": "stale",
    "comparable": false,
-   "as_of": "2026-11-20",
+   "as_of": "2026-11-21",
    "ext_as_of": "2026-11-03",
-   "note": "B300 实例显存有 262/270/280/288GB 变体；仅作卡级参考。 external 数据比我方旧（2026-11-03 vs 2026-11-20）。"
+   "note": "B300 实例显存有 262/270/280/288GB 变体；仅作卡级参考。 external 数据比我方旧（2026-11-03 vs 2026-11-21）。"
   },
   {
    "card_id": "B300",
@@ -690,8 +694,8 @@
    "match_id": "b300",
    "benchmark_id": null,
    "context_ids": [],
-   "own_median": 6.96725,
-   "own_providers": 4,
+   "own_median": 5.75,
+   "own_providers": 5,
    "own_thin": true,
    "ext_median": 5.035,
    "ext_providers": 6,
@@ -711,9 +715,9 @@
    ],
    "coverage": "thin",
    "comparable": false,
-   "as_of": "2026-11-20",
+   "as_of": "2026-11-21",
    "ext_as_of": "2026-11-03",
-   "note": "B300 实例显存有 262/270/280/288GB 变体；仅作卡级参考。 可比口径与 on-demand 相同（live、非 floor、USD、每 provider 最低价）；spot 可被收回，不能当 on-demand。 external 数据比我方旧（2026-11-03 vs 2026-11-20）。"
+   "note": "B300 实例显存有 262/270/280/288GB 变体；仅作卡级参考。 可比口径与 on-demand 相同（live、非 floor、USD、每 provider 最低价）；spot 可被收回，不能当 on-demand。 external 数据比我方旧（2026-11-03 vs 2026-11-21）。"
   },
   {
    "card_id": "B300",
@@ -721,8 +725,8 @@
    "match_id": "b300",
    "benchmark_id": null,
    "context_ids": [],
-   "own_median": 6.54764,
-   "own_providers": 2,
+   "own_median": 6.239726,
+   "own_providers": 3,
    "own_thin": true,
    "ext_median": 5.85,
    "ext_providers": 5,
@@ -739,9 +743,9 @@
    "overlap_providers": [],
    "coverage": "thin",
    "comparable": false,
-   "as_of": "2026-11-20",
+   "as_of": "2026-11-21",
    "ext_as_of": "2026-11-03",
-   "note": "B300 实例显存有 262/270/280/288GB 变体；仅作卡级参考。 GPU Economy 把 reserved 拆成无期限/1y/3y；我方不保留期限，不能合成一个可比中位。 external 覆盖偏薄（ext 5 家，重叠 0 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-20）。"
+   "note": "B300 实例显存有 262/270/280/288GB 变体；仅作卡级参考。 GPU Economy 把 reserved 拆成无期限/1y/3y；我方不保留期限，不能合成一个可比中位。 external 覆盖偏薄（ext 5 家，重叠 0 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-21）。"
   },
   {
    "card_id": "B300",
@@ -769,9 +773,9 @@
    ],
    "coverage": "thin",
    "comparable": false,
-   "as_of": "2026-11-20",
+   "as_of": "2026-11-21",
    "ext_as_of": "2026-11-03",
-   "note": "B300 实例显存有 262/270/280/288GB 变体；仅作卡级参考。 GPU Economy 的 community 同时包含 marketplace floor 与实例供给；我方把 floor 单列为 marketplace，语义不等价。 external 覆盖偏薄（ext 1 家，重叠 1 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-20）。"
+   "note": "B300 实例显存有 262/270/280/288GB 变体；仅作卡级参考。 GPU Economy 的 community 同时包含 marketplace floor 与实例供给；我方把 floor 单列为 marketplace，语义不等价。 external 覆盖偏薄（ext 1 家，重叠 1 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-21）。"
   },
   {
    "card_id": "B300",
@@ -807,8 +811,8 @@
    "match_id": "b300",
    "benchmark_id": null,
    "context_ids": [],
-   "own_median": 11.99,
-   "own_providers": 3,
+   "own_median": 12.49,
+   "own_providers": 4,
    "own_thin": true,
    "ext_median": 7.0992,
    "ext_providers": 3,
@@ -828,9 +832,9 @@
    ],
    "coverage": "thin",
    "comparable": false,
-   "as_of": "2026-11-20",
+   "as_of": "2026-11-21",
    "ext_as_of": "2026-11-03",
-   "note": "B300 实例显存有 262/270/280/288GB 变体；仅作卡级参考。 可比口径与 on-demand 相同；serverless 按秒/共享，不能与整租混读。 external 覆盖偏薄（ext 3 家，重叠 2 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-20）。"
+   "note": "B300 实例显存有 262/270/280/288GB 变体；仅作卡级参考。 可比口径与 on-demand 相同；serverless 按秒/共享，不能与整租混读。 external 覆盖偏薄（ext 3 家，重叠 2 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-21）。"
   },
   {
    "card_id": "A100",
@@ -871,9 +875,9 @@
    ],
    "coverage": "sku_mismatch",
    "comparable": false,
-   "as_of": "2026-11-20",
+   "as_of": "2026-11-21",
    "ext_as_of": "2026-11-03",
-   "note": "我方 A100 同日混 40GB 与 80GB，ext 只取 a100-80；型号不一致，仅做覆盖参考，不给差值。 external 数据比我方旧（2026-11-03 vs 2026-11-20）。"
+   "note": "我方 A100 同日混 40GB 与 80GB，ext 只取 a100-80；型号不一致，仅做覆盖参考，不给差值。 external 数据比我方旧（2026-11-03 vs 2026-11-21）。"
   },
   {
    "card_id": "A100",
@@ -903,9 +907,9 @@
    ],
    "coverage": "thin",
    "comparable": false,
-   "as_of": "2026-11-20",
+   "as_of": "2026-11-21",
    "ext_as_of": "2026-11-03",
-   "note": "我方 A100 同日混 40GB 与 80GB，ext 只取 a100-80；型号不一致，仅做覆盖参考，不给差值。 可比口径与 on-demand 相同（live、非 floor、USD、每 provider 最低价）；spot 可被收回，不能当 on-demand。 external 数据比我方旧（2026-11-03 vs 2026-11-20）。"
+   "note": "我方 A100 同日混 40GB 与 80GB，ext 只取 a100-80；型号不一致，仅做覆盖参考，不给差值。 可比口径与 on-demand 相同（live、非 floor、USD、每 provider 最低价）；spot 可被收回，不能当 on-demand。 external 数据比我方旧（2026-11-03 vs 2026-11-21）。"
   },
   {
    "card_id": "A100",
@@ -933,9 +937,9 @@
    ],
    "coverage": "thin",
    "comparable": false,
-   "as_of": "2026-11-20",
+   "as_of": "2026-11-21",
    "ext_as_of": "2026-11-03",
-   "note": "我方 A100 同日混 40GB 与 80GB，ext 只取 a100-80；型号不一致，仅做覆盖参考，不给差值。 GPU Economy 把 reserved 拆成无期限/1y/3y；我方不保留期限，不能合成一个可比中位。 external 覆盖偏薄（ext 4 家，重叠 1 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-20）。"
+   "note": "我方 A100 同日混 40GB 与 80GB，ext 只取 a100-80；型号不一致，仅做覆盖参考，不给差值。 GPU Economy 把 reserved 拆成无期限/1y/3y；我方不保留期限，不能合成一个可比中位。 external 覆盖偏薄（ext 4 家，重叠 1 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-21）。"
   },
   {
    "card_id": "A100",
@@ -963,9 +967,9 @@
    ],
    "coverage": "thin",
    "comparable": false,
-   "as_of": "2026-11-20",
+   "as_of": "2026-11-21",
    "ext_as_of": "2026-11-03",
-   "note": "我方 A100 同日混 40GB 与 80GB，ext 只取 a100-80；型号不一致，仅做覆盖参考，不给差值。 GPU Economy 的 community 同时包含 marketplace floor 与实例供给；我方把 floor 单列为 marketplace，语义不等价。 external 覆盖偏薄（ext 1 家，重叠 1 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-20）。"
+   "note": "我方 A100 同日混 40GB 与 80GB，ext 只取 a100-80；型号不一致，仅做覆盖参考，不给差值。 GPU Economy 的 community 同时包含 marketplace floor 与实例供给；我方把 floor 单列为 marketplace，语义不等价。 external 覆盖偏薄（ext 1 家，重叠 1 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-21）。"
   },
   {
    "card_id": "A100",
@@ -991,9 +995,9 @@
    "overlap_providers": [],
    "coverage": "thin",
    "comparable": false,
-   "as_of": "2026-11-18",
+   "as_of": "2026-11-21",
    "ext_as_of": "2026-11-03",
-   "note": "我方 A100 同日混 40GB 与 80GB，ext 只取 a100-80；型号不一致，仅做覆盖参考，不给差值。 我方 marketplace 对应 GPU Economy community 中的 marketplace floor 子集；只是子集，不是等号。 external 覆盖偏薄（ext 1 家，重叠 0 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-18）。"
+   "note": "我方 A100 同日混 40GB 与 80GB，ext 只取 a100-80；型号不一致，仅做覆盖参考，不给差值。 我方 marketplace 对应 GPU Economy community 中的 marketplace floor 子集；只是子集，不是等号。 external 覆盖偏薄（ext 1 家，重叠 0 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-21）。"
   },
   {
    "card_id": "A100",
@@ -1001,8 +1005,8 @@
    "match_id": "a100-80",
    "benchmark_id": null,
    "context_ids": [],
-   "own_median": 2.2986,
-   "own_providers": 5,
+   "own_median": 2.6443,
+   "own_providers": 6,
    "own_thin": true,
    "ext_median": 2.2986,
    "ext_providers": 4,
@@ -1023,9 +1027,9 @@
    ],
    "coverage": "thin",
    "comparable": false,
-   "as_of": "2026-11-20",
+   "as_of": "2026-11-21",
    "ext_as_of": "2026-11-03",
-   "note": "我方 A100 同日混 40GB 与 80GB，ext 只取 a100-80；型号不一致，仅做覆盖参考，不给差值。 可比口径与 on-demand 相同；serverless 按秒/共享，不能与整租混读。 external 数据比我方旧（2026-11-03 vs 2026-11-20）。"
+   "note": "我方 A100 同日混 40GB 与 80GB，ext 只取 a100-80；型号不一致，仅做覆盖参考，不给差值。 可比口径与 on-demand 相同；serverless 按秒/共享，不能与整租混读。 external 数据比我方旧（2026-11-03 vs 2026-11-21）。"
   },
   {
    "card_id": "L40S",
@@ -1033,8 +1037,8 @@
    "match_id": "l40s",
    "benchmark_id": null,
    "context_ids": [],
-   "own_median": 1.59285,
-   "own_providers": 16,
+   "own_median": 1.6154,
+   "own_providers": 15,
    "own_thin": false,
    "ext_median": 1.29,
    "ext_providers": 33,
@@ -1061,9 +1065,9 @@
    ],
    "coverage": "stale",
    "comparable": false,
-   "as_of": "2026-11-20",
+   "as_of": "2026-11-21",
    "ext_as_of": "2026-11-03",
-   "note": "L40S 配置单一；provider 级价格仍可能因实例配置与时点不同。 external 数据比我方旧（2026-11-03 vs 2026-11-20）。"
+   "note": "L40S 配置单一；provider 级价格仍可能因实例配置与时点不同。 external 数据比我方旧（2026-11-03 vs 2026-11-21）。"
   },
   {
    "card_id": "L40S",
@@ -1071,8 +1075,8 @@
    "match_id": "l40s",
    "benchmark_id": null,
    "context_ids": [],
-   "own_median": 1.09,
-   "own_providers": 4,
+   "own_median": 1.05,
+   "own_providers": 3,
    "own_thin": true,
    "ext_median": 1.0225,
    "ext_providers": 6,
@@ -1091,9 +1095,9 @@
    ],
    "coverage": "thin",
    "comparable": false,
-   "as_of": "2026-11-20",
+   "as_of": "2026-11-21",
    "ext_as_of": "2026-11-03",
-   "note": "L40S 配置单一；provider 级价格仍可能因实例配置与时点不同。 可比口径与 on-demand 相同（live、非 floor、USD、每 provider 最低价）；spot 可被收回，不能当 on-demand。 external 覆盖偏薄（ext 6 家，重叠 1 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-20）。"
+   "note": "L40S 配置单一；provider 级价格仍可能因实例配置与时点不同。 可比口径与 on-demand 相同（live、非 floor、USD、每 provider 最低价）；spot 可被收回，不能当 on-demand。 external 覆盖偏薄（ext 6 家，重叠 1 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-21）。"
   },
   {
    "card_id": "L40S",
@@ -1119,9 +1123,9 @@
    "overlap_providers": [],
    "coverage": "thin",
    "comparable": false,
-   "as_of": "2026-11-20",
+   "as_of": "2026-11-21",
    "ext_as_of": "2026-11-03",
-   "note": "L40S 配置单一；provider 级价格仍可能因实例配置与时点不同。 GPU Economy 把 reserved 拆成无期限/1y/3y；我方不保留期限，不能合成一个可比中位。 external 覆盖偏薄（ext 3 家，重叠 0 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-20）。"
+   "note": "L40S 配置单一；provider 级价格仍可能因实例配置与时点不同。 GPU Economy 把 reserved 拆成无期限/1y/3y；我方不保留期限，不能合成一个可比中位。 external 覆盖偏薄（ext 3 家，重叠 0 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-21）。"
   },
   {
    "card_id": "L40S",
@@ -1149,9 +1153,9 @@
    ],
    "coverage": "thin",
    "comparable": false,
-   "as_of": "2026-11-20",
+   "as_of": "2026-11-21",
    "ext_as_of": "2026-11-03",
-   "note": "L40S 配置单一；provider 级价格仍可能因实例配置与时点不同。 GPU Economy 的 community 同时包含 marketplace floor 与实例供给；我方把 floor 单列为 marketplace，语义不等价。 external 覆盖偏薄（ext 1 家，重叠 1 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-20）。"
+   "note": "L40S 配置单一；provider 级价格仍可能因实例配置与时点不同。 GPU Economy 的 community 同时包含 marketplace floor 与实例供给；我方把 floor 单列为 marketplace，语义不等价。 external 覆盖偏薄（ext 1 家，重叠 1 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-21）。"
   },
   {
    "card_id": "L40S",
@@ -1159,7 +1163,7 @@
    "match_id": "l40s",
    "benchmark_id": null,
    "context_ids": [],
-   "own_median": 0.65,
+   "own_median": 0.7,
    "own_providers": 1,
    "own_thin": true,
    "ext_median": 0.55685,
@@ -1179,9 +1183,9 @@
    ],
    "coverage": "thin",
    "comparable": false,
-   "as_of": "2026-11-20",
+   "as_of": "2026-11-21",
    "ext_as_of": "2026-11-03",
-   "note": "L40S 配置单一；provider 级价格仍可能因实例配置与时点不同。 我方 marketplace 对应 GPU Economy community 中的 marketplace floor 子集；只是子集，不是等号。 external 覆盖偏薄（ext 2 家，重叠 1 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-20）。"
+   "note": "L40S 配置单一；provider 级价格仍可能因实例配置与时点不同。 我方 marketplace 对应 GPU Economy community 中的 marketplace floor 子集；只是子集，不是等号。 external 覆盖偏薄（ext 2 家，重叠 1 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-21）。"
   },
   {
    "card_id": "L40S",
@@ -1211,9 +1215,9 @@
    ],
    "coverage": "thin",
    "comparable": false,
-   "as_of": "2026-11-20",
+   "as_of": "2026-11-21",
    "ext_as_of": "2026-11-03",
-   "note": "L40S 配置单一；provider 级价格仍可能因实例配置与时点不同。 可比口径与 on-demand 相同；serverless 按秒/共享，不能与整租混读。 external 数据比我方旧（2026-11-03 vs 2026-11-20）。"
+   "note": "L40S 配置单一；provider 级价格仍可能因实例配置与时点不同。 可比口径与 on-demand 相同；serverless 按秒/共享，不能与整租混读。 external 数据比我方旧（2026-11-03 vs 2026-11-21）。"
   },
   {
    "card_id": "RTX PRO 6000",
@@ -1223,7 +1227,7 @@
    "context_ids": [
     "rtx-pro-6000-max-q"
    ],
-   "own_median": 2.4,
+   "own_median": 2.355,
    "own_providers": 14,
    "own_thin": false,
    "ext_median": 2.19,
@@ -1251,9 +1255,9 @@
    ],
    "coverage": "stale",
    "comparable": false,
-   "as_of": "2026-11-20",
+   "as_of": "2026-11-21",
    "ext_as_of": "2026-11-03",
-   "note": "ext 将工作站与 Server 合并在 rtx-pro-6000，Max-Q 单列；我方 community 可能混入 Max-Q，on-demand 主口径不含。 external 数据比我方旧（2026-11-03 vs 2026-11-20）。"
+   "note": "ext 将工作站与 Server 合并在 rtx-pro-6000，Max-Q 单列；我方 community 可能混入 Max-Q，on-demand 主口径不含。 external 数据比我方旧（2026-11-03 vs 2026-11-21）。"
   },
   {
    "card_id": "RTX PRO 6000",
@@ -1263,7 +1267,7 @@
    "context_ids": [
     "rtx-pro-6000-max-q"
    ],
-   "own_median": 1.85,
+   "own_median": 1.53,
    "own_providers": 5,
    "own_thin": true,
    "ext_median": 1.195,
@@ -1284,9 +1288,9 @@
    ],
    "coverage": "thin",
    "comparable": false,
-   "as_of": "2026-11-20",
+   "as_of": "2026-11-21",
    "ext_as_of": "2026-11-03",
-   "note": "ext 将工作站与 Server 合并在 rtx-pro-6000，Max-Q 单列；我方 community 可能混入 Max-Q，on-demand 主口径不含。 可比口径与 on-demand 相同（live、非 floor、USD、每 provider 最低价）；spot 可被收回，不能当 on-demand。 external 数据比我方旧（2026-11-03 vs 2026-11-20）。"
+   "note": "ext 将工作站与 Server 合并在 rtx-pro-6000，Max-Q 单列；我方 community 可能混入 Max-Q，on-demand 主口径不含。 可比口径与 on-demand 相同（live、非 floor、USD、每 provider 最低价）；spot 可被收回，不能当 on-demand。 external 数据比我方旧（2026-11-03 vs 2026-11-21）。"
   },
   {
    "card_id": "RTX PRO 6000",
@@ -1316,9 +1320,9 @@
    ],
    "coverage": "thin",
    "comparable": false,
-   "as_of": "2026-11-20",
+   "as_of": "2026-11-21",
    "ext_as_of": "2026-11-03",
-   "note": "ext 将工作站与 Server 合并在 rtx-pro-6000，Max-Q 单列；我方 community 可能混入 Max-Q，on-demand 主口径不含。 GPU Economy 把 reserved 拆成无期限/1y/3y；我方不保留期限，不能合成一个可比中位。 external 覆盖偏薄（ext 3 家，重叠 1 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-20）。"
+   "note": "ext 将工作站与 Server 合并在 rtx-pro-6000，Max-Q 单列；我方 community 可能混入 Max-Q，on-demand 主口径不含。 GPU Economy 把 reserved 拆成无期限/1y/3y；我方不保留期限，不能合成一个可比中位。 external 覆盖偏薄（ext 3 家，重叠 1 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-21）。"
   },
   {
    "card_id": "RTX PRO 6000",
@@ -1348,9 +1352,9 @@
    ],
    "coverage": "thin",
    "comparable": false,
-   "as_of": "2026-11-20",
+   "as_of": "2026-11-21",
    "ext_as_of": "2026-11-03",
-   "note": "ext 将工作站与 Server 合并在 rtx-pro-6000，Max-Q 单列；我方 community 可能混入 Max-Q，on-demand 主口径不含。 GPU Economy 的 community 同时包含 marketplace floor 与实例供给；我方把 floor 单列为 marketplace，语义不等价。 external 覆盖偏薄（ext 1 家，重叠 1 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-20）。"
+   "note": "ext 将工作站与 Server 合并在 rtx-pro-6000，Max-Q 单列；我方 community 可能混入 Max-Q，on-demand 主口径不含。 GPU Economy 的 community 同时包含 marketplace floor 与实例供给；我方把 floor 单列为 marketplace，语义不等价。 external 覆盖偏薄（ext 1 家，重叠 1 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-21）。"
   },
   {
    "card_id": "RTX PRO 6000",
@@ -1380,9 +1384,9 @@
    ],
    "coverage": "thin",
    "comparable": false,
-   "as_of": "2026-11-20",
+   "as_of": "2026-11-21",
    "ext_as_of": "2026-11-03",
-   "note": "ext 将工作站与 Server 合并在 rtx-pro-6000，Max-Q 单列；我方 community 可能混入 Max-Q，on-demand 主口径不含。 我方 marketplace 对应 GPU Economy community 中的 marketplace floor 子集；只是子集，不是等号。 external 覆盖偏薄（ext 2 家，重叠 1 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-20）。"
+   "note": "ext 将工作站与 Server 合并在 rtx-pro-6000，Max-Q 单列；我方 community 可能混入 Max-Q，on-demand 主口径不含。 我方 marketplace 对应 GPU Economy community 中的 marketplace floor 子集；只是子集，不是等号。 external 覆盖偏薄（ext 2 家，重叠 1 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-21）。"
   },
   {
    "card_id": "RTX PRO 6000",
@@ -1415,9 +1419,9 @@
    ],
    "coverage": "thin",
    "comparable": false,
-   "as_of": "2026-11-20",
+   "as_of": "2026-11-21",
    "ext_as_of": "2026-11-03",
-   "note": "ext 将工作站与 Server 合并在 rtx-pro-6000，Max-Q 单列；我方 community 可能混入 Max-Q，on-demand 主口径不含。 可比口径与 on-demand 相同；serverless 按秒/共享，不能与整租混读。 external 数据比我方旧（2026-11-03 vs 2026-11-20）。"
+   "note": "ext 将工作站与 Server 合并在 rtx-pro-6000，Max-Q 单列；我方 community 可能混入 Max-Q，on-demand 主口径不含。 可比口径与 on-demand 相同；serverless 按秒/共享，不能与整租混读。 external 数据比我方旧（2026-11-03 vs 2026-11-21）。"
   },
   {
    "card_id": "RTX 4090",
@@ -1446,9 +1450,9 @@
    ],
    "coverage": "thin",
    "comparable": false,
-   "as_of": "2026-11-20",
+   "as_of": "2026-11-21",
    "ext_as_of": "2026-11-03",
-   "note": "我方仅少量 provider，样本弱；external 覆盖更广，不改写我方中位。 external 数据比我方旧（2026-11-03 vs 2026-11-20）。"
+   "note": "我方仅少量 provider，样本弱；external 覆盖更广，不改写我方中位。 external 数据比我方旧（2026-11-03 vs 2026-11-21）。"
   },
   {
    "card_id": "RTX 4090",
@@ -1456,7 +1460,7 @@
    "match_id": "rtx-4090",
    "benchmark_id": null,
    "context_ids": [],
-   "own_median": 0.505,
+   "own_median": 0.495,
    "own_providers": 2,
    "own_thin": true,
    "ext_median": 0.4535,
@@ -1476,9 +1480,9 @@
    ],
    "coverage": "thin",
    "comparable": false,
-   "as_of": "2026-11-20",
+   "as_of": "2026-11-21",
    "ext_as_of": "2026-11-03",
-   "note": "我方仅少量 provider，样本弱；external 覆盖更广，不改写我方中位。 可比口径与 on-demand 相同（live、非 floor、USD、每 provider 最低价）；spot 可被收回，不能当 on-demand。 external 覆盖偏薄（ext 2 家，重叠 1 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-20）。"
+   "note": "我方仅少量 provider，样本弱；external 覆盖更广，不改写我方中位。 可比口径与 on-demand 相同（live、非 floor、USD、每 provider 最低价）；spot 可被收回，不能当 on-demand。 external 覆盖偏薄（ext 2 家，重叠 1 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-21）。"
   },
   {
    "card_id": "RTX 4090",
@@ -1504,9 +1508,9 @@
    "overlap_providers": [],
    "coverage": "thin",
    "comparable": false,
-   "as_of": "2026-11-20",
+   "as_of": "2026-11-21",
    "ext_as_of": "2026-11-03",
-   "note": "我方仅少量 provider，样本弱；external 覆盖更广，不改写我方中位。 GPU Economy 把 reserved 拆成无期限/1y/3y；我方不保留期限，不能合成一个可比中位。 external 覆盖偏薄（ext 1 家，重叠 0 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-20）。"
+   "note": "我方仅少量 provider，样本弱；external 覆盖更广，不改写我方中位。 GPU Economy 把 reserved 拆成无期限/1y/3y；我方不保留期限，不能合成一个可比中位。 external 覆盖偏薄（ext 1 家，重叠 0 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-21）。"
   },
   {
    "card_id": "RTX 4090",
@@ -1535,9 +1539,9 @@
    ],
    "coverage": "thin",
    "comparable": false,
-   "as_of": "2026-11-20",
+   "as_of": "2026-11-21",
    "ext_as_of": "2026-11-03",
-   "note": "我方仅少量 provider，样本弱；external 覆盖更广，不改写我方中位。 GPU Economy 的 community 同时包含 marketplace floor 与实例供给；我方把 floor 单列为 marketplace，语义不等价。 external 覆盖偏薄（ext 2 家，重叠 2 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-20）。"
+   "note": "我方仅少量 provider，样本弱；external 覆盖更广，不改写我方中位。 GPU Economy 的 community 同时包含 marketplace floor 与实例供给；我方把 floor 单列为 marketplace，语义不等价。 external 覆盖偏薄（ext 2 家，重叠 2 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-21）。"
   },
   {
    "card_id": "RTX 4090",
@@ -1545,7 +1549,7 @@
    "match_id": "rtx-4090",
    "benchmark_id": null,
    "context_ids": [],
-   "own_median": 0.425,
+   "own_median": 0.42,
    "own_providers": 1,
    "own_thin": true,
    "ext_median": 0.38935,
@@ -1565,9 +1569,9 @@
    ],
    "coverage": "thin",
    "comparable": false,
-   "as_of": "2026-11-20",
+   "as_of": "2026-11-21",
    "ext_as_of": "2026-11-03",
-   "note": "我方仅少量 provider，样本弱；external 覆盖更广，不改写我方中位。 我方 marketplace 对应 GPU Economy community 中的 marketplace floor 子集；只是子集，不是等号。 external 覆盖偏薄（ext 4 家，重叠 1 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-20）。"
+   "note": "我方仅少量 provider，样本弱；external 覆盖更广，不改写我方中位。 我方 marketplace 对应 GPU Economy community 中的 marketplace floor 子集；只是子集，不是等号。 external 覆盖偏薄（ext 4 家，重叠 1 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-21）。"
   },
   {
    "card_id": "RTX 4090",
@@ -1593,9 +1597,9 @@
    "overlap_providers": [],
    "coverage": "thin",
    "comparable": false,
-   "as_of": "2026-11-20",
+   "as_of": "2026-11-21",
    "ext_as_of": "2026-11-03",
-   "note": "我方仅少量 provider，样本弱；external 覆盖更广，不改写我方中位。 可比口径与 on-demand 相同；serverless 按秒/共享，不能与整租混读。 external 覆盖偏薄（ext 1 家，重叠 0 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-20）。"
+   "note": "我方仅少量 provider，样本弱；external 覆盖更广，不改写我方中位。 可比口径与 on-demand 相同；serverless 按秒/共享，不能与整租混读。 external 覆盖偏薄（ext 1 家，重叠 0 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-21）。"
   },
   {
    "card_id": "RTX 5090",
@@ -1603,7 +1607,7 @@
    "match_id": "rtx-5090",
    "benchmark_id": null,
    "context_ids": [],
-   "own_median": 0.835,
+   "own_median": 0.75,
    "own_providers": 6,
    "own_thin": true,
    "ext_median": 0.715,
@@ -1625,9 +1629,9 @@
    ],
    "coverage": "thin",
    "comparable": false,
-   "as_of": "2026-11-20",
+   "as_of": "2026-11-21",
    "ext_as_of": "2026-11-03",
-   "note": "我方仅少量 provider，样本弱；external 覆盖更广，不改写我方中位。 external 数据比我方旧（2026-11-03 vs 2026-11-20）。"
+   "note": "我方仅少量 provider，样本弱；external 覆盖更广，不改写我方中位。 external 数据比我方旧（2026-11-03 vs 2026-11-21）。"
   },
   {
    "card_id": "RTX 5090",
@@ -1635,7 +1639,7 @@
    "match_id": "rtx-5090",
    "benchmark_id": null,
    "context_ids": [],
-   "own_median": 0.705,
+   "own_median": 0.72,
    "own_providers": 2,
    "own_thin": true,
    "ext_median": 0.577,
@@ -1655,9 +1659,9 @@
    ],
    "coverage": "thin",
    "comparable": false,
-   "as_of": "2026-11-20",
+   "as_of": "2026-11-21",
    "ext_as_of": "2026-11-03",
-   "note": "我方仅少量 provider，样本弱；external 覆盖更广，不改写我方中位。 可比口径与 on-demand 相同（live、非 floor、USD、每 provider 最低价）；spot 可被收回，不能当 on-demand。 external 覆盖偏薄（ext 2 家，重叠 1 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-20）。"
+   "note": "我方仅少量 provider，样本弱；external 覆盖更广，不改写我方中位。 可比口径与 on-demand 相同（live、非 floor、USD、每 provider 最低价）；spot 可被收回，不能当 on-demand。 external 覆盖偏薄（ext 2 家，重叠 1 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-21）。"
   },
   {
    "card_id": "RTX 5090",
@@ -1683,9 +1687,9 @@
    "overlap_providers": [],
    "coverage": "thin",
    "comparable": false,
-   "as_of": "2026-11-20",
+   "as_of": "2026-11-21",
    "ext_as_of": "2026-11-03",
-   "note": "我方仅少量 provider，样本弱；external 覆盖更广，不改写我方中位。 GPU Economy 把 reserved 拆成无期限/1y/3y；我方不保留期限，不能合成一个可比中位。 external 覆盖偏薄（ext 1 家，重叠 0 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-20）。"
+   "note": "我方仅少量 provider，样本弱；external 覆盖更广，不改写我方中位。 GPU Economy 把 reserved 拆成无期限/1y/3y；我方不保留期限，不能合成一个可比中位。 external 覆盖偏薄（ext 1 家，重叠 0 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-21）。"
   },
   {
    "card_id": "RTX 5090",
@@ -1714,9 +1718,9 @@
    ],
    "coverage": "thin",
    "comparable": false,
-   "as_of": "2026-11-20",
+   "as_of": "2026-11-21",
    "ext_as_of": "2026-11-03",
-   "note": "我方仅少量 provider，样本弱；external 覆盖更广，不改写我方中位。 GPU Economy 的 community 同时包含 marketplace floor 与实例供给；我方把 floor 单列为 marketplace，语义不等价。 external 覆盖偏薄（ext 2 家，重叠 2 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-20）。"
+   "note": "我方仅少量 provider，样本弱；external 覆盖更广，不改写我方中位。 GPU Economy 的 community 同时包含 marketplace floor 与实例供给；我方把 floor 单列为 marketplace，语义不等价。 external 覆盖偏薄（ext 2 家，重叠 2 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-21）。"
   },
   {
    "card_id": "RTX 5090",
@@ -1724,7 +1728,7 @@
    "match_id": "rtx-5090",
    "benchmark_id": null,
    "context_ids": [],
-   "own_median": 0.7,
+   "own_median": 0.675,
    "own_providers": 1,
    "own_thin": true,
    "ext_median": 0.5324,
@@ -1744,9 +1748,9 @@
    ],
    "coverage": "thin",
    "comparable": false,
-   "as_of": "2026-11-20",
+   "as_of": "2026-11-21",
    "ext_as_of": "2026-11-03",
-   "note": "我方仅少量 provider，样本弱；external 覆盖更广，不改写我方中位。 我方 marketplace 对应 GPU Economy community 中的 marketplace floor 子集；只是子集，不是等号。 external 覆盖偏薄（ext 4 家，重叠 1 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-20）。"
+   "note": "我方仅少量 provider，样本弱；external 覆盖更广，不改写我方中位。 我方 marketplace 对应 GPU Economy community 中的 marketplace floor 子集；只是子集，不是等号。 external 覆盖偏薄（ext 4 家，重叠 1 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-21）。"
   },
   {
    "card_id": "RTX 5090",
@@ -1772,9 +1776,9 @@
    "overlap_providers": [],
    "coverage": "thin",
    "comparable": false,
-   "as_of": "2026-11-20",
+   "as_of": "2026-11-21",
    "ext_as_of": "2026-11-03",
-   "note": "我方仅少量 provider，样本弱；external 覆盖更广，不改写我方中位。 可比口径与 on-demand 相同；serverless 按秒/共享，不能与整租混读。 external 覆盖偏薄（ext 1 家，重叠 0 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-20）。"
+   "note": "我方仅少量 provider，样本弱；external 覆盖更广，不改写我方中位。 可比口径与 on-demand 相同；serverless 按秒/共享，不能与整租混读。 external 覆盖偏薄（ext 1 家，重叠 0 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-21）。"
   },
   {
    "card_id": "MI300X",
@@ -1806,9 +1810,9 @@
    ],
    "coverage": "thin",
    "comparable": false,
-   "as_of": "2026-11-20",
+   "as_of": "2026-11-21",
    "ext_as_of": "2026-11-03",
-   "note": "MI300X 配置单一；ext 只有 7 家可比 provider，样本偏薄。 external 数据比我方旧（2026-11-03 vs 2026-11-20）。"
+   "note": "MI300X 配置单一；ext 只有 7 家可比 provider，样本偏薄。 external 数据比我方旧（2026-11-03 vs 2026-11-21）。"
   },
   {
    "card_id": "MI300X",
@@ -1834,9 +1838,9 @@
    "overlap_providers": [],
    "coverage": "thin",
    "comparable": false,
-   "as_of": "2026-11-20",
+   "as_of": "2026-11-21",
    "ext_as_of": "2026-11-03",
-   "note": "MI300X 配置单一；ext 只有 7 家可比 provider，样本偏薄。 可比口径与 on-demand 相同（live、非 floor、USD、每 provider 最低价）；spot 可被收回，不能当 on-demand。 external 覆盖偏薄（ext 2 家，重叠 0 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-20）。"
+   "note": "MI300X 配置单一；ext 只有 7 家可比 provider，样本偏薄。 可比口径与 on-demand 相同（live、非 floor、USD、每 provider 最低价）；spot 可被收回，不能当 on-demand。 external 覆盖偏薄（ext 2 家，重叠 0 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-21）。"
   },
   {
    "card_id": "MI300X",
@@ -1862,9 +1866,9 @@
    "overlap_providers": [],
    "coverage": "thin",
    "comparable": false,
-   "as_of": "2026-11-20",
+   "as_of": "2026-11-21",
    "ext_as_of": "2026-11-03",
-   "note": "MI300X 配置单一；ext 只有 7 家可比 provider，样本偏薄。 GPU Economy 把 reserved 拆成无期限/1y/3y；我方不保留期限，不能合成一个可比中位。 external 覆盖偏薄（ext 2 家，重叠 0 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-20）。"
+   "note": "MI300X 配置单一；ext 只有 7 家可比 provider，样本偏薄。 GPU Economy 把 reserved 拆成无期限/1y/3y；我方不保留期限，不能合成一个可比中位。 external 覆盖偏薄（ext 2 家，重叠 0 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-21）。"
   },
   {
    "card_id": "MI300X",
@@ -1890,9 +1894,9 @@
    "overlap_providers": [],
    "coverage": "none",
    "comparable": false,
-   "as_of": "2026-11-20",
+   "as_of": "2026-11-21",
    "ext_as_of": "2026-11-03",
-   "note": "MI300X 配置单一；ext 只有 7 家可比 provider，样本偏薄。 GPU Economy 的 community 同时包含 marketplace floor 与实例供给；我方把 floor 单列为 marketplace，语义不等价。 该 market 没有可比 external 报价。 external 数据比我方旧（2026-11-03 vs 2026-11-20）。"
+   "note": "MI300X 配置单一；ext 只有 7 家可比 provider，样本偏薄。 GPU Economy 的 community 同时包含 marketplace floor 与实例供给；我方把 floor 单列为 marketplace，语义不等价。 该 market 没有可比 external 报价。 external 数据比我方旧（2026-11-03 vs 2026-11-21）。"
   },
   {
    "card_id": "MI300X",
@@ -1918,9 +1922,9 @@
    "overlap_providers": [],
    "coverage": "none",
    "comparable": false,
-   "as_of": "2026-11-20",
+   "as_of": "2026-11-21",
    "ext_as_of": "2026-11-03",
-   "note": "MI300X 配置单一；ext 只有 7 家可比 provider，样本偏薄。 我方 marketplace 对应 GPU Economy community 中的 marketplace floor 子集；只是子集，不是等号。 该 market 没有可比 external 报价。 external 数据比我方旧（2026-11-03 vs 2026-11-20）。"
+   "note": "MI300X 配置单一；ext 只有 7 家可比 provider，样本偏薄。 我方 marketplace 对应 GPU Economy community 中的 marketplace floor 子集；只是子集，不是等号。 该 market 没有可比 external 报价。 external 数据比我方旧（2026-11-03 vs 2026-11-21）。"
   },
   {
    "card_id": "MI300X",
@@ -1946,9 +1950,9 @@
    "overlap_providers": [],
    "coverage": "none",
    "comparable": false,
-   "as_of": "2026-11-20",
+   "as_of": "2026-11-21",
    "ext_as_of": "2026-11-03",
-   "note": "MI300X 配置单一；ext 只有 7 家可比 provider，样本偏薄。 可比口径与 on-demand 相同；serverless 按秒/共享，不能与整租混读。 该 market 没有可比 external 报价。 external 数据比我方旧（2026-11-03 vs 2026-11-20）。"
+   "note": "MI300X 配置单一；ext 只有 7 家可比 provider，样本偏薄。 可比口径与 on-demand 相同；serverless 按秒/共享，不能与整租混读。 该 market 没有可比 external 报价。 external 数据比我方旧（2026-11-03 vs 2026-11-21）。"
   },
   {
    "card_id": "GH200",
@@ -1977,9 +1981,9 @@
    ],
    "coverage": "thin",
    "comparable": false,
-   "as_of": "2026-11-20",
+   "as_of": "2026-11-21",
    "ext_as_of": "2026-11-03",
-   "note": "GH200 ext 仅 4 家可比 provider，只能作弱参考。 external 数据比我方旧（2026-11-03 vs 2026-11-20）。"
+   "note": "GH200 ext 仅 4 家可比 provider，只能作弱参考。 external 数据比我方旧（2026-11-03 vs 2026-11-21）。"
   },
   {
    "card_id": "GH200",
@@ -2005,9 +2009,9 @@
    "overlap_providers": [],
    "coverage": "none",
    "comparable": false,
-   "as_of": "2026-11-20",
+   "as_of": "2026-11-21",
    "ext_as_of": "2026-11-03",
-   "note": "GH200 ext 仅 4 家可比 provider，只能作弱参考。 可比口径与 on-demand 相同（live、非 floor、USD、每 provider 最低价）；spot 可被收回，不能当 on-demand。 该 market 没有可比 external 报价。 external 数据比我方旧（2026-11-03 vs 2026-11-20）。"
+   "note": "GH200 ext 仅 4 家可比 provider，只能作弱参考。 可比口径与 on-demand 相同（live、非 floor、USD、每 provider 最低价）；spot 可被收回，不能当 on-demand。 该 market 没有可比 external 报价。 external 数据比我方旧（2026-11-03 vs 2026-11-21）。"
   },
   {
    "card_id": "GH200",
@@ -2033,9 +2037,9 @@
    "overlap_providers": [],
    "coverage": "none",
    "comparable": false,
-   "as_of": "2026-11-20",
+   "as_of": "2026-11-21",
    "ext_as_of": "2026-11-03",
-   "note": "GH200 ext 仅 4 家可比 provider，只能作弱参考。 GPU Economy 把 reserved 拆成无期限/1y/3y；我方不保留期限，不能合成一个可比中位。 该 market 没有可比 external 报价。 external 数据比我方旧（2026-11-03 vs 2026-11-20）。"
+   "note": "GH200 ext 仅 4 家可比 provider，只能作弱参考。 GPU Economy 把 reserved 拆成无期限/1y/3y；我方不保留期限，不能合成一个可比中位。 该 market 没有可比 external 报价。 external 数据比我方旧（2026-11-03 vs 2026-11-21）。"
   },
   {
    "card_id": "GH200",
@@ -2061,9 +2065,9 @@
    "overlap_providers": [],
    "coverage": "none",
    "comparable": false,
-   "as_of": "2026-11-20",
+   "as_of": "2026-11-21",
    "ext_as_of": "2026-11-03",
-   "note": "GH200 ext 仅 4 家可比 provider，只能作弱参考。 GPU Economy 的 community 同时包含 marketplace floor 与实例供给；我方把 floor 单列为 marketplace，语义不等价。 该 market 没有可比 external 报价。 external 数据比我方旧（2026-11-03 vs 2026-11-20）。"
+   "note": "GH200 ext 仅 4 家可比 provider，只能作弱参考。 GPU Economy 的 community 同时包含 marketplace floor 与实例供给；我方把 floor 单列为 marketplace，语义不等价。 该 market 没有可比 external 报价。 external 数据比我方旧（2026-11-03 vs 2026-11-21）。"
   },
   {
    "card_id": "GH200",
@@ -2089,9 +2093,9 @@
    "overlap_providers": [],
    "coverage": "none",
    "comparable": false,
-   "as_of": "2026-11-20",
+   "as_of": "2026-11-21",
    "ext_as_of": "2026-11-03",
-   "note": "GH200 ext 仅 4 家可比 provider，只能作弱参考。 我方 marketplace 对应 GPU Economy community 中的 marketplace floor 子集；只是子集，不是等号。 该 market 没有可比 external 报价。 external 数据比我方旧（2026-11-03 vs 2026-11-20）。"
+   "note": "GH200 ext 仅 4 家可比 provider，只能作弱参考。 我方 marketplace 对应 GPU Economy community 中的 marketplace floor 子集；只是子集，不是等号。 该 market 没有可比 external 报价。 external 数据比我方旧（2026-11-03 vs 2026-11-21）。"
   },
   {
    "card_id": "GH200",
@@ -2117,9 +2121,9 @@
    "overlap_providers": [],
    "coverage": "none",
    "comparable": false,
-   "as_of": "2026-11-20",
+   "as_of": "2026-11-21",
    "ext_as_of": "2026-11-03",
-   "note": "GH200 ext 仅 4 家可比 provider，只能作弱参考。 可比口径与 on-demand 相同；serverless 按秒/共享，不能与整租混读。 该 market 没有可比 external 报价。 external 数据比我方旧（2026-11-03 vs 2026-11-20）。"
+   "note": "GH200 ext 仅 4 家可比 provider，只能作弱参考。 可比口径与 on-demand 相同；serverless 按秒/共享，不能与整租混读。 该 market 没有可比 external 报价。 external 数据比我方旧（2026-11-03 vs 2026-11-21）。"
   }
  ]
 }
