@@ -2,7 +2,7 @@
  "name": "AI Compute Economics - weekly GPU supply index",
  "description": "Weekly on-demand median per card, chain-linked base-100 over providers present in both weeks; one provider once per week. Weeks below the provider guard are withheld, not backfilled. Public receipts retain the latest published week only. Monthly values use a fixed pre-committed provider panel and a daily-frequency approximation; see monthly_method.",
  "unit": "USD per GPU per hour; base-100 index",
- "as_of": "2026-11-21",
+ "as_of": "2026-11-23",
  "methodology_version": "2026-11-04.1",
  "index_min_providers": 4,
  "index_publish_min": 8,
@@ -12,11 +12,11 @@
  "cards": {
   "MI300X": {
    "name": "MI300X 192GB",
-   "as_of": "2026-11-21",
+   "as_of": "2026-11-23",
    "min_providers": 4,
    "latest": {
-    "weekStart": "2026-11-16",
-    "isoWeek": "2026-W47",
+    "weekStart": "2026-11-23",
+    "isoWeek": "2026-W48",
     "vintage": "provisional",
     "status": "thin",
     "methodologyVersion": "2026-11-04.1",
@@ -27,8 +27,8 @@
     "index": 106.8099,
     "linkPairs": 6,
     "withheldReason": null,
-    "receipt": "2026-W47",
-    "ageDays": 5
+    "receipt": "2026-W48",
+    "ageDays": 0
    },
    "weeks": [
     {
@@ -314,6 +314,20 @@
     {
      "weekStart": "2026-11-16",
      "isoWeek": "2026-W47",
+     "vintage": "final",
+     "status": "thin",
+     "methodologyVersion": "2026-11-04.1",
+     "median": 3.22,
+     "p25": 2.54,
+     "p75": 4.1925,
+     "providerCount": 6,
+     "index": 106.8099,
+     "linkPairs": 6,
+     "withheldReason": null
+    },
+    {
+     "weekStart": "2026-11-23",
+     "isoWeek": "2026-W48",
      "vintage": "provisional",
      "status": "thin",
      "methodologyVersion": "2026-11-04.1",
@@ -324,14 +338,14 @@
      "index": 106.8099,
      "linkPairs": 6,
      "withheldReason": null,
-     "receipt": "2026-W47",
-     "ageDays": 5
+     "receipt": "2026-W48",
+     "ageDays": 0
     }
    ],
    "receipts": {
-    "2026-W47": {
-     "weekStart": "2026-11-16",
-     "weekEnd": "2026-11-22",
+    "2026-W48": {
+     "weekStart": "2026-11-23",
+     "weekEnd": "2026-11-29",
      "vintage": "provisional",
      "status": "thin",
      "methodologyVersion": "2026-11-04.1",
@@ -348,7 +362,7 @@
        "provider": "RunPod",
        "providerId": "runpod",
        "value": 2.39,
-       "date": "2026-11-21",
+       "date": "2026-11-23",
        "sourceUrl": "https://www.runpod.io/pricing",
        "quotes": 1
       },
@@ -356,7 +370,7 @@
        "provider": "DigitalOcean",
        "providerId": "digitalocean",
        "value": 2.59,
-       "date": "2026-11-21",
+       "date": "2026-11-23",
        "sourceUrl": "https://www.digitalocean.com/pricing/gpu-droplets",
        "quotes": 1
       },
@@ -364,7 +378,7 @@
        "provider": "Hot Aisle",
        "providerId": "hotaisle",
        "value": 2.99,
-       "date": "2026-11-21",
+       "date": "2026-11-23",
        "sourceUrl": "https://hotaisle.xyz/pricing",
        "quotes": 1
       },
@@ -372,7 +386,7 @@
        "provider": "Crusoe",
        "providerId": "crusoe",
        "value": 3.45,
-       "date": "2026-11-21",
+       "date": "2026-11-23",
        "sourceUrl": "https://www.crusoe.ai/cloud/pricing",
        "quotes": 1
       },
@@ -380,7 +394,7 @@
        "provider": "Spheron",
        "providerId": "spheron",
        "value": 3.59,
-       "date": "2026-11-21",
+       "date": "2026-11-23",
        "sourceUrl": "https://www.spheron.network/pricing/",
        "quotes": 1
       },
@@ -388,7 +402,7 @@
        "provider": "Oracle Cloud",
        "providerId": "oracle",
        "value": 6.0,
-       "date": "2026-11-21",
+       "date": "2026-11-23",
        "sourceUrl": "https://apexapps.oracle.com/pls/apex/cetools/api/v1/products/?currencyCode=USD",
        "quotes": 1
       }

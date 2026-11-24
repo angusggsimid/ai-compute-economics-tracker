@@ -1,8 +1,8 @@
-# Thesis State | 2026-11-23T07:33:08Z
+# Thesis State | 2026-11-24T09:52:07Z
 
 | 时钟 | 状态 | 方向 | 关键读数 | 下一个证明点 |
 |---|---|---|---|---|
-| Supply Price | **Confirmed** | intensifying | neocloud:B200 30D 6.81%; neocloud:H100 30D 3.41%; neocloud:H200 30D 10.8%; ornn:B200 30D -3.51%; ornn:H100 SXM 30D -13.91%; ornn:H200 30D -18.68%; semi:B200 30D -3.85%; semi:H100 30D 2.35% | 订单簿深度已积累 74/20 有效日；面板 30D 变化每日更新。 |
-| Capacity & Utilization | **Trend** | - | 订单簿 74 日 · 最新 offers 264 | 积累订单簿至 10/20 有效日（当前 74）。 |
-| Demand & Unit Economics | **Trend** | - | 52 完整周 · 近90日降价模型 115 | 获取官方 usage 授权或接入新的非 proxy 用量源；OTPI 继续按日累积。 |
+| Supply Price | **Confirmed** | intensifying | neocloud:B200 30D 0.13%; neocloud:H100 30D 3.8%; neocloud:H200 30D 1.01%; ornn:B200 30D -3.72%; ornn:H100 SXM 30D -14.16%; ornn:H200 30D -16.28%; semi:B200 30D -4.87%; semi:H100 30D 3.83% | 订单簿深度已积累 75/20 有效日；面板 30D 变化每日更新。 |
+| Capacity & Utilization | **Trend** | - | 订单簿 75 日 · 最新 offers 268 | 积累订单簿至 10/20 有效日（当前 75）。 |
+| Demand & Unit Economics | **Trend** | - | 52 完整周 · 近90日降价模型 114 | 获取官方 usage 授权或接入新的非 proxy 用量源；OTPI 继续按日累积。 |
 | Commitment & Monetization | **Inflection Watch** | intensifying | 4/5 家公司达3连续季度 | 下一财报季追加季度行；合约区间每半年更新。 |

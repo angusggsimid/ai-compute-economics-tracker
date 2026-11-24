@@ -2,7 +2,7 @@
  "name": "AI Compute Economics - weekly GPU supply index",
  "description": "Weekly on-demand median per card, chain-linked base-100 over providers present in both weeks; one provider once per week. Weeks below the provider guard are withheld, not backfilled. Public receipts retain the latest published week only. Monthly values use a fixed pre-committed provider panel and a daily-frequency approximation; see monthly_method.",
  "unit": "USD per GPU per hour; base-100 index",
- "as_of": "2026-11-21",
+ "as_of": "2026-11-23",
  "methodology_version": "2026-11-04.1",
  "index_min_providers": 4,
  "index_publish_min": 8,
@@ -12,7 +12,7 @@
  "cards": {
   "GH200": {
    "name": "GH200 96GB",
-   "as_of": "2026-11-21",
+   "as_of": "2026-11-23",
    "min_providers": 4,
    "latest": {
     "weekStart": "2026-11-09",
@@ -28,7 +28,7 @@
     "linkPairs": 3,
     "withheldReason": null,
     "receipt": "2026-W46",
-    "ageDays": 12
+    "ageDays": 14
    },
    "weeks": [
     {
@@ -317,6 +317,20 @@
     {
      "weekStart": "2026-11-16",
      "isoWeek": "2026-W47",
+     "vintage": "final",
+     "status": "withheld",
+     "methodologyVersion": "2026-11-04.1",
+     "median": 3.02,
+     "p25": null,
+     "p75": null,
+     "providerCount": 3,
+     "index": null,
+     "linkPairs": 0,
+     "withheldReason": "only 3 confirmed providers (needs >=4)"
+    },
+    {
+     "weekStart": "2026-11-23",
+     "isoWeek": "2026-W48",
      "vintage": "provisional",
      "status": "withheld",
      "methodologyVersion": "2026-11-04.1",

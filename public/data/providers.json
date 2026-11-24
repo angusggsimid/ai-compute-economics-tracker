@@ -1,6 +1,6 @@
 {
  "name": "AI Compute Economics - provider coverage",
- "as_of": "2026-11-21",
+ "as_of": "2026-11-23",
  "methodology_version": "2026-11-04.1",
  "count": 41,
  "providers": [
@@ -26,9 +26,9 @@
    ],
    "quotes": 18,
    "cheapest": {
-    "card": "RTX 4090",
+    "card": "RTX 5090",
     "market": "on_demand",
-    "usd_per_gpu_hour": 0.48,
+    "usd_per_gpu_hour": 0.68,
     "source_url": "https://www.spheron.network/pricing/"
    }
   },
@@ -80,9 +80,9 @@
    ],
    "quotes": 15,
    "cheapest": {
-    "card": "RTX 4090",
-    "market": "marketplace",
-    "usd_per_gpu_hour": 0.35,
+    "card": "L40S",
+    "market": "spot",
+    "usd_per_gpu_hour": 0.38,
     "source_url": "https://lium.io/api/public/v1/nodes"
    }
   },
@@ -198,9 +198,9 @@
    ],
    "quotes": 7,
    "cheapest": {
-    "card": "RTX 4090",
+    "card": "L40S",
     "market": "on_demand",
-    "usd_per_gpu_hour": 0.52,
+    "usd_per_gpu_hour": 0.55,
     "source_url": "https://www.runcrate.ai/pricing"
    }
   },
@@ -270,6 +270,29 @@
     "market": "on_demand",
     "usd_per_gpu_hour": 1.5,
     "source_url": "https://www.crusoe.ai/cloud/pricing"
+   }
+  },
+  {
+   "id": "gcp",
+   "name": "Google Cloud",
+   "cards": [
+    "A100",
+    "B200",
+    "B300",
+    "H100",
+    "H200",
+    "RTX PRO 6000"
+   ],
+   "markets": [
+    "on_demand",
+    "spot"
+   ],
+   "quotes": 11,
+   "cheapest": {
+    "card": "RTX PRO 6000",
+    "market": "spot",
+    "usd_per_gpu_hour": 0.4672,
+    "source_url": "https://cloud.google.com/products/compute/gpus-pricing?hl=en"
    }
   },
   {
@@ -358,28 +381,6 @@
     "market": "on_demand",
     "usd_per_gpu_hour": 1.57,
     "source_url": "https://www.digitalocean.com/pricing/gpu-droplets"
-   }
-  },
-  {
-   "id": "gcp",
-   "name": "Google Cloud",
-   "cards": [
-    "A100",
-    "B200",
-    "H100",
-    "H200",
-    "RTX PRO 6000"
-   ],
-   "markets": [
-    "on_demand",
-    "spot"
-   ],
-   "quotes": 10,
-   "cheapest": {
-    "card": "RTX PRO 6000",
-    "market": "spot",
-    "usd_per_gpu_hour": 0.4247,
-    "source_url": "https://cloud.google.com/products/compute/gpus-pricing?hl=en"
    }
   },
   {
@@ -646,6 +647,25 @@
    }
   },
   {
+   "id": "impossiblecloud",
+   "name": "Impossible Cloud",
+   "cards": [
+    "B200",
+    "B300",
+    "H200"
+   ],
+   "markets": [
+    "reserved"
+   ],
+   "quotes": 3,
+   "cheapest": {
+    "card": "H200",
+    "market": "reserved",
+    "usd_per_gpu_hour": 4.45,
+    "source_url": "https://www.impossiblecloud.com/en-us/baremetal"
+   }
+  },
+  {
    "id": "latitude",
    "name": "Latitude.sh",
    "cards": [
@@ -721,24 +741,6 @@
     "market": "spot",
     "usd_per_gpu_hour": 0.67877,
     "source_url": "https://prices.azure.com/api/retail/prices"
-   }
-  },
-  {
-   "id": "impossiblecloud",
-   "name": "Impossible Cloud",
-   "cards": [
-    "B200",
-    "B300"
-   ],
-   "markets": [
-    "reserved"
-   ],
-   "quotes": 2,
-   "cheapest": {
-    "card": "B300",
-    "market": "reserved",
-    "usd_per_gpu_hour": 4.23,
-    "source_url": "https://www.impossiblecloud.com/en-us/baremetal"
    }
   },
   {
