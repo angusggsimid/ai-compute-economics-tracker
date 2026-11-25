@@ -1,14 +1,14 @@
 {
  "id": "GH200",
  "slug": "gh200",
- "as_of": "2026-11-23",
+ "as_of": "2026-11-24",
  "methodology_version": "2026-11-04.1",
  "card": {
   "id": "GH200",
   "name": "GH200 96GB",
   "vramGb": 96,
   "family": "Hopper",
-  "asOf": "2026-11-23",
+  "asOf": "2026-11-24",
   "status": "live",
   "median": 3.02,
   "p25": null,
@@ -31,7 +31,7 @@
    "linkPairs": 3,
    "withheldReason": null,
    "receipt": "2026-W46",
-   "ageDays": 14
+   "ageDays": 15
   },
   "monthly": [
    {
@@ -1865,10 +1865,23 @@
       "cheapestProvider": "Lambda",
       "cheapestProviderId": "lambda",
       "cheapestSourceUrl": "https://lambda.ai/instances"
+     },
+     {
+      "date": "2026-11-24",
+      "value": 3.02,
+      "p25": null,
+      "p75": null,
+      "providerCount": 3,
+      "quoteCount": 3,
+      "thin": true,
+      "cheapestValue": 2.59,
+      "cheapestProvider": "Lambda",
+      "cheapestProviderId": "lambda",
+      "cheapestSourceUrl": "https://lambda.ai/instances"
      }
     ],
     "latest": {
-     "date": "2026-11-23",
+     "date": "2026-11-24",
      "series": "on_demand",
      "value": 3.02,
      "p25": null,
@@ -1909,9 +1922,9 @@
      ]
     },
     "change7dPct": 0.0,
-    "change7dBaseDate": "2026-11-16",
-    "coverageDays": 134,
-    "quoteRows": 402
+    "change7dBaseDate": "2026-11-17",
+    "coverageDays": 135,
+    "quoteRows": 405
    },
    "spot": {
     "label": "Spot",
@@ -2296,9 +2309,9 @@
    ],
    "coverage": "thin",
    "comparable": false,
-   "as_of": "2026-11-23",
+   "as_of": "2026-11-24",
    "ext_as_of": "2026-11-03",
-   "note": "GH200 ext 仅 4 家可比 provider，只能作弱参考。 external 数据比我方旧（2026-11-03 vs 2026-11-23）。"
+   "note": "GH200 ext 仅 4 家可比 provider，只能作弱参考。 external 数据比我方旧（2026-11-03 vs 2026-11-24）。"
   },
   {
    "card_id": "GH200",
@@ -2324,9 +2337,9 @@
    "overlap_providers": [],
    "coverage": "none",
    "comparable": false,
-   "as_of": "2026-11-23",
+   "as_of": "2026-11-24",
    "ext_as_of": "2026-11-03",
-   "note": "GH200 ext 仅 4 家可比 provider，只能作弱参考。 可比口径与 on-demand 相同（live、非 floor、USD、每 provider 最低价）；spot 可被收回，不能当 on-demand。 该 market 没有可比 external 报价。 external 数据比我方旧（2026-11-03 vs 2026-11-23）。"
+   "note": "GH200 ext 仅 4 家可比 provider，只能作弱参考。 可比口径与 on-demand 相同（live、非 floor、USD、每 provider 最低价）；spot 可被收回，不能当 on-demand。 该 market 没有可比 external 报价。 external 数据比我方旧（2026-11-03 vs 2026-11-24）。"
   },
   {
    "card_id": "GH200",
@@ -2352,9 +2365,9 @@
    "overlap_providers": [],
    "coverage": "none",
    "comparable": false,
-   "as_of": "2026-11-23",
+   "as_of": "2026-11-24",
    "ext_as_of": "2026-11-03",
-   "note": "GH200 ext 仅 4 家可比 provider，只能作弱参考。 GPU Economy 把 reserved 拆成无期限/1y/3y；我方不保留期限，不能合成一个可比中位。 该 market 没有可比 external 报价。 external 数据比我方旧（2026-11-03 vs 2026-11-23）。"
+   "note": "GH200 ext 仅 4 家可比 provider，只能作弱参考。 GPU Economy 把 reserved 拆成无期限/1y/3y；我方不保留期限，不能合成一个可比中位。 该 market 没有可比 external 报价。 external 数据比我方旧（2026-11-03 vs 2026-11-24）。"
   },
   {
    "card_id": "GH200",
@@ -2380,9 +2393,9 @@
    "overlap_providers": [],
    "coverage": "none",
    "comparable": false,
-   "as_of": "2026-11-23",
+   "as_of": "2026-11-24",
    "ext_as_of": "2026-11-03",
-   "note": "GH200 ext 仅 4 家可比 provider，只能作弱参考。 GPU Economy 的 community 同时包含 marketplace floor 与实例供给；我方把 floor 单列为 marketplace，语义不等价。 该 market 没有可比 external 报价。 external 数据比我方旧（2026-11-03 vs 2026-11-23）。"
+   "note": "GH200 ext 仅 4 家可比 provider，只能作弱参考。 GPU Economy 的 community 同时包含 marketplace floor 与实例供给；我方把 floor 单列为 marketplace，语义不等价。 该 market 没有可比 external 报价。 external 数据比我方旧（2026-11-03 vs 2026-11-24）。"
   },
   {
    "card_id": "GH200",
@@ -2408,9 +2421,9 @@
    "overlap_providers": [],
    "coverage": "none",
    "comparable": false,
-   "as_of": "2026-11-23",
+   "as_of": "2026-11-24",
    "ext_as_of": "2026-11-03",
-   "note": "GH200 ext 仅 4 家可比 provider，只能作弱参考。 我方 marketplace 对应 GPU Economy community 中的 marketplace floor 子集；只是子集，不是等号。 该 market 没有可比 external 报价。 external 数据比我方旧（2026-11-03 vs 2026-11-23）。"
+   "note": "GH200 ext 仅 4 家可比 provider，只能作弱参考。 我方 marketplace 对应 GPU Economy community 中的 marketplace floor 子集；只是子集，不是等号。 该 market 没有可比 external 报价。 external 数据比我方旧（2026-11-03 vs 2026-11-24）。"
   },
   {
    "card_id": "GH200",
@@ -2436,9 +2449,9 @@
    "overlap_providers": [],
    "coverage": "none",
    "comparable": false,
-   "as_of": "2026-11-23",
+   "as_of": "2026-11-24",
    "ext_as_of": "2026-11-03",
-   "note": "GH200 ext 仅 4 家可比 provider，只能作弱参考。 可比口径与 on-demand 相同；serverless 按秒/共享，不能与整租混读。 该 market 没有可比 external 报价。 external 数据比我方旧（2026-11-03 vs 2026-11-23）。"
+   "note": "GH200 ext 仅 4 家可比 provider，只能作弱参考。 可比口径与 on-demand 相同；serverless 按秒/共享，不能与整租混读。 该 market 没有可比 external 报价。 external 数据比我方旧（2026-11-03 vs 2026-11-24）。"
   }
  ],
  "external": {
@@ -2452,7 +2465,7 @@
   "methodology_version": "1.33.63",
   "data_updated_at": "2026-11-03T12:48:20.451387+00:00",
   "retrieved_at": "2026-11-04T09:12:14Z",
-  "as_of": "2026-11-23",
+  "as_of": "2026-11-24",
   "ext_as_of": "2026-11-03",
   "markets": {
    "on_demand": {
@@ -2467,7 +2480,7 @@
     "overlap_count": 2,
     "coverage": "thin",
     "comparable": false,
-    "note": "GH200 ext 仅 4 家可比 provider，只能作弱参考。 external 数据比我方旧（2026-11-03 vs 2026-11-23）。"
+    "note": "GH200 ext 仅 4 家可比 provider，只能作弱参考。 external 数据比我方旧（2026-11-03 vs 2026-11-24）。"
    },
    "spot": {
     "ext_gpu_id": "gh200",
@@ -2481,7 +2494,7 @@
     "overlap_count": 0,
     "coverage": "none",
     "comparable": false,
-    "note": "GH200 ext 仅 4 家可比 provider，只能作弱参考。 可比口径与 on-demand 相同（live、非 floor、USD、每 provider 最低价）；spot 可被收回，不能当 on-demand。 该 market 没有可比 external 报价。 external 数据比我方旧（2026-11-03 vs 2026-11-23）。"
+    "note": "GH200 ext 仅 4 家可比 provider，只能作弱参考。 可比口径与 on-demand 相同（live、非 floor、USD、每 provider 最低价）；spot 可被收回，不能当 on-demand。 该 market 没有可比 external 报价。 external 数据比我方旧（2026-11-03 vs 2026-11-24）。"
    },
    "reserved": {
     "ext_gpu_id": "gh200",
@@ -2495,7 +2508,7 @@
     "overlap_count": 0,
     "coverage": "none",
     "comparable": false,
-    "note": "GH200 ext 仅 4 家可比 provider，只能作弱参考。 GPU Economy 把 reserved 拆成无期限/1y/3y；我方不保留期限，不能合成一个可比中位。 该 market 没有可比 external 报价。 external 数据比我方旧（2026-11-03 vs 2026-11-23）。"
+    "note": "GH200 ext 仅 4 家可比 provider，只能作弱参考。 GPU Economy 把 reserved 拆成无期限/1y/3y；我方不保留期限，不能合成一个可比中位。 该 market 没有可比 external 报价。 external 数据比我方旧（2026-11-03 vs 2026-11-24）。"
    },
    "community": {
     "ext_gpu_id": "gh200",
@@ -2509,7 +2522,7 @@
     "overlap_count": 0,
     "coverage": "none",
     "comparable": false,
-    "note": "GH200 ext 仅 4 家可比 provider，只能作弱参考。 GPU Economy 的 community 同时包含 marketplace floor 与实例供给；我方把 floor 单列为 marketplace，语义不等价。 该 market 没有可比 external 报价。 external 数据比我方旧（2026-11-03 vs 2026-11-23）。"
+    "note": "GH200 ext 仅 4 家可比 provider，只能作弱参考。 GPU Economy 的 community 同时包含 marketplace floor 与实例供给；我方把 floor 单列为 marketplace，语义不等价。 该 market 没有可比 external 报价。 external 数据比我方旧（2026-11-03 vs 2026-11-24）。"
    },
    "marketplace": {
     "ext_gpu_id": "gh200",
@@ -2523,7 +2536,7 @@
     "overlap_count": 0,
     "coverage": "none",
     "comparable": false,
-    "note": "GH200 ext 仅 4 家可比 provider，只能作弱参考。 我方 marketplace 对应 GPU Economy community 中的 marketplace floor 子集；只是子集，不是等号。 该 market 没有可比 external 报价。 external 数据比我方旧（2026-11-03 vs 2026-11-23）。"
+    "note": "GH200 ext 仅 4 家可比 provider，只能作弱参考。 我方 marketplace 对应 GPU Economy community 中的 marketplace floor 子集；只是子集，不是等号。 该 market 没有可比 external 报价。 external 数据比我方旧（2026-11-03 vs 2026-11-24）。"
    },
    "serverless": {
     "ext_gpu_id": "gh200",
@@ -2537,7 +2550,7 @@
     "overlap_count": 0,
     "coverage": "none",
     "comparable": false,
-    "note": "GH200 ext 仅 4 家可比 provider，只能作弱参考。 可比口径与 on-demand 相同；serverless 按秒/共享，不能与整租混读。 该 market 没有可比 external 报价。 external 数据比我方旧（2026-11-03 vs 2026-11-23）。"
+    "note": "GH200 ext 仅 4 家可比 provider，只能作弱参考。 可比口径与 on-demand 相同；serverless 按秒/共享，不能与整租混读。 该 market 没有可比 external 报价。 external 数据比我方旧（2026-11-03 vs 2026-11-24）。"
    }
   }
  }

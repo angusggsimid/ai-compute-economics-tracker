@@ -2,7 +2,7 @@
  "name": "AI Compute Economics - weekly GPU supply index",
  "description": "Weekly on-demand median per card, chain-linked base-100 over providers present in both weeks; one provider once per week. Weeks below the provider guard are withheld, not backfilled. Public receipts retain the latest published week only. Monthly values use a fixed pre-committed provider panel and a daily-frequency approximation; see monthly_method.",
  "unit": "USD per GPU per hour; base-100 index",
- "as_of": "2026-11-23",
+ "as_of": "2026-11-24",
  "methodology_version": "2026-11-04.1",
  "index_min_providers": 4,
  "index_publish_min": 8,
@@ -12,7 +12,7 @@
  "cards": {
   "RTX 5090": {
    "name": "RTX 5090 32GB",
-   "as_of": "2026-11-23",
+   "as_of": "2026-11-24",
    "min_providers": 4,
    "latest": {
     "weekStart": "2026-11-23",
@@ -20,15 +20,15 @@
     "vintage": "provisional",
     "status": "thin",
     "methodologyVersion": "2026-11-04.1",
-    "median": 0.81,
-    "p25": 0.5975,
+    "median": 0.78,
+    "p25": 0.605,
     "p75": 1.315,
     "providerCount": 6,
-    "index": 100.3264,
+    "index": 99.583,
     "linkPairs": 6,
     "withheldReason": null,
     "receipt": "2026-W48",
-    "ageDays": 0
+    "ageDays": 1
    },
    "weeks": [
     {
@@ -331,15 +331,15 @@
      "vintage": "provisional",
      "status": "thin",
      "methodologyVersion": "2026-11-04.1",
-     "median": 0.81,
-     "p25": 0.5975,
+     "median": 0.78,
+     "p25": 0.605,
      "p75": 1.315,
      "providerCount": 6,
-     "index": 100.3264,
+     "index": 99.583,
      "linkPairs": 6,
      "withheldReason": null,
      "receipt": "2026-W48",
-     "ageDays": 0
+     "ageDays": 1
     }
    ],
    "receipts": {
@@ -349,11 +349,11 @@
      "vintage": "provisional",
      "status": "thin",
      "methodologyVersion": "2026-11-04.1",
-     "median": 0.81,
-     "p25": 0.5975,
+     "median": 0.78,
+     "p25": 0.605,
      "p75": 1.315,
      "providerCount": 6,
-     "index": 100.3264,
+     "index": 99.583,
      "linkPairs": 6,
      "withheldReason": null,
      "notConfirmed48h": 0,
@@ -362,39 +362,39 @@
        "provider": "Hyper.ai",
        "providerId": "hyperai",
        "value": 0.35,
-       "date": "2026-11-23",
+       "date": "2026-11-24",
        "sourceUrl": "https://hyper.ai/en/pricing",
-       "quotes": 1
-      },
-      {
-       "provider": "Spheron",
-       "providerId": "spheron",
-       "value": 0.68,
-       "date": "2026-11-23",
-       "sourceUrl": "https://www.spheron.network/pricing/",
        "quotes": 1
       },
       {
        "provider": "Gpuwerk",
        "providerId": "gpuwerk",
        "value": 0.69,
-       "date": "2026-11-23",
+       "date": "2026-11-24",
        "sourceUrl": "https://gpuwerk.com/availability.txt",
        "quotes": 1
       },
       {
        "provider": "Runcrate",
        "providerId": "runcrate",
-       "value": 0.93,
-       "date": "2026-11-23",
+       "value": 0.72,
+       "date": "2026-11-24",
        "sourceUrl": "https://www.runcrate.ai/pricing",
+       "quotes": 1
+      },
+      {
+       "provider": "Spheron",
+       "providerId": "spheron",
+       "value": 0.84,
+       "date": "2026-11-24",
+       "sourceUrl": "https://www.spheron.network/pricing/",
        "quotes": 1
       },
       {
        "provider": "Daytona",
        "providerId": "daytona",
        "value": 1.29,
-       "date": "2026-11-23",
+       "date": "2026-11-24",
        "sourceUrl": "https://billing.app.daytona.io/gpu-pricing",
        "quotes": 1
       },
@@ -402,7 +402,7 @@
        "provider": "RunPod",
        "providerId": "runpod",
        "value": 1.39,
-       "date": "2026-11-23",
+       "date": "2026-11-24",
        "sourceUrl": "https://www.runpod.io/pricing",
        "quotes": 1
       }
@@ -488,13 +488,175 @@
        "date": "2026-11-23",
        "sourceUrl": "https://salad.com/pricing",
        "rule": "market_not_on_demand"
+      },
+      {
+       "provider": "Daytona",
+       "providerId": "daytona",
+       "market": "spot",
+       "value": 0.74,
+       "date": "2026-11-24",
+       "sourceUrl": "https://billing.app.daytona.io/gpu-pricing",
+       "rule": "market_not_on_demand"
+      },
+      {
+       "provider": "Lium",
+       "providerId": "lium",
+       "market": "marketplace",
+       "value": 0.64,
+       "date": "2026-11-24",
+       "sourceUrl": "https://lium.io/api/public/v1/nodes",
+       "rule": "market_not_on_demand"
+      },
+      {
+       "provider": "Lium",
+       "providerId": "lium",
+       "market": "marketplace",
+       "value": 0.65,
+       "date": "2026-11-24",
+       "sourceUrl": "https://lium.io/api/public/v1/nodes",
+       "rule": "market_not_on_demand"
+      },
+      {
+       "provider": "Lium",
+       "providerId": "lium",
+       "market": "marketplace",
+       "value": 0.7,
+       "date": "2026-11-24",
+       "sourceUrl": "https://lium.io/api/public/v1/nodes",
+       "rule": "market_not_on_demand"
+      },
+      {
+       "provider": "Lium",
+       "providerId": "lium",
+       "market": "marketplace",
+       "value": 0.72,
+       "date": "2026-11-24",
+       "sourceUrl": "https://lium.io/api/public/v1/nodes",
+       "rule": "market_not_on_demand"
+      },
+      {
+       "provider": "Lium",
+       "providerId": "lium",
+       "market": "marketplace",
+       "value": 0.8,
+       "date": "2026-11-24",
+       "sourceUrl": "https://lium.io/api/public/v1/nodes",
+       "rule": "market_not_on_demand"
+      },
+      {
+       "provider": "Lium",
+       "providerId": "lium",
+       "market": "marketplace",
+       "value": 0.85,
+       "date": "2026-11-24",
+       "sourceUrl": "https://lium.io/api/public/v1/nodes",
+       "rule": "market_not_on_demand"
+      },
+      {
+       "provider": "Lium",
+       "providerId": "lium",
+       "market": "spot",
+       "value": 0.68,
+       "date": "2026-11-24",
+       "sourceUrl": "https://lium.io/api/public/v1/nodes",
+       "rule": "market_not_on_demand"
+      },
+      {
+       "provider": "Lium",
+       "providerId": "lium",
+       "market": "spot",
+       "value": 0.7,
+       "date": "2026-11-24",
+       "sourceUrl": "https://lium.io/api/public/v1/nodes",
+       "rule": "market_not_on_demand"
+      },
+      {
+       "provider": "Lium",
+       "providerId": "lium",
+       "market": "spot",
+       "value": 0.73,
+       "date": "2026-11-24",
+       "sourceUrl": "https://lium.io/api/public/v1/nodes",
+       "rule": "market_not_on_demand"
+      },
+      {
+       "provider": "Lium",
+       "providerId": "lium",
+       "market": "spot",
+       "value": 0.74,
+       "date": "2026-11-24",
+       "sourceUrl": "https://lium.io/api/public/v1/nodes",
+       "rule": "market_not_on_demand"
+      },
+      {
+       "provider": "Lium",
+       "providerId": "lium",
+       "market": "spot",
+       "value": 0.75,
+       "date": "2026-11-24",
+       "sourceUrl": "https://lium.io/api/public/v1/nodes",
+       "rule": "market_not_on_demand"
+      },
+      {
+       "provider": "Lium",
+       "providerId": "lium",
+       "market": "spot",
+       "value": 0.94,
+       "date": "2026-11-24",
+       "sourceUrl": "https://lium.io/api/public/v1/nodes",
+       "rule": "market_not_on_demand"
+      },
+      {
+       "provider": "Lium",
+       "providerId": "lium",
+       "market": "spot",
+       "value": 1.0,
+       "date": "2026-11-24",
+       "sourceUrl": "https://lium.io/api/public/v1/nodes",
+       "rule": "market_not_on_demand"
+      },
+      {
+       "provider": "RunPod",
+       "providerId": "runpod",
+       "market": "community",
+       "value": 0.69,
+       "date": "2026-11-24",
+       "sourceUrl": "https://www.runpod.io/pricing",
+       "rule": "market_not_on_demand"
+      },
+      {
+       "provider": "RunPod",
+       "providerId": "runpod",
+       "market": "serverless",
+       "value": 1.89,
+       "date": "2026-11-24",
+       "sourceUrl": "https://www.runpod.io/pricing",
+       "rule": "market_not_on_demand"
+      },
+      {
+       "provider": "Salad",
+       "providerId": "salad",
+       "market": "community",
+       "value": 0.1,
+       "date": "2026-11-24",
+       "sourceUrl": "https://salad.com/pricing",
+       "rule": "market_not_on_demand"
+      },
+      {
+       "provider": "Salad",
+       "providerId": "salad",
+       "market": "community",
+       "value": 0.25,
+       "date": "2026-11-24",
+       "sourceUrl": "https://salad.com/pricing",
+       "rule": "market_not_on_demand"
       }
      ],
      "excludedQuoteRowsByMarket": {
-      "spot": 3,
-      "marketplace": 2,
-      "community": 3,
-      "serverless": 1
+      "spot": 11,
+      "marketplace": 8,
+      "community": 6,
+      "serverless": 2
      }
     }
    },
