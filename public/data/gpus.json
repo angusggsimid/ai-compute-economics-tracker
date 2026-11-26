@@ -1,6 +1,6 @@
 {
  "name": "AI Compute Economics - GPU landscape",
- "as_of": "2026-11-24",
+ "as_of": "2026-11-25",
  "methodology_version": "2026-11-04.1",
  "min_providers": 4,
  "count": 11,
@@ -10,30 +10,30 @@
    "name": "H100 80GB",
    "vram_gb": 80,
    "family": "Hopper",
-   "as_of": "2026-11-24",
+   "as_of": "2026-11-25",
    "status": "live",
-   "median": 3.68,
-   "p25": 2.965,
-   "p75": 4.90825,
+   "median": 3.535,
+   "p25": 2.9025,
+   "p75": 4.92225,
    "cheapest": 1.8,
    "cheapest_provider": "Hyper.ai",
    "provider_count": 26,
-   "change_7d_pct": 5.44,
+   "change_7d_pct": 4.9,
    "weekly_index": {
     "weekStart": "2026-11-23",
     "isoWeek": "2026-W48",
     "vintage": "provisional",
     "status": "published",
     "methodologyVersion": "2026-11-04.1",
-    "median": 3.68,
-    "p25": 2.965,
-    "p75": 4.90825,
+    "median": 3.535,
+    "p25": 2.9025,
+    "p75": 4.92225,
     "providerCount": 26,
-    "index": 111.9174,
+    "index": 111.1322,
     "linkPairs": 26,
     "withheldReason": null,
     "receipt": "2026-W48",
-    "ageDays": 1
+    "ageDays": 2
    },
    "monthly": [
     {
@@ -178,14 +178,14 @@
      "status": "live",
      "risk": "low",
      "price_scope": "rate_card",
-     "median": 3.68,
-     "p25": 2.965,
-     "p75": 4.90825,
+     "median": 3.535,
+     "p25": 2.9025,
+     "p75": 4.92225,
      "cheapest": 1.8,
      "cheapest_provider": "Hyper.ai",
      "provider_count": 26,
      "thin": false,
-     "date": "2026-11-24",
+     "date": "2026-11-25",
      "cheapest_series": {
       "dates": [
        "2026-07-05",
@@ -322,7 +322,8 @@
        "2026-11-20",
        "2026-11-21",
        "2026-11-23",
-       "2026-11-24"
+       "2026-11-24",
+       "2026-11-25"
       ],
       "values": [
        2.89,
@@ -428,6 +429,7 @@
        1.99,
        1.99,
        1.99,
+       1.8,
        1.8,
        1.8,
        1.8,
@@ -565,6 +567,7 @@
        "voltagepark",
        "voltagepark",
        "voltagepark",
+       "hyperai",
        "hyperai",
        "hyperai",
        "hyperai",
@@ -741,6 +744,7 @@
        5,
        5,
        5,
+       5,
        5
       ]
      }
@@ -751,13 +755,13 @@
      "risk": "high",
      "price_scope": "rate_card",
      "median": 2.3,
-     "p25": 2.017037,
-     "p75": 4.1634,
+     "p25": 2.030555,
+     "p75": 3.4937,
      "cheapest": 1.418336,
      "cheapest_provider": "Azure",
-     "provider_count": 9,
+     "provider_count": 10,
      "thin": false,
-     "date": "2026-11-24",
+     "date": "2026-11-25",
      "cheapest_series": {
       "dates": [
        "2026-07-07",
@@ -892,7 +896,8 @@
        "2026-11-20",
        "2026-11-21",
        "2026-11-23",
-       "2026-11-24"
+       "2026-11-24",
+       "2026-11-25"
       ],
       "values": [
        1.40298,
@@ -1018,6 +1023,7 @@
        1.418336,
        1.418336,
        1.3,
+       1.418336,
        1.418336,
        1.418336,
        1.418336,
@@ -1153,6 +1159,7 @@
        "azure",
        "azure",
        "lium",
+       "azure",
        "azure",
        "azure",
        "azure",
@@ -1302,6 +1309,7 @@
        0,
        0,
        0,
+       0,
        0
       ]
      }
@@ -1318,7 +1326,7 @@
      "cheapest_provider": "Latitude.sh",
      "provider_count": 2,
      "thin": true,
-     "date": "2026-11-24",
+     "date": "2026-11-25",
      "cheapest_series": {
       "dates": [
        "2026-10-03",
@@ -1365,9 +1373,11 @@
        "2026-11-20",
        "2026-11-21",
        "2026-11-23",
-       "2026-11-24"
+       "2026-11-24",
+       "2026-11-25"
       ],
       "values": [
+       1.179452,
        1.179452,
        1.179452,
        1.179452,
@@ -1415,6 +1425,7 @@
        1.179452
       ],
       "provider_ids": [
+       "latitude",
        "latitude",
        "latitude",
        "latitude",
@@ -1509,6 +1520,7 @@
        0,
        0,
        0,
+       0,
        0
       ]
      }
@@ -1525,7 +1537,7 @@
      "cheapest_provider": "RunPod",
      "provider_count": 1,
      "thin": true,
-     "date": "2026-11-24",
+     "date": "2026-11-25",
      "cheapest_series": {
       "dates": [
        "2026-07-05",
@@ -1662,9 +1674,11 @@
        "2026-11-20",
        "2026-11-21",
        "2026-11-23",
-       "2026-11-24"
+       "2026-11-24",
+       "2026-11-25"
       ],
       "values": [
+       1.99,
        1.99,
        1.99,
        1.99,
@@ -1936,12 +1950,14 @@
        "runpod",
        "runpod",
        "runpod",
+       "runpod",
        "runpod"
       ],
       "source_urls": [
        "https://www.runpod.io/pricing"
       ],
       "source_idx": [
+       0,
        0,
        0,
        0,
@@ -2085,14 +2101,14 @@
      "status": "live",
      "risk": "high",
      "price_scope": "marketplace_floor",
-     "median": 5.05,
+     "median": 3.0,
      "p25": null,
      "p75": null,
-     "cheapest": 5.05,
+     "cheapest": 1.9,
      "cheapest_provider": "Lium",
      "provider_count": 1,
      "thin": true,
-     "date": "2026-11-24",
+     "date": "2026-11-25",
      "cheapest_series": {
       "dates": [
        "2026-10-08",
@@ -2130,7 +2146,8 @@
        "2026-11-19",
        "2026-11-21",
        "2026-11-23",
-       "2026-11-24"
+       "2026-11-24",
+       "2026-11-25"
       ],
       "values": [
        1.3,
@@ -2168,9 +2185,11 @@
        1.9,
        1.9,
        2.88,
-       5.05
+       5.05,
+       1.9
       ],
       "provider_ids": [
+       "lium",
        "lium",
        "lium",
        "lium",
@@ -2247,6 +2266,7 @@
        0,
        0,
        0,
+       0,
        0
       ]
      }
@@ -2263,7 +2283,7 @@
      "cheapest_provider": "Koyeb",
      "provider_count": 8,
      "thin": false,
-     "date": "2026-11-24",
+     "date": "2026-11-25",
      "cheapest_series": {
       "dates": [
        "2026-07-07",
@@ -2398,7 +2418,8 @@
        "2026-11-20",
        "2026-11-21",
        "2026-11-23",
-       "2026-11-24"
+       "2026-11-24",
+       "2026-11-25"
       ],
       "values": [
        3.9492,
@@ -2414,6 +2435,7 @@
        3.9492,
        3.9492,
        3.9492,
+       2.5,
        2.5,
        2.5,
        2.5,
@@ -2549,6 +2571,7 @@
        "modal",
        "modal",
        "modal",
+       "koyeb",
        "koyeb",
        "koyeb",
        "koyeb",
@@ -2807,6 +2830,7 @@
        1,
        1,
        1,
+       1,
        1
       ]
      }
@@ -2818,15 +2842,15 @@
    "name": "H200 141GB",
    "vram_gb": 141,
    "family": "Hopper",
-   "as_of": "2026-11-24",
+   "as_of": "2026-11-25",
    "status": "live",
    "median": 4.895,
    "p25": 4.2875,
-   "p75": 6.507,
+   "p75": 6.52475,
    "cheapest": 3.2,
    "cheapest_provider": "GMI Cloud",
    "provider_count": 18,
-   "change_7d_pct": -4.58,
+   "change_7d_pct": -0.51,
    "weekly_index": {
     "weekStart": "2026-11-23",
     "isoWeek": "2026-W48",
@@ -2835,13 +2859,13 @@
     "methodologyVersion": "2026-11-04.1",
     "median": 4.895,
     "p25": 4.2875,
-    "p75": 6.507,
+    "p75": 6.52475,
     "providerCount": 18,
-    "index": 107.9999,
+    "index": 108.0595,
     "linkPairs": 18,
     "withheldReason": null,
     "receipt": "2026-W48",
-    "ageDays": 1
+    "ageDays": 2
    },
    "monthly": [
     {
@@ -2970,12 +2994,12 @@
      "price_scope": "rate_card",
      "median": 4.895,
      "p25": 4.2875,
-     "p75": 6.507,
+     "p75": 6.52475,
      "cheapest": 3.2,
      "cheapest_provider": "GMI Cloud",
      "provider_count": 18,
      "thin": false,
-     "date": "2026-11-24",
+     "date": "2026-11-25",
      "cheapest_series": {
       "dates": [
        "2026-07-05",
@@ -3112,7 +3136,8 @@
        "2026-11-20",
        "2026-11-21",
        "2026-11-23",
-       "2026-11-24"
+       "2026-11-24",
+       "2026-11-25"
       ],
       "values": [
        3.79,
@@ -3229,6 +3254,7 @@
        3.14,
        3.14,
        3.14,
+       3.2,
        3.2,
        3.2,
        3.2,
@@ -3366,6 +3392,7 @@
        "primeintellect",
        "primeintellect",
        "primeintellect",
+       "gmicloud",
        "gmicloud",
        "gmicloud",
        "gmicloud",
@@ -3530,6 +3557,7 @@
        3,
        3,
        3,
+       3,
        3
       ]
      }
@@ -3539,14 +3567,14 @@
      "status": "live",
      "risk": "high",
      "price_scope": "rate_card",
-     "median": 3.35,
+     "median": 3.32,
      "p25": 2.93,
-     "p75": 4.5715,
+     "p75": 4.589,
      "cheapest": 2.87,
      "cheapest_provider": "Daytona",
      "provider_count": 5,
      "thin": false,
-     "date": "2026-11-24",
+     "date": "2026-11-25",
      "cheapest_series": {
       "dates": [
        "2026-07-19",
@@ -3669,7 +3697,8 @@
        "2026-11-20",
        "2026-11-21",
        "2026-11-23",
-       "2026-11-24"
+       "2026-11-24",
+       "2026-11-25"
       ],
       "values": [
        3.31,
@@ -3792,6 +3821,7 @@
        2.87,
        2.87,
        2.87,
+       2.87,
        2.87
       ],
       "provider_ids": [
@@ -3873,6 +3903,7 @@
        "spheron",
        "together",
        "together",
+       "daytona",
        "daytona",
        "daytona",
        "daytona",
@@ -4044,6 +4075,7 @@
        3,
        3,
        3,
+       3,
        3
       ]
      }
@@ -4060,7 +4092,7 @@
      "cheapest_provider": "Hyperstack",
      "provider_count": 2,
      "thin": true,
-     "date": "2026-11-24",
+     "date": "2026-11-25",
      "cheapest_series": {
       "dates": [
        "2026-10-03",
@@ -4107,9 +4139,11 @@
        "2026-11-20",
        "2026-11-21",
        "2026-11-23",
-       "2026-11-24"
+       "2026-11-24",
+       "2026-11-25"
       ],
       "values": [
+       2.79,
        2.79,
        2.79,
        2.79,
@@ -4157,6 +4191,7 @@
        2.79
       ],
       "provider_ids": [
+       "hyperstack",
        "hyperstack",
        "hyperstack",
        "hyperstack",
@@ -4251,6 +4286,7 @@
        0,
        0,
        0,
+       0,
        0
       ]
      }
@@ -4267,7 +4303,7 @@
      "cheapest_provider": "RunPod",
      "provider_count": 1,
      "thin": true,
-     "date": "2026-11-24",
+     "date": "2026-11-25",
      "cheapest_series": {
       "dates": [
        "2026-07-05",
@@ -4404,9 +4440,11 @@
        "2026-11-20",
        "2026-11-21",
        "2026-11-23",
-       "2026-11-24"
+       "2026-11-24",
+       "2026-11-25"
       ],
       "values": [
+       3.59,
        3.59,
        3.59,
        3.59,
@@ -4678,12 +4716,14 @@
        "runpod",
        "runpod",
        "runpod",
+       "runpod",
        "runpod"
       ],
       "source_urls": [
        "https://www.runpod.io/pricing"
       ],
       "source_idx": [
+       0,
        0,
        0,
        0,
@@ -4827,14 +4867,14 @@
      "status": "live",
      "risk": "high",
      "price_scope": "marketplace_floor",
-     "median": 4.35,
+     "median": 4.795,
      "p25": null,
      "p75": null,
      "cheapest": 2.99,
      "cheapest_provider": "Lium",
      "provider_count": 1,
      "thin": true,
-     "date": "2026-11-24",
+     "date": "2026-11-25",
      "cheapest_series": {
       "dates": [
        "2026-10-09",
@@ -4875,7 +4915,8 @@
        "2026-11-20",
        "2026-11-21",
        "2026-11-23",
-       "2026-11-24"
+       "2026-11-24",
+       "2026-11-25"
       ],
       "values": [
        5.75,
@@ -4916,9 +4957,11 @@
        3.6,
        3.7,
        3.5,
+       2.99,
        2.99
       ],
       "provider_ids": [
+       "lium",
        "lium",
        "lium",
        "lium",
@@ -5001,6 +5044,7 @@
        0,
        0,
        0,
+       0,
        0
       ]
      }
@@ -5017,7 +5061,7 @@
      "cheapest_provider": "Koyeb",
      "provider_count": 7,
      "thin": false,
-     "date": "2026-11-24",
+     "date": "2026-11-25",
      "cheapest_series": {
       "dates": [
        "2026-07-07",
@@ -5152,7 +5196,8 @@
        "2026-11-20",
        "2026-11-21",
        "2026-11-23",
-       "2026-11-24"
+       "2026-11-24",
+       "2026-11-25"
       ],
       "values": [
        4.5,
@@ -5168,6 +5213,7 @@
        4.5,
        4.5,
        4.5,
+       3.0,
        3.0,
        3.0,
        3.0,
@@ -5303,6 +5349,7 @@
        "fal",
        "fal",
        "fal",
+       "koyeb",
        "koyeb",
        "koyeb",
        "koyeb",
@@ -5561,6 +5608,7 @@
        1,
        1,
        1,
+       1,
        1
       ]
      }
@@ -5572,11 +5620,11 @@
    "name": "B200 192GB",
    "vram_gb": 192,
    "family": "Blackwell",
-   "as_of": "2026-11-24",
+   "as_of": "2026-11-25",
    "status": "live",
    "median": 8.55,
    "p25": 7.5775,
-   "p75": 10.12425,
+   "p75": 10.0885,
    "cheapest": 5.0,
    "cheapest_provider": "GMI Cloud",
    "provider_count": 12,
@@ -5589,13 +5637,13 @@
     "methodologyVersion": "2026-11-04.1",
     "median": 8.55,
     "p25": 7.5775,
-    "p75": 10.12425,
+    "p75": 10.0885,
     "providerCount": 12,
-    "index": 112.4428,
+    "index": 112.4622,
     "linkPairs": 12,
     "withheldReason": null,
     "receipt": "2026-W48",
-    "ageDays": 1
+    "ageDays": 2
    },
    "monthly": [
     {
@@ -5707,12 +5755,12 @@
      "price_scope": "rate_card",
      "median": 8.55,
      "p25": 7.5775,
-     "p75": 10.12425,
+     "p75": 10.0885,
      "cheapest": 5.0,
      "cheapest_provider": "GMI Cloud",
      "provider_count": 12,
      "thin": false,
-     "date": "2026-11-24",
+     "date": "2026-11-25",
      "cheapest_series": {
       "dates": [
        "2026-07-05",
@@ -5849,7 +5897,8 @@
        "2026-11-20",
        "2026-11-21",
        "2026-11-23",
-       "2026-11-24"
+       "2026-11-24",
+       "2026-11-25"
       ],
       "values": [
        5.89,
@@ -5966,6 +6015,7 @@
        3.49,
        3.49,
        3.49,
+       5.0,
        5.0,
        5.0,
        5.0,
@@ -6103,6 +6153,7 @@
        "primeintellect",
        "primeintellect",
        "primeintellect",
+       "gmicloud",
        "gmicloud",
        "gmicloud",
        "gmicloud",
@@ -6266,6 +6317,7 @@
        3,
        3,
        3,
+       3,
        3
       ]
      }
@@ -6275,14 +6327,14 @@
      "status": "live",
      "risk": "high",
      "price_scope": "rate_card",
-     "median": 4.874,
+     "median": 4.922,
      "p25": 4.3,
-     "p75": 5.22,
+     "p75": 5.225,
      "cheapest": 3.2,
      "cheapest_provider": "Vultr",
      "provider_count": 7,
      "thin": false,
-     "date": "2026-11-24",
+     "date": "2026-11-25",
      "cheapest_series": {
       "dates": [
        "2026-07-19",
@@ -6405,9 +6457,11 @@
        "2026-11-20",
        "2026-11-21",
        "2026-11-23",
-       "2026-11-24"
+       "2026-11-24",
+       "2026-11-25"
       ],
       "values": [
+       3.2,
        3.2,
        3.2,
        3.2,
@@ -6531,6 +6585,7 @@
        3.2
       ],
       "provider_ids": [
+       "vultr",
        "vultr",
        "vultr",
        "vultr",
@@ -6777,6 +6832,7 @@
        0,
        0,
        0,
+       0,
        0
       ]
      }
@@ -6786,14 +6842,14 @@
      "status": "live",
      "risk": "low",
      "price_scope": "rate_card",
-     "median": 5.665,
+     "median": 5.1,
      "p25": null,
      "p75": null,
      "cheapest": 5.1,
      "cheapest_provider": "Hyperstack",
-     "provider_count": 2,
+     "provider_count": 1,
      "thin": true,
-     "date": "2026-11-24",
+     "date": "2026-11-25",
      "cheapest_series": {
       "dates": [
        "2026-10-03",
@@ -6840,7 +6896,8 @@
        "2026-11-20",
        "2026-11-21",
        "2026-11-23",
-       "2026-11-24"
+       "2026-11-24",
+       "2026-11-25"
       ],
       "values": [
        5.1,
@@ -6872,6 +6929,7 @@
        4.210526,
        4.210526,
        4.210526,
+       5.1,
        5.1,
        5.1,
        5.1,
@@ -6919,6 +6977,7 @@
        "impossiblecloud",
        "impossiblecloud",
        "impossiblecloud",
+       "hyperstack",
        "hyperstack",
        "hyperstack",
        "hyperstack",
@@ -6985,6 +7044,7 @@
        0,
        0,
        0,
+       0,
        0
       ]
      }
@@ -7001,7 +7061,7 @@
      "cheapest_provider": "RunPod",
      "provider_count": 1,
      "thin": true,
-     "date": "2026-11-24",
+     "date": "2026-11-25",
      "cheapest_series": {
       "dates": [
        "2026-07-05",
@@ -7138,9 +7198,11 @@
        "2026-11-20",
        "2026-11-21",
        "2026-11-23",
-       "2026-11-24"
+       "2026-11-24",
+       "2026-11-25"
       ],
       "values": [
+       5.98,
        5.98,
        5.98,
        5.98,
@@ -7412,12 +7474,14 @@
        "runpod",
        "runpod",
        "runpod",
+       "runpod",
        "runpod"
       ],
       "source_urls": [
        "https://www.runpod.io/pricing"
       ],
       "source_idx": [
+       0,
        0,
        0,
        0,
@@ -7561,14 +7625,14 @@
      "status": "live",
      "risk": "high",
      "price_scope": "marketplace_floor",
-     "median": 7.71,
+     "median": 6.45,
      "p25": null,
      "p75": null,
-     "cheapest": 6.4,
+     "cheapest": 5.6,
      "cheapest_provider": "Lium",
      "provider_count": 1,
      "thin": true,
-     "date": "2026-11-24",
+     "date": "2026-11-25",
      "cheapest_series": {
       "dates": [
        "2026-10-08",
@@ -7609,7 +7673,8 @@
        "2026-11-20",
        "2026-11-21",
        "2026-11-23",
-       "2026-11-24"
+       "2026-11-24",
+       "2026-11-25"
       ],
       "values": [
        5.4,
@@ -7650,9 +7715,11 @@
        6.45,
        6.45,
        5.29,
-       6.4
+       6.4,
+       5.6
       ],
       "provider_ids": [
+       "lium",
        "lium",
        "lium",
        "lium",
@@ -7735,6 +7802,7 @@
        0,
        0,
        0,
+       0,
        0
       ]
      }
@@ -7751,7 +7819,7 @@
      "cheapest_provider": "Koyeb",
      "provider_count": 7,
      "thin": false,
-     "date": "2026-11-24",
+     "date": "2026-11-25",
      "cheapest_series": {
       "dates": [
        "2026-07-07",
@@ -7886,7 +7954,8 @@
        "2026-11-20",
        "2026-11-21",
        "2026-11-23",
-       "2026-11-24"
+       "2026-11-24",
+       "2026-11-25"
       ],
       "values": [
        6.2496,
@@ -7902,6 +7971,7 @@
        6.2496,
        6.2496,
        6.2496,
+       5.5,
        5.5,
        5.5,
        5.5,
@@ -8037,6 +8107,7 @@
        "modal",
        "modal",
        "modal",
+       "koyeb",
        "koyeb",
        "koyeb",
        "koyeb",
@@ -8295,6 +8366,7 @@
        1,
        1,
        1,
+       1,
        1
       ]
      }
@@ -8306,30 +8378,30 @@
    "name": "B300 288GB",
    "vram_gb": 288,
    "family": "Blackwell",
-   "as_of": "2026-11-24",
+   "as_of": "2026-11-25",
    "status": "live",
-   "median": 11.33,
+   "median": 11.34,
    "p25": 8.9825,
-   "p75": 14.6275,
+   "p75": 14.7325,
    "cheapest": 7.4,
    "cheapest_provider": "Hyperstack",
    "provider_count": 14,
-   "change_7d_pct": 9.52,
+   "change_7d_pct": 19.37,
    "weekly_index": {
     "weekStart": "2026-11-23",
     "isoWeek": "2026-W48",
     "vintage": "provisional",
     "status": "published",
     "methodologyVersion": "2026-11-04.1",
-    "median": 11.33,
+    "median": 11.34,
     "p25": 8.9825,
-    "p75": 14.6275,
+    "p75": 14.7325,
     "providerCount": 14,
-    "index": 129.1437,
+    "index": 129.3064,
     "linkPairs": 13,
     "withheldReason": null,
     "receipt": "2026-W48",
-    "ageDays": 1
+    "ageDays": 2
    },
    "monthly": [
     {
@@ -8432,14 +8504,14 @@
      "status": "live",
      "risk": "low",
      "price_scope": "rate_card",
-     "median": 11.33,
+     "median": 11.34,
      "p25": 8.9825,
-     "p75": 14.6275,
+     "p75": 14.7325,
      "cheapest": 7.4,
      "cheapest_provider": "Hyperstack",
      "provider_count": 14,
      "thin": false,
-     "date": "2026-11-24",
+     "date": "2026-11-25",
      "cheapest_series": {
       "dates": [
        "2026-07-19",
@@ -8562,7 +8634,8 @@
        "2026-11-20",
        "2026-11-21",
        "2026-11-23",
-       "2026-11-24"
+       "2026-11-24",
+       "2026-11-25"
       ],
       "values": [
        7.39,
@@ -8677,6 +8750,7 @@
        7.1,
        7.1,
        7.1,
+       7.4,
        7.4,
        7.4,
        7.4,
@@ -8800,6 +8874,7 @@
        "daytona",
        "daytona",
        "daytona",
+       "hyperstack",
        "hyperstack",
        "hyperstack",
        "hyperstack",
@@ -8937,6 +9012,7 @@
        3,
        3,
        3,
+       3,
        3
       ]
      }
@@ -8946,14 +9022,14 @@
      "status": "live",
      "risk": "high",
      "price_scope": "rate_card",
-     "median": 6.99,
-     "p25": 5.46,
-     "p75": 8.34725,
-     "cheapest": 4.0,
-     "cheapest_provider": "Lium",
-     "provider_count": 5,
+     "median": 6.245,
+     "p25": 5.315,
+     "p75": 7.0505,
+     "cheapest": 5.17,
+     "cheapest_provider": "Daytona",
+     "provider_count": 4,
      "thin": false,
-     "date": "2026-11-24",
+     "date": "2026-11-25",
      "cheapest_series": {
       "dates": [
        "2026-07-19",
@@ -9069,7 +9145,8 @@
        "2026-11-20",
        "2026-11-21",
        "2026-11-23",
-       "2026-11-24"
+       "2026-11-24",
+       "2026-11-25"
       ],
       "values": [
        5.81,
@@ -9185,7 +9262,8 @@
        5.17,
        4.7,
        5.17,
-       4.0
+       4.0,
+       5.17
       ],
       "provider_ids": [
        "spheron",
@@ -9301,7 +9379,8 @@
        "daytona",
        "lium",
        "daytona",
-       "lium"
+       "lium",
+       "daytona"
       ],
       "source_urls": [
        "https://www.spheron.network/pricing/",
@@ -9424,7 +9503,8 @@
        3,
        4,
        3,
-       4
+       4,
+       3
       ]
      }
     },
@@ -9433,14 +9513,14 @@
      "status": "live",
      "risk": "low",
      "price_scope": "rate_card",
-     "median": 6.239726,
+     "median": 6.475,
      "p25": null,
      "p75": null,
      "cheapest": 5.17,
      "cheapest_provider": "Impossible Cloud",
      "provider_count": 3,
      "thin": true,
-     "date": "2026-11-24",
+     "date": "2026-11-25",
      "cheapest_series": {
       "dates": [
        "2026-10-03",
@@ -9487,7 +9567,8 @@
        "2026-11-20",
        "2026-11-21",
        "2026-11-23",
-       "2026-11-24"
+       "2026-11-24",
+       "2026-11-25"
       ],
       "values": [
        5.6,
@@ -9534,6 +9615,7 @@
        5.6,
        4.23,
        5.17,
+       5.17,
        5.17
       ],
       "provider_ids": [
@@ -9579,6 +9661,7 @@
        "latitude",
        "latitude",
        "latitude",
+       "impossiblecloud",
        "impossiblecloud",
        "impossiblecloud",
        "impossiblecloud"
@@ -9633,6 +9716,7 @@
        0,
        2,
        2,
+       2,
        2
       ]
      }
@@ -9649,7 +9733,7 @@
      "cheapest_provider": "RunPod",
      "provider_count": 1,
      "thin": true,
-     "date": "2026-11-24",
+     "date": "2026-11-25",
      "cheapest_series": {
       "dates": [
        "2026-07-19",
@@ -9772,9 +9856,11 @@
        "2026-11-20",
        "2026-11-21",
        "2026-11-23",
-       "2026-11-24"
+       "2026-11-24",
+       "2026-11-25"
       ],
       "values": [
+       6.94,
        6.94,
        6.94,
        6.94,
@@ -9898,6 +9984,7 @@
        6.94
       ],
       "provider_ids": [
+       "runpod",
        "runpod",
        "runpod",
        "runpod",
@@ -10144,6 +10231,7 @@
        0,
        0,
        0,
+       0,
        0
       ]
      }
@@ -10153,14 +10241,14 @@
      "status": "live",
      "risk": "high",
      "price_scope": "marketplace_floor",
-     "median": 9.0,
+     "median": 8.95,
      "p25": null,
      "p75": null,
-     "cheapest": 9.0,
+     "cheapest": 8.0,
      "cheapest_provider": "Lium",
      "provider_count": 1,
      "thin": true,
-     "date": "2026-11-23",
+     "date": "2026-11-25",
      "cheapest_series": {
       "dates": [
        "2026-10-08",
@@ -10196,7 +10284,8 @@
        "2026-11-18",
        "2026-11-19",
        "2026-11-20",
-       "2026-11-23"
+       "2026-11-23",
+       "2026-11-25"
       ],
       "values": [
        12.95,
@@ -10232,9 +10321,11 @@
        9.47,
        11.9,
        11.9,
-       9.0
+       9.0,
+       8.0
       ],
       "provider_ids": [
+       "lium",
        "lium",
        "lium",
        "lium",
@@ -10307,6 +10398,7 @@
        0,
        0,
        0,
+       0,
        0
       ]
      }
@@ -10323,7 +10415,7 @@
      "cheapest_provider": "Modal",
      "provider_count": 4,
      "thin": false,
-     "date": "2026-11-24",
+     "date": "2026-11-25",
      "cheapest_series": {
       "dates": [
        "2026-07-19",
@@ -10446,9 +10538,11 @@
        "2026-11-20",
        "2026-11-21",
        "2026-11-23",
-       "2026-11-24"
+       "2026-11-24",
+       "2026-11-25"
       ],
       "values": [
+       7.0992,
        7.0992,
        7.0992,
        7.0992,
@@ -10572,6 +10666,7 @@
        7.0992
       ],
       "provider_ids": [
+       "modal",
        "modal",
        "modal",
        "modal",
@@ -10818,6 +10913,7 @@
        0,
        0,
        0,
+       0,
        0
       ]
      }
@@ -10829,10 +10925,10 @@
    "name": "A100 80GB",
    "vram_gb": 80,
    "family": "Ampere",
-   "as_of": "2026-11-24",
+   "as_of": "2026-11-25",
    "status": "live",
    "median": 2.145,
-   "p25": 1.46375,
+   "p25": 1.41375,
    "p75": 3.074448,
    "cheapest": 0.89,
    "cheapest_provider": "JarvisLabs",
@@ -10845,14 +10941,14 @@
     "status": "published",
     "methodologyVersion": "2026-11-04.1",
     "median": 2.145,
-    "p25": 1.46375,
+    "p25": 1.41375,
     "p75": 3.074448,
     "providerCount": 18,
-    "index": 101.1781,
+    "index": 99.3835,
     "linkPairs": 18,
     "withheldReason": null,
     "receipt": "2026-W48",
-    "ageDays": 1
+    "ageDays": 2
    },
    "monthly": [
     {
@@ -10982,13 +11078,13 @@
      "risk": "low",
      "price_scope": "rate_card",
      "median": 2.145,
-     "p25": 1.46375,
+     "p25": 1.41375,
      "p75": 3.074448,
      "cheapest": 0.89,
      "cheapest_provider": "JarvisLabs",
      "provider_count": 18,
      "thin": false,
-     "date": "2026-11-24",
+     "date": "2026-11-25",
      "cheapest_series": {
       "dates": [
        "2026-07-05",
@@ -11125,7 +11221,8 @@
        "2026-11-20",
        "2026-11-21",
        "2026-11-23",
-       "2026-11-24"
+       "2026-11-24",
+       "2026-11-25"
       ],
       "values": [
        1.39,
@@ -11241,6 +11338,7 @@
        1.09,
        1.09,
        1.09,
+       0.89,
        0.89,
        0.89,
        0.89,
@@ -11378,6 +11476,7 @@
        "thundercompute",
        "thundercompute",
        "thundercompute",
+       "jarvislabs",
        "jarvislabs",
        "jarvislabs",
        "jarvislabs",
@@ -11541,6 +11640,7 @@
        1,
        1,
        1,
+       1,
        1
       ]
      }
@@ -11551,13 +11651,13 @@
      "risk": "high",
      "price_scope": "rate_card",
      "median": 1.19,
-     "p25": 0.894405,
+     "p25": 0.895904,
      "p75": 1.845944,
      "cheapest": 0.67877,
      "cheapest_provider": "Azure",
      "provider_count": 5,
      "thin": false,
-     "date": "2026-11-24",
+     "date": "2026-11-25",
      "cheapest_series": {
       "dates": [
        "2026-07-07",
@@ -11692,9 +11792,11 @@
        "2026-11-20",
        "2026-11-21",
        "2026-11-23",
-       "2026-11-24"
+       "2026-11-24",
+       "2026-11-25"
       ],
       "values": [
+       0.67877,
        0.67877,
        0.67877,
        0.67877,
@@ -11830,6 +11932,7 @@
        0.67877
       ],
       "provider_ids": [
+       "azure",
        "azure",
        "azure",
        "azure",
@@ -12100,6 +12203,7 @@
        0,
        0,
        0,
+       0,
        0
       ]
      }
@@ -12116,7 +12220,7 @@
      "cheapest_provider": "Hyperstack",
      "provider_count": 1,
      "thin": true,
-     "date": "2026-11-24",
+     "date": "2026-11-25",
      "cheapest_series": {
       "dates": [
        "2026-10-03",
@@ -12163,9 +12267,11 @@
        "2026-11-20",
        "2026-11-21",
        "2026-11-23",
-       "2026-11-24"
+       "2026-11-24",
+       "2026-11-25"
       ],
       "values": [
+       0.95,
        0.95,
        0.95,
        0.95,
@@ -12213,6 +12319,7 @@
        0.95
       ],
       "provider_ids": [
+       "hyperstack",
        "hyperstack",
        "hyperstack",
        "hyperstack",
@@ -12307,6 +12414,7 @@
        0,
        0,
        0,
+       0,
        0
       ]
      }
@@ -12323,7 +12431,7 @@
      "cheapest_provider": "RunPod",
      "provider_count": 1,
      "thin": true,
-     "date": "2026-11-24",
+     "date": "2026-11-25",
      "cheapest_series": {
       "dates": [
        "2026-07-05",
@@ -12460,9 +12568,11 @@
        "2026-11-20",
        "2026-11-21",
        "2026-11-23",
-       "2026-11-24"
+       "2026-11-24",
+       "2026-11-25"
       ],
       "values": [
+       1.0,
        1.0,
        1.0,
        1.0,
@@ -12734,12 +12844,14 @@
        "runpod",
        "runpod",
        "runpod",
+       "runpod",
        "runpod"
       ],
       "source_urls": [
        "https://www.runpod.io/pricing"
       ],
       "source_idx": [
+       0,
        0,
        0,
        0,
@@ -12883,14 +12995,14 @@
      "status": "live",
      "risk": "high",
      "price_scope": "marketplace_floor",
-     "median": 1.68,
+     "median": 0.935,
      "p25": null,
      "p75": null,
-     "cheapest": 1.68,
+     "cheapest": 0.87,
      "cheapest_provider": "Lium",
      "provider_count": 1,
      "thin": true,
-     "date": "2026-11-24",
+     "date": "2026-11-25",
      "cheapest_series": {
       "dates": [
        "2026-10-08",
@@ -12915,7 +13027,8 @@
        "2026-11-18",
        "2026-11-21",
        "2026-11-23",
-       "2026-11-24"
+       "2026-11-24",
+       "2026-11-25"
       ],
       "values": [
        1.22,
@@ -12940,9 +13053,11 @@
        0.81,
        0.81,
        0.81,
-       1.68
+       1.68,
+       0.87
       ],
       "provider_ids": [
+       "lium",
        "lium",
        "lium",
        "lium",
@@ -12993,6 +13108,7 @@
        0,
        0,
        0,
+       0,
        0
       ]
      }
@@ -13009,7 +13125,7 @@
      "cheapest_provider": "Koyeb",
      "provider_count": 6,
      "thin": false,
-     "date": "2026-11-24",
+     "date": "2026-11-25",
      "cheapest_series": {
       "dates": [
        "2026-07-07",
@@ -13144,7 +13260,8 @@
        "2026-11-20",
        "2026-11-21",
        "2026-11-23",
-       "2026-11-24"
+       "2026-11-24",
+       "2026-11-25"
       ],
       "values": [
        2.0988,
@@ -13160,6 +13277,7 @@
        2.0988,
        2.0988,
        2.0988,
+       1.6,
        1.6,
        1.6,
        1.6,
@@ -13295,6 +13413,7 @@
        "modal",
        "modal",
        "modal",
+       "koyeb",
        "koyeb",
        "koyeb",
        "koyeb",
@@ -13553,6 +13672,7 @@
        1,
        1,
        1,
+       1,
        1
       ]
      }
@@ -13564,30 +13684,30 @@
    "name": "L40S 48GB",
    "vram_gb": 48,
    "family": "Ada",
-   "as_of": "2026-11-24",
+   "as_of": "2026-11-25",
    "status": "live",
-   "median": 1.6079,
+   "median": 1.6114,
    "p25": 1.09,
    "p75": 2.079,
    "cheapest": 0.55,
    "cheapest_provider": "Runcrate",
    "provider_count": 15,
-   "change_7d_pct": 0.84,
+   "change_7d_pct": 1.18,
    "weekly_index": {
     "weekStart": "2026-11-23",
     "isoWeek": "2026-W48",
     "vintage": "provisional",
     "status": "published",
     "methodologyVersion": "2026-11-04.1",
-    "median": 1.6079,
+    "median": 1.6114,
     "p25": 1.09,
     "p75": 2.079,
     "providerCount": 15,
-    "index": 101.7688,
+    "index": 101.7836,
     "linkPairs": 15,
     "withheldReason": null,
     "receipt": "2026-W48",
-    "ageDays": 1
+    "ageDays": 2
    },
    "monthly": [
     {
@@ -13704,14 +13824,14 @@
      "status": "live",
      "risk": "low",
      "price_scope": "rate_card",
-     "median": 1.6079,
+     "median": 1.6114,
      "p25": 1.09,
      "p75": 2.079,
      "cheapest": 0.55,
      "cheapest_provider": "Runcrate",
      "provider_count": 15,
      "thin": false,
-     "date": "2026-11-24",
+     "date": "2026-11-25",
      "cheapest_series": {
       "dates": [
        "2026-07-05",
@@ -13848,7 +13968,8 @@
        "2026-11-20",
        "2026-11-21",
        "2026-11-23",
-       "2026-11-24"
+       "2026-11-24",
+       "2026-11-25"
       ],
       "values": [
        0.99,
@@ -13984,6 +14105,7 @@
        0.55,
        0.96,
        0.96,
+       0.55,
        0.55,
        0.55
       ],
@@ -14121,6 +14243,7 @@
        "runcrate",
        "spheron",
        "spheron",
+       "runcrate",
        "runcrate",
        "runcrate"
       ],
@@ -14265,6 +14388,7 @@
        2,
        2,
        3,
+       3,
        3
       ]
      }
@@ -14274,14 +14398,14 @@
      "status": "live",
      "risk": "high",
      "price_scope": "rate_card",
-     "median": 1.14,
-     "p25": null,
-     "p75": null,
-     "cheapest": 1.04,
-     "cheapest_provider": "Verda",
-     "provider_count": 3,
-     "thin": true,
-     "date": "2026-11-24",
+     "median": 1.09,
+     "p25": 0.545,
+     "p75": 1.215,
+     "cheapest": 0.38,
+     "cheapest_provider": "Lium",
+     "provider_count": 4,
+     "thin": false,
+     "date": "2026-11-25",
      "cheapest_series": {
       "dates": [
        "2026-07-19",
@@ -14404,7 +14528,8 @@
        "2026-11-20",
        "2026-11-21",
        "2026-11-23",
-       "2026-11-24"
+       "2026-11-24",
+       "2026-11-25"
       ],
       "values": [
        0.61,
@@ -14527,7 +14652,8 @@
        0.38,
        1.04,
        0.38,
-       1.04
+       1.04,
+       0.38
       ],
       "provider_ids": [
        "spheron",
@@ -14650,7 +14776,8 @@
        "lium",
        "datacrunch",
        "lium",
-       "datacrunch"
+       "datacrunch",
+       "lium"
       ],
       "source_urls": [
        "https://www.spheron.network/pricing/",
@@ -14778,7 +14905,8 @@
        2,
        1,
        2,
-       1
+       1,
+       2
       ]
      }
     },
@@ -14805,7 +14933,7 @@
      "cheapest_provider": "RunPod",
      "provider_count": 1,
      "thin": true,
-     "date": "2026-11-24",
+     "date": "2026-11-25",
      "cheapest_series": {
       "dates": [
        "2026-07-05",
@@ -14942,9 +15070,11 @@
        "2026-11-20",
        "2026-11-21",
        "2026-11-23",
-       "2026-11-24"
+       "2026-11-24",
+       "2026-11-25"
       ],
       "values": [
+       0.79,
        0.79,
        0.79,
        0.79,
@@ -15216,12 +15346,14 @@
        "runpod",
        "runpod",
        "runpod",
+       "runpod",
        "runpod"
       ],
       "source_urls": [
        "https://www.runpod.io/pricing"
       ],
       "source_idx": [
+       0,
        0,
        0,
        0,
@@ -15372,7 +15504,7 @@
      "cheapest_provider": "Lium",
      "provider_count": 1,
      "thin": true,
-     "date": "2026-11-24",
+     "date": "2026-11-25",
      "cheapest_series": {
       "dates": [
        "2026-10-09",
@@ -15398,7 +15530,8 @@
        "2026-11-20",
        "2026-11-21",
        "2026-11-23",
-       "2026-11-24"
+       "2026-11-24",
+       "2026-11-25"
       ],
       "values": [
        0.38,
@@ -15424,9 +15557,11 @@
        0.65,
        0.7,
        0.38,
+       0.38,
        0.38
       ],
       "provider_ids": [
+       "lium",
        "lium",
        "lium",
        "lium",
@@ -15479,6 +15614,7 @@
        0,
        0,
        0,
+       0,
        0
       ]
      }
@@ -15495,7 +15631,7 @@
      "cheapest_provider": "Koyeb",
      "provider_count": 4,
      "thin": false,
-     "date": "2026-11-24",
+     "date": "2026-11-25",
      "cheapest_series": {
       "dates": [
        "2026-07-07",
@@ -15630,7 +15766,8 @@
        "2026-11-20",
        "2026-11-21",
        "2026-11-23",
-       "2026-11-24"
+       "2026-11-24",
+       "2026-11-25"
       ],
       "values": [
        1.9512,
@@ -15646,6 +15783,7 @@
        1.9512,
        1.9512,
        1.9512,
+       1.2,
        1.2,
        1.2,
        1.2,
@@ -15781,6 +15919,7 @@
        "modal",
        "modal",
        "modal",
+       "koyeb",
        "koyeb",
        "koyeb",
        "koyeb",
@@ -16039,6 +16178,7 @@
        1,
        1,
        1,
+       1,
        1
       ]
      }
@@ -16050,30 +16190,30 @@
    "name": "RTX PRO 6000 96GB",
    "vram_gb": 96,
    "family": "Blackwell",
-   "as_of": "2026-11-24",
+   "as_of": "2026-11-25",
    "status": "live",
-   "median": 2.355,
+   "median": 2.335,
    "p25": 1.8375,
-   "p75": 3.10575,
+   "p75": 3.12825,
    "cheapest": 0.8,
    "cheapest_provider": "Hyper.ai",
    "provider_count": 14,
-   "change_7d_pct": 0.86,
+   "change_7d_pct": -1.89,
    "weekly_index": {
     "weekStart": "2026-11-23",
     "isoWeek": "2026-W48",
     "vintage": "provisional",
     "status": "published",
     "methodologyVersion": "2026-11-04.1",
-    "median": 2.355,
+    "median": 2.335,
     "p25": 1.8375,
-    "p75": 3.10575,
+    "p75": 3.12825,
     "providerCount": 14,
-    "index": 111.8924,
+    "index": 111.8309,
     "linkPairs": 14,
     "withheldReason": null,
     "receipt": "2026-W48",
-    "ageDays": 1
+    "ageDays": 2
    },
    "monthly": [
     {
@@ -16183,14 +16323,14 @@
      "status": "live",
      "risk": "low",
      "price_scope": "rate_card",
-     "median": 2.355,
+     "median": 2.335,
      "p25": 1.8375,
-     "p75": 3.10575,
+     "p75": 3.12825,
      "cheapest": 0.8,
      "cheapest_provider": "Hyper.ai",
      "provider_count": 14,
      "thin": false,
-     "date": "2026-11-24",
+     "date": "2026-11-25",
      "cheapest_series": {
       "dates": [
        "2026-07-05",
@@ -16327,7 +16467,8 @@
        "2026-11-20",
        "2026-11-21",
        "2026-11-23",
-       "2026-11-24"
+       "2026-11-24",
+       "2026-11-25"
       ],
       "values": [
        0.49,
@@ -16433,6 +16574,7 @@
        1.09565,
        1.09565,
        1.09565,
+       0.8,
        0.8,
        0.8,
        0.8,
@@ -16570,6 +16712,7 @@
        "gcp",
        "gcp",
        "gcp",
+       "hyperai",
        "hyperai",
        "hyperai",
        "hyperai",
@@ -16744,6 +16887,7 @@
        3,
        3,
        3,
+       3,
        3
       ]
      }
@@ -16753,14 +16897,14 @@
      "status": "live",
      "risk": "high",
      "price_scope": "rate_card",
-     "median": 1.506,
+     "median": 1.521,
      "p25": 0.8036,
-     "p75": 1.8725,
+     "p75": 1.87,
      "cheapest": 0.4672,
      "cheapest_provider": "Google Cloud",
      "provider_count": 5,
      "thin": false,
-     "date": "2026-11-24",
+     "date": "2026-11-25",
      "cheapest_series": {
       "dates": [
        "2026-07-19",
@@ -16883,7 +17027,8 @@
        "2026-11-20",
        "2026-11-21",
        "2026-11-23",
-       "2026-11-24"
+       "2026-11-24",
+       "2026-11-25"
       ],
       "values": [
        1.29,
@@ -17006,12 +17151,14 @@
        0.4247,
        0.4247,
        0.4672,
+       0.4672,
        0.4672
       ],
       "provider_ids": [
        "spheron",
        "spheron",
        "spheron",
+       "gcp",
        "gcp",
        "gcp",
        "gcp",
@@ -17257,6 +17404,7 @@
        2,
        2,
        2,
+       2,
        2
       ]
      }
@@ -17273,7 +17421,7 @@
      "cheapest_provider": "Synteq",
      "provider_count": 4,
      "thin": false,
-     "date": "2026-11-24",
+     "date": "2026-11-25",
      "cheapest_series": {
       "dates": [
        "2026-10-03",
@@ -17320,11 +17468,13 @@
        "2026-11-20",
        "2026-11-21",
        "2026-11-23",
-       "2026-11-24"
+       "2026-11-24",
+       "2026-11-25"
       ],
       "values": [
        1.3,
        1.3,
+       1.212329,
        1.212329,
        1.212329,
        1.212329,
@@ -17372,6 +17522,7 @@
       "provider_ids": [
        "hyperstack",
        "hyperstack",
+       "synteq",
        "synteq",
        "synteq",
        "synteq",
@@ -17465,6 +17616,7 @@
        1,
        1,
        1,
+       1,
        1
       ]
      }
@@ -17481,7 +17633,7 @@
      "cheapest_provider": "RunPod",
      "provider_count": 1,
      "thin": true,
-     "date": "2026-11-24",
+     "date": "2026-11-25",
      "cheapest_series": {
       "dates": [
        "2026-07-05",
@@ -17618,10 +17770,12 @@
        "2026-11-20",
        "2026-11-21",
        "2026-11-23",
-       "2026-11-24"
+       "2026-11-24",
+       "2026-11-25"
       ],
       "values": [
        0.5,
+       1.64,
        1.64,
        1.64,
        1.64,
@@ -17892,12 +18046,14 @@
        "runpod",
        "runpod",
        "runpod",
+       "runpod",
        "runpod"
       ],
       "source_urls": [
        "https://www.runpod.io/pricing"
       ],
       "source_idx": [
+       0,
        0,
        0,
        0,
@@ -18041,14 +18197,14 @@
      "status": "live",
      "risk": "high",
      "price_scope": "marketplace_floor",
-     "median": 1.82,
+     "median": 1.775,
      "p25": null,
      "p75": null,
-     "cheapest": 1.65,
+     "cheapest": 1.49,
      "cheapest_provider": "Lium",
      "provider_count": 1,
      "thin": true,
-     "date": "2026-11-24",
+     "date": "2026-11-25",
      "cheapest_series": {
       "dates": [
        "2026-10-08",
@@ -18085,7 +18241,8 @@
        "2026-11-20",
        "2026-11-21",
        "2026-11-23",
-       "2026-11-24"
+       "2026-11-24",
+       "2026-11-25"
       ],
       "values": [
        1.19,
@@ -18122,9 +18279,11 @@
        1.49,
        1.59,
        1.19,
-       1.65
+       1.65,
+       1.49
       ],
       "provider_ids": [
+       "lium",
        "lium",
        "lium",
        "lium",
@@ -18199,6 +18358,7 @@
        0,
        0,
        0,
+       0,
        0
       ]
      }
@@ -18215,7 +18375,7 @@
      "cheapest_provider": "Koyeb",
      "provider_count": 5,
      "thin": false,
-     "date": "2026-11-24",
+     "date": "2026-11-25",
      "cheapest_series": {
       "dates": [
        "2026-07-07",
@@ -18350,7 +18510,8 @@
        "2026-11-20",
        "2026-11-21",
        "2026-11-23",
-       "2026-11-24"
+       "2026-11-24",
+       "2026-11-25"
       ],
       "values": [
        2.99,
@@ -18366,6 +18527,7 @@
        2.99,
        2.99,
        2.99,
+       2.2,
        2.2,
        2.2,
        2.2,
@@ -18501,6 +18663,7 @@
        "fal",
        "fal",
        "fal",
+       "koyeb",
        "koyeb",
        "koyeb",
        "koyeb",
@@ -18759,6 +18922,7 @@
        1,
        1,
        1,
+       1,
        1
       ]
      }
@@ -18770,30 +18934,30 @@
    "name": "RTX 4090 24GB",
    "vram_gb": 24,
    "family": "Ada",
-   "as_of": "2026-11-24",
+   "as_of": "2026-11-25",
    "status": "live",
-   "median": 0.89,
-   "p25": 0.49,
-   "p75": 1.11,
+   "median": 0.58,
+   "p25": 0.415,
+   "p75": 0.94,
    "cheapest": 0.35,
    "cheapest_provider": "TensorDock",
    "provider_count": 5,
-   "change_7d_pct": 53.45,
+   "change_7d_pct": 20.83,
    "weekly_index": {
     "weekStart": "2026-11-23",
     "isoWeek": "2026-W48",
     "vintage": "provisional",
     "status": "thin",
     "methodologyVersion": "2026-11-04.1",
-    "median": 0.89,
-    "p25": 0.49,
-    "p75": 1.11,
+    "median": 0.58,
+    "p25": 0.415,
+    "p75": 0.94,
     "providerCount": 5,
-    "index": 122.72,
+    "index": 100.0,
     "linkPairs": 5,
     "withheldReason": null,
     "receipt": "2026-W48",
-    "ageDays": 1
+    "ageDays": 2
    },
    "monthly": [
     {
@@ -18885,14 +19049,14 @@
      "status": "live",
      "risk": "low",
      "price_scope": "rate_card",
-     "median": 0.89,
-     "p25": 0.49,
-     "p75": 1.11,
+     "median": 0.58,
+     "p25": 0.415,
+     "p75": 0.94,
      "cheapest": 0.35,
      "cheapest_provider": "TensorDock",
      "provider_count": 5,
      "thin": false,
-     "date": "2026-11-24",
+     "date": "2026-11-25",
      "cheapest_series": {
       "dates": [
        "2026-07-05",
@@ -19029,7 +19193,8 @@
        "2026-11-20",
        "2026-11-21",
        "2026-11-23",
-       "2026-11-24"
+       "2026-11-24",
+       "2026-11-25"
       ],
       "values": [
        0.69,
@@ -19046,6 +19211,7 @@
        0.53,
        0.53,
        0.53,
+       0.35,
        0.35,
        0.35,
        0.35,
@@ -19183,6 +19349,7 @@
        "spheron",
        "spheron",
        "spheron",
+       "tensordock",
        "tensordock",
        "tensordock",
        "tensordock",
@@ -19445,6 +19612,7 @@
        2,
        2,
        2,
+       2,
        2
       ]
      }
@@ -19454,14 +19622,14 @@
      "status": "live",
      "risk": "high",
      "price_scope": "rate_card",
-     "median": 0.57,
+     "median": 0.495,
      "p25": null,
      "p75": null,
-     "cheapest": 0.57,
-     "cheapest_provider": "Daytona",
-     "provider_count": 1,
+     "cheapest": 0.39,
+     "cheapest_provider": "Lium",
+     "provider_count": 2,
      "thin": true,
-     "date": "2026-11-24",
+     "date": "2026-11-25",
      "cheapest_series": {
       "dates": [
        "2026-10-05",
@@ -19506,7 +19674,8 @@
        "2026-11-20",
        "2026-11-21",
        "2026-11-23",
-       "2026-11-24"
+       "2026-11-24",
+       "2026-11-25"
       ],
       "values": [
        0.57,
@@ -19551,7 +19720,8 @@
        0.4,
        0.4,
        0.4,
-       0.57
+       0.57,
+       0.39
       ],
       "provider_ids": [
        "daytona",
@@ -19596,7 +19766,8 @@
        "lium",
        "lium",
        "lium",
-       "daytona"
+       "daytona",
+       "lium"
       ],
       "source_urls": [
        "https://www.daytona.io/pricing",
@@ -19646,7 +19817,8 @@
        2,
        2,
        2,
-       1
+       1,
+       2
       ]
      }
     },
@@ -19673,7 +19845,7 @@
      "cheapest_provider": "Salad",
      "provider_count": 2,
      "thin": true,
-     "date": "2026-11-24",
+     "date": "2026-11-25",
      "cheapest_series": {
       "dates": [
        "2026-07-05",
@@ -19810,7 +19982,8 @@
        "2026-11-20",
        "2026-11-21",
        "2026-11-23",
-       "2026-11-24"
+       "2026-11-24",
+       "2026-11-25"
       ],
       "values": [
        0.34,
@@ -19861,6 +20034,7 @@
        0.204,
        0.204,
        0.204,
+       0.16,
        0.16,
        0.16,
        0.16,
@@ -20084,6 +20258,7 @@
        "salad",
        "salad",
        "salad",
+       "salad",
        "salad"
       ],
       "source_urls": [
@@ -20226,6 +20401,7 @@
        1,
        1,
        1,
+       1,
        1
       ]
      }
@@ -20235,14 +20411,14 @@
      "status": "live",
      "risk": "high",
      "price_scope": "marketplace_floor",
-     "median": 0.6,
+     "median": 0.48,
      "p25": null,
      "p75": null,
-     "cheapest": 0.45,
+     "cheapest": 0.4,
      "cheapest_provider": "Lium",
      "provider_count": 1,
      "thin": true,
-     "date": "2026-11-24",
+     "date": "2026-11-25",
      "cheapest_series": {
       "dates": [
        "2026-10-08",
@@ -20280,7 +20456,8 @@
        "2026-11-20",
        "2026-11-21",
        "2026-11-23",
-       "2026-11-24"
+       "2026-11-24",
+       "2026-11-25"
       ],
       "values": [
        0.45,
@@ -20318,9 +20495,11 @@
        0.35,
        0.35,
        0.38,
-       0.45
+       0.45,
+       0.4
       ],
       "provider_ids": [
+       "lium",
        "lium",
        "lium",
        "lium",
@@ -20397,6 +20576,7 @@
        0,
        0,
        0,
+       0,
        0
       ]
      }
@@ -20413,7 +20593,7 @@
      "cheapest_provider": "RunPod",
      "provider_count": 1,
      "thin": true,
-     "date": "2026-11-24",
+     "date": "2026-11-25",
      "cheapest_series": {
       "dates": [
        "2026-10-03",
@@ -20460,7 +20640,8 @@
        "2026-11-20",
        "2026-11-21",
        "2026-11-23",
-       "2026-11-24"
+       "2026-11-24",
+       "2026-11-25"
       ],
       "values": [
        1.1,
@@ -20507,9 +20688,11 @@
        1.34,
        1.34,
        1.34,
+       1.34,
        1.34
       ],
       "provider_ids": [
+       "runpod",
        "runpod",
        "runpod",
        "runpod",
@@ -20604,6 +20787,7 @@
        0,
        0,
        0,
+       0,
        0
       ]
      }
@@ -20615,30 +20799,30 @@
    "name": "RTX 5090 32GB",
    "vram_gb": 32,
    "family": "Blackwell",
-   "as_of": "2026-11-24",
+   "as_of": "2026-11-25",
    "status": "live",
-   "median": 0.78,
+   "median": 0.855,
    "p25": 0.605,
    "p75": 1.315,
    "cheapest": 0.35,
    "cheapest_provider": "Hyper.ai",
    "provider_count": 6,
-   "change_7d_pct": -6.59,
+   "change_7d_pct": 6.21,
    "weekly_index": {
     "weekStart": "2026-11-23",
     "isoWeek": "2026-W48",
     "vintage": "provisional",
     "status": "thin",
     "methodologyVersion": "2026-11-04.1",
-    "median": 0.78,
+    "median": 0.855,
     "p25": 0.605,
     "p75": 1.315,
     "providerCount": 6,
-    "index": 99.583,
+    "index": 102.647,
     "linkPairs": 6,
     "withheldReason": null,
     "receipt": "2026-W48",
-    "ageDays": 1
+    "ageDays": 2
    },
    "monthly": [
     {
@@ -20727,14 +20911,14 @@
      "status": "live",
      "risk": "low",
      "price_scope": "rate_card",
-     "median": 0.78,
+     "median": 0.855,
      "p25": 0.605,
      "p75": 1.315,
      "cheapest": 0.35,
      "cheapest_provider": "Hyper.ai",
      "provider_count": 6,
      "thin": false,
-     "date": "2026-11-24",
+     "date": "2026-11-25",
      "cheapest_series": {
       "dates": [
        "2026-07-05",
@@ -20871,7 +21055,8 @@
        "2026-11-20",
        "2026-11-21",
        "2026-11-23",
-       "2026-11-24"
+       "2026-11-24",
+       "2026-11-25"
       ],
       "values": [
        0.99,
@@ -20977,6 +21162,7 @@
        0.78,
        0.78,
        0.78,
+       0.35,
        0.35,
        0.35,
        0.35,
@@ -21114,6 +21300,7 @@
        "spheron",
        "spheron",
        "spheron",
+       "hyperai",
        "hyperai",
        "hyperai",
        "hyperai",
@@ -21288,6 +21475,7 @@
        3,
        3,
        3,
+       3,
        3
       ]
      }
@@ -21297,14 +21485,14 @@
      "status": "live",
      "risk": "high",
      "price_scope": "rate_card",
-     "median": 0.74,
+     "median": 0.735,
      "p25": null,
      "p75": null,
-     "cheapest": 0.68,
+     "cheapest": 0.67,
      "cheapest_provider": "Lium",
      "provider_count": 2,
      "thin": true,
-     "date": "2026-11-24",
+     "date": "2026-11-25",
      "cheapest_series": {
       "dates": [
        "2026-10-05",
@@ -21349,7 +21537,8 @@
        "2026-11-20",
        "2026-11-21",
        "2026-11-23",
-       "2026-11-24"
+       "2026-11-24",
+       "2026-11-25"
       ],
       "values": [
        0.74,
@@ -21394,7 +21583,8 @@
        0.45,
        0.55,
        0.55,
-       0.68
+       0.68,
+       0.67
       ],
       "provider_ids": [
        "daytona",
@@ -21417,6 +21607,7 @@
        "daytona",
        "lium",
        "daytona",
+       "lium",
        "lium",
        "lium",
        "lium",
@@ -21489,6 +21680,7 @@
        2,
        2,
        2,
+       2,
        2
       ]
      }
@@ -21516,7 +21708,7 @@
      "cheapest_provider": "Salad",
      "provider_count": 2,
      "thin": true,
-     "date": "2026-11-24",
+     "date": "2026-11-25",
      "cheapest_series": {
       "dates": [
        "2026-07-05",
@@ -21653,7 +21845,8 @@
        "2026-11-20",
        "2026-11-21",
        "2026-11-23",
-       "2026-11-24"
+       "2026-11-24",
+       "2026-11-25"
       ],
       "values": [
        0.69,
@@ -21727,6 +21920,7 @@
        0.25,
        0.25,
        0.25,
+       0.1,
        0.1,
        0.1,
        0.1,
@@ -21927,6 +22121,7 @@
        "salad",
        "salad",
        "salad",
+       "salad",
        "salad"
       ],
       "source_urls": [
@@ -22069,6 +22264,7 @@
        1,
        1,
        1,
+       1,
        1
       ]
      }
@@ -22078,14 +22274,14 @@
      "status": "live",
      "risk": "high",
      "price_scope": "marketplace_floor",
-     "median": 0.71,
+     "median": 0.75,
      "p25": null,
      "p75": null,
-     "cheapest": 0.64,
+     "cheapest": 0.57,
      "cheapest_provider": "Lium",
      "provider_count": 1,
      "thin": true,
-     "date": "2026-11-24",
+     "date": "2026-11-25",
      "cheapest_series": {
       "dates": [
        "2026-10-08",
@@ -22125,7 +22321,8 @@
        "2026-11-20",
        "2026-11-21",
        "2026-11-23",
-       "2026-11-24"
+       "2026-11-24",
+       "2026-11-25"
       ],
       "values": [
        0.69,
@@ -22165,9 +22362,11 @@
        0.5,
        0.5,
        0.6,
-       0.64
+       0.64,
+       0.57
       ],
       "provider_ids": [
+       "lium",
        "lium",
        "lium",
        "lium",
@@ -22248,6 +22447,7 @@
        0,
        0,
        0,
+       0,
        0
       ]
      }
@@ -22264,7 +22464,7 @@
      "cheapest_provider": "RunPod",
      "provider_count": 1,
      "thin": true,
-     "date": "2026-11-24",
+     "date": "2026-11-25",
      "cheapest_series": {
       "dates": [
        "2026-10-03",
@@ -22311,7 +22511,8 @@
        "2026-11-20",
        "2026-11-21",
        "2026-11-23",
-       "2026-11-24"
+       "2026-11-24",
+       "2026-11-25"
       ],
       "values": [
        1.58,
@@ -22358,9 +22559,11 @@
        1.89,
        1.89,
        1.89,
+       1.89,
        1.89
       ],
       "provider_ids": [
+       "runpod",
        "runpod",
        "runpod",
        "runpod",
@@ -22455,6 +22658,7 @@
        0,
        0,
        0,
+       0,
        0
       ]
      }
@@ -22466,7 +22670,7 @@
    "name": "MI300X 192GB",
    "vram_gb": 192,
    "family": "CDNA 3",
-   "as_of": "2026-11-24",
+   "as_of": "2026-11-25",
    "status": "live",
    "median": 3.22,
    "p25": 2.54,
@@ -22489,7 +22693,7 @@
     "linkPairs": 6,
     "withheldReason": null,
     "receipt": "2026-W48",
-    "ageDays": 1
+    "ageDays": 2
    },
    "monthly": [
     {
@@ -22590,7 +22794,7 @@
      "cheapest_provider": "RunPod",
      "provider_count": 6,
      "thin": false,
-     "date": "2026-11-24",
+     "date": "2026-11-25",
      "cheapest_series": {
       "dates": [
        "2026-07-05",
@@ -22727,7 +22931,8 @@
        "2026-11-20",
        "2026-11-21",
        "2026-11-23",
-       "2026-11-24"
+       "2026-11-24",
+       "2026-11-25"
       ],
       "values": [
        2.19,
@@ -22758,6 +22963,7 @@
        1.99,
        1.99,
        1.99,
+       2.39,
        2.39,
        2.39,
        2.39,
@@ -22895,6 +23101,7 @@
        "digitalocean",
        "digitalocean",
        "digitalocean",
+       "runpod",
        "runpod",
        "runpod",
        "runpod",
@@ -23142,6 +23349,7 @@
        0,
        0,
        0,
+       0,
        0
       ]
      }
@@ -23208,7 +23416,7 @@
    "name": "GH200 96GB",
    "vram_gb": 96,
    "family": "Hopper",
-   "as_of": "2026-11-24",
+   "as_of": "2026-11-25",
    "status": "live",
    "median": 3.02,
    "p25": null,
@@ -23231,7 +23439,7 @@
     "linkPairs": 3,
     "withheldReason": null,
     "receipt": "2026-W46",
-    "ageDays": 15
+    "ageDays": 16
    },
    "monthly": [
     {
@@ -23328,7 +23536,7 @@
      "cheapest_provider": "Lambda",
      "provider_count": 3,
      "thin": true,
-     "date": "2026-11-24",
+     "date": "2026-11-25",
      "cheapest_series": {
       "dates": [
        "2026-07-05",
@@ -23465,7 +23673,8 @@
        "2026-11-20",
        "2026-11-21",
        "2026-11-23",
-       "2026-11-24"
+       "2026-11-24",
+       "2026-11-25"
       ],
       "values": [
        2.29,
@@ -23602,6 +23811,7 @@
        2.59,
        2.59,
        2.59,
+       2.59,
        2.59
       ],
       "provider_ids": [
@@ -23622,6 +23832,7 @@
        "spheron",
        "spheron",
        "spheron",
+       "lambda",
        "lambda",
        "lambda",
        "lambda",
@@ -23838,6 +24049,7 @@
        0,
        0,
        0,
+       3,
        3,
        3,
        3,
