@@ -1,37 +1,37 @@
 {
  "id": "RTX 5090",
  "slug": "rtx-5090",
- "as_of": "2026-11-25",
+ "as_of": "2026-11-26",
  "methodology_version": "2026-11-04.1",
  "card": {
   "id": "RTX 5090",
   "name": "RTX 5090 32GB",
   "vramGb": 32,
   "family": "Blackwell",
-  "asOf": "2026-11-25",
+  "asOf": "2026-11-26",
   "status": "live",
-  "median": 0.855,
+  "median": 0.75,
   "p25": 0.605,
   "p75": 1.315,
   "cheapest": 0.35,
   "cheapestProvider": "Hyper.ai",
   "providerCount": 6,
-  "change7dPct": 6.21,
+  "change7dPct": -31.19,
   "weeklyIndex": {
    "weekStart": "2026-11-23",
    "isoWeek": "2026-W48",
    "vintage": "provisional",
    "status": "thin",
    "methodologyVersion": "2026-11-04.1",
-   "median": 0.855,
+   "median": 0.75,
    "p25": 0.605,
    "p75": 1.315,
    "providerCount": 6,
-   "index": 102.647,
+   "index": 98.3606,
    "linkPairs": 6,
    "withheldReason": null,
    "receipt": "2026-W48",
-   "ageDays": 2
+   "ageDays": 3
   },
   "monthly": [
    {
@@ -1890,12 +1890,25 @@
       "cheapestProvider": "Hyper.ai",
       "cheapestProviderId": "hyperai",
       "cheapestSourceUrl": "https://hyper.ai/en/pricing"
+     },
+     {
+      "date": "2026-11-26",
+      "value": 0.75,
+      "p25": 0.605,
+      "p75": 1.315,
+      "providerCount": 6,
+      "quoteCount": 6,
+      "thin": false,
+      "cheapestValue": 0.35,
+      "cheapestProvider": "Hyper.ai",
+      "cheapestProviderId": "hyperai",
+      "cheapestSourceUrl": "https://hyper.ai/en/pricing"
      }
     ],
     "latest": {
-     "date": "2026-11-25",
+     "date": "2026-11-26",
      "series": "on_demand",
-     "value": 0.855,
+     "value": 0.75,
      "p25": 0.605,
      "p75": 1.315,
      "low": 0.35,
@@ -1908,7 +1921,7 @@
      "cheapestProviderId": "hyperai",
      "cheapestValue": 0.35,
      "cheapestSourceUrl": "https://hyper.ai/en/pricing",
-     "movingAverage30d": 0.909333,
+     "movingAverage30d": 0.903167,
      "offers": [
       {
        "provider": "Hyper.ai",
@@ -1925,17 +1938,17 @@
        "quotes": 1
       },
       {
+       "provider": "Runcrate",
+       "providerId": "runcrate",
+       "value": 0.72,
+       "sourceUrl": "https://www.runcrate.ai/pricing",
+       "quotes": 1
+      },
+      {
        "provider": "Spheron",
        "providerId": "spheron",
        "value": 0.78,
        "sourceUrl": "https://www.spheron.network/pricing/",
-       "quotes": 1
-      },
-      {
-       "provider": "Runcrate",
-       "providerId": "runcrate",
-       "value": 0.93,
-       "sourceUrl": "https://www.runcrate.ai/pricing",
        "quotes": 1
       },
       {
@@ -1954,10 +1967,10 @@
       }
      ]
     },
-    "change7dPct": 6.21,
-    "change7dBaseDate": "2026-11-18",
-    "coverageDays": 136,
-    "quoteRows": 410
+    "change7dPct": -31.19,
+    "change7dBaseDate": "2026-11-19",
+    "coverageDays": 137,
+    "quoteRows": 416
    },
    "spot": {
     "label": "Spot",
@@ -2538,25 +2551,38 @@
       "cheapestProvider": "Lium",
       "cheapestProviderId": "lium",
       "cheapestSourceUrl": "https://lium.io/api/public/v1/nodes"
+     },
+     {
+      "date": "2026-11-26",
+      "value": 0.735,
+      "p25": null,
+      "p75": null,
+      "providerCount": 2,
+      "quoteCount": 6,
+      "thin": true,
+      "cheapestValue": 0.5,
+      "cheapestProvider": "Lium",
+      "cheapestProviderId": "lium",
+      "cheapestSourceUrl": "https://lium.io/api/public/v1/nodes"
      }
     ],
     "latest": {
-     "date": "2026-11-25",
+     "date": "2026-11-26",
      "series": "spot",
      "value": 0.735,
      "p25": null,
      "p75": null,
-     "low": 0.67,
-     "high": 0.75,
+     "low": 0.5,
+     "high": 0.8,
      "providerCount": 2,
      "quoteCount": 6,
      "thin": true,
      "medianSynthetic": true,
      "cheapestProvider": "Lium",
      "cheapestProviderId": "lium",
-     "cheapestValue": 0.67,
+     "cheapestValue": 0.5,
      "cheapestSourceUrl": "https://lium.io/api/public/v1/nodes",
-     "movingAverage30d": 0.745083,
+     "movingAverage30d": 0.74225,
      "offers": [
       {
        "provider": "Lium",
@@ -2575,9 +2601,9 @@
      ]
     },
     "change7dPct": 3.89,
-    "change7dBaseDate": "2026-11-18",
-    "coverageDays": 44,
-    "quoteRows": 246
+    "change7dBaseDate": "2026-11-19",
+    "coverageDays": 45,
+    "quoteRows": 252
    },
    "reserved": {
     "label": "Reserved",
@@ -4367,10 +4393,23 @@
       "cheapestProvider": "Salad",
       "cheapestProviderId": "salad",
       "cheapestSourceUrl": "https://salad.com/pricing"
+     },
+     {
+      "date": "2026-11-26",
+      "value": 0.4325,
+      "p25": null,
+      "p75": null,
+      "providerCount": 2,
+      "quoteCount": 3,
+      "thin": true,
+      "cheapestValue": 0.1,
+      "cheapestProvider": "Salad",
+      "cheapestProviderId": "salad",
+      "cheapestSourceUrl": "https://salad.com/pricing"
      }
     ],
     "latest": {
-     "date": "2026-11-25",
+     "date": "2026-11-26",
      "series": "community",
      "value": 0.4325,
      "p25": null,
@@ -4404,9 +4443,9 @@
      ]
     },
     "change7dPct": 0.0,
-    "change7dBaseDate": "2026-11-18",
-    "coverageDays": 136,
-    "quoteRows": 323
+    "change7dBaseDate": "2026-11-19",
+    "coverageDays": 137,
+    "quoteRows": 326
    },
    "marketplace": {
     "label": "Marketplace floor",
@@ -4922,39 +4961,52 @@
       "cheapestProvider": "Lium",
       "cheapestProviderId": "lium",
       "cheapestSourceUrl": "https://lium.io/api/public/v1/nodes"
+     },
+     {
+      "date": "2026-11-26",
+      "value": 0.655,
+      "p25": null,
+      "p75": null,
+      "providerCount": 1,
+      "quoteCount": 8,
+      "thin": true,
+      "cheapestValue": 0.5,
+      "cheapestProvider": "Lium",
+      "cheapestProviderId": "lium",
+      "cheapestSourceUrl": "https://lium.io/api/public/v1/nodes"
      }
     ],
     "latest": {
-     "date": "2026-11-25",
+     "date": "2026-11-26",
      "series": "marketplace",
-     "value": 0.75,
+     "value": 0.655,
      "p25": null,
      "p75": null,
-     "low": 0.57,
-     "high": 0.94,
+     "low": 0.5,
+     "high": 0.85,
      "providerCount": 1,
-     "quoteCount": 7,
+     "quoteCount": 8,
      "thin": true,
      "medianSynthetic": false,
      "cheapestProvider": "Lium",
      "cheapestProviderId": "lium",
-     "cheapestValue": 0.57,
+     "cheapestValue": 0.5,
      "cheapestSourceUrl": "https://lium.io/api/public/v1/nodes",
-     "movingAverage30d": 0.780833,
+     "movingAverage30d": 0.749333,
      "offers": [
       {
        "provider": "Lium",
        "providerId": "lium",
-       "value": 0.75,
+       "value": 0.655,
        "sourceUrl": "https://lium.io/api/public/v1/nodes",
-       "quotes": 7
+       "quotes": 8
       }
      ]
     },
-    "change7dPct": 15.38,
-    "change7dBaseDate": "2026-11-18",
-    "coverageDays": 39,
-    "quoteRows": 274
+    "change7dPct": -5.07,
+    "change7dBaseDate": "2026-11-19",
+    "coverageDays": 40,
+    "quoteRows": 282
    },
    "serverless": {
     "label": "Serverless",
@@ -5561,10 +5613,23 @@
       "cheapestProvider": "RunPod",
       "cheapestProviderId": "runpod",
       "cheapestSourceUrl": "https://www.runpod.io/pricing"
+     },
+     {
+      "date": "2026-11-26",
+      "value": 1.89,
+      "p25": null,
+      "p75": null,
+      "providerCount": 1,
+      "quoteCount": 1,
+      "thin": true,
+      "cheapestValue": 1.89,
+      "cheapestProvider": "RunPod",
+      "cheapestProviderId": "runpod",
+      "cheapestSourceUrl": "https://www.runpod.io/pricing"
      }
     ],
     "latest": {
-     "date": "2026-11-25",
+     "date": "2026-11-26",
      "series": "serverless",
      "value": 1.89,
      "p25": null,
@@ -5579,7 +5644,7 @@
      "cheapestProviderId": "runpod",
      "cheapestValue": 1.89,
      "cheapestSourceUrl": "https://www.runpod.io/pricing",
-     "movingAverage30d": 1.781,
+     "movingAverage30d": 1.791333,
      "offers": [
       {
        "provider": "RunPod",
@@ -5591,9 +5656,9 @@
      ]
     },
     "change7dPct": 0.0,
-    "change7dBaseDate": "2026-11-18",
-    "coverageDays": 46,
-    "quoteRows": 46
+    "change7dBaseDate": "2026-11-19",
+    "coverageDays": 47,
+    "quoteRows": 47
    }
   }
  },
@@ -5876,11 +5941,11 @@
    "weekStart": "2026-11-23",
    "vintage": "provisional",
    "status": "thin",
-   "median": 0.855,
+   "median": 0.75,
    "p25": 0.605,
    "p75": 1.315,
    "providerCount": 6,
-   "index": 102.647,
+   "index": 98.3606,
    "linkPairs": 6,
    "withheldReason": null
   }
@@ -5892,7 +5957,7 @@
    "match_id": "rtx-5090",
    "benchmark_id": null,
    "context_ids": [],
-   "own_median": 0.855,
+   "own_median": 0.75,
    "own_providers": 6,
    "own_thin": true,
    "ext_median": 0.715,
@@ -5914,9 +5979,9 @@
    ],
    "coverage": "thin",
    "comparable": false,
-   "as_of": "2026-11-25",
+   "as_of": "2026-11-26",
    "ext_as_of": "2026-11-03",
-   "note": "我方仅少量 provider，样本弱；external 覆盖更广，不改写我方中位。 external 数据比我方旧（2026-11-03 vs 2026-11-25）。"
+   "note": "我方仅少量 provider，样本弱；external 覆盖更广，不改写我方中位。 external 数据比我方旧（2026-11-03 vs 2026-11-26）。"
   },
   {
    "card_id": "RTX 5090",
@@ -5944,9 +6009,9 @@
    ],
    "coverage": "thin",
    "comparable": false,
-   "as_of": "2026-11-25",
+   "as_of": "2026-11-26",
    "ext_as_of": "2026-11-03",
-   "note": "我方仅少量 provider，样本弱；external 覆盖更广，不改写我方中位。 可比口径与 on-demand 相同（live、非 floor、USD、每 provider 最低价）；spot 可被收回，不能当 on-demand。 external 覆盖偏薄（ext 2 家，重叠 1 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-25）。"
+   "note": "我方仅少量 provider，样本弱；external 覆盖更广，不改写我方中位。 可比口径与 on-demand 相同（live、非 floor、USD、每 provider 最低价）；spot 可被收回，不能当 on-demand。 external 覆盖偏薄（ext 2 家，重叠 1 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-26）。"
   },
   {
    "card_id": "RTX 5090",
@@ -5972,9 +6037,9 @@
    "overlap_providers": [],
    "coverage": "thin",
    "comparable": false,
-   "as_of": "2026-11-25",
+   "as_of": "2026-11-26",
    "ext_as_of": "2026-11-03",
-   "note": "我方仅少量 provider，样本弱；external 覆盖更广，不改写我方中位。 GPU Economy 把 reserved 拆成无期限/1y/3y；我方不保留期限，不能合成一个可比中位。 external 覆盖偏薄（ext 1 家，重叠 0 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-25）。"
+   "note": "我方仅少量 provider，样本弱；external 覆盖更广，不改写我方中位。 GPU Economy 把 reserved 拆成无期限/1y/3y；我方不保留期限，不能合成一个可比中位。 external 覆盖偏薄（ext 1 家，重叠 0 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-26）。"
   },
   {
    "card_id": "RTX 5090",
@@ -6003,9 +6068,9 @@
    ],
    "coverage": "thin",
    "comparable": false,
-   "as_of": "2026-11-25",
+   "as_of": "2026-11-26",
    "ext_as_of": "2026-11-03",
-   "note": "我方仅少量 provider，样本弱；external 覆盖更广，不改写我方中位。 GPU Economy 的 community 同时包含 marketplace floor 与实例供给；我方把 floor 单列为 marketplace，语义不等价。 external 覆盖偏薄（ext 2 家，重叠 2 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-25）。"
+   "note": "我方仅少量 provider，样本弱；external 覆盖更广，不改写我方中位。 GPU Economy 的 community 同时包含 marketplace floor 与实例供给；我方把 floor 单列为 marketplace，语义不等价。 external 覆盖偏薄（ext 2 家，重叠 2 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-26）。"
   },
   {
    "card_id": "RTX 5090",
@@ -6013,7 +6078,7 @@
    "match_id": "rtx-5090",
    "benchmark_id": null,
    "context_ids": [],
-   "own_median": 0.75,
+   "own_median": 0.655,
    "own_providers": 1,
    "own_thin": true,
    "ext_median": 0.5324,
@@ -6033,9 +6098,9 @@
    ],
    "coverage": "thin",
    "comparable": false,
-   "as_of": "2026-11-25",
+   "as_of": "2026-11-26",
    "ext_as_of": "2026-11-03",
-   "note": "我方仅少量 provider，样本弱；external 覆盖更广，不改写我方中位。 我方 marketplace 对应 GPU Economy community 中的 marketplace floor 子集；只是子集，不是等号。 external 覆盖偏薄（ext 4 家，重叠 1 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-25）。"
+   "note": "我方仅少量 provider，样本弱；external 覆盖更广，不改写我方中位。 我方 marketplace 对应 GPU Economy community 中的 marketplace floor 子集；只是子集，不是等号。 external 覆盖偏薄（ext 4 家，重叠 1 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-26）。"
   },
   {
    "card_id": "RTX 5090",
@@ -6061,9 +6126,9 @@
    "overlap_providers": [],
    "coverage": "thin",
    "comparable": false,
-   "as_of": "2026-11-25",
+   "as_of": "2026-11-26",
    "ext_as_of": "2026-11-03",
-   "note": "我方仅少量 provider，样本弱；external 覆盖更广，不改写我方中位。 可比口径与 on-demand 相同；serverless 按秒/共享，不能与整租混读。 external 覆盖偏薄（ext 1 家，重叠 0 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-25）。"
+   "note": "我方仅少量 provider，样本弱；external 覆盖更广，不改写我方中位。 可比口径与 on-demand 相同；serverless 按秒/共享，不能与整租混读。 external 覆盖偏薄（ext 1 家，重叠 0 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-26）。"
   }
  ],
  "external": {
@@ -6077,7 +6142,7 @@
   "methodology_version": "1.33.63",
   "data_updated_at": "2026-11-03T12:48:20.451387+00:00",
   "retrieved_at": "2026-11-04T09:12:14Z",
-  "as_of": "2026-11-25",
+  "as_of": "2026-11-26",
   "ext_as_of": "2026-11-03",
   "markets": {
    "on_demand": {
@@ -6092,7 +6157,7 @@
     "overlap_count": 3,
     "coverage": "thin",
     "comparable": false,
-    "note": "我方仅少量 provider，样本弱；external 覆盖更广，不改写我方中位。 external 数据比我方旧（2026-11-03 vs 2026-11-25）。"
+    "note": "我方仅少量 provider，样本弱；external 覆盖更广，不改写我方中位。 external 数据比我方旧（2026-11-03 vs 2026-11-26）。"
    },
    "spot": {
     "ext_gpu_id": "rtx-5090",
@@ -6106,7 +6171,7 @@
     "overlap_count": 1,
     "coverage": "thin",
     "comparable": false,
-    "note": "我方仅少量 provider，样本弱；external 覆盖更广，不改写我方中位。 可比口径与 on-demand 相同（live、非 floor、USD、每 provider 最低价）；spot 可被收回，不能当 on-demand。 external 覆盖偏薄（ext 2 家，重叠 1 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-25）。"
+    "note": "我方仅少量 provider，样本弱；external 覆盖更广，不改写我方中位。 可比口径与 on-demand 相同（live、非 floor、USD、每 provider 最低价）；spot 可被收回，不能当 on-demand。 external 覆盖偏薄（ext 2 家，重叠 1 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-26）。"
    },
    "reserved": {
     "ext_gpu_id": "rtx-5090",
@@ -6120,7 +6185,7 @@
     "overlap_count": 0,
     "coverage": "thin",
     "comparable": false,
-    "note": "我方仅少量 provider，样本弱；external 覆盖更广，不改写我方中位。 GPU Economy 把 reserved 拆成无期限/1y/3y；我方不保留期限，不能合成一个可比中位。 external 覆盖偏薄（ext 1 家，重叠 0 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-25）。"
+    "note": "我方仅少量 provider，样本弱；external 覆盖更广，不改写我方中位。 GPU Economy 把 reserved 拆成无期限/1y/3y；我方不保留期限，不能合成一个可比中位。 external 覆盖偏薄（ext 1 家，重叠 0 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-26）。"
    },
    "community": {
     "ext_gpu_id": "rtx-5090",
@@ -6134,7 +6199,7 @@
     "overlap_count": 2,
     "coverage": "thin",
     "comparable": false,
-    "note": "我方仅少量 provider，样本弱；external 覆盖更广，不改写我方中位。 GPU Economy 的 community 同时包含 marketplace floor 与实例供给；我方把 floor 单列为 marketplace，语义不等价。 external 覆盖偏薄（ext 2 家，重叠 2 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-25）。"
+    "note": "我方仅少量 provider，样本弱；external 覆盖更广，不改写我方中位。 GPU Economy 的 community 同时包含 marketplace floor 与实例供给；我方把 floor 单列为 marketplace，语义不等价。 external 覆盖偏薄（ext 2 家，重叠 2 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-26）。"
    },
    "marketplace": {
     "ext_gpu_id": "rtx-5090",
@@ -6148,7 +6213,7 @@
     "overlap_count": 1,
     "coverage": "thin",
     "comparable": false,
-    "note": "我方仅少量 provider，样本弱；external 覆盖更广，不改写我方中位。 我方 marketplace 对应 GPU Economy community 中的 marketplace floor 子集；只是子集，不是等号。 external 覆盖偏薄（ext 4 家，重叠 1 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-25）。"
+    "note": "我方仅少量 provider，样本弱；external 覆盖更广，不改写我方中位。 我方 marketplace 对应 GPU Economy community 中的 marketplace floor 子集；只是子集，不是等号。 external 覆盖偏薄（ext 4 家，重叠 1 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-26）。"
    },
    "serverless": {
     "ext_gpu_id": "rtx-5090",
@@ -6162,7 +6227,7 @@
     "overlap_count": 0,
     "coverage": "thin",
     "comparable": false,
-    "note": "我方仅少量 provider，样本弱；external 覆盖更广，不改写我方中位。 可比口径与 on-demand 相同；serverless 按秒/共享，不能与整租混读。 external 覆盖偏薄（ext 1 家，重叠 0 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-25）。"
+    "note": "我方仅少量 provider，样本弱；external 覆盖更广，不改写我方中位。 可比口径与 on-demand 相同；serverless 按秒/共享，不能与整租混读。 external 覆盖偏薄（ext 1 家，重叠 0 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-26）。"
    }
   }
  }

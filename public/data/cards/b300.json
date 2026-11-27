@@ -1,14 +1,14 @@
 {
  "id": "B300",
  "slug": "b300",
- "as_of": "2026-11-25",
+ "as_of": "2026-11-26",
  "methodology_version": "2026-11-04.1",
  "card": {
   "id": "B300",
   "name": "B300 288GB",
   "vramGb": 288,
   "family": "Blackwell",
-  "asOf": "2026-11-25",
+  "asOf": "2026-11-26",
   "status": "live",
   "median": 11.34,
   "p25": 8.9825,
@@ -16,7 +16,7 @@
   "cheapest": 7.4,
   "cheapestProvider": "Hyperstack",
   "providerCount": 14,
-  "change7dPct": 19.37,
+  "change7dPct": 9.62,
   "weeklyIndex": {
    "weekStart": "2026-11-23",
    "isoWeek": "2026-W48",
@@ -27,11 +27,11 @@
    "p25": 8.9825,
    "p75": 14.7325,
    "providerCount": 14,
-   "index": 129.3064,
+   "index": 131.5839,
    "linkPairs": 13,
    "withheldReason": null,
    "receipt": "2026-W48",
-   "ageDays": 2
+   "ageDays": 3
   },
   "monthly": [
    {
@@ -1722,10 +1722,23 @@
       "cheapestProvider": "Hyperstack",
       "cheapestProviderId": "hyperstack",
       "cheapestSourceUrl": "https://www.hyperstack.cloud/gpu-pricing"
+     },
+     {
+      "date": "2026-11-26",
+      "value": 11.34,
+      "p25": 8.9825,
+      "p75": 14.7325,
+      "providerCount": 14,
+      "quoteCount": 16,
+      "thin": false,
+      "cheapestValue": 7.4,
+      "cheapestProvider": "Hyperstack",
+      "cheapestProviderId": "hyperstack",
+      "cheapestSourceUrl": "https://www.hyperstack.cloud/gpu-pricing"
      }
     ],
     "latest": {
-     "date": "2026-11-25",
+     "date": "2026-11-26",
      "series": "on_demand",
      "value": 11.34,
      "p25": 8.9825,
@@ -1740,7 +1753,7 @@
      "cheapestProviderId": "hyperstack",
      "cheapestValue": 7.4,
      "cheapestSourceUrl": "https://www.hyperstack.cloud/gpu-pricing",
-     "movingAverage30d": 10.028333,
+     "movingAverage30d": 10.089667,
      "offers": [
       {
        "provider": "Hyperstack",
@@ -1752,7 +1765,7 @@
       {
        "provider": "Scaleway",
        "providerId": "scaleway",
-       "value": 8.2223,
+       "value": 8.2013,
        "sourceUrl": "https://www.scaleway.com/en/pricing/gpu/",
        "quotes": 1
       },
@@ -1771,17 +1784,17 @@
        "quotes": 1
       },
       {
-       "provider": "RunPod",
-       "providerId": "runpod",
-       "value": 8.99,
-       "sourceUrl": "https://www.runpod.io/pricing",
-       "quotes": 1
-      },
-      {
        "provider": "Nebius",
        "providerId": "nebius",
        "value": 9.5,
        "sourceUrl": "https://docs.nebius.com/compute/resources/pricing",
+       "quotes": 1
+      },
+      {
+       "provider": "RunPod",
+       "providerId": "runpod",
+       "value": 10.49,
+       "sourceUrl": "https://www.runpod.io/pricing",
        "quotes": 1
       },
       {
@@ -1799,17 +1812,17 @@
        "quotes": 1
       },
       {
-       "provider": "Spheron",
-       "providerId": "spheron",
-       "value": 11.52,
-       "sourceUrl": "https://www.spheron.network/pricing/",
-       "quotes": 1
-      },
-      {
        "provider": "OVHcloud",
        "providerId": "ovh",
        "value": 12.4125,
        "sourceUrl": "https://www.ovhcloud.com/en/public-cloud/prices/",
+       "quotes": 1
+      },
+      {
+       "provider": "Spheron",
+       "providerId": "spheron",
+       "value": 12.42,
+       "sourceUrl": "https://www.spheron.network/pricing/",
        "quotes": 1
       },
       {
@@ -1842,10 +1855,10 @@
       }
      ]
     },
-    "change7dPct": 19.37,
-    "change7dBaseDate": "2026-11-18",
-    "coverageDays": 122,
-    "quoteRows": 1324
+    "change7dPct": 9.62,
+    "change7dBaseDate": "2026-11-19",
+    "coverageDays": 123,
+    "quoteRows": 1340
    },
    "spot": {
     "label": "Spot",
@@ -3349,26 +3362,46 @@
       "cheapestProvider": "Daytona",
       "cheapestProviderId": "daytona",
       "cheapestSourceUrl": "https://billing.app.daytona.io/gpu-pricing"
+     },
+     {
+      "date": "2026-11-26",
+      "value": 5.75,
+      "p25": 4.585,
+      "p75": 6.497,
+      "providerCount": 5,
+      "quoteCount": 6,
+      "thin": false,
+      "cheapestValue": 4.0,
+      "cheapestProvider": "Lium",
+      "cheapestProviderId": "lium",
+      "cheapestSourceUrl": "https://lium.io/api/public/v1/nodes"
      }
     ],
     "latest": {
-     "date": "2026-11-25",
+     "date": "2026-11-26",
      "series": "spot",
-     "value": 6.245,
-     "p25": 5.315,
-     "p75": 7.0505,
-     "low": 5.17,
+     "value": 5.75,
+     "p25": 4.585,
+     "p75": 6.497,
+     "low": 4.0,
      "high": 7.653,
-     "providerCount": 4,
-     "quoteCount": 5,
+     "providerCount": 5,
+     "quoteCount": 6,
      "thin": false,
-     "medianSynthetic": true,
-     "cheapestProvider": "Daytona",
-     "cheapestProviderId": "daytona",
-     "cheapestValue": 5.17,
-     "cheapestSourceUrl": "https://billing.app.daytona.io/gpu-pricing",
-     "movingAverage30d": 5.810625,
+     "medianSynthetic": false,
+     "cheapestProvider": "Lium",
+     "cheapestProviderId": "lium",
+     "cheapestValue": 4.0,
+     "cheapestSourceUrl": "https://lium.io/api/public/v1/nodes",
+     "movingAverage30d": 5.821792,
      "offers": [
+      {
+       "provider": "Lium",
+       "providerId": "lium",
+       "value": 4.0,
+       "sourceUrl": "https://lium.io/api/public/v1/nodes",
+       "quotes": 1
+      },
       {
        "provider": "Daytona",
        "providerId": "daytona",
@@ -3386,7 +3419,7 @@
       {
        "provider": "Spheron",
        "providerId": "spheron",
-       "value": 6.74,
+       "value": 5.84,
        "sourceUrl": "https://www.spheron.network/pricing/",
        "quotes": 1
       },
@@ -3399,10 +3432,10 @@
       }
      ]
     },
-    "change7dPct": 13.44,
-    "change7dBaseDate": "2026-11-18",
-    "coverageDays": 115,
-    "quoteRows": 325
+    "change7dPct": -17.11,
+    "change7dBaseDate": "2026-11-19",
+    "coverageDays": 116,
+    "quoteRows": 331
    },
    "reserved": {
     "label": "Reserved",
@@ -4009,10 +4042,23 @@
       "cheapestProvider": "Impossible Cloud",
       "cheapestProviderId": "impossiblecloud",
       "cheapestSourceUrl": "https://www.impossiblecloud.com/en-us/baremetal"
+     },
+     {
+      "date": "2026-11-26",
+      "value": 6.475,
+      "p25": null,
+      "p75": null,
+      "providerCount": 3,
+      "quoteCount": 5,
+      "thin": true,
+      "cheapestValue": 5.17,
+      "cheapestProvider": "Impossible Cloud",
+      "cheapestProviderId": "impossiblecloud",
+      "cheapestSourceUrl": "https://www.impossiblecloud.com/en-us/baremetal"
      }
     ],
     "latest": {
-     "date": "2026-11-25",
+     "date": "2026-11-26",
      "series": "reserved",
      "value": 6.475,
      "p25": null,
@@ -4027,7 +4073,7 @@
      "cheapestProviderId": "impossiblecloud",
      "cheapestValue": 5.17,
      "cheapestSourceUrl": "https://www.impossiblecloud.com/en-us/baremetal",
-     "movingAverage30d": 6.380998,
+     "movingAverage30d": 6.38884,
      "offers": [
       {
        "provider": "Synteq",
@@ -4053,9 +4099,9 @@
      ]
     },
     "change7dPct": -1.11,
-    "change7dBaseDate": "2026-11-18",
-    "coverageDays": 46,
-    "quoteRows": 576
+    "change7dBaseDate": "2026-11-19",
+    "coverageDays": 47,
+    "quoteRows": 581
    },
    "community": {
     "label": "Community",
@@ -5650,10 +5696,23 @@
       "cheapestProvider": "RunPod",
       "cheapestProviderId": "runpod",
       "cheapestSourceUrl": "https://www.runpod.io/pricing"
+     },
+     {
+      "date": "2026-11-26",
+      "value": 6.94,
+      "p25": null,
+      "p75": null,
+      "providerCount": 1,
+      "quoteCount": 1,
+      "thin": true,
+      "cheapestValue": 6.94,
+      "cheapestProvider": "RunPod",
+      "cheapestProviderId": "runpod",
+      "cheapestSourceUrl": "https://www.runpod.io/pricing"
      }
     ],
     "latest": {
-     "date": "2026-11-25",
+     "date": "2026-11-26",
      "series": "community",
      "value": 6.94,
      "p25": null,
@@ -5680,9 +5739,9 @@
      ]
     },
     "change7dPct": 0.0,
-    "change7dBaseDate": "2026-11-18",
-    "coverageDays": 122,
-    "quoteRows": 122
+    "change7dBaseDate": "2026-11-19",
+    "coverageDays": 123,
+    "quoteRows": 123
    },
    "marketplace": {
     "label": "Marketplace floor",
@@ -6146,39 +6205,52 @@
       "cheapestProvider": "Lium",
       "cheapestProviderId": "lium",
       "cheapestSourceUrl": "https://lium.io/api/public/v1/nodes"
+     },
+     {
+      "date": "2026-11-26",
+      "value": 9.9,
+      "p25": null,
+      "p75": null,
+      "providerCount": 1,
+      "quoteCount": 5,
+      "thin": true,
+      "cheapestValue": 8.0,
+      "cheapestProvider": "Lium",
+      "cheapestProviderId": "lium",
+      "cheapestSourceUrl": "https://lium.io/api/public/v1/nodes"
      }
     ],
     "latest": {
-     "date": "2026-11-25",
+     "date": "2026-11-26",
      "series": "marketplace",
-     "value": 8.95,
+     "value": 9.9,
      "p25": null,
      "p75": null,
      "low": 8.0,
-     "high": 9.9,
+     "high": 12.4,
      "providerCount": 1,
-     "quoteCount": 2,
+     "quoteCount": 5,
      "thin": true,
      "medianSynthetic": false,
      "cheapestProvider": "Lium",
      "cheapestProviderId": "lium",
      "cheapestValue": 8.0,
      "cheapestSourceUrl": "https://lium.io/api/public/v1/nodes",
-     "movingAverage30d": 10.441333,
+     "movingAverage30d": 10.488,
      "offers": [
       {
        "provider": "Lium",
        "providerId": "lium",
-       "value": 8.95,
+       "value": 9.9,
        "sourceUrl": "https://lium.io/api/public/v1/nodes",
-       "quotes": 2
+       "quotes": 5
       }
      ]
     },
-    "change7dPct": -5.49,
-    "change7dBaseDate": "2026-11-18",
-    "coverageDays": 35,
-    "quoteRows": 78
+    "change7dPct": -16.81,
+    "change7dBaseDate": "2026-11-19",
+    "coverageDays": 36,
+    "quoteRows": 83
    },
    "serverless": {
     "label": "Serverless",
@@ -7773,10 +7845,23 @@
       "cheapestProvider": "Modal",
       "cheapestProviderId": "modal",
       "cheapestSourceUrl": "https://modal.com/pricing"
+     },
+     {
+      "date": "2026-11-26",
+      "value": 12.49,
+      "p25": 8.3219,
+      "p75": 16.3725,
+      "providerCount": 4,
+      "quoteCount": 5,
+      "thin": false,
+      "cheapestValue": 7.0992,
+      "cheapestProvider": "Modal",
+      "cheapestProviderId": "modal",
+      "cheapestSourceUrl": "https://modal.com/pricing"
      }
     ],
     "latest": {
-     "date": "2026-11-25",
+     "date": "2026-11-26",
      "series": "serverless",
      "value": 12.49,
      "p25": 8.3219,
@@ -7791,7 +7876,7 @@
      "cheapestProviderId": "modal",
      "cheapestValue": 7.0992,
      "cheapestSourceUrl": "https://modal.com/pricing",
-     "movingAverage30d": 12.34,
+     "movingAverage30d": 12.323333,
      "offers": [
       {
        "provider": "Modal",
@@ -7824,9 +7909,9 @@
      ]
     },
     "change7dPct": 4.17,
-    "change7dBaseDate": "2026-11-18",
-    "coverageDays": 122,
-    "quoteRows": 458
+    "change7dBaseDate": "2026-11-19",
+    "coverageDays": 123,
+    "quoteRows": 463
    }
   }
  },
@@ -8087,7 +8172,7 @@
    "p25": 8.9825,
    "p75": 14.7325,
    "providerCount": 14,
-   "index": 129.3064,
+   "index": 131.5839,
    "linkPairs": 13,
    "withheldReason": null
   }
@@ -8127,9 +8212,9 @@
    ],
    "coverage": "stale",
    "comparable": false,
-   "as_of": "2026-11-25",
+   "as_of": "2026-11-26",
    "ext_as_of": "2026-11-03",
-   "note": "B300 实例显存有 262/270/280/288GB 变体；仅作卡级参考。 external 数据比我方旧（2026-11-03 vs 2026-11-25）。"
+   "note": "B300 实例显存有 262/270/280/288GB 变体；仅作卡级参考。 external 数据比我方旧（2026-11-03 vs 2026-11-26）。"
   },
   {
    "card_id": "B300",
@@ -8137,8 +8222,8 @@
    "match_id": "b300",
    "benchmark_id": null,
    "context_ids": [],
-   "own_median": 6.245,
-   "own_providers": 4,
+   "own_median": 5.75,
+   "own_providers": 5,
    "own_thin": true,
    "ext_median": 5.035,
    "ext_providers": 6,
@@ -8158,9 +8243,9 @@
    ],
    "coverage": "thin",
    "comparable": false,
-   "as_of": "2026-11-25",
+   "as_of": "2026-11-26",
    "ext_as_of": "2026-11-03",
-   "note": "B300 实例显存有 262/270/280/288GB 变体；仅作卡级参考。 可比口径与 on-demand 相同（live、非 floor、USD、每 provider 最低价）；spot 可被收回，不能当 on-demand。 external 数据比我方旧（2026-11-03 vs 2026-11-25）。"
+   "note": "B300 实例显存有 262/270/280/288GB 变体；仅作卡级参考。 可比口径与 on-demand 相同（live、非 floor、USD、每 provider 最低价）；spot 可被收回，不能当 on-demand。 external 数据比我方旧（2026-11-03 vs 2026-11-26）。"
   },
   {
    "card_id": "B300",
@@ -8186,9 +8271,9 @@
    "overlap_providers": [],
    "coverage": "thin",
    "comparable": false,
-   "as_of": "2026-11-25",
+   "as_of": "2026-11-26",
    "ext_as_of": "2026-11-03",
-   "note": "B300 实例显存有 262/270/280/288GB 变体；仅作卡级参考。 GPU Economy 把 reserved 拆成无期限/1y/3y；我方不保留期限，不能合成一个可比中位。 external 覆盖偏薄（ext 5 家，重叠 0 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-25）。"
+   "note": "B300 实例显存有 262/270/280/288GB 变体；仅作卡级参考。 GPU Economy 把 reserved 拆成无期限/1y/3y；我方不保留期限，不能合成一个可比中位。 external 覆盖偏薄（ext 5 家，重叠 0 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-26）。"
   },
   {
    "card_id": "B300",
@@ -8216,9 +8301,9 @@
    ],
    "coverage": "thin",
    "comparable": false,
-   "as_of": "2026-11-25",
+   "as_of": "2026-11-26",
    "ext_as_of": "2026-11-03",
-   "note": "B300 实例显存有 262/270/280/288GB 变体；仅作卡级参考。 GPU Economy 的 community 同时包含 marketplace floor 与实例供给；我方把 floor 单列为 marketplace，语义不等价。 external 覆盖偏薄（ext 1 家，重叠 1 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-25）。"
+   "note": "B300 实例显存有 262/270/280/288GB 变体；仅作卡级参考。 GPU Economy 的 community 同时包含 marketplace floor 与实例供给；我方把 floor 单列为 marketplace，语义不等价。 external 覆盖偏薄（ext 1 家，重叠 1 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-26）。"
   },
   {
    "card_id": "B300",
@@ -8226,7 +8311,7 @@
    "match_id": "b300",
    "benchmark_id": null,
    "context_ids": [],
-   "own_median": 8.95,
+   "own_median": 9.9,
    "own_providers": 1,
    "own_thin": true,
    "ext_median": null,
@@ -8244,9 +8329,9 @@
    "overlap_providers": [],
    "coverage": "none",
    "comparable": false,
-   "as_of": "2026-11-25",
+   "as_of": "2026-11-26",
    "ext_as_of": "2026-11-03",
-   "note": "B300 实例显存有 262/270/280/288GB 变体；仅作卡级参考。 我方 marketplace 对应 GPU Economy community 中的 marketplace floor 子集；只是子集，不是等号。 该 market 没有可比 external 报价。 external 数据比我方旧（2026-11-03 vs 2026-11-25）。"
+   "note": "B300 实例显存有 262/270/280/288GB 变体；仅作卡级参考。 我方 marketplace 对应 GPU Economy community 中的 marketplace floor 子集；只是子集，不是等号。 该 market 没有可比 external 报价。 external 数据比我方旧（2026-11-03 vs 2026-11-26）。"
   },
   {
    "card_id": "B300",
@@ -8275,9 +8360,9 @@
    ],
    "coverage": "thin",
    "comparable": false,
-   "as_of": "2026-11-25",
+   "as_of": "2026-11-26",
    "ext_as_of": "2026-11-03",
-   "note": "B300 实例显存有 262/270/280/288GB 变体；仅作卡级参考。 可比口径与 on-demand 相同；serverless 按秒/共享，不能与整租混读。 external 覆盖偏薄（ext 3 家，重叠 2 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-25）。"
+   "note": "B300 实例显存有 262/270/280/288GB 变体；仅作卡级参考。 可比口径与 on-demand 相同；serverless 按秒/共享，不能与整租混读。 external 覆盖偏薄（ext 3 家，重叠 2 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-26）。"
   }
  ],
  "external": {
@@ -8291,7 +8376,7 @@
   "methodology_version": "1.33.63",
   "data_updated_at": "2026-11-03T12:48:20.451387+00:00",
   "retrieved_at": "2026-11-04T09:12:14Z",
-  "as_of": "2026-11-25",
+  "as_of": "2026-11-26",
   "ext_as_of": "2026-11-03",
   "markets": {
    "on_demand": {
@@ -8306,7 +8391,7 @@
     "overlap_count": 9,
     "coverage": "stale",
     "comparable": false,
-    "note": "B300 实例显存有 262/270/280/288GB 变体；仅作卡级参考。 external 数据比我方旧（2026-11-03 vs 2026-11-25）。"
+    "note": "B300 实例显存有 262/270/280/288GB 变体；仅作卡级参考。 external 数据比我方旧（2026-11-03 vs 2026-11-26）。"
    },
    "spot": {
     "ext_gpu_id": "b300",
@@ -8320,7 +8405,7 @@
     "overlap_count": 2,
     "coverage": "thin",
     "comparable": false,
-    "note": "B300 实例显存有 262/270/280/288GB 变体；仅作卡级参考。 可比口径与 on-demand 相同（live、非 floor、USD、每 provider 最低价）；spot 可被收回，不能当 on-demand。 external 数据比我方旧（2026-11-03 vs 2026-11-25）。"
+    "note": "B300 实例显存有 262/270/280/288GB 变体；仅作卡级参考。 可比口径与 on-demand 相同（live、非 floor、USD、每 provider 最低价）；spot 可被收回，不能当 on-demand。 external 数据比我方旧（2026-11-03 vs 2026-11-26）。"
    },
    "reserved": {
     "ext_gpu_id": "b300",
@@ -8334,7 +8419,7 @@
     "overlap_count": 0,
     "coverage": "thin",
     "comparable": false,
-    "note": "B300 实例显存有 262/270/280/288GB 变体；仅作卡级参考。 GPU Economy 把 reserved 拆成无期限/1y/3y；我方不保留期限，不能合成一个可比中位。 external 覆盖偏薄（ext 5 家，重叠 0 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-25）。"
+    "note": "B300 实例显存有 262/270/280/288GB 变体；仅作卡级参考。 GPU Economy 把 reserved 拆成无期限/1y/3y；我方不保留期限，不能合成一个可比中位。 external 覆盖偏薄（ext 5 家，重叠 0 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-26）。"
    },
    "community": {
     "ext_gpu_id": "b300",
@@ -8348,7 +8433,7 @@
     "overlap_count": 1,
     "coverage": "thin",
     "comparable": false,
-    "note": "B300 实例显存有 262/270/280/288GB 变体；仅作卡级参考。 GPU Economy 的 community 同时包含 marketplace floor 与实例供给；我方把 floor 单列为 marketplace，语义不等价。 external 覆盖偏薄（ext 1 家，重叠 1 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-25）。"
+    "note": "B300 实例显存有 262/270/280/288GB 变体；仅作卡级参考。 GPU Economy 的 community 同时包含 marketplace floor 与实例供给；我方把 floor 单列为 marketplace，语义不等价。 external 覆盖偏薄（ext 1 家，重叠 1 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-26）。"
    },
    "marketplace": {
     "ext_gpu_id": "b300",
@@ -8362,7 +8447,7 @@
     "overlap_count": 0,
     "coverage": "none",
     "comparable": false,
-    "note": "B300 实例显存有 262/270/280/288GB 变体；仅作卡级参考。 我方 marketplace 对应 GPU Economy community 中的 marketplace floor 子集；只是子集，不是等号。 该 market 没有可比 external 报价。 external 数据比我方旧（2026-11-03 vs 2026-11-25）。"
+    "note": "B300 实例显存有 262/270/280/288GB 变体；仅作卡级参考。 我方 marketplace 对应 GPU Economy community 中的 marketplace floor 子集；只是子集，不是等号。 该 market 没有可比 external 报价。 external 数据比我方旧（2026-11-03 vs 2026-11-26）。"
    },
    "serverless": {
     "ext_gpu_id": "b300",
@@ -8376,7 +8461,7 @@
     "overlap_count": 2,
     "coverage": "thin",
     "comparable": false,
-    "note": "B300 实例显存有 262/270/280/288GB 变体；仅作卡级参考。 可比口径与 on-demand 相同；serverless 按秒/共享，不能与整租混读。 external 覆盖偏薄（ext 3 家，重叠 2 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-25）。"
+    "note": "B300 实例显存有 262/270/280/288GB 变体；仅作卡级参考。 可比口径与 on-demand 相同；serverless 按秒/共享，不能与整租混读。 external 覆盖偏薄（ext 3 家，重叠 2 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-26）。"
    }
   }
  }

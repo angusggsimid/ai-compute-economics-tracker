@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-26T08:13:25Z",
+  "generatedAt": "2026-11-27T08:24:56Z",
   "inputs": [
     "capex_official_history.json",
     "epoch_chip_sales.json",
@@ -19,7 +19,7 @@
   "clocks": [
     {
       "clock_id": "supply_price",
-      "stateBasis": "90D 确认窗口：B200、H100、H200 家族涨幅 ≥15%（跨来源去重，≥2 家族达标）",
+      "stateBasis": "90D 确认窗口：B200、H200 家族涨幅 ≥15%（跨来源去重，≥2 家族达标）",
       "title": "Supply Price",
       "natural_frequency": "daily",
       "state": "Confirmed",
@@ -34,7 +34,7 @@
         "面板构成变更",
         "价格与深度方向矛盾"
       ],
-      "next_proof_point": "订单簿深度已积累 77/20 有效日；面板 30D 变化每日更新。",
+      "next_proof_point": "订单簿深度已积累 78/20 有效日；面板 30D 变化每日更新。",
       "watch": {
         "loosening": {
           "triggered": false,
@@ -82,55 +82,54 @@
         "looseningConfirmedFamilies": [],
         "intensifyingConfirmedFamilies": [
           "B200",
-          "H100",
           "H200"
         ],
         "frontierPanels": {
           "semi:B200": {
-            "days": 535,
-            "change30dPct": -3.8,
-            "change90dPct": 14.88
+            "days": 536,
+            "change30dPct": -3.51,
+            "change90dPct": 14.49
           },
           "semi:H100": {
-            "days": 1142,
-            "change30dPct": 3.86,
-            "change90dPct": 7.69
+            "days": 1143,
+            "change30dPct": 3.28,
+            "change90dPct": 6.46
           },
           "ornn:B200": {
-            "days": 187,
-            "change30dPct": 3.17,
-            "change90dPct": 45.24
+            "days": 188,
+            "change30dPct": 2.62,
+            "change90dPct": 44.89
           },
           "ornn:H100 SXM": {
-            "days": 187,
-            "change30dPct": -0.96,
-            "change90dPct": 0.32
+            "days": 188,
+            "change30dPct": -2.74,
+            "change90dPct": 1.27
           },
           "ornn:H200": {
-            "days": 187,
-            "change30dPct": 3.72,
-            "change90dPct": 50.68
+            "days": 188,
+            "change30dPct": -0.88,
+            "change90dPct": 46.34
           },
           "neocloud:B200": {
-            "days": 136,
-            "change30dPct": 0.13,
-            "change90dPct": 19.58
+            "days": 137,
+            "change30dPct": 6.25,
+            "change90dPct": 27.06
           },
           "neocloud:H100": {
-            "days": 136,
-            "change30dPct": 3.55,
-            "change90dPct": 15.16
+            "days": 137,
+            "change30dPct": -4.96,
+            "change90dPct": 13.75
           },
           "neocloud:H200": {
-            "days": 136,
-            "change30dPct": -5.67,
-            "change90dPct": 16.32
+            "days": 137,
+            "change30dPct": -1.32,
+            "change90dPct": 21.68
           }
         },
         "depth": {
-          "depthValidDates": 77,
-          "depthLatestTotalOffers": 298,
-          "depthGrowthPct": -8.96,
+          "depthValidDates": 78,
+          "depthLatestTotalOffers": 297,
+          "depthGrowthPct": -9.0,
           "depthWindowDays": 60
         },
         "h100Contract1yBands": [
@@ -170,7 +169,7 @@
     },
     {
       "clock_id": "capacity",
-      "stateBasis": "订单簿已积累 77 个有效日（≥10 达标，趋势可判）；最新 offers 298",
+      "stateBasis": "订单簿已积累 78 个有效日（≥10 达标，趋势可判）；最新 offers 297",
       "title": "Capacity & Utilization",
       "natural_frequency": "daily",
       "state": "Trend",
@@ -184,7 +183,7 @@
         "单一来源驱动",
         "GPU 构成漂移"
       ],
-      "next_proof_point": "积累订单簿至 10/20 有效日（当前 77）。",
+      "next_proof_point": "积累订单簿至 10/20 有效日（当前 78）。",
       "watch": {
         "loosening": {
           "triggered": false,
@@ -206,11 +205,11 @@
         }
       },
       "metrics": {
-        "depthValidDates": 77,
-        "latestTotalOffers": 298,
-        "depthGrowthPct": -8.96,
-        "latestGpuCapacity": 9941,
-        "providerSnapshotRows": 46588,
+        "depthValidDates": 78,
+        "latestTotalOffers": 297,
+        "depthGrowthPct": -9.0,
+        "latestGpuCapacity": 9902,
+        "providerSnapshotRows": 47142,
         "providersCovered": 43
       },
       "blockers": [],
@@ -221,10 +220,10 @@
     },
     {
       "clock_id": "demand_unit_economics",
-      "stateBasis": "OpenRouter 用量 52 个完整周（已剔除抓取窗口起点的残周）达标（≥52）；但用量为公开 proxy——契约规定 proxy 不得升级 Inflection，封顶 Trend 属纪律而非保守",
+      "stateBasis": "OpenRouter 用量 51 个完整周（已剔除抓取窗口起点的残周）达标（≥52）；但用量为公开 proxy——契约规定 proxy 不得升级 Inflection，封顶 Trend 属纪律而非保守",
       "title": "Demand & Unit Economics",
       "natural_frequency": "weekly/event",
-      "state": "Trend",
+      "state": "Observing",
       "direction": null,
       "basis": "OpenRouter 完整周公开 proxy（封顶 Trend）+ 活跃模型牌价账本真实调价点 + Ornn OTPI 已实现 token 价。",
       "confirms": [
@@ -257,14 +256,15 @@
         }
       },
       "metrics": {
-        "completeWeeks": 52,
+        "completeWeeks": 51,
         "latestWeeklyTokens": 212825894713557.0,
         "weightedOutputPriceChange8wPct": -22.89,
-        "recentPriceCutModels": 113,
+        "recentPriceCutModels": 107,
         "otpiLabsCovered": 4,
-        "otpiLatestDate": "2026-11-24"
+        "otpiLatestDate": "2026-11-25"
       },
       "blockers": [
+        "incomplete_weeks_51_of_52",
         "proxy_ceiling_requires_official_usage_for_inflection"
       ],
       "sources": [

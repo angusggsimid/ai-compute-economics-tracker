@@ -1,6 +1,6 @@
 {
  "name": "AI Compute Economics - provider coverage",
- "as_of": "2026-11-25",
+ "as_of": "2026-11-26",
  "methodology_version": "2026-11-04.1",
  "count": 41,
  "providers": [
@@ -26,9 +26,9 @@
    ],
    "quotes": 18,
    "cheapest": {
-    "card": "RTX 4090",
+    "card": "RTX 5090",
     "market": "on_demand",
-    "usd_per_gpu_hour": 0.48,
+    "usd_per_gpu_hour": 0.78,
     "source_url": "https://www.spheron.network/pricing/"
    }
   },
@@ -564,7 +564,7 @@
    "cheapest": {
     "card": "H100",
     "market": "spot",
-    "usd_per_gpu_hour": 1.99,
+    "usd_per_gpu_hour": 2.0,
     "source_url": "https://www.together.ai/pricing"
    }
   },
@@ -681,7 +681,7 @@
    "cheapest": {
     "card": "L40S",
     "market": "on_demand",
-    "usd_per_gpu_hour": 1.6114,
+    "usd_per_gpu_hour": 1.6073,
     "source_url": "https://www.scaleway.com/en/pricing/gpu/"
    }
   },
@@ -722,24 +722,6 @@
     "market": "spot",
     "usd_per_gpu_hour": 0.67877,
     "source_url": "https://prices.azure.com/api/retail/prices"
-   }
-  },
-  {
-   "id": "impossiblecloud",
-   "name": "Impossible Cloud",
-   "cards": [
-    "B300",
-    "H200"
-   ],
-   "markets": [
-    "reserved"
-   ],
-   "quotes": 2,
-   "cheapest": {
-    "card": "H200",
-    "market": "reserved",
-    "usd_per_gpu_hour": 4.45,
-    "source_url": "https://www.impossiblecloud.com/en-us/baremetal"
    }
   },
   {
@@ -845,6 +827,23 @@
     "market": "on_demand",
     "usd_per_gpu_hour": 2.99,
     "source_url": "https://hotaisle.xyz/pricing"
+   }
+  },
+  {
+   "id": "impossiblecloud",
+   "name": "Impossible Cloud",
+   "cards": [
+    "B300"
+   ],
+   "markets": [
+    "reserved"
+   ],
+   "quotes": 1,
+   "cheapest": {
+    "card": "B300",
+    "market": "reserved",
+    "usd_per_gpu_hour": 5.17,
+    "source_url": "https://www.impossiblecloud.com/en-us/baremetal"
    }
   },
   {
