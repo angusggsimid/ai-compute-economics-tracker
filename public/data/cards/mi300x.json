@@ -1,14 +1,14 @@
 {
  "id": "MI300X",
  "slug": "mi300x",
- "as_of": "2026-11-26",
+ "as_of": "2026-11-27",
  "methodology_version": "2026-11-04.1",
  "card": {
   "id": "MI300X",
   "name": "MI300X 192GB",
   "vramGb": 192,
   "family": "CDNA 3",
-  "asOf": "2026-11-26",
+  "asOf": "2026-11-27",
   "status": "live",
   "median": 3.22,
   "p25": 2.54,
@@ -31,7 +31,7 @@
    "linkPairs": 6,
    "withheldReason": null,
    "receipt": "2026-W48",
-   "ageDays": 3
+   "ageDays": 4
   },
   "monthly": [
    {
@@ -1908,10 +1908,23 @@
       "cheapestProvider": "RunPod",
       "cheapestProviderId": "runpod",
       "cheapestSourceUrl": "https://www.runpod.io/pricing"
+     },
+     {
+      "date": "2026-11-27",
+      "value": 3.22,
+      "p25": 2.54,
+      "p75": 4.1925,
+      "providerCount": 6,
+      "quoteCount": 6,
+      "thin": false,
+      "cheapestValue": 2.39,
+      "cheapestProvider": "RunPod",
+      "cheapestProviderId": "runpod",
+      "cheapestSourceUrl": "https://www.runpod.io/pricing"
      }
     ],
     "latest": {
-     "date": "2026-11-26",
+     "date": "2026-11-27",
      "series": "on_demand",
      "value": 3.22,
      "p25": 2.54,
@@ -1926,7 +1939,7 @@
      "cheapestProviderId": "runpod",
      "cheapestValue": 2.39,
      "cheapestSourceUrl": "https://www.runpod.io/pricing",
-     "movingAverage30d": 3.151,
+     "movingAverage30d": 3.158667,
      "offers": [
       {
        "provider": "RunPod",
@@ -1973,9 +1986,9 @@
      ]
     },
     "change7dPct": 0.0,
-    "change7dBaseDate": "2026-11-19",
-    "coverageDays": 137,
-    "quoteRows": 600
+    "change7dBaseDate": "2026-11-20",
+    "coverageDays": 138,
+    "quoteRows": 606
    },
    "spot": {
     "label": "Spot",
@@ -2363,9 +2376,9 @@
    ],
    "coverage": "thin",
    "comparable": false,
-   "as_of": "2026-11-26",
+   "as_of": "2026-11-27",
    "ext_as_of": "2026-11-03",
-   "note": "MI300X 配置单一；ext 只有 7 家可比 provider，样本偏薄。 external 数据比我方旧（2026-11-03 vs 2026-11-26）。"
+   "note": "MI300X 配置单一；ext 只有 7 家可比 provider，样本偏薄。 external 数据比我方旧（2026-11-03 vs 2026-11-27）。"
   },
   {
    "card_id": "MI300X",
@@ -2391,9 +2404,9 @@
    "overlap_providers": [],
    "coverage": "thin",
    "comparable": false,
-   "as_of": "2026-11-26",
+   "as_of": "2026-11-27",
    "ext_as_of": "2026-11-03",
-   "note": "MI300X 配置单一；ext 只有 7 家可比 provider，样本偏薄。 可比口径与 on-demand 相同（live、非 floor、USD、每 provider 最低价）；spot 可被收回，不能当 on-demand。 external 覆盖偏薄（ext 2 家，重叠 0 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-26）。"
+   "note": "MI300X 配置单一；ext 只有 7 家可比 provider，样本偏薄。 可比口径与 on-demand 相同（live、非 floor、USD、每 provider 最低价）；spot 可被收回，不能当 on-demand。 external 覆盖偏薄（ext 2 家，重叠 0 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-27）。"
   },
   {
    "card_id": "MI300X",
@@ -2419,9 +2432,9 @@
    "overlap_providers": [],
    "coverage": "thin",
    "comparable": false,
-   "as_of": "2026-11-26",
+   "as_of": "2026-11-27",
    "ext_as_of": "2026-11-03",
-   "note": "MI300X 配置单一；ext 只有 7 家可比 provider，样本偏薄。 GPU Economy 把 reserved 拆成无期限/1y/3y；我方不保留期限，不能合成一个可比中位。 external 覆盖偏薄（ext 2 家，重叠 0 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-26）。"
+   "note": "MI300X 配置单一；ext 只有 7 家可比 provider，样本偏薄。 GPU Economy 把 reserved 拆成无期限/1y/3y；我方不保留期限，不能合成一个可比中位。 external 覆盖偏薄（ext 2 家，重叠 0 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-27）。"
   },
   {
    "card_id": "MI300X",
@@ -2447,9 +2460,9 @@
    "overlap_providers": [],
    "coverage": "none",
    "comparable": false,
-   "as_of": "2026-11-26",
+   "as_of": "2026-11-27",
    "ext_as_of": "2026-11-03",
-   "note": "MI300X 配置单一；ext 只有 7 家可比 provider，样本偏薄。 GPU Economy 的 community 同时包含 marketplace floor 与实例供给；我方把 floor 单列为 marketplace，语义不等价。 该 market 没有可比 external 报价。 external 数据比我方旧（2026-11-03 vs 2026-11-26）。"
+   "note": "MI300X 配置单一；ext 只有 7 家可比 provider，样本偏薄。 GPU Economy 的 community 同时包含 marketplace floor 与实例供给；我方把 floor 单列为 marketplace，语义不等价。 该 market 没有可比 external 报价。 external 数据比我方旧（2026-11-03 vs 2026-11-27）。"
   },
   {
    "card_id": "MI300X",
@@ -2475,9 +2488,9 @@
    "overlap_providers": [],
    "coverage": "none",
    "comparable": false,
-   "as_of": "2026-11-26",
+   "as_of": "2026-11-27",
    "ext_as_of": "2026-11-03",
-   "note": "MI300X 配置单一；ext 只有 7 家可比 provider，样本偏薄。 我方 marketplace 对应 GPU Economy community 中的 marketplace floor 子集；只是子集，不是等号。 该 market 没有可比 external 报价。 external 数据比我方旧（2026-11-03 vs 2026-11-26）。"
+   "note": "MI300X 配置单一；ext 只有 7 家可比 provider，样本偏薄。 我方 marketplace 对应 GPU Economy community 中的 marketplace floor 子集；只是子集，不是等号。 该 market 没有可比 external 报价。 external 数据比我方旧（2026-11-03 vs 2026-11-27）。"
   },
   {
    "card_id": "MI300X",
@@ -2503,9 +2516,9 @@
    "overlap_providers": [],
    "coverage": "none",
    "comparable": false,
-   "as_of": "2026-11-26",
+   "as_of": "2026-11-27",
    "ext_as_of": "2026-11-03",
-   "note": "MI300X 配置单一；ext 只有 7 家可比 provider，样本偏薄。 可比口径与 on-demand 相同；serverless 按秒/共享，不能与整租混读。 该 market 没有可比 external 报价。 external 数据比我方旧（2026-11-03 vs 2026-11-26）。"
+   "note": "MI300X 配置单一；ext 只有 7 家可比 provider，样本偏薄。 可比口径与 on-demand 相同；serverless 按秒/共享，不能与整租混读。 该 market 没有可比 external 报价。 external 数据比我方旧（2026-11-03 vs 2026-11-27）。"
   }
  ],
  "external": {
@@ -2519,7 +2532,7 @@
   "methodology_version": "1.33.63",
   "data_updated_at": "2026-11-03T12:48:20.451387+00:00",
   "retrieved_at": "2026-11-04T09:12:14Z",
-  "as_of": "2026-11-26",
+  "as_of": "2026-11-27",
   "ext_as_of": "2026-11-03",
   "markets": {
    "on_demand": {
@@ -2534,7 +2547,7 @@
     "overlap_count": 5,
     "coverage": "thin",
     "comparable": false,
-    "note": "MI300X 配置单一；ext 只有 7 家可比 provider，样本偏薄。 external 数据比我方旧（2026-11-03 vs 2026-11-26）。"
+    "note": "MI300X 配置单一；ext 只有 7 家可比 provider，样本偏薄。 external 数据比我方旧（2026-11-03 vs 2026-11-27）。"
    },
    "spot": {
     "ext_gpu_id": "mi300x",
@@ -2548,7 +2561,7 @@
     "overlap_count": 0,
     "coverage": "thin",
     "comparable": false,
-    "note": "MI300X 配置单一；ext 只有 7 家可比 provider，样本偏薄。 可比口径与 on-demand 相同（live、非 floor、USD、每 provider 最低价）；spot 可被收回，不能当 on-demand。 external 覆盖偏薄（ext 2 家，重叠 0 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-26）。"
+    "note": "MI300X 配置单一；ext 只有 7 家可比 provider，样本偏薄。 可比口径与 on-demand 相同（live、非 floor、USD、每 provider 最低价）；spot 可被收回，不能当 on-demand。 external 覆盖偏薄（ext 2 家，重叠 0 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-27）。"
    },
    "reserved": {
     "ext_gpu_id": "mi300x",
@@ -2562,7 +2575,7 @@
     "overlap_count": 0,
     "coverage": "thin",
     "comparable": false,
-    "note": "MI300X 配置单一；ext 只有 7 家可比 provider，样本偏薄。 GPU Economy 把 reserved 拆成无期限/1y/3y；我方不保留期限，不能合成一个可比中位。 external 覆盖偏薄（ext 2 家，重叠 0 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-26）。"
+    "note": "MI300X 配置单一；ext 只有 7 家可比 provider，样本偏薄。 GPU Economy 把 reserved 拆成无期限/1y/3y；我方不保留期限，不能合成一个可比中位。 external 覆盖偏薄（ext 2 家，重叠 0 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-27）。"
    },
    "community": {
     "ext_gpu_id": "mi300x",
@@ -2576,7 +2589,7 @@
     "overlap_count": 0,
     "coverage": "none",
     "comparable": false,
-    "note": "MI300X 配置单一；ext 只有 7 家可比 provider，样本偏薄。 GPU Economy 的 community 同时包含 marketplace floor 与实例供给；我方把 floor 单列为 marketplace，语义不等价。 该 market 没有可比 external 报价。 external 数据比我方旧（2026-11-03 vs 2026-11-26）。"
+    "note": "MI300X 配置单一；ext 只有 7 家可比 provider，样本偏薄。 GPU Economy 的 community 同时包含 marketplace floor 与实例供给；我方把 floor 单列为 marketplace，语义不等价。 该 market 没有可比 external 报价。 external 数据比我方旧（2026-11-03 vs 2026-11-27）。"
    },
    "marketplace": {
     "ext_gpu_id": "mi300x",
@@ -2590,7 +2603,7 @@
     "overlap_count": 0,
     "coverage": "none",
     "comparable": false,
-    "note": "MI300X 配置单一；ext 只有 7 家可比 provider，样本偏薄。 我方 marketplace 对应 GPU Economy community 中的 marketplace floor 子集；只是子集，不是等号。 该 market 没有可比 external 报价。 external 数据比我方旧（2026-11-03 vs 2026-11-26）。"
+    "note": "MI300X 配置单一；ext 只有 7 家可比 provider，样本偏薄。 我方 marketplace 对应 GPU Economy community 中的 marketplace floor 子集；只是子集，不是等号。 该 market 没有可比 external 报价。 external 数据比我方旧（2026-11-03 vs 2026-11-27）。"
    },
    "serverless": {
     "ext_gpu_id": "mi300x",
@@ -2604,7 +2617,7 @@
     "overlap_count": 0,
     "coverage": "none",
     "comparable": false,
-    "note": "MI300X 配置单一；ext 只有 7 家可比 provider，样本偏薄。 可比口径与 on-demand 相同；serverless 按秒/共享，不能与整租混读。 该 market 没有可比 external 报价。 external 数据比我方旧（2026-11-03 vs 2026-11-26）。"
+    "note": "MI300X 配置单一；ext 只有 7 家可比 provider，样本偏薄。 可比口径与 on-demand 相同；serverless 按秒/共享，不能与整租混读。 该 market 没有可比 external 报价。 external 数据比我方旧（2026-11-03 vs 2026-11-27）。"
    }
   }
  }

@@ -1,37 +1,37 @@
 {
  "id": "L40S",
  "slug": "l40s",
- "as_of": "2026-11-26",
+ "as_of": "2026-11-27",
  "methodology_version": "2026-11-04.1",
  "card": {
   "id": "L40S",
   "name": "L40S 48GB",
   "vramGb": 48,
   "family": "Ada",
-  "asOf": "2026-11-26",
+  "asOf": "2026-11-27",
   "status": "live",
-  "median": 1.6073,
+  "median": 1.6132,
   "p25": 1.09,
   "p75": 2.079,
   "cheapest": 0.55,
   "cheapestProvider": "Runcrate",
   "providerCount": 15,
-  "change7dPct": 1.02,
+  "change7dPct": 1.28,
   "weeklyIndex": {
    "weekStart": "2026-11-23",
    "isoWeek": "2026-W48",
    "vintage": "provisional",
    "status": "published",
    "methodologyVersion": "2026-11-04.1",
-   "median": 1.6073,
+   "median": 1.6132,
    "p25": 1.09,
    "p75": 2.079,
    "providerCount": 15,
-   "index": 102.4408,
+   "index": 102.4658,
    "linkPairs": 15,
    "withheldReason": null,
    "receipt": "2026-W48",
-   "ageDays": 3
+   "ageDays": 4
   },
   "monthly": [
    {
@@ -1931,12 +1931,25 @@
       "cheapestProvider": "Runcrate",
       "cheapestProviderId": "runcrate",
       "cheapestSourceUrl": "https://www.runcrate.ai/pricing"
+     },
+     {
+      "date": "2026-11-27",
+      "value": 1.6132,
+      "p25": 1.09,
+      "p75": 2.079,
+      "providerCount": 15,
+      "quoteCount": 16,
+      "thin": false,
+      "cheapestValue": 0.55,
+      "cheapestProvider": "Runcrate",
+      "cheapestProviderId": "runcrate",
+      "cheapestSourceUrl": "https://www.runcrate.ai/pricing"
      }
     ],
     "latest": {
-     "date": "2026-11-26",
+     "date": "2026-11-27",
      "series": "on_demand",
-     "value": 1.6073,
+     "value": 1.6132,
      "p25": 1.09,
      "p75": 2.079,
      "low": 0.55,
@@ -1949,7 +1962,7 @@
      "cheapestProviderId": "runcrate",
      "cheapestValue": 0.55,
      "cheapestSourceUrl": "https://www.runcrate.ai/pricing",
-     "movingAverage30d": 1.601508,
+     "movingAverage30d": 1.601593,
      "offers": [
       {
        "provider": "Runcrate",
@@ -2003,7 +2016,7 @@
       {
        "provider": "Scaleway",
        "providerId": "scaleway",
-       "value": 1.6073,
+       "value": 1.6132,
        "sourceUrl": "https://www.scaleway.com/en/pricing/gpu/",
        "quotes": 1
       },
@@ -2058,10 +2071,10 @@
       }
      ]
     },
-    "change7dPct": 1.02,
-    "change7dBaseDate": "2026-11-19",
-    "coverageDays": 137,
-    "quoteRows": 1791
+    "change7dPct": 1.28,
+    "change7dBaseDate": "2026-11-20",
+    "coverageDays": 138,
+    "quoteRows": 1807
    },
    "spot": {
     "label": "Spot",
@@ -3669,16 +3682,29 @@
       "cheapestProvider": "Lium",
       "cheapestProviderId": "lium",
       "cheapestSourceUrl": "https://lium.io/api/public/v1/nodes"
+     },
+     {
+      "date": "2026-11-27",
+      "value": 1.09,
+      "p25": 0.545,
+      "p75": 1.2675,
+      "providerCount": 4,
+      "quoteCount": 4,
+      "thin": false,
+      "cheapestValue": 0.38,
+      "cheapestProvider": "Lium",
+      "cheapestProviderId": "lium",
+      "cheapestSourceUrl": "https://lium.io/api/public/v1/nodes"
      }
     ],
     "latest": {
-     "date": "2026-11-26",
+     "date": "2026-11-27",
      "series": "spot",
-     "value": 1.045,
+     "value": 1.09,
      "p25": 0.545,
-     "p75": 1.1175,
+     "p75": 1.2675,
      "low": 0.38,
-     "high": 1.14,
+     "high": 1.31,
      "providerCount": 4,
      "quoteCount": 4,
      "thin": false,
@@ -3687,7 +3713,7 @@
      "cheapestProviderId": "lium",
      "cheapestValue": 0.38,
      "cheapestSourceUrl": "https://lium.io/api/public/v1/nodes",
-     "movingAverage30d": 1.059217,
+     "movingAverage30d": 1.06055,
      "offers": [
       {
        "provider": "Lium",
@@ -3704,25 +3730,25 @@
        "quotes": 1
       },
       {
-       "provider": "Spheron",
-       "providerId": "spheron",
-       "value": 1.05,
-       "sourceUrl": "https://www.spheron.network/pricing/",
-       "quotes": 1
-      },
-      {
        "provider": "Daytona",
        "providerId": "daytona",
        "value": 1.14,
        "sourceUrl": "https://billing.app.daytona.io/gpu-pricing",
        "quotes": 1
+      },
+      {
+       "provider": "Spheron",
+       "providerId": "spheron",
+       "value": 1.31,
+       "sourceUrl": "https://www.spheron.network/pricing/",
+       "quotes": 1
       }
      ]
     },
-    "change7dPct": -8.33,
-    "change7dBaseDate": "2026-11-19",
-    "coverageDays": 123,
-    "quoteRows": 179
+    "change7dPct": 0.0,
+    "change7dBaseDate": "2026-11-20",
+    "coverageDays": 124,
+    "quoteRows": 183
    },
    "reserved": {
     "label": "Reserved",
@@ -5525,10 +5551,23 @@
       "cheapestProvider": "RunPod",
       "cheapestProviderId": "runpod",
       "cheapestSourceUrl": "https://www.runpod.io/pricing"
+     },
+     {
+      "date": "2026-11-27",
+      "value": 0.79,
+      "p25": null,
+      "p75": null,
+      "providerCount": 1,
+      "quoteCount": 1,
+      "thin": true,
+      "cheapestValue": 0.79,
+      "cheapestProvider": "RunPod",
+      "cheapestProviderId": "runpod",
+      "cheapestSourceUrl": "https://www.runpod.io/pricing"
      }
     ],
     "latest": {
-     "date": "2026-11-26",
+     "date": "2026-11-27",
      "series": "community",
      "value": 0.79,
      "p25": null,
@@ -5555,9 +5594,9 @@
      ]
     },
     "change7dPct": 0.0,
-    "change7dBaseDate": "2026-11-19",
-    "coverageDays": 137,
-    "quoteRows": 137
+    "change7dBaseDate": "2026-11-20",
+    "coverageDays": 138,
+    "quoteRows": 138
    },
    "marketplace": {
     "label": "Marketplace floor",
@@ -5904,10 +5943,23 @@
       "cheapestProvider": "Lium",
       "cheapestProviderId": "lium",
       "cheapestSourceUrl": "https://lium.io/api/public/v1/nodes"
+     },
+     {
+      "date": "2026-11-27",
+      "value": 0.38,
+      "p25": null,
+      "p75": null,
+      "providerCount": 1,
+      "quoteCount": 1,
+      "thin": true,
+      "cheapestValue": 0.38,
+      "cheapestProvider": "Lium",
+      "cheapestProviderId": "lium",
+      "cheapestSourceUrl": "https://lium.io/api/public/v1/nodes"
      }
     ],
     "latest": {
-     "date": "2026-11-26",
+     "date": "2026-11-27",
      "series": "marketplace",
      "value": 0.38,
      "p25": null,
@@ -5922,7 +5974,7 @@
      "cheapestProviderId": "lium",
      "cheapestValue": 0.38,
      "cheapestSourceUrl": "https://lium.io/api/public/v1/nodes",
-     "movingAverage30d": 0.477692,
+     "movingAverage30d": 0.474074,
      "offers": [
       {
        "provider": "Lium",
@@ -5933,10 +5985,10 @@
       }
      ]
     },
-    "change7dPct": -30.91,
-    "change7dBaseDate": "2026-11-19",
-    "coverageDays": 26,
-    "quoteRows": 42
+    "change7dPct": -41.54,
+    "change7dBaseDate": "2026-11-20",
+    "coverageDays": 27,
+    "quoteRows": 43
    },
    "serverless": {
     "label": "Serverless",
@@ -7700,10 +7752,23 @@
       "cheapestProvider": "Koyeb",
       "cheapestProviderId": "koyeb",
       "cheapestSourceUrl": "https://www.koyeb.com/pricing"
+     },
+     {
+      "date": "2026-11-27",
+      "value": 1.9512,
+      "p25": 1.3878,
+      "p75": 3.1203,
+      "providerCount": 4,
+      "quoteCount": 4,
+      "thin": false,
+      "cheapestValue": 1.2,
+      "cheapestProvider": "Koyeb",
+      "cheapestProviderId": "koyeb",
+      "cheapestSourceUrl": "https://www.koyeb.com/pricing"
      }
     ],
     "latest": {
-     "date": "2026-11-26",
+     "date": "2026-11-27",
      "series": "serverless",
      "value": 1.9512,
      "p25": 1.3878,
@@ -7751,9 +7816,9 @@
      ]
     },
     "change7dPct": 0.0,
-    "change7dBaseDate": "2026-11-19",
-    "coverageDays": 135,
-    "quoteRows": 502
+    "change7dBaseDate": "2026-11-20",
+    "coverageDays": 136,
+    "quoteRows": 506
    }
   }
  },
@@ -8036,11 +8101,11 @@
    "weekStart": "2026-11-23",
    "vintage": "provisional",
    "status": "published",
-   "median": 1.6073,
+   "median": 1.6132,
    "p25": 1.09,
    "p75": 2.079,
    "providerCount": 15,
-   "index": 102.4408,
+   "index": 102.4658,
    "linkPairs": 15,
    "withheldReason": null
   }
@@ -8052,7 +8117,7 @@
    "match_id": "l40s",
    "benchmark_id": null,
    "context_ids": [],
-   "own_median": 1.6073,
+   "own_median": 1.6132,
    "own_providers": 15,
    "own_thin": false,
    "ext_median": 1.29,
@@ -8080,9 +8145,9 @@
    ],
    "coverage": "stale",
    "comparable": false,
-   "as_of": "2026-11-26",
+   "as_of": "2026-11-27",
    "ext_as_of": "2026-11-03",
-   "note": "L40S 配置单一；provider 级价格仍可能因实例配置与时点不同。 external 数据比我方旧（2026-11-03 vs 2026-11-26）。"
+   "note": "L40S 配置单一；provider 级价格仍可能因实例配置与时点不同。 external 数据比我方旧（2026-11-03 vs 2026-11-27）。"
   },
   {
    "card_id": "L40S",
@@ -8090,7 +8155,7 @@
    "match_id": "l40s",
    "benchmark_id": null,
    "context_ids": [],
-   "own_median": 1.045,
+   "own_median": 1.09,
    "own_providers": 4,
    "own_thin": true,
    "ext_median": 1.0225,
@@ -8110,9 +8175,9 @@
    ],
    "coverage": "thin",
    "comparable": false,
-   "as_of": "2026-11-26",
+   "as_of": "2026-11-27",
    "ext_as_of": "2026-11-03",
-   "note": "L40S 配置单一；provider 级价格仍可能因实例配置与时点不同。 可比口径与 on-demand 相同（live、非 floor、USD、每 provider 最低价）；spot 可被收回，不能当 on-demand。 external 覆盖偏薄（ext 6 家，重叠 1 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-26）。"
+   "note": "L40S 配置单一；provider 级价格仍可能因实例配置与时点不同。 可比口径与 on-demand 相同（live、非 floor、USD、每 provider 最低价）；spot 可被收回，不能当 on-demand。 external 覆盖偏薄（ext 6 家，重叠 1 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-27）。"
   },
   {
    "card_id": "L40S",
@@ -8138,9 +8203,9 @@
    "overlap_providers": [],
    "coverage": "thin",
    "comparable": false,
-   "as_of": "2026-11-26",
+   "as_of": "2026-11-27",
    "ext_as_of": "2026-11-03",
-   "note": "L40S 配置单一；provider 级价格仍可能因实例配置与时点不同。 GPU Economy 把 reserved 拆成无期限/1y/3y；我方不保留期限，不能合成一个可比中位。 external 覆盖偏薄（ext 3 家，重叠 0 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-26）。"
+   "note": "L40S 配置单一；provider 级价格仍可能因实例配置与时点不同。 GPU Economy 把 reserved 拆成无期限/1y/3y；我方不保留期限，不能合成一个可比中位。 external 覆盖偏薄（ext 3 家，重叠 0 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-27）。"
   },
   {
    "card_id": "L40S",
@@ -8168,9 +8233,9 @@
    ],
    "coverage": "thin",
    "comparable": false,
-   "as_of": "2026-11-26",
+   "as_of": "2026-11-27",
    "ext_as_of": "2026-11-03",
-   "note": "L40S 配置单一；provider 级价格仍可能因实例配置与时点不同。 GPU Economy 的 community 同时包含 marketplace floor 与实例供给；我方把 floor 单列为 marketplace，语义不等价。 external 覆盖偏薄（ext 1 家，重叠 1 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-26）。"
+   "note": "L40S 配置单一；provider 级价格仍可能因实例配置与时点不同。 GPU Economy 的 community 同时包含 marketplace floor 与实例供给；我方把 floor 单列为 marketplace，语义不等价。 external 覆盖偏薄（ext 1 家，重叠 1 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-27）。"
   },
   {
    "card_id": "L40S",
@@ -8198,9 +8263,9 @@
    ],
    "coverage": "thin",
    "comparable": false,
-   "as_of": "2026-11-26",
+   "as_of": "2026-11-27",
    "ext_as_of": "2026-11-03",
-   "note": "L40S 配置单一；provider 级价格仍可能因实例配置与时点不同。 我方 marketplace 对应 GPU Economy community 中的 marketplace floor 子集；只是子集，不是等号。 external 覆盖偏薄（ext 2 家，重叠 1 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-26）。"
+   "note": "L40S 配置单一；provider 级价格仍可能因实例配置与时点不同。 我方 marketplace 对应 GPU Economy community 中的 marketplace floor 子集；只是子集，不是等号。 external 覆盖偏薄（ext 2 家，重叠 1 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-27）。"
   },
   {
    "card_id": "L40S",
@@ -8230,9 +8295,9 @@
    ],
    "coverage": "thin",
    "comparable": false,
-   "as_of": "2026-11-26",
+   "as_of": "2026-11-27",
    "ext_as_of": "2026-11-03",
-   "note": "L40S 配置单一；provider 级价格仍可能因实例配置与时点不同。 可比口径与 on-demand 相同；serverless 按秒/共享，不能与整租混读。 external 数据比我方旧（2026-11-03 vs 2026-11-26）。"
+   "note": "L40S 配置单一；provider 级价格仍可能因实例配置与时点不同。 可比口径与 on-demand 相同；serverless 按秒/共享，不能与整租混读。 external 数据比我方旧（2026-11-03 vs 2026-11-27）。"
   }
  ],
  "external": {
@@ -8246,7 +8311,7 @@
   "methodology_version": "1.33.63",
   "data_updated_at": "2026-11-03T12:48:20.451387+00:00",
   "retrieved_at": "2026-11-04T09:12:14Z",
-  "as_of": "2026-11-26",
+  "as_of": "2026-11-27",
   "ext_as_of": "2026-11-03",
   "markets": {
    "on_demand": {
@@ -8261,7 +8326,7 @@
     "overlap_count": 9,
     "coverage": "stale",
     "comparable": false,
-    "note": "L40S 配置单一；provider 级价格仍可能因实例配置与时点不同。 external 数据比我方旧（2026-11-03 vs 2026-11-26）。"
+    "note": "L40S 配置单一；provider 级价格仍可能因实例配置与时点不同。 external 数据比我方旧（2026-11-03 vs 2026-11-27）。"
    },
    "spot": {
     "ext_gpu_id": "l40s",
@@ -8275,7 +8340,7 @@
     "overlap_count": 1,
     "coverage": "thin",
     "comparable": false,
-    "note": "L40S 配置单一；provider 级价格仍可能因实例配置与时点不同。 可比口径与 on-demand 相同（live、非 floor、USD、每 provider 最低价）；spot 可被收回，不能当 on-demand。 external 覆盖偏薄（ext 6 家，重叠 1 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-26）。"
+    "note": "L40S 配置单一；provider 级价格仍可能因实例配置与时点不同。 可比口径与 on-demand 相同（live、非 floor、USD、每 provider 最低价）；spot 可被收回，不能当 on-demand。 external 覆盖偏薄（ext 6 家，重叠 1 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-27）。"
    },
    "reserved": {
     "ext_gpu_id": "l40s",
@@ -8289,7 +8354,7 @@
     "overlap_count": 0,
     "coverage": "thin",
     "comparable": false,
-    "note": "L40S 配置单一；provider 级价格仍可能因实例配置与时点不同。 GPU Economy 把 reserved 拆成无期限/1y/3y；我方不保留期限，不能合成一个可比中位。 external 覆盖偏薄（ext 3 家，重叠 0 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-26）。"
+    "note": "L40S 配置单一；provider 级价格仍可能因实例配置与时点不同。 GPU Economy 把 reserved 拆成无期限/1y/3y；我方不保留期限，不能合成一个可比中位。 external 覆盖偏薄（ext 3 家，重叠 0 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-27）。"
    },
    "community": {
     "ext_gpu_id": "l40s",
@@ -8303,7 +8368,7 @@
     "overlap_count": 1,
     "coverage": "thin",
     "comparable": false,
-    "note": "L40S 配置单一；provider 级价格仍可能因实例配置与时点不同。 GPU Economy 的 community 同时包含 marketplace floor 与实例供给；我方把 floor 单列为 marketplace，语义不等价。 external 覆盖偏薄（ext 1 家，重叠 1 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-26）。"
+    "note": "L40S 配置单一；provider 级价格仍可能因实例配置与时点不同。 GPU Economy 的 community 同时包含 marketplace floor 与实例供给；我方把 floor 单列为 marketplace，语义不等价。 external 覆盖偏薄（ext 1 家，重叠 1 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-27）。"
    },
    "marketplace": {
     "ext_gpu_id": "l40s",
@@ -8317,7 +8382,7 @@
     "overlap_count": 1,
     "coverage": "thin",
     "comparable": false,
-    "note": "L40S 配置单一；provider 级价格仍可能因实例配置与时点不同。 我方 marketplace 对应 GPU Economy community 中的 marketplace floor 子集；只是子集，不是等号。 external 覆盖偏薄（ext 2 家，重叠 1 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-26）。"
+    "note": "L40S 配置单一；provider 级价格仍可能因实例配置与时点不同。 我方 marketplace 对应 GPU Economy community 中的 marketplace floor 子集；只是子集，不是等号。 external 覆盖偏薄（ext 2 家，重叠 1 家）。 external 数据比我方旧（2026-11-03 vs 2026-11-27）。"
    },
    "serverless": {
     "ext_gpu_id": "l40s",
@@ -8331,7 +8396,7 @@
     "overlap_count": 3,
     "coverage": "thin",
     "comparable": false,
-    "note": "L40S 配置单一；provider 级价格仍可能因实例配置与时点不同。 可比口径与 on-demand 相同；serverless 按秒/共享，不能与整租混读。 external 数据比我方旧（2026-11-03 vs 2026-11-26）。"
+    "note": "L40S 配置单一；provider 级价格仍可能因实例配置与时点不同。 可比口径与 on-demand 相同；serverless 按秒/共享，不能与整租混读。 external 数据比我方旧（2026-11-03 vs 2026-11-27）。"
    }
   }
  }

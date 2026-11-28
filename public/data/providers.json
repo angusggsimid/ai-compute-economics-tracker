@@ -1,6 +1,6 @@
 {
  "name": "AI Compute Economics - provider coverage",
- "as_of": "2026-11-26",
+ "as_of": "2026-11-27",
  "methodology_version": "2026-11-04.1",
  "count": 41,
  "providers": [
@@ -26,9 +26,9 @@
    ],
    "quotes": 18,
    "cheapest": {
-    "card": "RTX 5090",
+    "card": "RTX 4090",
     "market": "on_demand",
-    "usd_per_gpu_hour": 0.78,
+    "usd_per_gpu_hour": 0.72,
     "source_url": "https://www.spheron.network/pricing/"
    }
   },
@@ -78,11 +78,11 @@
     "marketplace",
     "spot"
    ],
-   "quotes": 15,
+   "quotes": 16,
    "cheapest": {
-    "card": "L40S",
-    "market": "spot",
-    "usd_per_gpu_hour": 0.38,
+    "card": "RTX 4090",
+    "market": "marketplace",
+    "usd_per_gpu_hour": 0.32,
     "source_url": "https://lium.io/api/public/v1/nodes"
    }
   },
@@ -136,6 +136,30 @@
    }
   },
   {
+   "id": "runcrate",
+   "name": "Runcrate",
+   "cards": [
+    "A100",
+    "B300",
+    "H100",
+    "H200",
+    "L40S",
+    "RTX 4090",
+    "RTX 5090",
+    "RTX PRO 6000"
+   ],
+   "markets": [
+    "on_demand"
+   ],
+   "quotes": 8,
+   "cheapest": {
+    "card": "L40S",
+    "market": "on_demand",
+    "usd_per_gpu_hour": 0.55,
+    "source_url": "https://www.runcrate.ai/pricing"
+   }
+  },
+  {
    "id": "coreweave",
    "name": "CoreWeave",
    "cards": [
@@ -182,29 +206,6 @@
    }
   },
   {
-   "id": "runcrate",
-   "name": "Runcrate",
-   "cards": [
-    "A100",
-    "H100",
-    "H200",
-    "L40S",
-    "RTX 4090",
-    "RTX 5090",
-    "RTX PRO 6000"
-   ],
-   "markets": [
-    "on_demand"
-   ],
-   "quotes": 7,
-   "cheapest": {
-    "card": "L40S",
-    "market": "on_demand",
-    "usd_per_gpu_hour": 0.55,
-    "source_url": "https://www.runcrate.ai/pricing"
-   }
-  },
-  {
    "id": "datacrunch",
    "name": "Verda",
    "cards": [
@@ -222,9 +223,9 @@
    ],
    "quotes": 14,
    "cheapest": {
-    "card": "L40S",
+    "card": "A100",
     "market": "spot",
-    "usd_per_gpu_hour": 1.04,
+    "usd_per_gpu_hour": 1.03575,
     "source_url": "https://datacrunch.io/pricing"
    }
   },
@@ -681,7 +682,7 @@
    "cheapest": {
     "card": "L40S",
     "market": "on_demand",
-    "usd_per_gpu_hour": 1.6073,
+    "usd_per_gpu_hour": 1.6132,
     "source_url": "https://www.scaleway.com/en/pricing/gpu/"
    }
   },
